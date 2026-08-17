@@ -38,9 +38,9 @@
 \newcommand{\bJ}{\boldsymbol{J}}
 \newcommand{\bK}{\boldsymbol{K}}
 \newcommand{\bP}{\boldsymbol{P}}
-\newcommand{\bI}{\boldsymbol{I}}
+\newcommand{\bI}{\boldsymbol{1}}
 \newcommand{\bU}{\boldsymbol{U}}
-\newcommand{\bO}{\boldsymbol{O}}
+\newcommand{\bO}{\boldsymbol{0}}
 \newcommand{\bS}{\boldsymbol{S}}
 \newcommand{\bT}{\boldsymbol{T}}
 \newcommand{\bF}{\boldsymbol{F}}
@@ -115,32 +115,32 @@
 \end{frame}
 
 %%% SLIDE X %%%
-\begin{frame}{How to perform a HF calculation in practice?}
-	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\begin{block}{The SCF algorithm for Hartree-Fock (HF) calculations (p.~146)}
-				\begin{enumerate}
-					\item \orange{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \violet{basis set} $\{\phi_\mu\}$ 
-					\item Calculate integrals $S_{\mu \nu}$, $H_{\mu \nu}$ and $\braket{\mu \nu}{\lambda \sigma}$
-					\item Diagonalize $\bS$ and compute $\bX = \bS^{-1/2}$
-					\item Obtain \alert{guess density matrix} for $\bP$
-					\begin{enumerate}
-						\item[1.] Calculate $\bJ$ and $\bK$, then $\bF = \bH + \bJ + \bK$
-						\item[2.] Compute $\bF' = \bX^\dag \cdot  \bF \cdot  \bX$
-						\item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$
-						\item[4.] Calculate $\bC= \bX \cdot  \bC'$
-						\item[5.] Form a \blue{new density matrix} $\bP = \bC \cdot \bC^\dag$
-						\item[6.] \alert{Am I converged?} If not go back to 1.
-					\end{enumerate}
-					\item Calculate stuff that you want, like $\EHF$ for example
-				\end{enumerate}
-			\end{block}
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\includegraphics[width=\textwidth]{fig/Szabo}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{How to perform a HF calculation in practice?}
+%	\begin{columns}
+%		\begin{column}{0.7\textwidth}
+%			\begin{block}{The SCF algorithm for Hartree-Fock (HF) calculations (p.~146)}
+%				\begin{enumerate}
+%					\item \orange{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \violet{basis set} $\{\phi_\mu\}$ 
+%					\item Calculate integrals $S_{\mu \nu}$, $H_{\mu \nu}$ and $\braket{\mu \nu}{\lambda \sigma}$
+%					\item Diagonalize $\bS$ and compute $\bX = \bS^{-1/2}$
+%					\item Obtain \alert{guess density matrix} for $\bP$
+%					\begin{enumerate}
+%						\item[1.] Calculate $\bJ$ and $\bK$, then $\bF = \bH + \bJ + \bK$
+%						\item[2.] Compute $\bF' = \bX^\dag \cdot  \bF \cdot  \bX$
+%						\item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$
+%						\item[4.] Calculate $\bC= \bX \cdot  \bC'$
+%						\item[5.] Form a \blue{new density matrix} $\bP = \bC \cdot \bC^\dag$
+%						\item[6.] \alert{Am I converged?} If not go back to 1.
+%					\end{enumerate}
+%					\item Calculate stuff that you want, like $\EHF$ for example
+%				\end{enumerate}
+%			\end{block}
+%		\end{column}
+%		\begin{column}{0.3\textwidth}
+%			\includegraphics[width=\textwidth]{fig/Szabo}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 %\begin{frame}{Szabo's and Ostlund's book}
 %	\begin{center}
@@ -514,9 +514,9 @@
 	\end{block}
 	\begin{block}{\green{One-electron Hamiltonian} (or core Hamiltonian)}
 		\begin{equation}
-			\cO_1 = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} = \sum_{i=1}^N h(\br_i)	
+			\cO_1 = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} = \sum_{i=1}^N h(\bx_i)	
 			\qq{where}	
-			h(\br_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
+			h(\bx_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
 		\end{equation}
 	\end{block}
 	\begin{block}{\red{Two-electron Hamiltonian} (electron-electron repulsion)}
@@ -524,23 +524,27 @@
 			\cO_2 = \alert{\cV_\text{ee}} = \sum_{i<j}^N \frac{1}{r_{ij}} 
 		\end{equation}
 	\end{block}
-	Therefore, we have
-	\begin{equation}
-		\boxed{\cH_\text{elec} = \sum_{i=1}^N h(\br_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
-	\end{equation}
 \end{frame}
 
 \begin{frame}{The Hartree-Fock energy (Take 2)}
-	\begin{itemize}
-		\item \alert{Nuclear repulsion:}
+	\begin{equation}
+		\boxed{\cH_\text{elec} = \sum_{i=1}^N h(\bx_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
+	\end{equation}	
+	\begin{block}{Nuclear repulsion}
 			\begin{equation} 
 				\mel{ \Psi_\text{HF} }{\purple{\cV_\text{nn}} }{ \Psi_\text{HF} } = \purple{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \purple{V_\text{nn}}
 			\end{equation}
-		\item \blue{Core Hamiltonian:}
+	\end{block}
+	\begin{block}{Core Hamiltonian:}
 			\begin{equation} 
-				\mel{ \Psi_\text{HF} }{ \cO_1 }{ \Psi_\text{HF} }  = \sum_{a=1}^N \mel{ \chi_i(\bx_1) }{ h(\br_1) }{ \chi_i(\bx_1) } = \sum_{i=1}^N h_{ii}
+				\mel{ \Psi_\text{HF} }{ \cO_1 }{ \Psi_\text{HF} }  = \sum_{i=1}^N \mel{ \chi_i(\bx_1) }{ h(\bx_1) }{ \chi_i(\bx_1) } = \sum_{i=1}^N h_{ii}
 			\end{equation}
-		\item \orange{Two-electron Hamiltonian:}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{The Hartree-Fock energy (Take 3)}
+	\begin{block}{Two-electron Hamiltonian:}
 			\begin{equation}
 			\begin{split} 
 				\mel{ \Psi_\text{HF} }{ \cO_2 }{ \Psi_\text{HF} }  	
@@ -549,48 +553,61 @@
 				& = \sum_{i<j}^N \qty( \underbrace{\cJ_{ij}}_{\text{\green{Coulomb}}} - \underbrace{\cK_{ij}}_{\text{\red{Exchange}}} ) = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N \qty( \cJ_{ij} - \cK_{ij} ) \qq{because} \alert{\boxed{\cJ_{ii} = \cK_{ii}}}
 			\end{split}
 			\end{equation}
-		\item \purple{HF energy:}
+	\end{block}
+	\begin{block}{HF energy:}
 			\begin{equation}
 				\boxed{\EHF = \sum_{i=1}^N h_{ii} +\sum_{i<j}^N (\cJ_{ij} - \cK_{ij}) + \purple{V_\text{nn}} }
 			\end{equation}
-	\end{itemize}
+	\end{block}
 \end{frame}
 
-\begin{frame}{The Hartree-Fock energy (Take 3)}
-	\begin{itemize}
-		\item \orange{Coulomb operator}
+\begin{frame}{Coulomb operator}
+	\begin{block}{Coulomb operator}
 			\begin{equation}
+			\begin{split}
 				 \cJ_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
-				 = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\green{j}}(\red{\bx_2})  }  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
-				 = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\green{j}}(\red{\bx_2})  }  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+				 \\
+				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+			\end{split}
 			\end{equation}
-		\item \orange{Coulomb matrix elements}
+	\end{block}
+		\begin{block}{Coulomb matrix elements}
 			\begin{equation}
 			\begin{split}
 				 \cJ_{\purple{i}\green{j}}
 				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\cJ_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
-				 = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2})} 
+				 \\
+				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2})} 
 				 \\
 				 & = \int \dd{\blue{\bx_1}} \int \dd{\red{\bx_2}} \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) 
 			\end{split}
 			\end{equation}
-		\item \violet{(non-local) Exchange operator}
+	\end{block}
+\end{frame}
+\begin{frame}{Exchange operator}
+		\begin{block}{(non-local) Exchange operator}
 			\begin{equation}
+			\begin{split}
 				\cK_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
-				 = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\purple{i}}(\red{\bx_2})  }  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
-				 = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
+				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\purple{i}}(\red{\bx_2})  }  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
+				 \\
+				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
+			\end{split}
 			\end{equation}
-		\item \violet{Exchange matrix elements}
+	\end{block}
+		\begin{block}{Exchange matrix elements}
 			\begin{equation}
 			\begin{split}
 				\cK_{\green{i}\purple{j}} 
 				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\cK_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
-				 = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})} 
+				 \\
+				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})} 
 				 \\
 				 & = \int \dd{\blue{\bx_1}} \int \dd{\red{\bx_2}} \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})
 			\end{split}
 			\end{equation}
-	\end{itemize}
+	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
@@ -1250,11 +1267,11 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 	\begin{equation*}
 		\begin{split}
 			F_{\mu \nu} 
-			& = \mel{\mu}{h + \sum_a^N (\cJ_a - \cK_a)}{\nu} = H_{\mu \nu} +  \sum_a^N \mel{\mu}{\cJ_a - \cK_a}{\nu}
+			& = \mel{\mu}{h + \sum_i^N (\cJ_i - \cK_i)}{\nu} = H_{\mu \nu} +  \sum_i^N \mel{\mu}{\cJ_i - \cK_i}{\nu}
 			\\
-			& = H_{\mu \nu} +  \sum_a^N (\mel{ \mu \chi_a }{ r_{12}^{-1}  }{ \nu \chi_a } - \mel{ \mu \chi_a }{  r_{12}^{-1} }{ \chi_a  \nu })
+			& = H_{\mu \nu} +  \sum_i^N (\mel{ \mu \chi_i }{ r_{12}^{-1}  }{ \nu \chi_i } - \mel{ \mu \chi_i }{  r_{12}^{-1} }{ \chi_i  \nu })
 			\\
-			& = H_{\mu \nu} +  \sum_a^N \sum_{\lambda \sigma} C_{\lambda a} C_{\sigma a} (\mel{ \mu \lambda }{ r_{12}^{-1}  }{ \nu \sigma } - \mel{ \mu \lambda }{  r_{12}^{-1} }{ \sigma  \nu })
+			& = H_{\mu \nu} +  \sum_i^N \sum_{\lambda \sigma} C_{\lambda i} C_{\sigma i} (\mel{ \mu \lambda }{ r_{12}^{-1}  }{ \nu \sigma } - \mel{ \mu \lambda }{  r_{12}^{-1} }{ \sigma  \nu })
 			\\
 			& = H_{\mu \nu} +  \sum_{\lambda \sigma} \alert{P_{\lambda \sigma}} (\braket{ \mu \lambda   }{ \nu \sigma } - \braket{ \mu \lambda  }{ \sigma  \nu })
 			= H_{\mu \nu} +  \sum_{\lambda \sigma} \alert{P_{\lambda \sigma}} \mel{ \mu \lambda   }{}{ \nu \sigma }
@@ -1298,9 +1315,9 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 			( \mu \nu | \lambda \sigma ) 
 			= \iint \phi_\mu^*(\alert{\br_1}) \phi_\nu(\alert{\br_1}) \frac{1}{r_{12}} \phi_\lambda^*(\blue{\br_2}) \phi_\sigma(\blue{\br_2}) d\red{\br_1} d\blue{\br_2} 
 		\end{equation}
-		\begin{equation}
-			( \mu \blue{\nu} \orange{||} \lambda \red{\sigma} ) = ( \mu \blue{\nu} | \lambda \red{\sigma} ) - ( \mu \red{\sigma} | \lambda \blue{\nu} )
-		\end{equation}
+%		\begin{equation}
+%			( \mu \blue{\nu} \orange{||} \lambda \red{\sigma} ) = ( \mu \blue{\nu} | \lambda \red{\sigma} ) - ( \mu \red{\sigma} | \lambda \blue{\nu} )
+%		\end{equation}
 	\end{block}
 	\begin{block}{Physicist/Dirac notation for two-electron integrals}
 		\begin{equation}
@@ -1352,10 +1369,10 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\begin{equation*}
 			\begin{split}
 				E_\text{HF} 
-				& = \sum_a^N h_a + \frac{1}{2} \sum_{ab}^N (\cJ_{ab} - \cK_{ab}) \quad \alert{\text{(cf few slides ago)}}
+				& = \sum_i^N h_{ii} + \frac{1}{2} \sum_{ij}^N (\cJ_{ij} - \cK_{ij}) \quad \alert{\text{(cf few slides ago)}}
 				\\
-				& = \sum_a^N  \mel{ \sum_\mu C_{\mu a} \phi_\mu }{ h }{  \sum_\nu C_{\nu a} \phi_\nu } 
-				+ \frac{1}{2} \sum_{ab}^N \mel{ \qty(\sum_\mu C_{\mu a} \phi_\mu) \qty(\sum_\lambda C_{\lambda b} \phi_\lambda)} {} { \qty(\sum_\nu C_{\nu a} \phi_\nu) \qty(\sum_\sigma C_{\sigma b} \phi_\sigma)}
+				& = \sum_i^N  \mel{ \sum_\mu C_{\mu i} \phi_\mu }{ h }{  \sum_\nu C_{\nu i} \phi_\nu } 
+				+ \frac{1}{2} \sum_{ij}^N \mel{ \qty(\sum_\mu C_{\mu i} \phi_\mu) \qty(\sum_\lambda C_{\lambda j} \phi_\lambda)} {} { \qty(\sum_\nu C_{\nu i} \phi_\nu) \qty(\sum_\sigma C_{\sigma j} \phi_\sigma)}
 				\\
 				& = \sum_{\mu \nu} P_{\mu \nu} \qty[ H_{\mu \nu} + \frac{1}{2} \sum_{\lambda \sigma} P_{\lambda \sigma} \mel{ \mu \lambda }{}{ \nu \sigma } ]
 			\end{split}
@@ -1428,7 +1445,7 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 	\begin{block}{Possible initial density matrix}
 		\begin{enumerate}
 			\bigskip
-			\item We can set \purple{$\bP = \mathbf{0}$ $\Rightarrow$ $\bF = \bH$} (\orange{core Hamiltonian approximation}):\\
+			\item We can set \purple{$\bP = \bO$ $\Rightarrow$ $\bF = \bH$} (\orange{core Hamiltonian approximation}):\\
 			$\Rightarrow$ Usually a poor guess but easy to implement
 			\bigskip
 			\item Use \alert{EHT or semi-empirical methods}:\\
@@ -1452,7 +1469,7 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 			$\Rightarrow$ The energy/density \textbf{should not} change at convergence
 			\bigskip
 			\item You can check the commutator \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF$}:\\
-			$\Rightarrow$ At convergence, we have \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF = \mathbf{0}$}
+			$\Rightarrow$ At convergence, we have \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF = \bO$}
 			\bigskip
 			\item The \violet{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
 			$\Rightarrow$ \blue{Extrapolation of the Fock matrix} using previous iterations
@@ -1481,7 +1498,7 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\begin{equation}
 			\mu_x = \red{- \sum_{\mu \nu} P_{\mu\nu} (\nu|x|\mu)} + \blue{\sum_A^M Z_A X_A}
 			\qq{with}
-			\underbrace{(\nu|x|\mu)}_{\text{one-electron integrals}} = \int \phi_\nu^*(\br) \,x\, \phi_\mu(\br) d\br
+			\underbrace{(\nu|x|\mu)}_{\text{one-electron integrals}} = \int \dd{\br} \phi_\nu^*(\br) \,x\, \phi_\mu(\br) 
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -1542,9 +1559,10 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 					\beta(\omega) \, \red{\psi_i^\beta(\br)}
 				\end{cases}
 			\end{equation*}		\
-			\item RHF = \orange{Restricted} Hartree-Fock $\leftrightarrow$ \blue{Roothaan-Hall equations}
-			\item UHF = \red{Unrestricted} Hartree-Fock $\leftrightarrow$ \violet{Pople-Nesbet equations}
+			\item RHF = \green{Restricted} Hartree-Fock $\leftrightarrow$ \green{Roothaan-Hall equations}
+			\item UHF = \orange{Unrestricted} Hartree-Fock $\leftrightarrow$ \orange{Pople-Nesbet equations}
 			\item \blue{Restricted Open-shell Hartree-Fock (ROHF)} do exist but we won't talk about it
+			\item GHF = \red{Generalized} Hartree-Fock 
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -1606,24 +1624,24 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\violet{To minimize the UHF energy}, the unrestricted spin orbitals must be eigenvalues of the \blue{$\alpha$ and $\beta$ Fock operators}:
 		\begin{align}
 			& \boxed{
-			\orange{f^\alpha(1) \, \psi_i^\alpha(1) = \epsilon_i^\alpha \, \psi_j^\alpha(1)}
+			\orange{f^\alpha(\br_1) \, \psi_i^\alpha(\br_1) = \epsilon_i^\alpha \, \psi_j^\alpha(\br_1)}
 			}
 			& 
 			& \boxed{
-			\alert{f^\beta(1) \, \psi_i^\beta(1) = \epsilon_i^\beta \, \psi_j^\beta(1)}
+			\alert{f^\beta(\br_1) \, \psi_i^\beta(\br_1) = \epsilon_i^\beta \, \psi_j^\beta(\br_1)}
 			}
 		\end{align}
 		where
 		\begin{align}
-			\orange{f^\alpha(1)} & = h(1) + \sum_{a}^{N^\alpha} [ \orange{J_a^\alpha(1) - K_a^\alpha(1)} ]  + \sum_{a}^{N^\beta} \alert{J_a^\beta(1)}
+			\orange{f^\alpha(\br_1)} & = h(\br_1) + \sum_{i}^{N^\alpha} [ \orange{J_i^\alpha(\br_1) - K_i^\alpha(\br_1)} ]  + \sum_{i}^{N^\beta} \alert{J_i^\beta(\br_1)}
 			\\
-			\alert{f^\beta(1)} & = h(1) + \sum_{a}^{N^\beta} [ \alert{J_a^\beta(1) - K_a^\beta(1)} ]  + \sum_{a}^{N^\alpha} \orange{J_a^\alpha(1)}
+			\alert{f^\beta(\br_1)} & = h(\br_1) + \sum_{i}^{N^\beta} [ \alert{J_i^\beta(\br_1) - K_i^\beta(\br_1)} ]  + \sum_{i}^{N^\alpha} \orange{J_i^\alpha(\br_1)}
 		\end{align}	
 		The \blue{Coulomb} and \violet{Exchange} operators are
 		\begin{align}
-			\blue{J_i^\sigma(1)} & = \int \psi_i^\sigma(2) r_{12}^{-1} \psi_i^\sigma(2) d\br_2
+			\blue{J_i^\sigma(\br_1)} & = \int \dd{\br_2} \psi_i^\sigma(\br_2) r_{12}^{-1} \psi_i^\sigma(\br_2) 
 			& 
-			\violet{K_i^\sigma(1)} \psi_j^\sigma(1) & =  \qty[ \int \psi_i^\sigma(2) r_{12}^{-1} \psi_j^\sigma(2) d\br_2 ] \psi_i^\sigma(1)
+			\violet{K_i^\sigma(\br_1)} \psi_j^\sigma(\br_1) & =  \qty[ \int \dd{\br_2} \psi_i^\sigma(\br_2) r_{12}^{-1} \psi_j^\sigma(\br_2) ] \psi_i^\sigma(\br_1)
 		\end{align}		
 	\end{block}
 \end{frame}
@@ -1639,20 +1657,20 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\begin{equation}
 			\small \boxed{
 			E_\text{UHF} = 
-			\orange{\sum_{a}^{N^\alpha} h_i^\alpha 
-			+ \frac{1}{2} \sum_{ab}^{N^\alpha} (J_{ab}^{\alpha\alpha} - K_{ab}^{\alpha\alpha})}
-			+ \red{\sum_{a}^{N^\beta} h_a^\beta 
-			+ \frac{1}{2} \sum_{ab}^{N^\beta} (J_{ab}^{\beta\beta} - K_{ab}^{\beta\beta})}
-			+ \violet{\sum_{a}^{N^\alpha} \sum_{b}^{N^\beta} J_{ab}^{\alpha\beta}} 
+			\orange{\sum_{i}^{N^\alpha} h_{ii}^\alpha 
+			+ \frac{1}{2} \sum_{ij}^{N^\alpha} (J_{ij}^{\alpha\alpha} - K_{ij}^{\alpha\alpha})}
+			+ \red{\sum_{i}^{N^\beta} h_{ii}^\beta 
+			+ \frac{1}{2} \sum_{ij}^{N^\beta} (J_{ij}^{\beta\beta} - K_{ij}^{\beta\beta})}
+			+ \violet{\sum_{i}^{N^\alpha} \sum_{j}^{N^\beta} J_{ij}^{\alpha\beta}} 
 			}
 		\end{equation}	
 		The matrix elements are given by			
 		\begin{align}
 			h_i^\sigma & = \mel{ \psi_i^\sigma }{ h }{ \psi_i^\sigma } 
 			& 
-			J_{ij}^{\sigma\sigma'} & = \braket{ \psi_i^\sigma \psi_j^{\sigma'} }{  \psi_i^\sigma \psi_j^{\sigma'} } 
+			J_{ij}^{\sigma\sigma'} & = \braket*{ \psi_i^\sigma \psi_j^{\sigma'} }{  \psi_i^\sigma \psi_j^{\sigma'} } 
 			&
-			K_{ij}^{\sigma\sigma} & = \braket{ \psi_i^\sigma \psi_j^\sigma }{  \psi_j^\sigma \psi_j^\sigma } 
+			K_{ij}^{\sigma\sigma} & = \braket*{ \psi_i^\sigma \psi_j^\sigma }{  \psi_j^\sigma \psi_j^\sigma } 
 		\end{align}	
 		Note that \blue{$K_{ij}^{\alpha\beta} = 0$} $\Leftrightarrow$ \alert{there is no exchange between opposite-spin electrons}
 	\end{block}
@@ -1719,12 +1737,12 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 	\begin{block}{Spin-up and spin-down density matrices}
 		\begin{align}
 			&\boxed{
-				\orange{P_{\mu \nu}^\alpha} = \sum_{a=1}^{N^\alpha} C_{\mu a}^\alpha C_{\nu a}^\alpha
+				\orange{P_{\mu \nu}^\alpha} = \sum_{i=1}^{N^\alpha} C_{\mu i}^\alpha C_{\nu i}^\alpha
 				\quad \Leftrightarrow \quad \orange{\bP^\alpha}
 			}
 			&
 			&\boxed{
-				\alert{P_{\mu \nu}^\beta} = \sum_{ a=1}^{N^\beta} C_{\mu a}^\beta C_{\nu a}^\beta
+				\alert{P_{\mu \nu}^\beta} = \sum_{i=1}^{N^\beta} C_{\mu i}^\beta C_{\nu i}^\beta
 				\quad \Leftrightarrow \quad \alert{\bP^\beta}
 			}
 		\end{align}
