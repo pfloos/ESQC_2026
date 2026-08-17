@@ -414,13 +414,13 @@
 		\chi_p(\bx) = \sigma(\omega) \psi_p(\br)  
 		=
 		\begin{cases}
-			\alpha(\omega) \, \psi_i(\br)
+			\alpha(\omega) \, \psi_p(\br)
 			\\
-			\beta(\omega) \, \psi_i(\br)
+			\beta(\omega) \, \psi_p(\br)
 		\end{cases}
 		\qquad
 		\boxed{
-		\psi_i(\br) = \sum_\mu^K c_{\mu p} \phi_{\mu}(\br)
+		\psi_p(\br) = \sum_\mu^K C_{\mu p} \phi_{\mu}(\br)
 		}
 	\end{equation*}
 	These are \alert{restricted spin orbitals} $\Rightarrow$ \violet{Restricted Hartree-Fock = \textbf{RHF}}
@@ -454,8 +454,8 @@
 			\item $\{ \chi_p | p=1,\ldots,2K \}$ are the \orange{spin orbitals}
 			\item $\{ \psi_p | p=1,\ldots,K \}$ are the \violet{spatial orbitals} or \violet{molecular orbitals (MOs)}
 			\bigskip
-			\item With $K$ AOs, one can create $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals}
-			\item For the ground state, the first $N$ \orange{spin orbitals} are \underline{occupied} and the last $2K-N$ are \underline{vacant (unoccupied)}
+			\item With $K$ AOs, one can create $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals} \red{($p,q,r,s,\ldots$)}
+			\item For the ground state, the first $N$ \orange{spin orbitals} are \underline{occupied} \red{($i,j,k,l,\ldots$)} and the last $2K-N$ are \underline{vacant or unoccupied} \red{($a,b,c,d,\ldots$)}
 			\item When a system has \blue{$2$ electrons in each orbital}, it is called a \blue{closed-shell} system, otherwise it is called a \blue{open-shell} system 
 			\item For the ground state of a closed shell, the first $N/2$ \violet{spatial orbitals} are \underline{doubly-occupied} and the last $K-N/2$ are \underline{vacant (unoccupied)}
 			\bigskip
@@ -505,25 +505,25 @@
 \subsection{HF energy}
 %-----------------------------------------------------
 \begin{frame}{The Hartree-Fock energy}
-	The HF energy is
-	\begin{equation}
-		\boxed{\EHF = \mel{\Psi_\text{HF}}{\cH_\text{elec} + \violet{\cV_\text{nn}}}{\Psi_\text{HF}}}
-		\qq{where}
-		\cH_\text{elec} = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} +  \alert{\cV_\text{ee}} 
-	\end{equation}
-	We define a few quantities:
-	\begin{itemize}
-		\item the \green{one-electron Hamiltonian} (or core Hamiltonian) \green{= nice guy!}
+	\begin{block}{HF energy}
+		\begin{equation}
+			\boxed{\EHF = \mel{\Psi_\text{HF}}{\cH_\text{elec} + \violet{\cV_\text{nn}}}{\Psi_\text{HF}}}
+			\qq{where}
+			\cH_\text{elec} = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} +  \alert{\cV_\text{ee}} 
+		\end{equation}
+	\end{block}
+	\begin{block}{\green{One-electron Hamiltonian} (or core Hamiltonian)}
 		\begin{equation}
 			\cO_1 = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} = \sum_{i=1}^N h(\br_i)	
 			\qq{where}	
 			h(\br_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
 		\end{equation}
-		\item the \red{two-electron Hamiltonian} (electron-electron repulsion) \red{= nasty guy!}
+	\end{block}
+	\begin{block}{\red{Two-electron Hamiltonian} (electron-electron repulsion)}
 		\begin{equation}
 			\cO_2 = \alert{\cV_\text{ee}} = \sum_{i<j}^N \frac{1}{r_{ij}} 
 		\end{equation}
-	\end{itemize}
+	\end{block}
 	Therefore, we have
 	\begin{equation}
 		\boxed{\cH_\text{elec} = \sum_{i=1}^N h(\br_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
@@ -1037,9 +1037,9 @@
 	\end{equation*}	
 These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors):
 	\begin{equation*}
-	\boxed{f(\bx_1)\,\psi_i(\bx_1) = \varepsilon_i \, \psi_i(\bx_1)}
+	\boxed{f(\bx_1)\,\psi_i(\bx_1) = \epsilon_i \, \psi_i(\bx_1)}
 	\end{equation*}	
-	and $\varepsilon_i$ are called the \violet{MO energies} (= eigenvalues)
+	and $\epsilon_i$ are called the \violet{orbital energies} (= eigenvalues)
 \end{frame}
 
 \begin{frame}{Fock matrix elements in the MO basis}
@@ -1051,13 +1051,13 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\begin{equation*}
 		\begin{split}
 			\mel{\chi_i}{f}{\chi_j} 
-			& = \mel{\chi_i}{h + \sum_a \qty( \cJ_a - \cK_a)}{\chi_j}
+			& = \mel{\chi_i}{h + \sum_k \qty( \cJ_k - \cK_k)}{\chi_j}
 			\\
-			& = \mel{\chi_i}{h}{\chi_j} + \sum_a \qty( \mel{\chi_i}{\cJ_a}{\chi_j} - \mel{\chi_i}{\cK_a}{\chi_j} )
+			& = \mel{\chi_i}{h}{\chi_j} + \sum_k \qty( \mel{\chi_i}{\cJ_k}{\chi_j} - \mel{\chi_i}{\cK_k}{\chi_j} )
 			\\
-			& = \mel{i}{h}{j} + \sum_a \qty[ \braket{ia}{ja} - \braket{ia}{aj} ]
+			& = \mel{i}{h}{j} + \sum_k \qty[ \braket{ik}{jk} - \braket{ik}{kj} ]
 			\\
-			& = \mel{i}{h}{j} + \sum_a \mel{ia}{}{ja}
+			& = \mel{i}{h}{j} + \sum_k \mel{ik}{}{jk}
 		\end{split}
 		\end{equation*}
 	\end{block}
@@ -1065,17 +1065,17 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 
 \begin{frame}{MO energies in the MO basis}
 	\begin{block}{Problem:}
-		\violet{`` Deduce the expression of $\varepsilon_i$''}
+		\violet{`` Deduce the expression of $\epsilon_i$''}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
 		\begin{align*}
-			f \ket{\chi_i} = \varepsilon_i \ket{\chi_i}
-			& \Rightarrow \quad \mel{\chi_i}{f}{\chi_i} = \varepsilon_i \braket{\chi_i}{\chi_i} = \varepsilon_i
+			f \ket{\chi_i} = \epsilon_i \ket{\chi_i}
+			& \Rightarrow \quad \mel{\chi_i}{f}{\chi_i} = \epsilon_i \braket{\chi_i}{\chi_i} = \epsilon_i
 			\\
-			& \Rightarrow \quad \varepsilon_i = \mel{i}{h}{i} + \sum_a \qty[ \braket{ia}{ia} - \braket{ia}{ai} ]
+			& \Rightarrow \quad \epsilon_i = \mel{i}{h}{i} + \sum_k \qty[ \braket{ik}{ik} - \braket{ik}{ki} ]
 			\\
-			& \Rightarrow \quad \varepsilon_i = \mel{i}{h}{i} + \sum_a \mel{ia}{}{ia}
+			& \Rightarrow \quad \epsilon_i = \mel{i}{h}{i} + \sum_k \mel{ik}{}{ik}
 		\end{align*}
 	\end{block}
 \end{frame}
@@ -1117,24 +1117,24 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 \begin{frame}{Koopmans' theorem}
 	\begin{block}{Ground-state energy of the $N$-electron system}
 		\begin{equation}
-			{}^{N} E_0  = \sum_{a} h_a + \frac{1}{2} \sum_{ab} \mel{ab}{}{ab}
+			{}^{N} E_0  = \sum_{i} h_{ii} + \frac{1}{2} \sum_{ij} \mel{ij}{}{ij}
 		\end{equation}
 	\end{block}
 	\begin{block}{Energy of the $(N-1)$-electron system (cation)}
 		\begin{equation}
-			{}^{N-1}E_c  = \sum_{a \neq c} h_a + \frac{1}{2} \sum_{a \neq c} \sum_{b \neq c} \mel{ab}{}{ab}
+			{}^{N-1}E_k  = \sum_{i \neq k} h_{ii} + \frac{1}{2} \sum_{i \neq k} \sum_{j \neq k} \mel{ij}{}{ij}
 		\end{equation}
 	\end{block}
 	\begin{block}{Ionization potential (IP)}
 		\begin{equation}
 		\begin{split}
 			\text{IP} 
-			& = {}^{N-1}E_c - {}^{N} E_0
+			& = {}^{N-1}E_k - {}^{N} E_0
 			\\
-			& = - \mel{c}{h}{c} - \frac{1}{2} \sum_{a} \mel{ac}{}{ac} - \frac{1}{2} \sum_{b} \mel{cb}{}{cb}
+			& = - \mel{k}{h}{k} - \frac{1}{2} \sum_{i} \mel{ik}{}{ik} - \frac{1}{2} \sum_{j} \mel{kj}{}{kj}
 			\\
-			& = - \mel{c}{h}{c} - \sum_{a} \mel{ac}{}{ac} 
-			= - \varepsilon_c 
+			& = - \mel{k}{h}{k} - \sum_{i} \mel{ik}{}{ik} 
+			= - \epsilon_k 
 		\end{split}
 		\end{equation}
 	\end{block}
@@ -1149,11 +1149,11 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\begin{equation}
 		\begin{split}
 			\text{EA} 
-			& = {}^{N}E_0 - {}^{N+1} E^r
+			& = {}^{N}E_0 - {}^{N+1} E^c
 			\\
-			& = - \mel{r}{h}{r} - \sum_{a} \mel{ra}{}{ra} 
+			& = - \mel{c}{h}{c} - \sum_{i} \mel{ci}{}{ci} 
 			\\
-			& = - \varepsilon_r 
+			& = - \epsilon_c 
 		\end{split}
 		\end{equation}
 
@@ -1177,16 +1177,16 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 	\begin{block}{Roothaan-Hall equations}
 			\begin{equation*}
 			\begin{split}
-				f \ket{i} = \varepsilon_i \ket{i}
+				f \ket{i} = \epsilon_i \ket{i}
 				&  \quad	\Rightarrow	\quad
-				f \sum_{\nu} C_{\nu i} \ket{\nu} = \varepsilon_i \sum_{\nu} C_{\nu i} \ket{\nu}
+				f \sum_{\nu} C_{\nu i} \ket{\nu} = \epsilon_i \sum_{\nu} C_{\nu i} \ket{\nu}
 				\\
-				& \quad	\Rightarrow	\quad	\mel{ \mu }{ f \sum_{\nu} C_{\nu i} }{ \nu } = \varepsilon_i \mel{ \mu }{ \sum_{\nu} C_{\nu i} }{ \nu }
+				& \quad	\Rightarrow	\quad	\mel{ \mu }{ f \sum_{\nu} C_{\nu i} }{ \nu } = \epsilon_i \mel{ \mu }{ \sum_{\nu} C_{\nu i} }{ \nu }
 				\\
-				& \quad	\Rightarrow	\quad \sum_{\nu} C_{\nu i} \mel{ \mu }{ f }{ \nu } = \sum_{\nu} C_{\nu i}  \varepsilon_i \braket{ \mu }{ \nu }
+				& \quad	\Rightarrow	\quad \sum_{\nu} C_{\nu i} \mel{ \mu }{ f }{ \nu } = \sum_{\nu} C_{\nu i}  \epsilon_i \braket{ \mu }{ \nu }
 				\\
 				& \quad	\Rightarrow	\quad
-				 \boxed{\alert{\sum_{\nu} F_{\mu \nu}  C_{\nu i} = \sum_{\nu}  S_{\mu \nu} C_{\nu i} \varepsilon_i }}
+				 \boxed{\alert{\sum_{\nu} F_{\mu \nu}  C_{\nu i} = \sum_{\nu}  S_{\mu \nu} C_{\nu i} \epsilon_i }}
 			\end{split}
 			\end{equation*}
 	\end{block}
@@ -1222,10 +1222,10 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 			&
 			\bE & = 
 			\begin{pmatrix}
-				\varepsilon_{1}	&	0			&	\cdots	&	0		\\
-				0			&	\varepsilon_{2}	&	\cdots	&	0			\\
+				\epsilon_{1}	&	0			&	\cdots	&	0		\\
+				0			&	\epsilon_{2}	&	\cdots	&	0			\\
 				\vdots		&	\vdots		&	\ddots	&	\vdots		\\
-				0			&	0			&	\cdots	&	\varepsilon_{K}	\\				
+				0			&	0			&	\cdots	&	\epsilon_{K}	\\				
 			\end{pmatrix}		
 		\end{align}
 	\end{block}
@@ -1606,11 +1606,11 @@ These orbitals are called \orange{canonical molecular orbitals}  (= eigenvectors
 		\violet{To minimize the UHF energy}, the unrestricted spin orbitals must be eigenvalues of the \blue{$\alpha$ and $\beta$ Fock operators}:
 		\begin{align}
 			& \boxed{
-			\orange{f^\alpha(1) \, \psi_i^\alpha(1) = \varepsilon_i^\alpha \, \psi_j^\alpha(1)}
+			\orange{f^\alpha(1) \, \psi_i^\alpha(1) = \epsilon_i^\alpha \, \psi_j^\alpha(1)}
 			}
 			& 
 			& \boxed{
-			\alert{f^\beta(1) \, \psi_i^\beta(1) = \varepsilon_i^\beta \, \psi_j^\beta(1)}
+			\alert{f^\beta(1) \, \psi_i^\beta(1) = \epsilon_i^\beta \, \psi_j^\beta(1)}
 			}
 		\end{align}
 		where
