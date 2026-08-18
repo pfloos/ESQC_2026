@@ -35,28 +35,28 @@
 \setbeamercolor{itemize subitem}{fg=hfTeal}
 \setbeamerfont{title}{size=\Huge,series=\bfseries}
 \setbeamerfont{frametitle}{size=\large,series=\bfseries}
-\setbeamerfont{block title}{series=\bfseries}
+%\setbeamerfont{block title}{series=\bfseries}
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \setbeamertemplate{itemize item}{\color{hfTeal}\raisebox{0.15ex}{\rule{0.55ex}{0.55ex}}}
 \setbeamertemplate{itemize subitem}{\color{hfTeal}\raisebox{0.12ex}{\rule{0.45ex}{0.45ex}}}
 \setbeamersize{text margin left=0.55cm,text margin right=0.55cm}
-\setbeamertemplate{frametitle}{%
-  \nointerlineskip
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.78cm,dp=0.22cm,leftskip=0.55cm,rightskip=0.55cm]{frametitle}
-    \usebeamerfont{frametitle}\insertframetitle
-  \end{beamercolorbox}%
-}
-\setbeamertemplate{footline}{%
-  \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=.55cm]{author in head/foot}%
-      \color{hfNavy}\insertshorttitle\hspace{0.7em}\textcolor{hfTeal}{/}\hspace{0.7em}\insertsectionhead
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=.55cm plus1fil]{page number in head/foot}%
-      \color{hfNavy}\hfill\insertframenumber
-    \end{beamercolorbox}%
-  }%
-}
+%\setbeamertemplate{frametitle}{%
+%  \nointerlineskip
+%  \begin{beamercolorbox}[wd=\paperwidth,ht=0.78cm,dp=0.22cm,leftskip=0.55cm,rightskip=0.55cm]{frametitle}
+%    \usebeamerfont{frametitle}\insertframetitle
+%  \end{beamercolorbox}%
+%}
+%\setbeamertemplate{footline}{%
+%  \leavevmode%
+%  \hbox{%
+%    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=.55cm]{author in head/foot}%
+%      \color{hfNavy}\insertshorttitle\hspace{0.7em}\textcolor{hfTeal}{/}\hspace{0.7em}\insertsectionhead
+%    \end{beamercolorbox}%
+%    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=.55cm plus1fil]{page number in head/foot}%
+%      \color{hfNavy}\hfill\insertframenumber
+%    \end{beamercolorbox}%
+%  }%
+%}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -103,19 +103,26 @@
 % hat symbols
 \newcommand{\hH}{\hat{H}}
 \newcommand{\hh}{\hat{h}}
+\newcommand{\hf}{\hat{f}}
 \newcommand{\hT}{\hat{T}}
 \newcommand{\hV}{\hat{V}}
 \newcommand{\hO}{\hat{O}}
+\newcommand{\hJ}{\hat{J}}
+\newcommand{\hK}{\hat{K}}
 
 % curly symbols
-\newcommand{\cO}{\mathcal{O}}
+\newcommand{\chA}{\Hat{\mathcal{A}}}
+\newcommand{\chO}{\Hat{\mathcal{O}}}
+\newcommand{\chJ}{\Hat{\mathcal{J}}}
+\newcommand{\chK}{\Hat{\mathcal{K}}}
+\newcommand{\chH}{\Hat{\mathcal{H}}}
+\newcommand{\chT}{\Hat{\mathcal{T}}}
+\newcommand{\chV}{\Hat{\mathcal{V}}}
+\newcommand{\chP}{\Hat{\mathcal{P}}}
+
+\newcommand{\cE}{\mathcal{E}}
 \newcommand{\cJ}{\mathcal{J}}
 \newcommand{\cK}{\mathcal{K}}
-\newcommand{\cH}{\mathcal{H}}
-\newcommand{\cT}{\mathcal{T}}
-\newcommand{\cV}{\mathcal{V}}
-\newcommand{\cE}{\mathcal{E}}
-\newcommand{\cP}{\mathcal{P}}
 
 % colors and others
 \newcommand{\mc}{\multicolumn}
@@ -209,7 +216,7 @@
 	\begin{itemize}
 		\item We consider the \alert{time-independent} Schr\"odinger equation
 		\bigskip
-		\item Hartree--Fock (HF) is an \alert{ab initio method}: it contains no empirical parameters, apart from the choice of basis set
+		\item Hartree-Fock (HF) is an \alert{ab initio method}: it contains no empirical parameters, apart from the choice of basis set
 		\bigskip
 		\item We neglect \alert{relativistic effects}
 		\bigskip
@@ -225,25 +232,25 @@
 \begin{frame}{The Hamiltonian}
 	In the \alert{Schr\"odinger equation}
 	\begin{equation}
-		\cH \Phi(\{\br_i\},\{\bR_A\}) = \cE \Phi(\{\br_i\},\{\bR_A\})
+		\chH \Phi(\{\br_i\},\{\bR_A\}) = \cE \Phi(\{\br_i\},\{\bR_A\})
 	\end{equation}
 	the \alert{total Hamiltonian} is 
 	\begin{equation}
 		\boxed{
-		\cH = \green{\cT_\text{n}} +  \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} +  \alert{\cV_\text{ee}} +  \violet{\cV_\text{nn}}
+		\chH = \green{\chT_\text{n}} +  \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}} +  \violet{\chV_\text{nn}}
 		}
 	\end{equation}
 	\begin{block}{What are all these terms?}
 		\begin{itemize}
-			\item \green{$\cT_\text{n}$} is the \green{kinetic energy of the nuclei}
+			\item \green{$\chT_\text{n}$} is the \green{kinetic energy of the nuclei}
 			\bigskip
-			\item \blue{$\cT_\text{e}$} is the \blue{kinetic energy of the electrons}
+			\item \blue{$\chT_\text{e}$} is the \blue{kinetic energy of the electrons}
 			\bigskip
-			\item \orange{$\cV_\text{ne}$} is the \orange{Coulomb attraction between nuclei and electrons}
+			\item \orange{$\chV_\text{ne}$} is the \orange{Coulomb attraction between nuclei and electrons}
 			\bigskip
-			\item \alert{$\cV_\text{ee}$} is the \alert{Coulomb repulsion between electrons}
+			\item \alert{$\chV_\text{ee}$} is the \alert{Coulomb repulsion between electrons}
 			\bigskip
-			\item \violet{$\cV_\text{nn}$} is the \violet{Coulomb repulsion between nuclei}
+			\item \violet{$\chV_\text{nn}$} is the \violet{Coulomb repulsion between nuclei}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -254,15 +261,15 @@
 			\begin{block}{In atomic units ($m = e = \hbar = 1$)}
 				\begin{subequations}
 				\begin{align}
-					& \green{\cT_\text{n}} = - \sum_{A=1}^{M} \frac{\nabla_A^2}{2 M_A} 
+					& \green{\chT_\text{n}} = - \sum_{A=1}^{M} \frac{\nabla_A^2}{2 M_A} 
 					 \\	
-					&  \blue{\cT_\text{e}} =  - \sum_{i=1}^{N} \frac{\nabla_i^2}{2} 
+					&  \blue{\chT_\text{e}} =  - \sum_{i=1}^{N} \frac{\nabla_i^2}{2} 
 					\\
-					&  \orange{\cV_\text{ne}} = - \sum_{A=1}^{M} \sum_{i=1}^N \frac{Z_A}{r_{iA}} 
+					&  \orange{\chV_\text{ne}} = - \sum_{A=1}^{M} \sum_{i=1}^N \frac{Z_A}{r_{iA}} 
 					 \\
-					& \alert{\cV_\text{ee}} =  \sum_{i<j}^N \frac{1}{r_{ij}} 
+					& \alert{\chV_\text{ee}} =  \sum_{i<j}^N \frac{1}{r_{ij}} 
 					 \\
-					&  \violet{\cV_\text{nn}} = \sum_{A<B}^{M} \frac{Z_A Z_B}{R_{AB}} 
+					&  \violet{\chV_\text{nn}} = \sum_{A<B}^{M} \frac{Z_A Z_B}{R_{AB}} 
 				\end{align}
 				\end{subequations}
 			\end{block}
@@ -303,18 +310,18 @@
 	\begin{block}{Nuclear Hamiltonian}
 		The \alert{nuclear Hamiltonian} is
 		\begin{equation}
-			\cH_\text{nucl} \Phi_\text{nucl} = \cE_\text{nucl} \Phi_\text{nucl}
+			\chH_\text{nucl} \Phi_\text{nucl} = \cE_\text{nucl} \Phi_\text{nucl}
 			\qq{with}
-			\boxed{\cH_\text{nucl} = \green{\cT_\text{n}} + \violet{\cV_\text{nn}}}
+			\boxed{\chH_\text{nucl} = \green{\chT_\text{n}} + \violet{\chV_\text{nn}}}
 		\end{equation}
 		It describes the vibration, rotation and translation of the molecules
 	\end{block}
 	\begin{block}{Electronic Hamiltonian}
 		The \alert{electronic Hamiltonian} is
 		\begin{equation}
-			\cH_\text{elec} \Phi_\text{elec} = \cE_\text{elec} \Phi_\text{elec}
+			\chH_\text{elec} \Phi_\text{elec} = \cE_\text{elec} \Phi_\text{elec}
 			\qq{with}
-			\boxed{\cH_\text{elec} = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} +  \alert{\cV_\text{ee}}}
+			\boxed{\chH_\text{elec} = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}}}
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -352,7 +359,7 @@
 	We are interested in \alert{electrons}, which are \alert{fermions} $\Rightarrow$ \alert{Pauli exclusion principle} (see next slide)
 	\begin{block}{Spin functions: $\ket{\omega} = \ket{s,m_s}	\quad	s^2 \ket{s,m_s} = s(s+1) \ket{s,m_s}	\quad	s_z \ket{s,m_s} = m_s \ket{s,m_s}$}
 		\centering
-		$ \ket{\red{\alpha}} = \ket{\frac{1}{2},\frac{1}{2}}$ = \red{spin-up} electron 
+		$ \ket{\red{\alpha}} = \ket{\frac{1}{2},+\frac{1}{2}}$ = \red{spin-up} electron 
 		$\qquad$ 
 		$\ket{\blue{\beta}}= \ket{\frac{1}{2},-\frac{1}{2}}$ = \blue{spin-down} electron\\
 		\begin{align}
@@ -367,9 +374,9 @@
 	\end{block}
 	\bigskip
 	The \violet{composite variable $\bx$} combines \orange{spin ($\omega$)} and \red{spatial ($\br$)} coordinates: $\boxed{\violet{\bx} = (\orange{\omega},\red{\br})}$
-	\begin{block}{Antisymmetry principle}
+	\begin{block}{Pauli exclusion principle}
 		\begin{equation}
-			\cH_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N) = \cE_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N)
+			\chH_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N) = \cE_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N)
 		\end{equation}
 		\begin{equation}
 			\Phi(\bx_1,\ldots,\bx_i,\ldots,\bx_j,\ldots,\bx_N) = - \Phi(\bx_1,\ldots,\bx_j,\ldots,\bx_i,\ldots,\bx_N)
@@ -430,7 +437,7 @@
 \end{frame}
 
 %-----------------------------------------------------
-\subsection{HF wave function}
+\subsection{Hartree-Fock wave function}
 %-----------------------------------------------------
 \begin{frame}{The HF wave function}
 	\begin{block}{A Slater determinant}
@@ -446,12 +453,12 @@
 				\end{vmatrix}
 				\equiv \ket{ \chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N) }
 				\\
-				& = \blue{\mathcal{A}}\,\chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N)
-				= \blue{\mathcal{A}}\,\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
+				& = \blue{\chA}\qty[\chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N)]
+				= \blue{\chA}\,\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
 			\end{split}	
 		\end{equation}
 		\begin{itemize}
-			\item $\blue{\mathcal{A}}$ is called the \blue{antisymmetrizer}
+			\item $\blue{\chA}$ is called the \blue{antisymmetrizer}
 			\item $\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}$ is a \green{Hartree product}
 			\item \alert{The many-electron wave function $\Psi_\text{HF}(\bx_1,\bx_2,\ldots,\bx_N) $ is an antisymmetrized product of one-electron functions}
 		\end{itemize}
@@ -469,10 +476,8 @@
 			\\
 			\beta(\omega)
 		\end{cases}
-		\qquad
-		\boxed{
-		\blue{\psi_p(\br)} = \sum_\mu^K C_{\mu p} \green{\phi_{\mu}(\br)}
-		}
+		\qand
+		\blue{\psi_p(\br)} = \underbrace{\sum_\mu^K C_{\mu p} \green{\phi_{\mu}(\br)}}_{\text{\green{LCAO}}}
 	\end{equation*}
 %	These are \alert{restricted spin orbitals} $\Rightarrow$ \violet{Restricted Hartree-Fock = \textbf{RHF}}
 	\begin{block}{The spin orbitals are orthogonal}
@@ -491,7 +496,7 @@
 %			\text{ \green{ = Kronecker delta}}
 		\end{equation*}
 	\end{block}
-	\begin{block}{The basis functions (or atomic orbitals) \alert{\textbf{are, a priori, not}} orthogonal}
+	\begin{block}{The basis functions \alert{are, a priori, not} orthogonal}
 		\begin{equation*}
 			\braket{ \phi_\mu }{ \phi_\nu } = \int \dd{\br} \phi_\mu^*(\br) \phi_\nu(\br) = S_{\mu \nu} 
 			\text{ \green{ = Overlap matrix}}	
@@ -499,27 +504,38 @@
 	\end{block}
 \end{frame}
 \begin{frame}{Orbital spaces and index conventions}
-	\begin{block}{Comments}
+	\begin{block}{Orbitals}
 		\begin{itemize}
-			\item $\{ \phi_{\mu} | \mu=1,\ldots,K \}$ are basis functions or \alert{atomic orbitals (AOs)}
-			\item $\{ \chi_p | p=1,\ldots,2K \}$ are the \orange{spin orbitals}
-			\item $\{ \psi_p | p=1,\ldots,K \}$ are the \violet{spatial orbitals} or \violet{molecular orbitals (MOs)}
-			\bigskip
-			\item With $K$ AOs, one can create $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals} \red{($p,q,r,s,\ldots$)}
-			\item For the ground state, the first $N$ \orange{spin orbitals} are \underline{occupied} \red{($i,j,k,l,\ldots$)} and the last $2K-N$ are \underline{vacant or unoccupied} \red{($a,b,c,d,\ldots$)}
-			\item When a system has \blue{$2$ electrons in each orbital}, it is called a \blue{closed-shell} system, otherwise it is called a \blue{open-shell} system 
-			\item For the ground state of a closed shell, the first $N/2$ \violet{spatial orbitals} are \underline{doubly-occupied} and the last $K-N/2$ are \underline{vacant (unoccupied)}
-			\bigskip
-			\item The MOs are built as \green{linear combinations of AOs (LCAO)}
-			\item The coefficients $C_{\mu i}$ are determined from the \alert{HF equations} using the \violet{variational principle}
+			\item $\{ \phi_{\mu} | \mu=1,\ldots,K \}$ are \green{basis functions} or \green{atomic orbitals (AOs)}
+			\item $\{ \psi_p | p=1,\ldots,K \}$ are \violet{spatial orbitals} or \violet{molecular orbitals (MOs)}
+			\item $\{ \chi_p | p=1,\ldots,2K \}$ are \orange{spin orbitals}
+		\end{itemize}
+	\end{block}
+	\begin{block}{Indices}
+		\begin{itemize}
+			\item With $K$ \green{basis functions}, one can create $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals} $\Rightarrow$ \red{indices $p,q,r,s,\ldots$} 
+			\item $N$ \orange{spin orbitals} are \red{occupied} $\Rightarrow$ \red{indices $i,j,k,l,\ldots$} 
+			\item $2K-N$ \orange{spin orbitals} are \red{unoccupied/vacant} $\Rightarrow$ \red{indices $a,b,c,d,\ldots$}
+		\end{itemize}
+	\end{block}
+	\begin{block}{Closed vs Open}
+		\begin{itemize}
+			\item When a system has \red{$2$ electrons in each orbital}, it is called a \red{closed-shell} system 
+			\item Otherwise, it is called an \red{open-shell} system 
+			\item For the ground state of a closed shell, the first $N/2$ spatial orbitals are \red{doubly-occupied} and the last $K-N/2$ are \red{vacant}
+%			\bigskip
+%			\item The MOs are built as \green{linear combinations of AOs (LCAO)}
+%			\item The coefficients $C_{\mu i}$ are determined from the \alert{HF equations} using the \violet{variational principle}
 		\end{itemize}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Restricted vs Unrestricted}
-	\begin{block}{Restricted Formalism}
+\begin{frame}{Restricted vs Unrestricted Hartree-Fock}
+	\begin{columns}
+	\begin{column}{0.65\textwidth}
+	\begin{block}{Restricted formalism}
 		\begin{itemize}
-			\item \alert{Restricted HF (RHF)} is made to describe \alert{closed-shell systems}:
+			\item \alert{Restricted HF (RHF)} is made to describe \alert{closed-shell systems}
 			\begin{equation*}
 				\chi_p^\text{RHF}(\bx) = 
 				\begin{cases}
@@ -528,12 +544,12 @@
 					\beta(\omega) \, \psi_p(\br)
 				\end{cases}
 			\end{equation*}
-			\item It does {\bf not} describe \alert{open-shell systems}
+			\item RHF does {\bf not} describe \alert{open-shell systems}
 		\end{itemize}
 	\end{block}
-	\begin{block}{Unrestricted Formalism}
+	\begin{block}{Unrestricted formalism}
 		\begin{itemize}
-			\item For open-shell systems we can use \alert{unrestricted HF (UHF)}
+			\item For open-shell systems, one can use \alert{unrestricted HF (UHF)}
 			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
@@ -541,32 +557,26 @@
 					\\
 					\beta(\omega) \, \blue{\psi_p^\beta(\br)}
 				\end{cases}
-		\end{equation*}
-			\item RHF = \green{Restricted} Hartree-Fock $\leftrightarrow$ \green{Roothaan-Hall equations}
-			\item UHF = \orange{Unrestricted} Hartree-Fock $\leftrightarrow$ \orange{Pople-Nesbet equations}
-			\item \blue{Restricted open-shell Hartree--Fock (ROHF)} retains shared spatial orbitals; we will not discuss it here
-%			\item GHF = \red{Generalized} Hartree-Fock 
+			\end{equation*}
+			\item UHF does break spin symmetry!
+			\item \green{Restricted open-shell Hartree--Fock (ROHF)} retains shared spatial orbitals; we will not discuss it here
 		\end{itemize}
 	\end{block}
-\end{frame}
-
-\begin{frame}{RHF, ROHF and UHF}
-	\center
-	\includegraphics[width=0.4\textwidth]{fig/RHF_UHF}
-	\begin{itemize}
-		\item RHF = \green{Restricted} Hartree-Fock
-		\item UHF = \orange{Unrestricted} Hartree-Fock
-		\item ROHF = \blue{Restricted Open-shell} Hartree-Fock
-	\end{itemize}
+	\end{column}
+	\begin{column}{0.35\textwidth}
+		\center
+		\includegraphics[width=\textwidth]{fig/RHF_UHF}
+	\end{column}
+	\end{columns}
 \end{frame}
 
 %-----------------------------------------------------
 \subsection{Excited determinants}
 %-----------------------------------------------------
-\begin{frame}{Ground-state determinant}
-	\begin{block}{Reference determinant}	
+\begin{frame}{Reference determinant}
+	\begin{block}{Reference ground-state determinant}	
 		\begin{equation}
-			\qq*{\green{The electrons are in the $N$ lowest orbitals (Aufbau principle):}} \ket{\Psi_0} = \ket{\chi_1 \ldots \chi_{\green{i}} \chi_{\green{j}} \ldots \chi_N}
+			\qq*{\alert{The electrons are in the $N$ lowest spin orbitals (Aufbau principle):}} \ket{\Psi_0} = \ket{\chi_1 \ldots \chi_{\green{i}} \chi_{\green{j}} \ldots \chi_N}
 		\end{equation}
 	\end{block}
 	\begin{center}
@@ -602,37 +612,39 @@
 \begin{frame}{The Hartree-Fock energy}
 	\begin{block}{HF energy}
 		\begin{equation}
-			\boxed{\EHF = \mel{\Psi_\text{HF}}{\cH_\text{elec} + \violet{\cV_\text{nn}}}{\Psi_\text{HF}}}
+			\boxed{\EHF = \mel{\Psi_\text{HF}}{\chH_\text{elec} + \violet{\chV_\text{nn}}}{\Psi_\text{HF}}}
 			\qq{where}
-			\cH_\text{elec} = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} +  \alert{\cV_\text{ee}} 
+			\chH_\text{elec} = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}} 
 		\end{equation}
 	\end{block}
 	\begin{block}{One-electron Hamiltonian (or core Hamiltonian)}
 		\begin{equation}
-			\cO_1 = \blue{\cT_\text{e}} +  \orange{\cV_\text{ne}} = \sum_{i=1}^N h(\bx_i)	
+			\chO_1 = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} = \sum_{i=1}^N \hh(\bx_i)	
 			\qq{where}	
-			h(\bx_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
+			\hh(\bx_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
 		\end{equation}
 	\end{block}
 	\begin{block}{Two-electron Hamiltonian (electron-electron repulsion)}
 		\begin{equation}
-			\cO_2 = \alert{\cV_\text{ee}} = \sum_{i<j}^N \frac{1}{r_{ij}} 
+			\chO_2 = \alert{\chV_\text{ee}} = \sum_{i<j}^N \frac{1}{r_{ij}} 
 		\end{equation}
 	\end{block}
 \end{frame}
 
 \begin{frame}{One-electron contributions to the HF energy}
+	\begin{block}{Electronic Hamiltonian}
 	\begin{equation}
-		\boxed{\cH_\text{elec} = \sum_{i=1}^N h(\bx_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
+		\boxed{\chH_\text{elec} = \sum_{i=1}^N \hh(\bx_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
 	\end{equation}	
+	\end{block}	
 	\begin{block}{Nuclear repulsion}
 			\begin{equation} 
-				\mel{ \Psi_\text{HF} }{\purple{\cV_\text{nn}} }{ \Psi_\text{HF} } = \purple{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \purple{V_\text{nn}}
+				\mel{ \Psi_\text{HF} }{\purple{\chV_\text{nn}} }{ \Psi_\text{HF} } = \purple{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \purple{V_\text{nn}}
 			\end{equation}
 	\end{block}
-	\begin{block}{Core Hamiltonian:}
+	\begin{block}{Core Hamiltonian}
 			\begin{equation} 
-				\mel{ \Psi_\text{HF} }{ \cO_1 }{ \Psi_\text{HF} }  = \sum_{i=1}^N \mel{ \chi_i(\bx_1) }{ h(\bx_1) }{ \chi_i(\bx_1) } = \sum_{i=1}^N h_{ii}
+				\mel{ \Psi_\text{HF} }{ \chO_1 }{ \Psi_\text{HF} }  = \sum_{i=1}^N \mel{ \chi_i(\bx_1) }{ \hh(\bx_1) }{ \chi_i(\bx_1) } = \sum_{i=1}^N h_{ii}
 			\end{equation}
 	\end{block}
 \end{frame}
@@ -642,7 +654,7 @@
 	\begin{block}{Two-electron Hamiltonian:}
 			\begin{equation}
 			\begin{split} 
-				\mel{ \Psi_\text{HF} }{ \cO_2 }{ \Psi_\text{HF} }  	
+				\mel{ \Psi_\text{HF} }{ \chO_2 }{ \Psi_\text{HF} }  	
 				& = \sum_{i<j}^N \qty[ \mel{ \chi_i(\bx_1) \chi_j(\bx_2) }{ r_{12}^{-1} }{ \chi_i(\bx_1) \chi_j(\bx_2) } - \mel{ \chi_i(\bx_1) \chi_j(\bx_2) }{ r_{12}^{-1} }{ \chi_j(\bx_1) \chi_i(\bx_2) } ]
 				\\
 				& = \sum_{i<j}^N \qty( \underbrace{\cJ_{ij}}_{\text{\green{Coulomb}}} - \underbrace{\cK_{ij}}_{\text{\red{Exchange}}} ) = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N \qty( \cJ_{ij} - \cK_{ij} ) \qq{because} \alert{\boxed{\cJ_{ii} = \cK_{ii}}}
@@ -660,7 +672,7 @@
 	\begin{block}{Coulomb operator}
 			\begin{equation}
 			\begin{split}
-				 \cJ_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+				 \chJ_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\green{j}}(\red{\bx_2})  }  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 \\
 				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
@@ -671,7 +683,7 @@
 			\begin{equation}
 			\begin{split}
 				 \cJ_{\purple{i}\green{j}}
-				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\cJ_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
+				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\chJ_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
 				 \\
 				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2})} 
 				 \\
@@ -684,7 +696,7 @@
 		\begin{block}{(non-local) Exchange operator}
 			\begin{equation}
 			\begin{split}
-				\cK_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+				\chK_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\purple{i}}(\red{\bx_2})  }  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
 				 \\
 				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
@@ -695,7 +707,7 @@
 			\begin{equation}
 			\begin{split}
 				\cK_{\green{i}\purple{j}} 
-				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\cK_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
+				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\chK_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
 				 \\
 				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})} 
 				 \\
@@ -712,7 +724,7 @@
 	\begin{block}{Spin orbitals}
 		\begin{equation}
 %			[i|h|j] = 
-			\mel{i}{h}{j} = \int \dd{\bx_1} \chi_i^*(\bx_1) h(\br_1) \chi_j(\bx_1)
+			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \dd{\bx_1} \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1)
 		\end{equation}
 		\begin{equation}
 			\braket{ij}{kl} 
@@ -729,12 +741,12 @@
 		\begin{equation}
 			\mel{ij}{}{kl} 
 			= \braket{ij}{kl} - \braket{ij}{lk} 
-			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \cP_{12}) \chi_k(\bx_1) \chi_l(\bx_2)
+			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \underbrace{\chP_{12}}_{\text{permute 1 \& 2}}) \chi_k(\bx_1) \chi_l(\bx_2)
 		\end{equation}
 	\end{block}
 	\begin{block}{Spatial orbitals}
 		\begin{equation}
-			(i|h|j) = h_{ij} = (\psi_i|h|\psi_j) = \int \dd{\br_1} \psi_i^*(\br_1) h(\br_1) \psi_j(\br_1) 
+			(i|\hh|j) = h_{ij} = (\psi_i|\hh|\psi_j) = \int \dd{\br_1} \psi_i^*(\br_1) \hh(\br_1) \psi_j(\br_1) 
 		\end{equation}
 		\begin{equation}
 			(ij|kl) 
@@ -774,21 +786,24 @@
 %-----------------------------------------------------
 \begin{frame}{Slater-Condon rules: One-electron operators}
 	\begin{equation}
-		\boxed{\cO_1 = \sum_i^N h(\br_i)}
+		\boxed{\chO_1 = \sum_i^N \hh(\br_i)}
 	\end{equation}
-	\begin{block}{Case 1: determinants differ by zero spin orbitals; $\ket{K} = \ket{\cdots i j \cdots}$}
+	\begin{block}{Case 1: determinants differ by zero spin orbitals}
 		\begin{equation}
-			\mel{K}{\cO_1}{K} = \sum_i^N \mel{i}{h}{i}
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$} 
+			\mel{\red{K}}{\chO_1}{\red{K}} = \sum_i^N \mel{i}{\hh}{i}
 		\end{equation}
 	\end{block}
-	\begin{block}{Case 2: determinants differ by one spin orbital; $\ket{K} = \ket{\cdots i j \cdots}$ and $\ket{L} = \ket{\cdots k j \cdots}$}
+	\begin{block}{Case 2: determinants differ by one spin orbital}
 		\begin{equation}
-			\mel{K}{\cO_1}{L} = \mel{i}{h}{k}
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
+			\mel{\red{K}}{\chO_1}{\blue{L}} = \mel{i}{\hh}{k}
 		\end{equation}
 	\end{block}
-	\begin{block}{Case 3: determinants differ by two spin orbitals; $\ket{K} = \ket{\cdots i j \ldots}$ and $\ket{L} = \ket{\cdots k l \ldots}$}
+	\begin{block}{Case 3: determinants differ by two spin orbitals}
 		\begin{equation}
-			\mel{K}{\cO_1}{L} = 0
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \ldots}$ and $\ket{\blue{L}} = \ket{\cdots k l \ldots} \quad \Rightarrow$}
+			\mel{\red{K}}{\chO_1}{\blue{L}} = 0
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -796,21 +811,24 @@
 \begin{frame}{Slater-Condon rules: Two-electron operators}
 	\small
 	\begin{equation}
-		\boxed{\cO_2 = \sum_{i<j}^N r_{ij}^{-1}}
+		\boxed{\chO_2 = \sum_{i<j}^N r_{ij}^{-1}}
 	\end{equation}
-	\begin{block}{Case 1: determinants differ by zero spin orbitals; $\ket{K} = \ket{\cdots i j \cdots}$}
+	\begin{block}{Case 1: determinants differ by zero spin orbitals}
 		\begin{equation}
-			\mel{K}{\cO_2}{K} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$}	
+			\mel{\red{K}}{\chO_2}{\red{K}} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
 		\end{equation}
 	\end{block}
-	\begin{block}{Case 2: determinants differ by one spin orbital; $\ket{K} = \ket{\cdots i j \cdots}$ and $\ket{L} = \ket{\cdots k j \cdots}$}
+	\begin{block}{Case 2: determinants differ by one spin orbital}
 		\begin{equation}
-			\mel{K}{\cO_2}{L} = \sum_j^N \mel{ij}{}{kj}
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
+			\mel{\red{K}}{\chO_2}{\blue{L}} = \sum_j^N \mel{ij}{}{kj}
 		\end{equation}
 	\end{block}
-	\begin{block}{Case 3: determinants differ by two spin orbitals; $\ket{K} = \ket{\cdots i j \cdots}$ and $\ket{L} = \ket{\cdots k l \cdots}$}
+	\begin{block}{Case 3: determinants differ by two spin orbitals}
 		\begin{equation}
-			\mel{K}{\cO_2}{L} = \mel{ij}{}{kl}
+			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k l \cdots} \quad \Rightarrow$}	
+			\mel{\red{K}}{\chO_2}{\blue{L}} = \mel{ij}{}{kl}
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -857,29 +875,29 @@
 
 \begin{frame}{One-electron energy of a two-electron determinant}
 	\begin{block}{Problem: Core Hamiltonian}
-		\textit{\violet{``Show that $ \mel{\Psi_\text{HF}}{\cO_1}{\Psi_\text{HF}}  = \sum_{i=1}^N h_{ii}  $ for the same system''}}
+		\textit{\violet{``Show that $ \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}  = \sum_{i=1}^N h_{ii}  $ for the same system''}}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
 		\small
 		\begin{equation*}
-			\cO_1 = h(1) + h(2)
+			\chO_1 = \hh(1) + \hh(2)
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			& \langle \Psi_\text{HF} | h(1) + h(2) | \Psi_\text{HF} \rangle 
+			& \langle \Psi_\text{HF} | \hh(1) + \hh(2) | \Psi_\text{HF} \rangle 
 			\\
-			& \qquad = \frac{1}{2} \langle \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) | h(1) + h(2) | \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) \rangle
+			& \qquad = \frac{1}{2} \langle \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) \rangle
 			\\
 			&  \qquad = \frac{1}{2} \Big[ 
-			\langle \chi_1(1) \chi_2(2)  | h(1) + h(2) | \chi_1(1) \chi_2(2)  \rangle
-			- \langle \chi_1(1) \chi_2(2)  | h(1) + h(2) |  \chi_2(1) \chi_1(2) \rangle
+			\langle \chi_1(1) \chi_2(2)  | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2)  \rangle
+			- \langle \chi_1(1) \chi_2(2)  | \hh(1) + \hh(2) |  \chi_2(1) \chi_1(2) \rangle
 			\\
-			&  \qquad - \langle  \chi_2(1) \chi_1(2) | h(1) + h(2) | \chi_1(1) \chi_2(2)  \rangle
-			+ \langle  \chi_2(1) \chi_1(2) | h(1) + h(2) |  \chi_2(1) \chi_1(2) \rangle
+			&  \qquad - \langle  \chi_2(1) \chi_1(2) | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2)  \rangle
+			+ \langle  \chi_2(1) \chi_1(2) | \hh(1) + \hh(2) |  \chi_2(1) \chi_1(2) \rangle
 			\Big]
 			\\
-			&  \qquad =  \frac{1}{2} \Big[ h_1 + h_2 - 0 - 0 + h_2 + h_1 \Big] = h_1 + h_2
+			&  \qquad =  \frac{1}{2} \Big[ h_{11} + h_{22} - 0 - 0 + h_{22} + h_{11} \Big] = h_{11} + h_{22}
 		\end{split}
 		\end{equation*}
 	\end{block}
@@ -887,13 +905,13 @@
 
 \begin{frame}{Electron interaction in a two-electron determinant}
 	\begin{block}{Problem: Two-electron Hamiltonian}
-		\textit{\violet{``Show that $ \mel{\Psi_\text{HF}}{\cO_2}{\Psi_\text{HF}}  =  \sum_{i<j}^N \qty( \cJ_{ij} - \cK_{ij} )$ for the same system and write down the HF energy''}}
+		\textit{\violet{``Show that $ \mel{\Psi_\text{HF}}{\chO_2}{\Psi_\text{HF}}  =  \sum_{i<j}^N \qty( \cJ_{ij} - \cK_{ij} )$ for the same system and write down the HF energy''}}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
 		\small
 		\begin{equation*}
-			\cO_2 =r_{12}^{-1}
+			\chO_2 =r_{12}^{-1}
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
@@ -913,7 +931,7 @@
 		\end{equation*}
 		\alert{Remember that $\langle  \chi_2 \chi_1 | r_{12}^{-1} |  \chi_2 \chi_1 \rangle = \langle  \chi_1 \chi_2 | r_{12}^{-1} |  \chi_1 \chi_2 \rangle$}
 		\begin{equation*}
-			\boxed{E_\text{HF} = h_1 + h_2 + \cJ_{12} - \cK_{12}}
+			\boxed{E_\text{HF} = h_{11} + h_{22} + \cJ_{12} - \cK_{12}}
 		\end{equation*}
 	\end{block}
 \end{frame}
@@ -925,13 +943,13 @@
 	\pause
 	\begin{block}{Solution}
 		\begin{gather*}
-			\cO_1 = h(\br_1) + h(\br_2) + h(\br_3)
+			\chO_1 = \hh(\bx_1) + \hh(\bx_2) + \hh(\bx_3)
 			\\
-			\cO_2 =r_{12}^{-1} + r_{13}^{-1} + r_{23}^{-1}
+			\chO_2 =r_{12}^{-1} + r_{13}^{-1} + r_{23}^{-1}
 		\end{gather*}
 		$$ \vdots $$
 		\begin{equation*}
-			\boxed{E_\text{HF} = h_1 + h_2 + h_3 + \cJ_{12} + \cJ_{13} + \cJ_{23} - \cK_{12} - \cK_{13} - \cK_{23}}
+			\boxed{E_\text{HF} = h_{11} + h_{22} + h_{33} + \cJ_{12} + \cJ_{13} + \cJ_{23} - \cK_{12} - \cK_{13} - \cK_{23}}
 		\end{equation*}
 	\end{block}
 \end{frame}
@@ -996,7 +1014,7 @@
 				In the spin orbital basis, we have
 				\begin{equation*}		
 					\EHF 
-					= \mel{\chi_1}{h}{\chi_1} + \mel{\chi_2}{h}{\chi_2} 
+					= \mel{\chi_1}{\hh}{\chi_1} + \mel{\chi_2}{\hh}{\chi_2} 
 					+ \braket{\chi_1 \chi_2}{\chi_1 \chi_2} - \braket{\chi_1 \chi_2}{\chi_2 \chi_1}
 				\end{equation*}
 				Spin to spatial transformation:
@@ -1007,12 +1025,12 @@
 				\end{align*}
 				\begin{equation*}		
 					\EHF 
-					= (\psi_1 | h | \psi_1) + (\Bar{\psi}_1 | h | \Bar{\psi}_1) 
+					= (\psi_1 | \hh | \psi_1) + (\Bar{\psi}_1 | \hh | \Bar{\psi}_1) 
 					+ (\psi_1 \psi_1 | \Bar{\psi}_1 \Bar{\psi}_1) - (\psi_1 \Bar{\psi_1} | \Bar{\psi}_1 \psi_1) 
 				\end{equation*}
 				Therefore, in the spatial orbital basis, we have
 				\begin{equation*}		
-					\EHF = 2(\psi_1|h|\psi_1) + (\psi_1 \psi_1|\psi_1 \psi_1) = 2(1|h|1) + (11|11)
+					\EHF = 2(\psi_1|\hh|\psi_1) + (\psi_1 \psi_1|\psi_1 \psi_1) = 2(1|\hh|1) + (11|11)
 				\end{equation*}
 			\end{block}
 		\end{column}
@@ -1029,24 +1047,24 @@
 	\begin{block}{One-electron terms}
 		\begin{equation*}
 		\begin{split}
-			(\chi_1|h|\chi_1)
-			& = \int \dd{\bx} \chi_1^*(\bx) h(\br) \chi_1(\bx)
+			(\chi_1|\hh|\chi_1)
+			& = \int \dd{\bx} \chi_1^*(\bx) \hh(\br) \chi_1(\bx)
 			\\
-			& = \int \dd{\omega} \int \dd{\br} \alpha^*(\omega) \psi_1^*(\br) h(\br) \alpha(\omega) \psi_1(\br)
+			& = \int \dd{\omega} \int \dd{\br} \alpha^*(\omega) \psi_1^*(\br) \hh(\br) \alpha(\omega) \psi_1(\br)
 			\\
 			& = \underbrace{\qty[ \int \dd{\omega} \alpha^*(\omega) \alpha(\omega)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) h(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
+			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) \hh(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
 		\end{split}
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			(\chi_2|h|\chi_2) 
-			& = \int \dd{\bx} \chi_2^*(\bx) h(\br) \chi_2(\bx) 
+			(\chi_2|\hh|\chi_2) 
+			& = \int \dd{\bx} \chi_2^*(\bx) \hh(\br) \chi_2(\bx) 
 			\\
-			& = \int \dd{\omega} \int \dd{\br} \beta^*(\omega) \psi_1^*(\br) h(\br) \beta(\omega) \psi_1(\br) 
+			& = \int \dd{\omega} \int \dd{\br} \beta^*(\omega) \psi_1^*(\br) \hh(\br) \beta(\omega) \psi_1(\br) 
 			\\
 			& = \underbrace{\qty[ \int \dd{\omega} \beta^*(\omega) \beta(\omega)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) h(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
+			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) \hh(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
 		\end{split}
 		\end{equation*}
 	\end{block}
@@ -1084,18 +1102,18 @@
 
 
 
-\begin{frame}{Closed-shell HF energy in spatial orbitals}
+\begin{frame}{Closed-shell Hartree-Fock energy in spatial orbitals}
 	\begin{block}{General expression}
 		\begin{equation}
 			\EHF 
-			= \sum_i^N \mel{i}{h}{i} + \frac{1}{2} \sum_i^N \sum_j^N \qty[ \braket{ij}{ij} - \braket{ij}{ji} ]
-			= 2 \sum_i^{N/2} (i|h|i) + \sum_i^{N/2} \sum_j^{N/2} \qty[ 2(ii|jj) - (ij|ji) ]
+			= \sum_i^N \mel{i}{\hh}{i} + \frac{1}{2} \sum_i^N \sum_j^N \qty[ \braket{ij}{ij} - \braket{ij}{ji} ]
+			= 2 \sum_i^{N/2} (i|\hh|i) + \sum_i^{N/2} \sum_j^{N/2} \qty[ 2(ii|jj) - (ij|ji) ]
 		\end{equation}
 	\end{block}
 	\begin{block}{One- and two-electron terms}
 		\small
 		\begin{equation}
-			\sum_i^N \mel{i}{h}{i} = \sum_i^{N/2} \mel{i}{h}{i} + \sum_a^{N/2} \mel{\Bar{i}}{h}{\Bar{i}} = 2 \sum_i^{N/2} (i|h|i)
+			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_a^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} (i|\hh|i)
 		\end{equation}
 		\begin{equation}
 		\begin{split}
@@ -1115,7 +1133,7 @@
 \end{frame}
 
 
-\begin{frame}{HF Energy of Atoms}
+\begin{frame}{Hartree-Fock energy of atoms}
 	\begin{block}{Problem: HF energy of the \ce{Li} atom}
 		\violet{``Find the HF energy of the \ce{Li} atom in terms of spatial orbitals''}
 	\end{block}
@@ -1124,7 +1142,7 @@
 		$$ \chi_1 = \alpha \, \psi_1 \qquad \chi_2 = \beta \, \psi_1
 		\qquad \chi_3 = \alpha \, \psi_2 $$
 		\begin{equation*}
-			E_\text{HF} = 2 h_1 + h_2 + J_{11} + 2J_{12} - K_{12}
+			E_\text{HF} = 2 h_{11} + h_{22} + J_{11} + 2J_{12} - K_{12}
 		\end{equation*}
 	\end{block}
 	\pause
@@ -1133,7 +1151,7 @@
 	\end{block}
 	\pause
 	\begin{block}{Solution}
-		$$ E_\text{HF} =2h_1 + 2h_2 + h_3 + J_{11} + 4J_{12} + J_{22} - 2K_{12} + 2J_{13} + 2J_{23} - K_{13} - K_{23}$$
+		$$ E_\text{HF} = 2h_{11} + 2h_{22} + h_{33} + J_{11} + 4J_{12} + J_{22} - 2K_{12} + 2J_{13} + 2J_{23} - K_{13} - K_{23}$$
 	\end{block}
 \end{frame}
 
@@ -1141,55 +1159,55 @@
 \subsection{Fock matrix}
 %-----------------------------------------------------
 \begin{frame}{The Fock matrix}
-	The \alert{variational principle} implies that the canonical orbitals diagonalize the \blue{one-electron Fock operator}
+	The \alert{variational principle} implies that the canonical orbitals diagonalize the \alert{one-electron Fock operator}
 	\begin{equation*}
-		\boxed{ f(\bx_1) = h(\bx_1) + \underbrace{\sum_i^N [\cJ_i(\bx_1) - \cK_i(\bx_1)]}_{\nu^\text{HF}(\bx_1) \text{ = \blue{Hartree-Fock potential}}}}
+		\boxed{ \hf(\bx_1) = \hh(\bx_1) + \underbrace{\sum_i^N [\chJ_i(\bx_1) - \chK_i(\bx_1)]}_{\Hat{v}^\text{HF}(\bx_1) \text{ = \alert{Hartree-Fock potential}}}}
 	\end{equation*}	
-	 For a \orange{closed-shell system} (i.e., two electrons in each spatial orbital)
+	 For a \alert{closed-shell system} (i.e., two electrons in each spatial orbital)
 	 \begin{equation*}
-		f(\br_1) = h(\br_1) + \sum_i^{N/2} [2 J_i(\br_1) - K_i(\br_1)]	\quad \text{\alert{(closed shell)}}	
+		\hf(\br_1) = \hh(\br_1) + \sum_i^{N/2} [2 \hJ_i(\br_1) - \hK_i(\br_1)]	\quad \text{\alert{(closed shell)}}	
 	\end{equation*}	
-	The spin orbitals are the eigenfunctions of $f$:
+	The spin orbitals are the eigenfunctions of $\hf$:
 	\begin{equation*}
-	\boxed{f(\bx_1)\,\chi_i(\bx_1) = \epsilon_i \, \chi_i(\bx_1)}
+		\boxed{\hf(\bx_1)\,\chi_i(\bx_1) = \epsilon_i \, \chi_i(\bx_1)}
 	\end{equation*}	
-	The eigenvalues $\epsilon_i$ are the \violet{orbital energies}.
+	The eigenvalues $\epsilon_i$ are the \alert{orbital energies}.
 \end{frame}
 
-\begin{frame}{Fock matrix elements in the MO basis}
+\begin{frame}{Fock matrix elements in the spin orbital basis}
 	\begin{block}{Problem:}
-		\violet{`` Find the expression of the matrix elements $f_{ij} = \mel{\chi_i}{f}{\chi_j}$''}
+		\violet{`` Find the expression of the matrix elements $f_{ij} = \mel{\chi_i}{\hf}{\chi_j}$''}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
 		\begin{equation*}
 		\begin{split}
-			\mel{\chi_i}{f}{\chi_j} 
-			& = \mel{\chi_i}{h + \sum_k \qty( \cJ_k - \cK_k)}{\chi_j}
+			\mel{\chi_i}{\hf}{\chi_j} 
+			& = \mel{\chi_i}{\hh + \sum_k \qty( \chJ_k - \chK_k)}{\chi_j}
 			\\
-			& = \mel{\chi_i}{h}{\chi_j} + \sum_k \qty( \mel{\chi_i}{\cJ_k}{\chi_j} - \mel{\chi_i}{\cK_k}{\chi_j} )
+			& = \mel{\chi_i}{\hh}{\chi_j} + \sum_k \qty( \mel{\chi_i}{\chJ_k}{\chi_j} - \mel{\chi_i}{\chK_k}{\chi_j} )
 			\\
-			& = \mel{i}{h}{j} + \sum_k \qty[ \braket{ik}{jk} - \braket{ik}{kj} ]
+			& = \mel{i}{\hh}{j} + \sum_k \qty[ \braket{ik}{jk} - \braket{ik}{kj} ]
 			\\
-			& = \mel{i}{h}{j} + \sum_k \mel{ik}{}{jk}
+			& = \mel{i}{\hh}{j} + \sum_k \mel{ik}{}{jk}
 		\end{split}
 		\end{equation*}
 	\end{block}
 \end{frame}
 
-\begin{frame}{MO energies in the MO basis}
+\begin{frame}{Orbital energies in the spin orbital basis}
 	\begin{block}{Problem:}
 		\violet{`` Deduce the expression of $\epsilon_i$''}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
 		\begin{align*}
-			f \ket{\chi_i} = \epsilon_i \ket{\chi_i}
-			& \Rightarrow \quad \mel{\chi_i}{f}{\chi_i} = \epsilon_i \braket{\chi_i}{\chi_i} = \epsilon_i
+			\hf \ket{\chi_i} = \epsilon_i \ket{\chi_i}
+			& \Rightarrow \quad \mel{\chi_i}{\hf}{\chi_i} = \epsilon_i \braket{\chi_i}{\chi_i} = \epsilon_i
 			\\
-			& \Rightarrow \quad \epsilon_i = \mel{i}{h}{i} + \sum_k \qty[ \braket{ik}{ik} - \braket{ik}{ki} ]
+			& \Rightarrow \quad \epsilon_i = \mel{i}{\hh}{i} + \sum_k \qty[ \braket{ik}{ik} - \braket{ik}{ki} ]
 			\\
-			& \Rightarrow \quad \epsilon_i = \mel{i}{h}{i} + \sum_k \mel{ik}{}{ik}
+			& \Rightarrow \quad \epsilon_i = \mel{i}{\hh}{i} + \sum_k \mel{ik}{}{ik}
 		\end{align*}
 	\end{block}
 \end{frame}
@@ -1246,9 +1264,9 @@
 			\text{IP} 
 			& = {}^{N-1}E_k - {}^{N} E_0
 			\\
-			& = - \mel{k}{h}{k} - \frac{1}{2} \sum_{i} \mel{ik}{}{ik} - \frac{1}{2} \sum_{j} \mel{kj}{}{kj}
+			& = - \mel{k}{\hh}{k} - \frac{1}{2} \sum_{i} \mel{ik}{}{ik} - \frac{1}{2} \sum_{j} \mel{kj}{}{kj}
 			\\
-			& = - \mel{k}{h}{k} - \sum_{i} \mel{ik}{}{ik} 
+			& = - \mel{k}{\hh}{k} - \sum_{i} \mel{ik}{}{ik} 
 			= - \epsilon_k 
 		\end{split}
 		\end{equation}
@@ -1266,7 +1284,7 @@
 			\text{EA} 
 			& = {}^{N}E_0 - {}^{N+1} E^c
 			\\
-			& = - \mel{c}{h}{c} - \sum_{i} \mel{ci}{}{ci} 
+			& = - \mel{c}{\hh}{c} - \sum_{i} \mel{ci}{}{ci} 
 			\\
 			& = - \epsilon_c 
 		\end{split}
@@ -1278,21 +1296,23 @@
 \begin{frame}{Hartree-Fock Hamiltonian}
 	\begin{block}{Definition}
 		\begin{equation}
-			\underbrace{\cH^\text{HF}}_{\text{$N$-electron operator}} = \sum_i^N \underbrace{f(\bx_i)}_{\text{one-electron operator}}
+			\underbrace{\chH^\text{HF}}_{\text{$N$-electron operator}} 
+			= \sum_i^N \underbrace{\hf(\bx_i)}_{\text{one-electron operator}}
+			= \sum_i^N \qty[ \hh(\bx_i) + \Hat{v}^\text{HF}(\bx_i) ]
 		\end{equation}
 	\end{block}
 	\begin{block}{Warnings!}
 		\begin{equation}
-			\cH^\text{HF} \ket{\Psi_\text{HF}} = \qty( \sum_i^N \epsilon_i ) \ket{\Psi_\text{HF}}
+			\chH^\text{HF} \ket{\Psi_\text{HF}} = \qty( \sum_i^N \epsilon_i ) \ket{\Psi_\text{HF}}
 			\alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
 		\end{equation}
 		The HF wavefunction is an eigenfunction of the HF Hamiltonian, but the eigenvalue is \alert{not} the HF energy!
 		\begin{equation}
-			\cH \ket{\Psi_\text{HF}} \alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
+			\chH \ket{\Psi_\text{HF}} \alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
 		\end{equation}
-		The HF wavefunction is not an eigenfunction of the electronic Hamiltonian!
+		The HF wavefunction is \alert{not} an eigenfunction of the electronic Hamiltonian!
 		\begin{equation}
-			\mel{\Psi_\text{HF}}{\cH}{\Psi_\text{HF}} = E_\text{HF}
+			\mel{\Psi_\text{HF}}{\chH}{\Psi_\text{HF}} = E_\text{HF}
 		\end{equation}
 		The HF energy is the expectation value of the HF wavefunction over the electronic Hamiltonian
 	\end{block}
@@ -1310,18 +1330,18 @@
 		$$ \psi_i(\br) = \sum_\mu^K C_{\mu i} \phi_{\mu}(\br)	
 		\qquad \equiv	\qquad
 		\ket{i} = \sum_\mu^K C_{\mu i} \ket{\mu}$$
-		\alert{\bf $K$ AOs give $2K$ spin orbitals:}
-		 \blue{$N$ are occupied orbitals} and \orange{$K-N$ are vacant/virtual orbitals}
+%		\alert{\bf $K$ AOs give $2K$ spin orbitals:}
+%		 \blue{$N$ are occupied orbitals} and \orange{$K-N$ are vacant/virtual orbitals}
 	\end{block}
 	\begin{block}{Roothaan-Hall equations}
 			\begin{equation*}
 			\begin{split}
-				f \ket{i} = \epsilon_i \ket{i}
+				\hf \ket{i} = \epsilon_i \ket{i}
 				&  \quad	\Rightarrow	\quad
-				f \sum_{\nu} C_{\nu i} \ket{\nu} = \epsilon_i \sum_{\nu} C_{\nu i} \ket{\nu}
+				\hf \sum_{\nu} C_{\nu i} \ket{\nu} = \epsilon_i \sum_{\nu} C_{\nu i} \ket{\nu}
 				\\
 				& \quad\xRightarrow{\ \bra{\mu}\ }\quad
-				\sum_{\nu} C_{\nu i} \mel{ \mu }{ f }{ \nu }
+				\sum_{\nu} C_{\nu i} \mel{ \mu }{ \hf }{ \nu }
 				= \epsilon_i \sum_{\nu} C_{\nu i} \braket{ \mu }{ \nu }
 				\\
 				& \quad	\Rightarrow	\quad
@@ -1348,8 +1368,8 @@
 			\bX^\dag \cdot  \bS \cdot  \bX & = \bI
 		\end{align}
 		\begin{itemize}	
-			\item \violet{Fock matrix} $ F_{\mu\nu} = \mel{ \mu }{ f }{ \nu }$ and \blue{Overlap matrix} $S_{\mu\nu} = \braket{ \mu }{ \nu }$
-			\item We need to determine the \orange{coefficient matrix} $\bC$ and the \purple{orbital energies} $\bE$
+			\item \alert{Fock matrix} $ F_{\mu\nu} = \mel{ \mu }{ \hf }{ \nu }$ and \alert{overlap matrix} $S_{\mu\nu} = \braket{ \mu }{ \nu }$
+			\item We need to determine the \alert{coefficient matrix} $\bC$ and the \alert{orbital energies} $\bE$
 		\end{itemize}
 		\begin{align}
 			\bC & = 
@@ -1373,7 +1393,7 @@
 		\begin{equation}
 			\bF(\bC) \cdot \bC 
 			= \bS \cdot \bC \cdot \bE
-			\qq{\alert{How do we solve these HF equations?}}
+			\qquad \text{\alert{How do we solve these HF equations?}}
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -1414,7 +1434,7 @@
 	\begin{equation*}
 		\begin{split}
 			F_{\mu \nu} 
-			& = \mel{\mu}{h + \sum_i^N (\cJ_i - \cK_i)}{\nu} = H_{\mu \nu} +  \sum_i^N \mel{\mu}{\cJ_i - \cK_i}{\nu}
+			& = \mel{\mu}{\hh + \sum_i^N (\chJ_i - \chK_i)}{\nu} = H_{\mu \nu} +  \sum_i^N \mel{\mu}{\chJ_i - \chK_i}{\nu}
 			\\
 			& = H_{\mu \nu} +  \sum_i^N (\mel{ \mu \chi_i }{ r_{12}^{-1}  }{ \nu \chi_i } - \mel{ \mu \chi_i }{  r_{12}^{-1} }{ \chi_i  \nu })
 			\\
@@ -1426,9 +1446,9 @@
 		\end{split}
 	\end{equation*}
 	\begin{equation*}
-		P_{\lambda \sigma} = \sum_i^N C_{\lambda i} C_{\sigma i}
+		\boxed{P_{\lambda \sigma} = \sum_i^N C_{\lambda i} C_{\sigma i}
 		\qq{$\Leftrightarrow$}
-		\text{density matrix}
+		\text{\alert{density matrix}}}
 	\end{equation*}
 	\end{block}
 \end{frame}
@@ -1437,44 +1457,44 @@
 \subsection{Density matrix \& Integrals}
 %-----------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{One- and two-electron integrals (Appendix A)}
-	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\begin{block}{One-electron integrals: overlap \& core Hamiltonian}
-				\begin{equation}
-					S_{\mu\nu} 
-					= \braket{\mu}{\nu}
-					= \int \phi_\mu^*(\orange{\br}) \phi_\nu(\orange{\br}) d\orange{\br}
-				\end{equation}
-				\begin{equation}
-					H_{\mu\nu} 
-					= \mel{\mu}{\hH^\text{c}}{\nu}
-					= \int \phi_\mu^*(\orange{\br}) \hH^\text{c}(\orange{\br}) \phi_\nu(\orange{\br}) d\orange{\br}
-				\end{equation}
-			\end{block}
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\includegraphics[width=\textwidth]{fig/SBG}
-		\end{column}
-	\end{columns}	\begin{block}{Chemist/Mulliken notation for two-electron integrals}
-		\begin{equation}
-			( \mu \nu | \lambda \sigma ) 
-			= \iint \phi_\mu^*(\alert{\br_1}) \phi_\nu(\alert{\br_1}) \frac{1}{r_{12}} \phi_\lambda^*(\blue{\br_2}) \phi_\sigma(\blue{\br_2}) d\red{\br_1} d\blue{\br_2} 
-		\end{equation}
+%\begin{frame}{One- and two-electron integrals (Appendix A)}
+%	\begin{columns}
+%		\begin{column}{0.7\textwidth}
+%			\begin{block}{One-electron integrals: overlap \& core Hamiltonian}
+%				\begin{equation}
+%					S_{\mu\nu} 
+%					= \braket{\mu}{\nu}
+%					= \int \phi_\mu^*(\orange{\br}) \phi_\nu(\orange{\br}) d\orange{\br}
+%				\end{equation}
+%				\begin{equation}
+%					H_{\mu\nu} 
+%					= \mel{\mu}{\hH^\text{c}}{\nu}
+%					= \int \phi_\mu^*(\orange{\br}) \hH^\text{c}(\orange{\br}) \phi_\nu(\orange{\br}) d\orange{\br}
+%				\end{equation}
+%			\end{block}
+%		\end{column}
+%		\begin{column}{0.3\textwidth}
+%			\includegraphics[width=\textwidth]{fig/SBG}
+%		\end{column}
+%	\end{columns}	\begin{block}{Chemist/Mulliken notation for two-electron integrals}
 %		\begin{equation}
-%			( \mu \blue{\nu} \orange{||} \lambda \red{\sigma} ) = ( \mu \blue{\nu} | \lambda \red{\sigma} ) - ( \mu \red{\sigma} | \lambda \blue{\nu} )
+%			( \mu \nu | \lambda \sigma ) 
+%			= \iint \phi_\mu^*(\alert{\br_1}) \phi_\nu(\alert{\br_1}) \frac{1}{r_{12}} \phi_\lambda^*(\blue{\br_2}) \phi_\sigma(\blue{\br_2}) d\red{\br_1} d\blue{\br_2} 
 %		\end{equation}
-	\end{block}
-	\begin{block}{Physicist/Dirac notation for two-electron integrals}
-		\begin{equation}
-			\langle \mu \nu | \lambda \sigma \rangle 
-			= \iint \phi_\mu^*(\alert{\br_1}) \phi_\nu^*(\blue{\br_2}) \frac{1}{r_{12}} \phi_\lambda(\alert{\br_1}) \phi_\sigma(\blue{\br_2}) d\red{\br_1} d\blue{\br_2}
-		\end{equation}
-		\begin{equation}
-			\langle \mu \nu \orange{||} \blue{\lambda} \red{\sigma} \rangle =  \langle \mu \nu | \blue{\lambda} \red{\sigma} \rangle -  \langle \mu \nu |  \red{\sigma} \blue{\lambda} \rangle
-		\end{equation}
-	\end{block}
-\end{frame}
+%%		\begin{equation}
+%%			( \mu \blue{\nu} \orange{||} \lambda \red{\sigma} ) = ( \mu \blue{\nu} | \lambda \red{\sigma} ) - ( \mu \red{\sigma} | \lambda \blue{\nu} )
+%%		\end{equation}
+%	\end{block}
+%	\begin{block}{Physicist/Dirac notation for two-electron integrals}
+%		\begin{equation}
+%			\langle \mu \nu | \lambda \sigma \rangle 
+%			= \iint \phi_\mu^*(\alert{\br_1}) \phi_\nu^*(\blue{\br_2}) \frac{1}{r_{12}} \phi_\lambda(\alert{\br_1}) \phi_\sigma(\blue{\br_2}) d\red{\br_1} d\blue{\br_2}
+%		\end{equation}
+%		\begin{equation}
+%			\langle \mu \nu \orange{||} \blue{\lambda} \red{\sigma} \rangle =  \langle \mu \nu | \blue{\lambda} \red{\sigma} \rangle -  \langle \mu \nu |  \red{\sigma} \blue{\lambda} \rangle
+%		\end{equation}
+%	\end{block}
+%\end{frame}
 
 
 \begin{frame}{Computation of the Fock matrix and energy}
@@ -1515,9 +1535,9 @@
 		\begin{equation*}
 			\begin{split}
 				E_\text{HF} 
-				& = \sum_i^N h_{ii} + \frac{1}{2} \sum_{ij}^N (\cJ_{ij} - \cK_{ij}) \quad \alert{\text{(as derived above)}}
+				& = \sum_i^N h_{ii} + \frac{1}{2} \sum_{ij}^N (\cJ_{ij} - \cK_{ij}) 
 				\\
-				& = \sum_i^N  \mel{ \sum_\mu C_{\mu i} \phi_\mu }{ h }{  \sum_\nu C_{\nu i} \phi_\nu } 
+				& = \sum_i^N  \mel{ \sum_\mu C_{\mu i} \phi_\mu }{ \hh }{  \sum_\nu C_{\nu i} \phi_\nu } 
 				+ \frac{1}{2} \sum_{ij}^N \mel{ \qty(\sum_\mu C_{\mu i} \phi_\mu) \qty(\sum_\lambda C_{\lambda j} \phi_\lambda)} {} { \qty(\sum_\nu C_{\nu i} \phi_\nu) \qty(\sum_\sigma C_{\sigma j} \phi_\sigma)}
 				\\
 				& = \sum_{\mu \nu} P_{\mu \nu} \qty[ H_{\mu \nu} + \frac{1}{2} \sum_{\lambda \sigma} P_{\lambda \sigma} \mel{ \mu \lambda }{}{ \nu \sigma } ]
@@ -1530,10 +1550,10 @@
 %-----------------------------------------------------
 \subsection{SCF}
 %-----------------------------------------------------
-\begin{frame}{How to perform an HF calculation in practice}
+\begin{frame}{How to perform a RHF calculation in practice}
 	\begin{block}{The SCF algorithm}
 		\begin{enumerate}
-			\item \orange{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \violet{basis set} $\{\phi_\mu\}$ 
+			\item \alert{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \alert{basis set} $\{\phi_\mu\}$ 
 			\item Calculate integrals $S_{\mu \nu}$, $H_{\mu \nu}$ and $\braket{ \mu \nu }{ \lambda \sigma }$
 			\item Diagonalize $\bS$ and compute $\bX$
 			\item Choose an \alert{initial density matrix} $\bP$
@@ -1542,7 +1562,7 @@
 				\item[2.] Compute $\bF' = \bX^\dag \cdot \bF \cdot \bX$
 				\item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$
 				\item[4.] Calculate $\bC= \bX \cdot  \bC'$
-				\item[5.] Form a \blue{new density matrix} $\bP = 2\,\bC_{\mathrm{occ}} \cdot \bC_{\mathrm{occ}}^\dag$
+				\item[5.] Form a \alert{new density matrix} $\bP = 2\,\bC_{\text{occ}} \cdot \bC_{\text{occ}}^\dag$
 				\item[6.] \alert{Am I converged?} If not go back to 1.
 			\end{enumerate}
 			\item Evaluate the desired observables, including $\EHF$
@@ -1551,7 +1571,7 @@
 \end{frame}
 
 \begin{frame}{Orthogonalization matrix}
-	\red{\bf We seek a matrix that orthogonalizes the AO basis, i.e., $\bX^\dag \cdot \bS \cdot  \bX = \bI$}
+	\red{We seek a matrix that orthogonalizes the AO basis, i.e., $\bX^\dag \cdot \bS \cdot  \bX = \bI$}
 	\\
 	\bigskip
 	\begin{columns}
@@ -1560,7 +1580,7 @@
 				\begin{equation}
 					\text{$\bX =\bS^{-1/2} = \bU \cdot  \bs^{-1/2} \cdot  \bU^\dag$ is one solution.}
 				\end{equation}
-				\purple{\bf Is it working?}
+				\alert{Is it working?}
 				\begin{equation}
 					\bX^\dag \cdot \bS \cdot \bX 
 					= \bS^{-1/2} \cdot \bS \cdot \bS^{-1/2} 
@@ -1571,7 +1591,7 @@
 				\begin{equation}
 					\text{$\bX =\bU \cdot \bs^{-1/2}$ is another solution, useful when linear dependencies are present.}
 				\end{equation}
-					\purple{\bf Is it working?}
+					\alert{Is it working?}
 				\begin{equation}
 					\bX^\dag \cdot \bS \cdot  \bX 
 					= \bs^{-1/2} \cdot \underbrace{\bU^{\dag} \cdot \bS \cdot \bU}_{\bs} \cdot \bs^{-1/2} 
@@ -1590,17 +1610,17 @@
 	\begin{block}{Possible initial density matrix}
 		\begin{enumerate}
 			\bigskip
-			\item We can set \purple{$\bP = \bO$ $\Rightarrow$ $\bF = \bH$} (\orange{core Hamiltonian approximation}):\\
+			\item We can set \alert{$\bP = \bO$ $\Rightarrow$ $\bF = \bH$} (\alert{core guess}):\\
 			$\Rightarrow$ Usually a poor guess but easy to implement
 			\bigskip
-			\item Use \alert{EHT or a semi-empirical method}:\\
+			\item Use \alert{extended Huckel theory or a semi-empirical method}:\\
 			$\Rightarrow$ Inexpensive, though now less common
 			\bigskip
-			\item Use \violet{tabulated atomic densities}:\\
+			\item Use \alert{tabulated atomic densities}:\\
 			$\Rightarrow$ Superposition-of-atomic-densities (SAD) guess
 			\bigskip
-			\item \blue{Read the MOs of a previous calculation:}\\
-			$\Rightarrow$  Very common and very useful
+			\item \alert{Read the MOs of a previous calculation:}\\
+			$\Rightarrow$ Very common and very useful
 			\bigskip
 		\end{enumerate}
 	\end{block}
@@ -1610,14 +1630,14 @@
 	\begin{block}{Convergence in SCF calculations}
 		\begin{enumerate}
 			\bigskip
-			\item You can check the \orange{energy and/or the density matrix}:\\
+			\item You can check the \alert{energy and/or the density matrix}:\\
 			$\Rightarrow$ The energy/density \textbf{should not} change at convergence
 			\bigskip
 			\item You can check the commutator \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF$}:\\
 			$\Rightarrow$ At convergence, we have \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF = \bO$}
 			\bigskip
-			\item The \violet{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
-			$\Rightarrow$ \blue{Extrapolation of the Fock matrix} using previous iterations
+			\item The \alert{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
+			$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using previous iterations
 			$$ \bF_{m+1} = \sum_{i=m-k}^{m} c_i \, \bF_i $$
 			\bigskip
 		\end{enumerate}
@@ -1685,11 +1705,11 @@
 \begin{frame}{Unrestricted HF (UHF)}
 	\begin{block}{How to model open-shell systems?}
 		\begin{itemize}
-			\item For open-shell systems one uses \violet{unrestricted spin orbitals}
+			\item For open-shell systems one uses \alert{unrestricted spin orbitals}
 			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
-					\alpha(\omega) \, \orange{\psi_p^\alpha(\br)}
+					\alpha(\omega) \, \blue{\psi_p^\alpha(\br)}
 					\\
 					\beta(\omega) \, \red{\psi_p^\beta(\br)}
 				\end{cases}
@@ -1758,7 +1778,7 @@
 	\small
 	\begin{block}{UHF equations for unrestricted spin orbitals}
 		\bigskip
-		\violet{To minimize the UHF energy}, the unrestricted spatial orbitals must be eigenfunctions of the \blue{$\alpha$ and $\beta$ Fock operators}:
+		\alert{To minimize the UHF energy}, the unrestricted spatial orbitals must be eigenfunctions of the \alert{$\alpha$ and $\beta$ Fock operators}:
 		\begin{align}
 			& \boxed{
 			\orange{f^\alpha(\br_1) \, \psi_i^\alpha(\br_1) = \epsilon_i^\alpha \, \psi_i^\alpha(\br_1)}
@@ -1867,7 +1887,7 @@
 			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} (\mu \nu | \sigma \lambda) 		
 		\end{gather}
 		$\orange{\bF^\alpha}$ and $\red{\bF^\beta}$ are both functions of $\blue{\bC^\alpha}$ and $\violet{\bC^\beta}$
-		$\Rightarrow$ \alert{There's a coupling between $\alpha$ and $\beta$ MOs!}
+		$\Rightarrow$ \alert{There's a coupling between $\alpha$ and $\beta$ orbitals!}
 	\end{block}
 \end{frame}
 
@@ -1907,7 +1927,7 @@
 \begin{frame}{How to perform a UHF calculation in practice}
 	\begin{block}{The SCF algorithm}
 		\begin{enumerate}
-			\item \orange{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \violet{basis set} $\{\phi_\mu\}$ \alert{(same as RHF)}
+			\item \alert{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \alert{basis set} $\{\phi_\mu\}$ \alert{(same as RHF)}
 			\item Calculate integrals $S_{\mu \nu}$, $H_{\mu \nu}$ and $\braket{ \mu \nu }{ \lambda \sigma }$ \alert{(same as RHF)}
 			\item Diagonalize $\bS$ and compute $\bX$ \alert{(same as RHF)}
 			\item Choose \alert{initial density matrices} $\bP^\alpha$ and $\bP^\beta$
@@ -1918,7 +1938,7 @@
 				\item[3a.] Diagonalize $(\bF^\alpha)'$ to obtain $(\bC^\alpha)'$ and $\bE^\alpha$
 				\item[3b.] Diagonalize $(\bF^\beta)'$ to obtain $(\bC^\beta)'$ and $\bE^\beta$
 				\item[4.] Calculate $\bC^\alpha= \bX \cdot (\bC^\alpha)'$ and  $\bC^\beta= \bX \cdot (\bC^\beta)'$
-				\item[5.] Form the \blue{new density matrices} $\bP^\alpha$ and $\bP^\beta$, and compute $\bP^\text{T} = \bP^\alpha + \bP^\beta$
+				\item[5.] Form the \alert{new density matrices} $\bP^\alpha$ and $\bP^\beta$, and compute $\bP^\text{T} = \bP^\alpha + \bP^\beta$
 				\item[6.] \alert{Am I converged?} If not go back to 1.
 			\end{enumerate}
 			\item Evaluate the desired observables, including $E_\text{UHF}$
