@@ -200,11 +200,11 @@
 %	\end{columns}
 %\end{frame}
 
-%\begin{frame}{Szabo's and Ostlund's book}
-%	\begin{center}
-%		\includegraphics[width=\textwidth]{fig/amazon}
-%	\end{center}
-%\end{frame}
+\begin{frame}{Szabo's and Ostlund's book}
+	\begin{center}
+		\includegraphics[width=\textwidth]{fig/amazon}
+	\end{center}
+\end{frame}
 
 %-----------------------------------------------------
 \section{The electronic problem}
@@ -454,7 +454,7 @@
 				\equiv \ket{ \chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N) }
 				\\
 				& = \blue{\chA}\qty[\chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N)]
-				= \blue{\chA}\,\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
+				= \blue{\chA}\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
 			\end{split}	
 		\end{equation}
 		\begin{itemize}
@@ -539,9 +539,9 @@
 			\begin{equation*}
 				\chi_p^\text{RHF}(\bx) = 
 				\begin{cases}
-					\alpha(\omega) \, \psi_p(\br)
+					\alpha(\omega) \psi_p(\br)
 					\\
-					\beta(\omega) \, \psi_p(\br)
+					\beta(\omega) \psi_p(\br)
 				\end{cases}
 			\end{equation*}
 			\item RHF does {\bf not} describe \alert{open-shell systems}
@@ -553,9 +553,9 @@
 			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
-					\alpha(\omega) \, \red{\psi_p^\alpha(\br)}
+					\alpha(\omega) \red{\psi_p^\alpha(\br)}
 					\\
-					\beta(\omega) \, \blue{\psi_p^\beta(\br)}
+					\beta(\omega) \blue{\psi_p^\beta(\br)}
 				\end{cases}
 			\end{equation*}
 			\item UHF does break spin symmetry!
@@ -1139,8 +1139,8 @@
 	\end{block}
 	\pause
 	\begin{block}{Solution}
-		$$ \chi_1 = \alpha \, \psi_1 \qquad \chi_2 = \beta \, \psi_1
-		\qquad \chi_3 = \alpha \, \psi_2 $$
+		$$ \chi_1 = \alpha \psi_1 \qquad \chi_2 = \beta \psi_1
+		\qquad \chi_3 = \alpha \psi_2 $$
 		\begin{equation*}
 			E_\text{HF} = 2 h_{11} + h_{22} + J_{11} + 2J_{12} - K_{12}
 		\end{equation*}
@@ -1159,19 +1159,20 @@
 \subsection{Fock matrix}
 %-----------------------------------------------------
 \begin{frame}{The Fock matrix}
-	The \alert{variational principle} implies that the canonical orbitals diagonalize the \alert{one-electron Fock operator}
-	\begin{equation*}
+	The \alert{stationarity of the HF energy} wrt the spin orbitals implies that 
+	\begin{equation}
+		\fdv{E_\text{HF}}{\chi_i} = 0
+		\qq{$\Rightarrow$}
+		\boxed{\hf(\bx_1) \chi_i(\bx_1) = \underbrace{\epsilon_i}_{\alert{\text{orbital energies}}} \chi_i(\bx_1)}
+	\end{equation}	
+	where $\hf$ is the \alert{one-electron Fock operator}
+	\begin{equation}
 		\boxed{ \hf(\bx_1) = \hh(\bx_1) + \underbrace{\sum_i^N [\chJ_i(\bx_1) - \chK_i(\bx_1)]}_{\Hat{v}^\text{HF}(\bx_1) \text{ = \alert{Hartree-Fock potential}}}}
-	\end{equation*}	
-	 For a \alert{closed-shell system} (i.e., two electrons in each spatial orbital)
+	\end{equation}	
+	For a \alert{closed-shell system} (i.e., two electrons in each spatial orbital)
 	 \begin{equation*}
-		\hf(\br_1) = \hh(\br_1) + \sum_i^{N/2} [2 \hJ_i(\br_1) - \hK_i(\br_1)]	\quad \text{\alert{(closed shell)}}	
+		\hf(\br_1) = \hh(\br_1) + \sum_i^{N/2} \qty[2 \hJ_i(\br_1) - \hK_i(\br_1)]	\quad \text{\alert{(closed shell)}}	
 	\end{equation*}	
-	The spin orbitals are the eigenfunctions of $\hf$:
-	\begin{equation*}
-		\boxed{\hf(\bx_1)\,\chi_i(\bx_1) = \epsilon_i \, \chi_i(\bx_1)}
-	\end{equation*}	
-	The eigenvalues $\epsilon_i$ are the \alert{orbital energies}.
 \end{frame}
 
 \begin{frame}{Fock matrix elements in the spin orbital basis}
@@ -1318,6 +1319,22 @@
 	\end{block}
 \end{frame}
 
+\begin{frame}
+	\begin{block}{Double counting}
+		\begin{gather}
+			\sum_i^N \epsilon_i = \sum_i^N h_{ii} + \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
+			\\
+			\text{\rotatebox[origin=c]{90}{\alert{$\neq$}}}
+			\\
+			E_\text{HF} = \sum_i^N h_{ii} + \alert{\frac{1}{2}} \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
+		\end{gather}
+		One double-counts the electron-electron interaction!
+		\begin{equation}
+			\mel{\Psi_\text{HF}}{\sum_{i<j} \frac{1}{r_{ij}} - \sum_i^N v^\text{HF}(\bx_i)}{\Psi_\text{HF}} = - \frac{1}{2} \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
+		\end{equation}
+		This is the first-order correction in M{\o}ller-Plesset perturbation theory!
+	\end{block}		
+\end{frame}
 
 %-----------------------------------------------------
 \section{Roothaan-Hall equations}
@@ -1502,7 +1519,7 @@
 		\begin{equation}
 			 P_{\red{\mu \nu}} = 2 \sum_{i=1}^{N/2} C_{\red{\mu} i} C_{\red{\nu} i}^*
 			\qqtext{or} 
-			\boxed{\bP = 2 \, \bC_{\mathrm{occ}} \cdot \bC_{\mathrm{occ}}^{\dag}}
+			\boxed{\bP = 2 \bC_{\mathrm{occ}} \cdot \bC_{\mathrm{occ}}^{\dag}}
 		\end{equation}
 	\end{block}
 	\begin{block}{Fock matrix in the AO basis (closed-shell system)}
@@ -1562,7 +1579,7 @@
 				\item[2.] Compute $\bF' = \bX^\dag \cdot \bF \cdot \bX$
 				\item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$
 				\item[4.] Calculate $\bC= \bX \cdot  \bC'$
-				\item[5.] Form a \alert{new density matrix} $\bP = 2\,\bC_{\text{occ}} \cdot \bC_{\text{occ}}^\dag$
+				\item[5.] Form a \alert{new density matrix} $\bP = 2 \bC_{\text{occ}} \cdot \bC_{\text{occ}}^\dag$
 				\item[6.] \alert{Am I converged?} If not go back to 1.
 			\end{enumerate}
 			\item Evaluate the desired observables, including $\EHF$
@@ -1638,7 +1655,7 @@
 			\bigskip
 			\item The \alert{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
 			$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using previous iterations
-			$$ \bF_{m+1} = \sum_{i=m-k}^{m} c_i \, \bF_i $$
+			$$ \bF_{m+1} = \sum_{i=m-k}^{m} c_i \bF_i $$
 			\bigskip
 		\end{enumerate}
 	\end{block}
@@ -1709,9 +1726,9 @@
 			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
-					\alpha(\omega) \, \blue{\psi_p^\alpha(\br)}
+					\alpha(\omega) \blue{\psi_p^\alpha(\br)}
 					\\
-					\beta(\omega) \, \red{\psi_p^\beta(\br)}
+					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
 			\end{equation*}		
 			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\hat{S}^2$
@@ -1781,11 +1798,11 @@
 		\alert{To minimize the UHF energy}, the unrestricted spatial orbitals must be eigenfunctions of the \alert{$\alpha$ and $\beta$ Fock operators}:
 		\begin{align}
 			& \boxed{
-			\orange{f^\alpha(\br_1) \, \psi_i^\alpha(\br_1) = \epsilon_i^\alpha \, \psi_i^\alpha(\br_1)}
+			\orange{f^\alpha(\br_1) \psi_i^\alpha(\br_1) = \epsilon_i^\alpha \psi_i^\alpha(\br_1)}
 			}
 			& 
 			& \boxed{
-			\alert{f^\beta(\br_1) \, \psi_i^\beta(\br_1) = \epsilon_i^\beta \, \psi_i^\beta(\br_1)}
+			\alert{f^\beta(\br_1) \psi_i^\beta(\br_1) = \epsilon_i^\beta \psi_i^\beta(\br_1)}
 			}
 		\end{align}
 		where
@@ -1864,9 +1881,9 @@
 	\small
 	\begin{block}{Expansion of the unrestricted spin orbitals in a basis}
 		\begin{align}
-			\psi_i^\alpha (\br) & = \sum_{\mu=1}^K \blue{C_{\mu i}^\alpha} \, \phi_{\mu} (\br)
+			\psi_i^\alpha (\br) & = \sum_{\mu=1}^K \blue{C_{\mu i}^\alpha} \phi_{\mu} (\br)
 			& 
-			\psi_i^\beta (\br) & = \sum_{\mu=1}^K \violet{C_{\mu i}^\beta} \, \phi_{\mu} (\br)
+			\psi_i^\beta (\br) & = \sum_{\mu=1}^K \violet{C_{\mu i}^\beta} \phi_{\mu} (\br)
 		\end{align}
 	\end{block}
 	\begin{block}{The Pople-Nesbet equations}
