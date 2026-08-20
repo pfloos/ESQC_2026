@@ -1,0 +1,193 @@
+\documentclass[aspectratio=169,9pt]{beamer}
+%	***********
+%	* PACKAGE *
+%	***********
+\usepackage{amsmath,amssymb,amsfonts,mathtools,graphicx,xcolor,bm,microtype,physics}
+\usepackage[version=4]{mhchem}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\DeclareMathSizes{9}{9}{7}{5}
+\usefonttheme{professionalfonts}
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+
+% A restrained, high-contrast visual system for projection.
+\definecolor{hfNavy}{HTML}{17324D}
+\definecolor{hfBlue}{HTML}{1769AA}
+\definecolor{hfTeal}{HTML}{007C83}
+\definecolor{hfRed}{HTML}{B23A48}
+\definecolor{hfOrange}{HTML}{D96C22}
+\definecolor{hfGreen}{HTML}{2F7D4A}
+\definecolor{hfPurple}{HTML}{6F4A8E}
+\definecolor{hfViolet}{HTML}{775DA6}
+\definecolor{hfInk}{HTML}{202A33}
+\definecolor{hfPale}{HTML}{EDF2F6}
+
+\setbeamercolor{normal text}{fg=hfInk,bg=white}
+\setbeamercolor{structure}{fg=hfNavy}
+\setbeamercolor{alerted text}{fg=hfRed}
+\setbeamercolor{frametitle}{fg=white,bg=hfNavy}
+\setbeamercolor{title}{fg=hfNavy}
+\setbeamercolor{block title}{fg=white,bg=hfNavy}
+\setbeamercolor{block body}{fg=hfInk,bg=hfPale}
+\setbeamercolor{itemize item}{fg=hfTeal}
+\setbeamercolor{itemize subitem}{fg=hfTeal}
+\setbeamerfont{title}{size=\Huge,series=\bfseries}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+%\setbeamerfont{block title}{series=\bfseries}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{itemize item}{\color{hfTeal}\raisebox{0.15ex}{\rule{0.55ex}{0.55ex}}}
+\setbeamertemplate{itemize subitem}{\color{hfTeal}\raisebox{0.12ex}{\rule{0.45ex}{0.45ex}}}
+\setbeamersize{text margin left=0.55cm,text margin right=0.55cm}
+%\setbeamertemplate{frametitle}{%
+%  \nointerlineskip
+%  \begin{beamercolorbox}[wd=\paperwidth,ht=0.78cm,dp=0.22cm,leftskip=0.55cm,rightskip=0.55cm]{frametitle}
+%    \usebeamerfont{frametitle}\insertframetitle
+%  \end{beamercolorbox}%
+%}
+%\setbeamertemplate{footline}{%
+%  \leavevmode%
+%  \hbox{%
+%    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=.55cm]{author in head/foot}%
+%      \color{hfNavy}\insertshorttitle\hspace{0.7em}\textcolor{hfTeal}{/}\hspace{0.7em}\insertsectionhead
+%    \end{beamercolorbox}%
+%    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=.55cm plus1fil]{page number in head/foot}%
+%      \color{hfNavy}\hfill\insertframenumber
+%    \end{beamercolorbox}%
+%  }%
+%}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=hfTeal,
+    filecolor=magenta,
+    urlcolor=hfTeal,
+    citecolor=hfPurple
+}
+\urlstyle{same}
+
+%	***********
+%	* PACKAGE *
+%	***********
+
+% energies
+\newcommand{\Ec}{E_\text{c}}
+\newcommand{\EHF}{E_\text{HF}}
+
+% bold symbols
+\newcommand{\br}{\boldsymbol{r}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\bR}{\boldsymbol{R}}
+\newcommand{\bo}{\boldsymbol{o}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bG}{\boldsymbol{G}}
+\newcommand{\bJ}{\boldsymbol{J}}
+\newcommand{\bK}{\boldsymbol{K}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bI}{\boldsymbol{1}}
+\newcommand{\bU}{\boldsymbol{U}}
+\newcommand{\bO}{\boldsymbol{0}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bT}{\boldsymbol{T}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bX}{\boldsymbol{X}}
+
+% hat symbols
+\newcommand{\hH}{\hat{H}}
+\newcommand{\hh}{\hat{h}}
+\newcommand{\hf}{\hat{f}}
+\newcommand{\hT}{\hat{T}}
+\newcommand{\hV}{\hat{V}}
+\newcommand{\hO}{\hat{O}}
+\newcommand{\hJ}{\hat{J}}
+\newcommand{\hK}{\hat{K}}
+
+% curly symbols
+\newcommand{\chA}{\Hat{\mathcal{A}}}
+\newcommand{\chO}{\Hat{\mathcal{O}}}
+\newcommand{\chJ}{\Hat{\mathcal{J}}}
+\newcommand{\chK}{\Hat{\mathcal{K}}}
+\newcommand{\chH}{\Hat{\mathcal{H}}}
+\newcommand{\chT}{\Hat{\mathcal{T}}}
+\newcommand{\chV}{\Hat{\mathcal{V}}}
+\newcommand{\chP}{\Hat{\mathcal{P}}}
+
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+
+% colors and others
+\newcommand{\mc}{\multicolumn}
+\newcommand{\purple}[1]{\textcolor{hfPurple}{#1}}
+\newcommand{\red}[1]{\textcolor{hfRed}{#1}}
+\newcommand{\orange}[1]{\textcolor{hfOrange}{#1}}
+\newcommand{\green}[1]{\textcolor{hfGreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{hfBlue}{#1}}
+\newcommand{\violet}[1]{\textcolor{hfViolet}{#1}}
+\newcommand{\pub}[1]{{\small\textcolor{hfPurple}{#1}}}
+
+% shortcuts
+\newcommand{\si}{\sigma}
+\newcommand{\la}{\lambda}
+
+\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
+
+%	*************
+%	* HEAD DATA *
+%	*************
+	\title[HF Theory]{
+		Basis Sets \& Integrals
+	} 
+        \author[PF Loos]{Pierre-Fran\c{c}ois Loos}
+        \date{ESQC 2026}
+        \institute[CNRS@LCPQ]{
+                Laboratoire de Chimie et Physique Quantiques (UMR 5626),
+                Universit\'e de Toulouse, CNRS, UPS, Toulouse, France
+        }
+        \titlegraphic{
+%                \vspace{0.2\textheight}
+%                \includegraphics[height=0.05\textwidth]{fig/UPS}
+%                \hspace{0.2\textwidth}
+%                \includegraphics[height=0.05\textwidth]{fig/ERC}
+%                \hspace{0.2\textwidth}
+                \includegraphics[width=0.7\textwidth]{fig/front}
+%                \hspace{0.2\textwidth}
+%                \includegraphics[height=0.05\textwidth]{fig/CNRS}
+        }
+        
+\begin{document}
+
+%-----------------------------------------------------
+%%%	TITLE		%%%
+%-----------------------------------------------------
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{What's the idea?}
+	\begin{equation}
+		\boxed{\psi_p(\br) = \sum_\mu^K C_{\mu p} \phi_\mu(\br)}
+	\end{equation}
+	\begin{itemize}
+		\item We want to approximate the orbitals as well as possible using 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Common basis functions}
+	\begin{itemize}
+		\item Gaussian
+		\item Slater
+		\item Plane wave
+		
+	\end{itemize}
+\end{frame}
+
+\end{document}
