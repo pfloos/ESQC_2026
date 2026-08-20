@@ -79,6 +79,8 @@
 % bold symbols
 \newcommand{\ba}{\boldsymbol{a}}
 \newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bc}{\boldsymbol{c}}
+\newcommand{\bd}{\boldsymbol{d}}
 \newcommand{\bk}{\boldsymbol{k}}
 \newcommand{\br}{\boldsymbol{r}}
 \newcommand{\bx}{\boldsymbol{x}}
@@ -93,6 +95,7 @@
 \newcommand{\bJ}{\boldsymbol{J}}
 \newcommand{\bK}{\boldsymbol{K}}
 \newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bQ}{\boldsymbol{Q}}
 \newcommand{\bI}{\boldsymbol{1}}
 \newcommand{\bU}{\boldsymbol{U}}
 \newcommand{\bO}{\boldsymbol{0}}
@@ -519,6 +522,22 @@ decoration={snake,
 	\end{block}
 \end{frame}
 
+\begin{frame}{Cauchy-Schwartz bound}
+	\begin{equation}
+		(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
+		= (\bm{\violet{P}}|\bm{\violet{Q}})
+		\le 
+		\sqrt{(\bm{\violet{P}}|\bm{\violet{P}})} 
+		\sqrt{(\bm{\purple{Q}}|\bm{\purple{Q}})}
+	\end{equation}
+	\begin{itemize}
+		\item $(\bm{\violet{P}}|\bm{\violet{Q}})$ should decay as $1/\abs{\violet{\bm{P}} - \violet{\bm{Q}}}$ or faster
+		\item However, there is no distance information in the product $(\bm{\violet{P}}|\bm{\violet{P}}) (\bm{\violet{Q}}|\bm{\violet{Q}})$
+		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs.
+	\end{itemize}
+\end{frame}
+
+
 \begin{frame}{A tale of three strategies}
 \begin{itemize}
 	\item \orange{\bf Integral bound}
@@ -651,7 +670,34 @@ decoration={snake,
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Computing the fundamental integrals}
+	\begin{equation}
+		\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} 
+		\equiv (\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
+		= (\bm{\violet{P}}|\bm{\violet{Q}})
+	\end{equation}
+	\begin{block}{Shell-pair data}
+		\begin{equation}
+			\bR = \bQ - \bP
+			2\vartheta = 1/(
+		\end{equation}
+	\end{block}
+	\begin{block}{Shell-pair data}
+		\begin{equation}
+			\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} = U (2\theta^2)^{m+1/2} G_m(T)
+		\end{equation}
+		\begin{equation}
+			G_m(T) = \qty( \frac{2}{\pi} )^{1/2} \int_0^1 t^{2m} \exp(-T t^2) \dd{t}
+		\end{equation}
+		it can be efficiently evaluated by Chebyshev interpolation.
+	\end{block}	
+\end{frame}
+
 \begin{frame}{Recurrence relations}
+	\begin{block}{Vertical recurrence relation}
+	\end{block}
+	\begin{block}{Horizontal recurrence relation}
+	\end{block}	
 \end{frame}
 
 
