@@ -114,6 +114,7 @@
 \newcommand{\hT}{\hat{T}}
 \newcommand{\hV}{\hat{V}}
 \newcommand{\hO}{\hat{O}}
+\newcommand{\hI}{\hat{I}}
 \newcommand{\hJ}{\hat{J}}
 \newcommand{\hK}{\hat{K}}
 
@@ -170,7 +171,11 @@
 decoration={snake, 
     amplitude = .4mm,
     segment length = 2mm},decorate}}
-    
+
+\usepackage{algorithmicx,algorithm,algpseudocode}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}
+%\algrenewcommand{\algorithmiccomment}[1]{$\triangleright$ #1} 
     
 %	*************
 %	* HEAD DATA *
@@ -995,5 +1000,85 @@ decoration={snake,
 %}
 %\end{frame}
 
+\begin{frame}{Computation of the Coulomb matrix}
+	\begin{equation}
+		\boxed{
+		J_{\red{\mu}\blue{\nu}} = \sum_{\red{\mu}\blue{\nu}} P_{\orange{\la}\violet{\si}} \rbraket{\red{\mu}\blue{\nu} }{ \orange{\la}\violet{\si}}
+		} 
+	\end{equation}
+	\begin{algorithmic}
+		\Procedure{Computing the Coulomb matrix}{}
+			\For{$\red{\mu}=1,N$}
+				\For{$\blue{\nu}=1,N$}
+					\State $J_{\red{\mu}\blue{\nu}} = 0$ \Comment{Initialization of the array}
+					\For{$\orange{\la}=1,N$}
+						\For{$\violet{\si}=1,N$}
+							\State $J_{\red{\mu}\blue{\nu}} 
+							= J_{\red{\mu}\blue{\nu}} 
+							+ P_{\orange{\la}\violet{\si}} \rbraket{\red{\mu}\blue{\nu} }{ \orange{\la}\violet{\si} }$ 
+							\Comment{Accumulation step}
+						\EndFor
+					\EndFor 
+				\EndFor
+			\EndFor 
+		\EndProcedure
+		\Comment{\red{This is a $\order{N^4}$ algorithm as it involves four loops}}
+	\end{algorithmic}
+\end{frame}
+
+%%% SLIDE X %%%
+\begin{frame}{Resolution of the identity}
+	\begin{block}{Resolution of the identity (RI)}
+		\begin{equation}
+			\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI
+			\qq{with}
+			\braket{\green{A}}{\green{B}} = \delta_{AB}
+			\qq{$\Leftrightarrow$}
+			\sum_{\green{A}=1}^{\red{\infty}} \green{A}(\br_1) \green{A}(\br_2)  
+			= \delta(\br_1 - \br_2) 
+		\end{equation}
+	\end{block}
+	\begin{block}{Generalization to a two-body operator $\hO$}
+		\begin{equation}
+			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \dyad{\green{\Tilde{A}}} = \hO
+			\qq{with}
+			\mel{\green{A}}{\hO}{\green{B}} = \delta_{AB}
+			\qq{and}
+			\hO \ket{\green{A}} = \ket{\green{\Tilde{A}}}
+			\qq{$\Leftrightarrow$}
+			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \green{\Tilde{A}}(\br_1) \green{\Tilde{A}}(\br_2)  
+			= \hO(\br_1,\br_2) 
+		\end{equation}
+	\end{block}
+\end{frame}
+%
+
+%%% SLIDE X %%%
+\begin{frame}{Resolution of the Coulomb operator}
+	\begin{block}{RI in practice = RI \alert{approximation}}
+		\begin{equation}
+			\boxed{\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI 
+			\qqtext{and, in practice, }
+			\sum_{\green{A}=1}^{\red{K}} \dyad{\green{A}} \approx \hI}
+		\end{equation}
+	\end{block}
+	\begin{block}{Computing the Coulomb matrix within the RI approximation}
+		\begin{equation}
+			\begin{split}
+				J_{\red{\mu\nu}} 
+				& = \sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu\nu}|\blue{\la\si})
+				\\
+				& \stackrel{\text{\green{RI}}}{=}  \sum_{\blue{\la \si}} P_{\blue{\la\si}} \sum_{\green{A}} (\red{\mu\nu}|\green{A}) (\green{A}|\blue{\la\si})
+				\\
+				& = \sum_{\green{A}} (\red{\mu\nu}|\green{A})  
+				\underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} (\green{A}|\blue{\la\si})}_{\order{KN^2} \text{ and $K$ storage}}
+				= \underbrace{\sum_{\green{A}} (\red{\mu\nu}|\green{A})  \rho_{\green{A}}}_{\order{KN^2}}
+			\end{split}
+		\end{equation}
+		\\
+		Similar (more effective) approaches are named Cholesky decomposition, low-rank approximation, etc. 
+	\end{block}
+\end{frame}
+%
 
 \end{document}
