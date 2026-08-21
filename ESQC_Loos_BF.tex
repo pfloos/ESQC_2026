@@ -19,10 +19,10 @@
 \definecolor{hfRed}{HTML}{B23A48}
 \definecolor{hfOrange}{HTML}{D96C22}
 \definecolor{hfGreen}{HTML}{2F7D4A}
-\definecolor{hfPurple}{HTML}{6F4A8E}
-\definecolor{hfViolet}{HTML}{775DA6}
+\definecolor{hfPurple}{HTML}{9A7300}
 \definecolor{hfInk}{HTML}{202A33}
 \definecolor{hfPale}{HTML}{EDF2F6}
+\definecolor{hfViolet}{HTML}{775DA6}
 
 \setbeamercolor{normal text}{fg=hfInk,bg=white}
 \setbeamercolor{structure}{fg=hfNavy}
@@ -90,6 +90,7 @@
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\bB}{\boldsymbol{B}}
 \newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bD}{\boldsymbol{D}}
 \newcommand{\bE}{\boldsymbol{E}}
 \newcommand{\bG}{\boldsymbol{G}}
 \newcommand{\bJ}{\boldsymbol{J}}
@@ -150,6 +151,12 @@
 \newcommand{\sbraket}[2]{[ #1 | #2 ]}
 \newcommand{\smel}[3]{[ #1 | #2 | #3 ]}
 
+\newcommand{\rbra}[1]{( #1 |}
+\newcommand{\rket}[1]{| #1 )}
+\newcommand{\rexpval}[1]{( #1 )}
+\newcommand{\rbraket}[2]{( #1 | #2 )}
+\newcommand{\rmel}[3]{( #1 | #2 | #3 )}
+
 \newcommand{\sba}{\mathring{a}}
 \newcommand{\sbb}{\mathring{b}}
 
@@ -197,20 +204,52 @@ decoration={snake,
 	\titlepage
 \end{frame}
 
-\begin{frame}{What's the idea?}
+\begin{frame}{Expanding the molecular orbitals}
 	\begin{equation}
-		\boxed{\psi_p(\br) = \sum_\mu^K C_{\mu p} \phi_\mu(\br)}
+		\boxed{
+			\psi_p(\br)
+			=
+			\sum_{\mu=1}^{K}
+			C_{\mu p}\phi_\mu(\br)
+		}
 	\end{equation}
+
 	\begin{itemize}
-		\item We want to approximate the orbitals as well as possible using basis functions
-		\item We can use anything we want but we want to minimize $K$
-		\item We also need to be able to compute one- and two-electron integrals
+		\item The basis functions $\{\phi_\mu\}$ are fixed; the coefficients
+		      $C_{\mu p}$ are determined variationally
+
+		\item Increasing $K$ improves the flexibility of the orbital expansion
+		      and, ideally, approaches the \alert{complete basis set limit}
 	\end{itemize}
+
+	\begin{block}{A useful basis set should be\ldots}
+		\begin{description}
+			\item[\textbf{Accurate}] Flexible enough to describe the relevant
+			      occupied and virtual orbitals
+			\item[\textbf{Compact}] Able to reach the target accuracy with as
+			      few functions as possible
+			\item[\textbf{Stable}] Free from severe linear dependencies
+			\item[\textbf{Efficient}] Compatible with practical evaluation of
+			      multicenter one- and two-electron integrals
+		\end{description}
+	\end{block}
+
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{Basis set design is a compromise between accuracy and cost}
 \end{frame}
 
-\begin{frame}{Basis functions are just legos!}
-	\center
-	\includegraphics[width=0.9\textwidth]{fig/lego}
+\begin{frame}{Basis functions are like LEGO bricks!}
+	\begin{center}
+		\fbox{
+		\textbf{Key idea:}
+		Each basis function is a building block
+		}
+	\end{center}
+	\centering
+	\includegraphics[
+		width=0.7\textwidth,
+	]{fig/lego}
 \end{frame}
 
 \begin{frame}{Common basis functions}
@@ -299,18 +338,18 @@ decoration={snake,
 	\begin{block}{Overlap integrals}
 		\begin{equation}
 			\braket{\bk_1}{\bk_2} 
-			= \int \dd{\br} \phi_{\bk_1}^*(\br) \phi_{\bk_2}(\br)
-			= \frac{1}{\Omega} \int \dd{\br} e^{\ii \qty( \bk_2 - \bk_1 ) \cdot \br}
+			= \int \phi_{\bk_1}^*(\br) \phi_{\bk_2}(\br) \dd{\br} 
+			= \frac{1}{\Omega} \int e^{\ii \qty( \bk_2 - \bk_1 ) \cdot \br} \dd{\br} 
 			= \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
-			\alert{\text{Orthognal basis!}}
+			\alert{\text{Orthogonal basis!}}
 		\end{equation}
 	\end{block}
 	\begin{block}{Kinetic integrals}
 		\begin{equation}
 			\mel{\bk_1}{-\frac{\nabla^2}{2}}{\bk_2} 
-			= \int \dd{\br} \phi_{\bk_1}^*(\br) \qty( - \frac{\nabla^2}{2}  ) \phi_{\bk_2}(\br)
-			= \int \dd{\br} \phi_{\bk_1}^*(\br) \bk_2^2 \phi_{\bk_2}(\br)
+			= \int \phi_{\bk_1}^*(\br) \qty( - \frac{\nabla^2}{2}  ) \phi_{\bk_2}(\br) \dd{\br} 
+			= \int \phi_{\bk_1}^*(\br) \bk_2^2 \phi_{\bk_2}(\br) \dd{\br} 
 			= \bk_2^2 \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
 			\alert{\text{Diagonal!}}
@@ -320,9 +359,9 @@ decoration={snake,
 		\begin{equation}
 		\begin{split}
 			\braket{\bk_1 \bk_2 }{\bk_3 \bk_4} 
-			& = \iint \dd{\br_1} \dd{\br_2} \phi_{\bk_1}^*(\br_1) \phi_{\bk_2}^*(\br_2) r_{12}^{-1} \phi_{\bk_3}(\br_1) \phi_{\bk_4}(\br_2)
+			& = \iint \phi_{\bk_1}^*(\br_1) \phi_{\bk_2}^*(\br_2) r_{12}^{-1} \phi_{\bk_3}(\br_1) \phi_{\bk_4}(\br_2) \dd{\br_1} \dd{\br_2} 
 			\\
-			& = \frac{1}{\Omega^2} \iint \dd{\br_1} \dd{\br_2} \frac{e^{\ii \qty( \bk_3 - \bk_1 ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 ) \cdot \br_2}}{r_{12}}
+			& = \frac{1}{\Omega^2} \iint \frac{e^{\ii \qty( \bk_3 - \bk_1 ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 ) \cdot \br_2}}{r_{12}} \dd{\br_1} \dd{\br_2} 
 		\end{split}
 		\end{equation}
 	\end{block}
@@ -336,12 +375,11 @@ decoration={snake,
 		\end{equation}
 		Dealing with the points where $\bk = \bO$ is a bit tricky bud doable...
 	\end{block}
-
 	\begin{block}{Electron repulsion integrals}
 		\begin{equation}
 		\begin{split}
 			\braket{\bk_1 \bk_2 }{\bk_3 \bk_3} 
-			& =  \frac{1}{\Omega^3} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \iint \dd{\br_1} \dd{\br_2} e^{\ii \qty( \bk_3 - \bk_1 - \bk ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 +\bk) \cdot \br_2}
+			& =  \frac{1}{\Omega^3} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \iint e^{\ii \qty( \bk_3 - \bk_1 - \bk ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 +\bk) \cdot \br_2} \dd{\br_1} \dd{\br_2} 
 			\\
 			& =  \frac{1}{\Omega} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \delta_{\bk_3-\bk_1-\bk,\bO} \delta_{\bk_4-\bk_2+\bk,\bO}
 			\\
@@ -353,6 +391,55 @@ decoration={snake,
 	\end{block}
 \end{frame}
 
+\begin{frame}{Plane waves: strengths and limitations}
+	\begin{center}
+		\fbox{
+		\textbf{Key idea:}
+		Assemblies of atoms are slight distortions of free electrons
+		}
+	\end{center}
+
+	\begin{columns}[T,onlytextwidth]
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Advantages}
+				\begin{itemize}
+					\item Orthonormal and independent of atomic positions
+					\item Naturally compatible with periodic boundary conditions
+					\item Systematic convergence through a single parameter
+					      $E_{\mathrm{cut}}$
+					\item Kinetic and Coulomb operators are diagonal in
+					      reciprocal space
+					\item Efficient evaluation using fast Fourier transforms
+					\item No basis-set superposition error or
+					      atom-centered Pulay forces
+				\end{itemize}
+			\end{block}
+		\end{column}
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Limitations}
+				\begin{itemize}
+					\item Large basis sets:
+					$$N_{\text{PW}} \propto \Omega E_{\text{cut}}^{3/2}$$
+					\item Core orbitals require prohibitively large cutoffs
+					      $\Rightarrow$ pseudopotentials
+					\item Computational cost increases with supercell size
+					\item Delocalized basis functions provide little
+					      real-space sparsity
+					\item Large virtual spaces make 
+					      post-Hartree--Fock methods expensive
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{Particularly effective for periodic valence-electron calculations}
+\end{frame}
+
+
 \begin{frame}{Computing the electron repulsion integrals (ERIs)}
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
@@ -360,11 +447,11 @@ decoration={snake,
 				\small
 				\begin{equation}
 					\begin{split} 
-						\braket{\ba_1\ba_2}{\bb_1\bb_2}	
-						& \equiv \mel{\ba_1\ba_2}{\alert{r_{12}^{-1}}}{\bb_1\bb_2}	
+						\braket{\ba\bb}{\bc\bd}	
+						& \equiv \mel{\ba\bb}{\alert{r_{12}^{-1}}}{\bc\bd}	
 						\\
-						& = \iint \phi_{\ba_1}^{\bA_1}(\br_1) \phi_{\ba_2}^{\bA_2}(\br_2) \,\alert{\frac{1}{r_{12}}}  \,
-						\phi_{\bb_1}^{\bB_1}(\br_1) \phi_{\bb_2}^{\bB_2}(\br_2) \dd{\br_1} \dd{\br_2}
+						& = \iint \phi_{\ba}^{\bA}(\br_1) \phi_{\bb}^{\bB}(\br_2) \,\alert{\frac{1}{r_{12}}}  \,
+						\phi_{\bc}^{\bC}(\br_1) \phi_{\bd}^{\bD}(\br_2) \dd{\br_1} \dd{\br_2}
 					\end{split}
 				\end{equation}
 				\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
@@ -387,9 +474,9 @@ decoration={snake,
 				\end{align*} 
 			\end{block}
 	\begin{itemize}
-		\item \textbf{\purple{Exponent:}} $\alpha$
-		\item \textbf{\purple{Center:}} $\bA = (A_x, A_y, A_z)$
-		\item \textbf{\purple{Angular momentum:}} $\ba = (a_x, a_y, a_z)$ and total angular momentum $a=a_x + a_y + a_z$
+		\item \textbf{\blue{Exponent:}} $\alpha$
+		\item \textbf{\blue{Center:}} $\bA = (A_x, A_y, A_z)$
+		\item \textbf{\blue{Angular momentum:}} $\ba = (a_x, a_y, a_z)$ and total angular momentum $a=a_x + a_y + a_z$
 	\end{itemize}
 	%
 \end{frame}
@@ -405,10 +492,10 @@ decoration={snake,
 					\item Contraction coefficient $\blue{D_k}$ and degree $K$
 				\end{itemize}
 				\begin{equation}
-					\underbrace{\braket{\ba_1\ba_2}{\bb_1\bb_2}}_{\text{\green{contracted ERI}}} 
+					\underbrace{\braket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}_{\text{\green{contracted ERI}}} 
 					= \sum_{k_1}^{K_1} \sum_{k_2}^{K_2} \sum_{k_3}^{K_3} \sum_{k_4}^{K_4} 
 					\blue{D_{k_1} D_{k_2} D_{k_3} D_{k_4}}
-					\underbrace{\sbraket{\ba_{1,k_1}\ba_{2,k_2}}{\bb_{1,k_3}\bb_{2,k_4}}}_{\text{\red{primitive ERI}}} 
+					\underbrace{\sbraket{\red{\ba}_{k_1}\blue{\bb}_{k_2}}{\orange{\bc}_{k_3}\green{\bd}_{k_4}}}_{\text{\red{primitive ERI}}} 
 				\end{equation}
 				\centering
 				\green{One} contracted ERI required \red{$K_1 \times K_2 \times K_3 \times K_4$} primitive ERIs!
@@ -443,35 +530,180 @@ decoration={snake,
 \begin{frame}{Properties of Gaussian functions}
 	\begin{block}{Gaussian product rule: \textit{``The product of two gaussians is a gaussian''}}
 		\begin{equation}
-			G_{\red{\alpha},\red{\bm{A}}}(\br) = \exp(-\red{\alpha} \abs{\br - \red{\bA}}^2)	
+			G_{\red{\alpha},\red{\bA}}(\br) = \exp(-\red{\alpha} \abs{\br - \red{\bA}}^2)	
 			\qqtext{and}
-			G_{\blue{\beta},\blue{\bm{B}}}(\br) = \exp(-\blue{\beta} \abs{\br - \blue{\bB}}^2)	
+			G_{\blue{\beta},\blue{\bB}}(\br) = \exp(-\blue{\beta} \abs{\br - \blue{\bB}}^2)	
 			\qqtext{then}
 		\end{equation}	
 		\begin{equation}
-		\boxed{G_{\red{\alpha},\red{\bm{A}}}(\br) G_{\blue{\beta},\blue{\bm{B}}}(\br) = \violet{K} \, G_{\violet{\zeta},\violet{\bm{P}}}(\br)}
+		\boxed{G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) = \violet{K} \, G_{\violet{\zeta},\violet{\bP}}(\br)}
 		\qqtext{with} 
 		\violet{\zeta} = \red{\alpha} + \blue{\beta} 
 		\qqtext{and} 
-		\violet{\bm{P}} = \frac{\red{\alpha \bA} + \blue{\beta \bB}}{\red{\alpha} + \blue{\beta} } 
+		\violet{\bP} = \frac{\red{\alpha \bA} + \blue{\beta \bB}}{\red{\alpha} + \blue{\beta} } 
 		\end{equation}		
 		\begin{equation}
-			\violet{K_{\zeta,\bm{P}}} = \exp( -\frac{\red{\alpha} \blue{\beta}}{\red{\alpha} + \blue{\beta} } \abs{\red{\bA} - \blue{\bB}}^2)
+			K_{\violet{\zeta},\violet{\bP}} = \exp( -\frac{\red{\alpha} \blue{\beta}}{\red{\alpha} + \blue{\beta} } \abs{\red{\bA} - \blue{\bB}}^2)
+			\qq{$\Rightarrow$}
+			\text{decay exponentially fast with $\abs{\red{\bA} - \blue{\bB}}$}
 		\end{equation}		
 	\end{block}
 	\begin{block}{Gaussian product rule for ERIs}
 		\begin{equation}
 			\begin{split}
-			(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}}) 
-			& = \iint  \dd{\br_1} \dd{\br_2} G_{\red{\alpha},\red{\bm{A}}}(\br_1) G_{\blue{\beta},\blue{\bm{B}}}(\br_1) \frac{1}{r_{12}} G_{\orange{\gamma},\orange{\bm{C}}}(\br_2) G_{\green{\delta},\green{\bm{D}}}(\br_2)
+			\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
+			& = \iint G_{\red{\alpha},\red{\bA}}(\br_1) G_{\blue{\beta},\blue{\bB}}(\br_1) \frac{1}{r_{12}} G_{\orange{\gamma},\orange{\bC}}(\br_2) G_{\green{\delta},\green{\bD}}(\br_2) \dd{\br_1} \dd{\br_2} 
 			\\
-			& = \violet{K_{\zeta,\bm{P}}} \violet{K_{\eta,\bm{Q}}} \iint \dd{\br_1} \dd{\br_2} G_{\violet{\zeta},\violet{\bm{P}}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bm{Q}}}(\br_2) 
+			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint G_{\violet{\zeta},\violet{\bP}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bQ}}(\br_2) \dd{\br_1} \dd{\br_2} 
 		\end{split}	
 		\end{equation}	
 		\alert{The number of ``significant'' ERIs in a large system is $\order{N^2}$!}
 	\end{block}
 \end{frame}
 %
+
+
+\begin{frame}{Gaussian basis sets: strengths and limitations}
+	\begin{center}
+		\fbox{
+		\textbf{Key idea:}
+		Molecules are assemblies of slightly distorted atoms
+		}
+	\end{center}
+	\begin{columns}[T,onlytextwidth]
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Advantages}
+				\begin{itemize}
+					\item Compact representation of molecular orbitals
+					\item Efficient analytic evaluation of multicenter
+					      integrals
+					\item Practical all-electron calculations, especially
+					      for light and medium elements
+					\item Locality enables integral screening and
+					      sparse algorithms
+					\item Well suited to Hartree--Fock and
+					      post-Hartree--Fock methods
+				\end{itemize}
+			\end{block}
+		\end{column}
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Limitations}
+				\begin{itemize}
+					\item Nonorthogonal basis:
+					      possible linear-dependence problems
+					\item Basis-set superposition error (BSSE)
+					\item Diffuse functions required for anions,
+					      Rydberg states, and long-range density tails
+					\item Individual Gaussians have neither the correct
+					      nuclear cusp nor exponential asymptotic decay
+					\item Atom-centered basis produces Pulay terms when
+					      nuclei move
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
+\end{frame}
+
+\begin{frame}{Fundamental integrals}
+	\begin{block}{Definition}
+    	\begin{equation}
+    		\begin{split} 
+    			\sbraket{\bs\bs}{\bs\bs}	
+    			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint G_{\violet{\zeta},\violet{\bP}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bQ}}(\br_2) \dd{\br_1} \dd{\br_2} 
+				\\
+    			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint e^{-\violet{\zeta} \abs{\br_1 - \violet{\bP}}^2} \frac{1}{r_{12}} e^{-\purple{\eta} \abs{\br_2 - \purple{\bQ}}^2} \dd{\br_1} \dd{\br_2} 
+    		\end{split}
+    	\end{equation}
+	\end{block}
+	\begin{block}{Laplace transform of the Coulomb operator}
+    	\begin{equation}
+			\frac{1}{r_{12}} 
+			= \frac{2}{\sqrt{\pi}} \int_0^\infty e^{- t^2 r_{12}^2} \dd{t}
+			= \frac{2}{\sqrt{\pi}} \int_0^\infty e^{- t^2 (x_1 - x_2)^2} e^{- t^2 (y_1 - y_2)^2} e^{- t^2 (z_1 - z_2)^2} \dd{t}
+    	\end{equation}
+	\end{block}
+	    	\begin{equation}
+    		\begin{split} 
+    			\sbraket{\bs\bs}{\bs\bs}	
+    			= \frac{2}{\sqrt{\pi}} K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \int_0^\infty \dd{t} 
+				& \qty( \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
+				e^{-\violet{\zeta} (x_1 - \violet{P}_x)^2} 
+				e^{- t^2 (x_1 - x_2)^2}
+				e^{-\purple{\eta} (x_2 - \purple{Q}_x)^2}
+				\dd{x_1} \dd{x_2} )
+				\\ \times 
+				& \qty( \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
+				e^{-\violet{\zeta} (y_1 - \violet{P}_y)^2} 
+				e^{- t^2 (y_1 - y_2)^2}
+				e^{-\purple{\eta} (y_2 - \purple{Q}_y)^2}
+				\dd{y_1} \dd{y_2} )				
+				\\ \times 
+				& \qty( \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
+				e^{-\violet{\zeta} (z_1 - \violet{P}_z)^2} 
+				e^{- t^2 (z_1 - z_2)^2}
+				e^{-\purple{\eta} (z_2 - \purple{Q}_z)^2}
+				\dd{z_1} \dd{z_2} )				
+    		\end{split}
+    	\end{equation}
+\end{frame}
+
+\begin{frame}{Fundamental integrals}
+			Defining $\vartheta = \violet{\zeta} \purple{\eta} /(\violet{\zeta} + \purple{\eta})$, we have
+	    	\begin{equation}
+    		\begin{split} 
+    			\sbraket{\bs\bs}{\bs\bs}	
+    			& = \frac{2}{\sqrt{\pi}} K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \int_0^\infty
+				\qty( \frac{\pi}{\sqrt{\violet{\zeta} \purple{\eta}}} \frac{e^{-\vartheta (\violet{P}_x - \purple{Q}_x)^2 \frac{t^2}{t^2+\vartheta}}}{\sqrt{1+ \frac{t^2}{\vartheta}}}  )
+				\qty( \frac{\pi}{\sqrt{\violet{\zeta} \purple{\eta}}} \frac{e^{-\vartheta (\violet{P}_y - \purple{Q}_y)^2 \frac{t^2}{t^2+\vartheta}}}{\sqrt{1+ \frac{t^2}{\vartheta}}}  )
+				\qty( \frac{\pi}{\sqrt{\violet{\zeta} \purple{\eta}}} \frac{e^{-\vartheta (\violet{P}_z - \purple{Q}_z)^2 \frac{t^2}{t^2+\vartheta}}}{\sqrt{1+ \frac{t^2}{\vartheta}}}  )  \dd{t} 
+    			\\
+				& = \frac{2\pi^{5/2}}{(\violet{\zeta} \purple{\eta})^{3/2}}  K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}}  \int_0^\infty 
+				\frac{e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 \frac{t^2}{t^2+\vartheta}} }{\qty(1+ \frac{t^2}{\vartheta})^{3/2}} \dd{t} 
+    		\end{split}
+    		\end{equation}
+			\begin{equation}
+				\boxed{t^2 = \vartheta \frac{u^2}{1- u^2}}
+				\qq{$\Rightarrow$}
+				\sbraket{\bs\bs}{\bs\bs} = \sqrt{\frac{4\vartheta}{\pi}} \qty(\frac{\pi}{\violet{\zeta}})^{3/2} K_{\violet{\zeta},\violet{\bP}} 
+				\qty(\frac{\pi}{\purple{\eta}})^{3/2} K_{\purple{\eta},\purple{\bQ}}  
+				\underbrace{\int_0^1 e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 u^2} \dd{u}}_{F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2) \text{ = Boys function}}
+			\end{equation}
+\end{frame}
+
+\begin{frame}{Boys function}
+	\begin{block}{Generalized Boys function}
+		\begin{equation}
+			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2)
+			\qquad
+			F_0(x) = \sqrt{\frac{\pi}{4x}} \erf(\sqrt{x})
+		\end{equation}
+	\end{block}
+	\begin{block}{Computation}
+		\begin{itemize}
+			\item $F_m(x)$ computed using pretabulated values on a grid and Taylor expansion (Chebyshev interpolation table)
+			\item higher $m$ values computed via downward recursion
+		\end{itemize}
+	\end{block}
+	\begin{block}{Downward recursion}
+		\begin{equation}
+			F_m(x) = \frac{2x F_{m+1} (x) + \exp(-x)}{2m+1}
+			\qquad
+			F_\infty(x) = 0
+		\end{equation}
+	\end{block}
+	\begin{block}{Asymptotic behavior}
+		\begin{equation}
+			F_m(x) \sim \frac{(2m-1)!!}{2^{m+1}} \sqrt{\frac{\pi}{x^{2m+1}}}
+			\qq{for large $x$}
+		\end{equation}
+	\end{block}
+\end{frame}
 
 \begin{frame}{Upper bounds for ERIs}
 	\begin{columns}
@@ -486,37 +718,37 @@ decoration={snake,
 		\end{column}
 		\begin{column}{0.6\textwidth}
     		\begin{equation}
-    			\boxed{\abs{(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})} \le B}
+    			\boxed{\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} \le B}
     		\end{equation}
     		\begin{itemize}
-    			\item $(\bm{\red{a}} \bm{\blue{b}}|$ = single bra and $(\red{a} \blue{b}|$ = shell-pair 
-    			\item $(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})$ = single integral and $(\red{a} \blue{b}|\orange{c} \green{d})$ = shell-quartet 
+    			\item $\rbra{ \red{\ba} \blue{\bb} }$ = single bra and $\rbra{ \red{a} \blue{b} }$ = entire shell pair 
+    			\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire shell quartet 
     		\end{itemize}
 		\end{column}
 	\end{columns}
 	\bigskip
 	\begin{block}{Cauchy-Schwartz bound}
 		\begin{equation}
-			\abs{(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})} 
+			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
 			\le 
-			\sqrt{(\bm{\red{a}} \bm{\blue{b}}|\bm{\red{a}} \bm{\blue{b}})} 
-			\sqrt{(\bm{\orange{c}} \bm{\green{d}}|\bm{\orange{c}} \bm{\green{d}})}
+			\sqrt{\rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} }} 
+			\sqrt{\rbraket{ \orange{\bc} \green{\bd} }{ \orange{\bc} \green{\bd} }}
 			\qqtext{or}
-			\abs{(\bm{\violet{P}}|\bm{\purple{Q}})} 
+			\abs{\rbraket{\violet{\bP}}{\purple{\bQ}}} 
 			\le 
-			\sqrt{(\bm{\violet{P}}|\bm{\violet{P}})} 
-			\sqrt{(\bm{\purple{Q}}|\bm{\purple{Q}})}
+			\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
+			\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
 		\end{equation}
 	\end{block}
 	\begin{block}{The family of generalized H\"older bounds}
 		\begin{equation}
-			\abs{(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})} 
+			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
 			\le 
-			\qty[ (\bm{\red{a}} \bm{\blue{b}}|\bm{\red{a}} \bm{\blue{b}}) ]^{1/\purple{m}} 
-			\qty[ (\bm{\orange{c}} \bm{\green{d}}|\bm{\orange{c}} \bm{\green{d}}) ]^{1/\violet{n}}
+			\qty[ \rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} } ]^{1/\purple{m}} 
+			\qty[ \rbraket{ \orange{\bc} \green{\bd} }{ \orange{\bc} \green{\bd} } ]^{1/\violet{n}}
 			\qqtext{with}
 			\frac{1}{\purple{m}} + \frac{1}{\violet{n}} = 1
-			\qqtext{and}
+			\qq{and}
 			\purple{m},\violet{n} > 1
 		\end{equation}
 	\end{block}
@@ -524,15 +756,15 @@ decoration={snake,
 
 \begin{frame}{Cauchy-Schwartz bound}
 	\begin{equation}
-		(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
-		= (\bm{\violet{P}}|\bm{\violet{Q}})
+		\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }}
+		= \abs{\rbraket{\violet{\bP}}{\purple{\bQ}}}
 		\le 
-		\sqrt{(\bm{\violet{P}}|\bm{\violet{P}})} 
-		\sqrt{(\bm{\purple{Q}}|\bm{\purple{Q}})}
+		\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
+		\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
 	\end{equation}
 	\begin{itemize}
-		\item $(\bm{\violet{P}}|\bm{\violet{Q}})$ should decay as $1/\abs{\violet{\bm{P}} - \violet{\bm{Q}}}$ or faster
-		\item However, there is no distance information in the product $(\bm{\violet{P}}|\bm{\violet{P}}) (\bm{\violet{Q}}|\bm{\violet{Q}})$
+		\item $\rbraket{\violet{\bP}}{\purple{\bQ}}$ should decay as $1/\abs{\violet{\bP} - \purple{\bQ}}$ or faster
+		\item However, there is no distance information in the product $\rbraket{\violet{\bP}}{\violet{\bP}} \rbraket{\purple{\bQ}}{\purple{\bQ}}$
 		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs.
 	\end{itemize}
 \end{frame}
@@ -573,7 +805,7 @@ decoration={snake,
 \begin{frame}{Asymptotic scaling of two-electron integrals}
 	\begin{block}{Number of significant two-electron integrals}
 		\begin{equation}
-			(\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}}) \equiv (\bm{\red{a}} \bm{\blue{b}}| \mathcal{O}_2 | \bm{\orange{c}} \bm{\green{d}})
+			\braket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} } \equiv \rmel{ \red{\ba} \blue{\bb} }{ \chO_2 }{ \orange{\bc} \green{\bd}}
 		\end{equation}
 	\end{block}
 	\bigskip
@@ -585,7 +817,7 @@ decoration={snake,
 		\begin{tabular}{lcrccrc}
 			\hline
 			\hline
-			Molecule			& 	$N$ 	& 	\mc{2}{c}{\red{$\hO = r_{12}^{-1}$}} 		&& 	\mc{2}{c}{\orange{$\hO = e^{-r_{12}^2}$}} 		 	\\
+			Molecule			& 	$N$ 	& 	\mc{2}{c}{\red{$\chO = r_{12}^{-1}$}} 		&& 	\mc{2}{c}{\orange{$\chO = e^{-r_{12}^2}$}} 		 	\\
 										\cline{3-4}								\cline{6-7}					
 							& 		& 	\mc{1}{c}{$N_\text{sig}$}	& $\alpha$ 	&& 	\mc{1}{c}{$N_\text{sig}$}	& $\alpha$ 	 \\
 			\hline
@@ -607,19 +839,19 @@ decoration={snake,
 \center
 \begin{tikzpicture}
 	\begin{scope}[very thick,
-		node distance=4cm,on grid,>=stealth',
+		node distance=6cm,on grid,>=stealth',
 		boxRR/.style={rectangle,draw,fill=green!40},
 		boxUB/.style={rectangle,draw,fill=orange!40},
 		boxFI/.style={rectangle,draw,fill=red!40},
 		integral/.style={rectangle,draw,fill=violet!40}],
-		\node [integral, align=center]		(1)					{\textbf{The cake:} \\ Two-electron integrals \\ $\braket{\ba_1 \ba_2}{ \bb_1 \bb_2}$};
-		\node [boxUB, align=center]		(2A)		[below=of 1]	{\textbf{Ingredient number 2:} \\ Recurrence relations \\ $\expval*{\ba_1^+} = \expval*{\ba_1} + \expval*{\ba_1^-}$};
-		\node [boxRR, align=center] 		(2B)		[right=of 2A]	{\textbf{Ingredient number 3:} \\ Upper bounds \\ $\abs{\braket{\ba_1 \ba_2}{ \bb_1 \bb_2}} \le B$};
-		\node [boxFI, align=center]		(2C)		[left=of 2A]	{\textbf{Ingredient number 1:} \\ Fundamental integrals \\ $\braket{\bO\bO}{\bO\bO}^{\bm{m}}$};
+		\node [integral, align=center]		(1)					{\textbf{The cake:} \\ Two-electron integrals \\ $\braket{\ba \bb}{ \bc\bd}$};
+		\node [boxUB, align=center, yshift=3cm]		(2A)		[below=of 1]	{\textbf{Ingredient number 2:} \\ Recurrence relations \\ $\braket{(\ba+\bI_i)\bO}{\bO\bO} = \braket{\ba\bO}{\bO\bO} + \braket{(\ba-\bI_i)\bO}{\bO\bO}$};
+		\node [boxRR, align=center, yshift=0cm] 		(2B)		[right=of 2A]	{\textbf{Ingredient number 3:} \\ Upper bounds \\ $\abs{\braket{\ba \bb}{ \bc \bd}} \le B$};
+		\node [boxFI, align=center, yshift=0cm]		(2C)		[left=of 2A]	{\textbf{Ingredient number 1:} \\ Fundamental integrals \\ $\braket{\bO\bO}{\bO\bO}^{\bm{m}}$};
 		\path 
 		(1) edge [<-]			(2A)
-		(1) edge [<-,bend right]			(2B)
-		(1) edge [<-,bend left]					(2C)
+		(1) edge [<-,bend left]			(2B)
+		(1) edge [<-,bend right]					(2C)
 		;
 	\end{scope}
 \end{tikzpicture}
@@ -644,11 +876,11 @@ decoration={snake,
 			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
 			\node [box0m, align=center]			(0m)			[right=of 1,xshift=1.25cm]		{$\sbraket{00}{00}^{\bm{m}}$};
 			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{\bm{m}}$};
-			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{0 a_2}{00}^{\bm{m}}$};
-			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\braket{0 a_2}{00}^{\bm{m}}$};
-			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a_1 a_2}{00}$};
-			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a_1 a_2}{00}$};
-			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\braket{a_1 a_2}{b_1 b_2}$};
+			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{0 b}{00}^{\bm{m}}$};
+			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\braket{0 b}{00}^{\bm{m}}$};
+			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a b}{00}$};
+			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a b}{00}$};
+			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\braket{a b}{c d}$};
 			\path 
 			(SP)		edge[->]			node[below,blue]{T$_0$}									(0m)
 			(0m)		edge[->]			node[left,orange]{T$_1$}			node [right,red]{VRR$_1$}	(A)
@@ -664,7 +896,7 @@ decoration={snake,
 	\end{tikzpicture}
 	\bigskip
 	\begin{itemize}
-		\item \red{HRR} = horizontal recurrence relation [Obara-Saika]
+		\item \red{HRR} = horizontal recurrence relation
 		\item \red{VRR} = vertical recurrence relation
 		\item \blue{CC} = bra contraction
 	\end{itemize}
@@ -674,7 +906,7 @@ decoration={snake,
 	\begin{equation}
 		\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} 
 		\equiv (\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
-		= (\bm{\violet{P}}|\bm{\violet{Q}})
+		= (\bm{\violet{P}}|\bm{\purple{Q}})
 	\end{equation}
 	\begin{block}{Shell-pair data}
 		\begin{equation}
@@ -689,7 +921,6 @@ decoration={snake,
 		\begin{equation}
 			G_m(T) = \qty( \frac{2}{\pi} )^{1/2} \int_0^1 t^{2m} \exp(-T t^2) \dd{t}
 		\end{equation}
-		it can be efficiently evaluated by Chebyshev interpolation.
 	\end{block}	
 \end{frame}
 
