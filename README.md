@@ -1,4 +1,4 @@
-# Electronic Structure Quantum Chemistry — ESQC 2026
+# Electronic Structure Quantum Chemistry — [ESQC 2026](https://www.esqc.org)
 
 <p align="center">
   <img src="fig/front.png" alt="Electronic-structure illustration used on the title slide" width="760">
