@@ -51,7 +51,7 @@ ESQC_2026/
 
 ## Author
 
-**Pierre-François Loos**<br>
+[**Pierre-François Loos**<br>](https://pfloos.github.io/WEB_LOOS)
 Laboratoire de Chimie et Physique Quantiques (UMR 5626)<br>
 Université de Toulouse, CNRS, UPS — Toulouse, France
 
