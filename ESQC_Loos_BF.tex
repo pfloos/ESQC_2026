@@ -440,45 +440,43 @@ decoration={snake,
 \end{frame}
 
 
-\begin{frame}{Computing the electron repulsion integrals (ERIs)}
+\begin{frame}{Gaussian-type orbitals}
 	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\begin{block}{Four-center two-electron integrals}
-				\small
-				\begin{equation}
-					\begin{split} 
-						\braket{\ba\bb}{\bc\bd}	
-						& \equiv \mel{\ba\bb}{\alert{r_{12}^{-1}}}{\bc\bd}	
-						\\
-						& = \iint \phi_{\ba}^{\bA}(\br_1) \phi_{\bb}^{\bB}(\br_2) \,\alert{\frac{1}{r_{12}}}  \,
-						\phi_{\bc}^{\bC}(\br_1) \phi_{\bd}^{\bD}(\br_2) \dd{\br_1} \dd{\br_2}
-					\end{split}
-				\end{equation}
-				\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
-			\end{block}
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\includegraphics[width=\textwidth]{fig/STO}
-		\end{column}
-	\end{columns}
-			%
+		\begin{column}{0.65\textwidth}
 			\begin{block}{Gaussian-type orbital (GTO)}
-				\small
-				\begin{align*} 
+				\begin{align} 
 					\text{\violet{Contracted} GTO} & = \ket{\ba}
 					\equiv \phi_{\ba}^{\bA}(\br)
 					=  \sum_k^K D_k \sket{\ba}_k
 					\\
 					\text{\blue{Primitive} GTO} & =  \sket{\ba}
 					=  (x-A_x)^{a_x} (y-A_y)^{a_y} (z-A_z)^{a_z} e^{-\alpha \abs{ \br -\bA }^2}
-				\end{align*} 
+				\end{align} 
+            	\begin{itemize}
+            		\item \textbf{\alert{Exponent:}} $\alpha$ \qquad ($\alpha \gg 1$ tight and $\alpha \ll 1$ diffuse)
+            		\item \textbf{\alert{Center:}} $\bA = (A_x, A_y, A_z)$
+            		\item \textbf{\alert{Angular momentum:}} $\ba = (a_x, a_y, a_z)$
+            		\item \textbf{\alert{Total angular momentum:}} $a=a_x + a_y + a_z$
+            	\end{itemize}
 			\end{block}
-	\begin{itemize}
-		\item \textbf{\blue{Exponent:}} $\alpha$
-		\item \textbf{\blue{Center:}} $\bA = (A_x, A_y, A_z)$
-		\item \textbf{\blue{Angular momentum:}} $\ba = (a_x, a_y, a_z)$ and total angular momentum $a=a_x + a_y + a_z$
-	\end{itemize}
-	%
+		\end{column}
+%			\begin{block}{Four-center two-electron integrals}
+%				\small
+%				\begin{equation}
+%					\begin{split} 
+%						\braket{\ba\bb}{\bc\bd}	
+%						& \equiv \mel{\ba\bb}{\alert{r_{12}^{-1}}}{\bc\bd}	
+%						\\
+%						& = \iint \phi_{\ba}^{\bA}(\br_1) \phi_{\bb}^{\bB}(\br_2) \,\alert{\frac{1}{r_{12}}}  \,
+%						\phi_{\bc}^{\bC}(\br_1) \phi_{\bd}^{\bD}(\br_2) \dd{\br_1} \dd{\br_2}
+%					\end{split}
+%				\end{equation}
+%				\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
+%			\end{block}
+		\begin{column}{0.35\textwidth}
+			\includegraphics[width=\textwidth]{fig/STO}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{The contraction problem}
@@ -536,7 +534,7 @@ decoration={snake,
 			\qqtext{then}
 		\end{equation}	
 		\begin{equation}
-		\boxed{G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) = \violet{K} \, G_{\violet{\zeta},\violet{\bP}}(\br)}
+		\boxed{G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) = K_{\violet{\zeta},\violet{\bP}} G_{\violet{\zeta},\violet{\bP}}(\br)}
 		\qqtext{with} 
 		\violet{\zeta} = \red{\alpha} + \blue{\beta} 
 		\qqtext{and} 
@@ -548,7 +546,30 @@ decoration={snake,
 			\text{decay exponentially fast with $\abs{\red{\bA} - \blue{\bB}}$}
 		\end{equation}		
 	\end{block}
+	\begin{block}{Overalp}
+		\begin{equation}
+			\begin{split}
+			\rbraket{\red{\ba}}{ \blue{\bb} }
+			& = \iint G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) \dd{\br}
+			= K_{\violet{\zeta},\violet{\bP}} \int G_{\violet{\zeta},\violet{\bP}}(\br) \dd{\br}
+			\\
+			& = K_{\violet{\zeta},\violet{\bP}} 
+			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} x^2} \dd{x} 
+			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} y^2} \dd{y} 
+			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} z^2} \dd{z} 
+			\\
+			& = K_{\violet{\zeta},\violet{\bP}} 
+			\qty( \frac{\pi}{\violet{\zeta}})^{3/2}
+			\qq{$\Rightarrow$}
+			\text{\alert{cartesian factorization!}}
+		\end{split}	
+		\end{equation}	
+	\end{block}
+\end{frame}
+
+\begin{frame}{Four-center electron repulsion integrals}
 	\begin{block}{Gaussian product rule for ERIs}
+		\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
 		\begin{equation}
 			\begin{split}
 			\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
