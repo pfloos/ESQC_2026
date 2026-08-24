@@ -565,19 +565,203 @@ decoration={snake,
 		\item Basis set choice is tricky
 		\item It depends on the type of calculations you want to perform (HF, correlated, DFT, etc)
 		\item Correlated methods require polarization functions 
+		\item polarization functions are meant to polarize the density in specific directions
 		\item Anions and excited states may require diffuse functions (also for non-covalent interactions)
+		\item diffuse functions are meant to go far away from the nuclei to model weakly bound electrons
 		\item Core regions require tight functions
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{https://www.basissetexchange.org}
+	\center
+	\includegraphics[width=0.8\textwidth]{fig/BSE}
+\end{frame}
+
 \begin{frame}{STO-$n$G}
 	\begin{itemize}
-		\item Minimal basis (single-$\zeta$)
+		\item Minimal basis set (single-$\zeta$)
+		\item a single contracted GTO per occupied orbital
+		\item Each contracted GTO is made of $n$ primitive GTOs
 		\item It represents a STO by a linear combination of GTOs
-		
-		
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Pople basis set}
+	\begin{equation}
+		\boxed{
+			\text{\red{6}-\orange{31}\violet{+}G}^{\green{*}}
+		}
+	\end{equation}
+	\begin{itemize}
+		\item{\makebox[1cm]{\red{6}\hfill}} 6 primitive GTOs for each core orbital
+		\item{\makebox[1cm]{\orange{31}\hfill}} two sets of contracted GTOs (double-$\zeta$) for each valence orbital with contraction degrees of 3 and 1
+		\item{\makebox[1cm]{\violet{+}\hfill}} one set of diffuse functions on non-H atoms
+		\item{\makebox[1cm]{\green{*}\hfill}} one set of polarization functions on non-H atoms [\green{*} $\equiv$ \green{(d)}]
+	\end{itemize}
+	\begin{equation}
+		\boxed{
+			\text{\red{6}-\orange{311}\violet{++}G}^{\green{**}}
+		}
+	\end{equation}
+	\begin{itemize}
+		\item{\makebox[1cm]{\orange{311}\hfill}} three sets of contracted GTOs with different exponents (triple-$\zeta$)
+		\item{\makebox[1cm]{\violet{++}\hfill}} same as \violet{+} but with diffuse functions on H atoms
+		\item{\makebox[1cm]{\green{**}\hfill}} same as \green{*} but with polarization functions on H atoms
+	\end{itemize}
+	\begin{equation}
+		\boxed{
+			\text{\red{6}-\orange{311}G}\green{(2df,2pd)}
+		}
+	\end{equation}
+	\begin{itemize}
+		\item{\makebox[1cm]{\green{2df}\hfill}} two sets of d's and one set of f's for non-H atoms
+		\item{\makebox[1cm]{\green{2pd}\hfill}} two sets of p's and one set of d's for the H atoms
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dunning basis set}
+	\begin{itemize}
+		\item are particularly useful in electron-correlation calculations.
+		\item valence correlation consistent: cc-pVXZ (X = D, T, Q, 5, etc.)
+		\item additional diffuse functions: aug-cc-pVXZ, d-aug-cc-pVXZ, t-aug-cc-pVXZ
+		\item core and valence correlation consistent: cc-pCVXZ or cc-pwCVXZ (X = D, T, Q, 5, etc.)
+		\item correlation consistent: Polarisation functions are added in groups that contribute almost
+equally to the correlation energy.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Correlation consistent basis for 2nd-row atoms}
+\small
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+        	\begin{block}{cc-pVDZ: \small 3s2p1d}
+        		\begin{tabular}{ccc}
+        			\green{s} & \green{s} & \green{s} \\
+        			\green{p} & \green{p} \\
+        			\green{d} \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{cc-pVTZ: \small 4s3p2d1f}
+        		\begin{tabular}{cccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} \\
+        			\green{p} & \green{p} & \blue{p} \\
+        			\green{d} & \blue{d} \\
+        			\blue{f}  \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{cc-pVQZ: \small 5s4p3d2f1g}
+        		\begin{tabular}{ccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \violet{s} \\
+        			\green{p} & \green{p} & \blue{p} & \violet{p} \\
+        			\green{d} & \blue{d} & \violet{d} \\
+        			\blue{f} & \violet{f} \\
+        			\violet{g} \\
+        		\end{tabular}
+        	\end{block}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+        	\begin{block}{\red{aug}-cc-pVDZ: \small 4s3p2d}
+        		\begin{tabular}{cccc}
+        			\green{s} & \green{s} & \green{s} & \red{s} \\
+        			\green{p} & \green{p} & \red{p} \\
+        			\green{d} & \red{d} \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{\red{aug}-cc-pVTZ: \small 5s4p3d2f}
+        		\begin{tabular}{ccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \red{s} \\
+        			\green{p} & \green{p} & \blue{p} & \red{p} \\
+        			\green{d} & \blue{d} & \red{d} \\
+        			\blue{f} & \red{f}  \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{\red{aug}-cc-pVQZ: \small 6s5p4d3f2g}
+        		\begin{tabular}{cccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \violet{s} & \red{s} \\
+        			\green{p} & \green{p} & \blue{p} & \violet{p} & \red{p} \\
+        			\green{d} & \blue{d} & \violet{d} & \red{d} \\
+        			\blue{f} & \violet{f} & \red{f} \\
+        			\violet{g} & \red{g} \\
+        		\end{tabular}
+        	\end{block}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+        	\begin{block}{\purple{d}-\red{aug}-cc-pVDZ: \small 5s4p3d}
+        		\begin{tabular}{ccccc}
+        			\green{s} & \green{s} & \green{s} & \red{s} & \purple{s} \\
+        			\green{p} & \green{p} & \red{p} & \purple{p} \\
+        			\green{d} & \red{d} & \purple{d} \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{\purple{d}-\red{aug}-cc-pVTZ: \small 6s5p4d3f}
+        		\begin{tabular}{cccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \red{s} & \purple{s} \\
+        			\green{p} & \green{p} & \blue{p} & \red{p} & \purple{p} \\
+        			\green{d} & \blue{d} & \red{d} & \purple{d} \\
+        			\blue{f} & \red{f} & \purple{f}  \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{\purple{d}-\red{aug}-cc-pVQZ: \small 7s6p5d4f3g}
+        		\begin{tabular}{ccccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \violet{s} & \red{s} & \purple{s} \\
+        			\green{p} & \green{p} & \blue{p} & \violet{p} & \red{p} & \purple{p} \\
+        			\green{d} & \blue{d} & \violet{d} & \red{d} & \purple{d} \\
+        			\blue{f} & \violet{f} & \red{f} & \purple{f} \\
+        			\violet{g} & \red{g} & \purple{g} \\
+        		\end{tabular}
+        	\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Jensen basis sets: polarization consistent}
+\small
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+        	\begin{block}{pc-0: \small 3s2p}
+        		\begin{tabular}{ccc}
+        			\green{s} & \green{s} & \green{s} \\
+        			\green{p} & \green{p} \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{pc-1: \small 3s2p1d}
+        		\begin{tabular}{ccc}
+        			\green{s} & \green{s} & \green{s} \\
+        			\green{p} & \green{p} \\
+        			\green{d} 
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{pc-2: \small 4s3p2d1f}
+        		\begin{tabular}{cccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} \\
+        			\green{p} & \green{p} & \blue{p} \\
+        			\green{d} & \blue{d} \\
+        			\blue{f} \\
+        		\end{tabular}
+        	\end{block}
+        	\begin{block}{pc-3: \small 6s5p4d2f1g}
+        		\begin{tabular}{cccccc}
+        			\green{s} & \green{s} & \green{s} & \blue{s} & \violet{s} & \violet{s} \\
+        			\green{p} & \green{p} & \blue{p} & \violet{p} & \violet{p} \\
+        			\green{d} & \blue{d} & \violet{d} & \violet{d} \\
+        			\blue{f} & \violet{f} \\
+        			\violet{g} \\
+        		\end{tabular}
+        	\end{block}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Higher angular momentum functions are included based on energetic importance in HF calculations
+				\item  results converge monotonically to the HF limit
+				\begin{equation}
+					E_L = E_\infty + A(L+1) \exp(-B \sqrt{L})
+				\end{equation}
+				\item can be augmented with diffuse functions (aug-pc-n).
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 %%% SLIDE X %%%
 \begin{frame}{Properties of Gaussian functions}

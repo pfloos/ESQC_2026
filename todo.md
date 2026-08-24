@@ -12,3 +12,4 @@
 - drawbacks of PWs: pseudo, many virtuals, etc.
 - examples of RRs (HRRs, VRRs, OS, etc)
 - Computation of generalized Boys function
+- pc and def2 families
