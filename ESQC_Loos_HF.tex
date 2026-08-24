@@ -19,7 +19,7 @@
 \definecolor{hfRed}{HTML}{B23A48}
 \definecolor{hfOrange}{HTML}{D96C22}
 \definecolor{hfGreen}{HTML}{2F7D4A}
-\definecolor{hfPurple}{HTML}{6F4A8E}
+\definecolor{hfPurple}{HTML}{9A7300}
 \definecolor{hfViolet}{HTML}{775DA6}
 \definecolor{hfInk}{HTML}{202A33}
 \definecolor{hfPale}{HTML}{EDF2F6}
@@ -133,6 +133,19 @@
 \newcommand{\blue}[1]{\textcolor{hfBlue}{#1}}
 \newcommand{\violet}[1]{\textcolor{hfViolet}{#1}}
 \newcommand{\pub}[1]{{\small\textcolor{hfPurple}{#1}}}
+
+% brakets
+\newcommand{\sbra}[1]{[ #1 |}
+\newcommand{\sket}[1]{| #1 ]}
+\newcommand{\sexpval}[1]{[ #1 ]}
+\newcommand{\sbraket}[2]{[ #1 | #2 ]}
+\newcommand{\smel}[3]{[ #1 | #2 | #3 ]}
+
+\newcommand{\rbra}[1]{( #1 |}
+\newcommand{\rket}[1]{| #1 )}
+\newcommand{\rexpval}[1]{( #1 )}
+\newcommand{\rbraket}[2]{( #1 | #2 )}
+\newcommand{\rmel}[3]{( #1 | #2 | #3 )}
 
 % shortcuts
 \newcommand{\si}{\sigma}
@@ -261,9 +274,9 @@
 			\begin{block}{In atomic units ($m = e = \hbar = 1$)}
 				\begin{subequations}
 				\begin{align}
-					& \green{\chT_\text{n}} = - \sum_{A=1}^{M} \frac{\nabla_A^2}{2 M_A} 
+					& \green{\chT_\text{n}} = - \sum_{A=1}^{M} \frac{\laplacian_A}{2 M_A} 
 					 \\	
-					&  \blue{\chT_\text{e}} =  - \sum_{i=1}^{N} \frac{\nabla_i^2}{2} 
+					&  \blue{\chT_\text{e}} =  - \sum_{i=1}^{N} \frac{\laplacian_i}{2} 
 					\\
 					&  \orange{\chV_\text{ne}} = - \sum_{A=1}^{M} \sum_{i=1}^N \frac{Z_A}{r_{iA}} 
 					 \\
@@ -276,7 +289,7 @@
 		\end{column}
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
-				\item $\nabla^2$ is the \green{Laplace operator} (or Laplacian)
+				\item $\laplacian$ is the \green{Laplace operator} (or Laplacian)
 				\bigskip
 				\item $M_A$ is the \orange{mass} of nucleus $A$
 				\bigskip
@@ -363,9 +376,9 @@
 		$\qquad$ 
 		$\ket{\blue{\beta}}= \ket{\frac{1}{2},-\frac{1}{2}}$ = \blue{spin-down} electron\\
 		\begin{align}
-			\int \dd{\omega} \red{\alpha}^*(\omega) \blue{\beta}(\omega) & = \int \dd{\omega} \blue{\beta}^*(\omega) \red{\alpha}(\omega) & = 0 	
+			\int \red{\alpha}^*(\omega) \blue{\beta}(\omega) \dd{\omega} & = \int \blue{\beta}^*(\omega) \red{\alpha}(\omega) \dd{\omega} & = 0 	
 			& & 
-			\int \dd{\omega} \red{\alpha}^*(\omega) \red{\alpha}(\omega) & = \int \dd{\omega} \blue{\beta}^*(\omega) \blue{\beta}(\omega) & = 1 	
+			\int \red{\alpha}^*(\omega) \red{\alpha}(\omega) \dd{\omega} & = \int \blue{\beta}^*(\omega) \blue{\beta}(\omega) \dd{\omega} & = 1 	
 			\\
 			\braket{\red{\alpha}}{\blue{\beta}} & = \braket{\blue{\beta}}{\red{\alpha}} & = 0	
 			& &  	
@@ -482,7 +495,7 @@
 %	These are \alert{restricted spin orbitals} $\Rightarrow$ \violet{Restricted Hartree-Fock = \textbf{RHF}}
 	\begin{block}{The spin orbitals are orthogonal}
 		\begin{equation*}
-			\braket{ \chi_p }{ \chi_q } = \int \dd{\bx} \chi_p^*(\bx) \chi_q(\bx) = \delta_{pq} 
+			\braket{ \chi_p }{ \chi_q } = \int \chi_p^*(\bx) \chi_q(\bx) \dd{\bx} = \delta_{pq} 
 			=
 			\begin{cases}
 				1	&	\text{if $p=q$}		\\
@@ -492,13 +505,13 @@
 	\end{block}
 	\begin{block}{The spatial orbitals are orthogonal}
 		\begin{equation*}
-			\braket{ \psi_p }{ \psi_q }  = \int \dd{\br} \psi_p^*(\br) \psi_q(\br) = \delta_{pq} 
+			\braket{ \psi_p }{ \psi_q }  = \int \psi_p^*(\br) \psi_q(\br) \dd{\br} = \delta_{pq} 
 %			\text{ \green{ = Kronecker delta}}
 		\end{equation*}
 	\end{block}
 	\begin{block}{The basis functions \alert{are, a priori, not} orthogonal}
 		\begin{equation*}
-			\braket{ \phi_\mu }{ \phi_\nu } = \int \dd{\br} \phi_\mu^*(\br) \phi_\nu(\br) = S_{\mu \nu} 
+			\braket{ \phi_\mu }{ \phi_\nu } = \int \phi_\mu^*(\br) \phi_\nu(\br) \dd{\br} = S_{\mu \nu} 
 			\text{ \green{ = Overlap matrix}}	
 		\end{equation*}
 	\end{block}
@@ -621,7 +634,7 @@
 		\begin{equation}
 			\chO_1 = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} = \sum_{i=1}^N \hh(\bx_i)	
 			\qq{where}	
-			\hh(\bx_i) = -\frac{\nabla_i^2}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
+			\hh(\bx_i) = -\frac{\laplacian_i}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
 		\end{equation}
 	\end{block}
 	\begin{block}{Two-electron Hamiltonian (electron-electron repulsion)}
@@ -675,7 +688,7 @@
 				 \chJ_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\green{j}}(\red{\bx_2})  }  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 \\
-				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
+				 & = \qty[ \int \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) \dd{\red{\bx_2}} ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 			\end{split}
 			\end{equation}
 	\end{block}
@@ -687,7 +700,7 @@
 				 \\
 				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2})} 
 				 \\
-				 & = \int \dd{\blue{\bx_1}} \int \dd{\red{\bx_2}} \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) 
+				 & = \iint \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) \dd{\blue{\bx_1}} \dd{\red{\bx_2}} 
 			\end{split}
 			\end{equation}
 	\end{block}
@@ -699,7 +712,7 @@
 				\chK_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\purple{i}}(\red{\bx_2})  }  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
 				 \\
-				 & = \qty[ \int \dd{\red{\bx_2}} \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
+				 & = \qty[ \int \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) \dd{\red{\bx_2}} ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
 			\end{split}
 			\end{equation}
 	\end{block}
@@ -711,7 +724,7 @@
 				 \\
 				 & = \mel{ \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) }{r_{\blue{1}\red{2}}^{-1}}{ \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})} 
 				 \\
-				 & = \int \dd{\blue{\bx_1}} \int \dd{\red{\bx_2}} \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2})
+				 & = \iint \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2}) \dd{\blue{\bx_1}} \dd{\red{\bx_2}} 
 			\end{split}
 			\end{equation}
 	\end{block}
@@ -723,35 +736,27 @@
 \begin{frame}{Integral notations}
 	\begin{block}{Spin orbitals}
 		\begin{equation}
-%			[i|h|j] = 
-			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \dd{\bx_1} \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1)
+			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1) \dd{\bx_1} 
 		\end{equation}
 		\begin{equation}
 			\braket{ij}{kl} 
 			= \braket{\chi_i \chi_j}{\chi_k \chi_l}
-			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2)
-%			= [ik|jl] 
+			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation}
-%		\begin{equation}
-%			[ij|kl] 
-%			= [\chi_i \chi_j|\chi_k \chi_l]
-%			= \iint \chi_i^*(\bx_1) \chi_j(\bx_1) \frac{1}{r_{12}} \chi_k^*(\bx_2) \chi_l(\bx_2) d\bx_1 d\bx_2
-%			= \braket{ik}{jl} 
-%		\end{equation}
 		\begin{equation}
 			\mel{ij}{}{kl} 
 			= \braket{ij}{kl} - \braket{ij}{lk} 
-			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \underbrace{\chP_{12}}_{\text{permute 1 \& 2}}) \chi_k(\bx_1) \chi_l(\bx_2)
+			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \underbrace{\chP_{12}}_{\text{permute 1 \& 2}}) \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation}
 	\end{block}
 	\begin{block}{Spatial orbitals}
 		\begin{equation}
-			(i|\hh|j) = h_{ij} = (\psi_i|\hh|\psi_j) = \int \dd{\br_1} \psi_i^*(\br_1) \hh(\br_1) \psi_j(\br_1) 
+			\rmel{i}{\hh}{j} = h_{ij} = \rmel{\psi_i}{\hh}{\psi_j} = \int \psi_i^*(\br_1) \hh(\br_1) \psi_j(\br_1) \dd{\br_1} 
 		\end{equation}
 		\begin{equation}
-			(ij|kl) 
-			= (\psi_i \psi_j|\psi_k \psi_l)
-			= \int \dd{\br_1} \int \dd{\br_2} \psi_i^*(\br_1) \psi_j(\br_1) \frac{1}{r_{12}} \psi_k^*(\br_2) \psi_l(\br_2) 
+			\rbraket{ij}{kl} 
+			= \rbraket{\psi_i \psi_j}{\psi_k \psi_l}
+			= \iint \psi_i^*(\br_1) \psi_j(\br_1) \frac{1}{r_{12}} \psi_k^*(\br_2) \psi_l(\br_2) \dd{\br_1} \dd{\br_2} 
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -761,7 +766,7 @@
 		\begin{equation}
 			\braket{ij}{kl} 
 			= \braket{\chi_i \chi_j}{\chi_k \chi_l} 
-			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2)
+			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation}
 		\begin{equation}
 			\qq*{\red{Complex-valued integrals:}} 
@@ -770,13 +775,13 @@
 	\end{block}
 	\begin{block}{Permutation symmetry in chemists' notation}
 		\begin{equation}
-			(ij|kl)
-			= (\chi_i \chi_j|\chi_k \chi_l)
-			= \int \dd{\bx_1} \int \dd{\bx_2} \chi_i^*(\bx_1) \chi_j(\bx_1) \frac{1}{r_{12}} \chi_k^*(\bx_2) \chi_l(\bx_2)
+			\rbraket{ij}{kl}
+			= \rbraket{\chi_i \chi_j}{\chi_k \chi_l}
+			= \iint \chi_i^*(\bx_1) \chi_j(\bx_1) \frac{1}{r_{12}} \chi_k^*(\bx_2) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation}
 		\begin{equation}
 			\qq*{\green{Real-valued integrals:}} 
-			(ij|kl) = (ji|kl) = (ij|lk) = (ji|lk) = (kl|ij) = (lk|ij) = (kl|ji) = (lk|ji)
+			\rbraket{ij}{kl} = \rbraket{ji}{kl} = \rbraket{ij}{lk} = \rbraket{ji}{lk} = \rbraket{kl}{ij} = \rbraket{lk}{ij} = \rbraket{kl}{ji} = \rbraket{lk}{ji}
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -885,16 +890,16 @@
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			& \langle \Psi_\text{HF} | \hh(1) + \hh(2) | \Psi_\text{HF} \rangle 
+			& \mel{ \Psi_\text{HF} }{ \hh(1) + \hh(2) }{ \Psi_\text{HF} } 
 			\\
-			& \qquad = \frac{1}{2} \langle \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) \rangle
+			& \qquad = \frac{1}{2} \mel{ \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) }{ \hh(1) + \hh(2) }{ \chi_1(1) \chi_2(2) -  \chi_1(2) \chi_2(1) }
 			\\
 			&  \qquad = \frac{1}{2} \Big[ 
-			\langle \chi_1(1) \chi_2(2)  | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2)  \rangle
-			- \langle \chi_1(1) \chi_2(2)  | \hh(1) + \hh(2) |  \chi_2(1) \chi_1(2) \rangle
+			\mel{ \chi_1(1) \chi_2(2) }{ \hh(1) + \hh(2) }{ \chi_1(1) \chi_2(2) }
+			- \mel{ \chi_1(1) \chi_2(2) }{ \hh(1) + \hh(2) }{ \chi_2(1) \chi_1(2) }
 			\\
-			&  \qquad - \langle  \chi_2(1) \chi_1(2) | \hh(1) + \hh(2) | \chi_1(1) \chi_2(2)  \rangle
-			+ \langle  \chi_2(1) \chi_1(2) | \hh(1) + \hh(2) |  \chi_2(1) \chi_1(2) \rangle
+			&  \qquad - \mel{  \chi_2(1) \chi_1(2) }{ \hh(1) + \hh(2) }{ \chi_1(1) \chi_2(2)  }
+			+ \mel{  \chi_2(1) \chi_1(2) }{ \hh(1) + \hh(2) }{  \chi_2(1) \chi_1(2) }
 			\Big]
 			\\
 			&  \qquad =  \frac{1}{2} \Big[ h_{11} + h_{22} - 0 - 0 + h_{22} + h_{11} \Big] = h_{11} + h_{22}
@@ -915,21 +920,21 @@
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			\langle \Psi_\text{HF} | r_{12}^{-1} | \Psi_\text{HF} \rangle 
-			&  = \frac{1}{2} \langle \chi_1 \chi_2 -  \chi_2 \chi_1 | r_{12}^{-1} | \chi_1 \chi_2 -  \chi_2 \chi_1 \rangle
+			\mel{ \Psi_\text{HF} }{ r_{12}^{-1} }{ \Psi_\text{HF} } 
+			&  = \frac{1}{2} \mel{ \chi_1 \chi_2 -  \chi_2 \chi_1 }{ r_{12}^{-1} }{ \chi_1 \chi_2 -  \chi_2 \chi_1 }
 			\\
 			&   = \frac{1}{2} \Big[ 
-			\langle \chi_1 \chi_2  | r_{12}^{-1} | \chi_1 \chi_2  \rangle
-			- \langle \chi_1 \chi_2  | r_{12}^{-1} |  \chi_2 \chi_1 \rangle
+			\mel{ \chi_1 \chi_2 }{ r_{12}^{-1} }{ \chi_1 \chi_2 }
+			- \mel{ \chi_1 \chi_2 }{ r_{12}^{-1} }{  \chi_2 \chi_1 }
 			\\
-			&   - \langle  \chi_2 \chi_1 | r_{12}^{-1} | \chi_1 \chi_2  \rangle
-			+ \langle  \chi_2 \chi_1 | r_{12}^{-1} |  \chi_2 \chi_1 \rangle
+			&   - \mel{  \chi_2 \chi_1 }{ r_{12}^{-1} }{ \chi_1 \chi_2  }
+			+ \mel{  \chi_2 \chi_1 }{ r_{12}^{-1} }{  \chi_2 \chi_1 }
 			\Big]
 			\\
 			&   =  \frac{1}{2} \Big[ \cJ_{12} - \cK_{12} - \cK_{12} + \cJ_{12} \Big] = \cJ_{12} - \cK_{12}
 		\end{split}
 		\end{equation*}
-		\alert{Remember that $\langle  \chi_2 \chi_1 | r_{12}^{-1} |  \chi_2 \chi_1 \rangle = \langle  \chi_1 \chi_2 | r_{12}^{-1} |  \chi_1 \chi_2 \rangle$}
+		\alert{Remember that $\mel{  \chi_2 \chi_1 }{ r_{12}^{-1} }{  \chi_2 \chi_1 } = \mel{  \chi_1 \chi_2 }{ r_{12}^{-1} }{  \chi_1 \chi_2 }$}
 		\begin{equation*}
 			\boxed{E_\text{HF} = h_{11} + h_{22} + \cJ_{12} - \cK_{12}}
 		\end{equation*}
@@ -1025,12 +1030,12 @@
 				\end{align*}
 				\begin{equation*}		
 					\EHF 
-					= (\psi_1 | \hh | \psi_1) + (\Bar{\psi}_1 | \hh | \Bar{\psi}_1) 
-					+ (\psi_1 \psi_1 | \Bar{\psi}_1 \Bar{\psi}_1) - (\psi_1 \Bar{\psi_1} | \Bar{\psi}_1 \psi_1) 
+					= \rmel{\psi_1 }{ \hh }{ \psi_1 } + \rmel{\Bar{\psi}_1 }{ \hh }{ \Bar{\psi}_1 } 
+					+ \rbraket{ \psi_1 \psi_1 }{ \Bar{\psi}_1 \Bar{\psi}_1 } - \rbraket{ \psi_1 \Bar{\psi_1} }{ \Bar{\psi}_1 \psi_1 } 
 				\end{equation*}
 				Therefore, in the spatial orbital basis, we have
 				\begin{equation*}		
-					\EHF = 2(\psi_1|\hh|\psi_1) + (\psi_1 \psi_1|\psi_1 \psi_1) = 2(1|\hh|1) + (11|11)
+					\EHF = 2\rmel{\psi_1}{\hh}{\psi_1} + \rbraket{\psi_1 \psi_1}{\psi_1 \psi_1} = 2\rmel{1}{\hh}{1} + \rbraket{11}{11}
 				\end{equation*}
 			\end{block}
 		\end{column}
@@ -1047,24 +1052,24 @@
 	\begin{block}{One-electron terms}
 		\begin{equation*}
 		\begin{split}
-			(\chi_1|\hh|\chi_1)
-			& = \int \dd{\bx} \chi_1^*(\bx) \hh(\br) \chi_1(\bx)
+			\rmel{\chi_1}{\hh}{\chi_1}
+			& = \int \chi_1^*(\bx) \hh(\br) \chi_1(\bx) \dd{\bx} 
 			\\
-			& = \int \dd{\omega} \int \dd{\br} \alpha^*(\omega) \psi_1^*(\br) \hh(\br) \alpha(\omega) \psi_1(\br)
+			& = \iint \alpha^*(\omega) \psi_1^*(\br) \hh(\br) \alpha(\omega) \psi_1(\br) \dd{\omega} \dd{\br} 
 			\\
-			& = \underbrace{\qty[ \int \dd{\omega} \alpha^*(\omega) \alpha(\omega)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) \hh(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
+			& = \underbrace{\qty[ \int \alpha^*(\omega) \alpha(\omega) \dd{\omega} ]}_{=1} 
+			\underbrace{\qty[ \int \psi_1^*(\br) \hh(\br) \psi_1(\br) \dd{\br}]}_{\rmel{\psi_1}{\hh}{\psi_1}  }
 		\end{split}
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			(\chi_2|\hh|\chi_2) 
-			& = \int \dd{\bx} \chi_2^*(\bx) \hh(\br) \chi_2(\bx) 
+			\rmel{\chi_2}{\hh}{\chi_2} 
+			& = \int \chi_2^*(\bx) \hh(\br) \chi_2(\bx) \dd{\bx} 
 			\\
-			& = \int \dd{\omega} \int \dd{\br} \beta^*(\omega) \psi_1^*(\br) \hh(\br) \beta(\omega) \psi_1(\br) 
+			& = \iint \beta^*(\omega) \psi_1^*(\br) \hh(\br) \beta(\omega) \psi_1(\br) \dd{\omega} \dd{\br} 
 			\\
-			& = \underbrace{\qty[ \int \dd{\omega} \beta^*(\omega) \beta(\omega)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\br} \psi_1^*(\br) \hh(\br) \psi_1(\br) ]}_{(\psi_1|h|\psi_1)}
+			& = \underbrace{\qty[ \int \beta^*(\omega) \beta(\omega) \dd{\omega} ]}_{=1} 
+			\underbrace{\qty[ \int \psi_1^*(\br) \hh(\br) \psi_1(\br)  \dd{\br} ]}_{\rmel{\psi_1}{\hh}{\psi_1} }
 		\end{split}
 		\end{equation*}
 	\end{block}
@@ -1075,26 +1080,26 @@
 	\small
 		\begin{equation*}
 		\begin{split}
-			(\chi_1 \chi_1|\chi_2 \chi_2)
-			& = \int \dd{\bx_1} \int \dd{\bx_2} \chi_1^*(\bx_1) \chi_1(\bx_1) r_{12}^{-1} \chi_2^*(\bx_2) \chi_2(\bx_2)
+			\rbraket{\chi_1 \chi_1}{\chi_2 \chi_2}
+			& = \iint \chi_1^*(\bx_1) \chi_1(\bx_1) r_{12}^{-1} \chi_2^*(\bx_2) \chi_2(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 			\\
-			& = \int \dd{\omega_1} \int \dd{\br_1} \int \dd{\omega_2} \int \dd{\br_2} \alpha^*(\omega_1) \psi_1^*(\br_1) \alpha(\omega_1) \psi_1(\br_1) r_{12}^{-1} \beta^*(\omega_2) \psi_1^*(\br_2) \beta(\omega_2) \psi_1(\br_2)
+			& = \iint \iint \alpha^*(\omega_1) \psi_1^*(\br_1) \alpha(\omega_1) \psi_1(\br_1) r_{12}^{-1} \beta^*(\omega_2) \psi_1^*(\br_2) \beta(\omega_2) \psi_1(\br_2) \dd{\omega_1} \dd{\br_1} \dd{\omega_2} \dd{\br_2} 
 			\\
-			& = \underbrace{\qty[ \int \dd{\omega_1} \alpha^*(\omega_1) \alpha(\omega_1)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\omega_2} \beta^*(\omega_2) \beta(\omega_2)]}_{=1} 
-			\underbrace{\qty[ \int \dd{\br_1} \int \dd{\br_2} \psi_1^*(\br_1) \psi_1(\br_1) r_{12}^{-1} \psi_1^*(\br_2) \psi_1(\br_2) ]}_{(\psi_1 \psi_1|\psi_1 \psi_1)}
+			& = \underbrace{\qty[ \int \alpha^*(\omega_1) \alpha(\omega_1) \dd{\omega_1} ]}_{=1} 
+			\underbrace{\qty[ \int \beta^*(\omega_2) \beta(\omega_2) \dd{\omega_2} ]}_{=1} 
+			\underbrace{\qty[ \iint \psi_1^*(\br_1) \psi_1(\br_1) r_{12}^{-1} \psi_1^*(\br_2) \psi_1(\br_2) \dd{\br_1} \dd{\br_2} ]}_{\rbraket{\psi_1 \psi_1}{\psi_1 \psi_1}}
 		\end{split}
 		\end{equation*}
 		\begin{equation*}
 		\begin{split}
-			(\chi_1 \chi_2|\chi_2 \chi_1)
-			& = \int \dd{\bx_1} \int \dd{\bx_2} \chi_1^*(\bx_1) \chi_2(\bx_1) r_{12}^{-1} \chi_2^*(\bx_2) \chi_1(\bx_2)
+			\rbraket{\chi_1 \chi_2}{\chi_2 \chi_1}
+			& = \iint \chi_1^*(\bx_1) \chi_2(\bx_1) r_{12}^{-1} \chi_2^*(\bx_2) \chi_1(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 			\\
-			& = \int \dd{\omega_1} \int \dd{\br_1} \int \dd{\omega_2} \int \dd{\br_2} \alpha^*(\omega_1) \psi_1^*(\br_1) \beta(\omega_1) \psi_1(\br_1) r_{12}^{-1} \beta^*(\omega_2) \psi_1^*(\br_2) \alpha(\omega_2) \psi_1(\br_2)
+			& = \iint \iint \alpha^*(\omega_1) \psi_1^*(\br_1) \beta(\omega_1) \psi_1(\br_1) r_{12}^{-1} \beta^*(\omega_2) \psi_1^*(\br_2) \alpha(\omega_2) \psi_1(\br_2) \dd{\omega_1} \dd{\br_1} \dd{\omega_2} \dd{\br_2} 
 			\\
-			& = \underbrace{\qty[ \int \dd{\omega_1} \alpha^*(\omega_1) \beta(\omega_1)]}_{=0} 
-			\underbrace{\qty[ \int \dd{\omega_2} \beta^*(\omega_2) \alpha(\omega_2) ]}_{=0} 
-			\underbrace{\qty[ \int \dd{\br_1} \int \dd{\br_2} \psi_1^*(\br_1) \psi_1(\br_1) r_{12}^{-1} \psi_1^*(\br_2) \psi_1(\br_2)]}_{(\psi_1 \psi_1|\psi_1 \psi_1)}
+			& = \underbrace{\qty[ \int \alpha^*(\omega_1) \beta(\omega_1) \dd{\omega_1} ]}_{=0} 
+			\underbrace{\qty[ \int \beta^*(\omega_2) \alpha(\omega_2) \dd{\omega_2} ]}_{=0} 
+			\underbrace{\qty[ \iint \psi_1^*(\br_1) \psi_1(\br_1) r_{12}^{-1} \psi_1^*(\br_2) \psi_1(\br_2) \dd{\br_1} \dd{\br_2} ]}_{\rbraket{\psi_1 \psi_1}{\psi_1 \psi_1}}
 		\end{split}
 		\end{equation*}
 	\end{block}
@@ -1107,13 +1112,13 @@
 		\begin{equation}
 			\EHF 
 			= \sum_i^N \mel{i}{\hh}{i} + \frac{1}{2} \sum_i^N \sum_j^N \qty[ \braket{ij}{ij} - \braket{ij}{ji} ]
-			= 2 \sum_i^{N/2} (i|\hh|i) + \sum_i^{N/2} \sum_j^{N/2} \qty[ 2(ii|jj) - (ij|ji) ]
+			= 2 \sum_i^{N/2} \rmel{i}{\hh}{i} + \sum_i^{N/2} \sum_j^{N/2} \qty[ 2\rbraket{ii}{jj} - \rbraket{ij}{ji} ]
 		\end{equation}
 	\end{block}
 	\begin{block}{One- and two-electron terms}
 		\small
 		\begin{equation}
-			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_a^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} (i|\hh|i)
+			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_a^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} \rmel{i}{\hh}{i}
 		\end{equation}
 		\begin{equation}
 		\begin{split}
@@ -1126,7 +1131,7 @@
 				+ \sum_i^{N/2}  \sum_j^{N/2} \qty( \braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}} - \braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}} )
 				\Bigg\}
 			\\
-			& = \sum_i^{N/2} \sum_j^{N/2} \qty[ 2(ii|jj) - (ij|ji) ]
+			& = \sum_i^{N/2} \sum_j^{N/2} \qty[ 2\rbraket{ii}{jj} - \rbraket{ij}{ji} ]
 		\end{split}
 		\end{equation}
 	\end{block}	
@@ -1526,14 +1531,14 @@
 		\begin{equation}
 			F_{\red{\mu\nu}} 
 			= H_{\red{\mu\nu}} 
-			+ \underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu\nu}|\blue{\la\si})}_{J_{\red{\mu \nu}} = \text{ Coulomb}}
-			\underbrace{ - \frac{1}{2} \sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu}\blue{\si}|\blue{\la}\red{\nu})}_{K_{\red{\mu \nu}} = \text{ exchange}}
+			+ \underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} \rbraket{\red{\mu\nu}}{\blue{\la\si}}}_{J_{\red{\mu \nu}} = \text{ Coulomb}}
+			\underbrace{ - \frac{1}{2} \sum_{\blue{\la \si}} P_{\blue{\la\si}} \rbraket{\red{\mu}\blue{\si}}{\blue{\la}\red{\nu}}}_{K_{\red{\mu \nu}} = \text{ exchange}}
 		\end{equation}
 	\end{block}
 	\begin{block}{HF energy in the AO basis (closed-shell system)}
 		\begin{equation}
 			E_\text{HF} = \sum_{\red{\mu \nu}} P_{\red{\mu \nu}} H_{\red{\mu \nu}} 
-			+ \frac{1}{2} \sum_{\red{\mu \nu} \blue{\la\si}} P_{\red{\mu \nu}} \qty[ (\red{\mu \nu} | \blue{\lambda \sigma}) - \frac{1}{2} (\red{\mu} \blue{\sigma} | \red{\lambda} \blue{\nu}) ] P_{\blue{\lambda\sigma}}
+			+ \frac{1}{2} \sum_{\red{\mu \nu} \blue{\la\si}} P_{\red{\mu \nu}} \qty[ \rbraket{\red{\mu \nu} }{ \blue{\lambda \sigma}} - \frac{1}{2} \rbraket{\red{\mu} \blue{\sigma} }{ \red{\lambda} \blue{\nu}} ] P_{\blue{\lambda\sigma}}
 			\qqtext{or} 
 			\boxed{E_\text{HF} = \frac{1}{2} \text{Tr}{\qty[\bP \cdot (\bH + \bF)]}}
 		\end{equation}
@@ -1673,14 +1678,14 @@
 		\begin{equation}
 			\boldsymbol{\mu} = (\mu_x,\mu_y,\mu_z)
 			= \underbrace{\red{\mel{\Psi_0}{- \sum_i^N \br_i}{\Psi_0}}}_{\text{\red{electrons}}} + \underbrace{\blue{\sum_A^M Z_A \bR_A}}_{\text{\blue{nuclei}}}
-			=  \red{- \sum_{\mu \nu} P_{\mu\nu} (\nu|\br|\mu)} + \blue{\sum_A^M Z_A \bR_A}
+			=  \red{- \sum_{\mu \nu} P_{\mu\nu} \rmel{\nu}{\br}{\mu}} + \blue{\sum_A^M Z_A \bR_A}
 		\end{equation}
 	\end{block}
 	\begin{block}{Vector components}
 		\begin{equation}
-			\mu_x = \red{- \sum_{\mu \nu} P_{\mu\nu} (\nu|x|\mu)} + \blue{\sum_A^M Z_A X_A}
+			\mu_x = \red{- \sum_{\mu \nu} P_{\mu\nu} \rmel{\nu}{x}{\mu}} + \blue{\sum_A^M Z_A X_A}
 			\qq{with}
-			\underbrace{(\nu|x|\mu)}_{\text{one-electron integrals}} = \int \dd{\br} \phi_\nu^*(\br) \,x\, \phi_\mu(\br) 
+			\underbrace{\rbraket{\nu}{x}{\mu}}_{\text{one-electron integrals}} = \int \phi_\nu^*(\br) \,x\, \phi_\mu(\br) \dd{\br}  
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -1813,9 +1818,9 @@
 		\end{align}	
 		The \blue{Coulomb} and \violet{Exchange} operators are
 		\begin{align}
-			\blue{J_i^\sigma(\br_1)} & = \int \dd{\br_2} \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_i^\sigma(\br_2) 
+			\blue{J_i^\sigma(\br_1)} & = \int \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_i^\sigma(\br_2) \dd{\br_2} 
 			& 
-			\violet{K_i^\sigma(\br_1)} \psi_j^\sigma(\br_1) & =  \qty[ \int \dd{\br_2} \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_j^\sigma(\br_2) ] \psi_i^\sigma(\br_1)
+			\violet{K_i^\sigma(\br_1)} \psi_j^\sigma(\br_1) & =  \qty[ \int \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_j^\sigma(\br_2) \dd{\br_2} ] \psi_i^\sigma(\br_1)
 		\end{align}		
 	\end{block}
 \end{frame}
@@ -1895,13 +1900,13 @@
 		\begin{gather}
 			\orange{F_{\mu \nu}^\alpha} 
 			= H_{\mu \nu} 
-			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} [ (\mu \nu | \sigma \lambda) - (\mu \lambda | \sigma \nu) ] 
-			+ \sum_{\lambda \sigma} \violet{P_{\lambda \sigma}^\beta} (\mu \nu | \sigma \lambda) 
+			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} [ \rbraket{\mu \nu }{ \sigma \lambda} - \rbraket{\mu \lambda }{ \sigma \nu} ] 
+			+ \sum_{\lambda \sigma} \violet{P_{\lambda \sigma}^\beta} \rbraket{\mu \nu }{ \sigma \lambda} 
 			\\
 			\red{F_{\mu \nu}^\beta}
 			= H_{\mu \nu} 
-			+ \sum_{\lambda \sigma} \violet{P_{\lambda \sigma}^\beta} [ (\mu \nu | \sigma \lambda) - (\mu \lambda | \sigma \nu) ] 
-			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} (\mu \nu | \sigma \lambda) 		
+			+ \sum_{\lambda \sigma} \violet{P_{\lambda \sigma}^\beta} [ \rbraket{\mu \nu }{ \sigma \lambda} - \rbraket{\mu \lambda }{ \sigma \nu} ] 
+			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} \rbraket{\mu \nu }{ \sigma \lambda} 		
 		\end{gather}
 		$\orange{\bF^\alpha}$ and $\red{\bF^\beta}$ are both functions of $\blue{\bC^\alpha}$ and $\violet{\bC^\beta}$
 		$\Rightarrow$ \alert{There's a coupling between $\alpha$ and $\beta$ orbitals!}

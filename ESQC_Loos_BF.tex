@@ -352,8 +352,8 @@ decoration={snake,
 	\end{block}
 	\begin{block}{Kinetic integrals}
 		\begin{equation}
-			\mel{\bk_1}{-\frac{\nabla^2}{2}}{\bk_2} 
-			= \int \phi_{\bk_1}^*(\br) \qty( - \frac{\nabla^2}{2}  ) \phi_{\bk_2}(\br) \dd{\br} 
+			\mel{\bk_1}{-\frac{\laplacian}{2}}{\bk_2} 
+			= \int \phi_{\bk_1}^*(\br) \qty( - \frac{\laplacian}{2}  ) \phi_{\bk_2}(\br) \dd{\br} 
 			= \int \phi_{\bk_1}^*(\br) \bk_2^2 \phi_{\bk_2}(\br) \dd{\br} 
 			= \bk_2^2 \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
@@ -444,6 +444,37 @@ decoration={snake,
 	$\Rightarrow$ \alert{Particularly effective for periodic valence-electron calculations}
 \end{frame}
 
+\begin{frame}{Slater vs Gaussian}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{block}{Slater-type orbital (STO)}
+				\begin{equation}
+					\boxed{\phi(r)^\text{STO} \propto e^{-\zeta r}}
+				\end{equation}
+				\begin{equation}
+					\phi_\text{1s}^\text{STO}(r) \propto e^{-Zr}  
+					\qq{$\Rightarrow$}
+					\eval{\dv{\phi_\text{1s}^\text{STO}(r)}{r}}_{r=0} = - Z
+				\end{equation}
+				It can model the electron-nucleus cusp!
+				\begin{equation}
+					\phi_\text{HOMO}^\text{STO}(r) \propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}  
+					\qq{$\Rightarrow$}
+					\text{IP} = - \epsilon_\text{HOMO}
+				\end{equation}
+				Correct long-range behavior for IP!
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{block}{Gaussian-type orbital (GTO)}
+				\begin{equation}
+					\boxed{\phi(r) \propto e^{-\alpha r^2}}
+				\end{equation}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 \begin{frame}{Gaussian-type orbitals}
 	\begin{columns}
@@ -527,6 +558,25 @@ decoration={snake,
 			\end{block}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Gaussian basis set}
+	\begin{itemize}
+		\item Basis set choice is tricky
+		\item It depends on the type of calculations you want to perform (HF, correlated, DFT, etc)
+		\item Correlated methods require polarization functions 
+		\item Anions and excited states may require diffuse functions (also for non-covalent interactions)
+		\item Core regions require tight functions
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{STO-$n$G}
+	\begin{itemize}
+		\item Minimal basis (single-$\zeta$)
+		\item It represents a STO by a linear combination of GTOs
+		
+		
+	\end{itemize}
 \end{frame}
 
 %%% SLIDE X %%%
