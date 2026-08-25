@@ -591,29 +591,43 @@ decoration={snake,
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Gaussian basis set}
-	\begin{itemize}
-		\item Basis set choice is tricky
-		\item It depends on the type of calculations you want to perform (HF, correlated, DFT, etc)
-		\item Correlated methods require polarization functions 
-		\item polarization functions are meant to polarize the density in specific directions
-		\item Anions and excited states may require diffuse functions (also for non-covalent interactions)
-		\item diffuse functions are meant to go far away from the nuclei to model weakly bound electrons
-		\item Core regions require tight functions
-	\end{itemize}
+\begin{frame}{Choose the basis for the physics you need}
+	\begin{block}{Basis set choice is tricky}
+    	\begin{itemize}
+ 			\bigskip
+   		\item \textbf{Valence flexibility:} use double-, triple-, or higher-$\zeta$ descriptions to give each valence orbital several radial shapes
+			\bigskip
+    		\item \textbf{Polarization functions:} add \alert{higher angular momenta} to describe anisotropic density, bonding, and angular correlation
+			\bigskip
+    		\item \textbf{Diffuse functions:} add \alert{small exponents} to describe long-range density
+    		\\
+    		(anions, Rydberg states, noncovalent interactions, etc)
+			\bigskip
+    		\item \textbf{Tight functions:} add \alert{large exponents} to descrive core region
+    		\\
+    		(core correlation and properties sensitive to the nucleus)
+			\bigskip
+    	\end{itemize}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{The appropriate basis depends on both the electronic structure method and the property of interest!}
 \end{frame}
 
-\begin{frame}{https://www.basissetexchange.org}
+\begin{frame}{Basis Set Exchange}
 	\center
-	\includegraphics[width=0.8\textwidth]{fig/BSE}
+	\includegraphics[width=0.7\textwidth]{fig/BSE}
+	\\
+	\bigskip
+	\url{https://www.basissetexchange.org}
 \end{frame}
 
 \begin{frame}{STO-$n$G basis sets}
 	\begin{itemize}
-		\item Minimal basis set (single-$\zeta$)
-		\item a single contracted GTO per occupied orbital
+		\item Minimal basis set (single-$\zeta$): one contracted basis function for each AO in the minimal atomic description
 		\item Each contracted GTO is made of $n$ primitive GTOs
-		\item It represents a STO by a linear combination of GTOs
+		\item The contraction coefficients and exponents are chosen so that the contraction approximates a STO
+		\item STO-$n$G basis sets are therefore minimal, single-$\zeta$ basis sets
 	\end{itemize}
 \end{frame}
 
@@ -622,7 +636,7 @@ decoration={snake,
 		\item \Large \fbox{\red{6}-\orange{31}\violet{+}G$^{\green{*}}$}
 		\bigskip
     	\begin{itemize} \normalsize
-    		\item{\makebox[1cm]{\red{6}\hfill}} 6 primitive GTOs for each core orbital
+    		\item{\makebox[1cm]{\red{6}\hfill}} six primitive GTOs for each core orbital
     		\item{\makebox[1cm]{\orange{31}\hfill}} two sets of contracted GTOs (double-$\zeta$) for each valence orbital with contraction degrees of 3 and 1
     		\item{\makebox[1cm]{\violet{+}\hfill}} one set of diffuse functions on non-H atoms
     		\item{\makebox[1cm]{\green{*}\hfill}} one set of polarization functions on non-H atoms [\green{*} $\equiv$ \green{(d)}]
@@ -646,18 +660,47 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Dunning basis sets}
-	\begin{itemize}
-		\item are particularly useful in electron-correlation calculations.
-		\item Extrapolation model:
-				\begin{equation}
-					E_\text{c}(L) = E_\text{c}^\text{CBS} + A/L^3
-				\end{equation}
-		\item valence correlation consistent: cc-pVXZ (X = D, T, Q, 5, etc.)
-		\item additional diffuse functions: aug-cc-pVXZ, d-aug-cc-pVXZ, t-aug-cc-pVXZ
-		\item core and valence correlation consistent: cc-pCVXZ or cc-pwCVXZ (X = D, T, Q, 5, etc.)
-		\item correlation consistent: Polarisation functions are added in groups that contribute almost
-equally to the correlation energy.
-	\end{itemize}
+	\begin{block}{Correlation-consistent hierarchy}
+		\[
+			\boxed{\text{cc-pV}X\text{Z}}
+			\qquad
+			X=\mathrm{D,T,Q,5,6},\ldots
+		\]
+		\begin{itemize}
+			\item Designed primarily for correlated wave-function methods
+			\item Polarization functions are added in balanced groups
+			\item Increasing $X$ systematically improves the valence space
+		\end{itemize}
+	\end{block}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Diffuse density}
+				\begin{itemize}
+					\item aug-cc-pV$X$Z
+					\item d-aug-cc-pV$X$Z
+					\item t-aug-cc-pV$X$Z
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Core correlation}
+				\begin{itemize}
+					\item cc-pCV$X$Z
+					\item cc-pwCV$X$Z
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		E_{\mathrm{c}}(X)
+		\approx
+		E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}
+	\end{equation}
+	\vspace{-0.3cm}
+	\centering
+	\footnotesize A commonly used two-point extrapolation model
 \end{frame}
 
 \begin{frame}{Correlation consistent basis for 2nd-row atoms}
