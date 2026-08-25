@@ -1,0 +1,346 @@
+%======================================================================
+\begin{frame}{Choose the basis for the physics you need}
+	\begin{itemize}
+		\item[\blue{$\bullet$}] \textbf{Valence flexibility:}
+		use double-, triple-, or higher-$\zeta$ descriptions to give each
+		valence orbital several radial shapes
+
+		\medskip
+		\item[\green{$\bullet$}] \textbf{Polarization functions:}
+		add higher angular momenta to describe anisotropic density,
+		bonding, and angular correlation
+
+		\medskip
+		\item[\violet{$\bullet$}] \textbf{Diffuse functions:}
+		add small exponents to describe long-range density
+		\begin{itemize}
+			\item anions, Rydberg states, noncovalent interactions,
+			      and response properties
+		\end{itemize}
+
+		\medskip
+		\item[\red{$\bullet$}] \textbf{Tight functions:}
+		add large exponents to describe the core region
+		\begin{itemize}
+			\item core correlation and properties sensitive to the nucleus
+		\end{itemize}
+	\end{itemize}
+
+	\begin{block}{Practical rule}
+		The appropriate basis depends on both the
+		\textbf{electronic-structure method} and the
+		\textbf{property of interest}.
+	\end{block}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Basis Set Exchange: the practical starting point}
+	\centering
+	\includegraphics[width=0.80\textwidth]{fig/BSE}
+
+	\medskip
+	\url{https://www.basissetexchange.org}
+
+	\medskip
+	\begin{block}{What can you find there?}
+		Basis-set definitions, element coverage, references, and
+		input formats for most electronic-structure programs.
+	\end{block}
+\end{frame}
+
+%======================================================================
+\begin{frame}{STO-$n$G: approximate Slater orbitals with Gaussians}
+	\begin{equation}
+		\boxed{
+		\chi_\mu(\br)
+		=
+		\sum_{i=1}^{n}
+		d_{\mu i}\,
+		g_{\mu i}(\br)
+		}
+	\end{equation}
+
+	\begin{itemize}
+		\item \textbf{Minimal basis:} one contracted basis function for
+		      each AO in the minimal atomic description
+
+		\item Each contracted function contains $n$ primitive GTOs
+
+		\item The contraction coefficients and exponents are chosen so
+		      that the contraction approximates a Slater-type orbital
+
+		\item STO-$n$G basis sets are therefore
+		      \textbf{minimal, single-$\zeta$ basis sets}
+	\end{itemize}
+
+	\begin{block}{Example}
+		STO-3G uses three primitive Gaussians to approximate each
+		minimal-basis atomic orbital.
+	\end{block}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Pople names are construction recipes}
+	\[
+		\fbox{
+			\Large
+			\red{6}-\orange{31}\violet{+}G^{\green{*}}
+		}
+	\]
+
+	\begin{itemize}
+		\item[\makebox[1.1cm][l]{\red{6}}]
+			Six primitive GTOs contracted into each core shell
+
+		\medskip
+		\item[\makebox[1.1cm][l]{\orange{31}}]
+			Split-valence double-$\zeta$ description:
+			one contraction of three primitives and one uncontracted primitive
+
+		\medskip
+		\item[\makebox[1.1cm][l]{\violet{+}}]
+			One set of diffuse functions on non-hydrogen atoms
+
+		\medskip
+		\item[\makebox[1.1cm][l]{\green{*}}]
+			One set of polarization functions on non-hydrogen atoms
+			\[
+				\green{*}\equiv\green{(d)}
+			\]
+	\end{itemize}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Pople suffixes add flexibility}
+	\begin{block}{More radial flexibility}
+		\[
+			\fbox{
+				\red{6}-\orange{311}\violet{++}G^{\green{**}}
+			}
+		\]
+		\begin{itemize}
+			\item \orange{311}: split-valence triple-$\zeta$ description
+			\item \violet{++}: diffuse functions on both heavy atoms and H
+			\item \green{**}: polarization on both heavy atoms and H
+			      \[
+				      \green{**}\equiv\green{(d,p)}
+			      \]
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Explicit polarization specification}
+		\[
+			\fbox{
+				\red{6}-\orange{311}G\green{(2df,2pd)}
+			}
+		\]
+		\begin{itemize}
+			\item \green{$2d1f$} on non-hydrogen atoms
+			\item \green{$2p1d$} on hydrogen atoms
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Dunning basis sets systematically approach the CBS limit}
+	\begin{block}{Correlation-consistent hierarchy}
+		\[
+			\boxed{\text{cc-pV}X\text{Z}}
+			\qquad
+			X=\mathrm{D,T,Q,5,6},\ldots
+		\]
+		\begin{itemize}
+			\item Designed primarily for correlated wave-function methods
+			\item Polarization functions are added in balanced groups
+			\item Increasing $X$ systematically improves the valence space
+		\end{itemize}
+	\end{block}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Diffuse density}
+				\begin{itemize}
+					\item aug-cc-pV$X$Z
+					\item d-aug-cc-pV$X$Z
+					\item t-aug-cc-pV$X$Z
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Core correlation}
+				\begin{itemize}
+					\item cc-pCV$X$Z
+					\item cc-pwCV$X$Z
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		E_{\mathrm{c}}(X)
+		\approx
+		E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}
+	\end{equation}
+	\vspace{-0.3cm}
+	\centering
+	\footnotesize A commonly used two-point extrapolation model
+\end{frame}
+
+%======================================================================
+\begin{frame}{Cardinal number and augmentation add complementary flexibility}
+	\small
+	\centering
+
+	\begin{block}{Contracted shells for second-period p-block atoms (B--Ne)}
+		\renewcommand{\arraystretch}{1.35}
+		\setlength{\tabcolsep}{0.75em}
+		\begin{tabular}{lccc}
+			\hline
+			& \textbf{DZ} & \textbf{TZ} & \textbf{QZ} \\
+			\hline
+			cc-pV$X$Z
+			& \green{3s2p1d}
+			& \green{4s3p2d1f}
+			& \green{5s4p3d2f1g}
+			\\
+
+			aug-cc-pV$X$Z
+			& \green{3s2p1d}+\red{1s1p1d}
+			& \green{4s3p2d1f}+\red{1s1p1d1f}
+			& \green{5s4p3d2f1g}+\red{1s1p1d1f1g}
+			\\
+
+			d-aug-cc-pV$X$Z
+			& \green{3s2p1d}+\purple{2s2p2d}
+			& \green{4s3p2d1f}+\purple{2s2p2d2f}
+			& \green{5s4p3d2f1g}+\purple{2s2p2d2f2g}
+			\\
+			\hline
+		\end{tabular}
+	\end{block}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{itemize}
+				\item[\green{$\blacksquare$}]
+					Valence and polarization space
+				\item[\red{$\blacksquare$}]
+					One diffuse layer
+				\item[\purple{$\blacksquare$}]
+					Two diffuse layers
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Important}
+				The notation counts \emph{radial shells}, not individual
+				basis functions: one spherical $d$ shell contains five
+				functions.
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Core--valence sets add tight correlation functions}
+	\small
+	\centering
+
+	\begin{block}{Contracted shells for second-period p-block atoms (B--Ne)}
+		\renewcommand{\arraystretch}{1.4}
+		\setlength{\tabcolsep}{0.8em}
+		\begin{tabular}{cccc}
+			\hline
+			& \textbf{Valence set}
+			& \textbf{Tight functions added}
+			& \textbf{Core--valence set}
+			\\
+			\hline
+			DZ
+			& \green{3s2p1d}
+			& \red{1s1p}
+			& 4s3p1d
+			\\
+			TZ
+			& \green{4s3p2d1f}
+			& \red{2s2p1d}
+			& 6s5p3d1f
+			\\
+			QZ
+			& \green{5s4p3d2f1g}
+			& \red{3s3p2d1f}
+			& 8s7p5d3f1g
+			\\
+			\hline
+		\end{tabular}
+	\end{block}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{cc-pCV$X$Z}
+				Optimized to recover both
+				\textbf{core--core} and
+				\textbf{core--valence} correlation.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{cc-pwCV$X$Z}
+				Uses a weighted optimization that emphasizes
+				\textbf{core--valence} correlation.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{alertblock}{Frozen-core calculations}
+		If the core orbitals are not correlated, the additional tight
+		core-correlation functions are usually unnecessary.
+	\end{alertblock}
+\end{frame}
+
+%======================================================================
+\begin{frame}{Jensen basis sets target the mean-field basis-set limit}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.42\textwidth}
+			\begin{block}{Carbon example}
+				\centering
+				\renewcommand{\arraystretch}{1.35}
+				\begin{tabular}{cc}
+					\hline
+					\textbf{Basis} & \textbf{Contracted shells} \\
+					\hline
+					pc-0 & 3s2p \\
+					pc-1 & 3s2p1d \\
+					pc-2 & 4s3p2d1f \\
+					pc-3 & 6s5p4d2f1g \\
+					\hline
+				\end{tabular}
+			\end{block}
+		\end{column}
+
+		\begin{column}{0.54\textwidth}
+			\begin{block}{Polarization-consistent hierarchy}
+				\begin{itemize}
+					\item Designed for efficient convergence of
+					      HF and KS-DFT calculations
+					\item Higher angular momenta are selected according
+					      to their energetic importance
+					\item The hierarchy approaches the mean-field
+					      basis-set limit systematically
+					\item Diffuse variants: aug-pc-$n$
+					\item Segmented variants: pcseg-$n$
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		E_{\mathrm{HF}}(n)
+		\approx
+		E_{\mathrm{HF}}^{\mathrm{CBS}}
+		+
+		A(n+1)\exp\!\left(-B\sqrt{n}\right)
+	\end{equation}
+	\vspace{-0.25cm}
+	\centering
+	\footnotesize One extrapolation model proposed for the pc-$n$ hierarchy
+\end{frame}
