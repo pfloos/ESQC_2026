@@ -598,11 +598,11 @@ decoration={snake,
 			\bigskip
     		\item \textbf{Diffuse functions:} add \alert{small exponents} to describe long-range density
     		\\
-    		(anions, Rydberg states, noncovalent interactions, etc)
+    		(anions, Rydberg states, noncovalent interactions, multipoles, (hyper)polarizabilities, etc)
 			\bigskip
     		\item \textbf{Tight functions:} add \alert{large exponents} to descrive core region
     		\\
-    		(core correlation and properties sensitive to the nucleus)
+    		(core correlation, nuclear magnetic shielding, spin-spin coupling constants, etc)
 			\bigskip
     	\end{itemize}
 	\end{block}
@@ -677,19 +677,30 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Dunning basis sets}
-	\begin{block}{Correlation-consistent (cc) hierarchy}
-		\[
-			\boxed{\text{cc-pV}X\text{Z}}
-			\qquad
-			X=\mathrm{D,T,Q,5,6},\ldots
-		\]
-		\begin{itemize}
-			\item Designed primarily for correlated wave function methods
-			\item Polarization functions are added in balanced groups
-			\item Increasing $X$ systematically improves the valence space
-		\end{itemize}
-	\end{block}
-
+\small
+%	\begin{columns}[T,onlytextwidth]
+%		\begin{column}{0.58\textwidth}
+			\begin{block}{Correlation-consistent (cc) hierarchy}
+        		$$\boxed{\text{cc-pV}X\text{Z}}
+        			\qquad
+        			X=\mathrm{D,T,Q,5,6},\ldots$$
+        		\begin{itemize}
+        			\item Designed primarily for correlated wave function methods
+        			\item Polarization functions are added in balanced groups
+        			\item Increasing $X$ systematically improves the valence space
+        		\end{itemize}
+        	\end{block}
+%		\end{column}
+%		\begin{column}{0.38\textwidth}
+ 			\begin{block}{Two-point extrapolation model}
+ 				\begin{equation}
+        			\boxed{E_{\mathrm{c}}(X)
+        			\approx
+        			E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}}
+        		\end{equation}
+			\end{block}
+%		\end{column}
+%	\end{columns}
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Diffuse density}
@@ -703,18 +714,13 @@ decoration={snake,
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Core correlation}
 				\begin{itemize}
-					\item cc-pCV$X$Z
-					\item cc-pwCV$X$Z
+					\item cc-pCV$X$Z: Optimized to recover both core-core and core-valence correlation
+					\item cc-pwCV$X$Z: Uses a weighted optimization that emphasizes core-valence correlation
 				\end{itemize}
 			\end{block}
 		\end{column}
 	\end{columns}
-	\begin{equation}
-		\qq*{A commonly used two-point extrapolation model:}
-		E_{\mathrm{c}}(X)
-		\approx
-		E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}
-	\end{equation}
+%	\alert{Frozen-core calculations:} if the core orbitals are not correlated, the additional tight core-correlation functions are usually unnecessary
 \end{frame}
 
 \begin{frame}{Correlation consistent basis for 2nd-row atoms}
@@ -859,17 +865,6 @@ decoration={snake,
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Dunning}
-	\begin{block}{}
-		\begin{itemize}
-			\item Frozen-core calculations: If the core orbitals are not correlated, the additional tight core-correlation functions are usually unnecessary
-			\item cc-pCV$X$Z Optimized to recover both core-core and core-valence correlation
-			\item cc-pwCV$X$Z Uses a weighted optimization that emphasizes core-valence correlation
-		\end{itemize}
-	\end{block}
-\end{frame}
-
-
 \begin{frame}{Jensen basis sets}
 \small
 	\begin{columns}
@@ -913,12 +908,58 @@ decoration={snake,
     		\item Designed for efficient convergence of HF and KS-DFT calculations
     		\item Higher angular momenta are selected according to their energetic importance
     		\item Diffuse variants: aug-pc-$n$
-    		\item  results converge monotonically to the HF limit:
-    		$E_\text{HF}(L) = E_\text{HF}^\text{CBS} + A(L+1) \exp(-B \sqrt{L})$
+    		\item Converge monotonically to the HF limit:
+    		\quad $\boxed{E_\text{HF}(L) = E_\text{HF}^\text{CBS} + A(L+1) \exp(-B \sqrt{L})}$
     	\end{itemize}
 	\end{block}
 \end{frame}
 
+
+\begin{frame}{Gaussian basis sets: strengths and limitations}
+	\begin{center}
+		\fbox{
+		\textbf{Key idea:}
+		Molecules are assemblies of slightly distorted atoms
+		}
+	\end{center}
+	\begin{columns}[T,onlytextwidth]
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Advantages}
+				\begin{itemize}
+					\item Compact representation of molecular orbitals
+					\item Efficient analytic evaluation of multicenter
+					      integrals
+					\item Practical all-electron calculations, especially
+					      for light and medium elements
+					\item Locality enables integral screening and
+					      sparse algorithms
+					\item Well suited to mean-field and
+					      correlated methods
+				\end{itemize}
+			\end{block}
+		\end{column}
+		%
+		\begin{column}{0.485\textwidth}
+			\begin{block}{Limitations}
+				\begin{itemize}
+					\item Nonorthogonal basis:
+					      possible linear-dependence problems
+					\item Diffuse functions required for anions,
+					      Rydberg states, and long-range density tails
+					\item Individual Gaussians have neither the correct
+					      nuclear cusp nor exponential asymptotic decay
+					\item Atom-centered basis produces Pulay terms when
+					      nuclei move
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
+\end{frame}
 
 %%% SLIDE X %%%
 \begin{frame}{Properties of Gaussian functions}
@@ -980,52 +1021,6 @@ decoration={snake,
 %
 
 
-\begin{frame}{Gaussian basis sets: strengths and limitations}
-	\begin{center}
-		\fbox{
-		\textbf{Key idea:}
-		Molecules are assemblies of slightly distorted atoms
-		}
-	\end{center}
-	\begin{columns}[T,onlytextwidth]
-		%
-		\begin{column}{0.485\textwidth}
-			\begin{block}{Advantages}
-				\begin{itemize}
-					\item Compact representation of molecular orbitals
-					\item Efficient analytic evaluation of multicenter
-					      integrals
-					\item Practical all-electron calculations, especially
-					      for light and medium elements
-					\item Locality enables integral screening and
-					      sparse algorithms
-					\item Well suited to Hartree--Fock and
-					      post-Hartree--Fock methods
-				\end{itemize}
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.485\textwidth}
-			\begin{block}{Limitations}
-				\begin{itemize}
-					\item Nonorthogonal basis:
-					      possible linear-dependence problems
-					\item Basis-set superposition error (BSSE)
-					\item Diffuse functions required for anions,
-					      Rydberg states, and long-range density tails
-					\item Individual Gaussians have neither the correct
-					      nuclear cusp nor exponential asymptotic decay
-					\item Atom-centered basis produces Pulay terms when
-					      nuclei move
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\vfill
-	\centering
-	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
-\end{frame}
 
 \begin{frame}{Fundamental integrals}
 	\begin{block}{Definition}
@@ -1096,7 +1091,7 @@ decoration={snake,
 \begin{frame}{Boys function}
 	\begin{block}{Generalized Boys function}
 		\begin{equation}
-			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2)
+			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2) \dd{x}
 			\qquad
 			F_0(x) = \sqrt{\frac{\pi}{4x}} \erf(\sqrt{x})
 		\end{equation}
@@ -1182,7 +1177,7 @@ decoration={snake,
 	\begin{itemize}
 		\item $\rbraket{\violet{\bP}}{\purple{\bQ}}$ should decay as $1/\abs{\violet{\bP} - \purple{\bQ}}$ or faster
 		\item However, there is no distance information in the product $\rbraket{\violet{\bP}}{\violet{\bP}} \rbraket{\purple{\bQ}}{\purple{\bQ}}$
-		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs.
+		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs
 	\end{itemize}
 \end{frame}
 
