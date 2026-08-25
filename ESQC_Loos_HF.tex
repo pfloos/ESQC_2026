@@ -153,6 +153,23 @@
 
 \newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
 
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{colortbl}
+
+% Compact 2x2 matrix for tables
+\newcommand{\orbmat}[4]{%
+	\begingroup
+	\renewcommand{\arraystretch}{0.85}%
+	\left(
+	\begin{array}{cc}
+		#1 & #2 \\
+		#3 & #4
+	\end{array}
+	\right)%
+	\endgroup
+}
+
 %	*************
 %	* HEAD DATA *
 %	*************
@@ -1967,6 +1984,155 @@
 		\end{enumerate}
 	\end{block}
 \end{frame}
+
+\begin{frame}{Stuber-Paldus classification of Hartree-Fock solutions}
+	\footnotesize
+	\centering
+	\setlength{\tabcolsep}{2.5pt}
+	\renewcommand{\arraystretch}{1.35}
+
+	\begin{tabular}{
+		@{}
+		>{\centering\arraybackslash}m{0.16\textwidth}
+		>{\centering\arraybackslash}m{0.21\textwidth}
+		>{\centering\arraybackslash}m{0.18\textwidth}
+		>{\centering\arraybackslash}m{0.40\textwidth}
+		@{}
+	}
+		\rowcolor{hfPale}
+		\makecell{\textbf{Fukutome}\\\textbf{designation}}
+		&
+		\makecell{\textbf{Stuber-Paldus}\\\textbf{designation}}
+		&
+		\makecell{\textbf{Symmetries}\\\textbf{preserved}}
+		&
+		\makecell{\textbf{Structure of the orbital}\\
+		          \textbf{coefficient matrix $\bC$}}
+		\\[0.5ex]
+
+		$\mathrm{TICS}^{a}$
+		&
+		real RHF
+		&
+		$\hat{S}^{2},\,\hat{S}_{z},\,\hat{K},\,\hat{\Theta}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bO
+		\\
+		\bO & \bC_{\sigma\sigma}
+		),
+		\quad \bC \in \mathbb{R}$
+		\\
+
+		$\mathrm{CCW}^{b}$
+		&
+		complex RHF
+		&
+		$\hat{S}^{2},\,\hat{S}_{z}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bO
+		\\
+		\bO & \bC_{\sigma\sigma}
+		)\phantom{, \quad \bC \in \mathbb{R}}$
+		\\
+
+		$\mathrm{ASCW}^{c}$
+		&
+		paired UHF
+		&
+		$\hat{S}_{z},\,\hat{\Theta}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bO
+		\\
+		\bO & \bC_{\sigma\sigma}^{*}
+		)\phantom{, \quad \bC \in \mathbb{R}}$
+		\\
+
+		$\mathrm{ASDW}^{d}$
+		&
+		real UHF
+		&
+		$\hat{S}_{z},\,\hat{K}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bO
+		\\
+		\bO & \bC_{\sigma'\sigma'}
+		),
+		\quad \bC \in \mathbb{R}$
+		\\
+
+		$\mathrm{ASW}^{e}$
+		&
+		complex UHF
+		&
+		$\hat{S}_{z}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bO
+		\\
+		\bO & \bC_{\sigma'\sigma'}
+		)\phantom{, \quad \bC \in \mathbb{R}}$
+		\\
+
+		$\mathrm{TSCW}^{f}$
+		&
+		paired GHF
+		&
+		$\hat{\Theta}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bC_{\sigma\sigma'}
+		\\
+		-\bC_{\sigma\sigma'}^{*} & \bC_{\sigma\sigma}^{*}
+		)\phantom{, \quad \bC \in \mathbb{R}}$
+		\\
+
+		$\mathrm{TSDW}^{g}$
+		&
+		real GHF
+		&
+		$\hat{K}$
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bC_{\sigma\sigma'}
+		\\
+		\bC_{\sigma'\sigma} & \bC_{\sigma'\sigma'}
+		),
+		\quad \bC \in \mathbb{R}$
+		\\
+
+		$\mathrm{TSW}^{i}$
+		&
+		complex GHF
+		&
+		{}
+		&
+		$\mqty(
+		\bC_{\sigma\sigma} & \bC_{\sigma\sigma'}
+		\\
+		\bC_{\sigma'\sigma} & \bC_{\sigma'\sigma'}
+		)\phantom{, \quad \bC \in \mathbb{R}}$
+	\end{tabular}
+	\\
+	\flushleft
+	$^a$ Time-reversal invariant closed-shell. 
+	$^b$ Charge current wave. 
+	$^c$ Axial spin current wave. 
+	$^d$ Axial spin density wave. 
+	$^e$ Axial spin wave. 
+	$^f$ Torsional spin current wave. 
+	$^g$ Torsional spin density wave.
+	$^h$ Torsional spin wave.
+\end{frame}
+
+\begin{frame}{Stuber-Paldus classification of Hartree-Fock solutions}
+	\center
+	\includegraphics[width=0.66\textwidth]{fig/StuberPaldus}
+\end{frame}
+
 
 %-----------------------------------------------------
 \section{Books}
