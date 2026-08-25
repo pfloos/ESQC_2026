@@ -555,19 +555,19 @@ decoration={snake,
 				\end{itemize}
 				\begin{equation}
 					\underbrace{\braket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}_{\text{\green{contracted ERI}}} 
-					= \sum_{k_1}^{K_1} \sum_{k_2}^{K_2} \sum_{k_3}^{K_3} \sum_{k_4}^{K_4} 
-					\blue{D_{k_1} D_{k_2} D_{k_3} D_{k_4}}
-					\underbrace{\sbraket{\red{\ba}_{k_1}\blue{\bb}_{k_2}}{\orange{\bc}_{k_3}\green{\bd}_{k_4}}}_{\text{\red{primitive ERI}}} 
+					= \sum_{i}^{K_A} \sum_{j}^{K_B} \sum_{k}^{K_C} \sum_{l}^{K_D} 
+					\blue{D_{i} D_{j} D_{k} D_{l}}
+					\underbrace{\sbraket{\red{\ba}_{i}\blue{\bb}_{j}}{\orange{\bc}_{k}\green{\bd}_{l}}}_{\text{\red{primitive ERI}}} 
 				\end{equation}
 				\centering
-				\green{One} contracted ERI required \red{$K_1 \times K_2 \times K_3 \times K_4$} primitive ERIs!
+				\green{One} contracted ERI required \red{$K_A \times K_B \times K_C \times K_D$} primitive ERIs!
 			\end{block}
 			\begin{block}{Dunning's cc-pVTZ basis for the carbon atom}
 				\begin{equation}
 					\green{\braket{1s1s}{1s1s}}
-					= \sum_{k_1}^{10} \sum_{k_2}^{10} \sum_{k_3}^{10} \sum_{k_4}^{10} 
-					\blue{D_{k_1} D_{k_2} D_{k_3} D_{k_4}}
-					\red{\sbraket{s_{k_1}^{\violet{\alpha_{k_1}}} s_{k_2}^{\violet{\alpha_{k_2}}}} {s_{k_3}^{\violet{\alpha_{k_3}}} s_{k_4}^{\violet{\alpha_{k_4}}} }} 
+					= \sum_{i}^{10} \sum_{j}^{10} \sum_{k}^{10} \sum_{l}^{10} 
+					\blue{D_{i} D_{j} D_{k} D_{l}}
+					\red{\sbraket{s_{i}^{\violet{\alpha_{i}}} s_{j}^{\violet{\alpha_{j}}}} {s_{k}^{\violet{\alpha_{k}}} s_{l}^{\violet{\alpha_{l}}} }} 
 				\end{equation}
 				\centering
 				The $\green{\braket{1s1s}{1s1s}}$ integral requires $10^4$ \red{$s$-type integrals}!
@@ -955,7 +955,6 @@ decoration={snake,
 			\end{block}
 		\end{column}
 	\end{columns}
-
 	\vfill
 	\centering
 	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
@@ -1080,12 +1079,20 @@ decoration={snake,
     		\end{split}
     		\end{equation}
 			\begin{equation}
-				\boxed{t^2 = \vartheta \frac{u^2}{1- u^2}}
+				\qq{Setting $t^2 = \vartheta \frac{u^2}{1- u^2}$}
 				\qq{$\Rightarrow$}
 				\sbraket{\bs\bs}{\bs\bs} = \sqrt{\frac{4\vartheta}{\pi}} \qty(\frac{\pi}{\violet{\zeta}})^{3/2} K_{\violet{\zeta},\violet{\bP}} 
 				\qty(\frac{\pi}{\purple{\eta}})^{3/2} K_{\purple{\eta},\purple{\bQ}}  
-				\underbrace{\int_0^1 e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 u^2} \dd{u}}_{F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2) \text{ = Boys function}}
+				\underbrace{\int_0^1 e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 u^2} \dd{u}}_{F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2) \text{ = \alert{Boys function}}}
 			\end{equation}
+			\begin{equation}
+				\boxed{
+				\sbraket{\bO\bO}{\bO\bO}^{(0)} = \sqrt{\frac{4\vartheta}{\pi}} \qty(\frac{\pi}{\violet{\zeta}})^{3/2} K_{\violet{\zeta},\violet{\bP}} 
+				\qty(\frac{\pi}{\purple{\eta}})^{3/2} K_{\purple{\eta},\purple{\bQ}}  
+				F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
+				}
+			\end{equation}
+			
 \end{frame}
 
 \begin{frame}{Boys function}
@@ -1116,6 +1123,164 @@ decoration={snake,
 		\end{equation}
 	\end{block}
 \end{frame}
+
+
+
+%\begin{frame}{Computing the fundamental integrals}
+%	\begin{equation}
+%		\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} 
+%		\equiv (\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
+%		= (\bm{\violet{P}}|\bm{\purple{Q}})
+%	\end{equation}
+%	\begin{block}{Shell-pair data}
+%		\begin{equation}
+%			\bR = \bQ - \bP
+%			2\vartheta = 1/(
+%		\end{equation}
+%	\end{block}
+%	\begin{block}{Shell-pair data}
+%		\begin{equation}
+%			\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} = U (2\theta^2)^{m+1/2} G_m(T)
+%		\end{equation}
+%		\begin{equation}
+%			G_m(T) = \qty( \frac{2}{\pi} )^{1/2} \int_0^1 t^{2m} \exp(-T t^2) \dd{t}
+%		\end{equation}
+%	\end{block}	
+%\end{frame}
+%\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
+\begin{frame}{Obara-Saika (OS) recurrence relation}
+	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$, one gets
+	\begin{equation}
+	\boxed{\begin{split}
+		\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
+		& = (P_i - A_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
+		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)} 
+		\\
+		& + \frac{a_i}{2\zeta} \qty(
+			\sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\bd}^{(m+1)}
+			)
+		\\
+		& + \frac{b_i}{2\zeta} \qty( 
+			\sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\bd}^{(m+1)}
+			)
+		\\
+		& + \frac{c_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{(\orange{\bc}-\bI_i)\green{\bd}}^{(m+1)}
+		+ \frac{d_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}(\green{\bd}-\bI_i)}^{(m+1)}
+	\end{split}}
+	\end{equation}	
+	with analogues which increments $\blue{\bb}$, $\orange{\bc}$, and $\green{\bd}$.
+	\\
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{What's the best way to apply this recurrence relation?}
+\end{frame}
+
+\begin{frame}{Auxiliary fundamental integrals}
+	\begin{equation}
+		\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
+	\end{equation}
+	$m = 0$ are true ERIs, while integrals with $m > 0$ are auxiliary integrals defined by OS.
+	These are necessary to obtain true ERIs of higher angular momentum as a linear combination of integrals of lower angular momentum
+	$m$ must go up to $a+b+c+d$
+\end{frame}
+
+
+\begin{frame}{Vertical recurrence relations}
+	\small
+	\begin{block}{First vertical recurrence relation (VRR1)}
+		Based on OS, one gets
+		\begin{equation}
+		\begin{split}
+    		\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)} 
+    		& = (P_i - A_i) \sbraket{\red{\ba}\bO}{\bO\bO}^{(m)} 
+    		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)} 
+    		\\
+    		& + \frac{a_i}{2\zeta} \qty[ 
+    			\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
+    			]
+		\end{split}	
+		\end{equation}	
+		$\Rightarrow$ \red{This increases angular momentum on the first center!}
+	\end{block}
+	\begin{block}{Second vertical recurrence relation (VRR2)}
+		Still based on OS, one gets
+	\begin{equation}
+	\begin{split}
+		\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)} 
+		& = (Q_i - C_i) \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)} 
+		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)} 
+		\\
+		& + \frac{c_i}{2\eta} \qty( 
+			\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)} - \frac{\zeta}{\zeta+\eta} \sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m+1)}
+			)
+		\\
+		& + \frac{a_i}{2(\zeta+\eta)} \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
+	\end{split}	
+	\end{equation}
+		$\Rightarrow$ \orange{This increases angular momentum on the third center!}
+	\end{block}
+\end{frame}
+	
+\begin{frame}{Horizontal recurrence relations}
+	\begin{block}{Horizontal recurrence relation}
+		The HRR shifts angular momentum from one center to the other on the same electron coordinate
+		\begin{equation}
+			\sbraket{\ba(\bb+\bI_i)}{\bc\bd} = \sbraket{(\ba+\bI_i)\bb}{\bc\bd} + (A_i - B_i) \sbraket{\ba\bb}{\bc\bd}
+		\end{equation}
+		Independent of the exponents, it can thus be applied to contracted integrals!
+		\begin{equation}
+			\rbraket{\ba(\bb+\bI_i)}{\bc\bd} = \rbraket{(\ba+\bI_i)\bb}{\bc\bd} + (A_i - B_i) \rbraket{\ba\bb}{\bc\bd}
+		\end{equation}
+	\end{block}	
+\end{frame}
+
+
+\begin{frame}{Late-contraction path algorithm (Head-Gordon-Pople \& PRISM inspired)}
+	\center
+	\begin{tikzpicture}
+		\begin{scope}[
+			very thick,
+			node distance=1.5cm,on grid,>=stealth',
+			boxSP/.style={rectangle,draw,fill=purple!40},
+			box0m/.style={rectangle,draw,fill=red!40},
+			boxCm/.style={rectangle,draw,fill=gray!40},
+			boxA/.style={rectangle,draw,fill=red!40},
+			boxAA/.style={rectangle,draw,fill=red!40},
+			boxAAA/.style={rectangle,draw,fill=red!40},
+			boxC/.style={rectangle,draw,fill=gray!40},
+			boxCC/.style={rectangle,draw,fill=orange!40},
+			boxCCC/.style={rectangle,draw,fill=orange!40},
+			boxCCCCCC/.style={rectangle,draw,fill=blue!40},
+			],
+			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
+			\node [box0m, align=center]			(0m)			[right=of SP,xshift=1.25cm]		{$\sbraket{00}{00}^{(m)}$};
+			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{(m)}$};
+			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{a0}{00}^{(m)}$};
+			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\rbraket{a 0}{00}^{(m)}$};
+			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a 0}{c0}$};
+			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a 0}{c0}$};
+			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\rbraket{a b}{c d}$};
+			\path 
+			(SP)		edge[->]			node[below,purple]{}									(0m)
+			(0m)		edge[->]			node[left,red]{}			node [right,red]{VRR1}	(A)
+			(0m)		edge[->,gray!70]														(Cm)
+			(A)		edge[->]			node[left,red]{}			node [right,red]{VRR2}	(AA)
+			(A)		edge[->,gray!70]														(C)
+			(AA)		edge[->]			node [below,orange]{CC}											(CC)
+			(Cm)		edge[->,gray!70]														(C)
+			(C)		edge[->,gray!70]														(CC)
+			(CC)	edge[->]			node [above,blue]{}		node [below,blue]{HRR}		(CCCC)
+			;
+		\end{scope}
+	\end{tikzpicture}
+	\bigskip
+	\begin{itemize}
+		\item \red{VRR} = vertical recurrence relations based on Obara-Saika
+		\item \orange{CC} = contraction
+		\item \blue{HRR} = horizontal recurrence relation
+	\end{itemize}
+\end{frame}
+
 
 \begin{frame}{Upper bounds for ERIs}
 	\begin{columns}
@@ -1247,6 +1412,8 @@ decoration={snake,
 \end{frame}
 
 
+
+
 \begin{frame}{Recipe for computing two-electron integrals}
 \center
 \begin{tikzpicture}
@@ -1259,7 +1426,7 @@ decoration={snake,
 		\node [integral, align=center]		(1)					{\textbf{The cake:} \\ Two-electron integrals \\ $\braket{\ba \bb}{ \bc\bd}$};
 		\node [boxUB, align=center, yshift=3cm]		(2A)		[below=of 1]	{\textbf{Ingredient number 2:} \\ Recurrence relations \\ $\braket{(\ba+\bI_i)\bO}{\bO\bO} = \braket{\ba\bO}{\bO\bO} + \braket{(\ba-\bI_i)\bO}{\bO\bO}$};
 		\node [boxRR, align=center, yshift=0cm] 		(2B)		[right=of 2A]	{\textbf{Ingredient number 3:} \\ Upper bounds \\ $\abs{\braket{\ba \bb}{ \bc \bd}} \le B$};
-		\node [boxFI, align=center, yshift=0cm]		(2C)		[left=of 2A]	{\textbf{Ingredient number 1:} \\ Fundamental integrals \\ $\braket{\bO\bO}{\bO\bO}^{\bm{m}}$};
+		\node [boxFI, align=center, yshift=0cm]		(2C)		[left=of 2A]	{\textbf{Ingredient number 1:} \\ Fundamental integrals \\ $\braket{\bO\bO}{\bO\bO}^{(m)}$};
 		\path 
 		(1) edge [<-]			(2A)
 		(1) edge [<-,bend left]			(2B)
@@ -1269,80 +1436,21 @@ decoration={snake,
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Late-contraction path algorithm (Head-Gordon-Pople \& PRISM inspired)}
-	\begin{tikzpicture}
-		\begin{scope}[
-			very thick,
-			node distance=1.5cm,on grid,>=stealth',
-			boxSP/.style={rectangle,draw,fill=purple!40},
-			box0m/.style={rectangle,draw,fill=red!40},
-			boxCm/.style={rectangle,draw,fill=gray!40},
-			boxA/.style={rectangle,draw,fill=red!40},
-			boxAA/.style={rectangle,draw,fill=red!40},
-			boxAAA/.style={rectangle,draw,fill=red!40},
-			boxC/.style={rectangle,draw,fill=gray!40},
-			boxCC/.style={rectangle,draw,fill=gray!40},
-			boxCCC/.style={rectangle,draw,fill=orange!40},
-			boxCCCCCC/.style={rectangle,draw,fill=green!40},
-			],
-			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
-			\node [box0m, align=center]			(0m)			[right=of 1,xshift=1.25cm]		{$\sbraket{00}{00}^{\bm{m}}$};
-			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{\bm{m}}$};
-			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{0 b}{00}^{\bm{m}}$};
-			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\braket{0 b}{00}^{\bm{m}}$};
-			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a b}{00}$};
-			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a b}{00}$};
-			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\braket{a b}{c d}$};
-			\path 
-			(SP)		edge[->]			node[below,blue]{T$_0$}									(0m)
-			(0m)		edge[->]			node[left,orange]{T$_1$}			node [right,red]{VRR$_1$}	(A)
-			(0m)		edge[->,gray!70]														(Cm)
-			(A)		edge[->]			node[left,orange]{T$_2$}			node [right,red]{VRR$_2$}	(AA)
-			(A)		edge[->,gray!70]														(C)
-			(AA)		edge[->]			node [below,blue]{CC}											(CC)
-			(Cm)		edge[->,gray!70]														(C)
-			(C)		edge[->,gray!70]														(CC)
-			(CC)	edge[->]			node [above,orange]{T$_3$}		node [below,red]{HRR}		(CCCC)
-			;
-		\end{scope}
-	\end{tikzpicture}
-	\bigskip
-	\begin{itemize}
-		\item \red{HRR} = horizontal recurrence relation
-		\item \red{VRR} = vertical recurrence relation
-		\item \blue{CC} = bra contraction
-	\end{itemize}
+\begin{frame}{Obara-Saika}
+	\begin{gather}
+		 \sket{\ba} = (x-A_x)^{a_x} (y-A_y)^{a_y} (z-A_z)^{a_z} e^{-\alpha \abs{ \br -\bA }^2}
+		 \\
+		 \pdv{\sket{\ba}}{A_i} = 2\alpha \sket{\ba+\bI_i} - a_i \sket{\ba-\bI_i}
+		 \\
+		 \sket{\ba+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\ba}}{A_i} + a_i \sket{\ba-\bI_i} )
+%		 \\
+%		 \sbraket{(\ba+\bI_i)\bb}{\bc\bd} = \frac{1}{2\alpha} \qty( \pdv{\sbraket{\ba\bb}{\bc\bd}}{A_i} + a_i \sbraket{(\ba-\bI_i)\bb}{\bc\bd} )
+		 \\
+		 \sbraket{(\ba+\bI_i)\bO}{\bO\bO} = \frac{1}{2\alpha} \qty( \pdv{\sbraket{\ba\bO}{\bO\bO}}{A_i} + a_i \sbraket{(\ba-\bI_i)\bO}{\bO\bO} )
+		 \\
+		 \pdv{}{A_i} = 2\alpha \qty(A_i - P_i) + \frac{\alpha}{\zeta} \pdv{}{P_i}
+	\end{gather}	
 \end{frame}
-
-\begin{frame}{Computing the fundamental integrals}
-	\begin{equation}
-		\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} 
-		\equiv (\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
-		= (\bm{\violet{P}}|\bm{\purple{Q}})
-	\end{equation}
-	\begin{block}{Shell-pair data}
-		\begin{equation}
-			\bR = \bQ - \bP
-			2\vartheta = 1/(
-		\end{equation}
-	\end{block}
-	\begin{block}{Shell-pair data}
-		\begin{equation}
-			\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} = U (2\theta^2)^{m+1/2} G_m(T)
-		\end{equation}
-		\begin{equation}
-			G_m(T) = \qty( \frac{2}{\pi} )^{1/2} \int_0^1 t^{2m} \exp(-T t^2) \dd{t}
-		\end{equation}
-	\end{block}	
-\end{frame}
-
-\begin{frame}{Recurrence relations}
-	\begin{block}{Vertical recurrence relation}
-	\end{block}
-	\begin{block}{Horizontal recurrence relation}
-	\end{block}	
-\end{frame}
-
 
 %\begin{frame}{Screening algorithm for two-electron integrals}
 %
