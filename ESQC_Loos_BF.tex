@@ -452,7 +452,7 @@ decoration={snake,
 
 \begin{frame}{Slater vs Gaussian}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Slater-type orbitals (STOs)}
 				\begin{equation}
 					\boxed{\phi_{\zeta n\ell m}^\text{STO}(\br) \propto r^{n-1} e^{-\zeta r} Y_{\ell m}(\hat{\br})}
@@ -474,7 +474,7 @@ decoration={snake,
 				\end{itemize}    				
 			\end{block}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Gaussian-type orbitals (GTOs)}
 				\begin{equation}
 					\boxed{\phi_{\alpha n\ell m}^\text{GTO}(\br) \propto r^{2(n-1)-\ell} e^{-\alpha r^2} Y_{\ell m}(\hat{\br})}
@@ -500,7 +500,7 @@ decoration={snake,
 
 \begin{frame}{Primitive vs Contracted}
 	\begin{columns}
-		\begin{column}{0.65\textwidth}
+		\begin{column}{\textwidth}
 			\begin{block}{Cartesian Gaussians}
 				\begin{align} 
 					\text{\blue{Primitive} GTO} & =  \sket{\ba}
@@ -511,7 +511,7 @@ decoration={snake,
 					=  \sum_k^K D_k \sket{\ba}_k
 				\end{align} 
             	\begin{itemize}
-            		\item \textbf{\alert{Exponent:}} $\alpha$ \qquad ($\alpha \gg 1$ tight and $\alpha \ll 1$ diffuse)
+            		\item \textbf{\alert{Exponent:}} $\alpha$ %\qquad ($\alpha \gg 1$ tight and $\alpha \ll 1$ diffuse)
             		\item \textbf{\alert{Center:}} $\bA = (A_x, A_y, A_z)$
             		\item \textbf{\alert{Angular momentum:}} $\ba = (a_x, a_y, a_z)$
             		\item \textbf{\alert{Total angular momentum:}} $a=a_x + a_y + a_z$
@@ -531,9 +531,6 @@ decoration={snake,
 %				\end{equation}
 %				\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
 %			\end{block}
-		\begin{column}{0.35\textwidth}
-			\includegraphics[width=\textwidth]{fig/STO}
-		\end{column}
 	\end{columns}
 	\begin{block}{}
     	\begin{itemize}
@@ -623,12 +620,32 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{STO-$n$G basis sets}
-	\begin{itemize}
-		\item Minimal basis set (single-$\zeta$): one contracted basis function for each AO in the minimal atomic description
-		\item Each contracted GTO is made of $n$ primitive GTOs
-		\item The contraction coefficients and exponents are chosen so that the contraction approximates a STO
-		\item STO-$n$G basis sets are therefore minimal, single-$\zeta$ basis sets
-	\end{itemize}
+	\begin{columns}
+    	\begin{column}{0.65\textwidth}
+        	\begin{block}{Minimal basis set STO-$n$G}
+            	\begin{itemize}
+            		\bigskip
+            		\item One contracted basis function for each occupied orbital in the minimal atomic description
+            		\bigskip
+					\item Each contracted GTO is made of $n$ primitive GTOs
+            		\bigskip
+            		\item The contraction coefficients and exponents are chosen so that the contraction approximates a STO
+            		\bigskip
+            		\item STO-$n$G basis sets are therefore \alert{minimal}, \alert{single-$\zeta$} basis sets
+            		\bigskip
+            	\end{itemize}
+        	\end{block}
+    	\end{column}
+    	\begin{column}{0.35\textwidth}
+    		\begin{block}{STO-3G for the H atom}
+				\center
+				\includegraphics[width=0.8\textwidth]{fig/STO-3G}
+				\\
+				\bigskip
+    			\includegraphics[width=0.8\textwidth]{fig/STO}
+   		 	\end{block}
+    	\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Pople basis sets}
@@ -660,14 +677,14 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Dunning basis sets}
-	\begin{block}{Correlation-consistent hierarchy}
+	\begin{block}{Correlation-consistent (cc) hierarchy}
 		\[
 			\boxed{\text{cc-pV}X\text{Z}}
 			\qquad
 			X=\mathrm{D,T,Q,5,6},\ldots
 		\]
 		\begin{itemize}
-			\item Designed primarily for correlated wave-function methods
+			\item Designed primarily for correlated wave function methods
 			\item Polarization functions are added in balanced groups
 			\item Increasing $X$ systematically improves the valence space
 		\end{itemize}
@@ -692,15 +709,12 @@ decoration={snake,
 			\end{block}
 		\end{column}
 	\end{columns}
-
 	\begin{equation}
+		\qq*{A commonly used two-point extrapolation model:}
 		E_{\mathrm{c}}(X)
 		\approx
 		E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}
 	\end{equation}
-	\vspace{-0.3cm}
-	\centering
-	\footnotesize A commonly used two-point extrapolation model
 \end{frame}
 
 \begin{frame}{Correlation consistent basis for 2nd-row atoms}
@@ -845,6 +859,16 @@ decoration={snake,
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Dunning}
+	\begin{block}{}
+		\begin{itemize}
+			\item Frozen-core calculations: If the core orbitals are not correlated, the additional tight core-correlation functions are usually unnecessary
+			\item cc-pCV$X$Z Optimized to recover both core-core and core-valence correlation
+			\item cc-pwCV$X$Z Uses a weighted optimization that emphasizes core-valence correlation
+		\end{itemize}
+	\end{block}
+\end{frame}
+
 
 \begin{frame}{Jensen basis sets}
 \small
@@ -886,13 +910,11 @@ decoration={snake,
 	\end{columns}
 	\begin{block}{Polarization-consistent (pc) basis sets}
     	\begin{itemize}
-    		\item designed for mean-field calculations (HF and KS-DFT)
-    		\item Higher angular momentum functions are included based on energetic importance in HF calculations
-    		\item  results converge monotonically to the HF limit
-    		\begin{equation}
-    			E_\text{HF}(L) = E_\text{HF}^\text{CBS} + A(L+1) \exp(-B \sqrt{L})
-    		\end{equation}
-    		\item can be augmented with diffuse functions (aug-pc-n).
+    		\item Designed for efficient convergence of HF and KS-DFT calculations
+    		\item Higher angular momenta are selected according to their energetic importance
+    		\item Diffuse variants: aug-pc-$n$
+    		\item  results converge monotonically to the HF limit:
+    		$E_\text{HF}(L) = E_\text{HF}^\text{CBS} + A(L+1) \exp(-B \sqrt{L})$
     	\end{itemize}
 	\end{block}
 \end{frame}
