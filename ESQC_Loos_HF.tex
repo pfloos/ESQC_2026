@@ -101,14 +101,15 @@
 \newcommand{\bX}{\boldsymbol{X}}
 
 % hat symbols
-\newcommand{\hH}{\hat{H}}
-\newcommand{\hh}{\hat{h}}
-\newcommand{\hf}{\hat{f}}
-\newcommand{\hT}{\hat{T}}
-\newcommand{\hV}{\hat{V}}
-\newcommand{\hO}{\hat{O}}
-\newcommand{\hJ}{\hat{J}}
-\newcommand{\hK}{\hat{K}}
+\newcommand{\hH}{\Hat{H}}
+\newcommand{\hh}{\Hat{h}}
+\newcommand{\hf}{\Hat{f}}
+\newcommand{\hT}{\Hat{T}}
+\newcommand{\hV}{\Hat{V}}
+\newcommand{\hO}{\Hat{O}}
+\newcommand{\hJ}{\Hat{J}}
+\newcommand{\hK}{\chK}
+\newcommand{\hS}{\Hat{S}}
 
 % curly symbols
 \newcommand{\chA}{\Hat{\mathcal{A}}}
@@ -119,6 +120,7 @@
 \newcommand{\chT}{\Hat{\mathcal{T}}}
 \newcommand{\chV}{\Hat{\mathcal{V}}}
 \newcommand{\chP}{\Hat{\mathcal{P}}}
+\newcommand{\chS}{\Hat{\mathcal{S}}}
 
 \newcommand{\cE}{\mathcal{E}}
 \newcommand{\cJ}{\mathcal{J}}
@@ -156,19 +158,6 @@
 \usepackage{array}
 \usepackage{makecell}
 \usepackage{colortbl}
-
-% Compact 2x2 matrix for tables
-\newcommand{\orbmat}[4]{%
-	\begingroup
-	\renewcommand{\arraystretch}{0.85}%
-	\left(
-	\begin{array}{cc}
-		#1 & #2 \\
-		#3 & #4
-	\end{array}
-	\right)%
-	\endgroup
-}
 
 %	*************
 %	* HEAD DATA *
@@ -566,28 +555,36 @@
 	\begin{block}{Restricted formalism}
 		\begin{itemize}
 			\item \alert{Restricted HF (RHF)} is made to describe \alert{closed-shell systems}
-			\begin{equation*}
-				\chi_p^\text{RHF}(\bx) = 
+			\begin{equation}
+				\chi_p^\text{RHF}(\bx) 
+				= 
 				\begin{cases}
-					\alpha(\omega) \psi_p(\br)
+					\red{\alpha(\omega)} \psi_p(\br)
 					\\
-					\beta(\omega) \psi_p(\br)
+					\blue{\beta(\omega)} \psi_p(\br)
 				\end{cases}
-			\end{equation*}
+				= 
+				\begin{cases}
+					\red{\psi_p(\br)}
+					\\
+					\blue{\Bar{\psi}_p(\br)}
+				\end{cases}
+			\end{equation}
 			\item RHF does {\bf not} describe \alert{open-shell systems}
 		\end{itemize}
 	\end{block}
 	\begin{block}{Unrestricted formalism}
 		\begin{itemize}
 			\item For open-shell systems, one can use \alert{unrestricted HF (UHF)}
-			\begin{equation*}
-				\chi_p^\text{UHF}(\bx) = 
+			\begin{equation}
+				\chi_p^\text{UHF}(\bx) 
+				= 
 				\begin{cases}
 					\alpha(\omega) \red{\psi_p^\alpha(\br)}
 					\\
 					\beta(\omega) \blue{\psi_p^\beta(\br)}
 				\end{cases}
-			\end{equation*}
+			\end{equation}
 			\item UHF does break spin symmetry!
 			\item \green{Restricted open-shell Hartree--Fock (ROHF)} retains shared spatial orbitals; we will not discuss it here
 		\end{itemize}
@@ -600,37 +597,6 @@
 	\end{columns}
 \end{frame}
 
-%-----------------------------------------------------
-\subsection{Excited determinants}
-%-----------------------------------------------------
-\begin{frame}{Reference determinant}
-	\begin{block}{Reference ground-state determinant}	
-		\begin{equation}
-			\qq*{\alert{The electrons are in the $N$ lowest spin orbitals (Aufbau principle):}} \ket{\Psi_0} = \ket{\chi_1 \ldots \chi_{\green{i}} \chi_{\green{j}} \ldots \chi_N}
-		\end{equation}
-	\end{block}
-	\begin{center}
-		\includegraphics[width=0.30\textwidth]{fig/HF_det}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Excited determinants}
-	\begin{block}{Singly-excited determinants}	
-		\begin{equation}
-			\qq*{Electron in $\green{i}$ promoted in $\red{a}$:} \ket{\Psi_{\green{i}}^{\red{a}}} = \ket*{\chi_1 \ldots \chi_{\red{a}} \chi_{\green{j}} \ldots \chi_N}
-		\end{equation}
-	\end{block}
-	\begin{block}{Doubly-excited determinants}	
-		\begin{equation}
-			\qq*{Electrons in $\green{i}$ and $\green{j}$ promoted in $\red{a}$ and $\red{b}$:} \ket*{\Psi_{\green{ij}}^{\red{ab}}} = \ket{\chi_1 \ldots \chi_{\red{a}} \chi_{\red{b}} \ldots \chi_N}
-		\end{equation}
-	\end{block}
-	\begin{center}
-		\includegraphics[width=0.22\textwidth]{fig/single}
-		\hspace{0.2\textwidth}
-		\includegraphics[width=0.22\textwidth]{fig/double}
-	\end{center}
-\end{frame}
 
 
 %-----------------------------------------------------
@@ -669,7 +635,7 @@
 	\end{block}	
 	\begin{block}{Nuclear repulsion}
 			\begin{equation} 
-				\mel{ \Psi_\text{HF} }{\purple{\chV_\text{nn}} }{ \Psi_\text{HF} } = \purple{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \purple{V_\text{nn}}
+				\mel{ \Psi_\text{HF} }{\violet{\chV_\text{nn}} }{ \Psi_\text{HF} } = \violet{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \violet{V_\text{nn}}
 			\end{equation}
 	\end{block}
 	\begin{block}{Core Hamiltonian}
@@ -693,7 +659,7 @@
 	\end{block}
 	\begin{block}{HF energy:}
 			\begin{equation}
-				\boxed{\EHF = \sum_{i=1}^N h_{ii} +\sum_{i<j}^N (\cJ_{ij} - \cK_{ij}) + \purple{V_\text{nn}} }
+				\boxed{\EHF = \sum_{i=1}^N h_{ii} +\sum_{i<j}^N (\cJ_{ij} - \cK_{ij}) + \violet{V_\text{nn}} }
 			\end{equation}
 	\end{block}
 \end{frame}
@@ -804,6 +770,39 @@
 \end{frame}
 
 %-----------------------------------------------------
+\subsection{Excited determinants}
+%-----------------------------------------------------
+\begin{frame}{Reference determinant}
+	\begin{block}{Reference ground-state determinant}	
+		\begin{equation}
+			\qq*{\alert{The electrons are in the $N$ lowest spin orbitals (Aufbau principle):}} \ket{\Psi_0} = \ket{\chi_1 \ldots \chi_{\green{i}} \chi_{\green{j}} \ldots \chi_N}
+		\end{equation}
+	\end{block}
+	\begin{center}
+		\includegraphics[width=0.30\textwidth]{fig/HF_det}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Excited determinants}
+	\begin{block}{Singly-excited determinants}	
+		\begin{equation}
+			\qq*{Electron in $\green{i}$ promoted in $\red{a}$:} \ket{\Psi_{\green{i}}^{\red{a}}} = \ket*{\chi_1 \ldots \chi_{\red{a}} \chi_{\green{j}} \ldots \chi_N}
+		\end{equation}
+	\end{block}
+	\begin{block}{Doubly-excited determinants}	
+		\begin{equation}
+			\qq*{Electrons in $\green{i}$ and $\green{j}$ promoted in $\red{a}$ and $\red{b}$:} \ket*{\Psi_{\green{ij}}^{\red{ab}}} = \ket{\chi_1 \ldots \chi_{\red{a}} \chi_{\red{b}} \ldots \chi_N}
+		\end{equation}
+	\end{block}
+	\begin{center}
+		\includegraphics[width=0.22\textwidth]{fig/single}
+		\hspace{0.2\textwidth}
+		\includegraphics[width=0.22\textwidth]{fig/double}
+	\end{center}
+\end{frame}
+
+
+%-----------------------------------------------------
 \subsection{Slater-Condon}
 %-----------------------------------------------------
 \begin{frame}{Slater-Condon rules: One-electron operators}
@@ -853,6 +852,51 @@
 			\mel{\red{K}}{\chO_2}{\blue{L}} = \mel{ij}{}{kl}
 		\end{equation}
 	\end{block}
+\end{frame}
+
+\begin{frame}{Some remarks}
+	\begin{itemize}
+		\item Because these excited determinants are built with ground-state orbitals, they are not genuine HF states.
+		\item They do not correspond to stationary points of the HF equations.
+		\item They might not even be eigenfunctions of the spin operator
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Spin-adapted determinants}
+	In the nonrelativistic framework, $\chH$ commutes with $\chS^2$ and $\chS_z$ 
+	\begin{equation}
+		\comm{\chH}{\chS^2} = 0 = \comm{\chH}{\chS_z}
+	\end{equation}
+	They share a common set of eigenfunctions!
+	\begin{equation}
+		\chS_z \ket{\Phi} = M_S \ket{\Phi}
+		\chS^2 \ket{\Phi} = S(S+1) \ket{\Phi}
+	\end{equation}
+	\begin{equation}
+		\chS_z \ket{\cdots \psi_i \psi_j \cdots} = \frac{N^\alpha - N^\beta}{2} \ket{\cdots \psi_i \psi_j \cdots}
+	\end{equation}
+	RHF and UHF determinants are always eigenfunctions of $\chS_z$!
+	\begin{equation}
+		\chS^2 \ket{\cdots \psi_i \Bar{\psi}_i \psi_j \Bar{\psi}_j \cdots} = 0(0+1) \ket{\cdots \psi_i \Bar{\psi}_i  \psi_j \Bar{\psi}_j \cdots}
+	\end{equation}
+	Closed-shell determinants are pure singlets!
+	
+\end{frame}
+
+\begin{frame}{Spin contamination in UHF}
+	\begin{itemize}
+		\item UHF wave functions are not eigenfunctions of $\chS^2$
+	\begin{equation}
+		\expval{\chS^2}_\text{UHF} = \expval{\chS^2}_\text{exact} + N^\beta - \sum_{ij} \abs{S_{ij}^{\alpha\beta}}^2
+		\qq{with}
+		\expval{\chS^2}_\text{exact} = \frac{N^\alpha - N^\beta}{2} \qty( \frac{N^\alpha - N^\beta}{2} + 1 )
+	\end{equation}
+		\item They cannot be spin-adapted with a small number of determinants
+		\item UHF wave functions are contaminated by higher, not lower, multiplicity components
+		\item singlets are contaminated by triplets, quintets, etc
+		\item doublets are contaminated by quartets, sextets, etc. 
+	\end{itemize}
+	
 \end{frame}
 
 
@@ -1753,11 +1797,11 @@
 					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
 			\end{equation*}		
-			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\hat{S}^2$
+			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\chS^2$
 			\item The HF wave function is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
 			\item Doublets are contaminated by quartets, sextuplets, etc
-			\item Generalized HF also allows spin mixing and need not preserve $\hat{S}_z$
+			\item Generalized HF also allows spin mixing and need not preserve $\chS_z$
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -2014,7 +2058,7 @@
 		&
 		real RHF
 		&
-		$\hat{S}^{2},\,\hat{S}_{z},\,\hat{K},\,\hat{\Theta}$
+		$\chS^2,\,\chS_z,\,\chK,\,\hat{\Theta}$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bO
@@ -2028,7 +2072,7 @@
 		&
 		complex RHF
 		&
-		$\hat{S}^{2},\,\hat{S}_{z}$
+		$\chS^2,\,\chS_z$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bO
@@ -2041,7 +2085,7 @@
 		&
 		paired UHF
 		&
-		$\hat{S}_{z},\,\hat{\Theta}$
+		$\chS_z,\,\hat{\Theta}$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bO
@@ -2054,7 +2098,7 @@
 		&
 		real UHF
 		&
-		$\hat{S}_{z},\,\hat{K}$
+		$\chS_z,\,\chK$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bO
@@ -2068,7 +2112,7 @@
 		&
 		complex UHF
 		&
-		$\hat{S}_{z}$
+		$\chS_z$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bO
@@ -2094,7 +2138,7 @@
 		&
 		real GHF
 		&
-		$\hat{K}$
+		$\chK$
 		&
 		$\mqty(
 		\bC_{\sigma\sigma} & \bC_{\sigma\sigma'}
