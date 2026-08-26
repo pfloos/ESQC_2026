@@ -3,6 +3,11 @@
 %	* PACKAGE *
 %	***********
 \usepackage{amsmath,amssymb,amsfonts,mathtools,graphicx,xcolor,bm,microtype,physics}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{colortbl}
 \usepackage[version=4]{mhchem}
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
@@ -79,6 +84,7 @@
 % bold symbols
 \newcommand{\br}{\boldsymbol{r}}
 \newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bc}{\boldsymbol{c}}
 \newcommand{\bs}{\boldsymbol{s}}
 \newcommand{\bR}{\boldsymbol{R}}
 \newcommand{\bo}{\boldsymbol{o}}
@@ -99,6 +105,8 @@
 \newcommand{\bH}{\boldsymbol{H}}
 \newcommand{\bV}{\boldsymbol{V}}
 \newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{e}}
+\newcommand{\bepsilon}{\boldsymbol{\epsilon}}
 
 % hat symbols
 \newcommand{\hH}{\Hat{H}}
@@ -153,11 +161,8 @@
 \newcommand{\si}{\sigma}
 \newcommand{\la}{\lambda}
 
-\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
-
-\usepackage{array}
-\usepackage{makecell}
-\usepackage{colortbl}
+\newcommand{\cre}[1]{\Hat{a}_{#1}^\dag}
+\newcommand{\ani}[1]{\Hat{a}_{#1}}
 
 %	*************
 %	* HEAD DATA *
@@ -786,12 +791,18 @@
 \begin{frame}{Excited determinants}
 	\begin{block}{Singly-excited determinants}	
 		\begin{equation}
-			\qq*{Electron in $\green{i}$ promoted in $\red{a}$:} \ket{\Psi_{\green{i}}^{\red{a}}} = \ket*{\chi_1 \ldots \chi_{\red{a}} \chi_{\green{j}} \ldots \chi_N}
+			\qq*{Electron in $\green{i}$ promoted in $\red{a}$:} 
+			\ket{\Psi_{\green{i}}^{\red{a}}} 
+			= \ket*{\chi_1 \ldots \chi_{\red{a}} \chi_{\green{j}} \ldots \chi_N}
+			= \cre{\red{a}} \ani{\green{i}} \ket{\Psi_0}
 		\end{equation}
 	\end{block}
 	\begin{block}{Doubly-excited determinants}	
 		\begin{equation}
-			\qq*{Electrons in $\green{i}$ and $\green{j}$ promoted in $\red{a}$ and $\red{b}$:} \ket*{\Psi_{\green{ij}}^{\red{ab}}} = \ket{\chi_1 \ldots \chi_{\red{a}} \chi_{\red{b}} \ldots \chi_N}
+			\qq*{Electrons in $\green{i}$ and $\green{j}$ promoted in $\red{a}$ and $\red{b}$:} 
+			\ket*{\Psi_{\green{ij}}^{\red{ab}}} 
+			= \ket{\chi_1 \ldots \chi_{\red{a}} \chi_{\red{b}} \ldots \chi_N}
+			= \cre{\red{a}} \cre{\red{b}} \ani{\green{j}} \ani{\green{i}} \ket{\Psi_0}
 		\end{equation}
 	\end{block}
 	\begin{center}
@@ -806,6 +817,7 @@
 \subsection{Slater-Condon}
 %-----------------------------------------------------
 \begin{frame}{Slater-Condon rules: One-electron operators}
+	\small
 	\begin{equation}
 		\boxed{\chO_1 = \sum_i^N \hh(\br_i)}
 	\end{equation}
@@ -813,18 +825,24 @@
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$} 
 			\mel{\red{K}}{\chO_1}{\red{K}} = \sum_i^N \mel{i}{\hh}{i}
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_1}{\Psi_0} = \sum_i^N h_{ii}
 		\end{equation}
 	\end{block}
 	\begin{block}{Case 2: determinants differ by one spin orbital}
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_1}{\blue{L}} = \mel{i}{\hh}{k}
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_1}{\Psi_{\green{i}}^{\red{a}}} = h_{\green{i}\red{a}}
 		\end{equation}
 	\end{block}
 	\begin{block}{Case 3: determinants differ by two spin orbitals}
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \ldots}$ and $\ket{\blue{L}} = \ket{\cdots k l \ldots} \quad \Rightarrow$}
 			\mel{\red{K}}{\chO_1}{\blue{L}} = 0
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_1}{\Psi_{\green{ij}}^{\red{ab}}} = 0
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -838,65 +856,203 @@
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\red{K}} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_2}{\Psi_0} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
 		\end{equation}
 	\end{block}
 	\begin{block}{Case 2: determinants differ by one spin orbital}
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\blue{L}} = \sum_j^N \mel{ij}{}{kj}
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_2}{\Psi_{\green{i}}^{\red{a}}} = \sum_k^N \mel{\green{i}k}{}{\red{a}k}
 		\end{equation}
 	\end{block}
 	\begin{block}{Case 3: determinants differ by two spin orbitals}
 		\begin{equation}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k l \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\blue{L}} = \mel{ij}{}{kl}
+			\qq{\orange{Example:}}
+			\mel*{\Psi_0}{\chO_2}{\Psi_{\green{ij}}^{\red{ab}}} = \mel{\green{ij}}{}{\red{ab}}
 		\end{equation}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Some remarks}
-	\begin{itemize}
-		\item Because these excited determinants are built with ground-state orbitals, they are not genuine HF states.
-		\item They do not correspond to stationary points of the HF equations.
-		\item They might not even be eigenfunctions of the spin operator
-	\end{itemize}
+
+
+%-----------------------------------------------------
+
+\begin{frame}{An excited determinant is not an excited HF solution}
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{What it is}
+				\begin{itemize}
+					\item An orbital substitution within a
+					      \alert{fixed} set of reference orbitals
+					\item A valid many-electron basis function
+					\item A building block for CI and coupled-cluster
+					      expansions
+				\end{itemize}
+			\end{block}
+		\end{column}
+
+		\begin{column}{0.48\textwidth}
+			\begin{block}{What it is generally not}
+				\begin{itemize}
+					\item A separately optimized HF state
+					\item A stationary point of the HF energy
+					\item An eigenfunction of $\chS^2$
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{block}{Brillouin's theorem}
+		For a stationary HF reference, the Hamiltonian does not couple
+		the reference determinant to a singly-excited determinant:
+		\begin{equation}
+			\boxed{
+				\mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}
+				=
+				h_{ia} + \sum_j \mel{ij}{}{aj}
+				=
+				f_{ia}
+				=
+				0
+			}
+		\end{equation}
+	\end{block}
+
+	\centering
+	\vfill
+	$\Rightarrow$ \alert{Orbital excitation and state optimization are different procedures}
 \end{frame}
 
-\begin{frame}{Spin-adapted determinants}
-	In the nonrelativistic framework, $\chH$ commutes with $\chS^2$ and $\chS_z$ 
-	\begin{equation}
-		\comm{\chH}{\chS^2} = 0 = \comm{\chH}{\chS_z}
-	\end{equation}
-	They share a common set of eigenfunctions!
-	\begin{equation}
-		\chS_z \ket{\Phi} = M_S \ket{\Phi}
-		\chS^2 \ket{\Phi} = S(S+1) \ket{\Phi}
-	\end{equation}
-	\begin{equation}
-		\chS_z \ket{\cdots \psi_i \psi_j \cdots} = \frac{N^\alpha - N^\beta}{2} \ket{\cdots \psi_i \psi_j \cdots}
-	\end{equation}
-	RHF and UHF determinants are always eigenfunctions of $\chS_z$!
-	\begin{equation}
-		\chS^2 \ket{\cdots \psi_i \Bar{\psi}_i \psi_j \Bar{\psi}_j \cdots} = 0(0+1) \ket{\cdots \psi_i \Bar{\psi}_i  \psi_j \Bar{\psi}_j \cdots}
-	\end{equation}
-	Closed-shell determinants are pure singlets!
-	
+%-----------------------------------------------------
+
+\begin{frame}{A spin-free Hamiltonian conserves $S$ and $M_S$}
+	\begin{block}{Spin operators}
+    	In the nonrelativistic, spin-free framework,
+    	\begin{equation}
+    		\boxed{
+    			\comm{\chH}{\chS^2}=0
+    			\qquad\text{and}\qquad
+    			\comm{\chH}{\chS_z}=0
+    		}
+    	\end{equation}
+    
+    	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous
+    	eigenfunctions of $\chS^2$ and $\chS_z$:
+    	\begin{align}
+    		\chS^2\ket{S,M_S}
+    		&=
+    		S(S+1)\ket{S,M_S}
+    		& 
+    		\chS_z\ket{S,M_S}
+    		&=
+    		M_S\ket{S,M_S}
+    	\end{align}
+	\end{block}
+
+	\begin{block}{Spin quantum numbers}
+		\begin{itemize}
+			\item $S$ determines the spin multiplicity $2S+1$
+			\item $M_S=-S,-S+1,\ldots,S$ is its spin projection
+		\end{itemize}
+	\end{block}
 \end{frame}
 
-\begin{frame}{Spin contamination in UHF}
-	\begin{itemize}
-		\item UHF wave functions are not eigenfunctions of $\chS^2$
+%-----------------------------------------------------
+
+\begin{frame}{A determinant always has $M_S$, but not necessarily $S$}
+	For a \alert{collinear} determinant containing $N^\alpha$ spin-up and
+	$N^\beta$ spin-down orbitals:
 	\begin{equation}
-		\expval{\chS^2}_\text{UHF} = \expval{\chS^2}_\text{exact} + N^\beta - \sum_{ij} \abs{S_{ij}^{\alpha\beta}}^2
-		\qq{with}
-		\expval{\chS^2}_\text{exact} = \frac{N^\alpha - N^\beta}{2} \qty( \frac{N^\alpha - N^\beta}{2} + 1 )
+		\boxed{
+			\chS_z\ket{\Phi}
+			=
+			M_S\ket{\Phi}
+			\qquad
+			M_S=\frac{N^\alpha-N^\beta}{2}
+		}
 	\end{equation}
-		\item They cannot be spin-adapted with a small number of determinants
-		\item UHF wave functions are contaminated by higher, not lower, multiplicity components
-		\item singlets are contaminated by triplets, quintets, etc
-		\item doublets are contaminated by quartets, sextets, etc. 
-	\end{itemize}
-	
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Closed-shell RHF}
+				Every spatial orbital is doubly occupied:
+				\begin{equation}
+					\chS^2\ket{\Phi_{\text{RHF}}}
+					=
+					0
+				\end{equation}
+				The determinant is a \alert{pure singlet}
+			\end{block}
+		\end{column}
+
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Open-shell UHF}
+				The alpha and beta spatial orbitals are different:
+				\begin{equation}
+					\chS^2\ket{\Phi_{\text{UHF}}}
+					\neq
+					S(S+1)\ket{\Phi_{\text{UHF}}}
+				\end{equation}
+				in general
+			\end{block}
+		\end{column}
+	\end{columns}
+	\vfill
+	$\Rightarrow$
+	\alert{Every RHF or UHF determinant has a well-defined $M_S$,
+	but only specific determinants have a well-defined $S$}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{Spin contamination measures broken spin symmetry in UHF}
+	\small
+	For $N^\alpha \geq N^\beta$, a UHF determinant satisfies
+	\begin{equation}
+		\boxed{
+			\expval{\chS^2}_{\text{UHF}}
+			=
+			M_S(M_S+1)
+			+
+			N^\beta
+			-
+			\sum_{i=1}^{N^\alpha}
+			\sum_{j=1}^{N^\beta}
+			\abs{S_{ij}^{\alpha\beta}}^2
+		}
+	\end{equation}
+	with
+	\begin{equation}
+		\underbrace{S_{ij}^{\alpha\beta}}_{\text{overlap}}
+		=
+		\braket{\phi_i^\alpha}{\phi_j^\beta}
+		\qq{and}
+		M_S=\frac{N^\alpha-N^\beta}{2}
+	\end{equation}
+
+	\begin{block}{Spin contamination}
+		For a high-spin target state with $S=M_S$,
+		\begin{equation}
+			\Delta S^2
+			=
+			\expval{\chS^2}_{\text{UHF}}
+			-
+			S(S+1)
+			\geq 0
+		\end{equation}
+
+    	\begin{itemize}
+    		\item A singlet may be contaminated by triplets, quintets, \ldots 
+    		\item A doublet may be contaminated by quartets, sextets, \ldots 
+    		\item A triplet may be contaminated by quintets, septets, \ldots 
+    		\item Restoring spin symmetry generally requires \alert{spin projection} or \alert{a linear combination of determinants}
+    	\end{itemize}
+	\end{block}
 \end{frame}
 
 
@@ -1721,10 +1877,427 @@
 			\bigskip
 			\item The \alert{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
 			$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using previous iterations
-			$$ \bF_{m+1} = \sum_{i=m-k}^{m} c_i \bF_i $$
+			$$ \bF^{(m+1)} = \sum_{i=m-k}^{m} c_i \bF^{(i)} $$
 			\bigskip
 		\end{enumerate}
 	\end{block}
+\end{frame}
+
+%-----------------------------------------------------
+\subsection{DIIS}
+%-----------------------------------------------------
+
+\begin{frame}{SCF convergence is a nonlinear fixed-point problem}
+	The SCF procedure defines an iterative map
+	\begin{equation}
+		\boxed{
+			\bP^{(n)}
+			\longrightarrow
+			\bF[\bP^{(n)}]
+			\longrightarrow
+			\bP^{(n+1)}
+		}
+	\end{equation}
+
+	At convergence,
+	\begin{equation}
+		\bP^{(n+1)}=\bP^{(n)}=\bP^\star
+	\end{equation}
+
+	\begin{block}{Why can the direct iteration fail?}
+		\begin{itemize}
+			\item The Fock matrix depends nonlinearly on the density
+			\item Density updates may oscillate between different solutions
+			\item The fixed-point map may be only weakly contractive---or
+			      locally divergent
+		\end{itemize}
+	\end{block}
+
+	\begin{alertblock}{DIIS philosophy}
+		Use several previous iterations to extrapolate a Fock matrix whose
+		\alert{SCF residual is as small as possible}.
+	\end{alertblock}
+
+	\vfill
+	\centering
+	DIIS = \alert{direct inversion in the iterative subspace}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{The commutator measures the SCF error}
+	The Roothaan--Hall equations are
+	\begin{equation}
+		\bF \cdot \bC = \bS \cdot \bC \cdot \bE
+	\end{equation}
+
+	At self-consistency, the density and Fock matrices commute in the
+	AO metric:
+	\begin{equation}
+		\boxed{
+			\be^{(n)}
+			=
+			\bF^{(n)} \cdot \bP^{(n)} \cdot \bS
+			-
+			\bS \cdot \bP^{(n)} \cdot \bF^{(n)}
+		}
+	\end{equation}
+
+	\begin{equation}
+		\bP^{(n)}=\bP^\star
+		\qquad\Longrightarrow\qquad
+		\be^{(n)}=\bO.
+	\end{equation}
+
+	\begin{block}{In an orthonormal basis}
+		If $\bX^\dagger \cdot \bS \cdot \bX = \bI$, the transformed residual is
+		\begin{equation}
+			\widetilde{\be}^{(n)}
+			=
+			\bX^\dagger \cdot \be^{(n)} \cdot \bX
+			=
+			\comm{
+				\widetilde{\bF}^{(n)}
+			}{
+				\widetilde{\bP}^{(n)}
+			}
+		\end{equation}
+	\end{block}
+
+	\centering
+	\alert{The residual vanishes when the occupied space is invariant under
+	the Fock operator}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{DIIS stores Fock matrices and their residuals}
+	Let $m$ be the maximum size of the DIIS subspace.
+
+	\medskip
+	\centering
+	\small
+	\renewcommand{\arraystretch}{1.35}
+	\begin{tabularx}{0.95\textwidth}{
+		>{\bfseries}l
+		>{\centering\arraybackslash}m{0.22\textwidth}
+		X
+	}
+		\toprule
+		Stored quantity & Size & Purpose \\
+		\midrule
+		$\bF^{(i)}$
+		& $\mathcal{O}(K^2)$
+		& Used to construct the extrapolated Fock matrix
+		\\
+
+		$\be^{(i)}$
+		& $\mathcal{O}(K^2)$
+		& Measures the lack of self-consistency at iteration $i$
+		\\
+
+		$B_{ij}$
+		& $\mathcal{O}(m^2)$
+		& Contains the scalar products between error vectors
+		\\
+
+		$c_i$
+		& $\mathcal{O}(m)$
+		& DIIS extrapolation coefficients
+		\\
+		\bottomrule
+	\end{tabularx}
+
+	\begin{equation}
+		\boxed{
+			\text{storage}
+			\sim
+			2mK^2
+			\text{ floating-point numbers}
+		}
+	\end{equation}
+
+	\begin{itemize}
+		\item A small rolling subspace is normally sufficient:
+		      commonly $m\approx6$--$10$
+		\item When the subspace is full, an old or redundant pair
+		      $\{\bF^{(i)},\be^{(i)}\}$ is removed
+	\end{itemize}
+
+	\begin{block}{UHF calculations}
+		The alpha and beta residuals may be concatenated,
+		\[
+			\be^{(i)}
+			=
+			\left(
+				\be_\alpha^{(i)},
+				\be_\beta^{(i)}
+			\right),
+		\]
+		and the same coefficients are applied to both Fock matrices.
+	\end{block}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{DIIS searches for the smallest residual in the subspace}
+	Using the $m$ stored iterations, DIIS constructs
+	\begin{align}
+		\bF^\text{DIIS}
+		&=
+		\sum_{i=1}^{m}c_i\bF^{(i)},
+		\\
+		\be^\text{DIIS}
+		&\approx
+		\sum_{i=1}^{m}c_i\be^{(i)}.
+	\end{align}
+
+	The coefficients minimize the residual norm:
+	\begin{equation}
+		\boxed{
+			\min_{\bc}
+			\norm{
+				\sum_{i=1}^{m}c_i\be^{(i)}
+			}_F^2
+			\qquad
+			\text{subject to}
+			\qquad
+			\sum_{i=1}^{m}c_i=1
+		}
+	\end{equation}
+
+	Define the DIIS overlap matrix
+	\begin{equation}
+		B_{ij}
+		=
+		\braket{\be^{(i)}}{\be^{(j)}}
+		=
+		\Tr[
+			\be^{(i)\dagger}\be^{(j)}
+		].
+	\end{equation}
+
+	Then
+	\begin{equation}
+		\norm{\be^\text{DIIS}}_F^2
+		=
+		\sum_{ij}c_iB_{ij}c_j
+		=
+		\bc^\mathsf{T}\bB\bc.
+	\end{equation}
+
+	\begin{alertblock}{Important}
+		The constraint $\sum_i c_i=1$ defines an
+		\alert{affine extrapolation}. The coefficients need not be positive.
+	\end{alertblock}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{The DIIS weights come from a small augmented system}
+	Introduce a Lagrange multiplier $\lambda$:
+	\begin{equation}
+		\mathcal{L}(\bc,\lambda)
+		=
+		\bc^\mathsf{T}\bB\bc
+		-
+		2\lambda
+		\left(
+			\boldsymbol{1}^\mathsf{T}\bc-1
+		\right).
+	\end{equation}
+
+	Stationarity gives
+	\begin{equation}
+		\bB\bc-\lambda\boldsymbol{1}=\bO,
+		\qquad
+		\boldsymbol{1}^\mathsf{T}\bc=1.
+	\end{equation}
+
+	Therefore, the weights are obtained from
+	\begin{equation}
+		\boxed{
+		\begin{pmatrix}
+			B_{11} & \cdots & B_{1m} & -1 \\
+			\vdots & \ddots & \vdots & \vdots \\
+			B_{m1} & \cdots & B_{mm} & -1 \\
+			-1     & \cdots & -1     & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1 \\ \vdots \\ c_m \\ \lambda
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0 \\ \vdots \\ 0 \\ -1
+		\end{pmatrix}
+		}
+	\end{equation}
+
+	Once the $c_i$ are known,
+	\begin{equation}
+		\boxed{
+			\bF^\text{DIIS}
+			=
+			\sum_{i=1}^{m}c_i\bF^{(i)}
+		}
+	\end{equation}
+
+	\centering
+	The linear system has dimension only $(m+1)\times(m+1)$.
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{One DIIS cycle uses the complete iteration history}
+	\small
+	\begin{enumerate}
+		\item Start from the current density $\bP^{(n)}$
+
+		\item Build the corresponding Fock matrix
+		      \[
+			      \bF^{(n)}=\bF[\bP^{(n)}]
+		      \]
+
+		\item Evaluate the commutator residual
+		      \[
+			      \be^{(n)}
+			      =
+			      \bF^{(n)}\bP^{(n)}\bS
+			      -
+			      \bS\bP^{(n)}\bF^{(n)}
+		      \]
+
+		\item Store the pair
+		      $\{\bF^{(n)},\be^{(n)}\}$ and update the DIIS subspace
+
+		\item Construct $\bB$, solve the augmented linear system, and obtain
+		      the coefficients $\{c_i\}$
+
+		\item Extrapolate the Fock matrix
+		      \[
+			      \bF^\text{DIIS}
+			      =
+			      \sum_i c_i\bF^{(i)}
+		      \]
+
+		\item Solve
+		      \[
+			      \bF^\text{DIIS}\bC
+			      =
+			      \bS\bC\bepsilon
+		      \]
+		      and form the next density $\bP^{(n+1)}$
+	\end{enumerate}
+
+	\begin{alertblock}{Convergence tests}
+		Check the energy change, density change, and residual norm;
+		do not rely on only one of them.
+	\end{alertblock}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{DIIS is powerful, but the subspace can become unstable}
+	\small
+	\centering
+	\renewcommand{\arraystretch}{1.35}
+	\begin{tabularx}{0.97\textwidth}{
+		>{\bfseries}m{0.21\textwidth}
+		m{0.31\textwidth}
+		X
+	}
+		\toprule
+		Symptom & Likely cause & Possible response \\
+		\midrule
+		Early oscillations
+		& Iterates are outside the local convergence region
+		& Delay DIIS; use damping or level shifting
+		\\
+
+		Nearly singular $\bB$
+		& Stored residuals are nearly linearly dependent
+		& Remove a redundant vector, restart, or use an SVD cutoff
+		\\
+
+		Very large $c_i$
+		& Unstable extrapolation outside the sampled region
+		& Reset or reduce the DIIS subspace
+		\\
+
+		Convergence to the wrong state
+		& Orbital occupations or roots change during the iteration
+		& Use state tracking or the maximum-overlap method
+		\\
+		\bottomrule
+	\end{tabularx}
+
+	\begin{block}{A robust practical strategy}
+		\begin{itemize}
+			\item Begin with damping, level shifting, EDIIS, or ADIIS
+			\item Switch to commutator DIIS near the solution
+			\item Keep only a small, well-conditioned history
+		\end{itemize}
+	\end{block}
+
+	\begin{alertblock}{DIIS minimizes a residual---not the energy}
+		The extrapolated energy is not guaranteed to decrease monotonically.
+	\end{alertblock}
+\end{frame}
+
+%-----------------------------------------------------
+
+\begin{frame}{DIIS variants target different convergence regimes}
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{CDIIS}
+				\begin{itemize}
+					\item Uses the commutator residual
+					\item Very efficient close to self-consistency
+					\item May be unstable far from the solution
+				\end{itemize}
+			\end{block}
+
+			\begin{block}{EDIIS}
+				\begin{itemize}
+					\item Uses energy-based convex mixing
+					\item More robust in the early SCF iterations
+					\item Usually slower near convergence
+				\end{itemize}
+			\end{block}
+		\end{column}
+
+		\begin{column}{0.48\textwidth}
+			\begin{block}{ADIIS}
+				\begin{itemize}
+					\item Uses an approximate SCF energy model
+					\item Designed for the difficult initial regime
+					\item Often combined with CDIIS
+				\end{itemize}
+			\end{block}
+
+			\begin{block}{Hybrid strategy}
+				\[
+					\text{EDIIS/ADIIS}
+					\quad\longrightarrow\quad
+					\text{CDIIS}
+				\]
+				\centering
+				Robust far away; fast close to the solution.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{alertblock}{Take-home message}
+		DIIS accelerates SCF convergence by finding an affine combination
+		of previous Fock matrices whose extrapolated residual is minimal.
+	\end{alertblock}
+
+	\vfill
+	\centering
+	\pub{
+		P.~Pulay, Chem.\ Phys.\ Lett.\ \textbf{73}, 393 (1980);
+		J.\ Comput.\ Chem.\ \textbf{3}, 556 (1982).
+	}
 \end{frame}
 
 %-----------------------------------------------------

@@ -5,6 +5,7 @@
 - spin contamination in UHF
 - spin-adapted determinants
 - UHF example of H2
+- Brillouin theorem
 
 # Basis & Integrals
 
