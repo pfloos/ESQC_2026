@@ -1,6 +1,6 @@
 # Hartree-Fock
 
-- canonical vs localized MOs
+- MOM and non-Aufbau determinants
 
 # Basis & Integrals
 
