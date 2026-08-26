@@ -8,6 +8,8 @@
 \usepackage{array}
 \usepackage{makecell}
 \usepackage{colortbl}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage[version=4]{mhchem}
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
@@ -491,7 +493,7 @@
 
 \begin{frame}{Spin and spatial orbitals}
 	\small
-	\begin{equation*}
+	\begin{equation}
 		\chi_p(\bx) = \red{\underbrace{\sigma(\omega)}_{\text{spin}}} \blue{\underbrace{\psi_p(\br)}_{\text{spatial}}}
 		\qq{with}
 		\red{\sigma(\omega)} =
@@ -502,29 +504,29 @@
 		\end{cases}
 		\qand
 		\blue{\psi_p(\br)} = \underbrace{\sum_\mu^K C_{\mu p} \green{\phi_{\mu}(\br)}}_{\text{\green{LCAO}}}
-	\end{equation*}
+	\end{equation}
 %	These are \alert{restricted spin orbitals} $\Rightarrow$ \violet{Restricted Hartree-Fock = \textbf{RHF}}
 	\begin{block}{The spin orbitals are orthogonal}
-		\begin{equation*}
+		\begin{equation}
 			\braket{ \chi_p }{ \chi_q } = \int \chi_p^*(\bx) \chi_q(\bx) \dd{\bx} = \delta_{pq} 
 			=
 			\begin{cases}
 				1	&	\text{if $p=q$}		\\
 				0	&	\text{otherwise}		\\
 			\end{cases}
-		\end{equation*}
+		\end{equation}
 	\end{block}
 	\begin{block}{The spatial orbitals are orthogonal}
-		\begin{equation*}
+		\begin{equation}
 			\braket{ \psi_p }{ \psi_q }  = \int \psi_p^*(\br) \psi_q(\br) \dd{\br} = \delta_{pq} 
 %			\text{ \green{ = Kronecker delta}}
-		\end{equation*}
+		\end{equation}
 	\end{block}
 	\begin{block}{The basis functions \alert{are, a priori, not} orthogonal}
-		\begin{equation*}
+		\begin{equation}
 			\braket{ \phi_\mu }{ \phi_\nu } = \int \phi_\mu^*(\br) \phi_\nu(\br) \dd{\br} = S_{\mu \nu} 
 			\text{ \green{ = Overlap matrix}}	
-		\end{equation*}
+		\end{equation}
 	\end{block}
 \end{frame}
 \begin{frame}{Orbital spaces and index conventions}
@@ -1055,6 +1057,237 @@
 	\end{block}
 \end{frame}
 
+%-----------------------------------------------------
+\begin{frame}{A singly excited determinant is not necessarily spin adapted}
+	Start from a closed-shell singlet reference and define the determinant phases by
+	\begin{equation}
+		\ket{D_\alpha}
+		=
+		\cre{a\alpha}\ani{i\alpha}\ket{\Psi_0},
+		\qquad
+		\ket{D_\beta}
+		=
+		\cre{a\beta}\ani{i\beta}\ket{\Psi_0}.
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.46\textwidth}
+			\begin{block}{$\ket{D_\alpha}$: excite the $\alpha$ electron}
+				\centering
+				\begin{tikzpicture}[x=1cm,y=1cm]
+					\node[left] at (0,0.35) {$i$};
+					\node[left] at (0,1.55) {$a$};
+					\draw[thick] (0,0.15) rectangle (1.0,0.55);
+					\draw[thick] (0,1.35) rectangle (1.0,1.75);
+					\draw[hfRed,very thick,->] (0.50,0.48)--(0.50,0.22);
+					\draw[hfBlue,very thick,->] (0.50,1.42)--(0.50,1.68);
+					\node[hfRed,right] at (1.10,0.35) {$\beta$};
+					\node[hfBlue,right] at (1.10,1.55) {$\alpha$};
+				\end{tikzpicture}
+			\end{block}
+		\end{column}
+		\begin{column}{0.46\textwidth}
+			\begin{block}{$\ket{D_\beta}$: excite the $\beta$ electron}
+				\centering
+				\begin{tikzpicture}[x=1cm,y=1cm]
+					\node[left] at (0,0.35) {$i$};
+					\node[left] at (0,1.55) {$a$};
+					\draw[thick] (0,0.15) rectangle (1.0,0.55);
+					\draw[thick] (0,1.35) rectangle (1.0,1.75);
+					\draw[hfBlue,very thick,->] (0.50,0.22)--(0.50,0.48);
+					\draw[hfRed,very thick,->] (0.50,1.68)--(0.50,1.42);
+					\node[hfBlue,right] at (1.10,0.35) {$\alpha$};
+					\node[hfRed,right] at (1.10,1.55) {$\beta$};
+				\end{tikzpicture}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{align}
+		\chS_z\ket{D_\sigma}&=0,
+		&
+		\mel{D_\sigma}{\chS^2}{D_\sigma}&=1.
+	\end{align}
+
+	\begin{block}{Same $M_S$, indefinite total spin}
+		Each determinant has $M_S=0$, but contains equal singlet and triplet character.
+		Being an eigenfunction of $\chS_z$ does not imply being an eigenfunction of $\chS^2$.
+	\end{block}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{Diagonalizing $\chS^2$ produces pure singlet and triplet states}
+	In the two-determinant basis $\{\ket{D_\alpha},\ket{D_\beta}\}$,
+	\begin{equation}
+		\boxed{
+			\left[\chS^2\right]_{\{D_\alpha,D_\beta\}}
+			=
+			\begin{pmatrix}
+				 1 & -1 \\
+				-1 &  1
+			\end{pmatrix}
+		}
+		\qquad (\hbar=1).
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Pure singlet}
+				\begin{equation}
+					\boxed{
+						\ket{{}^1\Phi_i^a}
+						=
+						\frac{1}{\sqrt2}
+						\left(
+							\ket{D_\alpha}+\ket{D_\beta}
+						\right)
+					}
+				\end{equation}
+				\begin{equation}
+					\chS^2\ket{{}^1\Phi_i^a}=0,
+					\qquad S=0.
+				\end{equation}
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Pure triplet, $M_S=0$}
+				\begin{equation}
+					\boxed{
+						\ket{{}^3\Phi_i^a;0}
+						=
+						\frac{1}{\sqrt2}
+						\left(
+							\ket{D_\alpha}-\ket{D_\beta}
+						\right)
+					}
+				\end{equation}
+				\begin{equation}
+					\chS^2\ket{{}^3\Phi_i^a;0}
+					=
+					2\ket{{}^3\Phi_i^a;0},
+					\qquad S=1.
+				\end{equation}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		\boxed{
+			\text{spin adaptation}
+			=
+			\text{diagonalization of $\chS^2$ in a determinant space}
+		}
+	\end{equation}
+
+	\centering
+	\scriptsize
+	The relative $+$ and $-$ signs depend on determinant phases; the excitation-operator
+	definitions on the preceding slide fix the convention used here.
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{Spin and spatial symmetry compensate each other}
+	For the two open-shell spatial orbitals $i$ and $a$, the singlet is
+	\begin{equation}
+		\Psi_{ia}^{S=0}
+		=
+		\frac{1}{2}
+		\underbrace{
+			\left[
+				\phi_i(1)\phi_a(2)+\phi_a(1)\phi_i(2)
+			\right]
+		}_{\text{spatially symmetric}}
+		\underbrace{
+			\left[
+				\alpha(1)\beta(2)-\beta(1)\alpha(2)
+			\right]
+		}_{\text{spin antisymmetric}}.
+	\end{equation}
+
+	\begin{block}{Singlet: opposite exchange symmetries}
+		\centering
+		\green{symmetric spatial part}
+		$\times$
+		\red{antisymmetric spin part}
+	\end{block}
+
+	The $M_S=0$ triplet is
+	\begin{equation}
+		\Psi_{ia}^{S=1,M_S=0}
+		=
+		\frac{1}{2}
+		\underbrace{
+			\left[
+				\phi_i(1)\phi_a(2)-\phi_a(1)\phi_i(2)
+			\right]
+		}_{\text{spatially antisymmetric}}
+		\underbrace{
+			\left[
+				\alpha(1)\beta(2)+\beta(1)\alpha(2)
+			\right]
+		}_{\text{spin symmetric}}.
+	\end{equation}
+
+	\begin{block}{Triplet: opposite exchange symmetries}
+		\centering
+		\red{antisymmetric spatial part}
+		$\times$
+		\green{symmetric spin part}
+	\end{block}
+
+	\centering
+	\boxed{
+		\text{The complete electronic wave function is antisymmetric in both cases.}
+	}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{The $M_S=0$ combination belongs to a three-component triplet}
+	The three components of the $S=1$ multiplet are
+	\begin{equation}
+		\boxed{
+		\begin{aligned}
+			\ket{{}^3\Phi_i^a;+1}
+				&=\ket{\cdots i^\alpha a^\alpha\cdots},\\[1mm]
+			\ket{{}^3\Phi_i^a;0}
+				&=\frac{1}{\sqrt2}
+				\left(\ket{D_\alpha}-\ket{D_\beta}\right),\\[1mm]
+			\ket{{}^3\Phi_i^a;-1}
+				&=\ket{\cdots i^\beta a^\beta\cdots}.
+		\end{aligned}}
+	\end{equation}
+
+	Every component satisfies
+	\begin{equation}
+		\chS^2\ket{1,M_S}=2\ket{1,M_S},
+		\qquad
+		\chS_z\ket{1,M_S}=M_S\ket{1,M_S}.
+	\end{equation}
+
+	They are connected by
+	\begin{equation}
+		\chS_\pm\ket{S,M_S}
+		=
+		\sqrt{S(S+1)-M_S(M_S\pm1)}
+		\ket{S,M_S\pm1}.
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{$M_S=\pm1$}
+				Each component is a single spin-pure determinant.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{$M_S=0$}
+				The pure triplet requires a two-determinant combination.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\centering
+	\alert{The open-shell singlet likewise requires two determinants.}
+\end{frame}
 
 %-----------------------------------------------------
 \subsection{Examples}
@@ -1519,8 +1752,8 @@
 \begin{frame}{Hartree-Fock Hamiltonian}
 	\begin{block}{Definition}
 		\begin{equation}
-			\underbrace{\chH^\text{HF}}_{\text{$N$-electron operator}} 
-			= \sum_i^N \underbrace{\hf(\bx_i)}_{\text{one-electron operator}}
+			\underbrace{\chH^\text{HF}}_{\text{\alert{$N$-electron} operator}} 
+			= \sum_i^N \underbrace{\hf(\bx_i)}_{\text{\alert{one-electron} operator}}
 			= \sum_i^N \qty[ \hh(\bx_i) + \Hat{v}^\text{HF}(\bx_i) ]
 		\end{equation}
 	\end{block}
@@ -2362,19 +2595,23 @@
 	\begin{block}{How to model open-shell systems?}
 		\begin{itemize}
 			\item For open-shell systems one uses \alert{unrestricted spin orbitals}
-			\begin{equation*}
+			\begin{equation}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
 					\alpha(\omega) \blue{\psi_p^\alpha(\br)}
 					\\
 					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
-			\end{equation*}		
+			\end{equation}		
 			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\chS^2$
 			\item The HF wave function is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
 			\item Doublets are contaminated by quartets, sextuplets, etc
 			\item Generalized HF also allows spin mixing and need not preserve $\chS_z$
+			\begin{equation}
+				\chi_p^\text{GHF}(\bx) = \alpha(\omega) \blue{\psi_p^\alpha(\br)} + \beta(\omega) \red{\psi_p^\beta(\br)}
+				\qq{$\Rightarrow$ \alert{two-component spinor}}
+			\end{equation}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -2601,6 +2838,585 @@
 		\end{enumerate}
 	\end{block}
 \end{frame}
+
+%-----------------------------------------------------
+\subsection{Dissociation of \ce{H2}}
+%-----------------------------------------------------
+
+\newcommand{\HtwoOrbitalPlot}[1]{%
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=\linewidth,
+			height=0.48\textheight,
+			xmin=-3,xmax=3,
+			ymin=-0.05,ymax=1.48,
+			axis x line=middle,
+			axis y line=none,
+			xtick=\empty,
+			ytick=\empty,
+			clip=false,
+			samples=120,
+			domain=-3:3,
+		]
+			\addplot[hfBlue,very thick]
+				{cos(#1)*(exp(-1.7*(x+1.15)^2)+exp(-1.7*(x-1.15)^2))/sqrt(2)
+				+sin(#1)*(exp(-1.7*(x+1.15)^2)-exp(-1.7*(x-1.15)^2))/sqrt(2)};
+			\addplot[hfRed,very thick,dashed]
+				{cos(#1)*(exp(-1.7*(x+1.15)^2)+exp(-1.7*(x-1.15)^2))/sqrt(2)
+				-sin(#1)*(exp(-1.7*(x+1.15)^2)-exp(-1.7*(x-1.15)^2))/sqrt(2)};
+			\addplot[only marks,mark=*,mark size=1.7pt,hfInk]
+				coordinates {(-1.15,0) (1.15,0)};
+			\node[below,font=\scriptsize] at (axis cs:-1.15,0) {$A$};
+			\node[below,font=\scriptsize] at (axis cs: 1.15,0) {$B$};
+		\end{axis}
+	\end{tikzpicture}%
+}
+
+%-----------------------------------------------------
+\begin{frame}{Minimal-basis \ce{H2} is a complete Hartree--Fock laboratory}
+	Start from one normalized $1s$ function on each atom,
+	$\phi_A$ and $\phi_B$, with $S=\braket{\phi_A}{\phi_B}$.
+
+	\begin{equation}
+		\boxed{
+			\psi_g
+			=
+			\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}},
+			\qquad
+			\psi_u
+			=
+			\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}}
+		}
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{What the model retains}
+				\begin{itemize}
+					\item Bond formation through $g/u$ mixing
+					\item Static correlation upon dissociation
+					\item Restricted and symmetry-broken HF solutions
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Why it is special}
+				For two electrons in two spatial orbitals, the UHF problem reduces to
+				\alert{one orbital-rotation angle}.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\centering
+	\begin{tikzpicture}[x=1cm,y=1cm]
+		\fill[hfBlue!18] (-2.0,0) circle (0.52);
+		\fill[hfRed!18]  ( 2.0,0) circle (0.52);
+		\fill[hfInk] (-2.0,0) circle (0.08) node[below=0.15cm] {$A$};
+		\fill[hfInk] ( 2.0,0) circle (0.08) node[below=0.15cm] {$B$};
+		\draw[hfNavy,thick,<->] (-1.85,0.72)--(1.85,0.72)
+			node[midway,fill=white,inner sep=1pt] {$R$};
+		\node[hfBlue] at (-2.0,-0.75) {$\phi_A$};
+		\node[hfRed]  at ( 2.0,-0.75) {$\phi_B$};
+	\end{tikzpicture}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{RHF is qualitatively correct near equilibrium---but not at dissociation}
+	The closed-shell RHF wave function doubly occupies the bonding orbital:
+	\begin{equation}
+		\ket{\Psi_\text{RHF}}
+		=
+		\ket{\psi_g\Bar{\psi}_g},
+		\qquad
+		E_\text{RHF}
+		=
+		2h_{gg}+J_{gg}+\frac{1}{R}.
+	\end{equation}
+
+	At large $R$, where $S\rightarrow0$,
+	\begin{equation}
+		\psi_g(1)\psi_g(2)
+		\longrightarrow
+		\frac{1}{2}
+		\left[
+			\underbrace{
+				\phi_A(1)\phi_B(2)+\phi_B(1)\phi_A(2)
+			}_{\text{covalent}}
+			+
+			\underbrace{
+				\phi_A(1)\phi_A(2)+\phi_B(1)\phi_B(2)
+			}_{\text{ionic}}
+		\right].
+	\end{equation}
+
+	\begin{block}{The restricted dissociation error}
+		RHF retains \alert{50\% ionic character} at $R\rightarrow\infty$.
+		Both electrons are forced to share the same spatial orbital, so the RHF
+		energy lies above the energy of two separated H atoms.
+	\end{block}
+
+	\centering
+	$\Rightarrow$ \alert{The missing ingredient is left--right correlation}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{UHF introduces a single spin-polarization angle}
+	Preserve $M_S=0$, but allow the $\alpha$ and $\beta$ electrons to occupy
+	different spatial orbitals:
+	\begin{equation}
+		\boxed{
+		\begin{aligned}
+			\psi^\alpha(\theta)
+				&=\cos\theta\,\psi_g+\sin\theta\,\psi_u,\\
+			\psi^\beta(\theta)
+				&=\cos\theta\,\psi_g-\sin\theta\,\psi_u.
+		\end{aligned}}
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{$\theta=0$: restricted solution}
+				\begin{equation}
+					\psi^\alpha=\psi^\beta=\psi_g.
+				\end{equation}
+				The UHF determinant collapses to RHF.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{$\theta\rightarrow\pi/4$: localized solution}
+				At dissociation,
+				\begin{equation}
+					\psi^\alpha\rightarrow\phi_A,
+					\qquad
+					\psi^\beta\rightarrow\phi_B.
+				\end{equation}
+				Opposite spins occupy opposite atoms.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta).
+	\end{equation}
+
+	\centering
+	The two choices $\pm\theta$ are degenerate and exchange the spin localization.
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{Stretching the bond continuously localizes the UHF orbitals}
+	\small
+	The mixing angle transfers opposite-spin density toward opposite nuclei.
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$\theta=0^\circ$: RHF limit}
+
+			\HtwoOrbitalPlot{0}
+
+			$\psi^\alpha=\psi^\beta=\psi_g$
+		\end{column}
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$0<\theta<45^\circ$: polarization}
+
+			\HtwoOrbitalPlot{22.5}
+
+			$\alpha$ shifts to $A$; $\beta$ shifts to $B$
+		\end{column}
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$\theta=45^\circ$: dissociation}
+
+			\HtwoOrbitalPlot{45}
+
+			$\psi^\alpha\to\phi_A$; $\psi^\beta\to\phi_B$
+		\end{column}
+	\end{columns}
+
+	\vspace{0.5em}
+	\centering
+	\tikz[baseline=-0.5ex]{
+		\draw[hfBlue,very thick] (0,0)--(0.7,0);
+		\node[right,hfInk,font=\scriptsize] at (0.72,0) {$\psi^\alpha$};
+		\draw[hfRed,very thick,dashed] (2.0,0)--(2.7,0);
+		\node[right,hfInk,font=\scriptsize] at (2.72,0) {$\psi^\beta$};
+	}
+
+	\vspace{0.5em}
+	\alert{Orbital localization is continuous; the onset of the nonzero angle is the bifurcation.}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{The UHF energy is an analytic function of the mixing angle}
+	\small
+	With $J_{pq}=(pp|qq)$ and $K_{pq}=(pq|pq)$,
+	\begin{align}
+		E_\text{UHF}(\theta)-\frac{1}{R}
+		={}&
+		2\cos^2\theta\,h_{gg}
+		+2\sin^2\theta\,h_{uu}
+		+\cos^4\theta\,J_{gg}
+		+\sin^4\theta\,J_{uu}
+		\notag\\
+		&+2\sin^2\theta\cos^2\theta
+		\left(J_{gu}-2K_{gu}\right).
+	\end{align}
+
+	Besides the restricted stationary point $\theta=0$, a broken-symmetry
+	stationary solution satisfies
+	\begin{equation}
+		\boxed{
+			\cos(2\theta)
+			=
+			\frac{
+				h_{uu}-h_{gg}+J_{uu}-J_{gu}+2K_{gu}
+			}{
+				J_{gg}+J_{uu}-2J_{gu}+4K_{gu}
+			}
+		}.
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Short bond}
+				Only the minimum at $\theta=0$ is physically accessible:
+				\blue{UHF = RHF}.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Stretched bond}
+				Two minima appear at $\pm\theta$, and the restricted solution becomes
+				unstable to spin polarization.
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{The energy landscape changes topology at the Coulson--Fischer point}
+	\small
+	The orbital angle is an order parameter for spontaneous spin-symmetry breaking.
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$R<R_\text{CF}$}
+
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=\linewidth,height=0.49\textheight,
+					xmin=-45,xmax=45,ymin=-0.06,ymax=1.08,
+					axis x line=bottom,axis y line=left,
+					xtick={-45,0,45},
+					xticklabels={$-45^\circ$,$0$,$45^\circ$},
+					ytick=\empty,xlabel={$\theta$},ylabel={$E(\theta)$},
+					tick label style={font=\scriptsize},
+					label style={font=\scriptsize},
+					samples=120,domain=-45:45,
+				]
+					\addplot[hfNavy,very thick] {(x/45)^2};
+					\addplot[only marks,mark=*,mark size=2.2pt,hfTeal]
+						coordinates {(0,0)};
+				\end{axis}
+			\end{tikzpicture}
+
+			Positive RHF curvature
+
+			\green{one minimum at $\theta=0$}
+		\end{column}
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$R=R_\text{CF}$}
+
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=\linewidth,height=0.49\textheight,
+					xmin=-45,xmax=45,ymin=-0.06,ymax=1.08,
+					axis x line=bottom,axis y line=left,
+					xtick={-45,0,45},
+					xticklabels={$-45^\circ$,$0$,$45^\circ$},
+					ytick=\empty,xlabel={$\theta$},
+					tick label style={font=\scriptsize},
+					label style={font=\scriptsize},
+					samples=120,domain=-45:45,
+				]
+					\addplot[hfViolet,very thick] {(x/45)^4};
+					\addplot[only marks,mark=*,mark size=2.2pt,hfRed]
+						coordinates {(0,0)};
+				\end{axis}
+			\end{tikzpicture}
+
+			Vanishing RHF curvature
+
+			\red{the minimum becomes flat}
+		\end{column}
+		\begin{column}{0.32\textwidth}
+			\centering
+			\textbf{$R>R_\text{CF}$}
+
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=\linewidth,height=0.49\textheight,
+					xmin=-45,xmax=45,ymin=-0.06,ymax=1.08,
+					axis x line=bottom,axis y line=left,
+					xtick={-45,0,45},
+					xticklabels={$-45^\circ$,$0$,$45^\circ$},
+					ytick=\empty,xlabel={$\theta$},
+					tick label style={font=\scriptsize},
+					label style={font=\scriptsize},
+					samples=120,domain=-45:45,
+				]
+					\addplot[hfRed,very thick]
+						{0.65*((x/30)^2-1)^2};
+					\addplot[only marks,mark=*,mark size=2.2pt,hfTeal]
+						coordinates {(-30,0) (30,0)};
+					\addplot[only marks,mark=o,mark size=2.5pt,hfRed]
+						coordinates {(0,0.65)};
+				\end{axis}
+			\end{tikzpicture}
+
+			Negative RHF curvature
+
+			\green{two UHF minima at $\pm\theta^\star$}
+		\end{column}
+	\end{columns}
+
+	\vspace{0.7em}
+	\begin{block}{What changes at the bifurcation?}
+		The RHF determinant at $\theta=0$ does not disappear: it changes from a
+		minimum to an unstable stationary point while two degenerate UHF minima emerge.
+	\end{block}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{The Coulson--Fischer point is a stability loss of RHF}
+	Along the UHF rotation coordinate,
+	\begin{align}
+		\left.\frac{d^2E}{d\theta^2}\right|_{\theta=0}
+		&=
+		4\left(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}\right)
+		\\
+		&=
+		4\left(\epsilon_u-\epsilon_g-J_{gu}-K_{gu}\right).
+	\end{align}
+
+	\begin{equation}
+		\boxed{
+			R=R_\text{CF}
+			\quad\Longleftrightarrow\quad
+			\left.\frac{d^2E}{d\theta^2}\right|_{\theta=0}=0
+		}
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.31\textwidth}
+			\begin{block}{$R<R_\text{CF}$}
+				Positive curvature: RHF is a local minimum.
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{$R=R_\text{CF}$}
+				Zero curvature: the two UHF branches merge with RHF.
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{$R>R_\text{CF}$}
+				Negative curvature: RHF remains stationary, but is unstable.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+	\centering
+	\alert{The numerical value of $R_\text{CF}$ depends on the one-electron basis.}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{The dissociation curves follow from the asymptotic wave functions}
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.59\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=\linewidth,height=0.72\textheight,
+					xmin=0.45,xmax=6.15,ymin=-1.02,ymax=0.80,
+					xlabel={$R$},ylabel={$E(R)-2E_\text{H}$},
+					xtick={2.30},xticklabels={$R_\text{CF}$},
+					ytick={0,0.55},yticklabels={$0$,$\tfrac12 U$},
+					tick label style={font=\scriptsize},
+					label style={font=\small},
+					legend style={
+						draw=none,fill=white,font=\scriptsize,
+						at={(0.98,0.03)},anchor=south east
+					},
+					legend image post style={line width=1.2pt},
+					axis line style={hfInk},
+					clip=false,
+				]
+					\addplot[hfNavy,very thick,smooth] coordinates {
+						(0.55,0.72) (0.80,-0.18) (1.15,-0.68) (1.45,-0.79)
+						(1.75,-0.73) (2.05,-0.60) (2.30,-0.48) (2.65,-0.27)
+						(3.05,-0.02) (3.50,0.19) (4.00,0.35) (4.60,0.46)
+						(5.30,0.52) (6.05,0.55)
+					};
+					\addlegendentry{RHF}
+
+					\addplot[hfRed,very thick,smooth] coordinates {
+						(0.55,0.72) (0.80,-0.18) (1.15,-0.68) (1.45,-0.79)
+						(1.75,-0.73) (2.05,-0.60) (2.30,-0.48) (2.55,-0.34)
+						(2.85,-0.22) (3.25,-0.13) (3.75,-0.065) (4.35,-0.027)
+						(5.05,-0.008) (6.05,0.00)
+					};
+					\addlegendentry{UHF}
+
+					\addplot[hfTeal,thick,dashed,smooth] coordinates {
+						(0.55,0.67) (0.80,-0.24) (1.15,-0.76) (1.45,-0.88)
+						(1.75,-0.82) (2.10,-0.67) (2.50,-0.48) (2.95,-0.31)
+						(3.50,-0.17) (4.10,-0.080) (4.80,-0.030) (5.50,-0.008)
+						(6.05,0.00)
+					};
+					\addlegendentry{near-exact}
+				\end{axis}
+			\end{tikzpicture}
+		\end{column}
+		\begin{column}{0.38\textwidth}
+			\small
+			At $R\rightarrow\infty$,
+			\begin{equation}
+				S\rightarrow0,
+				\qquad
+				\psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}.
+			\end{equation}
+
+			Define the positive on-site repulsion
+			\begin{equation}
+				U=(AA|AA).
+			\end{equation}
+
+			\begin{block}{Restricted limit}
+				\begin{equation}
+					\boxed{
+						E_\text{RHF}^{\infty}
+						=2E_\text{H}+\frac12 U
+					}
+				\end{equation}
+				The ionic terms leave a finite error.
+			\end{block}
+
+			\begin{block}{Unrestricted limit}
+				Since $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$,
+				\begin{equation}
+					\boxed{E_\text{UHF}^{\infty}=2E_\text{H}}.
+				\end{equation}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vspace{-0.5em}
+	\centering
+	\alert{At $R_\text{CF}$ the UHF branch is tangent to RHF; it is not an avoided crossing.}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{UHF repairs the energy by sacrificing spin symmetry}
+	For the two-electron $M_S=0$ determinant,
+	\begin{equation}
+		\boxed{
+			\expval{\chS^2}_\text{UHF}
+			=
+			1-\abs{\braket{\psi^\alpha}{\psi^\beta}}^2
+			=
+			\sin^2(2\theta)
+		}.
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Near equilibrium}
+				$\theta=0$ and $\expval{\chS^2}=0$:
+				the determinant is a pure singlet.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{At dissociation}
+				$\theta\rightarrow\pi/4$ and $\expval{\chS^2}\rightarrow1$:
+				the determinant is an equal mixture of singlet and $M_S=0$ triplet.
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\begin{equation}
+		\ket{A\alpha\,B\beta}
+		=
+		\frac{1}{\sqrt2}
+		\left(
+			\ket{\text{covalent singlet}}
+			+
+			\ket{\text{triplet},M_S=0}
+		\right)
+		\qquad (R\rightarrow\infty).
+	\end{equation}
+
+	\centering
+	\alert{The UHF energy is physically useful, but the UHF wave function is spin contaminated.}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{What the \ce{H2} example teaches us}
+	\centering
+	\small
+	\renewcommand{\arraystretch}{1.32}
+	\begin{tabularx}{0.92\textwidth}{
+		@{}
+		>{\bfseries\raggedright\arraybackslash}m{0.25\textwidth}
+		>{\centering\arraybackslash}m{0.16\textwidth}
+		>{\centering\arraybackslash}m{0.17\textwidth}
+		>{\raggedright\arraybackslash}X@{}
+	}
+		\toprule
+		Method & Spin symmetry & Dissociation & Main limitation \\
+		\midrule
+		RHF
+		& Preserved
+		& Incorrect
+		& Persistent ionic configurations
+		\\
+		UHF
+		& Broken beyond $R_\text{CF}$
+		& Correct energetic limit
+		& Spin contamination
+		\\
+		Spin-adapted two-determinant state
+		& Preserved
+		& Correct
+		& No longer a single determinant
+		\\
+		\bottomrule
+	\end{tabularx}
+
+	\bigskip
+	\begin{block}{Three take-home messages}
+		\begin{enumerate}
+			\item A stationary SCF solution need not be stable
+			\item The Coulson--Fischer point marks a continuous RHF $\rightarrow$ UHF bifurcation
+			\item Symmetry breaking mimics static correlation at the price of a contaminated wave function
+		\end{enumerate}
+	\end{block}
+
+	\begin{equation}
+		\boxed{
+			\text{RHF stability analysis}
+			\quad\Longleftrightarrow\quad
+			\text{curvature of the HF energy with respect to orbital rotations}
+		}
+	\end{equation}
+\end{frame}
+
+%-----------------------------------------------------
+\subsection{Classification}
+%-----------------------------------------------------
 
 \begin{frame}{Stuber-Paldus classification of Hartree-Fock solutions}
 	\footnotesize
