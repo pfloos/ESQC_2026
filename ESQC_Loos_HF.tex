@@ -198,33 +198,6 @@
 	\titlepage
 \end{frame}
 
-%%% SLIDE X %%%
-%\begin{frame}{How to perform a HF calculation in practice?}
-%	\begin{columns}
-%		\begin{column}{0.7\textwidth}
-%			\begin{block}{The SCF algorithm for Hartree-Fock (HF) calculations (p.~146)}
-%				\begin{enumerate}
-%					\item \orange{Specify molecule} $\{\bR_A\}$ and $\{Z_A\}$ and \violet{basis set} $\{\phi_\mu\}$ 
-%					\item Calculate integrals $S_{\mu \nu}$, $H_{\mu \nu}$ and $\braket{\mu \nu}{\lambda \sigma}$
-%					\item Diagonalize $\bS$ and compute $\bX = \bS^{-1/2}$
-%					\item Obtain \alert{guess density matrix} for $\bP$
-%					\begin{enumerate}
-%						\item[1.] Calculate $\bJ$ and $\bK$, then $\bF = \bH + \bJ + \bK$
-%						\item[2.] Compute $\bF' = \bX^\dag \cdot  \bF \cdot  \bX$
-%						\item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$
-%						\item[4.] Calculate $\bC= \bX \cdot  \bC'$
-%						\item[5.] Form a \blue{new density matrix} $\bP = \bC \cdot \bC^\dag$
-%						\item[6.] \alert{Am I converged?} If not go back to 1.
-%					\end{enumerate}
-%					\item Calculate stuff that you want, like $\EHF$ for example
-%				\end{enumerate}
-%			\end{block}
-%		\end{column}
-%		\begin{column}{0.3\textwidth}
-%			\includegraphics[width=\textwidth]{fig/Szabo}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
 
 \begin{frame}{Szabo's and Ostlund's book}
 	\begin{center}
@@ -411,10 +384,6 @@
 \end{frame}
 
 \begin{frame}{Bosons vs Fermions}
-%	\begin{block}{Problem:}
-%		\violet{\textit{``Show that, for a system of two fermions, the wave function vanishes when they are at the same point in spin-space''}}
-%	\end{block}
-%	\pause
 	\begin{block}{Symmetry vs Antisymmetry}
 		Indistinguishable particles means 
 		\begin{equation}
@@ -430,13 +399,13 @@
 		\begin{equation}
 			\text{\orange{For Fermions, }} \Psi(\bx,\bx) = - \Psi(\bx,\bx)	\qq{$\Rightarrow$} 	\boxed{\Psi(\bx,\bx) = 0}
 		\end{equation}
-		\alert{The wave function vanishes: this is the origin of the Fermi (exchange) hole.}
+		\alert{The wavefunction vanishes: this is the origin of the Fermi (exchange) hole.}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Antisymmetry}
 	\begin{block}{Problem:}
-		\violet{\textit{``Given two one-electron functions $\chi_1(\bx)$ and $\chi_2(\bx)$, could you construct a two-electron (fermionic) wave function $\Psi(\bx_1,\bx_2)$?''}}
+		\violet{\textit{``Given two one-electron functions $\chi_1(\bx)$ and $\chi_2(\bx)$, could you construct a two-electron (fermionic) wavefunction $\Psi(\bx_1,\bx_2)$?''}}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
@@ -458,14 +427,14 @@
 		\alert{This is called a Slater determinant!}
 		\\
 		\bigskip
-		A wave function of the form \green{$\Psi(\bx_1,\bx_2) = \chi_1(\bx_1) \chi_2(\bx_2)$} is called a \green{Hartree product}
+		A wavefunction of the form \green{$\Psi(\bx_1,\bx_2) = \chi_1(\bx_1) \chi_2(\bx_2)$} is called a \green{Hartree product}
 	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
-\subsection{Hartree-Fock wave function}
+\subsection{Hartree-Fock wavefunction}
 %-----------------------------------------------------
-\begin{frame}{The HF wave function}
+\begin{frame}{The HF wavefunction}
 	\begin{block}{A Slater determinant}
 		\begin{equation}
 			\begin{split}
@@ -486,7 +455,7 @@
 		\begin{itemize}
 			\item $\blue{\chA}$ is called the \blue{antisymmetrizer}
 			\item $\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}$ is a \green{Hartree product}
-			\item \alert{The many-electron wave function $\Psi_\text{HF}(\bx_1,\bx_2,\ldots,\bx_N) $ is an antisymmetrized product of one-electron functions}
+			\item \alert{The many-electron wavefunction $\Psi_\text{HF}(\bx_1,\bx_2,\ldots,\bx_N) $ is an antisymmetrized product of one-electron functions}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -505,7 +474,6 @@
 		\qand
 		\blue{\psi_p(\br)} = \underbrace{\sum_\mu^K C_{\mu p} \green{\phi_{\mu}(\br)}}_{\text{\green{LCAO}}}
 	\end{equation}
-%	These are \alert{restricted spin orbitals} $\Rightarrow$ \violet{Restricted Hartree-Fock = \textbf{RHF}}
 	\begin{block}{The spin orbitals are orthogonal}
 		\begin{equation}
 			\braket{ \chi_p }{ \chi_q } = \int \chi_p^*(\bx) \chi_q(\bx) \dd{\bx} = \delta_{pq} 
@@ -519,7 +487,6 @@
 	\begin{block}{The spatial orbitals are orthogonal}
 		\begin{equation}
 			\braket{ \psi_p }{ \psi_q }  = \int \psi_p^*(\br) \psi_q(\br) \dd{\br} = \delta_{pq} 
-%			\text{ \green{ = Kronecker delta}}
 		\end{equation}
 	\end{block}
 	\begin{block}{The basis functions \alert{are, a priori, not} orthogonal}
@@ -549,9 +516,6 @@
 			\item When a system has \red{$2$ electrons in each orbital}, it is called a \red{closed-shell} system 
 			\item Otherwise, it is called an \red{open-shell} system 
 			\item For the ground state of a closed shell, the first $N/2$ spatial orbitals are \red{doubly-occupied} and the last $K-N/2$ are \red{vacant}
-%			\bigskip
-%			\item The MOs are built as \green{linear combinations of AOs (LCAO)}
-%			\item The coefficients $C_{\mu i}$ are determined from the \alert{HF equations} using the \violet{variational principle}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -883,23 +847,19 @@
 
 
 %-----------------------------------------------------
-
 \begin{frame}{Excited determinant vs excited HF solution}
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
-			\begin{block}{What it is}
+			\begin{block}{An excited determinant is}
 				\begin{itemize}
-					\item An orbital substitution within a
-					      \alert{fixed} set of reference orbitals
+					\item An orbital substitution within a \alert{fixed} set of reference orbitals
 					\item A valid many-electron basis function
-					\item A building block for CI and coupled-cluster
-					      expansions
+					\item A building block for CI and CC expansions
 				\end{itemize}
 			\end{block}
 		\end{column}
-
 		\begin{column}{0.48\textwidth}
-			\begin{block}{What it is generally not}
+			\begin{block}{An excited determinant is generally not}
 				\begin{itemize}
 					\item A separately optimized HF state
 					\item A stationary point of the HF energy
@@ -908,23 +868,21 @@
 			\end{block}
 		\end{column}
 	\end{columns}
-
 	\begin{block}{Brillouin's theorem}
 		For a stationary HF reference, the Hamiltonian does not couple
 		the reference determinant to a singly-excited determinant:
 		\begin{equation}
 			\boxed{
-				\mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}
+				\mel{\Psi_0}{\chH_\text{elec}}{\Psi_{\green{i}}^{\red{a}}}
 				=
-				h_{ia} + \sum_j \mel{ij}{}{aj}
+				h_{\green{i}\red{a}} + \sum_k^N \mel{\green{i}k}{}{\red{a}k}
 				=
-				f_{ia}
+				f_{\green{i}\red{a}}
 				=
 				0
 			}
 		\end{equation}
 	\end{block}
-
 	\centering
 	\vfill
 	$\Rightarrow$ \alert{Orbital excitation and state optimization are different procedures}
@@ -932,49 +890,49 @@
 
 %-----------------------------------------------------
 
-\begin{frame}{A spin-free Hamiltonian conserves $S$ and $M_S$}
+\begin{frame}{Spin of many-electron wavefunctions}
 	\begin{block}{Spin operators}
-    	In the nonrelativistic, spin-free framework, $\chH$ commutes with the spin operators
+    	In the nonrelativistic, spin-free framework, $\chH$ commutes with the \alert{total spin operators}
     	\begin{equation}
     		\boxed{
     			\comm{\chH}{\chS^2}=0
     			\qquad\text{and}\qquad
     			\comm{\chH}{\chS_z}=0
     		}
-    	\end{equation}
-    
-    	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous
-    	eigenfunctions of $\chS^2$ and $\chS_z$:
+    	\end{equation}  
+    	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous eigenfunctions of $\chS^2$ and $\chS_z$:
     	\begin{align}
     		\chS^2\ket{S,M_S}
-    		&=
+    		& =
     		S(S+1)\ket{S,M_S}
     		& 
     		\chS_z\ket{S,M_S}
-    		&=
+    		& =
     		M_S\ket{S,M_S}
     	\end{align}
 	\end{block}
-
 	\begin{block}{Spin quantum numbers}
 		\begin{itemize}
-			\item $S$ determines the spin multiplicity $2S+1$
-			\item $M_S=-S,-S+1,\ldots,S-1,S$ is its spin projection
+			\item $S$ determines the \alert{spin multiplicity} $2S+1$: 
+			\begin{itemize}
+				\item $S=0$ for singlets
+				\item $S=1/2$ for doublets 
+				\item $S=1$ for triplets
+				\item \ldots
+			\end{itemize}
+			\item $M_S=-S,-S+1,\ldots,S-1,S$ is its \alert{spin projection}
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
 
-\begin{frame}{A determinant always has $M_S$, but not necessarily $S$}
-	For a \alert{collinear} determinant containing $N^\alpha$ spin-up and
-	$N^\beta$ spin-down orbitals:
+\begin{frame}{Are excited determinants genuine spin functions?}
+	For a \alert{collinear$^*$} determinant containing $N^\alpha$ spin-up and $N^\beta$ spin-down orbitals, one has
 	\begin{equation}
 		\boxed{
-			\chS_z\ket{\Phi}
-			=
-			M_S\ket{\Phi}
-			\qquad
+			\chS_z\ket{\Phi} = M_S\ket{\Phi}
+			\qq{with}
 			M_S=\frac{N^\alpha-N^\beta}{2}
 		}
 	\end{equation}
@@ -984,7 +942,7 @@
 			\begin{block}{Closed-shell RHF}
 				Every spatial orbital is doubly occupied:
 				\begin{equation}
-					\chS^2\ket{\Phi_{\text{RHF}}}
+					\chS^2\ket{\Psi_{\text{RHF}}}
 					=
 					0
 				\end{equation}
@@ -994,11 +952,11 @@
 
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Open-shell UHF}
-				The alpha and beta spatial orbitals are different:
+				The spin-up and spin-down spatial orbitals are different:
 				\begin{equation}
-					\chS^2\ket{\Phi_{\text{UHF}}}
+					\chS^2\ket{\Psi_{\text{UHF}}}
 					\neq
-					S(S+1)\ket{\Phi_{\text{UHF}}}
+					S(S+1)\ket{\Psi_{\text{UHF}}}
 				\end{equation}
 				in general
 			\end{block}
@@ -1006,14 +964,16 @@
 	\end{columns}
 	\vfill
 	$\Rightarrow$
-	\alert{Every RHF or UHF determinant has a well-defined $M_S$,
-	but only specific determinants have a well-defined $S$}
+	\alert{Every RHF or UHF determinant has a well-defined $M_S$, but only specific determinants have a well-defined $S$}
+	\\
+	\bigskip
+	\footnotesize
+$^*$In a collinear determinant, the occupied spin orbitals all have spin aligned along one common quantization axis, conventionally $z$
 \end{frame}
 
 %-----------------------------------------------------
 
-\begin{frame}{Spin contamination measures broken spin symmetry in UHF}
-	\small
+\begin{frame}{Spin contamination in UHF}
 	For $N^\alpha \geq N^\beta$, a UHF determinant satisfies
 	\begin{equation}
 		\boxed{
@@ -1027,18 +987,15 @@
 			\sum_{j=1}^{N^\beta}
 			\abs{S_{ij}^{\alpha\beta}}^2
 		}
-	\end{equation}
-	with
-	\begin{equation}
+		\qq{with}
 		\underbrace{S_{ij}^{\alpha\beta}}_{\text{overlap}}
 		=
 		\braket{\phi_i^\alpha}{\phi_j^\beta}
 		\qq{and}
 		M_S=\frac{N^\alpha-N^\beta}{2}
 	\end{equation}
-
 	\begin{block}{Spin contamination}
-		For a high-spin target state with $S=M_S$,
+		For a target high-spin state with $S=M_S$,
 		\begin{equation}
 			\Delta S^2
 			=
@@ -1059,20 +1016,24 @@
 
 %-----------------------------------------------------
 \begin{frame}{A singly excited determinant is not necessarily spin adapted}
-	Start from a closed-shell singlet reference and define the determinant phases by
-	\begin{equation}
-		\ket{D_\alpha}
-		=
-		\cre{a\alpha}\ani{i\alpha}\ket{\Psi_0},
-		\qquad
-		\ket{D_\beta}
-		=
-		\cre{a\beta}\ani{i\beta}\ket{\Psi_0}.
-	\end{equation}
+	Starting from a closed-shell singlet reference $\ket{\Psi_0}$
+	\begin{align}
+		\ket*{D_\alpha}
+		& =
+		\cre{a\alpha}\ani{i\alpha}\ket{\Psi_0}
+		&
+		\ket*{D_\beta}
+		& =
+		\cre{a\beta}\ani{i\beta}\ket{\Psi_0}
+		&
+		\chS_z\ket{D_\sigma} & = 0
+		&
+		\mel{D_\sigma}{\chS^2}{D_\sigma} & = 1
+	\end{align}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.46\textwidth}
-			\begin{block}{$\ket*{D_\alpha}$: excite the $\alpha$ electron}
+			\begin{block}{$\ket*{D_\alpha}$: excite the spin-up electron}
 				\centering
 				\begin{tikzpicture}[x=1cm,y=1cm]
 					\node[left] at (0,0.35) {$i$};
@@ -1087,7 +1048,7 @@
 			\end{block}
 		\end{column}
 		\begin{column}{0.46\textwidth}
-			\begin{block}{$\ket*{D_\beta}$: excite the $\beta$ electron}
+			\begin{block}{$\ket*{D_\beta}$: excite the spin-down electron}
 				\centering
 				\begin{tikzpicture}[x=1cm,y=1cm]
 					\node[left] at (0,0.35) {$i$};
@@ -1103,12 +1064,6 @@
 		\end{column}
 	\end{columns}
 
-	\begin{align}
-		\chS_z\ket{D_\sigma}&=0,
-		&
-		\mel{D_\sigma}{\chS^2}{D_\sigma}&=1.
-	\end{align}
-
 	\begin{block}{Same $M_S$, indefinite total spin}
 		Each determinant has $M_S=0$, but contains equal singlet and triplet character.
 		Being an eigenfunction of $\chS_z$ does not imply being an eigenfunction of $\chS^2$.
@@ -1117,17 +1072,16 @@
 
 %-----------------------------------------------------
 \begin{frame}{Diagonalizing $\chS^2$ produces pure singlet and triplet states}
-	In the two-determinant basis $\{\ket{D_\alpha},\ket{D_\beta}\}$,
+	In the two-determinant basis $\{\ket*{D_\alpha},\ket*{D_\beta}\}$,
 	\begin{equation}
 		\boxed{
 			\left[\chS^2\right]_{\{D_\alpha,D_\beta\}}
 			=
 			\begin{pmatrix}
-				 1 & -1 \\
-				-1 &  1
+				 +1 & -1 \\
+				-1 &  +1
 			\end{pmatrix}
 		}
-		\qquad (\hbar=1).
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
@@ -1135,134 +1089,122 @@
 			\begin{block}{Pure singlet}
 				\begin{equation}
 					\boxed{
-						\ket{{}^1\Phi_i^a}
+						\ket{{}^1\Psi_i^a}
 						=
 						\frac{1}{\sqrt2}
 						\left(
-							\ket{D_\alpha}+\ket{D_\beta}
+							\ket*{D_\alpha}+\ket*{D_\beta}
 						\right)
 					}
 				\end{equation}
 				\begin{equation}
-					\chS^2\ket{{}^1\Phi_i^a}=0,
-					\qquad S=0.
+					\chS^2\ket*{{}^1\Psi_i^a}=0
+					\qquad S=0
 				\end{equation}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
-			\begin{block}{Pure triplet, $M_S=0$}
+			\begin{block}{Pure triplet with $M_S=0$}
 				\begin{equation}
 					\boxed{
-						\ket{{}^3\Phi_i^a;0}
+						\ket{{}^{3,0}\Psi_i^a}
 						=
 						\frac{1}{\sqrt2}
 						\left(
-							\ket{D_\alpha}-\ket{D_\beta}
+							\ket*{D_\alpha}-\ket*{D_\beta}
 						\right)
 					}
 				\end{equation}
 				\begin{equation}
-					\chS^2\ket{{}^3\Phi_i^a;0}
+					\chS^2\ket*{{}^{3,0}\Psi_i^a}
 					=
-					2\ket{{}^3\Phi_i^a;0},
-					\qquad S=1.
+					2\ket*{{}^{3,0}\Psi_i^a}
+					\qquad S=1
 				\end{equation}
 			\end{block}
 		\end{column}
 	\end{columns}
-
-	\begin{equation}
-		\boxed{
-			\text{spin adaptation}
-			=
-			\text{diagonalization of $\chS^2$ in a determinant space}
-		}
-	\end{equation}
-
-	\centering
-	\scriptsize
-	The relative $+$ and $-$ signs depend on determinant phases; the excitation-operator
-	definitions on the preceding slide fix the convention used here.
+	\vfill
+	\center
+	$\Rightarrow$ \alert{spin adaptation = diagonalization of $\chS^2$ in a determinant space}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Spin and spatial symmetry compensate each other}
-	For the two open-shell spatial orbitals $i$ and $a$, the singlet is
-	\begin{equation}
-		\Psi_{ia}^{S=0}
-		=
-		\frac{1}{2}
-		\underbrace{
-			\left[
-				\phi_i(1)\phi_a(2)+\phi_a(1)\phi_i(2)
-			\right]
-		}_{\text{spatially symmetric}}
-		\underbrace{
-			\left[
-				\alpha(1)\beta(2)-\beta(1)\alpha(2)
-			\right]
-		}_{\text{spin antisymmetric}}.
-	\end{equation}
+\begin{frame}{Spin and spatial symmetries}
+	\begin{block}{Open-shell singlet}
+    	For the two open-shell spatial orbitals $i$ and $a$, the singlet is
+    	\begin{equation}
+    		\ket*{{}^0\Psi_{i}^{a}}
+    		=
+    		\frac{1}{2}
+    		\underbrace{
+    			\left[
+    				\ket*{\phi_i(1)\phi_a(2)}+\ket*{\phi_a(1)\phi_i(2)}
+    			\right]
+    		}_{\text{spatially symmetric}}
+    		\underbrace{
+    			\left[
+    				\alpha(1)\beta(2)-\beta(1)\alpha(2)
+    			\right]
+    		}_{\text{spin antisymmetric}}
+    	\end{equation}
 
-	\begin{block}{Singlet: opposite exchange symmetries}
 		\centering
 		\green{symmetric spatial part}
 		$\times$
 		\red{antisymmetric spin part}
 	\end{block}
 
-	The $M_S=0$ triplet is
-	\begin{equation}
-		\Psi_{ia}^{S=1,M_S=0}
-		=
-		\frac{1}{2}
-		\underbrace{
-			\left[
-				\phi_i(1)\phi_a(2)-\phi_a(1)\phi_i(2)
-			\right]
-		}_{\text{spatially antisymmetric}}
-		\underbrace{
-			\left[
-				\alpha(1)\beta(2)+\beta(1)\alpha(2)
-			\right]
-		}_{\text{spin symmetric}}.
-	\end{equation}
+	\begin{block}{Triplet with $M_S=0$}
+    	The $M_S=0$ triplet is
+    	\begin{equation}
+    		\ket*{{}^{3,0}\Psi_{i}^{a}}
+    		=
+    		\frac{1}{2}
+    		\underbrace{
+    			\left[
+    				\ket*{\phi_i(1)\phi_a(2)}-\ket*{\phi_a(1)\phi_i(2)}
+    			\right]
+    		}_{\text{spatially antisymmetric}}
+    		\underbrace{
+    			\left[
+    				\alpha(1)\beta(2)+\beta(1)\alpha(2)
+    			\right]
+    		}_{\text{spin symmetric}}
+    	\end{equation}
 
-	\begin{block}{Triplet: opposite exchange symmetries}
 		\centering
 		\red{antisymmetric spatial part}
 		$\times$
 		\green{symmetric spin part}
 	\end{block}
 
-	\centering
-	\boxed{
-		\text{The complete electronic wave function is antisymmetric in both cases.}
-	}
+	\vfill
+	\center
+	$\Rightarrow$ \alert{The complete electronic wavefunction is antisymmetric in both cases}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The $M_S=0$ combination belongs to a three-component triplet}
+\begin{frame}{The three components of the triplet}
 	The three components of the $S=1$ multiplet are
-	\begin{equation}
-		\boxed{
-		\begin{aligned}
-			\ket{{}^3\Phi_i^a;+1}
-				&=\ket{\cdots i^\alpha a^\alpha\cdots},\\[1mm]
-			\ket{{}^3\Phi_i^a;0}
+		\begin{align}
+			\ket{{}^{3,+1}\Psi_i^a}
+				&=\ket*{\cdots i^\alpha a^\alpha\cdots}
+				&
+			\ket{{}^{3,0}\Psi_i^a}
 				&=\frac{1}{\sqrt2}
-				\left(\ket{D_\alpha}-\ket{D_\beta}\right),\\[1mm]
-			\ket{{}^3\Phi_i^a;-1}
-				&=\ket{\cdots i^\beta a^\beta\cdots}.
-		\end{aligned}}
-	\end{equation}
+				\left(\ket*{D_\alpha}-\ket*{D_\beta}\right)
+				&
+			\ket{{}^{3,-1}\Psi_i^a}
+				&=\ket*{\cdots i^\beta a^\beta\cdots}
+		\end{align}
 
 	Every component satisfies
-	\begin{equation}
-		\chS^2\ket{1,M_S}=2\ket{1,M_S},
-		\qquad
-		\chS_z\ket{1,M_S}=M_S\ket{1,M_S}.
-	\end{equation}
+	\begin{align}
+		\chS^2\ket{1,M_S} & = 2\ket{1,M_S}
+		&
+		\chS_z\ket{1,M_S} & = M_S \ket{1,M_S}
+	\end{align}
 
 	They are connected by
 	\begin{equation}
@@ -1275,26 +1217,23 @@
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{$M_S=\pm1$}
-				Each component is a single spin-pure determinant.
+				Each component is a single spin-pure determinant
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{$M_S=0$}
-				The pure triplet requires a two-determinant combination.
+				The pure triplet requires two determinants
 			\end{block}
 		\end{column}
 	\end{columns}
-
-	\centering
-	\alert{The open-shell singlet likewise requires two determinants.}
 \end{frame}
 
 %-----------------------------------------------------
 \subsection{Examples}
 %-----------------------------------------------------
 \begin{frame}{Normalization of a two-electron determinant}
-	\begin{block}{Problem: Normalization of the HF wave function}
-		\textit{\violet{``Show that the HF wave function built with two (normalized) spin orbitals $\chi_1$ and $\chi_2$ is normalized''}}
+	\begin{block}{Problem: Normalization of the HF wavefunction}
+		\textit{\violet{``Show that the HF wavefunction built with two (normalized) spin orbitals $\chi_1$ and $\chi_2$ is normalized''}}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
@@ -2257,18 +2196,6 @@
 		      $\{\bF^{(i)},\be^{(i)}\}$ is removed
 	\end{itemize}
 
-	\begin{block}{UHF calculations}
-		The alpha and beta residuals may be concatenated,
-		\[
-			\be^{(i)}
-			=
-			\left(
-				\be_\alpha^{(i)},
-				\be_\beta^{(i)}
-			\right),
-		\]
-		and the same coefficients are applied to both Fock matrices.
-	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
@@ -2422,12 +2349,13 @@
 		      and form the next density $\bP^{(n+1)}$
 	\end{enumerate}
 
-	\begin{alertblock}{Convergence tests}
-		Check the energy change, density change, and residual norm;
-		do not rely on only one of them.
-	\end{alertblock}
 \end{frame}
 
+	\begin{alertblock}{Take-home message}
+		DIIS accelerates SCF convergence by finding an affine combination
+		of previous Fock matrices whose extrapolated residual is minimal.
+	\end{alertblock}
+	
 %-----------------------------------------------------
 
 \begin{frame}{DIIS is powerful, but the subspace can become unstable}
@@ -2464,73 +2392,9 @@
 		\bottomrule
 	\end{tabularx}
 
-	\begin{block}{A robust practical strategy}
-		\begin{itemize}
-			\item Begin with damping, level shifting, EDIIS, or ADIIS
-			\item Switch to commutator DIIS near the solution
-			\item Keep only a small, well-conditioned history
-		\end{itemize}
-	\end{block}
-
 	\begin{alertblock}{DIIS minimizes a residual---not the energy}
 		The extrapolated energy is not guaranteed to decrease monotonically.
 	\end{alertblock}
-\end{frame}
-
-%-----------------------------------------------------
-
-\begin{frame}{DIIS variants target different convergence regimes}
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			\begin{block}{CDIIS}
-				\begin{itemize}
-					\item Uses the commutator residual
-					\item Very efficient close to self-consistency
-					\item May be unstable far from the solution
-				\end{itemize}
-			\end{block}
-
-			\begin{block}{EDIIS}
-				\begin{itemize}
-					\item Uses energy-based convex mixing
-					\item More robust in the early SCF iterations
-					\item Usually slower near convergence
-				\end{itemize}
-			\end{block}
-		\end{column}
-
-		\begin{column}{0.48\textwidth}
-			\begin{block}{ADIIS}
-				\begin{itemize}
-					\item Uses an approximate SCF energy model
-					\item Designed for the difficult initial regime
-					\item Often combined with CDIIS
-				\end{itemize}
-			\end{block}
-
-			\begin{block}{Hybrid strategy}
-				\[
-					\text{EDIIS/ADIIS}
-					\quad\longrightarrow\quad
-					\text{CDIIS}
-				\]
-				\centering
-				Robust far away; fast close to the solution.
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{alertblock}{Take-home message}
-		DIIS accelerates SCF convergence by finding an affine combination
-		of previous Fock matrices whose extrapolated residual is minimal.
-	\end{alertblock}
-
-	\vfill
-	\centering
-	\pub{
-		P.~Pulay, Chem.\ Phys.\ Lett.\ \textbf{73}, 393 (1980);
-		J.\ Comput.\ Chem.\ \textbf{3}, 556 (1982).
-	}
 \end{frame}
 
 %-----------------------------------------------------
@@ -2604,7 +2468,7 @@
 				\end{cases}
 			\end{equation}		
 			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\chS^2$
-			\item The HF wave function is no longer a pure spin function
+			\item The HF wavefunction is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
 			\item Doublets are contaminated by quartets, sextuplets, etc
 			\item Generalized HF also allows spin mixing and need not preserve $\chS_z$
@@ -2615,54 +2479,6 @@
 		\end{itemize}
 	\end{block}
 \end{frame}
-
-%\begin{frame}{RHF, ROHF and UHF}
-%	\center
-%	\includegraphics[width=0.4\textwidth]{fig/RHF_UHF}
-%	\begin{itemize}
-%		\item RHF = \orange{Restricted} Hartree-Fock
-%		\item UHF = \red{Unrestricted} Hartree-Fock
-%		\item ROHF = \blue{Restricted Open-shell} Hartree-Fock
-%	\end{itemize}
-%\end{frame}
-
-%-----------------------------------------------------
-%\subsection{UHF wave function}
-%-----------------------------------------------------
-%\begin{frame}{The UHF wave function}
-%	\begin{block}{Slater determinants for UHF}
-%		\small
-%		\begin{equation*}
-%			\Psi_\text{UHF}%(\br_1,\ldots,\br_N) 
-%			= 
-%			\underbrace{
-%			\frac{1}{\sqrt{N^\alpha!}}
-%			\begin{vmatrix}
-%			\psi_1^\alpha(\br_1)	&	\cdots	&	\psi_{N^\alpha}^\alpha(\br_1)	\\
-%			\vdots				&	\ddots	&	\vdots			\\
-%			\psi_1^\alpha(\br_{N^\alpha})	&	\cdots	&	\psi_{N^\alpha}^\alpha(\br_{N^\alpha})	\\
-%			\end{vmatrix}
-%			}_{\orange{\Psi^\alpha(\br_1,\ldots,\br_{N^\alpha}) }}
-%			\underbrace{
-%			\frac{1}{\sqrt{N^\beta!}}
-%			\begin{vmatrix}
-%			\psi_1^\beta(\br_{N^\alpha+1})	&	\cdots	&	\psi_{N^\beta}^\beta(\br_{N^\alpha+1})	\\
-%			\vdots				&	\ddots	&	\vdots			\\
-%			\psi_1^\beta(\br_{N})	&	\cdots	&	\psi_{N^\beta}^\beta(\br_{N})	\\
-%			\end{vmatrix}
-%			}_{\alert{\Psi^\beta(\br_{N^\alpha+1},\ldots,\br_{N}) }}
-%		\end{equation*}
-%		\normalsize
-%		\begin{itemize}
-%			\item The UHF wave function is \violet{a product of two determinants}
-%			\begin{itemize}
-%				\item One for the \orange{spin-up electrons} $\orange{\Psi^\alpha(\br_1,\ldots,\br_{N^\alpha}) }$
-%				\item One for the \alert{spin-down electrons} $\alert{\Psi^\beta(\br_{N^\alpha+1},\ldots,\br_{N}) }$
-%			\end{itemize}
-%			\item The \alert{Pauli exclusion principle} only requires the \blue{wave function to be antisymmetric wrt the exchange of two same-spin electrons}
-%		\end{itemize}
-%	\end{block}
-%\end{frame}
 
 %-----------------------------------------------------
 \subsection{UHF equations}
@@ -2733,17 +2549,6 @@
 	\end{block}
 	\pause
 	\begin{block}{Solution}
-%		The UHF wave function for the doublet state of \ce{Li} is
-%		\begin{equation*}
-%			\Psi_\text{UHF}(\br_1,\br_2,\br_3) 
-%			= \frac{1}{\sqrt{2}}
-%			\begin{vmatrix}
-%				\psi_1^\alpha(\br_1)	&	\psi_2^\alpha(\br_1)	\\
-%				\psi_1^\alpha(\br_2)	&	\psi_2^\alpha(\br_2)	\\
-%			\end{vmatrix}
-%			\psi_1^\beta(\br_3)
-%		\end{equation*}
-%		while the corresponding energy is
 		\begin{equation*}
 			E_\text{UHF} = h_1^\alpha + h_1^\beta + h_2^\alpha + J_{12}^{\alpha\alpha} - K_{12}^{\alpha\alpha} + J_{11}^{\alpha\beta} + J_{21}^{\alpha\beta}
 		\end{equation*}
@@ -2922,7 +2727,7 @@
 
 %-----------------------------------------------------
 \begin{frame}{RHF is qualitatively correct near equilibrium---but not at dissociation}
-	The closed-shell RHF wave function doubly occupies the bonding orbital:
+	The closed-shell RHF wavefunction doubly occupies the bonding orbital:
 	\begin{equation}
 		\ket{\Psi_\text{RHF}}
 		=
@@ -3234,7 +3039,7 @@
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The dissociation curves follow from the asymptotic wave functions}
+\begin{frame}{The dissociation curves follow from the asymptotic wavefunctions}
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.59\textwidth}
 			\centering
@@ -3360,7 +3165,7 @@
 	\end{equation}
 
 	\centering
-	\alert{The UHF energy is physically useful, but the UHF wave function is spin contaminated.}
+	\alert{The UHF energy is physically useful, but the UHF wavefunction is spin contaminated.}
 \end{frame}
 
 %-----------------------------------------------------
@@ -3401,7 +3206,7 @@
 		\begin{enumerate}
 			\item A stationary SCF solution need not be stable
 			\item The Coulson--Fischer point marks a continuous RHF $\rightarrow$ UHF bifurcation
-			\item Symmetry breaking mimics static correlation at the price of a contaminated wave function
+			\item Symmetry breaking mimics static correlation at the price of a contaminated wavefunction
 		\end{enumerate}
 	\end{block}
 
