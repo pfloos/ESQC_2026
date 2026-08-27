@@ -2048,7 +2048,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\begin{enumerate}
 		\item One can check the \alert{energy and/or the density matrix}
-		\item 	At self-consistency, the density and Fock matrices commute:
+		\item 	At self-consistency, the density and Fock matrices \alert{commute}:
     	\begin{equation}
     		\boxed{
     			\be^{(n)}
@@ -2062,12 +2062,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		\bP^{(n)}=\bP^\star
     		\qquad\Longrightarrow\qquad
     		\be^{(n)}=\bO
+    		\qquad\Longrightarrow\qquad
+    		\max \abs*{\be^{(n)}} < \tau_\text{SCF}
     	\end{equation}
 
 		\item \alert{DIIS (direct inversion in the iterative subspace)} is usually used to speed up convergence:\\
-		$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using the $m$ previous iterations
 		\begin{equation}
-			\bF^{(n+1)} = \sum_{i=n-m}^{n} c_i \bF^{(i)}
+			\qq*{$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using the $m$ previous iterations:}
+			\boxed{\bF^{(n+1)} = \sum_{i=n-m}^{n} c_i \bF^{(i)}}
 		\end{equation}
 	\end{enumerate}
 \end{frame}
@@ -2083,7 +2085,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\sum_{i=1}^{m}c_i\bF^{(i)}
 		&
 		\be^\text{DIIS}
-		&\approx
+		&=
 		\sum_{i=1}^{m}c_i\be^{(i)}
 	\end{align}
 
@@ -2105,7 +2107,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{equation}
 		B_{ij}
 		=
-		\braket{\be^{(i)}}{\be^{(j)}}
+		\braket*{\be^{(i)}}{\be^{(j)}}
 		=
 		\Tr[
 			\be^{(i)\dagger} \cdot \be^{(j)}
@@ -2124,8 +2126,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 %-----------------------------------------------------
 
-\begin{frame}{The DIIS weights come from a small augmented system}
-	Introducing the Lagrangian
+\begin{frame}{DIIS weights and extrapolated Fock matrix}
+	\begin{block}{DIIS Lagrangian}
 	\begin{equation}
 		\mathcal{L}(\bc,\lambda)
 		=
@@ -2136,17 +2138,22 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\sum_{i=1}^{m}c_i - 1
 		\right)
 	\end{equation}
+	\end{block}
 
-	Stationarity gives
+	\begin{block}{Stationarity conditions}
 	\begin{equation}
+		\pdv{\mathcal{L}(\bc,\lambda)}{\bc} = \bO
+		\qand
+		\pdv{\mathcal{L}(\bc,\lambda)}{\lambda} = 0
+		\qq{$\Rightarrow$}
 		\bB \cdot \bc-\lambda\boldsymbol{1}=\bO
 		\qand
 		\sum_{i=1}^{m}c_i=1
 	\end{equation}
+	\end{block}
 
-	Therefore, the weights are obtained from
+	\begin{block}{DIIS linear system}
 	\begin{equation}
-		\boxed{
 		\begin{pmatrix}
 			B_{11} & \cdots & B_{1m} & -1 \\
 			\vdots & \ddots & \vdots & \vdots \\
@@ -2161,41 +2168,34 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{pmatrix}
 			0 \\ \vdots \\ 0 \\ -1
 		\end{pmatrix}
-		}
-	\end{equation}
-
-	Once the $c_i$ are known,
-	\begin{equation}
+		\qq{$\Rightarrow$}
 		\boxed{
 			\bF^\text{DIIS}
 			=
 			\sum_{i=1}^{m}c_i\bF^{(i)}
 		}
 	\end{equation}
-
-	The linear system has dimension only $(m+1)\times(m+1)$
+	\end{block}
+	\vfill
+	\qq{$\Rightarrow$} \alert{The linear system has dimension only $(m+1)\times(m+1)$}
 \end{frame}
 
 %-----------------------------------------------------
 
-\begin{frame}{One DIIS cycle uses the complete iteration history}
+\begin{frame}{DIIS algorithm}
 	\small
 	\begin{enumerate}
 		\item Start from the current density $\bP^{(n)}$
 
 		\item Build the corresponding Fock matrix
-		      \[
-			      \bF^{(n)}=\bF[\bP^{(n)}]
-		      \]
+			   $$\bF^{(n)}=\bF[\bP^{(n)}]$$
 
 		\item Evaluate the commutator residual
-		      \[
-			      \be^{(n)}
+			      $$\be^{(n)}
 			      =
 			      \bF^{(n)} \cdot \bP^{(n)} \cdot \bS
 			      -
-			      \bS \cdot \bP^{(n)} \cdot \bF^{(n)}
-		      \]
+			      \bS \cdot \bP^{(n)} \cdot \bF^{(n)}$$
 
 		\item Store the pair
 		      $\{\bF^{(n)},\be^{(n)}\}$ and update the DIIS subspace
@@ -2204,18 +2204,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		      the coefficients $\{c_i\}$
 
 		\item Extrapolate the Fock matrix
-		      \[
-			      \bF^\text{DIIS}
+			      $$\bF^\text{DIIS}
 			      =
-			      \sum_i c_i\bF^{(i)}
-		      \]
+			      \sum_i c_i\bF^{(i)}$$
 
 		\item Solve
-		      \[
-			      \bF^\text{DIIS} \cdot \bC
+			      $$\bF^\text{DIIS} \cdot \bC
 			      =
-			      \bS \cdot \bC \cdot \bE
-		      \]
+			      \bS \cdot \bC \cdot \bE$$
 		      and form the next density $\bP^{(n+1)}$
 	\end{enumerate}
 
@@ -2225,11 +2221,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{DIIS take-home messages}
 	\begin{itemize}
-		\item DIIS accelerates SCF convergence by finding a linear combination of previous Fock matrices whose extrapolated residual is minimal
-		\item A small rolling subspace is normally sufficient: commonly $m\approx6$--$10$
-		\item DIIS requires additional storage: $\sim 2mK^2$
+		\item \textbf{Key idea:} DIIS accelerates SCF convergence by finding a linear combination of previous Fock matrices whose extrapolated residual is minimal
+		\bigskip
+		\item A small \alert{rolling subspace} is normally sufficient: commonly $m\approx6$--$10$
+		\bigskip
+		\item DIIS requires additional \alert{storage}: $\sim 2mK^2$
+		\bigskip
 		\item The extrapolated energy is not guaranteed to decrease monotonically
-		\item $\bB$ can be singular due to nearly linear dependence of the residuals: restart possible
+		\bigskip
+		\item $\bB$ can be \alert{singular} due to nearly linear dependence of the residuals: restart possible
+		\bigskip
 		\item DIIS can be used for many other methods!
 	\end{itemize}
 \end{frame}
@@ -2292,7 +2293,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \subsection{UHF}
 %-----------------------------------------------------
-\begin{frame}{Unrestricted HF (UHF)}
+\begin{frame}{Unrestricted HF}
 	\begin{block}{How to model open-shell systems?}
 		\begin{itemize}
 			\item For open-shell systems one uses \alert{unrestricted spin orbitals}
@@ -2531,24 +2532,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		}
 	\end{equation}
 
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			\begin{block}{What the model retains}
-				\begin{itemize}
-					\item Bond formation through $g/u$ mixing
-					\item Static correlation upon dissociation
-					\item Restricted and symmetry-broken HF solutions
-				\end{itemize}
-			\end{block}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Why it is special}
-				For two electrons in two spatial orbitals, the UHF problem reduces to
-				\alert{one orbital-rotation angle}
-			\end{block}
-		\end{column}
-	\end{columns}
-
+	\begin{block}{Why it is special?}
+		For two electrons in two spatial orbitals, the UHF problem reduces to
+		\alert{one orbital-rotation angle}
+	\end{block}
+	\bigskip
 	\centering
 	\begin{tikzpicture}[x=1cm,y=1cm]
 		\fill[hfBlue!18] (-2.0,0) circle (0.52);
@@ -2563,16 +2551,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{RHF is qualitatively correct near equilibrium---but not at dissociation}
+\begin{frame}{RHF problem}
 	The closed-shell RHF wavefunction doubly occupies the bonding orbital:
 	\begin{equation}
 		\ket{\Psi_\text{RHF}}
 		=
-		\ket{\psi_g\Bar{\psi}_g},
-		\qquad
+		\ket{\psi_g\Bar{\psi}_g}
+		\qand
 		E_\text{RHF}
 		=
-		2h_{gg}+J_{gg}+\frac{1}{R}.
+		2h_{gg}+J_{gg}+\frac{1}{R}
 	\end{equation}
 
 	At large $R$, where $S\rightarrow0$,
@@ -2580,7 +2568,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\psi_g(1)\psi_g(2)
 		\longrightarrow
 		\frac{1}{2}
-		\left[
+		\qty[
 			\underbrace{
 				\phi_A(1)\phi_B(2)+\phi_B(1)\phi_A(2)
 			}_{\text{covalent}}
@@ -2588,30 +2576,30 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\underbrace{
 				\phi_A(1)\phi_A(2)+\phi_B(1)\phi_B(2)
 			}_{\text{ionic}}
-		\right].
+		]
 	\end{equation}
 
-	\begin{block}{The restricted dissociation error}
+	\begin{block}{The RHF dissociation error}
 		RHF retains \alert{50\% ionic character} at $R\rightarrow\infty$.
 		Both electrons are forced to share the same spatial orbital, so the RHF
-		energy lies above the energy of two separated H atoms.
+		energy lies above the energy of two separated H atoms
 	\end{block}
-
+	\vfill
 	\centering
-	$\Rightarrow$ \alert{The missing ingredient is left--right correlation}
+	$\Rightarrow$ \alert{RHF is qualitatively correct near equilibrium but not at dissociation}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{UHF introduces a single spin-polarization angle}
+\begin{frame}{UHF problem}
 	Preserve $M_S=0$, but allow the $\alpha$ and $\beta$ electrons to occupy
 	different spatial orbitals:
 	\begin{equation}
 		\boxed{
 		\begin{aligned}
 			\psi^\alpha(\theta)
-				&=\cos\theta\,\psi_g+\sin\theta\,\psi_u,\\
+				&=\cos\theta\,\psi_g+\sin\theta\,\psi_u\\
 			\psi^\beta(\theta)
-				&=\cos\theta\,\psi_g-\sin\theta\,\psi_u.
+				&=\cos\theta\,\psi_g-\sin\theta\,\psi_u
 		\end{aligned}}
 	\end{equation}
 
@@ -2619,7 +2607,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{$\theta=0$: restricted solution}
 				\begin{equation}
-					\psi^\alpha=\psi^\beta=\psi_g.
+					\psi^\alpha=\psi^\beta=\psi_g
 				\end{equation}
 				The UHF determinant collapses to RHF.
 			\end{block}
@@ -2628,17 +2616,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\begin{block}{$\theta\rightarrow\pi/4$: localized solution}
 				At dissociation,
 				\begin{equation}
-					\psi^\alpha\rightarrow\phi_A,
+					\psi^\alpha\rightarrow\phi_A
 					\qquad
-					\psi^\beta\rightarrow\phi_B.
+					\psi^\beta\rightarrow\phi_B
 				\end{equation}
-				Opposite spins occupy opposite atoms.
+				Opposite spins occupy opposite atoms
 			\end{block}
 		\end{column}
 	\end{columns}
 
 	\begin{equation}
-		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta).
+		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)
 	\end{equation}
 
 	\centering
@@ -2685,13 +2673,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\draw[hfRed,very thick,dashed] (2.0,0)--(2.7,0);
 		\node[right,hfInk,font=\scriptsize] at (2.72,0) {$\psi^\beta$};
 	}
-
-	\vspace{0.5em}
-	\alert{Orbital localization is continuous; the onset of the nonzero angle is the bifurcation.}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The UHF energy is an analytic function of the mixing angle}
+\begin{frame}{UHF energy}
 	\small
 	With $J_{pq}=(pp|qq)$ and $K_{pq}=(pq|pq)$,
 	\begin{align}
@@ -2722,13 +2707,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
-			\begin{block}{Short bond}
+			\begin{block}{Short bond length}
 				Only the minimum at $\theta=0$ is physically accessible:
 				\blue{UHF = RHF}.
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
-			\begin{block}{Stretched bond}
+			\begin{block}{Large bond length}
 				Two minima appear at $\pm\theta$, and the restricted solution becomes
 				unstable to spin polarization.
 			\end{block}
@@ -2826,9 +2811,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{columns}
 
 	\vspace{0.7em}
-	\begin{block}{What changes at the bifurcation?}
+	\begin{block}{What changes at the Coulson-Fischer point?}
 		The RHF determinant at $\theta=0$ does not disappear: it changes from a
-		minimum to an unstable stationary point while two degenerate UHF minima emerge.
+		minimum to an unstable stationary point while two degenerate UHF minima emerge
 	\end{block}
 \end{frame}
 
@@ -2955,10 +2940,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\end{block}
 		\end{column}
 	\end{columns}
-
-	\vspace{-0.5em}
-	\centering
-	\alert{At $R_\text{CF}$ the UHF branch is tangent to RHF; it is not an avoided crossing.}
 \end{frame}
 
 %-----------------------------------------------------
