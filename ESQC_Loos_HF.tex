@@ -3504,7 +3504,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Generalized Hartree-Fock}
 	GHF allows every orbital to choose its spin direction.
-	A generalized Hartree--Fock orbital is a two-component spinor:
+	A GHF orbital is a two-component spinor:
 	\begin{equation}
 		\boxed{
 			\chi_p^\text{GHF}(\bx)
@@ -3526,27 +3526,27 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.31\textwidth}
 			\begin{block}{RHF}
-				Paired electrons share one spatial orbital. Both $\chS^2$ and $\chS_z$ are preserved.
+				Paired electrons share one spatial orbital. Both $\chS^2$ and $\chS_z$ are preserved
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{UHF}
-				Each orbital is purely $\alpha$ or $\beta$. The spin density is collinear and $\chS_z$ is preserved.
+				Each orbital is purely $\alpha$ or $\beta$. The spin density is collinear and $\chS_z$ is preserved
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{GHF}
-				Each orbital may mix $\alpha$ and $\beta$. In general, neither $\chS^2$ nor $\chS_z$ is preserved.
+				Each orbital may mix $\alpha$ and $\beta$. In general, neither $\chS^2$ nor $\chS_z$ is preserved
 			\end{block}
 		\end{column}
 	\end{columns}
 
 	\vfill
-	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$.}
+	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Spin mixing appears in the off-diagonal density blocks}
+\begin{frame}{GHF density matrix}
 	For occupied GHF spinors, the density matrix is
 	\begin{equation}
 		\boxed{
@@ -3597,11 +3597,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{The GHF equations are Roothaan--Hall equations in spinor space}
 	The AO overlap is duplicated in spin space,
 	\begin{equation}
-		\overline{\bS}=\mqty(\bS&\bO\\\bO&\bS),
+		\overline{\bS}=\mqty(\bS&\bO\\\bO&\bS)
 		\qquad
-		\boxed{\bF\bC=\overline{\bS}\bC\bepsilon},
+		\boxed{\bF\bC=\overline{\bS}\bC\bepsilon}
 		\qquad
-		\bC^\dagger\overline{\bS}\bC=\bI.
+		\bC^\dagger\overline{\bS}\bC=\bI
 	\end{equation}
 
 	For a spin-independent nonrelativistic Hamiltonian,
@@ -3619,10 +3619,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	with $\bP^0=\bP^{\alpha\alpha}+\bP^{\beta\beta}$ and
 	\begin{align}
 		J[\bP]_{\mu\nu}
-		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\nu|\kappa\lambda),
+		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\nu|\kappa\lambda)
 		&
 		K[\bP]_{\mu\nu}
-		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\lambda|\kappa\nu).
+		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\lambda|\kappa\nu)
 	\end{align}
 
 	\begin{block}{SCF procedure}
@@ -3673,44 +3673,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{columns}
 
 	\vfill
-	\alert{A lower broken-symmetry HF energy does not imply a more faithful spin eigenfunction.}
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{A triangular antiferromagnet naturally favors noncollinear spins}
-	Consider three equivalent local moments with antiferromagnetic coupling,
-	\begin{equation}
-		E_\text{spin}=J\sum_{A<B}\boldsymbol{m}_A\cdot\boldsymbol{m}_B,
-		\qquad J>0.
-	\end{equation}
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.45\textwidth}
-			\begin{block}{Collinear compromise}
-				Two moments can be antiparallel, but the third bond must be frustrated:
-				\begin{equation}
-					\uparrow\;\downarrow\;\uparrow
-					\qquad\Rightarrow\qquad
-					\sum_{A<B}\boldsymbol{m}_A\cdot\boldsymbol{m}_B=-m^2.
-				\end{equation}
-				This pattern can be represented by UHF.
-			\end{block}
-		\end{column}
-		\begin{column}{0.51\textwidth}
-			\begin{block}{$120^\circ$ noncollinear solution}
-				Let the three moments lie in a plane at angles $0^\circ$, $120^\circ$, and $240^\circ$:
-				\begin{align}
-					\boldsymbol{m}_A+\boldsymbol{m}_B+\boldsymbol{m}_C&=\bO,\\
-					\boldsymbol{m}_A\cdot\boldsymbol{m}_B
-					=\boldsymbol{m}_B\cdot\boldsymbol{m}_C
-					=\boldsymbol{m}_C\cdot\boldsymbol{m}_A&=-\frac{m^2}{2},\\
-					\sum_{A<B}\boldsymbol{m}_A\cdot\boldsymbol{m}_B&=-\frac{3m^2}{2}.
-				\end{align}
-				All three bonds share the frustration equally. GHF can represent this texture with one determinant.
-			\end{block}
-		\end{column}
-	\end{columns}
-
 	\alert{Equilateral $\ce{H3}$ and triangular magnetic clusters are useful classroom examples of genuine noncollinearity.}
 \end{frame}
 
@@ -3734,7 +3696,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\begin{itemize}
 					\item GHF is still a single determinant: correlation is not restored
 					\item $S$ and $M_S$ are generally not good quantum numbers
-					\item Local moments may be artifacts for an exact singlet
+					\item GHF might be a rotated UHF
 					\item Many stationary solutions make the initial guess important
 					\item Complex algebra and a doubled matrix dimension increase the cost
 				\end{itemize}
@@ -3743,7 +3705,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{columns}
 
 	\begin{block}{Take-home message}
-		GHF is the most general number-conserving single-determinant HF ansatz. It is best viewed as a flexible broken-symmetry representation whose physical content should be checked through spin densities, stability analysis, and--when needed--symmetry restoration.
+		GHF is the most general number-conserving single-determinant HF ansatz. It is best viewed as a flexible broken-symmetry representation whose physical content should be checked through spin densities, stability analysis, and, when needed, symmetry restoration
 	\end{block}
 %
 %	\vspace{0.25em}
