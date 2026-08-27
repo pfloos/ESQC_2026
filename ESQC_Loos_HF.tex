@@ -895,43 +895,43 @@
     	In the nonrelativistic, spin-free framework, $\chH$ commutes with the \alert{total spin operators}
     	\begin{equation}
     		\boxed{
-    			\comm{\chH}{\chS^2}=0
+    			\comm{\chH}{\purple{\chS^2}}=0
     			\qquad\text{and}\qquad
-    			\comm{\chH}{\chS_z}=0
+    			\comm{\chH}{\violet{\chS_z}}=0
     		}
     	\end{equation}  
-    	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous eigenfunctions of $\chS^2$ and $\chS_z$:
+    	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous eigenfunctions of $\purple{\chS^2}$ and $\violet{\chS_z}$:
     	\begin{align}
-    		\chS^2\ket{S,M_S}
+    		\purple{\chS^2}\ket{S,M_S}
     		& =
     		S(S+1)\ket{S,M_S}
     		& 
-    		\chS_z\ket{S,M_S}
+    		\violet{\chS_z}\ket{S,M_S}
     		& =
     		M_S\ket{S,M_S}
     	\end{align}
 	\end{block}
 	\begin{block}{Spin quantum numbers}
 		\begin{itemize}
-			\item $S$ determines the \alert{spin multiplicity} $2S+1$: 
+			\item $S$ determines the \purple{spin multiplicity} $2S+1$: 
 			\begin{itemize}
 				\item $S=0$ for singlets
-				\item $S=1/2$ for doublets 
+				\item $S=\frac{1}{2}$ for doublets 
 				\item $S=1$ for triplets
 				\item \ldots
 			\end{itemize}
-			\item $M_S=-S,-S+1,\ldots,S-1,S$ is its \alert{spin projection}
+			\item $M_S=-S,-S+1,\ldots,S-1,S$ is its \violet{spin projection}
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
 
-\begin{frame}{Are excited determinants genuine spin functions?}
-	For a \alert{collinear$^*$} determinant containing $N^\alpha$ spin-up and $N^\beta$ spin-down orbitals, one has
+\begin{frame}{Are HF wavefunctions spin eigenfunctions?}
+	For a \alert{collinear$^*$} determinant $\ket{\Psi}$ containing $N^\alpha$ spin-up and $N^\beta$ spin-down orbitals, one has
 	\begin{equation}
 		\boxed{
-			\chS_z\ket{\Phi} = M_S\ket{\Phi}
+			\violet{\chS_z}\ket{\Psi} = M_S\ket{\Psi}
 			\qq{with}
 			M_S=\frac{N^\alpha-N^\beta}{2}
 		}
@@ -942,7 +942,7 @@
 			\begin{block}{Closed-shell RHF}
 				Every spatial orbital is doubly occupied:
 				\begin{equation}
-					\chS^2\ket{\Psi_{\text{RHF}}}
+					\purple{\chS^2}\ket{\Psi_{\text{RHF}}}
 					=
 					0
 				\end{equation}
@@ -954,7 +954,7 @@
 			\begin{block}{Open-shell UHF}
 				The spin-up and spin-down spatial orbitals are different:
 				\begin{equation}
-					\chS^2\ket{\Psi_{\text{UHF}}}
+					\purple{\chS^2}\ket{\Psi_{\text{UHF}}}
 					\neq
 					S(S+1)\ket{\Psi_{\text{UHF}}}
 				\end{equation}
@@ -968,7 +968,7 @@
 	\\
 	\bigskip
 	\footnotesize
-$^*$In a collinear determinant, the occupied spin orbitals all have spin aligned along one common quantization axis, conventionally $z$
+$^*$In a collinear determinant, the occupied spin orbitals all have spin aligned along one common quantization axis
 \end{frame}
 
 %-----------------------------------------------------
@@ -977,7 +977,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	For $N^\alpha \geq N^\beta$, a UHF determinant satisfies
 	\begin{equation}
 		\boxed{
-			\expval{\chS^2}_{\text{UHF}}
+			\expval{\purple{\chS^2}}_{\text{UHF}}
 			=
 			M_S(M_S+1)
 			+
@@ -999,9 +999,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{equation}
 			\Delta S^2
 			=
-			\expval{\chS^2}_{\text{UHF}}
+			\expval{\purple{\chS^2}}_{\text{UHF}}
 			-
-			S(S+1)
+			\underbrace{\expval{\purple{\chS^2}}_{\text{exact}}}_{S(S+1)}
 			\geq 0
 		\end{equation}
 
@@ -1015,7 +1015,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{A singly excited determinant is not necessarily spin adapted}
+\begin{frame}{Are excited determinants spin eigenfunctions?}
 	Starting from a closed-shell singlet reference $\ket{\Psi_0}$
 	\begin{align}
 		\ket*{D_\alpha}
@@ -1026,9 +1026,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		& =
 		\cre{a\beta}\ani{i\beta}\ket{\Psi_0}
 		&
-		\chS_z\ket{D_\sigma} & = 0
+		\violet{\chS_z}\ket{D_\sigma} & = 0
 		&
-		\mel{D_\sigma}{\chS^2}{D_\sigma} & = 1
+		\mel{D_\sigma}{\purple{\chS^2}}{D_\sigma} & = 1
 	\end{align}
 
 	\begin{columns}[T,onlytextwidth]
@@ -1066,16 +1066,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\begin{block}{Same $M_S$, indefinite total spin}
 		Each determinant has $M_S=0$, but contains equal singlet and triplet character.
-		Being an eigenfunction of $\chS_z$ does not imply being an eigenfunction of $\chS^2$.
+		Being an eigenfunction of $\violet{\chS_z}$ does not imply being an eigenfunction of $\purple{\chS^2}$.
 	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Diagonalizing $\chS^2$ produces pure singlet and triplet states}
+\begin{frame}{Diagonalizing $\purple{\chS^2}$ produces pure singlet and triplet states}
 	In the two-determinant basis $\{\ket*{D_\alpha},\ket*{D_\beta}\}$,
 	\begin{equation}
 		\boxed{
-			\left[\chS^2\right]_{\{D_\alpha,D_\beta\}}
+			\left[\purple{\chS^2}\right]_{\{D_\alpha,D_\beta\}}
 			=
 			\begin{pmatrix}
 				 +1 & -1 \\
@@ -1091,15 +1091,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\boxed{
 						\ket{{}^1\Psi_i^a}
 						=
-						\frac{1}{\sqrt2}
-						\left(
-							\ket*{D_\alpha}+\ket*{D_\beta}
-						\right)
+						\frac{\ket*{D_\alpha} \alert{+} \ket*{D_\beta}}{\sqrt2}
 					}
 				\end{equation}
 				\begin{equation}
-					\chS^2\ket*{{}^1\Psi_i^a}=0
-					\qquad S=0
+					\purple{\chS^2}\ket*{{}^1\Psi_i^a}=0
+					\qq{$\Rightarrow$} S=0
 				\end{equation}
 			\end{block}
 		\end{column}
@@ -1109,24 +1106,21 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\boxed{
 						\ket{{}^{3,0}\Psi_i^a}
 						=
-						\frac{1}{\sqrt2}
-						\left(
-							\ket*{D_\alpha}-\ket*{D_\beta}
-						\right)
+						\frac{\ket*{D_\alpha} \alert{-} \ket*{D_\beta}}{\sqrt2}
 					}
 				\end{equation}
 				\begin{equation}
-					\chS^2\ket*{{}^{3,0}\Psi_i^a}
+					\purple{\chS^2}\ket*{{}^{3,0}\Psi_i^a}
 					=
 					2\ket*{{}^{3,0}\Psi_i^a}
-					\qquad S=1
+					\qq{$\Rightarrow$} S=1
 				\end{equation}
 			\end{block}
 		\end{column}
 	\end{columns}
 	\vfill
 	\center
-	$\Rightarrow$ \alert{spin adaptation = diagonalization of $\chS^2$ in a determinant space}
+	$\Rightarrow$ \alert{spin adaptation = diagonalization of $\purple{\chS^2}$ in a determinant space}
 \end{frame}
 
 %-----------------------------------------------------
@@ -1192,8 +1186,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				&=\ket*{\cdots i^\alpha a^\alpha\cdots}
 				&
 			\ket{{}^{3,0}\Psi_i^a}
-				&=\frac{1}{\sqrt2}
-				\left(\ket*{D_\alpha}-\ket*{D_\beta}\right)
+				&=\frac{\ket*{D_\alpha}-\ket*{D_\beta}}{\sqrt2}
 				&
 			\ket{{}^{3,-1}\Psi_i^a}
 				&=\ket*{\cdots i^\beta a^\beta\cdots}
@@ -1201,9 +1194,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	Every component satisfies
 	\begin{align}
-		\chS^2\ket{1,M_S} & = 2\ket{1,M_S}
+		\purple{\chS^2}\ket{1,M_S} & = 2\ket{1,M_S}
 		&
-		\chS_z\ket{1,M_S} & = M_S \ket{1,M_S}
+		\violet{\chS_z}\ket{1,M_S} & = M_S \ket{1,M_S}
 	\end{align}
 
 	They are connected by
@@ -2038,28 +2031,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 \begin{frame}{How do I know I have converged (or not)?}
-	\begin{block}{Convergence in SCF calculations}
-		\begin{enumerate}
-			\bigskip
-			\item You can check the \alert{energy and/or the density matrix}:\\
-			$\Rightarrow$ The energy/density \textbf{should not} change at convergence
-			\bigskip
-			\item You can check the commutator \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF$}:\\
-			$\Rightarrow$ At convergence, we have \alert{$\bF \cdot \bP \cdot \bS - \bS \cdot \bP \cdot \bF = \bO$}
-			\bigskip
-			\item The \alert{DIIS (direct inversion in the iterative subspace) method} is usually used to speed up convergence:\\
-			$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using previous iterations
-			$$ \bF^{(m+1)} = \sum_{i=m-k}^{m} c_i \bF^{(i)} $$
-			\bigskip
-		\end{enumerate}
-	\end{block}
-\end{frame}
-
-%-----------------------------------------------------
-\subsection{DIIS}
-%-----------------------------------------------------
-
-\begin{frame}{SCF convergence is a nonlinear fixed-point problem}
 	The SCF procedure defines an iterative map
 	\begin{equation}
 		\boxed{
@@ -2070,146 +2041,50 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\bP^{(n+1)}
 		}
 	\end{equation}
-
 	At convergence,
 	\begin{equation}
 		\bP^{(n+1)}=\bP^{(n)}=\bP^\star
 	\end{equation}
 
-	\begin{block}{Why can the direct iteration fail?}
-		\begin{itemize}
-			\item The Fock matrix depends nonlinearly on the density
-			\item Density updates may oscillate between different solutions
-			\item The fixed-point map may be only weakly contractive---or
-			      locally divergent
-		\end{itemize}
-	\end{block}
+	\begin{enumerate}
+		\item One can check the \alert{energy and/or the density matrix}
+		\item 	At self-consistency, the density and Fock matrices commute:
+    	\begin{equation}
+    		\boxed{
+    			\be^{(n)}
+    			=
+    			\bF^{(n)} \cdot \bP^{(n)} \cdot \bS
+    			-
+    			\bS \cdot \bP^{(n)} \cdot \bF^{(n)}
+    		}
+    	\end{equation}
+    	\begin{equation}
+    		\bP^{(n)}=\bP^\star
+    		\qquad\Longrightarrow\qquad
+    		\be^{(n)}=\bO
+    	\end{equation}
 
-	\begin{alertblock}{DIIS philosophy}
-		Use several previous iterations to extrapolate a Fock matrix whose
-		\alert{SCF residual is as small as possible}.
-	\end{alertblock}
-
-	\vfill
-	\centering
-	DIIS = \alert{direct inversion in the iterative subspace}
-\end{frame}
-
-%-----------------------------------------------------
-
-\begin{frame}{The commutator measures the SCF error}
-	The Roothaan--Hall equations are
-	\begin{equation}
-		\bF \cdot \bC = \bS \cdot \bC \cdot \bE
-	\end{equation}
-
-	At self-consistency, the density and Fock matrices commute in the
-	AO metric:
-	\begin{equation}
-		\boxed{
-			\be^{(n)}
-			=
-			\bF^{(n)} \cdot \bP^{(n)} \cdot \bS
-			-
-			\bS \cdot \bP^{(n)} \cdot \bF^{(n)}
-		}
-	\end{equation}
-
-	\begin{equation}
-		\bP^{(n)}=\bP^\star
-		\qquad\Longrightarrow\qquad
-		\be^{(n)}=\bO.
-	\end{equation}
-
-	\begin{block}{In an orthonormal basis}
-		If $\bX^\dagger \cdot \bS \cdot \bX = \bI$, the transformed residual is
+		\item \alert{DIIS (direct inversion in the iterative subspace)} is usually used to speed up convergence:\\
+		$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using the $m$ previous iterations
 		\begin{equation}
-			\widetilde{\be}^{(n)}
-			=
-			\bX^\dagger \cdot \be^{(n)} \cdot \bX
-			=
-			\comm{
-				\widetilde{\bF}^{(n)}
-			}{
-				\widetilde{\bP}^{(n)}
-			}
+			\bF^{(n+1)} = \sum_{i=n-m}^{n} c_i \bF^{(i)}
 		\end{equation}
-	\end{block}
-
-	\centering
-	\alert{The residual vanishes when the occupied space is invariant under
-	the Fock operator}
+	\end{enumerate}
 \end{frame}
 
 %-----------------------------------------------------
-
-\begin{frame}{DIIS stores Fock matrices and their residuals}
-	Let $m$ be the maximum size of the DIIS subspace.
-
-	\medskip
-	\centering
-	\small
-	\renewcommand{\arraystretch}{1.35}
-	\begin{tabularx}{0.95\textwidth}{
-		>{\bfseries}l
-		>{\centering\arraybackslash}m{0.22\textwidth}
-		X
-	}
-		\toprule
-		Stored quantity & Size & Purpose \\
-		\midrule
-		$\bF^{(i)}$
-		& $\mathcal{O}(K^2)$
-		& Used to construct the extrapolated Fock matrix
-		\\
-
-		$\be^{(i)}$
-		& $\mathcal{O}(K^2)$
-		& Measures the lack of self-consistency at iteration $i$
-		\\
-
-		$B_{ij}$
-		& $\mathcal{O}(m^2)$
-		& Contains the scalar products between error vectors
-		\\
-
-		$c_i$
-		& $\mathcal{O}(m)$
-		& DIIS extrapolation coefficients
-		\\
-		\bottomrule
-	\end{tabularx}
-
-	\begin{equation}
-		\boxed{
-			\text{storage}
-			\sim
-			2mK^2
-			\text{ floating-point numbers}
-		}
-	\end{equation}
-
-	\begin{itemize}
-		\item A small rolling subspace is normally sufficient:
-		      commonly $m\approx6$--$10$
-		\item When the subspace is full, an old or redundant pair
-		      $\{\bF^{(i)},\be^{(i)}\}$ is removed
-	\end{itemize}
-
-\end{frame}
-
+\subsection{DIIS}
 %-----------------------------------------------------
-
-\begin{frame}{DIIS searches for the smallest residual in the subspace}
+\begin{frame}{How DIIS work?}
 	Using the $m$ stored iterations, DIIS constructs
 	\begin{align}
 		\bF^\text{DIIS}
 		&=
-		\sum_{i=1}^{m}c_i\bF^{(i)},
-		\\
+		\sum_{i=1}^{m}c_i\bF^{(i)}
+		&
 		\be^\text{DIIS}
 		&\approx
-		\sum_{i=1}^{m}c_i\be^{(i)}.
+		\sum_{i=1}^{m}c_i\be^{(i)}
 	\end{align}
 
 	The coefficients minimize the residual norm:
@@ -2233,8 +2108,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\braket{\be^{(i)}}{\be^{(j)}}
 		=
 		\Tr[
-			\be^{(i)\dagger}\be^{(j)}
-		].
+			\be^{(i)\dagger} \cdot \be^{(j)}
+		]
 	\end{equation}
 
 	Then
@@ -2243,35 +2118,30 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		=
 		\sum_{ij}c_iB_{ij}c_j
 		=
-		\bc^\mathsf{T}\bB\bc.
+		\bc^\mathsf{T} \cdot \bB \cdot \bc
 	\end{equation}
-
-	\begin{alertblock}{Important}
-		The constraint $\sum_i c_i=1$ defines an
-		\alert{affine extrapolation}. The coefficients need not be positive.
-	\end{alertblock}
 \end{frame}
 
 %-----------------------------------------------------
 
 \begin{frame}{The DIIS weights come from a small augmented system}
-	Introduce a Lagrange multiplier $\lambda$:
+	Introducing the Lagrangian
 	\begin{equation}
 		\mathcal{L}(\bc,\lambda)
 		=
-		\bc^\mathsf{T}\bB\bc
+		\bc^\mathsf{T} \cdot \bB \cdot \bc
 		-
 		2\lambda
 		\left(
-			\boldsymbol{1}^\mathsf{T}\bc-1
-		\right).
+			\sum_{i=1}^{m}c_i - 1
+		\right)
 	\end{equation}
 
 	Stationarity gives
 	\begin{equation}
-		\bB\bc-\lambda\boldsymbol{1}=\bO,
-		\qquad
-		\boldsymbol{1}^\mathsf{T}\bc=1.
+		\bB \cdot \bc-\lambda\boldsymbol{1}=\bO
+		\qand
+		\sum_{i=1}^{m}c_i=1
 	\end{equation}
 
 	Therefore, the weights are obtained from
@@ -2283,6 +2153,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			B_{m1} & \cdots & B_{mm} & -1 \\
 			-1     & \cdots & -1     & 0
 		\end{pmatrix}
+		\cdot
 		\begin{pmatrix}
 			c_1 \\ \vdots \\ c_m \\ \lambda
 		\end{pmatrix}
@@ -2302,8 +2173,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		}
 	\end{equation}
 
-	\centering
-	The linear system has dimension only $(m+1)\times(m+1)$.
+	The linear system has dimension only $(m+1)\times(m+1)$
 \end{frame}
 
 %-----------------------------------------------------
@@ -2322,9 +2192,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		      \[
 			      \be^{(n)}
 			      =
-			      \bF^{(n)}\bP^{(n)}\bS
+			      \bF^{(n)} \cdot \bP^{(n)} \cdot \bS
 			      -
-			      \bS\bP^{(n)}\bF^{(n)}
+			      \bS \cdot \bP^{(n)} \cdot \bF^{(n)}
 		      \]
 
 		\item Store the pair
@@ -2342,59 +2212,26 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 		\item Solve
 		      \[
-			      \bF^\text{DIIS}\bC
+			      \bF^\text{DIIS} \cdot \bC
 			      =
-			      \bS\bC\bepsilon
+			      \bS \cdot \bC \cdot \bE
 		      \]
 		      and form the next density $\bP^{(n+1)}$
 	\end{enumerate}
 
 \end{frame}
-
-	\begin{alertblock}{Take-home message}
-		DIIS accelerates SCF convergence by finding an affine combination
-		of previous Fock matrices whose extrapolated residual is minimal.
-	\end{alertblock}
 	
 %-----------------------------------------------------
 
-\begin{frame}{DIIS is powerful, but the subspace can become unstable}
-	\small
-	\centering
-	\renewcommand{\arraystretch}{1.35}
-	\begin{tabularx}{0.97\textwidth}{
-		>{\bfseries}m{0.21\textwidth}
-		m{0.31\textwidth}
-		X
-	}
-		\toprule
-		Symptom & Likely cause & Possible response \\
-		\midrule
-		Early oscillations
-		& Iterates are outside the local convergence region
-		& Delay DIIS; use damping or level shifting
-		\\
-
-		Nearly singular $\bB$
-		& Stored residuals are nearly linearly dependent
-		& Remove a redundant vector, restart, or use an SVD cutoff
-		\\
-
-		Very large $c_i$
-		& Unstable extrapolation outside the sampled region
-		& Reset or reduce the DIIS subspace
-		\\
-
-		Convergence to the wrong state
-		& Orbital occupations or roots change during the iteration
-		& Use state tracking or the maximum-overlap method
-		\\
-		\bottomrule
-	\end{tabularx}
-
-	\begin{alertblock}{DIIS minimizes a residual---not the energy}
-		The extrapolated energy is not guaranteed to decrease monotonically.
-	\end{alertblock}
+\begin{frame}{DIIS take-home messages}
+	\begin{itemize}
+		\item DIIS accelerates SCF convergence by finding a linear combination of previous Fock matrices whose extrapolated residual is minimal
+		\item A small rolling subspace is normally sufficient: commonly $m\approx6$--$10$
+		\item DIIS requires additional storage: $\sim 2mK^2$
+		\item The extrapolated energy is not guaranteed to decrease monotonically
+		\item $\bB$ can be singular due to nearly linear dependence of the residuals: restart possible
+		\item DIIS can be used for many other methods!
+	\end{itemize}
 \end{frame}
 
 %-----------------------------------------------------
@@ -2467,11 +2304,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
 			\end{equation}		
-			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\chS^2$
+			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\purple{\chS^2}$
 			\item The HF wavefunction is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
 			\item Doublets are contaminated by quartets, sextuplets, etc
-			\item Generalized HF also allows spin mixing and need not preserve $\chS_z$
+			\item Generalized HF also allows spin mixing and need not preserve $\violet{\chS_z}$
 			\begin{equation}
 				\chi_p^\text{GHF}(\bx) = \alpha(\omega) \blue{\psi_p^\alpha(\br)} + \beta(\omega) \red{\psi_p^\beta(\br)}
 				\qq{$\Rightarrow$ \alert{two-component spinor}}
@@ -2678,7 +2515,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 }
 
 %-----------------------------------------------------
-\begin{frame}{Minimal-basis \ce{H2} is a complete Hartree--Fock laboratory}
+\begin{frame}{Hartree--Fock for minimal-basis \ce{H2}}
 	Start from one normalized $1s$ function on each atom,
 	$\phi_A$ and $\phi_B$, with $S=\braket{\phi_A}{\phi_B}$.
 
@@ -2686,7 +2523,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\boxed{
 			\psi_g
 			=
-			\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}},
+			\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}}
 			\qquad
 			\psi_u
 			=
@@ -2707,7 +2544,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Why it is special}
 				For two electrons in two spatial orbitals, the UHF problem reduces to
-				\alert{one orbital-rotation angle}.
+				\alert{one orbital-rotation angle}
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -3129,7 +2966,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	For the two-electron $M_S=0$ determinant,
 	\begin{equation}
 		\boxed{
-			\expval{\chS^2}_\text{UHF}
+			\expval{\purple{\chS^2}}_\text{UHF}
 			=
 			1-\abs{\braket{\psi^\alpha}{\psi^\beta}}^2
 			=
@@ -3140,13 +2977,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Near equilibrium}
-				$\theta=0$ and $\expval{\chS^2}=0$:
+				$\theta=0$ and $\expval{\purple{\chS^2}}=0$:
 				the determinant is a pure singlet.
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{At dissociation}
-				$\theta\rightarrow\pi/4$ and $\expval{\chS^2}\rightarrow1$:
+				$\theta\rightarrow\pi/4$ and $\expval{\purple{\chS^2}}\rightarrow1$:
 				the determinant is an equal mixture of singlet and $M_S=0$ triplet.
 			\end{block}
 		\end{column}
@@ -3525,11 +3362,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{column}
 	\end{columns}
 
-	\vfill
-	\centering
-	\pub{S.~F.~Boys, Rev. Mod. Phys. \textbf{32}, 296 (1960); C.~Edmiston and K.~Ruedenberg, Rev. Mod. Phys. \textbf{35}, 457 (1963).}
-
-	\pub{J.~Pipek and P.~G.~Mezey, J. Chem. Phys. \textbf{90}, 4916 (1989); G.~Knizia, J. Chem. Theory Comput. \textbf{9}, 4834 (2013).}
+%	\vfill
+%	\centering
+%	\pub{S.~F.~Boys, Rev. Mod. Phys. \textbf{32}, 296 (1960); C.~Edmiston and K.~Ruedenberg, Rev. Mod. Phys. \textbf{35}, 457 (1963).}
+%
+%	\pub{J.~Pipek and P.~G.~Mezey, J. Chem. Phys. \textbf{90}, 4916 (1989); G.~Knizia, J. Chem. Theory Comput. \textbf{9}, 4834 (2013).}
 \end{frame}
 
 %-----------------------------------------------------
