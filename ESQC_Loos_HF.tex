@@ -1968,7 +1968,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.7\textwidth}
 			\begin{block}{Symmetric (or L\"owdin) orthogonalization}
 				\begin{equation}
-					\text{$\bX =\bS^{-1/2} = \bU \cdot  \bs^{-1/2} \cdot  \bU^\dag$ is one solution.}
+					\text{$\bX =\bS^{-1/2} = \bU \cdot  \bs^{-1/2} \cdot  \bU^\dag$ is one solution}
 				\end{equation}
 				\alert{Is it working?}
 				\begin{equation}
@@ -1979,7 +1979,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\end{block}
 			\begin{block}{Canonical orthogonalization}
 				\begin{equation}
-					\text{$\bX =\bU \cdot \bs^{-1/2}$ is another solution, useful when linear dependencies are present.}
+					\text{$\bX =\bU \cdot \bs^{-1/2}$ is another solution, useful when linear dependencies are present}
 				\end{equation}
 					\alert{Is it working?}
 				\begin{equation}
@@ -2595,7 +2595,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\begin{equation}
 					\psi^\alpha=\psi^\beta=\psi_g
 				\end{equation}
-				The UHF determinant collapses to RHF.
+				The UHF determinant collapses to RHF
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
@@ -2664,18 +2664,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{UHF energy}
 	\small
-	With $J_{pq}=(pp|qq)$ and $K_{pq}=(pq|pq)$,
-	\begin{align}
+	With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$,
+	\begin{equation}
 		E_\text{UHF}(\theta)-\frac{1}{R}
-		={}&
+		=
 		2\cos^2\theta\,h_{gg}
 		+2\sin^2\theta\,h_{uu}
 		+\cos^4\theta\,J_{gg}
 		+\sin^4\theta\,J_{uu}
-		\notag\\
-		&+2\sin^2\theta\cos^2\theta
-		\left(J_{gu}-2K_{gu}\right).
-	\end{align}
+		+2\sin^2\theta\cos^2\theta
+		\qty(J_{gu}-2K_{gu})
+	\end{equation}
 
 	Besides the restricted stationary point $\theta=0$, a broken-symmetry
 	stationary solution satisfies
@@ -2688,20 +2687,20 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			}{
 				J_{gg}+J_{uu}-2J_{gu}+4K_{gu}
 			}
-		}.
+		}
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Short bond length}
 				Only the minimum at $\theta=0$ is physically accessible:
-				\blue{UHF = RHF}.
+				\blue{UHF = RHF}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Large bond length}
 				Two minima appear at $\pm\theta$, and the restricted solution becomes
-				unstable to spin polarization.
+				unstable to spin polarization
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -2826,24 +2825,21 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.31\textwidth}
 			\begin{block}{$R<R_\text{CF}$}
-				Positive curvature: RHF is a local minimum.
+				Positive curvature: RHF is a local minimum
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{$R=R_\text{CF}$}
-				Zero curvature: the two UHF branches merge with RHF.
+				Zero curvature: the two UHF branches merge with RHF
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{$R>R_\text{CF}$}
-				Negative curvature: RHF remains stationary, but is unstable.
+				Negative curvature: RHF remains stationary, but is unstable
 			\end{block}
 		\end{column}
 	\end{columns}
 
-	\vfill
-	\centering
-	\alert{The numerical value of $R_\text{CF}$ depends on the one-electron basis.}
 \end{frame}
 
 %-----------------------------------------------------
@@ -2938,20 +2934,20 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			1-\abs{\braket{\psi^\alpha}{\psi^\beta}}^2
 			=
 			\sin^2(2\theta)
-		}.
+		}
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Near equilibrium}
 				$\theta=0$ and $\expval{\purple{\chS^2}}=0$:
-				the determinant is a pure singlet.
+				the determinant is a pure singlet
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{At dissociation}
-				$\theta\rightarrow\pi/4$ and $\expval{\purple{\chS^2}}\rightarrow1$:
-				the determinant is an equal mixture of singlet and $M_S=0$ triplet.
+				$\theta\rightarrow\pi/4$ and $\expval*{\purple{\chS^2}}\rightarrow1$:
+				the determinant is an equal mixture of singlet and $M_S=0$ triplet
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -2969,43 +2965,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{equation}
 
 	\centering
-	\alert{The UHF energy is physically useful, but the UHF wavefunction is spin contaminated.}
+	\alert{The UHF energy is physically useful, but the UHF wavefunction is spin-contaminated.}
 \end{frame}
 
 %-----------------------------------------------------
 \begin{frame}{What the \ce{H2} example teaches us}
-	\centering
-	\small
-	\renewcommand{\arraystretch}{1.32}
-	\begin{tabularx}{0.92\textwidth}{
-		@{}
-		>{\bfseries\raggedright\arraybackslash}m{0.25\textwidth}
-		>{\centering\arraybackslash}m{0.16\textwidth}
-		>{\centering\arraybackslash}m{0.17\textwidth}
-		>{\raggedright\arraybackslash}X@{}
-	}
-		\toprule
-		Method & Spin symmetry & Dissociation & Main limitation \\
-		\midrule
-		RHF
-		& Preserved
-		& Incorrect
-		& Persistent ionic configurations
-		\\
-		UHF
-		& Broken beyond $R_\text{CF}$
-		& Correct energetic limit
-		& Spin contamination
-		\\
-		Spin-adapted two-determinant state
-		& Preserved
-		& Correct
-		& No longer a single determinant
-		\\
-		\bottomrule
-	\end{tabularx}
-
-	\bigskip
 	\begin{block}{Three take-home messages}
 		\begin{enumerate}
 			\item A stationary SCF solution need not be stable
@@ -3048,7 +3012,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					=
 					2\bC_\text{o}\bC_\text{o}^\dagger
 					=
-					\bP.
+					\bP
 				\end{equation}
 			\end{block}
 		\end{column}
@@ -3057,9 +3021,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\begin{equation}
 					\ket{\widetilde{\Psi}_0}
 					=
-					\det(\bU)\ket{\Psi_0}.
+					\det(\bU)\ket{\Psi_0}
 				\end{equation}
-				Therefore $\rho(\br)$, $\EHF$, and every expectation value are unchanged.
+				Therefore $\rho(\br)$, $\EHF$, and every expectation value are unchanged
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -3081,7 +3045,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{tikzpicture}
 
 	\alert{Only occupied--occupied or virtual--virtual rotations are invariant;
-	mixing occupied and virtual orbitals changes the determinant.}
+	mixing occupied and virtual orbitals changes the determinant}
 \end{frame}
 
 %-----------------------------------------------------
