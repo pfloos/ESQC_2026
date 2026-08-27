@@ -42,28 +42,11 @@
 \setbeamercolor{itemize subitem}{fg=hfTeal}
 \setbeamerfont{title}{size=\Huge,series=\bfseries}
 \setbeamerfont{frametitle}{size=\large,series=\bfseries}
-%\setbeamerfont{block title}{series=\bfseries}
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \setbeamertemplate{itemize item}{\color{hfTeal}\raisebox{0.15ex}{\rule{0.55ex}{0.55ex}}}
 \setbeamertemplate{itemize subitem}{\color{hfTeal}\raisebox{0.12ex}{\rule{0.45ex}{0.45ex}}}
 \setbeamersize{text margin left=0.55cm,text margin right=0.55cm}
-%\setbeamertemplate{frametitle}{%
-%  \nointerlineskip
-%  \begin{beamercolorbox}[wd=\paperwidth,ht=0.78cm,dp=0.22cm,leftskip=0.55cm,rightskip=0.55cm]{frametitle}
-%    \usebeamerfont{frametitle}\insertframetitle
-%  \end{beamercolorbox}%
-%}
-%\setbeamertemplate{footline}{%
-%  \leavevmode%
-%  \hbox{%
-%    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=.55cm]{author in head/foot}%
-%      \color{hfNavy}\insertshorttitle\hspace{0.7em}\textcolor{hfTeal}{/}\hspace{0.7em}\insertsectionhead
-%    \end{beamercolorbox}%
-%    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=.55cm plus1fil]{page number in head/foot}%
-%      \color{hfNavy}\hfill\insertframenumber
-%    \end{beamercolorbox}%
-%  }%
-%}
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -88,6 +71,7 @@
 \newcommand{\bx}{\boldsymbol{x}}
 \newcommand{\bc}{\boldsymbol{c}}
 \newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\bh}{\boldsymbol{h}}
 \newcommand{\bR}{\boldsymbol{R}}
 \newcommand{\bo}{\boldsymbol{o}}
 \newcommand{\bA}{\boldsymbol{A}}
@@ -221,7 +205,7 @@
 		\bigskip
 		\item HF is a \alert{mean-field approximation}, i.e., interactions are taken into account in an average fashion
 		\bigskip
-		\item \alert{HF is the starting point for much of electronic-structure theory}
+		\item \alert{HF is the starting point for much of electronic structure theory}
 	\end{itemize}
 \end{frame}
 
@@ -3503,8 +3487,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 \begin{frame}{Generalized Hartree-Fock}
-	GHF allows every orbital to choose its spin direction.
-	A GHF orbital is a two-component spinor:
+	\begin{center}
+		\fbox{\textbf{Key idea:} GHF allows every orbital to choose its spin direction}
+	\end{center}
+	A GHF orbital is a \alert{two-component spinor}:
 	\begin{equation}
 		\boxed{
 			\chi_p^\text{GHF}(\bx)
@@ -3514,34 +3500,36 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\beta(\omega)\,\red{\psi_p^\beta(\br)}
 		}
 	\end{equation}
-	Both components are expanded in the same spatial AO basis,
+	Both components are expanded in the same spatial AO basis
 	\begin{equation}
 		\psi_p^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu p}^\sigma\phi_\mu(\br)
 		\qq{with}
-		\bC=\mqty(\bC^\alpha\\[0.2em]\bC^\beta)
+		\boldsymbol{\mathcal{C}} = \mqty(\bC^\alpha\\[0.2em]\bC^\beta)
 		\qand
-		\bC\in\mathbb{C}^{2K\times N}
+		\boldsymbol{\mathcal{C}} \in \mathbb{C}^{2K\times N}
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.31\textwidth}
 			\begin{block}{RHF}
-				Paired electrons share one spatial orbital. Both $\chS^2$ and $\chS_z$ are preserved
+				Paired electrons share one spatial orbital: both $\purple{\chS^2}$ and $\violet{\chS_z}$ are preserved
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{UHF}
-				Each orbital is purely $\alpha$ or $\beta$. The spin density is collinear and $\chS_z$ is preserved
+				Each orbital is purely $\alpha$ or $\beta$: the spin density is collinear and $\violet{\chS_z}$ is preserved
 			\end{block}
 		\end{column}
 		\begin{column}{0.31\textwidth}
 			\begin{block}{GHF}
-				Each orbital may mix $\alpha$ and $\beta$. In general, neither $\chS^2$ nor $\chS_z$ is preserved
+				Each orbital may mix $\alpha$ and $\beta$: in general, neither $\purple{\chS^2}$ nor $\violet{\chS_z}$ is preserved
 			\end{block}
 		\end{column}
 	\end{columns}
 
 	\vfill
+	\center
+	$\Rightarrow$
 	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$}
 \end{frame}
 
@@ -3550,7 +3538,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	For occupied GHF spinors, the density matrix is
 	\begin{equation}
 		\boxed{
-			\bP=
+			\boldsymbol{\mathcal{P}} =
 			\mqty(
 				\bP^{\alpha\alpha} & \bP^{\alpha\beta}\\
 				\bP^{\beta\alpha} & \bP^{\beta\beta}
@@ -3595,28 +3583,31 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 %-----------------------------------------------------
 \begin{frame}{The GHF equations are Roothaan--Hall equations in spinor space}
-	The AO overlap is duplicated in spin space,
+	The overlap and orthogonalization matrices are duplicated in spin space,
 	\begin{equation}
-		\overline{\bS}=\mqty(\bS&\bO\\\bO&\bS)
+		\boldsymbol{\mathcal{S}}=\mqty(\bS&\bO\\\bO&\bS)
 		\qquad
-		\boxed{\bF\bC=\overline{\bS}\bC\bepsilon}
+		\boxed{\boldsymbol{\mathcal{F}} \cdot \boldsymbol{\mathcal{C}} = \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} \cdot \boldsymbol{\mathcal{E}}}
 		\qquad
-		\bC^\dagger\overline{\bS}\bC=\bI
+		\boldsymbol{\mathcal{C}}^\dagger \cdot \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} = \bI
 	\end{equation}
 
 	For a spin-independent nonrelativistic Hamiltonian,
 	\begin{equation}
 		\boxed{
-		\bF=
+		\boldsymbol{\mathcal{F}} =
 		\mqty(
-		\bH+\bJ[\bP^0]-\bK[\bP^{\alpha\alpha}]
-		& -\bK[\bP^{\alpha\beta}]\\
-		-\bK[\bP^{\beta\alpha}]
-		& \bH+\bJ[\bP^0]-\bK[\bP^{\beta\beta}]
+		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] - \bK[\bP^{\alpha\alpha}]
+		& 
+		- \bK[\bP^{\alpha\beta}]
+		\\
+		- \bK[\bP^{\beta\alpha}]
+		& 
+		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] -\bK[\bP^{\beta\beta}]
 		)
 		}
 	\end{equation}
-	with $\bP^0=\bP^{\alpha\alpha}+\bP^{\beta\beta}$ and
+	with 
 	\begin{align}
 		J[\bP]_{\mu\nu}
 		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\nu|\kappa\lambda)
@@ -3624,6 +3615,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		K[\bP]_{\mu\nu}
 		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\lambda|\kappa\nu)
 	\end{align}
+	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently.}
 
 	\begin{block}{SCF procedure}
 		Build all four density blocks $\rightarrow$ build all four Fock blocks
@@ -3631,7 +3623,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		$\rightarrow$ occupy the $N$ lowest spinors $\rightarrow$ iterate.
 	\end{block}
 
-	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently.}
 \end{frame}
 
 %-----------------------------------------------------
