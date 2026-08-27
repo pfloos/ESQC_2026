@@ -90,6 +90,7 @@
 \newcommand{\bF}{\boldsymbol{F}}
 \newcommand{\bH}{\boldsymbol{H}}
 \newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bM}{\boldsymbol{M}}
 \newcommand{\bX}{\boldsymbol{X}}
 \newcommand{\be}{\boldsymbol{e}}
 \newcommand{\bepsilon}{\boldsymbol{\epsilon}}
@@ -146,6 +147,7 @@
 % shortcuts
 \newcommand{\si}{\sigma}
 \newcommand{\la}{\lambda}
+\newcommand{\ii}{\mathrm{i}}
 
 \newcommand{\cre}[1]{\Hat{a}_{#1}^\dag}
 \newcommand{\ani}[1]{\Hat{a}_{#1}}
@@ -154,7 +156,7 @@
 %	* HEAD DATA *
 %	*************
 	\title[HF Theory]{
-		Hartree--Fock Theory
+		Hartree-Fock Theory
 	} 
         \author[PF Loos]{Pierre-Fran\c{c}ois Loos}
         \date{ESQC 2026}
@@ -1055,7 +1057,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Diagonalizing $\purple{\chS^2}$ produces pure singlet and triplet states}
+\begin{frame}{How to get pure singlets and triplets?}
 	In the two-determinant basis $\{\ket*{D_\alpha},\ket*{D_\beta}\}$,
 	\begin{equation}
 		\boxed{
@@ -2706,7 +2708,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The energy landscape changes topology at the Coulson--Fischer point}
+\begin{frame}{The energy landscape changes topology at the Coulson-Fischer point}
 	\small
 	The orbital angle is an order parameter for spontaneous spin-symmetry breaking.
 
@@ -2802,7 +2804,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The Coulson--Fischer point is a stability loss of RHF}
+\begin{frame}{The Coulson-Fischer point is a stability loss of RHF}
 	Along the UHF rotation coordinate,
 	\begin{align}
 		\left.\frac{d^2E}{d\theta^2}\right|_{\theta=0}
@@ -3007,7 +3009,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{Three take-home messages}
 		\begin{enumerate}
 			\item A stationary SCF solution need not be stable
-			\item The Coulson--Fischer point marks a continuous RHF $\rightarrow$ UHF bifurcation
+			\item The Coulson-Fischer point marks a continuous RHF $\rightarrow$ UHF bifurcation
 			\item Symmetry breaking mimics static correlation at the price of a contaminated wavefunction
 		\end{enumerate}
 	\end{block}
@@ -3232,7 +3234,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 %-----------------------------------------------------
 \begin{frame}{Different localization criteria answer different questions}
-	Edmiston--Ruedenberg localization maximizes the sum of orbital self-repulsions:
+	Edmiston-Ruedenberg localization maximizes the sum of orbital self-repulsions:
 	\begin{equation}
 		\boxed{
 			\mathcal{L}_\text{ER}
@@ -3259,12 +3261,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		& Geometrically compact
 		& No explicit atomic or $\sigma/\pi$ criterion
 		\\
-		Pipek--Mezey
+		Pipek-Mezey
 		& Atomic populations
 		& Chemically intuitive; often preserves $\sigma/\pi$
 		& Depends on the population definition
 		\\
-		Edmiston--Ruedenberg
+		Edmiston-Ruedenberg
 		& Self-Coulomb repulsion
 		& Strong introrbital localization
 		& More expensive because ERIs must be transformed
@@ -3334,6 +3336,203 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %	\pub{J.~Pipek and P.~G.~Mezey, J. Chem. Phys. \textbf{90}, 4916 (1989); G.~Knizia, J. Chem. Theory Comput. \textbf{9}, 4834 (2013).}
 \end{frame}
 
+
+
+\begin{frame}{Generalized Hartree-Fock}
+	\begin{center}
+		\fbox{\textbf{Key idea:} GHF allows every orbital to choose its spin direction}
+	\end{center}
+	A GHF orbital is a \alert{two-component spinor}:
+	\begin{equation}
+		\boxed{
+			\chi_p^\text{GHF}(\bx)
+			=
+			\alpha(\omega)\,\blue{\psi_p^\alpha(\br)}
+			+
+			\beta(\omega)\,\red{\psi_p^\beta(\br)}
+		}
+	\end{equation}
+	Both components are expanded in the same spatial AO basis
+	\begin{equation}
+		\psi_i^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br)
+		\qq{with}
+		\boldsymbol{\mathcal{C}} = \mqty(\bC^\alpha\\\bC^\beta)
+		\qand
+		\boldsymbol{\mathcal{C}} \in \mathbb{C}^{2K\times N}
+	\end{equation}
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.31\textwidth}
+			\begin{block}{RHF}
+				Paired electrons share one spatial orbital: both $\purple{\chS^2}$ and $\violet{\chS_z}$ are preserved
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{UHF}
+				Each orbital is purely $\alpha$ or $\beta$: the spin density is collinear and $\violet{\chS_z}$ is preserved
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{GHF}
+				Each orbital may mix $\alpha$ and $\beta$: in general, neither $\purple{\chS^2}$ nor $\violet{\chS_z}$ is preserved
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+	\center
+	$\Rightarrow$
+	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{GHF density matrix}
+	\begin{block}{Density matrix}
+    	\begin{equation}
+    		\boxed{
+    			\boldsymbol{\mathcal{P}} =
+    			\mqty(
+    				\bP^{\alpha\alpha} & \bP^{\alpha\beta}\\
+    				\bP^{\beta\alpha} & \bP^{\beta\beta}
+    			)
+    		}
+    		\qq{with}
+    		P_{\mu\nu}^{\sigma\sigma'}
+    		=
+    		\sum_{i=1}^{N}C_{\mu i}^{\sigma}C_{\nu i}^{\sigma' *}
+    	\end{equation}
+	\end{block}
+
+	\begin{block}{What do the blocks mean?}
+		\begin{itemize}
+			\item $\bP = \frac{1}{2} \qty(\bP^{\alpha\alpha}+\bP^{\beta\beta})$ determines the \alert{charge density}
+			\item $\bM_z = \frac{1}{2} \qty(\bP^{\alpha\alpha} - \bP^{\beta\beta})$ gives the $z$ component of \alert{magnetization}
+			\item $\bM_y = \frac{1}{2\ii} \qty(\bP^{\beta\alpha} - \bP^{\alpha\beta})$ generates the transverse $y$ component
+			\item $\bM_x = \frac{1}{2} \qty(\bP^{\beta\alpha} + \bP^{\alpha\beta})$ generates the transverse $x$ component
+		\end{itemize}
+	\end{block}
+
+	\begin{equation}
+		\boldsymbol{\mathcal{P}} 
+		= \mqty(
+		\bP + \bM_z & \bM_x - \ii \bM_y
+		\\
+		\bM_x + \ii \bM_y & \bP - \bM_z
+		)
+		= \bP \otimes \bI + \bM \otimes \boldsymbol{\sigma}
+		\qq{with}
+		\bM = \mqty( \bM_x \\ \bM_y \\ \bM_z) 
+		\qq{and}
+		\boldsymbol{\sigma} = \mqty( \boldsymbol{\sigma}_x \\ \boldsymbol{\sigma}_y \\ \boldsymbol{\sigma}_z) 
+	\end{equation}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{GHF equations: Roothaan-Hall in spinor space}
+	\begin{block}{Generalized eigenvalue problem}
+    	\begin{equation}
+    		\boxed{\boldsymbol{\mathcal{F}} \cdot \boldsymbol{\mathcal{C}} = \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} \cdot \boldsymbol{\mathcal{E}}}
+    		\qq{with}
+    		\boldsymbol{\mathcal{S}}=\mqty(\bS&\bO\\\bO&\bS)
+    		\qand
+    		\boldsymbol{\mathcal{C}}^\dagger \cdot \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} = \bI
+    	\end{equation}
+	\end{block}
+
+	\begin{block}{Fock matrix}
+    	\begin{equation}
+    		\boxed{
+    		\boldsymbol{\mathcal{F}} =
+    		\mqty(
+    		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] - \bK[\bP^{\alpha\alpha}]
+    		& 
+    		- \bK[\bP^{\alpha\beta}]
+    		\\
+    		- \bK[\bP^{\beta\alpha}]
+    		& 
+    		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] -\bK[\bP^{\beta\beta}]
+    		)
+    		}
+    	\end{equation}
+    	with 
+    	\begin{align}
+    		J[\bP]_{\mu\nu}
+    		&=\sum_{\lambda\sigma}P_{\lambda\kappa}\rbraket{\mu\nu}{\lambda\sigma}
+    		&
+    		K[\bP]_{\mu\nu}
+    		&=\sum_{\lambda\sigma}P_{\lambda\kappa}\rbraket{\mu\sigma}{\lambda\nu}
+    	\end{align}
+    	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently}
+	\end{block}
+
+	\begin{block}{SCF procedure}
+		Build all four density blocks $\rightarrow$ build all four Fock blocks
+		$\rightarrow$ solve a $2K\times2K$ generalized eigenvalue problem
+		$\rightarrow$ occupy the $N$ lowest spinors $\rightarrow$ iterate
+	\end{block}
+
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{RHF, UHF, and GHF}
+	\centering
+	\begin{equation}
+		\boxed{
+			\{\Phi_\text{RHF}\}
+			\subset
+			\{\Phi_\text{UHF}\}
+			\subset
+			\{\Phi_\text{GHF}\}
+		}
+		\qquad\Longrightarrow\qquad
+		\alert{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}
+	\end{equation}
+	for the corresponding global minima in the same one-electron basis
+
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			\begin{block}{A new stability direction}
+				A converged UHF determinant may still be unstable to occupied--virtual rotations that mix $\alpha$ and $\beta$ orbitals. Following such a negative-curvature direction produces a lower-energy GHF solution.
+			\end{block}
+
+			\begin{block}{Not every GHF solution is noncollinear}
+				RHF and UHF are special cases of GHF. A global spin rotation of a UHF determinant changes its apparent quantization axis but remains physically collinear.
+			\end{block}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Symmetry dilemma}
+				Lowering the variational energy may require breaking exact symmetries:
+				\begin{itemize}
+					\item UHF may break $\chS^2$
+					\item GHF may break both $\chS^2$ and $\chS_z$
+					\item Complex GHF may also break time-reversal symmetry
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+
+	\vfill
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{Some comments on GHF}
+	\begin{block}{Interpret with care}
+		\begin{itemize}
+			\item GHF is still a single determinant: correlation is not included
+			\item $S$ and $M_S$ are generally not good quantum numbers
+			\item Many stationary solutions make the initial guess important: \alert{stability analysis}
+			\item The GHF solution might be a globally rotated UHF solution: \alert{collinearity test}
+			\item \alert{Equilateral $\ce{H3}$} and \alert{triangular magnetic clusters} are typical examples of genuine noncollinearity
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Take-home messages}
+		\begin{itemize}
+			\item GHF is the most general \alert{number-conserving} single-determinant HF ansatz
+			\item One can break the particle number within \alert{Hartree-Fock-Bogoliubov (HFB)} theory
+		\end{itemize}
+	\end{block}
+\end{frame}
 %-----------------------------------------------------
 \subsection{Classification}
 %-----------------------------------------------------
@@ -3484,226 +3683,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{Stuber-Paldus classification of Hartree-Fock solutions}
 	\center
 	\includegraphics[width=0.66\textwidth]{fig/StuberPaldus}
-\end{frame}
-
-\begin{frame}{Generalized Hartree-Fock}
-	\begin{center}
-		\fbox{\textbf{Key idea:} GHF allows every orbital to choose its spin direction}
-	\end{center}
-	A GHF orbital is a \alert{two-component spinor}:
-	\begin{equation}
-		\boxed{
-			\chi_p^\text{GHF}(\bx)
-			=
-			\alpha(\omega)\,\blue{\psi_p^\alpha(\br)}
-			+
-			\beta(\omega)\,\red{\psi_p^\beta(\br)}
-		}
-	\end{equation}
-	Both components are expanded in the same spatial AO basis
-	\begin{equation}
-		\psi_p^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu p}^\sigma\phi_\mu(\br)
-		\qq{with}
-		\boldsymbol{\mathcal{C}} = \mqty(\bC^\alpha\\[0.2em]\bC^\beta)
-		\qand
-		\boldsymbol{\mathcal{C}} \in \mathbb{C}^{2K\times N}
-	\end{equation}
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.31\textwidth}
-			\begin{block}{RHF}
-				Paired electrons share one spatial orbital: both $\purple{\chS^2}$ and $\violet{\chS_z}$ are preserved
-			\end{block}
-		\end{column}
-		\begin{column}{0.31\textwidth}
-			\begin{block}{UHF}
-				Each orbital is purely $\alpha$ or $\beta$: the spin density is collinear and $\violet{\chS_z}$ is preserved
-			\end{block}
-		\end{column}
-		\begin{column}{0.31\textwidth}
-			\begin{block}{GHF}
-				Each orbital may mix $\alpha$ and $\beta$: in general, neither $\purple{\chS^2}$ nor $\violet{\chS_z}$ is preserved
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\vfill
-	\center
-	$\Rightarrow$
-	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$}
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{GHF density matrix}
-	For occupied GHF spinors, the density matrix is
-	\begin{equation}
-		\boxed{
-			\boldsymbol{\mathcal{P}} =
-			\mqty(
-				\bP^{\alpha\alpha} & \bP^{\alpha\beta}\\
-				\bP^{\beta\alpha} & \bP^{\beta\beta}
-			)
-		}
-		\qq{with}
-		P_{\mu\nu}^{\sigma\sigma'}
-		=
-		\sum_{i=1}^{N}C_{\mu i}^{\sigma}C_{\nu i}^{\sigma' *}
-	\end{equation}
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.47\textwidth}
-			\begin{block}{Charge and magnetization}
-				At each point in space, the spin-density matrix $\boldsymbol{\gamma}(\br)$ gives
-				\begin{align}
-					n(\br) &= \operatorname{Tr}_s\boldsymbol{\gamma}(\br),\\
-					m_k(\br) &= \operatorname{Tr}_s\!\left[\boldsymbol{\gamma}(\br)\sigma_k\right],
-					\qquad k=x,y,z,
-				\end{align}
-				where $\sigma_k$ are the Pauli matrices and $\bs(\br)=\boldsymbol{m}(\br)/2$.
-			\end{block}
-		\end{column}
-		\begin{column}{0.49\textwidth}
-			\begin{block}{What do the blocks mean?}
-				\begin{itemize}
-					\item $\bP^{\alpha\alpha}+\bP^{\beta\beta}$ determines the charge density
-					\item $\bP^{\alpha\alpha}-\bP^{\beta\beta}$ gives the $z$ component of magnetization
-					\item $\bP^{\alpha\beta}$ and $\bP^{\beta\alpha}$ generate the transverse $x$ and $y$ components
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{equation}
-		\text{UHF: }\bP^{\alpha\beta}=\bP^{\beta\alpha}=\bO
-		\qquad\Longrightarrow\qquad
-		\boldsymbol{m}(\br)\parallel\be_z.
-	\end{equation}
-	\alert{A state is collinear if one global spin rotation makes the transverse magnetization vanish everywhere.}
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{The GHF equations are Roothaan--Hall equations in spinor space}
-	The overlap and orthogonalization matrices are duplicated in spin space,
-	\begin{equation}
-		\boldsymbol{\mathcal{S}}=\mqty(\bS&\bO\\\bO&\bS)
-		\qquad
-		\boxed{\boldsymbol{\mathcal{F}} \cdot \boldsymbol{\mathcal{C}} = \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} \cdot \boldsymbol{\mathcal{E}}}
-		\qquad
-		\boldsymbol{\mathcal{C}}^\dagger \cdot \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} = \bI
-	\end{equation}
-
-	For a spin-independent nonrelativistic Hamiltonian,
-	\begin{equation}
-		\boxed{
-		\boldsymbol{\mathcal{F}} =
-		\mqty(
-		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] - \bK[\bP^{\alpha\alpha}]
-		& 
-		- \bK[\bP^{\alpha\beta}]
-		\\
-		- \bK[\bP^{\beta\alpha}]
-		& 
-		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] -\bK[\bP^{\beta\beta}]
-		)
-		}
-	\end{equation}
-	with 
-	\begin{align}
-		J[\bP]_{\mu\nu}
-		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\nu|\kappa\lambda)
-		&
-		K[\bP]_{\mu\nu}
-		&=\sum_{\lambda\kappa}P_{\lambda\kappa}(\mu\lambda|\kappa\nu)
-	\end{align}
-	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently.}
-
-	\begin{block}{SCF procedure}
-		Build all four density blocks $\rightarrow$ build all four Fock blocks
-		$\rightarrow$ solve a $2K\times2K$ generalized eigenvalue problem
-		$\rightarrow$ occupy the $N$ lowest spinors $\rightarrow$ iterate.
-	\end{block}
-
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{GHF enlarges the variational space by releasing spin constraints}
-	\centering
-	\begin{equation}
-		\boxed{
-			\{\Phi_\text{RHF}\}
-			\subset
-			\{\Phi_\text{UHF}\}
-			\subset
-			\{\Phi_\text{GHF}\}
-		}
-		\qquad\Longrightarrow\qquad
-		E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}
-	\end{equation}
-	for the corresponding global minima in the same one-electron basis.
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			\begin{block}{A new stability direction}
-				A converged UHF determinant may still be unstable to occupied--virtual rotations that mix $\alpha$ and $\beta$ orbitals. Following such a negative-curvature direction produces a lower-energy GHF solution.
-			\end{block}
-
-			\begin{block}{Not every GHF solution is noncollinear}
-				RHF and UHF are special cases of GHF. A global spin rotation of a UHF determinant changes its apparent quantization axis but remains physically collinear.
-			\end{block}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Symmetry dilemma}
-				Lowering the variational energy may require breaking exact symmetries:
-				\begin{itemize}
-					\item UHF may break $\chS^2$
-					\item GHF may break both $\chS^2$ and $\chS_z$
-					\item Complex GHF may also break time-reversal symmetry
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\vfill
-	\alert{Equilateral $\ce{H3}$ and triangular magnetic clusters are useful classroom examples of genuine noncollinearity.}
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{GHF is useful when spin direction is part of the physics}
-	\small
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Typical applications}
-				\begin{itemize}
-					\item Geometrically frustrated antiferromagnets
-					\item Polyradicals, fullerenes, and magnetic clusters
-					\item Zeeman fields and spin-dependent one-electron Hamiltonians
-					\item Two-component treatments including spin--orbit coupling
-					\item Broken-symmetry references for spin projection or nonorthogonal CI
-				\end{itemize}
-			\end{block}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Interpret with care}
-				\begin{itemize}
-					\item GHF is still a single determinant: correlation is not restored
-					\item $S$ and $M_S$ are generally not good quantum numbers
-					\item GHF might be a rotated UHF
-					\item Many stationary solutions make the initial guess important
-					\item Complex algebra and a doubled matrix dimension increase the cost
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{block}{Take-home message}
-		GHF is the most general number-conserving single-determinant HF ansatz. It is best viewed as a flexible broken-symmetry representation whose physical content should be checked through spin densities, stability analysis, and, when needed, symmetry restoration
-	\end{block}
-%
-%	\vspace{0.25em}
-%	\centering
-%	{\scriptsize\textcolor{hfPurple}{H.~Fukutome, Int. J. Quantum Chem. \textbf{20}, 955 (1981); J.~J.~Goings \textit{et al.}, Int. J. Quantum Chem. \textbf{118}, e25398 (2018).}}
-
-%	{\scriptsize\textcolor{hfPurple}{C.~A.~Jim\'enez-Hoyos \textit{et al.}, J. Phys. Chem. A \textbf{118}, 9925 (2014); S.~Sun \textit{et al.}, J. Chem. Theory Comput. \textbf{15}, 348 (2019).}}
 \end{frame}
 
 %-----------------------------------------------------
