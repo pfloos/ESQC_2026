@@ -385,7 +385,7 @@
 		\begin{equation}
 			\text{\orange{For Fermions, }} \Psi(\bx,\bx) = - \Psi(\bx,\bx)	\qq{$\Rightarrow$} 	\boxed{\Psi(\bx,\bx) = 0}
 		\end{equation}
-		\alert{The wavefunction vanishes: this is the origin of the Fermi (exchange) hole.}
+		\alert{The wavefunction vanishes: this is the origin of the Fermi (exchange) hole}
 	\end{block}
 \end{frame}
 
@@ -420,7 +420,7 @@
 %-----------------------------------------------------
 \subsection{Hartree-Fock wavefunction}
 %-----------------------------------------------------
-\begin{frame}{The HF wavefunction}
+\begin{frame}{The Hartree-Fock wavefunction}
 	\begin{block}{A Slater determinant}
 		\begin{equation}
 			\begin{split}
@@ -491,10 +491,14 @@
 		\end{itemize}
 	\end{block}
 	\begin{block}{Indices}
+		With $K$ \green{basis functions}, one can create 
 		\begin{itemize}
-			\item With $K$ \green{basis functions}, one can create $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals} $\Rightarrow$ \red{indices $p,q,r,s,\ldots$} 
-			\item $N$ \orange{spin orbitals} are \red{occupied} $\Rightarrow$ \red{indices $i,j,k,l,\ldots$} 
-			\item $2K-N$ \orange{spin orbitals} are \red{unoccupied/vacant} $\Rightarrow$ \red{indices $a,b,c,d,\ldots$}
+			\item $K$ \violet{spatial orbitals} and $2K$ \orange{spin orbitals} 
+			\hspace{0.045\textwidth} $\Rightarrow$ \red{indices $p,q,r,s,\ldots$} 
+			\item $N$ \orange{spin orbitals} are \red{occupied} 
+			\hspace{0.13\textwidth} $\Rightarrow$ \red{indices $i,j,k,l,\ldots$} 
+			\item $2K-N$ \orange{spin orbitals} are \red{unoccupied/vacant} 
+			$\Rightarrow$ \red{indices $a,b,c,d,\ldots$}
 		\end{itemize}
 	\end{block}
 	\begin{block}{Closed vs Open}
@@ -543,7 +547,9 @@
 				\end{cases}
 			\end{equation}
 			\item UHF does break spin symmetry!
-			\item \green{Restricted open-shell Hartree--Fock (ROHF)} retains shared spatial orbitals; we will not discuss it here
+			\item \green{Restricted open-shell HF (ROHF)} retains shared spatial orbitals
+			\\
+			(will not be discussed here!)
 		\end{itemize}
 	\end{block}
 	\end{column}
@@ -593,6 +599,8 @@
 	\begin{block}{Nuclear repulsion}
 			\begin{equation} 
 				\mel{ \Psi_\text{HF} }{\violet{\chV_\text{nn}} }{ \Psi_\text{HF} } = \violet{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \violet{V_\text{nn}}
+				\qif
+				\braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = 1
 			\end{equation}
 	\end{block}
 	\begin{block}{Core Hamiltonian}
@@ -965,7 +973,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\boxed{
 			\expval{\purple{\chS^2}}_{\text{UHF}}
 			=
-			M_S(M_S+1)
+			\underbrace{\expval{\purple{\chS^2}}_{\text{exact}}}_{S(S+1)}
 			+
 			N^\beta
 			-
@@ -977,8 +985,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\underbrace{S_{ij}^{\alpha\beta}}_{\text{overlap}}
 		=
 		\braket{\phi_i^\alpha}{\phi_j^\beta}
-		\qq{and}
-		M_S=\frac{N^\alpha-N^\beta}{2}
 	\end{equation}
 	\begin{block}{Spin contamination}
 		For a target high-spin state with $S=M_S$,
@@ -987,7 +993,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			=
 			\expval{\purple{\chS^2}}_{\text{UHF}}
 			-
-			\underbrace{\expval{\purple{\chS^2}}_{\text{exact}}}_{S(S+1)}
+			\expval{\purple{\chS^2}}_{\text{exact}}
 			\geq 0
 		\end{equation}
 
@@ -1001,7 +1007,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Are excited determinants spin eigenfunctions?}
+\begin{frame}{Are RHF excited determinants spin eigenfunctions?}
 	Starting from a closed-shell singlet reference $\ket{\Psi_0}$
 	\begin{align}
 		\ket*{D_\alpha}
@@ -1052,8 +1058,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\begin{block}{Same $M_S$, indefinite total spin}
 		Each determinant has $M_S=0$, but contains equal singlet and triplet character.
-		Being an eigenfunction of $\violet{\chS_z}$ does not imply being an eigenfunction of $\purple{\chS^2}$.
+		Being an eigenfunction of $\violet{\chS_z}$ does not imply being an eigenfunction of $\purple{\chS^2}$
 	\end{block}
+	\vfill
+	\center
+	$\Rightarrow$
+	\alert{RHF open-shell determinants might not be pure spin functions!}
 \end{frame}
 
 %-----------------------------------------------------
@@ -1161,12 +1171,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\vfill
 	\center
-	$\Rightarrow$ \alert{The complete electronic wavefunction is antisymmetric in both cases}
+	$\Rightarrow$ \alert{The total electronic wavefunction is antisymmetric in both cases}
 \end{frame}
 
 %-----------------------------------------------------
 \begin{frame}{The three components of the triplet}
-	The three components of the $S=1$ multiplet are
+	\begin{block}{Components of the $S=1$ multiplet}
 		\begin{align}
 			\ket{{}^{3,+1}\Psi_i^a}
 				&=\ket*{\cdots i^\alpha a^\alpha\cdots}
@@ -1177,6 +1187,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\ket{{}^{3,-1}\Psi_i^a}
 				&=\ket*{\cdots i^\beta a^\beta\cdots}
 		\end{align}
+	\end{block}
 
 	Every component satisfies
 	\begin{align}
@@ -1187,10 +1198,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	They are connected by
 	\begin{equation}
-		\chS_\pm\ket{S,M_S}
+		\underbrace{\chS_\pm}_{\text{\alert{ladder operator}}}\ket{S,M_S}
 		=
 		\sqrt{S(S+1)-M_S(M_S\pm1)}
-		\ket{S,M_S\pm1}.
+		\ket{S,M_S\pm1}
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
@@ -1536,7 +1547,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{equation}
 		\fdv{E_\text{HF}}{\chi_i} = 0
 		\qq{$\Rightarrow$}
-		\boxed{\hf(\bx_1) \chi_i(\bx_1) = \underbrace{\epsilon_i}_{\alert{\text{orbital energies}}} \chi_i(\bx_1)}
+		\boxed{\hf(\bx_1) \chi_i(\bx_1) = \underbrace{\epsilon_i}_{\alert{\text{orbital energy}}} \chi_i(\bx_1)}
 	\end{equation}	
 	where $\hf$ is the \alert{one-electron Fock operator}
 	\begin{equation}
@@ -1677,7 +1688,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{block}
 	\begin{block}{Warnings!}
 		\begin{equation}
-			\chH^\text{HF} \ket{\Psi_\text{HF}} = \qty( \sum_i^N \epsilon_i ) \ket{\Psi_\text{HF}}
+			\chH^\text{HF} \ket{\Psi_\text{HF}} 
+			\green{=} \qty( \sum_i^N \epsilon_i ) \ket{\Psi_\text{HF}}
 			\alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
 		\end{equation}
 		The HF wavefunction is an eigenfunction of the HF Hamiltonian, but the eigenvalue is \alert{not} the HF energy!
@@ -1686,13 +1698,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{equation}
 		The HF wavefunction is \alert{not} an eigenfunction of the electronic Hamiltonian!
 		\begin{equation}
-			\mel{\Psi_\text{HF}}{\chH}{\Psi_\text{HF}} = E_\text{HF}
+			\mel{\Psi_\text{HF}}{\chH}{\Psi_\text{HF}} \green{=} E_\text{HF}
 		\end{equation}
 		The HF energy is the expectation value of the HF wavefunction over the electronic Hamiltonian
 	\end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Connection with perturbation theory}
 	\begin{block}{Double counting}
 		\begin{gather}
 			\sum_i^N \epsilon_i = \sum_i^N h_{ii} + \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
@@ -1731,11 +1743,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\hf \sum_{\nu} C_{\nu i} \ket{\nu} = \epsilon_i \sum_{\nu} C_{\nu i} \ket{\nu}
 				\\
 				& \quad\xRightarrow{\ \bra{\mu}\ }\quad
-				\sum_{\nu} C_{\nu i} \mel{ \mu }{ \hf }{ \nu }
-				= \epsilon_i \sum_{\nu} C_{\nu i} \braket{ \mu }{ \nu }
+				\sum_{\nu} C_{\nu i} \underbrace{\mel{ \mu }{ \hf }{ \nu }}_{F_{\mu \nu}}
+				= \epsilon_i \sum_{\nu} C_{\nu i} \underbrace{\braket{ \mu }{ \nu }}_{S_{\mu \nu}}
 				\\
 				& \quad	\Rightarrow	\quad
 				 \boxed{\sum_{\nu} F_{\mu \nu}  C_{\nu i} = \sum_{\nu}  S_{\mu \nu} C_{\nu i} \epsilon_i }
+				\quad	\Rightarrow	\quad
+				 \bF \cdot \bC = \bS \cdot \bC \cdot \bE 
+				 \qq{in matrix form}
 			\end{split}
 			\end{equation*}
 	\end{block}
@@ -2502,10 +2517,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 }
 
 %-----------------------------------------------------
-\begin{frame}{Hartree--Fock for minimal-basis \ce{H2}}
-	Start from one normalized $1s$ function on each atom,
-	$\phi_A$ and $\phi_B$, with $S=\braket{\phi_A}{\phi_B}$.
-
+\begin{frame}{Hartree-Fock for minimal-basis \ce{H2}}
+	Start from one normalized $1s$ function on each atom
 	\begin{equation}
 		\boxed{
 			\psi_g
@@ -2516,6 +2529,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			=
 			\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}}
 		}
+		\qq{with}
+		S=\braket{\phi_A}{\phi_B}
 	\end{equation}
 
 	\begin{block}{Why it is special?}
@@ -2577,53 +2592,24 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 %-----------------------------------------------------
 \begin{frame}{UHF problem}
-	Preserve $M_S=0$, but allow the $\alpha$ and $\beta$ electrons to occupy
-	different spatial orbitals:
-	\begin{equation}
-		\boxed{
-		\begin{aligned}
-			\psi^\alpha(\theta)
-				&=\cos\theta\,\psi_g+\sin\theta\,\psi_u\\
-			\psi^\beta(\theta)
-				&=\cos\theta\,\psi_g-\sin\theta\,\psi_u
-		\end{aligned}}
-	\end{equation}
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			\begin{block}{$\theta=0$: restricted solution}
-				\begin{equation}
-					\psi^\alpha=\psi^\beta=\psi_g
-				\end{equation}
-				The UHF determinant collapses to RHF
-			\end{block}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{block}{$\theta\rightarrow\pi/4$: localized solution}
-				At dissociation,
-				\begin{equation}
-					\psi^\alpha\rightarrow\phi_A
-					\qquad
-					\psi^\beta\rightarrow\phi_B
-				\end{equation}
-				Opposite spins occupy opposite atoms
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{equation}
-		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)
-	\end{equation}
-
-	\centering
-	The two choices $\pm\theta$ are degenerate and exchange the spin localization.
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{Stretching the bond continuously localizes the UHF orbitals}
 	\small
-	The mixing angle transfers opposite-spin density toward opposite nuclei.
+	\begin{block}{UHF orbitals}
+    	\begin{equation}
+    		\boxed{
+    		\begin{aligned}
+    			\psi^\alpha(\theta)
+    				&=\cos\theta\,\psi_g+\sin\theta\,\psi_u\\
+    			\psi^\beta(\theta)
+    				&=\cos\theta\,\psi_g-\sin\theta\,\psi_u
+    		\end{aligned}
+    		}
+    		\qq{with}
+    		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)
+    	\end{equation}
+    	The two choices $\pm\theta$ are degenerate and exchange the spin localization
+	\end{block}
 
+	\vfill
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.32\textwidth}
 			\centering
@@ -2662,8 +2648,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{UHF energy}
-	\small
+\begin{frame}{UHF energy and stationary points}
 	With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$,
 	\begin{equation}
 		E_\text{UHF}(\theta)-\frac{1}{R}
@@ -2680,7 +2665,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	stationary solution satisfies
 	\begin{equation}
 		\boxed{
-			\cos(2\theta)
+			\cos^2 \theta
 			=
 			\frac{
 				h_{uu}-h_{gg}+J_{uu}-J_{gu}+2K_{gu}
@@ -2694,22 +2679,33 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Short bond length}
 				Only the minimum at $\theta=0$ is physically accessible:
-				\blue{UHF = RHF}
+				UHF reduces to RHF
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Large bond length}
-				Two minima appear at $\pm\theta$, and the restricted solution becomes
+				When $0 \le \cos^2 \theta^\star \le 1$, two minima appear at $\pm\theta^\star$, and RHF becomes
 				unstable to spin polarization
 			\end{block}
 		\end{column}
 	\end{columns}
+	\begin{block}{Coulson-Fischer (CF) point}
+    	\begin{equation}
+    		\eval{\dv[2]{E}{\theta}}_{\theta=0}
+    		=
+    		4\left(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}\right)
+			\qquad
+    		\boxed{
+    			R=R_\text{CF}
+    			\quad\Longleftrightarrow\quad
+    			\eval{\dv[2]{E}{\theta}}_{\theta=0}=0
+    		}
+    	\end{equation}
+	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The energy landscape changes topology at the Coulson-Fischer point}
-	\small
-	The orbital angle is an order parameter for spontaneous spin-symmetry breaking.
+\begin{frame}{The Coulson-Fischer point}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.32\textwidth}
@@ -2798,48 +2794,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\vspace{0.7em}
 	\begin{block}{What changes at the Coulson-Fischer point?}
 		The RHF determinant at $\theta=0$ does not disappear: it changes from a
-		minimum to an unstable stationary point while two degenerate UHF minima emerge
+		minimum to an unstable stationary point while two degenerate UHF minima emerge at $\pm\theta^\star$
 	\end{block}
-\end{frame}
-
-%-----------------------------------------------------
-\begin{frame}{The Coulson-Fischer point is a stability loss of RHF}
-	Along the UHF rotation coordinate,
-	\begin{align}
-		\left.\frac{d^2E}{d\theta^2}\right|_{\theta=0}
-		&=
-		4\left(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}\right)
-		\\
-		&=
-		4\left(\epsilon_u-\epsilon_g-J_{gu}-K_{gu}\right).
-	\end{align}
-
-	\begin{equation}
-		\boxed{
-			R=R_\text{CF}
-			\quad\Longleftrightarrow\quad
-			\left.\frac{d^2E}{d\theta^2}\right|_{\theta=0}=0
-		}
-	\end{equation}
-
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.31\textwidth}
-			\begin{block}{$R<R_\text{CF}$}
-				Positive curvature: RHF is a local minimum
-			\end{block}
-		\end{column}
-		\begin{column}{0.31\textwidth}
-			\begin{block}{$R=R_\text{CF}$}
-				Zero curvature: the two UHF branches merge with RHF
-			\end{block}
-		\end{column}
-		\begin{column}{0.31\textwidth}
-			\begin{block}{$R>R_\text{CF}$}
-				Negative curvature: RHF remains stationary, but is unstable
-			\end{block}
-		\end{column}
-	\end{columns}
-
 \end{frame}
 
 %-----------------------------------------------------
@@ -2894,9 +2850,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\small
 			At $R\rightarrow\infty$,
 			\begin{equation}
-				S\rightarrow0,
+				S\rightarrow0
 				\qquad
-				\psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}.
+				\psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}
 			\end{equation}
 
 			Define the positive on-site repulsion
@@ -2911,13 +2867,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 						=2E_\text{H}+\frac12 U
 					}
 				\end{equation}
-				The ionic terms leave a finite error.
+				The ionic terms leave a finite error
 			\end{block}
 
 			\begin{block}{Unrestricted limit}
 				Since $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$,
 				\begin{equation}
-					\boxed{E_\text{UHF}^{\infty}=2E_\text{H}}.
+					\boxed{E_\text{UHF}^{\infty}=2E_\text{H}}
 				\end{equation}
 			\end{block}
 		\end{column}
@@ -2925,7 +2881,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{UHF repairs the energy by sacrificing spin symmetry}
+\begin{frame}{Symmetry-broken UHF}
 	For the two-electron $M_S=0$ determinant,
 	\begin{equation}
 		\boxed{
@@ -2961,15 +2917,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			+
 			\ket{\text{triplet},M_S=0}
 		\right)
-		\qquad (R\rightarrow\infty).
+		\qquad (R\rightarrow\infty)
 	\end{equation}
-
+	\vfill
 	\centering
-	\alert{The UHF energy is physically useful, but the UHF wavefunction is spin-contaminated.}
-\end{frame}
+	$\Rightarrow$
+	\alert{The UHF energy is physically useful, but the UHF wavefunction is spin-contaminated}
 
-%-----------------------------------------------------
-\begin{frame}{What the \ce{H2} example teaches us}
 	\begin{block}{Three take-home messages}
 		\begin{enumerate}
 			\item A stationary SCF solution need not be stable
@@ -2977,24 +2931,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\item Symmetry breaking mimics static correlation at the price of a contaminated wavefunction
 		\end{enumerate}
 	\end{block}
-
-	\begin{equation}
-		\boxed{
-			\text{RHF stability analysis}
-			\quad\Longleftrightarrow\quad
-			\text{curvature of the HF energy with respect to orbital rotations}
-		}
-	\end{equation}
 \end{frame}
 
 \begin{frame}{Canonical occupied orbitals are not unique}
-	Let $\bC_\text{o}$ contain the occupied canonical orbitals. Any unitary
+	Let $\bC_\text{occ}$ contain the occupied canonical orbitals. Any unitary
 	rotation within the occupied space defines an equivalent set:
 	\begin{equation}
 		\boxed{
-			\widetilde{\bC}_\text{o}
+			\widetilde{\bC}_\text{occ}
 			=
-			\bC_\text{o}\cdot\bU,
+			\bC_\text{occ}\cdot\bU
 			\qquad
 			\bU^\dagger\cdot\bU=\bI
 		}
@@ -3007,10 +2953,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\begin{equation}
 					\widetilde{\bP}
 					=
-					2\widetilde{\bC}_\text{o}
-					\widetilde{\bC}_\text{o}^\dagger
+					2\widetilde{\bC}_\text{occ}
+					\cdot
+					\widetilde{\bC}_\text{occ}^\dagger
 					=
-					2\bC_\text{o}\bC_\text{o}^\dagger
+					2\bC_\text{occ}
+					\cdot
+					\bC_\text{occ}^\dagger
 					=
 					\bP
 				\end{equation}
@@ -3019,7 +2968,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{The determinant changes only by a phase}
 				\begin{equation}
-					\ket{\widetilde{\Psi}_0}
+					\ket*{\widetilde{\Psi}_0}
 					=
 					\det(\bU)\ket{\Psi_0}
 				\end{equation}
@@ -3044,7 +2993,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\draw[hfTeal,very thick] (4.45,0.05) .. controls (4.8,0.95) and (5.2,0.95) .. (5.55,0.05);
 	\end{tikzpicture}
 
-	\alert{Only occupied--occupied or virtual--virtual rotations are invariant;
+	\alert{Only occupied-occupied or virtual-virtual rotations are invariant;
 	mixing occupied and virtual orbitals changes the determinant}
 \end{frame}
 
@@ -3075,7 +3024,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{pmatrix}
 			\psi_p\\
 			\psi_q
-		\end{pmatrix}.
+		\end{pmatrix}
 	\end{equation}
 
 	\begin{block}{Jacobi-sweep localization}
@@ -3087,12 +3036,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{enumerate}
 	\end{block}
 
-	Modern implementations may instead optimize directly on the unitary manifold.
+	Modern implementations may instead optimize directly on the unitary manifold
 
 	\vfill
 	\centering
 	\alert{The localization functional is generally nonconvex: different initial
-	guesses may converge to different local extrema.}
+	guesses may converge to different local extrema}
 \end{frame}
 
 %-----------------------------------------------------
