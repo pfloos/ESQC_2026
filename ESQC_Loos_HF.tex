@@ -48,7 +48,7 @@
 \setbeamertemplate{itemize item}{\color{hfTeal}\raisebox{0.15ex}{\rule{0.55ex}{0.55ex}}}
 \setbeamertemplate{itemize subitem}{\color{hfTeal}\raisebox{0.12ex}{\rule{0.45ex}{0.45ex}}}
 \setbeamersize{text margin left=0.55cm,text margin right=0.55cm}
-
+\setbeamertemplate{footline}[frame number]
 
 \usepackage{hyperref}
 \hypersetup{
@@ -187,7 +187,7 @@
 \end{frame}
 
 
-\begin{frame}{Szabo's and Ostlund's book}
+\begin{frame}{Szabo and Ostlund's book}
 	\begin{center}
 		\includegraphics[width=\textwidth]{fig/amazon}
 	\end{center}
@@ -552,7 +552,7 @@
 					\beta(\omega) \blue{\psi_p^\beta(\br)}
 				\end{cases}
 			\end{equation}
-			\item UHF does break spin symmetry!
+			\item UHF may break spin symmetry!
 			\item \green{Restricted open-shell HF (ROHF)} retains shared spatial orbitals
 			\\
 			(will not be discussed here!)
@@ -979,7 +979,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\boxed{
 			\expval{\purple{\chS^2}}_{\text{UHF}}
 			=
-			\underbrace{\expval{\purple{\chS^2}}_{\text{exact}}}_{S(S+1)}
+			\underbrace{\expval{\purple{\chS^2}}_{\text{exact}}}_{M_S(M_S+1)}
 			+
 			N^\beta
 			-
@@ -1013,7 +1013,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Are RHF excited determinants spin eigenfunctions?}
+\begin{frame}{Are excited determinants based on restricted orbitals spin eigenfunctions?}
 	Starting from a closed-shell singlet reference $\ket{\Psi_0}$
 	\begin{align}
 		\ket*{D_\alpha}
@@ -1069,7 +1069,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\vfill
 	\center
 	$\Rightarrow$
-	\alert{RHF open-shell determinants might not be pure spin functions!}
+	\alert{Open-shell determinants might not be pure spin functions!}
 \end{frame}
 
 %-----------------------------------------------------
@@ -1130,7 +1130,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{Open-shell singlet}
     	For the two open-shell spatial orbitals $i$ and $a$, the singlet is
     	\begin{equation}
-    		\ket*{{}^0\Psi_{i}^{a}}
+    		\ket*{{}^1\Psi_{i}^{a}}
     		=
     		\frac{1}{2}
     		\underbrace{
@@ -1229,7 +1229,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Normalization of a two-electron determinant}
 	\begin{block}{Problem: Normalization of the HF wavefunction}
-		\textit{\violet{``Show that the HF wavefunction built with two (normalized) spin orbitals $\chi_1$ and $\chi_2$ is normalized''}}
+		\textit{\violet{``Show that the HF wavefunction built with two (normalized) orthogonal spin orbitals $\chi_1$ and $\chi_2$ is normalized''}}
 	\end{block}
 	\pause
 	\begin{block}{Solution}
@@ -1503,7 +1503,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{One- and two-electron terms}
 		\small
 		\begin{equation}
-			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_a^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} \rmel{i}{\hh}{i}
+			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_i^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} \rmel{i}{\hh}{i}
 		\end{equation}
 		\begin{equation}
 		\begin{split}
@@ -1549,7 +1549,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \subsection{Fock matrix}
 %-----------------------------------------------------
 \begin{frame}{The Fock matrix}
-	The \alert{stationarity of the HF energy} wrt the spin orbitals implies that 
+	The \alert{stationarity of the HF energy} with respect to the spin orbitals implies that 
 	\begin{equation}
 		\fdv{E_\text{HF}}{\chi_i} = 0
 		\qq{$\Rightarrow$}
@@ -1686,6 +1686,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{block}
 \end{frame}
 
+\begin{frame}{Koopmans prefers IPs}
+	\begin{equation}
+		IP= - \epsilon_i + \underbrace{\Delta_\text{relax}}_{\text{relaxation}} + \underbrace{\Delta_\text{corr}}_{\text{correlation}}
+	\end{equation}
+\end{frame}
+
 \begin{frame}{Hartree-Fock Hamiltonian}
 	\begin{block}{Definition}
 		\begin{equation}
@@ -1708,7 +1714,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{equation}
 			\mel{\Psi_\text{HF}}{\chH}{\Psi_\text{HF}} \green{=} E_\text{HF}
 		\end{equation}
-		The HF energy is the expectation value of the HF wavefunction over the electronic Hamiltonian
+		The HF energy is the expectation value of the HF wavefunction of the electronic Hamiltonian
 	\end{block}
 \end{frame}
 
@@ -2026,7 +2032,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\item We can set \alert{$\bP = \bO$ $\Rightarrow$ $\bF = \bH$} (\alert{core guess}):\\
 			$\Rightarrow$ Usually a poor guess but easy to implement
 			\bigskip
-			\item Use \alert{extended Huckel theory or a semi-empirical method}:\\
+			\item Use \alert{extended H|"ckel theory or a semi-empirical method}:\\
 			$\Rightarrow$ Inexpensive, though now less common
 			\bigskip
 			\item Use \alert{tabulated atomic densities}:\\
@@ -2238,7 +2244,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\bigskip
 		\item The extrapolated energy is not guaranteed to decrease monotonically
 		\bigskip
-		\item $\bB$ can be \alert{singular} due to nearly linear dependence of the residuals: restart possible
+		\item $\bB$ can be \alert{singular} due to nearly linear dependence of the residuals: a restart may be required
 		\bigskip
 		\item DIIS can be used for many other methods!
 	\end{itemize}
@@ -2263,7 +2269,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{equation}
 			\mu_x = \red{- \sum_{\mu \nu} P_{\mu\nu} \rmel{\nu}{x}{\mu}} + \blue{\sum_A^M Z_A X_A}
 			\qq{with}
-			\underbrace{\rbraket{\nu}{x}{\mu}}_{\text{one-electron integrals}} = \int \phi_\nu^*(\br) \,x\, \phi_\mu(\br) \dd{\br}  
+			\underbrace{\rmel{\nu}{x}{\mu}}_{\text{one-electron integrals}} = \int \phi_\nu^*(\br) \,x\, \phi_\mu(\br) \dd{\br}  
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -2273,7 +2279,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{equation}
 			\rho(\br) = \sum_{\mu\nu} \phi_\mu(\br) P_{\mu\nu} \phi_\nu(\br) 
 			\qq{with}
-			\int \rho(\br) d\br = N
+			\int \rho(\br) \dd{\br} = N
 			\qq{$\Rightarrow$}
 			N = \sum_{\mu\nu} P_{\mu\nu} S_{\nu\mu} = \sum_\mu (\bP \cdot \bS)_{\mu\mu} = \Tr(\bP \cdot \bS)
 		\end{equation}
@@ -2375,7 +2381,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		}
     	\end{equation}
 	\end{block}	
-	\begin{block}{Boys-Foster functional}
+	\begin{block}{Foster-Boys functional}
     	\begin{equation}
     	\begin{split}
     			\Omega_\text{BF}
@@ -2434,7 +2440,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		q_{i}^{A}
 		=
 		\sum_{\mu\in A}
-		\qty( \bP \cdot \bS)_{\mu\mu}
+		C_{\mu i}^* S_{\mu\nu} C_{\nu i}
 	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
@@ -2533,7 +2539,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\purple{\chS^2}$
 			\item The HF wavefunction is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
-			\item Doublets are contaminated by quartets, sextuplets, etc
+			\item Doublets are contaminated by quartets, sextets, etc
 			\item Generalized HF also allows spin mixing and need not preserve $\violet{\chS_z}$
 			\begin{equation}
 				\chi_p^\text{GHF}(\bx) = \alpha(\omega) \blue{\psi_p^\alpha(\br)} + \beta(\omega) \red{\psi_p^\beta(\br)}
@@ -2621,7 +2627,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \subsection{Pople-Nesbet}
 %-----------------------------------------------------
-\begin{frame}{The Pople-Nesbet Equations}
+\begin{frame}{The Pople-Nesbet equations}
 	\small
 	\begin{block}{Expansion of the unrestricted spin orbitals in a basis}
 		\begin{align}
@@ -2668,9 +2674,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{block}
 	\begin{block}{Properties of the density $(\sigma = \alpha \text{ or } \beta)$}
 		\begin{align}
-			\rho^\sigma(\br) & = \sum_{\mu \nu} \phi_{\mu}(\br) P_{\mu \nu}^\sigma \phi_{\nu}(\br)
+			\rho^\sigma(\br) & = \sum_{\mu \nu} \phi_{\mu}^*(\br) P_{\mu \nu}^\sigma \phi_{\nu}(\br)
 			&
-			\int \rho^\sigma(\br) d\br & = N^\sigma
+			\int \rho^\sigma(\br) \dd{\br} & = N^\sigma
 		\end{align}
 	\end{block}
 	\begin{block}{Total and Spin density matrices}
@@ -2757,7 +2763,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		S=\braket{\phi_A}{\phi_B}
 	\end{equation}
 
-	\begin{block}{Why it is special?}
+	\begin{block}{Why is it special?}
 		For two electrons in two spatial orbitals, UHF reduces to
 		\alert{a single-parameter problem}
 	\end{block}
@@ -3021,7 +3027,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{The dissociation curves follow from the asymptotic wavefunctions}
+\begin{frame}{Schematic dissociation curve}
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.59\textwidth}
 			\centering
@@ -3275,11 +3281,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     	\end{equation}
     	with 
     	\begin{align}
-    		J[\bP]_{\mu\nu}
-    		&=\sum_{\lambda\sigma}P_{\lambda\kappa}\rbraket{\mu\nu}{\lambda\sigma}
+    		J_{\mu\nu}[\bP]
+    		&=\sum_{\lambda\sigma}P_{\lambda\sigma}\rbraket{\mu\nu}{\lambda\sigma}
     		&
-    		K[\bP]_{\mu\nu}
-    		&=\sum_{\lambda\sigma}P_{\lambda\kappa}\rbraket{\mu\sigma}{\lambda\nu}
+    		K_{\mu\nu}[\bP]
+    		&=\sum_{\lambda\sigma}P_{\lambda\sigma}\rbraket{\mu\sigma}{\lambda\nu}
     	\end{align}
     	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently}
 	\end{block}
@@ -3348,7 +3354,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{Take-home messages}
 		\begin{itemize}
 			\item GHF is the most general \alert{number-conserving} single-determinant HF ansatz
-			\item One can break the particle number within \alert{Hartree-Fock-Bogoliubov (HFB)} theory
+			\item One can break particle-number symmetry within \alert{Hartree-Fock-Bogoliubov (HFB)} theory
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -3375,7 +3381,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		&
 		\makecell{\textbf{Stuber-Paldus}\\\textbf{designation}}
 		&
-		\makecell{\textbf{Symmetries}\\\textbf{preserved}}
+		\makecell{\textbf{Symmetries}\\\textbf{preserved$^i$}}
 		&
 		\makecell{\textbf{Structure of the orbital}\\
 		          \textbf{coefficient matrix $\bC$}}
@@ -3475,7 +3481,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\quad \bC \in \mathbb{R}$
 		\\
 
-		$\mathrm{TSW}^{i}$
+		$\mathrm{TSW}^{h}$
 		&
 		complex GHF
 		&
@@ -3497,6 +3503,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	$^f$ Torsional spin current wave. 
 	$^g$ Torsional spin density wave.
 	$^h$ Torsional spin wave.
+	$^i$ $\chK$ and $\hat{\Theta}$ are the complex conjugation and time reversal operators.
 \end{frame}
 
 \begin{frame}{Stuber-Paldus classification of Hartree-Fock solutions}
