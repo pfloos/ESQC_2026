@@ -1688,8 +1688,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Koopmans prefers IPs}
 	\begin{equation}
-		IP= - \epsilon_i + \underbrace{\Delta_\text{relax}}_{\text{relaxation}} + \underbrace{\Delta_\text{corr}}_{\text{correlation}}
+	\begin{split}
+		\text{IP} 
+		& = E_\text{exact}^{N-1} - E_\text{exact}^{N}
+		\\
+		& = E_\text{HF}^{N-1} - E_\text{HF}^{N} + E_\text{c}^{N-1} - E_\text{c}^{N}
+		\\
+		& = - \epsilon_i + \underbrace{\Delta_\text{relax}}_{\text{relaxation}} + \underbrace{\Delta_\text{corr}}_{\text{correlation}}
+	\end{split}
 	\end{equation}
+	For IPs, there is large error compensation!
+	It does not apply to EAs.
 \end{frame}
 
 \begin{frame}{Hartree-Fock Hamiltonian}
