@@ -2295,15 +2295,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 \begin{frame}{Localized orbitals}
-	Let $\bC_\text{o}$ contain the occupied canonical orbitals. Any unitary
-	rotation within the occupied space defines an equivalent set:
 	\begin{equation}
 		\boxed{
 			\widetilde{\bC}_\text{o}
 			=
-			\bC_\text{o}\cdot\bU
+			\underbrace{\bC_\text{o}}_{\substack{\text{occupied} \\ \text{orbitals}}} \cdot \purple{\bU}
 			\qquad
-			\bU^\dagger\cdot\bU=\bI
+			\purple{\bU}^\dagger \cdot \purple{\bU} = \bI
+			\qq{$\Leftrightarrow$}
+			\text{\purple{unitary transformation}}
 		}
 	\end{equation}
 
@@ -2331,9 +2331,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\begin{equation}
 					\ket*{\widetilde{\Psi}_0}
 					=
-					\det(\bU)\ket{\Psi_0}
+					\det(\purple{\bU})\ket{\Psi_0}
 				\end{equation}
-				Therefore $\rho(\br)$, $\EHF$, and every expectation value are unchanged
+				The \alert{density}, \alert{energy}, and \alert{every expectation value} are unchanged
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -2347,7 +2347,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\draw[hfRed,very thick,dashed] (-5.7,-0.10) .. controls (-4.8,0.70) and (-3.4,-0.70) .. (-2.5,0.10);
 		\draw[hfTeal,very thick,dotted] (-5.7,-0.45) .. controls (-4.6,-1.00) and (-3.5,1.00) .. (-2.5,-0.45);
 		\draw[hfNavy,very thick,->] (-1.5,0.05)--(1.5,0.05)
-			node[midway,above] {unitary transformation};
+			node[midway,above] {\purple{unitary transformation}};
 		\foreach \x in {3.2,4.1,5.0}{\fill[hfInk] (\x,0) circle (0.07);}
 		\draw[hfBlue,very thick] (2.65,0.05) .. controls (3.0,0.95) and (3.4,0.95) .. (3.75,0.05);
 		\draw[hfRed,very thick] (3.55,0.05) .. controls (3.9,0.95) and (4.3,0.95) .. (4.65,0.05);
@@ -2355,9 +2355,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{tikzpicture}
 
 	\begin{itemize}
-		\item Only occupied-occupied or virtual-virtual rotations are invariant
-		\item Mixing occupied and virtual orbitals changes the wavefunction and the energy
-		\item Localization functionals are generally nonconvex: different guesses may converge to different local extrema
+		\item Only \alert{occupied-occupied} or \alert{virtual-virtual} rotations are invariant
+		\item Mixing \alert{occupied and virtual} orbitals changes the wavefunction and the energy
+		\item Localization functionals are generally \alert{nonconvex}: different guesses may converge to different local extrema
 	\end{itemize}
 \end{frame}
 
@@ -2384,7 +2384,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     			]
     			\quad\longrightarrow\quad\min \text{spatial extent}
     			\\
-    			& \equiv
+    			& \alert{\equiv}
     			\sum_i
     			\qty[
     				\mel{\psi_i}{r^2}{\psi_i}
@@ -2460,7 +2460,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 
 %-----------------------------------------------------
-\begin{frame}{Localization changes the representation, not the HF state}
+\begin{frame}{Summary}
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{What remains unchanged}
@@ -2469,9 +2469,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\item The density matrix and electron density
 					\item The HF energy and molecular properties
 					\item The zero occupied-virtual Fock block
+    				\begin{equation}
+    					\widetilde{\boldsymbol{f}}_\text{ov} = \boldsymbol{f}_\text{ov}  = \bO
+    				\end{equation}
 				\end{itemize}
 			\end{block}
-
 			\begin{block}{Why localize?}
 				\begin{itemize}
 					\item Identify bonds, lone pairs, and fragments
@@ -2483,14 +2485,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{What changes}
-				Localized orbitals are generally not Fock eigenfunctions:
-				\begin{equation}
-					\widetilde{\bF}_\text{oo}
-					=
-					\bU^\dagger\cdot\bepsilon_\text{o}\cdot\bU
-				\end{equation}
-				which is not diagonal in general. Individual canonical orbital energies
-				cannot therefore be assigned to localized orbitals.
+				\begin{itemize}
+					\item Localized orbitals are generally not eigenfunctions of the Fock operator:
+    				\begin{equation}
+    					\widetilde{\boldsymbol{f}}_\text{oo}
+    					=
+    					\purple{\bU}^\dagger \cdot \bepsilon_\text{o} \cdot \purple{\bU}
+    				\end{equation}
+    				\item Orbital energies cannot therefore be assigned to localized orbitals
+				\end{itemize}
 			\end{block}
 
 			\begin{block}{Practical cautions}
@@ -2753,8 +2756,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{equation}
 
 	\begin{block}{Why it is special?}
-		For two electrons in two spatial orbitals, the UHF problem reduces to
-		\alert{one orbital-rotation angle}
+		For two electrons in two spatial orbitals, UHF reduces to
+		\alert{a single-parameter problem}
 	\end{block}
 	\bigskip
 	\centering
@@ -3306,7 +3309,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{A new stability direction}
-				A converged UHF determinant may still be unstable to occupied--virtual rotations that mix $\alpha$ and $\beta$ orbitals. Following such a negative-curvature direction produces a lower-energy GHF solution.
+				A converged UHF determinant may still be unstable to occupied-virtual rotations that mix $\alpha$ and $\beta$ orbitals. Following such a negative-curvature direction produces a lower-energy GHF solution.
 			\end{block}
 
 			\begin{block}{Not every GHF solution is noncollinear}
