@@ -214,25 +214,27 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Expanding the molecular orbitals}
-	\begin{equation}
-		\boxed{
-			\psi_p(\br)
-			=
-			\sum_{\mu=1}^{K}
-			C_{\mu p}\phi_\mu(\br)
-		}
-	\end{equation}
-
-	\begin{itemize}
-		\item The basis functions $\{\phi_\mu\}$ are \alert{fixed}; the coefficients
-		      $C_{\mu p}$ are determined \alert{variationally}
-
-		\item Increasing $K$ improves the flexibility
-		      and, ideally, approaches the \alert{complete basis set limit (CBS)}
-
-		\item Basis sets contain the \alert{only empirical parameters} of an \textit{ab initio} 
-		      calculation
-	\end{itemize}
+	\begin{block}{Linear combination of basis functions}
+    	\begin{equation}
+    		\boxed{
+    			\psi_p(\br)
+    			=
+    			\sum_{\mu=1}^{K}
+    			C_{\mu p}\phi_\mu(\br)
+    		}
+    	\end{equation}
+    
+    	\begin{itemize}
+    		\item The basis functions $\{\phi_\mu\}$ are \alert{fixed}; the coefficients
+    		      $C_{\mu p}$ are determined \alert{variationally}
+    
+    		\item Increasing $K$ improves the flexibility
+    		      and, ideally, approaches the \alert{complete basis set limit (CBS)}
+    
+    		\item Basis sets contain the \alert{only empirical parameters} of an \textit{ab initio} 
+    		      calculation
+    	\end{itemize}
+	\end{block}
 
 	\begin{block}{A useful basis set should be\ldots}
 		\begin{description}
