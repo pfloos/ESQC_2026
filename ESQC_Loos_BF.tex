@@ -945,7 +945,41 @@ decoration={snake,
 	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
 \end{frame}
 
-%%% SLIDE X %%%
+\begin{frame}{Effective core potentials (ECPs) or pseudopotentials}
+	\begin{itemize}
+		\item ECPs are a useful means of replacing the core electrons, thereby eliminating the need for the core basis functions.
+		\item They can be used with Gaussian and plane wave basis sets
+		\item They may take into account scalar (spin-free) and/or spin-orbit (spin-dependent) relativistic effects
+		\item They generate one-electron integrals
+	\end{itemize}
+	\begin{gather}
+		U(\br) = U_L(\br) + \sum_{\ell=0}^{L-1} \sum_{m=-\ell}^{\ell} \ket{Y_{\ell m}} U_\ell(\br) \bra{Y_{\ell m}}
+		\\
+		U_\ell(\br) = \sum_{k=1}^{K_\ell} D_{\ell_k} r^{n_{\ell_k}} \exp(-\eta_{\ell_k} r^2)
+	\end{gather}
+	\begin{block}{Small vs large core}
+		For \ce{Ag} ($Z=47$):
+		\begin{itemize}
+			\item \red{Large}-core ECP: 11 \green{``valence''} electrons
+			\\
+			$(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6 (4s)^2 (3d)^{10} (4p)^6 \green{(4d)^{10} (5s)^1}$
+			\item \red{Small}-core ECP: 19 \green{``valence''} electrons
+			\\
+			$(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6 \green{(4s)^2} (3d)^{10} \green{(4p)^6 (4d)^{10} (5s)^1}$
+		\end{itemize}
+	\end{block}
+	\begin{block}{ECP families for Gaussians}
+		\begin{itemize}
+			\item LANL2DZ \& SBKJC historically important but less employed nowadays
+			\item def2-ECPs in combination with Ahlrichs/Weigend def2-XVP basis sets
+			\item Stuttgart, BFD, and ccECP
+			\item 
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+
 \begin{frame}{Properties of Gaussian functions}
 	\begin{block}{Gaussian product rule: \textit{``The product of two gaussians is a gaussian''}}
 		\begin{equation}
@@ -1100,6 +1134,7 @@ decoration={snake,
 			\qquad
 			F_\infty(x) = 0
 		\end{equation}
+		Upward recursion is numerically unstable
 	\end{block}
 	\begin{block}{Asymptotic behavior}
 		\begin{equation}
@@ -1134,7 +1169,13 @@ decoration={snake,
 %\end{frame}
 %\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
 \begin{frame}{Obara-Saika (OS) recurrence relation}
-	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$, one gets
+	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using
+	\begin{equation}
+		 \pdv{\sket{\red{\ba}}}{A_i} = 2\alpha \sket{\red{\ba}+\bI_i} - a_i \sket{\red{\ba}-\bI_i}
+		 \qq{$\Rightarrow$}
+		 \sket{\red{\ba}+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\red{\ba}}}{A_i} + a_i \sket{\red{\ba}-\bI_i} )
+	\end{equation}
+	one gets
 	\begin{equation}
 	\boxed{\begin{split}
 		\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
@@ -1142,11 +1183,11 @@ decoration={snake,
 		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)} 
 		\\
 		& + \frac{a_i}{2\zeta} \qty(
-			\sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\bd}^{(m+1)}
+			\sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)}
 			)
 		\\
 		& + \frac{b_i}{2\zeta} \qty( 
-			\sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\bd}^{(m+1)}
+			\sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m+1)}
 			)
 		\\
 		& + \frac{c_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{(\orange{\bc}-\bI_i)\green{\bd}}^{(m+1)}
@@ -1162,11 +1203,14 @@ decoration={snake,
 
 \begin{frame}{Auxiliary fundamental integrals}
 	\begin{equation}
-		\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
+		\boxed{\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)}
 	\end{equation}
-	$m = 0$ are true ERIs, while integrals with $m > 0$ are auxiliary integrals defined by OS.
-	These are necessary to obtain true ERIs of higher angular momentum as a linear combination of integrals of lower angular momentum
-	$m$ must go up to $a+b+c+d$
+	\begin{itemize}
+		\item $F_m$ is the generalized Boys function
+		\item $m = 0$ are true ERIs while integrals with $m > 0$ are auxiliary integrals defined by OS
+		\item These are necessary to obtain true ERIs of higher angular momentum as a linear combination of integrals of lower angular momentum
+		\item To compute $\sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}$, one must compute fundamental integrals up to $m = a+b+c+d$
+	\end{itemize}
 \end{frame}
 
 
