@@ -1,6 +1,7 @@
 # Hartree-Fock
 
-- MOM and non-Aufbau determinants
+- fix nuclear Hamiltonian
+- fix MOM and non-Aufbau determinants
 
 # Basis & Integrals
 
