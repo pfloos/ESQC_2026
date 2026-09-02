@@ -2404,7 +2404,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\boxed{
 			w_p
 			=
-			\sum_{i\in\mathrm{ref}}
+			\sum_{i\in\mathcal{O}_{\text{ref}}}
 			\abs{O_{ip}}^2
 		}
 	\end{equation}
@@ -2425,9 +2425,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{column}
 
 		\begin{column}{0.48\textwidth}
-			\centering
-			\textbf{Projection onto the reference space}
-
+			\center
 			\begin{tikzpicture}[
 				x=0.78cm,
 				y=0.72cm,
@@ -2444,18 +2442,18 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					minimum height=0.75cm
 				] at (2.0,5.15)
 				{
-					occupied reference space\\[-1mm]
-					$\mathcal O_{\mathrm{ref}}
+					Occupied reference space\\
+					$\mathcal{O}_{\text{ref}}
 					=\operatorname{span}
-					\{\chi_i^\mathrm{ref}\}$
+					\{\chi_i^\text{ref}\}$
 				};
 
-				\draw[->,very thick,hfNavy]
-					(2.0,4.65) -- (2.0,4.05)
-					node[midway,right] {project};
+%				\draw[->,very thick,hfNavy]
+%					(2.0,4.65) -- (2.0,4.05)
+%					node[midway,right] {project};
 
 				\node[hfInk] at (2.0,3.80)
-					{overlap with $\mathcal O_{\mathrm{ref}}$};
+					{overlap with $\mathcal{O}_{\text{ref}}$};
 
 				% Orbital 1
 				\node[anchor=east] at (0.20,3.10)
@@ -2518,7 +2516,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					at (4.35,0.55) {select};
 			\end{tikzpicture}
 
-			\alert{Select by orbital character, not by energy}
+			\alert{Select by orbital character, not by energy!}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -2573,19 +2571,20 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{columns}
 
 	\vfill
-	\alert{The Fock build, diagonalization, DIIS machinery, and convergence tests are unchanged}
+	\alert{MOM changes the occupation to target non-Aufbau stationary solutions of the HF equations}
+
 \end{frame}
 
 %-----------------------------------------------------
 
 \begin{frame}{What does a MOM calculation give?}
-	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.47\textwidth}
+	\begin{columns}[T]
+		\begin{column}{0.48\textwidth}
 			\begin{block}{What is gained?}
 				\begin{itemize}
 					\item A higher-energy stationary solution of the HF equations
 					\bigskip
-					\item Accurate excitation energies for states dominated by a single electronic configuration
+					\item Useful excitation energies for states dominated by a single electronic configuration
 					\bigskip
 					\item Full orbital relaxation for the targeted configuration
 					\bigskip
@@ -2595,7 +2594,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\end{itemize}
 			\end{block}
 		\end{column}
-		\begin{column}{0.47\textwidth}
+		\begin{column}{0.48\textwidth}
 			\begin{block}{What are the cautions?}
 				\begin{itemize}
 					\item The result is still a single determinant
@@ -2611,10 +2610,6 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\end{block}
 		\end{column}
 	\end{columns}
-	\vfill
-	\center
-	\alert{MOM changes the occupation to target non-Aufbau stationary solutions of the HF equations}
-
 \end{frame}
 
 %-----------------------------------------------------
