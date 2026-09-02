@@ -2379,64 +2379,146 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\vfill
 	\begin{block}{The problem}
+		\center 
 		After each diagonalization, Aufbau occupies the \alert{lowest-energy} orbitals
 		\\
-		$\Rightarrow$ the SCF tends to return to a lower-energy solution.
+		$\Rightarrow$ \alert{the SCF tends to return to a lower-energy solution}
 	\end{block}
 \end{frame}
 
 %-----------------------------------------------------
 
 \begin{frame}{Maximum overlap method (MOM)}
-	Let $\bC_{\text{o}}^\text{ref}$ contain the occupied orbitals that define
-	the target configuration. For each new orbital $p$, compute
-	\begin{align}
+	Let $\bC_{\text{o}}^\text{ref}$ contain the occupied spin orbitals defining
+	the target configuration. For each new spin orbital $p$, compute
+	\begin{equation}
 		O_{ip}
-		&=
-		\braket{\psi_i^\text{ref}}{\psi_p^\text{new}}
+		=
+		\braket{\chi_i^\text{ref}}{\chi_p^\text{new}}
 		=
 		\sum_{\mu\nu}
-		C_{\mu i}^{\text{ref}*}S_{\mu\nu}C_{\nu p}^\text{new}
-		&
-		\kappa_p
-		&=
-		1 - \sum_{i\in\text{ref}}\abs{O_{ip}}^2
-	\end{align}
+		C_{\mu i}^{\text{ref}*}
+		S_{\mu\nu}
+		C_{\nu p}^\text{new}
+		\qand
+		\boxed{
+			w_p
+			=
+			\sum_{i\in\mathrm{ref}}
+			\abs{O_{ip}}^2
+		}
+	\end{equation}
 
 	\begin{columns}[T,onlytextwidth]
-		\begin{column}{0.50\textwidth}
+		\begin{column}{0.48\textwidth}
 			\begin{block}{MOM procedure}
 				\begin{itemize}
-					\item Rank the new orbitals using $\kappa_p$
-					\item Occupy the $N$ orbitals with the smallest $\kappa_p$
-					\item In MOM, the reference is the occupied space from the previous SCF iteration
-					\item Initial MOM (IMOM): The reference orbitals remain fixed to the
-					\alert{initial excited-state guess}, which reduces gradual drift
-					away from the targeted configuration
+					\item Compute $w_p$ for every new orbital
+					\item Occupy the $N$ spin orbitals
+					      with the \alert{largest $w_p$}
+					\item In MOM, the reference occupied space
+					      comes from the previous iteration
+					\item In \alert{IMOM}, the reference orbitals
+					      remain fixed to the initial guess
 				\end{itemize}
 			\end{block}
 		\end{column}
-		\begin{column}{0.42\textwidth}
+
+		\begin{column}{0.48\textwidth}
 			\centering
-			\textbf{New orbitals after diagonalization}
-			\begin{tikzpicture}[x=1cm,y=0.68cm]
-				\draw[thick] (-1.2,0)--(1.2,0);
-				\node[right] at (1.3,0) {$\epsilon_1$};
-				\node[left,hfInk] at (-1.3,0) {$p_1=0.08$};
-				\draw[thick,hfBlue] (-1.2,1.1)--(1.2,1.1);
-				\node[right] at (1.3,1.1) {$\epsilon_2$};
-				\node[left,hfBlue] at (-1.3,1.1) {$p_2=0.93$};
-				\fill[hfBlue] (0,1.1) circle (0.09);
-				\draw[thick] (-1.2,2.2)--(1.2,2.2);
-				\node[right] at (1.3,2.2) {$\epsilon_3$};
-				\node[left,hfInk] at (-1.3,2.2) {$p_3=0.12$};
-				\draw[thick,hfBlue] (-1.2,3.3)--(1.2,3.3);
-				\node[right] at (1.3,3.3) {$\epsilon_4$};
-				\node[left,hfBlue] at (-1.3,3.3) {$p_4=0.86$};
-				\fill[hfBlue] (0,3.3) circle (0.09);
+			\textbf{Projection onto the reference space}
+
+			\begin{tikzpicture}[
+				x=0.78cm,
+				y=0.72cm,
+				font=\scriptsize
+			]
+				% Reference occupied space
+				\node[
+					draw=hfGreen,
+					very thick,
+					rounded corners=2pt,
+					fill=hfGreenLight,
+					align=center,
+					text width=4.1cm,
+					minimum height=0.75cm
+				] at (2.0,5.15)
+				{
+					occupied reference space\\[-1mm]
+					$\mathcal O_{\mathrm{ref}}
+					=\operatorname{span}
+					\{\chi_i^\mathrm{ref}\}$
+				};
+
+				\draw[->,very thick,hfNavy]
+					(2.0,4.65) -- (2.0,4.05)
+					node[midway,right] {project};
+
+				\node[hfInk] at (2.0,3.80)
+					{overlap with $\mathcal O_{\mathrm{ref}}$};
+
+				% Orbital 1
+				\node[anchor=east] at (0.20,3.10)
+					{$\chi_1^\text{new}$};
+				\path[
+					fill=hfPale,
+					draw=hfNavy!25,
+					rounded corners=1pt
+				] (0.35,2.90) rectangle (3.55,3.30);
+				\path[
+					fill=hfTeal,
+					rounded corners=1pt
+				] (0.35,2.90) rectangle (0.61,3.30);
+				\node[anchor=west] at (3.70,3.10) {$0.08$};
+
+				% Orbital 2
+				\node[anchor=east] at (0.20,2.25)
+					{$\chi_2^\text{new}$};
+				\path[
+					fill=hfPale,
+					draw=hfNavy!25,
+					rounded corners=1pt
+				] (0.35,2.05) rectangle (3.55,2.45);
+				\path[
+					fill=hfTeal,
+					rounded corners=1pt
+				] (0.35,2.05) rectangle (3.33,2.45);
+				\node[anchor=west] at (3.70,2.25) {$0.93$};
+				\node[anchor=west,hfTeal,font=\scriptsize\bfseries]
+					at (4.35,2.25) {select};
+
+				% Orbital 3
+				\node[anchor=east] at (0.20,1.40)
+					{$\chi_3^\text{new}$};
+				\path[
+					fill=hfPale,
+					draw=hfNavy!25,
+					rounded corners=1pt
+				] (0.35,1.20) rectangle (3.55,1.60);
+				\path[
+					fill=hfTeal,
+					rounded corners=1pt
+				] (0.35,1.20) rectangle (0.73,1.60);
+				\node[anchor=west] at (3.70,1.40) {$0.12$};
+
+				% Orbital 4
+				\node[anchor=east] at (0.20,0.55)
+					{$\chi_4^\text{new}$};
+				\path[
+					fill=hfPale,
+					draw=hfNavy!25,
+					rounded corners=1pt
+				] (0.35,0.35) rectangle (3.55,0.75);
+				\path[
+					fill=hfTeal,
+					rounded corners=1pt
+				] (0.35,0.35) rectangle (3.10,0.75);
+				\node[anchor=west] at (3.70,0.55) {$0.86$};
+				\node[anchor=west,hfTeal,font=\scriptsize\bfseries]
+					at (4.35,0.55) {select};
 			\end{tikzpicture}
-			
-			\alert{Occupy the largest projections: the selected orbitals need not be the lowest in energy.}
+
+			\alert{Select by orbital character, not by energy}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -2455,8 +2537,8 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\node[box] (guess) {Promoted guess\\$i\rightarrow a$};
 		\node[box,right=of guess] (fock) {Build\\$\bF[\bP^{(n)}]$};
 		\node[box,right=of fock] (solve) {Solve\\$\bF \cdot \bC=\bS \cdot \bC \cdot \bE$};
-		\node[box,right=of solve] (overlap) {Compute $\kappa_p$};
-		\node[box,right=of overlap] (occupy) {Occupy largest\\$\kappa_p$ values};
+		\node[box,right=of solve] (overlap) {Compute $w_p$};
+		\node[box,right=of overlap] (occupy) {Occupy largest \\$w_p$ values};
 
 		\draw[arrow] (guess)--(fock);
 		\draw[arrow] (fock)--(solve);
@@ -2481,9 +2563,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.47\textwidth}
 			\begin{block}{MOM-SCF}
 				\centering
-				Occupy the smallest $\kappa$ values
+				Occupy the largest $w$ values
 				\begin{equation}
-					\kappa_1\leq\kappa_2\leq\cdots\leq\kappa_N
+					w_1 \geq w_2 \geq \cdots \geq w_N
 				\end{equation}
 				$\Rightarrow$ follows a chosen SCF solution
 			\end{block}
@@ -2497,23 +2579,18 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 
 \begin{frame}{What does a MOM calculation give?}
-	\begin{equation}
-		\boxed{
-			\omega_{\Delta\text{SCF}}
-			=
-			E_\text{HF}^{\text{MOM}}
-			-
-			E_\text{HF}^{\text{GS}}
-		}
-	\end{equation}
-
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.47\textwidth}
 			\begin{block}{What is gained?}
 				\begin{itemize}
 					\item A higher-energy stationary solution of the HF equations
+					\bigskip
+					\item Accurate excitation energies for states dominated by a single electronic configuration
+					\bigskip
 					\item Full orbital relaxation for the targeted configuration
+					\bigskip
 					\item A state-specific density and molecular properties
+					\bigskip
 					\item A cost similar to one ground-state SCF calculation
 				\end{itemize}
 			\end{block}
@@ -2522,14 +2599,21 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\begin{block}{What are the cautions?}
 				\begin{itemize}
 					\item The result is still a single determinant
+					\bigskip
 					\item Spin symmetry may be broken
+					\bigskip
 					\item Different SCF states are not necessarily orthogonal
+					\bigskip
 					\item Convergence depends on the initial promoted orbitals
+					\bigskip
 					\item MOM can drift or converge to an unintended solution
 				\end{itemize}
 			\end{block}
 		\end{column}
 	\end{columns}
+	\vfill
+	\center
+	\alert{MOM changes the occupation to target non-Aufbau stationary solutions of the HF equations}
 
 \end{frame}
 
