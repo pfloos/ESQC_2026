@@ -889,18 +889,18 @@
 		\begin{column}{0.48\textwidth}
 			\begin{block}{An excited determinant is}
 				\begin{itemize}
-					\item An orbital substitution within a \alert{fixed} set of reference orbitals
-					\item A valid many-electron basis function
-					\item A building block for CI and CC expansions
+					\item[\cmark] An orbital substitution within a \alert{fixed} set of reference orbitals
+					\item[\cmark] A valid many-electron basis function
+					\item[\cmark] A building block for CI and CC expansions
 				\end{itemize}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{An excited determinant is generally not}
 				\begin{itemize}
-					\item A separately optimized HF state
-					\item A stationary point of the HF energy
-					\item An eigenfunction of $\chS^2$
+					\item[\xmark] A separately optimized HF state
+					\item[\xmark] A stationary point of the HF energy
+					\item[\xmark] An eigenfunction of $\chS^2$
 				\end{itemize}
 			\end{block}
 		\end{column}
@@ -2302,15 +2302,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{itemize}
 		\item \textbf{Key idea:} DIIS accelerates SCF convergence by finding a linear combination of previous Fock matrices whose extrapolated residual is minimal
 		\bigskip
-		\item A small \alert{rolling subspace} is normally sufficient: commonly $m\approx6$--$10$
+		\item[\cmark] A small \alert{rolling subspace} is normally sufficient: commonly $m\approx6$--$10$
 		\bigskip
-		\item DIIS requires additional \alert{storage}: $\sim 2mK^2$
+		\item[\xmark] DIIS requires additional \alert{storage}: $\sim 2mK^2$
 		\bigskip
-		\item The extrapolated energy is not guaranteed to decrease monotonically
+		\item[\xmark] The extrapolated energy is not guaranteed to decrease monotonically
 		\bigskip
-		\item $\bB$ can be \alert{singular} due to nearly linear dependence of the residuals: a restart may be required
+		\item[\xmark] $\bB$ can be \alert{singular} due to nearly linear dependence of the residuals: a restart may be required
 		\bigskip
-		\item DIIS can be used for many other methods!
+		\item[\cmark] DIIS can be used for many other methods!
 	\end{itemize}
 \end{frame}
 
@@ -2583,30 +2583,30 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{What is gained?}
 				\begin{itemize}
-					\item A higher-energy stationary solution of the HF equations
+					\item[\cmark] A higher-energy stationary solution of the HF equations
 					\bigskip
-					\item Useful excitation energies for states dominated by a single electronic configuration
+					\item[\cmark] Useful excitation energies for states dominated by a single electronic configuration
 					\bigskip
-					\item Full orbital relaxation for the targeted configuration
+					\item[\cmark] Full orbital relaxation for the targeted configuration
 					\bigskip
-					\item A state-specific density and molecular properties
+					\item[\cmark] A state-specific density and molecular properties
 					\bigskip
-					\item The same formal cost per SCF iteration, although convergence may be more difficult
+					\item[\cmark] The same formal cost per SCF iteration, although convergence may be more difficult
 				\end{itemize}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{What are the cautions?}
 				\begin{itemize}
-					\item The result is still a single determinant
+					\item[\xmark] The result is still a single determinant
 					\bigskip
-					\item Spin symmetry may be broken
+					\item[\xmark] Spin symmetry may be broken
 					\bigskip
-					\item Different SCF states are not necessarily orthogonal
+					\item[\xmark] Different SCF states are not necessarily orthogonal
 					\bigskip
-					\item Convergence depends on the initial promoted orbitals
+					\item[\xmark] Convergence depends on the initial promoted orbitals
 					\bigskip
-					\item MOM can drift or converge to an unintended solution
+					\item[\xmark] MOM can drift or converge to an unintended solution
 				\end{itemize}
 			\end{block}
 		\end{column}
@@ -2771,16 +2771,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Strengths}
 				\begin{itemize}
-					\item Requires only one-electron integrals
-					\item Produces compact bonds and lone pairs
+					\item[\cmark] Requires only one-electron integrals
+					\item[\cmark] Produces compact bonds and lone pairs
 				\end{itemize}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Limitations}
 				\begin{itemize}
-					\item Does not explicitly preserve $\sigma/\pi$ separation
-					\item Diffuse virtual orbitals may be difficult to localize
+					\item[\xmark] Does not explicitly preserve $\sigma/\pi$ separation
+					\item[\xmark] Diffuse virtual orbitals may be difficult to localize
 				\end{itemize}
 			\end{block}
 		\end{column}
@@ -2810,16 +2810,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Strengths}
 				\begin{itemize}
-					\item Often preserves separation between $\sigma$ and $\pi$ orbitals
-					\item Produces intuitive bonds, lone pairs, and core orbitals
+					\item[\cmark] Often preserves separation between $\sigma$ and $\pi$ orbitals
+					\item[\cmark] Produces intuitive bonds, lone pairs, and core orbitals
 				\end{itemize}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Limitations}
 				\begin{itemize}
-					\item The original Mulliken form can be basis set dependent
-					\item L{\"o}wdin populations or intrinsic atomic orbitals provide more robust alternatives
+					\item[\xmark] The original Mulliken form can be basis set dependent
+					\item[\xmark] L{\"o}wdin populations or intrinsic atomic orbitals provide more robust alternatives
 				\end{itemize}
 			\end{block}
 		\end{column}

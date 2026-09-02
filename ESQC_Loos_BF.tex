@@ -3,6 +3,11 @@
 %	* PACKAGE *
 %	***********
 \usepackage{amsmath,amssymb,amsfonts,mathtools,graphicx,xcolor,bm,microtype,physics}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{colortbl}
 \usepackage[version=4]{mhchem}
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
@@ -945,38 +950,131 @@ decoration={snake,
 	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
 \end{frame}
 
-\begin{frame}{Effective core potentials (ECPs) or pseudopotentials}
-	\begin{itemize}
-		\item ECPs are a useful means of replacing the core electrons, thereby eliminating the need for the core basis functions.
-		\item They can be used with Gaussian and plane wave basis sets
-		\item They may take into account scalar (spin-free) and/or spin-orbit (spin-dependent) relativistic effects
-		\item They generate one-electron integrals
-	\end{itemize}
-	\begin{gather}
-		U(\br) = U_L(\br) + \sum_{\ell=0}^{L-1} \sum_{m=-\ell}^{\ell} \ket{Y_{\ell m}} U_\ell(\br) \bra{Y_{\ell m}}
-		\\
-		U_\ell(\br) = \sum_{k=1}^{K_\ell} D_{\ell_k} r^{n_{\ell_k}} \exp(-\eta_{\ell_k} r^2)
-	\end{gather}
-	\begin{block}{Small vs large core}
-		For \ce{Ag} ($Z=47$):
-		\begin{itemize}
-			\item \red{Large}-core ECP: 11 \green{``valence''} electrons
-			\\
-			$(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6 (4s)^2 (3d)^{10} (4p)^6 \green{(4d)^{10} (5s)^1}$
-			\item \red{Small}-core ECP: 19 \green{``valence''} electrons
-			\\
-			$(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6 \green{(4s)^2} (3d)^{10} \green{(4p)^6 (4d)^{10} (5s)^1}$
-		\end{itemize}
+%-----------------------------------------------------
+\begin{frame}{Effective core potentials (ECPs)}
+	\begin{block}{The idea: treat only the chemically relevant electrons explicitly}
+		Replace the nucleus and core electrons by an
+		\alert{effective one-electron potential} acting on the remaining electrons.
+		\begin{equation}
+			\boxed{
+				h^\text{ECP}(\br)
+				=
+				-\frac{1}{2}\nabla^2
+				+
+				\sum_A \hat{U}_A^\text{ECP}
+			}
+			\qquad
+			N_\text{explicit}
+			=
+			N-\sum_A N_A^\text{core}
+		\end{equation}
+		Here, $N_A^\text{core}$ is the number of electrons
+		replaced on atom $A$.
 	\end{block}
-	\begin{block}{ECP families for Gaussians}
+
+	\begin{block}{Why use ECPs?}
 		\begin{itemize}
-			\item LANL2DZ \& SBKJC historically important but less employed nowadays
-			\item def2-ECPs in combination with Ahlrichs/Weigend def2-XVP basis sets
-			\item Stuttgart, BFD, and ccECP
-			\item 
+			\item \blue{Lower cost}: fewer electrons and no basis functions
+				needed to represent core orbitals
+			\item \violet{Relativistic effects}: can incorporate scalar-relativistic
+				effects and, with a suitable operator, spin--orbit coupling
+			\item Used in both molecular and periodic calculations,
+				with Gaussian or plane-wave basis sets
+			\item Modify the \alert{one-electron integrals};
+				the explicit electron--electron interaction remains $r_{12}^{-1}$
 		\end{itemize}
 	\end{block}
 
+	\alert{Trade-off: core properties are not described explicitly,
+	and accuracy depends on the ECP's transferability.}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{ECPs: local and angular-momentum-dependent terms}
+	\begin{block}{A common semilocal form: scalar ECP}
+		For one atomic center, with $r$ measured from the nucleus,
+		\begin{equation}
+			\boxed{
+				\hat{U}^\text{ECP}
+				=
+				-\frac{Z_\text{eff}}{r}
+				+
+				U_L(r)
+				+
+				\sum_{\ell=0}^{L-1} U_\ell(r)\hat{P}_\ell
+			}
+			\qq{with}
+			Z_\text{eff}=Z-N_\text{core}
+			\qand
+			\hat{P}_\ell
+			=
+			\sum_{m=-\ell}^{\ell}
+			\ket{Y_{\ell m}}\bra{Y_{\ell m}}
+		\end{equation}
+		\begin{itemize}
+			\item $U_L(r)$: short-range \blue{local} potential
+			\item $U_\ell(r)$, $\ell<L$: corrections for individual
+				angular-momentum channels
+			\item $\hat{P}_\ell$: projector onto spherical harmonics
+				of angular momentum $\ell$, acting on the angular coordinates
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Gaussian parametrization}
+		\begin{equation}
+			U_\ell(r)
+			=
+			\sum_{k=1}^{K_\ell}
+			D_{\ell k}\,r^{n_{\ell k}}
+			\exp(-\eta_{\ell k}r^2),
+			\qquad \ell=0,\ldots,L
+		\end{equation}
+		$D_{\ell k}$: coefficients;
+		$\eta_{\ell k}>0$: Gaussian exponents;
+		$n_{\ell k}$: radial powers, often $-2$, $-1$, or $0$.
+		\\[0.5em]
+		The angular projectors complicate the integrals,
+		but they remain \alert{one-electron integrals}
+	\end{block}
+\end{frame}
+
+%-----------------------------------------------------
+\begin{frame}{Choosing an ECP: core size and families}
+	\begin{block}{Small core vs large core: \ce{Ag} ($Z=47$)}
+		\centering
+		\begin{tabular}{@{}lccc@{}}
+			\toprule
+			Model & Core electrons & Explicit electrons & Explicit shells \\
+			\midrule
+			Large core
+				& 36 & 11
+				& $\green{4d^{10}\,5s^1}$ \\[0.4em]
+			Small core
+				& 28 & 19
+				& $\green{4s^2\,4p^6\,4d^{10}\,5s^1}$ \\
+			\bottomrule
+		\end{tabular}
+		\par\medskip
+		\raggedright
+		A \blue{small-core ECP} retains semicore shells explicitly:
+		more flexibility, at a higher computational cost
+	\end{block}
+
+	\begin{block}{Common ECP families used with Gaussian bases}
+		\begin{itemize}
+			\item \textbf{LANL and SBK/SBKJC}:
+				established families; LANL2DZ combines an ECP
+				with a double-$\zeta$ valence basis
+			\item \textbf{Stuttgart/Cologne}:
+				energy-consistent pseudopotentials with different core sizes
+			\item \textbf{def2-ECP}:
+				paired with the def2 basis sets for Rb--Rn
+			\item \textbf{Burkatzki-Filippi-Dolg (BFD)}:
+				developed for correlated calculations, including quantum Monte Carlo
+			\item \textbf{Correlation-consistent ECPs (ccECP)}:
+				optimized using correlated reference data
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
