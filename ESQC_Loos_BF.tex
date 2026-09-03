@@ -1239,31 +1239,8 @@ decoration={snake,
 \end{frame}
 
 
-
-%\begin{frame}{Computing the fundamental integrals}
-%	\begin{equation}
-%		\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} 
-%		\equiv (\bm{\red{a}} \bm{\blue{b}}|\bm{\orange{c}} \bm{\green{d}})
-%		= (\bm{\violet{P}}|\bm{\purple{Q}})
-%	\end{equation}
-%	\begin{block}{Shell-pair data}
-%		\begin{equation}
-%			\bR = \bQ - \bP
-%			2\vartheta = 1/(
-%		\end{equation}
-%	\end{block}
-%	\begin{block}{Shell-pair data}
-%		\begin{equation}
-%			\sbraket{\bO\bO}{\bO\bO}^{\bm{m}} = U (2\theta^2)^{m+1/2} G_m(T)
-%		\end{equation}
-%		\begin{equation}
-%			G_m(T) = \qty( \frac{2}{\pi} )^{1/2} \int_0^1 t^{2m} \exp(-T t^2) \dd{t}
-%		\end{equation}
-%	\end{block}	
-%\end{frame}
-%\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
 \begin{frame}{Obara-Saika (OS) recurrence relation}
-	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using
+	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using, in particular, the relation
 	\begin{equation}
 		 \pdv{\sket{\red{\ba}}}{A_i} = 2\alpha \sket{\red{\ba}+\bI_i} - a_i \sket{\red{\ba}-\bI_i}
 		 \qq{$\Rightarrow$}
@@ -1348,11 +1325,11 @@ decoration={snake,
 	\begin{block}{Horizontal recurrence relation}
 		The HRR shifts angular momentum from one center to the other on the same electron coordinate
 		\begin{equation}
-			\sbraket{\ba(\bb+\bI_i)}{\bc\bd} = \sbraket{(\ba+\bI_i)\bb}{\bc\bd} + (A_i - B_i) \sbraket{\ba\bb}{\bc\bd}
+			\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
 		\end{equation}
 		Independent of the exponents, it can thus be applied to contracted integrals!
 		\begin{equation}
-			\rbraket{\ba(\bb+\bI_i)}{\bc\bd} = \rbraket{(\ba+\bI_i)\bb}{\bc\bd} + (A_i - B_i) \rbraket{\ba\bb}{\bc\bd}
+			\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \rbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
 		\end{equation}
 	\end{block}	
 \end{frame}
@@ -1536,6 +1513,50 @@ decoration={snake,
 
 
 
+\begin{frame}{Screening algorithm for two-electron integrals}
+
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}
+	\begin{scope}[very thick,
+		node distance=2.5cm,on grid,>=stealth',
+		bound2/.style={diamond,draw,fill=blue!40},
+		bound4/.style={diamond,draw,fill=blue!40},
+		bound6/.style={diamond,draw,fill=blue!40},
+		shell/.style={circle,draw,fill=green!40},
+		shellpair/.style={circle,draw,fill=green!40},
+		shellquartet/.style={circle,draw,fill=green!40},
+		shell1/.style={rectangle,draw,fill=yellow!40},
+		shell2/.style={rectangle,draw,fill=orange!40},
+		shell3/.style={rectangle,draw,fill=red!40},
+		integral/.style={rectangle,draw,fill=violet!40}],
+		\node [shell1, align=center]		(1)											{Primitive\\shells\\$\sket{a}$};
+		\node [bound2, align=center] 		(B2)			[right=of 1]				{$\sexpval{B_2}$};
+		\node [shell, align=center]			(S1T)		[above=of B2, yshift=-0.5cm]	{$\sket{a}$};
+		\node [shell, align=center]			(S1B)		[below=of B2, yshift=0.5cm]		{$\sket{b}$};
+		\node [shell2, align=center] 		(2)			[right=of B2,xshift=0.75cm]		{Contracted\\shell-pairs\\$\ket{ab}$};
+		\node [bound4, align=center]		(B4)			[right=of 2]				{$\expval{B_4}$} ;
+		\node [shellpair, align=center]		(S2T)		[above=of B4, yshift=-0.5cm]	{$\ket{a_1b_1}$};
+		\node [shellpair, align=center]		(S2B)		[below=of B4, yshift=0.5cm]		{$\ket{a_2b_2}$};
+		\node [shell3, align=center]		(3)			[right=of B4]					{Two-Electron\\integrals\\$\braket{a_1b_1}{a_2b_2}$};
+		\path 
+		(1) edge [->,bend left]				(S1T)
+		(1) edge [->,bend right]			(S1B)
+		(S1T) edge [snake it]				(B2)
+		(S1B) edge [snake it]				(B2)
+		(B2) edge [->,color=red] 	node [below] {\small Contraction}		(2)
+		(2) edge [->,bend left] 				(S2T)
+		(2) edge [->,bend right] 			(S2B)
+		(S2T) edge [snake it]				(B4)
+		(S2B) edge [snake it]				(B4)
+		(B4) edge [->] 					(3)
+		;
+	\end{scope}
+\end{tikzpicture}
+}
+\end{frame}
+
+
+
 
 \begin{frame}{Recipe for computing two-electron integrals}
 \center
@@ -1558,64 +1579,6 @@ decoration={snake,
 	\end{scope}
 \end{tikzpicture}
 \end{frame}
-
-\begin{frame}{Obara-Saika}
-	\begin{gather}
-		 \sket{\ba} = (x-A_x)^{a_x} (y-A_y)^{a_y} (z-A_z)^{a_z} e^{-\alpha \abs{ \br -\bA }^2}
-		 \\
-		 \pdv{\sket{\ba}}{A_i} = 2\alpha \sket{\ba+\bI_i} - a_i \sket{\ba-\bI_i}
-		 \\
-		 \sket{\ba+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\ba}}{A_i} + a_i \sket{\ba-\bI_i} )
-%		 \\
-%		 \sbraket{(\ba+\bI_i)\bb}{\bc\bd} = \frac{1}{2\alpha} \qty( \pdv{\sbraket{\ba\bb}{\bc\bd}}{A_i} + a_i \sbraket{(\ba-\bI_i)\bb}{\bc\bd} )
-		 \\
-		 \sbraket{(\ba+\bI_i)\bO}{\bO\bO} = \frac{1}{2\alpha} \qty( \pdv{\sbraket{\ba\bO}{\bO\bO}}{A_i} + a_i \sbraket{(\ba-\bI_i)\bO}{\bO\bO} )
-		 \\
-		 \pdv{}{A_i} = 2\alpha \qty(A_i - P_i) + \frac{\alpha}{\zeta} \pdv{}{P_i}
-	\end{gather}	
-\end{frame}
-
-%\begin{frame}{Screening algorithm for two-electron integrals}
-%
-%\resizebox{\textwidth}{!}{
-%\begin{tikzpicture}
-%	\begin{scope}[very thick,
-%		node distance=2.5cm,on grid,>=stealth',
-%		bound2/.style={diamond,draw,fill=blue!40},
-%		bound4/.style={diamond,draw,fill=blue!40},
-%		bound6/.style={diamond,draw,fill=blue!40},
-%		shell/.style={circle,draw,fill=green!40},
-%		shellpair/.style={circle,draw,fill=green!40},
-%		shellquartet/.style={circle,draw,fill=green!40},
-%		shell1/.style={rectangle,draw,fill=yellow!40},
-%		shell2/.style={rectangle,draw,fill=orange!40},
-%		shell3/.style={rectangle,draw,fill=red!40},
-%		integral/.style={rectangle,draw,fill=violet!40}],
-%		\node [shell1, align=center]		(1)											{Primitive\\shells\\$\sket{a}$};
-%		\node [bound2, align=center] 		(B2)			[right=of 1]				{$\sexpval{B_2}$};
-%		\node [shell, align=center]			(S1T)		[above=of B2, yshift=-0.5cm]	{$\sket{a}$};
-%		\node [shell, align=center]			(S1B)		[below=of B2, yshift=0.5cm]		{$\sket{b}$};
-%		\node [shell2, align=center] 		(2)			[right=of B2,xshift=0.75cm]		{Contracted\\shell-pairs\\$\ket{ab}$};
-%		\node [bound4, align=center]		(B4)			[right=of 2]				{$\expval{B_4}$} ;
-%		\node [shellpair, align=center]		(S2T)		[above=of B4, yshift=-0.5cm]	{$\ket{a_1b_1}$};
-%		\node [shellpair, align=center]		(S2B)		[below=of B4, yshift=0.5cm]		{$\ket{a_2b_2}$};
-%		\node [shell3, align=center]		(3)			[right=of B4]					{Two-Electron\\integrals\\$\braket{a_1b_1}{a_2b_2}$};
-%		\path 
-%		(1) edge [->,bend left]				(S1T)
-%		(1) edge [->,bend right]			(S1B)
-%		(S1T) edge [snake it]				(B2)
-%		(S1B) edge [snake it]				(B2)
-%		(B2) edge [->,color=red] 	node [below] {\small Contraction}		(2)
-%		(2) edge [->,bend left] 				(S2T)
-%		(2) edge [->,bend right] 			(S2B)
-%		(S2T) edge [snake it]				(B4)
-%		(S2B) edge [snake it]				(B4)
-%		(B4) edge [->] 					(3)
-%		;
-%	\end{scope}
-%\end{tikzpicture}
-%}
-%\end{frame}
 
 \begin{frame}{Computation of the Coulomb matrix}
 	\begin{equation}
