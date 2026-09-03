@@ -952,7 +952,14 @@ decoration={snake,
 
 %-----------------------------------------------------
 \begin{frame}{Effective core potentials (ECPs)}
-	\begin{block}{The idea: treat only the chemically relevant electrons explicitly}
+	\begin{center}
+		\fbox{
+		\textbf{Key idea:}
+		Treat only the chemically relevant electrons explicitly
+		}
+	\end{center}
+
+	\begin{block}{One-electron ECP}
 		Replace the nucleus and core electrons by an
 		\alert{effective one-electron potential} acting on the remaining electrons
 		\begin{equation}
@@ -965,12 +972,12 @@ decoration={snake,
 				\hh^\text{ECP}(\br)
 				=
 				- \frac{\nabla^2}{2}
-				- \sum_A \frac{Q_A}{\abs{\br - \bR_{A}}}
+				- \sum_A \frac{\green{Q_A}}{\abs{\br - \bR_{A}}}
 				+
 				\sum_A \alert{\hat{U}_A^\text{ECP}(\br)}
 			}
 		\end{equation}
-		Here, $Q_A = Z_A - N_A^\text{core}$ where $N_A^\text{core}$ is the number of electrons replaced on atom $A$
+		Here, $\green{Q_A} = Z_A - N_A^\text{core}$ is an \green{effective nuclear charge} and $N_A^\text{core}$ is the number of electrons replaced on atom $A$
 	\end{block}
 
 	\begin{block}{Why use ECPs?}
@@ -984,7 +991,8 @@ decoration={snake,
 			\item[$\xmark$] Introduce new \alert{one-electron integrals} that can be tricky to compute
 		\end{itemize}
 	\end{block}
-
+	\vfill
+	\center
 	\alert{Trade-off: core properties are not described explicitly,
 	and accuracy depends on the ECP quality}
 \end{frame}
@@ -992,49 +1000,35 @@ decoration={snake,
 %-----------------------------------------------------
 \begin{frame}{ECPs: local and angular-momentum-dependent terms}
 	\begin{block}{A common semilocal form: scalar ECP}
-		For one atomic center, with $r$ measured from the nucleus,
 		\begin{equation}
 			\boxed{
-				\hat{U}^\text{ECP}(\br)
+				\red{\hat{U}^\text{ECP}(\br)}
 				=
-				-\frac{Q}{r}
+				\violet{U_L(r)}
 				+
-				U_L(r)
-				+
-				\sum_{\ell=0}^{L-1} U_\ell(r)\hat{P}_\ell
+				\sum_{\ell=0}^{L-1} \sum_{m=-\ell}^{\ell} \ket{Y_{\ell m}} \purple{U_\ell(r)} \bra{Y_{\ell m}}
 			}
-			\qq{with}
-			Q=Z-N^\text{core}
-			\qand
-			\hat{P}_\ell
-			=
-			\sum_{m=-\ell}^{\ell}
-			\ket{Y_{\ell m}}\bra{Y_{\ell m}}
 		\end{equation}
 		\begin{itemize}
-			\item $U_L(r)$: short-range \blue{local} potential
-			\item $U_\ell(r)$, $\ell<L$: corrections for individual
-				angular-momentum channels
-			\item $\hat{P}_\ell$: projector onto spherical harmonics
-				of angular momentum $\ell$, acting on the angular coordinates
+			\item $\violet{U_L(r)}$: short-range \blue{local} potential $\Leftrightarrow$ \violet{unprojected part}
+			\item $\{\purple{U_\ell(r)}\}_{0\le\ell<L}$: corrections for individual angular-momentum channel $\Leftrightarrow$ \purple{projected part}
 		\end{itemize}
 	\end{block}
 
-	\begin{block}{Gaussian parametrization}
+	\begin{block}{Gaussian expansion}
 		\begin{equation}
 			U_\ell(r)
 			=
 			\sum_{k=1}^{K_\ell}
 			D_{\ell k}\,r^{n_{\ell k}}
-			\exp(-\eta_{\ell k}r^2),
+			\exp(-\eta_{\ell k}r^2)
 			\qquad \ell=0,\ldots,L
 		\end{equation}
-		$D_{\ell k}$: coefficients;
-		$\eta_{\ell k}>0$: Gaussian exponents;
-		$n_{\ell k}$: radial powers, often $-2$, $-1$, or $0$.
-		\\[0.5em]
-		The angular projectors complicate the integrals,
-		but they remain \alert{one-electron integrals}
+		\begin{itemize}
+			\item $D_{\ell k}$ and $\eta_{\ell k}>0$ are contraction coefficients and Gaussian exponents
+			\item $n_{\ell k}$: radial powers, often $-2$, $-1$, or $0$
+			\item The angular projectors complicate the integrals, but they remain \alert{one-electron integrals}
+		\end{itemize}
 	\end{block}
 \end{frame}
 
@@ -1060,21 +1054,26 @@ decoration={snake,
 		more flexibility, at a higher computational cost
 	\end{block}
 
-	\begin{block}{Common ECP families used with Gaussian bases}
+	\begin{block}{Common ECP families used with Gaussian basis sets}
 		\begin{itemize}
 			\item \textbf{LANL and SBK/SBKJC}:
 				established families; LANL2DZ combines an ECP
 				with a double-$\zeta$ valence basis
 			\item \textbf{Stuttgart/Cologne}:
-				energy-consistent pseudopotentials with different core sizes
+				energy-consistent pseudopotentials with different core sizes and dedicated basis sets
+				\url{https://www.tc.uni-koeln.de/PP/clickpse.en.html}
 			\item \textbf{def2-ECP}:
-				paired with the def2 basis sets for Rb--Rn
+				paired with the def2 basis sets of Weigend and Ahlrichs
 			\item \textbf{Burkatzki-Filippi-Dolg (BFD)}:
-				developed for correlated calculations, including quantum Monte Carlo
+				developed for quantum Monte Carlo calculations
 			\item \textbf{Correlation-consistent ECPs (ccECP)}:
-				optimized using correlated reference data
+				developed for high accuracy correlated many-body methods
+				\url{https://pseudopotentiallibrary.org}
 		\end{itemize}
 	\end{block}
+	\vfill
+	\center
+	\alert{Most of them have dedicated basis sets!}
 \end{frame}
 
 
