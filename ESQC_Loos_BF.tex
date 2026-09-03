@@ -954,39 +954,39 @@ decoration={snake,
 \begin{frame}{Effective core potentials (ECPs)}
 	\begin{block}{The idea: treat only the chemically relevant electrons explicitly}
 		Replace the nucleus and core electrons by an
-		\alert{effective one-electron potential} acting on the remaining electrons.
+		\alert{effective one-electron potential} acting on the remaining electrons
 		\begin{equation}
-			\boxed{
-				h^\text{ECP}(\br)
-				=
-				-\frac{1}{2}\nabla^2
-				+
-				\sum_A \hat{U}_A^\text{ECP}
-			}
-			\qquad
-			N_\text{explicit}
+			\hh(\br)
 			=
-			N-\sum_A N_A^\text{core}
+			- \frac{\nabla^2}{2}
+			- \sum_A \frac{Z_A}{\abs{\br - \bR_{A}}}
+			\qq{$\longrightarrow$}
+			\boxed{
+				\hh^\text{ECP}(\br)
+				=
+				- \frac{\nabla^2}{2}
+				- \sum_A \frac{Q_A}{\abs{\br - \bR_{A}}}
+				+
+				\sum_A \alert{\hat{U}_A^\text{ECP}(\br)}
+			}
 		\end{equation}
-		Here, $N_A^\text{core}$ is the number of electrons
-		replaced on atom $A$.
+		Here, $Q_A = Z_A - N_A^\text{core}$ where $N_A^\text{core}$ is the number of electrons replaced on atom $A$
 	\end{block}
 
 	\begin{block}{Why use ECPs?}
 		\begin{itemize}
-			\item \blue{Lower cost}: fewer electrons and no basis functions
+			\item[$\cmark$] \blue{Lower cost}: fewer electrons and no basis functions
 				needed to represent core orbitals
-			\item \violet{Relativistic effects}: can incorporate scalar-relativistic
-				effects and, with a suitable operator, spin--orbit coupling
-			\item Used in both molecular and periodic calculations,
+			\item[$\cmark$] \violet{Relativistic effects}: can incorporate scalar-relativistic
+				effects and, with a suitable operator, spin-orbit coupling
+			\item[$\cmark$] Used in both molecular and periodic calculations,
 				with Gaussian or plane-wave basis sets
-			\item Modify the \alert{one-electron integrals};
-				the explicit electron--electron interaction remains $r_{12}^{-1}$
+			\item[$\xmark$] Introduce new \alert{one-electron integrals} that can be tricky to compute
 		\end{itemize}
 	\end{block}
 
 	\alert{Trade-off: core properties are not described explicitly,
-	and accuracy depends on the ECP's transferability.}
+	and accuracy depends on the ECP quality}
 \end{frame}
 
 %-----------------------------------------------------
@@ -995,16 +995,16 @@ decoration={snake,
 		For one atomic center, with $r$ measured from the nucleus,
 		\begin{equation}
 			\boxed{
-				\hat{U}^\text{ECP}
+				\hat{U}^\text{ECP}(\br)
 				=
-				-\frac{Z_\text{eff}}{r}
+				-\frac{Q}{r}
 				+
 				U_L(r)
 				+
 				\sum_{\ell=0}^{L-1} U_\ell(r)\hat{P}_\ell
 			}
 			\qq{with}
-			Z_\text{eff}=Z-N_\text{core}
+			Q=Z-N^\text{core}
 			\qand
 			\hat{P}_\ell
 			=
