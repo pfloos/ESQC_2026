@@ -2,4 +2,5 @@
 
 # Basis & Integrals
 
-- def2, etc families
+- rewrite RI section
+- possible error in OS

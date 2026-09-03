@@ -313,7 +313,7 @@ decoration={snake,
 			E_\text{cut} = \frac{1}{2} k_\text{cut}^2
 		\end{equation}
 	\end{block}
-	\begin{block}{Bloch wave vector}
+	\begin{block}{Reciprocal-lattice vector}
 		\begin{equation}
 			\bk = k_1 \bb_1 + k_2 \bb_2 + k_3 \bb_3 
 		\end{equation}
@@ -351,8 +351,8 @@ decoration={snake,
 		\begin{equation}
 			\mel{\bk_1}{-\frac{\laplacian}{2}}{\bk_2} 
 			= \int \phi_{\bk_1}^*(\br) \qty( - \frac{\laplacian}{2}  ) \phi_{\bk_2}(\br) \dd{\br} 
-			= \int \phi_{\bk_1}^*(\br) \bk_2^2 \phi_{\bk_2}(\br) \dd{\br} 
-			= \bk_2^2 \delta_{\bk_1 \bk_2}
+			= \int \phi_{\bk_1}^*(\br) \frac{\bk_2^2}{2} \phi_{\bk_2}(\br) \dd{\br} 
+			= \frac{\bk_2^2}{2} \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
 			\alert{\text{Diagonal!}}
 		\end{equation}
@@ -380,7 +380,7 @@ decoration={snake,
 	\begin{block}{Electron repulsion integrals}
 		\begin{equation}
 		\begin{split}
-			\braket{\bk_1 \bk_2 }{\bk_3 \bk_3} 
+			\braket{\bk_1 \bk_2 }{\bk_3 \bk_4} 
 			& =  \frac{1}{\Omega^3} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \iint e^{\ii \qty( \bk_3 - \bk_1 - \bk ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 +\bk) \cdot \br_2} \dd{\br_1} \dd{\br_2} 
 			\\
 			& =  \frac{1}{\Omega} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \delta_{\bk_3-\bk_1-\bk,\bO} \delta_{\bk_4-\bk_2+\bk,\bO}
@@ -527,10 +527,67 @@ decoration={snake,
 			\item $p$ shell: $p_x = (1,0,0)$ \quad $p_y = (0,1,0)$ \quad $p_z = (0,0,1)$
 			\item $d$ shell: $(2,0,0), (0,2,0), (0,0,2), (1,1,0), (1,0,1), (0,1,1)$
 			$\Rightarrow$ \alert{6 $d$ cartesian functions!}
-			\item $f$ shell: $(3,0,0), (0,3,0), (0,0,3), (2,1,0), (2,0,1), (1,2,0), (0,2,1), (0,1,2), (0,2,1), (1,1,1)$
+			\item $f$ shell: $(3,0,0), (0,3,0), (0,0,3), (2,1,0), (2,0,1), (1,2,0), (0,2,1), (0,1,2), (1,0,2), (1,1,1)$
 			$\Rightarrow$ \alert{10 $f$ cartesian functions!}
 		\end{itemize}
 	\end{block}
+\end{frame}
+
+\begin{frame}{Cartesian vs Spherical Gaussians}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{block}{Cartesian Gaussians}
+				For a shell of angular momentum $\ell$,
+				\begin{equation}
+					\boxed{N_\ell^\text{Cart} = \frac{(\ell+1)(\ell+2)}{2}}
+				\end{equation}
+				\begin{equation}
+					\begin{array}{c|cccc}
+						\ell & s & p & d & f
+						\\
+						\hline
+						N_\ell^\text{Cart} & 1 & 3 & \red{6} & \red{10}
+					\end{array}
+				\end{equation}
+				For instance, a Cartesian $d$ shell contains
+				\begin{equation}
+					\{x^2,y^2,z^2,xy,xz,yz\}
+				\end{equation}
+			\end{block}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{block}{Spherical Gaussians}
+				For a pure angular momentum $\ell$,
+				\begin{equation}
+					\boxed{N_\ell^\text{Sph} = 2\ell+1}
+				\end{equation}
+				\begin{equation}
+					\begin{array}{c|cccc}
+						\ell & s & p & d & f
+						\\
+						\hline
+						N_\ell^\text{Sph} & 1 & 3 & \green{5} & \green{7}
+					\end{array}
+				\end{equation}
+				The extra Cartesian functions correspond to
+				\alert{lower-angular-momentum components}:
+				\begin{equation}
+					\red{6d} = \green{5d} + 1s
+					\qquad
+					\red{10f} = \green{7f} + 3p
+				\end{equation}
+			\end{block}
+		\end{column}
+	\end{columns}
+	\vfill
+	\begin{equation}
+		x^2+y^2+z^2 = r^2
+		\qq{$\Rightarrow$}
+		\text{the Cartesian $d$ shell contains an $s$-type component}
+	\end{equation}
+	\vfill
+	\centering
+	$\Rightarrow$ \alert{Most quantum-chemistry calculations use spherical (pure) functions for $\ell \ge 2$}
 \end{frame}
 
 \begin{frame}{The contraction problem}
@@ -950,6 +1007,68 @@ decoration={snake,
 	$\Rightarrow$ \alert{Particularly effective for localized electronic structure correlated molecular calculations}
 \end{frame}
 
+\begin{frame}{Basis-set superposition error (BSSE)}
+	\begin{block}{The problem}
+		Consider two interacting fragments $A$ and $B$.
+		In the dimer calculation, each fragment can use the basis functions
+		centered on the other fragment:
+		\begin{equation}
+			A
+			\qquad
+			\underbrace{\boxed{\phantom{AA}}}_{\text{basis on $A$}}
+			\quad
+			\underbrace{\boxed{\phantom{BB}}}_{\text{basis on $B$}}
+			\qquad
+			B
+		\end{equation}
+		\centering
+		$\Rightarrow$
+		each fragment \alert{borrows basis functions} from its partner
+		\\
+		$\Rightarrow$
+		the dimer is artificially stabilized
+	\end{block}
+	\vfill
+	\begin{block}{Counterpoise correction}
+		The usual interaction energy is
+		\begin{equation}
+			\Delta E_\text{int}
+			=
+			E_{AB}^{AB}
+			-
+			E_A^{A}
+			-
+			E_B^{B}.
+		\end{equation}
+		In the Boys--Bernardi counterpoise correction, the monomers are
+		computed in the \alert{full dimer basis} using ghost functions:
+		\begin{equation}
+			\boxed{
+				\Delta E_\text{int}^\text{CP}
+				=
+				E_{AB}^{AB}
+				-
+				E_A^{AB}
+				-
+				E_B^{AB}
+			}
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{equation}
+		\underbrace{
+			\qty(E_A^{A}-E_A^{AB})
+			+
+			\qty(E_B^{B}-E_B^{AB})
+		}_{\text{BSSE}}
+		> 0
+	\end{equation}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{BSSE decreases as the one-electron basis approaches completeness}
+\end{frame}
+
 %-----------------------------------------------------
 \begin{frame}{Effective core potentials (ECPs) or pseudopotentials}
 	\begin{center}
@@ -1098,14 +1217,14 @@ decoration={snake,
 	\begin{block}{Overlap}
 		\begin{equation}
 			\begin{split}
-			\rbraket{\red{\ba}}{ \blue{\bb} }
-			& = \iint G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) \dd{\br}
-			= K_{\violet{\zeta},\violet{\bP}} \int G_{\violet{\zeta},\violet{\bP}}(\br) \dd{\br}
+%			\rbraket{\red{\ba}}{ \blue{\bb} }
+			\int G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) \dd{\br}
+			& = K_{\violet{\zeta},\violet{\bP}} \int G_{\violet{\zeta},\violet{\bP}}(\br) \dd{\br}
 			\\
 			& = K_{\violet{\zeta},\violet{\bP}} 
-			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} x^2} \dd{x} 
-			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} y^2} \dd{y} 
-			\int_{-\infty}^{+\infty} e^{-\violet{\zeta} z^2} \dd{z} 
+			\qty( \int_{-\infty}^{+\infty} e^{-\violet{\zeta} x^2} \dd{x} )
+			\qty( \int_{-\infty}^{+\infty} e^{-\violet{\zeta} y^2} \dd{y} )
+			\qty( \int_{-\infty}^{+\infty} e^{-\violet{\zeta} z^2} \dd{z} )
 			\\
 			& = K_{\violet{\zeta},\violet{\bP}} 
 			\qty( \frac{\pi}{\violet{\zeta}})^{3/2}
@@ -1114,6 +1233,102 @@ decoration={snake,
 		\end{split}	
 		\end{equation}	
 	\end{block}
+\end{frame}
+
+\begin{frame}{One-electron integrals over Gaussian functions}
+	\begin{block}{Three basic types of one-electron integrals}
+		For two Gaussian basis functions $\chi_\mu$ and $\chi_\nu$, one needs
+		\begin{equation}
+			\begin{aligned}
+				S_{\mu\nu}
+				& = \braket{\chi_\mu}{\chi_\nu}
+				&& \qqtext{\alert{overlap}}
+				\\
+				T_{\mu\nu}
+				& = \mel{\chi_\mu}{-\frac{1}{2}\nabla^2}{\chi_\nu}
+				&& \qqtext{\alert{kinetic energy}}
+				\\
+				V_{\mu\nu}^{A}
+				& = \mel{\chi_\mu}{-\frac{Z_A}{\abs{\br-\bR_A}}}{\chi_\nu}
+				&& \qqtext{\alert{nuclear attraction}}
+			\end{aligned}
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{block}{$s$-type Gaussian functions}
+		Using the Gaussian product rule,
+		\begin{equation}
+			G_{\alpha,\bA}(\br) G_{\beta,\bB}(\br)
+			=
+			K_{\zeta,\bP} G_{\zeta,\bP}(\br),
+			\qquad
+			\zeta = \alpha+\beta
+		\end{equation}
+		one obtains
+		\begin{equation}
+			S_{ss}
+			=
+			K_{\zeta,\bP}
+			\qty(\frac{\pi}{\zeta})^{3/2}
+		\end{equation}
+		and
+		\begin{equation}
+			T_{ss}
+			=
+			\frac{\alpha\beta}{\zeta}
+			\qty(
+				3 - 2\frac{\alpha\beta}{\zeta}\abs{\bA-\bB}^2
+			)
+			S_{ss}.
+		\end{equation}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{One-electron Coulomb integrals}
+	\begin{block}{Nuclear attraction integrals}
+		For a nucleus $A$ located at $\bR_A$,
+		\begin{equation}
+			V_{ss}^{A}
+			=
+			-Z_A
+			K_{\zeta,\bP}
+			\int
+			\frac{
+				e^{-\zeta\abs{\br-\bP}^2}
+			}{
+				\abs{\br-\bR_A}
+			}
+			\dd{\br}.
+		\end{equation}
+		Using the Laplace representation of the Coulomb operator,
+		\begin{equation}
+			\boxed{
+				V_{ss}^{A}
+				=
+				-\frac{2\pi Z_A}{\zeta}
+				K_{\zeta,\bP}
+				F_0\qty(
+					\zeta\abs{\bP-\bR_A}^2
+				)
+			}
+		\end{equation}
+		where
+		\begin{equation}
+			F_0(x)
+			=
+			\int_0^1 e^{-xt^2} \dd{t}
+			=
+			\sqrt{\frac{\pi}{4x}} \erf(\sqrt{x}).
+		\end{equation}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{The Boys function already appears in one-electron Coulomb integrals!}
+	\\[0.5em]
+	$\Rightarrow$
+	The same mathematical structure reappears for electron-repulsion integrals.
 \end{frame}
 
 \begin{frame}{Four-center electron repulsion integrals}
@@ -1221,7 +1436,7 @@ decoration={snake,
 \begin{frame}{Boys function}
 	\begin{block}{Generalized Boys function}
 		\begin{equation}
-			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2) \dd{x}
+			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2) \dd{t}
 			\qquad
 			F_0(x) = \sqrt{\frac{\pi}{4x}} \erf(\sqrt{x})
 		\end{equation}
@@ -1750,6 +1965,61 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{block}
 \end{frame}
 
+\begin{frame}{Screening electron-repulsion integrals}
+	\begin{block}{Cauchy--Schwarz upper bound}
+		For any two charge distributions $\rho_1$ and $\rho_2$,
+		\begin{equation}
+			\abs{\rbraket{\rho_1}{\rho_2}}^2
+			\leq
+			\rbraket{\rho_1}{\rho_1}
+			\rbraket{\rho_2}{\rho_2}
+		\end{equation}
+		which, for ERIs, gives
+		\begin{equation}
+			\boxed{
+				\abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
+				\leq
+				\sqrt{
+					\rbraket{\red{\ba}\blue{\bb}}{\red{\ba}\blue{\bb}}
+				}
+				\sqrt{
+					\rbraket{\orange{\bc}\green{\bd}}{\orange{\bc}\green{\bd}}
+				}
+			}
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{block}{Shell-pair screening}
+		For each shell pair $(ab)$, define
+		\begin{equation}
+			Q_{ab}
+			=
+			\max_{\ba\in a,\bb\in b}
+			\sqrt{
+				\rbraket{\ba\bb}{\ba\bb}
+			}.
+		\end{equation}
+		Then, for an entire shell quartet,
+		\begin{equation}
+			\boxed{
+				\abs{\rbraket{\ba\bb}{\bc\bd}}
+				\leq
+				Q_{ab}Q_{cd}
+			}
+		\end{equation}
+		and therefore
+		\begin{equation}
+			Q_{ab}Q_{cd} < \tau
+			\qq{$\Rightarrow$}
+			\text{\alert{discard the entire shell quartet!}}
+		\end{equation}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{A cheap upper bound avoids the evaluation of negligible ERIs}
+\end{frame}
+
 \begin{frame}{Cauchy-Schwartz bound}
 	\begin{equation}
 		\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }}
@@ -1925,6 +2195,54 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{algorithmic}
 \end{frame}
 
+\begin{frame}{Direct SCF algorithm}
+	\begin{block}{From ERIs to the Fock matrix}
+		The Coulomb and exchange matrices are
+		\begin{equation}
+			J_{\mu\nu}
+			=
+			\sum_{\lambda\sigma}
+			P_{\lambda\sigma}
+			\rbraket{\mu\nu}{\lambda\sigma}
+		\end{equation}
+		and
+		\begin{equation}
+			K_{\mu\nu}
+			=
+			\sum_{\lambda\sigma}
+			P_{\lambda\sigma}
+			\rbraket{\mu\lambda}{\nu\sigma}.
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{block}{Direct evaluation}
+		Instead of storing all $\order{N^4}$ ERIs,
+		\begin{enumerate}
+			\item loop over shell quartets $(ab|cd)$;
+			\item use an upper bound to discard negligible quartets;
+			\item compute the significant ERIs;
+			\item immediately accumulate their contributions to $\bJ$ and $\bK$;
+			\item discard the ERIs.
+		\end{enumerate}
+	\end{block}
+	\vfill
+	\begin{equation}
+		\boxed{
+			\text{screen}
+			\;\longrightarrow\;
+			\text{compute}
+			\;\longrightarrow\;
+			\text{accumulate}
+			\;\longrightarrow\;
+			\text{discard}
+		}
+	\end{equation}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{Direct SCF trades disk storage for repeated integral evaluation}
+\end{frame}
+
 %%% SLIDE X %%%
 \begin{frame}{Resolution of the identity}
 	\begin{block}{Resolution of the identity (RI)}
@@ -1979,5 +2297,253 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{block}
 \end{frame}
 %
+
+% ======================================================================
+% Resolution of the identity
+% ======================================================================
+
+\begin{frame}{Resolution of the identity (RI)}
+	\begin{block}{The product space is the problem}
+		An ERI is the Coulomb interaction between two \alert{pair densities},
+		\begin{equation}
+			\rbraket{\mu\nu}{\lambda\sigma}
+			=
+			\iint
+			\underbrace{\chi_\mu(\br_1)\chi_\nu(\br_1)}_{\rho_{\mu\nu}(\br_1)}
+			\frac{1}{r_{12}}
+			\underbrace{\chi_\lambda(\br_2)\chi_\sigma(\br_2)}_{\rho_{\lambda\sigma}(\br_2)}
+			\dd{\br_1}\dd{\br_2}.
+		\end{equation}
+		With $N$ orbital basis functions, there are formally $\order{N^2}$
+		different pair densities $\rho_{\mu\nu}$.
+	\end{block}
+	\vfill
+	\begin{block}{Density fitting}
+		Instead of representing each product $\chi_\mu\chi_\nu$ exactly,
+		we expand it in a smaller \alert{auxiliary basis} $\{\chi_A^\text{aux}\}$,
+		\begin{equation}
+			\boxed{
+				\rho_{\mu\nu}(\br)
+				\approx
+				\widetilde{\rho}_{\mu\nu}(\br)
+				=
+				\sum_A C_{\mu\nu}^{A}
+				\chi_A^\text{aux}(\br)
+			}
+		\end{equation}
+		with typically
+		\begin{equation}
+			N_\text{aux} \sim \order{N}.
+		\end{equation}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{RI replaces the large AO-product space by a compact auxiliary space}
+\end{frame}
+
+
+% ======================================================================
+% Coulomb metric
+% ======================================================================
+
+\begin{frame}{RI in the Coulomb metric}
+	\begin{block}{How should the pair density be fitted?}
+		Define the Coulomb inner product
+		\begin{equation}
+			(f|g)
+			=
+			\iint
+			f(\br_1)
+			\frac{1}{r_{12}}
+			g(\br_2)
+			\dd{\br_1}\dd{\br_2}.
+		\end{equation}
+		The optimal coefficients minimize the Coulomb norm of the fitting error,
+		\begin{equation}
+			\Delta_{\mu\nu}
+			=
+			\qty(
+				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
+				\middle|
+				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
+			).
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{block}{Least-squares equations}
+		Minimization with respect to $C_{\mu\nu}^{A}$ gives
+		\begin{equation}
+			\sum_B
+			\underbrace{(A|B)}_{V_{AB}}
+			C_{\mu\nu}^{B}
+			=
+			\underbrace{(A|\mu\nu)}_{\text{three-center integral}},
+		\end{equation}
+		and therefore
+		\begin{equation}
+			\boxed{
+				C_{\mu\nu}^{A}
+				=
+				\sum_B
+				\qty(\bV^{-1})_{AB}
+				(B|\mu\nu)
+			}
+		\end{equation}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{The Coulomb metric determines the optimal auxiliary expansion}
+\end{frame}
+
+
+% ======================================================================
+% RI approximation to the ERIs
+% ======================================================================
+
+\begin{frame}{RI approximation to the ERIs}
+	\begin{block}{From four-center to three-center integrals}
+		Inserting the fitted pair densities gives
+		\begin{equation}
+			\boxed{
+				\rbraket{\mu\nu}{\lambda\sigma}
+				\approx
+				\sum_{AB}
+				(\mu\nu|A)
+				\qty(\bV^{-1})_{AB}
+				(B|\lambda\sigma)
+			}
+		\end{equation}
+		where
+		\begin{equation}
+			V_{AB}=(A|B).
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{block}{Symmetric factorization}
+		Defining the orthonormalized three-index quantities
+		\begin{equation}
+			B_{\mu\nu}^{P}
+			=
+			\sum_A
+			(\mu\nu|A)
+			\qty(\bV^{-1/2})_{AP},
+		\end{equation}
+		one obtains the particularly simple form
+		\begin{equation}
+			\boxed{
+				\rbraket{\mu\nu}{\lambda\sigma}
+				\approx
+				\sum_P
+				B_{\mu\nu}^{P}
+				B_{\lambda\sigma}^{P}
+			}
+		\end{equation}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{A four-index tensor is factorized into products of three-index tensors}
+\end{frame}
+
+\begin{frame}{Low-rank representations of the ERIs}
+	\begin{block}{Resolution of the identity = Density fitting}
+		In RI/DF, the AO pair densities are expanded in a
+		\alert{predefined auxiliary basis} $\{\chi_A^\text{aux}\}$,
+		\begin{equation}
+			\chi_\mu(\br)\chi_\nu(\br)
+			\approx
+			\sum_A C_{\mu\nu}^A \chi_A^\text{aux}(\br),
+		\end{equation}
+		leading to
+		\begin{equation}
+			\boxed{
+				\rbraket{\mu\nu}{\lambda\sigma}
+				\approx
+				\sum_P
+				B_{\mu\nu}^P B_{\lambda\sigma}^P
+			}
+		\end{equation}
+		$\Rightarrow$ \alert{The quality of the approximation depends on the auxiliary basis}
+	\end{block}
+	\vfill
+	\begin{block}{Cholesky decomposition (CD)}
+		The ERI tensor can be viewed as a positive semidefinite matrix
+		in the compound indices $(\mu\nu)$ and $(\lambda\sigma)$,
+		\begin{equation}
+			\bV_{(\mu\nu),(\lambda\sigma)}
+			=
+			\rbraket{\mu\nu}{\lambda\sigma}.
+		\end{equation}
+		A pivoted Cholesky decomposition directly generates
+		\begin{equation}
+			\boxed{
+				\rbraket{\mu\nu}{\lambda\sigma}
+				\approx
+				\sum_{P=1}^{N_\text{CD}}
+				L_{\mu\nu}^{P} L_{\lambda\sigma}^{P}
+			}
+		\end{equation}
+		until the remaining error is smaller than a prescribed threshold $\tau_\text{CD}$.
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{RI/DF uses a predefined auxiliary space; CD constructs one adaptively}
+\end{frame}
+
+% ======================================================================
+% RI in practice
+% ======================================================================
+
+\begin{frame}{RI in practice}
+	\begin{block}{Construction of the Coulomb matrix}
+		Starting from
+		\begin{equation}
+			J_{\mu\nu}
+			=
+			\sum_{\lambda\sigma}
+			P_{\lambda\sigma}
+			\rbraket{\mu\nu}{\lambda\sigma},
+		\end{equation}
+		the RI approximation gives
+		\begin{equation}
+			J_{\mu\nu}
+			\approx
+			\sum_{AB}
+			(\mu\nu|A)
+			\qty(\bV^{-1})_{AB}
+			\underbrace{
+				\sum_{\lambda\sigma}
+				P_{\lambda\sigma}
+				(B|\lambda\sigma)
+			}_{d_B}.
+		\end{equation}
+		Thus,
+		\begin{equation}
+			\boxed{
+				\bP
+				\;\longrightarrow\;
+				\{d_A\}
+				\;\longrightarrow\;
+				\{c_A\}=\bV^{-1}\{d_A\}
+				\;\longrightarrow\;
+				\bJ
+			}
+		\end{equation}
+	\end{block}
+	\vfill
+	\begin{itemize}
+		\item No need to store the full $\order{N^4}$ ERI tensor
+		\item Only \alert{two-center} $(A|B)$ and \alert{three-center} $(\mu\nu|A)$ integrals are required
+		\item Auxiliary basis sets are optimized to make the fitting error very small
+		\item RI is also commonly called \alert{density fitting (DF)}
+	\end{itemize}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{RI dramatically reduces the cost and memory requirements of Coulomb contractions}
+\end{frame}
 
 \end{document}
