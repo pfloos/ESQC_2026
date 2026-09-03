@@ -951,7 +951,7 @@ decoration={snake,
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{Effective core potentials (ECPs)}
+\begin{frame}{Effective core potentials (ECPs) or pseudopotentials}
 	\begin{center}
 		\fbox{
 		\textbf{Key idea:}
@@ -960,7 +960,7 @@ decoration={snake,
 	\end{center}
 
 	\begin{block}{One-electron ECP}
-		Replace the nucleus and core electrons by an
+		Replace the core electrons by an
 		\alert{effective one-electron potential} acting on the remaining electrons
 		\begin{equation}
 			\hh(\br)
@@ -989,16 +989,13 @@ decoration={snake,
 			\item[$\cmark$] Used in both molecular and periodic calculations,
 				with Gaussian or plane-wave basis sets
 			\item[$\xmark$] Introduce new \alert{one-electron integrals} that can be tricky to compute
+			\item[$\xmark$] Core properties are not described explicitly, and accuracy depends on the ECP quality
 		\end{itemize}
 	\end{block}
-	\vfill
-	\center
-	\alert{Trade-off: core properties are not described explicitly,
-	and accuracy depends on the ECP quality}
 \end{frame}
 
 %-----------------------------------------------------
-\begin{frame}{ECPs: local and angular-momentum-dependent terms}
+\begin{frame}{ECPs: projected and unprojected terms}
 	\begin{block}{A common semilocal form: scalar ECP}
 		\begin{equation}
 			\boxed{
@@ -1011,7 +1008,7 @@ decoration={snake,
 		\end{equation}
 		\begin{itemize}
 			\item $\violet{U_L(r)}$: short-range \blue{local} potential $\Leftrightarrow$ \violet{unprojected part}
-			\item $\{\purple{U_\ell(r)}\}_{0\le\ell<L}$: corrections for individual angular-momentum channel $\Leftrightarrow$ \purple{projected part}
+			\item $\{\ket{Y_{\ell m}} \purple{U_\ell(r)} \bra{Y_{\ell m}}\}_{0\le\ell<L}$: angular-momentum-dependent \blue{semi-local} potentials $\Leftrightarrow$ \purple{projected part}
 		\end{itemize}
 	\end{block}
 
