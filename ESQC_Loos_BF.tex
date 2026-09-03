@@ -203,14 +203,14 @@ decoration={snake,
 
 \begin{frame}{Expanding the molecular orbitals}
 	\begin{block}{Linear combination of basis functions}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     			\psi_p(\br)
     			=
     			\sum_{\mu=1}^{K}
     			C_{\mu p}\phi_\mu(\br)
     		}
-    	\end{equation}
+    	\end{equation*}
     
     	\begin{itemize}
     		\item The basis functions $\{\phi_\mu\}$ are \alert{fixed}; the coefficients
@@ -258,9 +258,9 @@ decoration={snake,
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
         	\begin{block}{Gaussian-type orbitals (GTOs)}
-				\begin{equation}
+				\begin{equation*}
 					\phi(\br) = \exp(-\alpha r^2)
-    			\end{equation}
+    			\end{equation*}
     			\begin{itemize}
     				\item Usually atom-centered
     				\item Standard choice for molecular calculations
@@ -269,9 +269,9 @@ decoration={snake,
     			\end{itemize}
         	\end{block}
         	\begin{block}{Slater-type orbitals (STOs)} 
-				\begin{equation}
+				\begin{equation*}
 					\phi(\br) = \exp(-\zeta r)
-        		\end{equation}
+        		\end{equation*}
     			\begin{itemize}
     				\item Usually atom-centered
     				\item Natural nuclear cusp and exponential tail
@@ -281,9 +281,9 @@ decoration={snake,
 		\end{column}
 		\begin{column}{0.5\textwidth}
     		\begin{block}{Plane waves (PWs)}
-				\begin{equation}
+				\begin{equation*}
 					\phi(\br) = \exp(\ii \bk \cdot \br)
-				\end{equation}
+				\end{equation*}
     			\begin{itemize}
     				\item Delocalized and orthonormal
     				\item Naturally adapted to periodic systems
@@ -305,80 +305,80 @@ decoration={snake,
 
 \begin{frame}{Plane waves}
 	\begin{block}{Definition}
-		\begin{equation}
+		\begin{equation*}
 			\phi_{\bk}(\br) = \frac{1}{\sqrt{\Omega}}\exp(\ii \bk \cdot \br)
 			\qq{with}
 			\abs{\bk} \le k_\text{cut}
 			\qq{and} 
 			E_\text{cut} = \frac{1}{2} k_\text{cut}^2
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Reciprocal-lattice vector}
-		\begin{equation}
+		\begin{equation*}
 			\bk = k_1 \bb_1 + k_2 \bb_2 + k_3 \bb_3 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Unit cell}
-		\begin{equation}
+		\begin{equation*}
 			\underbrace{\Omega}_{\text{volume}} = \ba_1 \cdot (\ba_2 \cross \ba_3)
 			\qq{with}
 			\bA = (\ba_1,\ba_2,\ba_3)
-		\end{equation}		
+		\end{equation*}		
 	\end{block}
 	\begin{block}{Vectors of the reciprocal lattice}
-		\begin{align}
+		\begin{align*}
 			\bb_1 & = 2\pi \frac{\ba_2 \cross \ba_3}{\Omega}
 			&
 			\bb_2 & = 2\pi \frac{\ba_3 \cross \ba_1}{\Omega}
 			&
 			\bb_3 & = 2\pi \frac{\ba_1 \cross \ba_2}{\Omega}
-		\end{align}		
+		\end{align*}		
 	\end{block}
 \end{frame}
 
 \begin{frame}{Integrals in the plane wave basis}
 	\begin{block}{Overlap integrals}
-		\begin{equation}
+		\begin{equation*}
 			\braket{\bk_1}{\bk_2} 
 			= \int \phi_{\bk_1}^*(\br) \phi_{\bk_2}(\br) \dd{\br} 
 			= \frac{1}{\Omega} \int e^{\ii \qty( \bk_2 - \bk_1 ) \cdot \br} \dd{\br} 
 			= \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
 			\alert{\text{Orthogonal basis!}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Kinetic integrals}
-		\begin{equation}
+		\begin{equation*}
 			\mel{\bk_1}{-\frac{\laplacian}{2}}{\bk_2} 
 			= \int \phi_{\bk_1}^*(\br) \qty( - \frac{\laplacian}{2}  ) \phi_{\bk_2}(\br) \dd{\br} 
 			= \int \phi_{\bk_1}^*(\br) \frac{\bk_2^2}{2} \phi_{\bk_2}(\br) \dd{\br} 
 			= \frac{\bk_2^2}{2} \delta_{\bk_1 \bk_2}
 			\qq{$\Rightarrow$}
 			\alert{\text{Diagonal!}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
-	\begin{block}{Electron repulsion integrals}
-		\begin{equation}
+	\begin{block}{Electron repulsion integrals (ERIs)}
+		\begin{equation*}
 		\begin{split}
 			\braket{\bk_1 \bk_2 }{\bk_3 \bk_4} 
 			& = \iint \phi_{\bk_1}^*(\br_1) \phi_{\bk_2}^*(\br_2) r_{12}^{-1} \phi_{\bk_3}(\br_1) \phi_{\bk_4}(\br_2) \dd{\br_1} \dd{\br_2} 
 			\\
 			& = \frac{1}{\Omega^2} \iint \frac{e^{\ii \qty( \bk_3 - \bk_1 ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 ) \cdot \br_2}}{r_{12}} \dd{\br_1} \dd{\br_2} 
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Resolution of the Coulomb operator}
 	\begin{block}{Coulomb operator}
-		\begin{equation}
+		\begin{equation*}
 			\frac{1}{r_{12}} 
 			= \frac{1}{\Omega} \sum_{\bk \neq \bO} \frac{4\pi}{\bk^2} e^{\ii \bk \cdot (\br_1 - \br_2)}
-		\end{equation}
+		\end{equation*}
 		Dealing with the points where $\bk = \bO$ is a bit tricky bud doable...
 	\end{block}
 	\begin{block}{Electron repulsion integrals}
-		\begin{equation}
+		\begin{equation*}
 		\begin{split}
 			\braket{\bk_1 \bk_2 }{\bk_3 \bk_4} 
 			& =  \frac{1}{\Omega^3} \sum_{\bk\neq\bO} \frac{4\pi}{\bk^2} \iint e^{\ii \qty( \bk_3 - \bk_1 - \bk ) \cdot \br_1} e^{\ii \qty( \bk_4 - \bk_2 +\bk) \cdot \br_2} \dd{\br_1} \dd{\br_2} 
@@ -389,7 +389,7 @@ decoration={snake,
 			\qq{$\Rightarrow$}
 			\alert{\text{Momentum conservation!}}
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -444,38 +444,38 @@ decoration={snake,
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Slater-type orbitals (STOs)}
-				\begin{equation}
+				\begin{equation*}
 					\boxed{\phi_{\zeta n\ell m}^\text{STO}(\br) \propto r^{n-1} e^{-\zeta r} Y_{\ell m}(\hat{\br})}
-				\end{equation}
+				\end{equation*}
 				\begin{itemize}
     				\item[$\cmark$] It can model the electron-nucleus cusp!
-					\begin{equation}
+					\begin{equation*}
     					\phi_\text{1s}^\text{STO}(r) \propto e^{-\zeta r}  
     					\qq{$\Rightarrow$}
     					\eval{\dv{\phi_\text{1s}^\text{STO}(r)}{r}}_{r=0} = - \zeta
-    				\end{equation}
+    				\end{equation*}
     				\item[$\cmark$] Correct long-range behavior for IP!
-    				\begin{equation}
+    				\begin{equation*}
     					\phi_\text{HOMO}^\text{STO}(r) \propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}  
     					\qq{$\Rightarrow$}
     					\text{IP} = - \epsilon_\text{HOMO}
-    				\end{equation}
+    				\end{equation*}
 					\item[$\xmark$] The multicenter integrals are \alert{hard} to compute!
 				\end{itemize}    				
 			\end{block}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Gaussian-type orbitals (GTOs)}
-				\begin{equation}
+				\begin{equation*}
 					\boxed{\phi_{\alpha n\ell m}^\text{GTO}(\br) \propto r^{2(n-1)-\ell} e^{-\alpha r^2} Y_{\ell m}(\hat{\br})}
-				\end{equation}
+				\end{equation*}
 				\begin{itemize}
     				\item[$\xmark$] They are flat at the electron-nucleus coalescence point!
-					\begin{equation}
+					\begin{equation*}
     					\phi_\text{1s}^\text{GTO}(r) \propto e^{-\alpha r^2}  
     					\qq{$\Rightarrow$}
     					\eval{\dv{\phi_\text{1s}^\text{GTO}(r)}{r}}_{r=0} = 0
-    				\end{equation}			
+    				\end{equation*}			
     				\item[$\xmark$] They decay too rapidly at large $r$!
 					\item[$\cmark$] The multicenter integrals are \green{easy} to compute!
 				\end{itemize}    				
@@ -492,14 +492,14 @@ decoration={snake,
 	\begin{columns}
 		\begin{column}{\textwidth}
 			\begin{block}{Cartesian Gaussians}
-				\begin{align} 
+				\begin{align*} 
 					\text{\blue{Primitive} GTO} & =  \sket{\ba}
 					=  (x-A_x)^{a_x} (y-A_y)^{a_y} (z-A_z)^{a_z} e^{-\alpha \abs{ \br -\bA }^2}
 					\\
 					\text{\violet{Contracted} GTO} & = \ket{\ba}
 					\equiv \phi_{\ba}^{\bA}(\br)
 					=  \sum_k^K D_k \sket{\ba}_k
-				\end{align} 
+				\end{align*} 
             	\begin{itemize}
             		\item \textbf{\alert{Exponent:}} $\alpha$ %\qquad ($\alpha \gg 1$ tight and $\alpha \ll 1$ diffuse)
             		\item \textbf{\alert{Center:}} $\bA = (A_x, A_y, A_z)$
@@ -510,7 +510,7 @@ decoration={snake,
 		\end{column}
 %			\begin{block}{Four-center two-electron integrals}
 %				\small
-%				\begin{equation}
+%				\begin{equation*}
 %					\begin{split} 
 %						\braket{\ba\bb}{\bc\bd}	
 %						& \equiv \mel{\ba\bb}{\alert{r_{12}^{-1}}}{\bc\bd}	
@@ -518,7 +518,7 @@ decoration={snake,
 %						& = \iint \phi_{\ba}^{\bA}(\br_1) \phi_{\bb}^{\bB}(\br_2) \,\alert{\frac{1}{r_{12}}}  \,
 %						\phi_{\bc}^{\bC}(\br_1) \phi_{\bd}^{\bD}(\br_2) \dd{\br_1} \dd{\br_2}
 %					\end{split}
-%				\end{equation}
+%				\end{equation*}
 %				\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
 %			\end{block}
 	\end{columns}
@@ -537,57 +537,57 @@ decoration={snake,
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Cartesian Gaussians}
-				For a shell of angular momentum $\ell$,
-				\begin{equation}
-					\boxed{N_\ell^\text{Cart} = \frac{(\ell+1)(\ell+2)}{2}}
-				\end{equation}
-				\begin{equation}
+				For a shell of angular momentum $\ell$
+				\begin{equation*}
+					\boxed{N_\ell^\text{cart} = \frac{(\ell+1)(\ell+2)}{2}}
+				\end{equation*}
+				\begin{equation*}
 					\begin{array}{c|cccc}
 						\ell & s & p & d & f
 						\\
 						\hline
-						N_\ell^\text{Cart} & 1 & 3 & \red{6} & \red{10}
+						N_\ell^\text{cart} & 1 & 3 & \red{6} & \red{10}
 					\end{array}
-				\end{equation}
+				\end{equation*}
 				For instance, a Cartesian $d$ shell contains
-				\begin{equation}
+				\begin{equation*}
 					\{x^2,y^2,z^2,xy,xz,yz\}
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{block}{Spherical Gaussians}
-				For a pure angular momentum $\ell$,
-				\begin{equation}
-					\boxed{N_\ell^\text{Sph} = 2\ell+1}
-				\end{equation}
-				\begin{equation}
+				For a pure angular momentum $\ell$
+				\begin{equation*}
+					\boxed{N_\ell^\text{sph} = 2\ell+1}
+				\end{equation*}
+				\begin{equation*}
 					\begin{array}{c|cccc}
 						\ell & s & p & d & f
 						\\
 						\hline
-						N_\ell^\text{Sph} & 1 & 3 & \green{5} & \green{7}
+						N_\ell^\text{sph} & 1 & 3 & \green{5} & \green{7}
 					\end{array}
-				\end{equation}
+				\end{equation*}
 				The extra Cartesian functions correspond to
 				\alert{lower-angular-momentum components}:
-				\begin{equation}
+				\begin{equation*}
 					\red{6d} = \green{5d} + 1s
 					\qquad
 					\red{10f} = \green{7f} + 3p
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 	\end{columns}
 	\vfill
-	\begin{equation}
+	\begin{equation*}
 		x^2+y^2+z^2 = r^2
 		\qq{$\Rightarrow$}
 		\text{the Cartesian $d$ shell contains an $s$-type component}
-	\end{equation}
+	\end{equation*}
 	\vfill
 	\centering
-	$\Rightarrow$ \alert{Most quantum-chemistry calculations use spherical (pure) functions for $\ell \ge 2$}
+	$\Rightarrow$ \alert{Most quantum-chemistry calculations use spherical (pure) functions}
 \end{frame}
 
 \begin{frame}{The contraction problem}
@@ -600,30 +600,30 @@ decoration={snake,
 					\item Different exponent $\violet{\alpha_k}$
 					\item Contraction coefficient $\blue{D_k}$ and degree $K$
 				\end{itemize}
-				\begin{equation}
+				\begin{equation*}
 					\underbrace{\braket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}_{\text{\green{contracted ERI}}} 
 					= \sum_{i}^{K_A} \sum_{j}^{K_B} \sum_{k}^{K_C} \sum_{l}^{K_D} 
 					\blue{D_{i} D_{j} D_{k} D_{l}}
 					\underbrace{\sbraket{\red{\ba}_{i}\blue{\bb}_{j}}{\orange{\bc}_{k}\green{\bd}_{l}}}_{\text{\red{primitive ERI}}} 
-				\end{equation}
+				\end{equation*}
 				\centering
 				\green{One} contracted ERI required \red{$K_A \times K_B \times K_C \times K_D$} primitive ERIs!
 			\end{block}
 			\begin{block}{Dunning's cc-pVTZ basis for the carbon atom}
-				\begin{equation}
+				\begin{equation*}
 					\green{\braket{1s1s}{1s1s}}
 					= \sum_{i}^{10} \sum_{j}^{10} \sum_{k}^{10} \sum_{l}^{10} 
 					\blue{D_{i} D_{j} D_{k} D_{l}}
 					\red{\sbraket{s_{i}^{\violet{\alpha_{i}}} s_{j}^{\violet{\alpha_{j}}}} {s_{k}^{\violet{\alpha_{k}}} s_{l}^{\violet{\alpha_{l}}} }} 
-				\end{equation}
+				\end{equation*}
 				\centering
 				The $\green{\braket{1s1s}{1s1s}}$ integral requires $10^4$ \red{$s$-type integrals}!
 			\end{block}
 		\end{column}
 		\begin{column}{0.3\textwidth}
-			\begin{equation}
+			\begin{equation*}
 				\boxed{\green{\ket{\ba}} = \sum_k^K \blue{D_k} \red{\sket{\ba_k}}}
-			\end{equation}
+			\end{equation*}
 			\\
 			\bigskip
 			\begin{block}{\small https://www.basissetexchange.org}
@@ -740,11 +740,11 @@ decoration={snake,
 %		\end{column}
 %		\begin{column}{0.38\textwidth}
  			\begin{block}{Two-point extrapolation model}
- 				\begin{equation}
+ 				\begin{equation*}
         			\boxed{E_{\mathrm{c}}(X)
         			\approx
         			E_{\mathrm{c}}^{\mathrm{CBS}} + A X^{-3}}
-        		\end{equation}
+        		\end{equation*}
 			\end{block}
 %		\end{column}
 %	\end{columns}
@@ -1008,65 +1008,115 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Basis-set superposition error (BSSE)}
-	\begin{block}{The problem}
-		Consider two interacting fragments $A$ and $B$.
-		In the dimer calculation, each fragment can use the basis functions
-		centered on the other fragment:
-		\begin{equation}
-			A
-			\qquad
-			\underbrace{\boxed{\phantom{AA}}}_{\text{basis on $A$}}
-			\quad
-			\underbrace{\boxed{\phantom{BB}}}_{\text{basis on $B$}}
-			\qquad
-			B
-		\end{equation}
-		\centering
-		$\Rightarrow$
-		each fragment \alert{borrows basis functions} from its partner
-		\\
-		$\Rightarrow$
-		the dimer is artificially stabilized
-	\end{block}
-	\vfill
-	\begin{block}{Counterpoise correction}
-		The usual interaction energy is
-		\begin{equation}
-			\Delta E_\text{int}
-			=
-			E_{AB}^{AB}
-			-
-			E_A^{A}
-			-
-			E_B^{B}.
-		\end{equation}
-		In the Boys--Bernardi counterpoise correction, the monomers are
-		computed in the \alert{full dimer basis} using ghost functions:
-		\begin{equation}
+	\begin{block}{Notation}
+		We denote by
+		\begin{equation*}
 			\boxed{
-				\Delta E_\text{int}^\text{CP}
+				E_{\red{X}}^{\blue{Y}}
 				=
-				E_{AB}^{AB}
-				-
-				E_A^{AB}
-				-
-				E_B^{AB}
+				\text{energy of system $\red{X}$ computed in the basis of system $\blue{Y}$}
 			}
-		\end{equation}
+		\end{equation*}
+		For example, $E_{\red{A}}^{\blue{AB}}$ is the energy of fragment $A$
+		computed using the basis functions centered on both $A$ and $B$.
+		The basis functions on $B$ are then \alert{ghost functions}
+		(no nucleus and no electrons on $B$).
 	\end{block}
 	\vfill
-	\begin{equation}
-		\underbrace{
-			\qty(E_A^{A}-E_A^{AB})
-			+
-			\qty(E_B^{B}-E_B^{AB})
-		}_{\text{BSSE}}
-		> 0
-	\end{equation}
+	\begin{center}
+		\begin{tikzpicture}[
+			>=stealth',
+			atom/.style={circle,draw,minimum size=0.7cm,inner sep=0pt},
+			ghost/.style={circle,draw,dashed,minimum size=0.7cm,inner sep=0pt},
+			basis/.style={ellipse,draw,minimum width=1.5cm,minimum height=1.0cm},
+			ghostbasis/.style={ellipse,draw,dashed,minimum width=1.5cm,minimum height=1.0cm}
+		]
+			% ------------------------------------------------------------
+			% Monomer A in its own basis
+			% ------------------------------------------------------------
+			\node at (-4.5,1.6) {$E_{\red{A}}^{\blue{A}}$};
+			\node[basis] (basisA1) at (-4.5,0) {};
+			\node[atom]  (A1)      at (-4.5,0) {$A$};
+			\node at (-4.5,-0.9) {\small basis on $A$ only};
+
+			% ------------------------------------------------------------
+			% Monomer A in the dimer basis
+			% ------------------------------------------------------------
+			\node at (0,1.6) {$E_{\red{A}}^{\blue{AB}}$};
+			\node[basis]      (basisA2) at (-0.9,0) {};
+			\node[atom]       (A2)      at (-0.9,0) {$A$};
+			\node[ghostbasis] (basisB2) at ( 0.9,0) {};
+			\node[ghost]      (B2)      at ( 0.9,0) {$B$};
+			\node at (0,-0.9) {\small basis on $A$ + ghost basis on $B$};
+
+			% ------------------------------------------------------------
+			% Dimer AB
+			% ------------------------------------------------------------
+			\node at (4.9,1.6) {$E_{\red{AB}}^{\blue{AB}}$};
+			\node[basis] (basisA3) at (4.0,0) {};
+			\node[atom]  (A3)      at (4.0,0) {$A$};
+			\node[basis] (basisB3) at (5.8,0) {};
+			\node[atom]  (B3)      at (5.8,0) {$B$};
+			\node at (4.9,-0.9) {\small full dimer basis};
+		\end{tikzpicture}
+	\end{center}
+	\vfill
+	\begin{equation*}
+		E_{\red{A}}^{\blue{AB}} \leq E_{\red{A}}^{\blue{A}}
+		\qq{$\Rightarrow$}
+		\text{fragment $A$ is artificially stabilized by the basis on $B$}
+	\end{equation*}
 	\vfill
 	\centering
 	$\Rightarrow$
-	\alert{BSSE decreases as the one-electron basis approaches completeness}
+	\alert{Fragments can ``borrow'' basis functions from each other}
+\end{frame}
+
+\begin{frame}{Counterpoise correction}
+	\begin{block}{Boys--Bernardi counterpoise correction}
+		With a finite atom-centered basis, each fragment can
+		\alert{borrow basis functions from the other fragment}
+		\begin{equation*}
+			E_A^{AB} \leq E_A^A
+			\qquad\text{and}\qquad
+			E_B^{AB} \leq E_B^B
+		\end{equation*}
+		The usual interaction energy is
+		\begin{equation*}
+			\Delta E_\text{int}
+			=
+			E_{AB}^{AB} - E_A^A - E_B^B
+		\end{equation*}
+		while the counterpoise-corrected interaction energy is
+		\begin{equation*}
+			\boxed{
+				\Delta E_\text{int}^\text{CP}
+				=
+				E_{AB}^{AB} - E_A^{AB} - E_B^{AB}
+			}
+		\end{equation*}
+	\end{block}
+	\vfill
+	\begin{block}{Basis-set superposition error}
+		\begin{equation*}
+			\boxed{
+				\text{BSSE}
+				=
+				\Delta E_\text{int}^\text{CP}
+				-
+				\Delta E_\text{int}
+				=
+				\qty(E_A^A-E_A^{AB})
+				+
+				\qty(E_B^B-E_B^{AB})
+				\geq 0
+			}
+		\end{equation*}
+	\end{block}
+	\vfill
+	\centering
+	$\Rightarrow$
+	\alert{BSSE makes the uncorrected interaction energy artificially too attractive}
 \end{frame}
 
 %-----------------------------------------------------
@@ -1081,7 +1131,7 @@ decoration={snake,
 	\begin{block}{One-electron ECP}
 		Replace the core electrons by an
 		\alert{effective one-electron potential} acting on the remaining electrons
-		\begin{equation}
+		\begin{equation*}
 			\hh(\br)
 			=
 			- \frac{\nabla^2}{2}
@@ -1095,7 +1145,7 @@ decoration={snake,
 				+
 				\sum_A \alert{\hat{U}_A^\text{ECP}(\br)}
 			}
-		\end{equation}
+		\end{equation*}
 		Here, $\green{Q_A} = Z_A - N_A^\text{core}$ is an \green{effective nuclear charge} and $N_A^\text{core}$ is the number of electrons replaced on atom $A$
 	\end{block}
 
@@ -1116,7 +1166,7 @@ decoration={snake,
 %-----------------------------------------------------
 \begin{frame}{ECPs: projected and unprojected terms}
 	\begin{block}{A common semilocal form: scalar ECP}
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\red{\hat{U}^\text{ECP}(\br)}
 				=
@@ -1124,7 +1174,7 @@ decoration={snake,
 				+
 				\sum_{\ell=0}^{L-1} \sum_{m=-\ell}^{\ell} \ket{Y_{\ell m}} \purple{U_\ell(r)} \bra{Y_{\ell m}}
 			}
-		\end{equation}
+		\end{equation*}
 		\begin{itemize}
 			\item $\violet{U_L(r)}$: short-range \blue{local} potential $\Leftrightarrow$ \violet{unprojected part}
 			\item $\{\ket{Y_{\ell m}} \purple{U_\ell(r)} \bra{Y_{\ell m}}\}_{0\le\ell<L}$: angular-momentum-dependent \blue{semi-local} potentials $\Leftrightarrow$ \purple{projected part}
@@ -1132,14 +1182,14 @@ decoration={snake,
 	\end{block}
 
 	\begin{block}{Gaussian expansion}
-		\begin{equation}
+		\begin{equation*}
 			U_\ell(r)
 			=
 			\sum_{k=1}^{K_\ell}
 			D_{\ell k}\,r^{n_{\ell k}}
 			\exp(-\eta_{\ell k}r^2)
 			\qquad \ell=0,\ldots,L
-		\end{equation}
+		\end{equation*}
 		\begin{itemize}
 			\item $D_{\ell k}$ and $\eta_{\ell k}>0$ are contraction coefficients and Gaussian exponents
 			\item $n_{\ell k}$: radial powers, often $-2$, $-1$, or $0$
@@ -1195,27 +1245,27 @@ decoration={snake,
 
 \begin{frame}{Properties of Gaussian functions}
 	\begin{block}{Gaussian product rule: \textit{``The product of two gaussians is a gaussian''}}
-		\begin{equation}
+		\begin{equation*}
 			G_{\red{\alpha},\red{\bA}}(\br) = \exp(-\red{\alpha} \abs{\br - \red{\bA}}^2)	
 			\qqtext{and}
 			G_{\blue{\beta},\blue{\bB}}(\br) = \exp(-\blue{\beta} \abs{\br - \blue{\bB}}^2)	
 			\qqtext{then}
-		\end{equation}	
-		\begin{equation}
+		\end{equation*}	
+		\begin{equation*}
 		\boxed{G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) = K_{\violet{\zeta},\violet{\bP}} G_{\violet{\zeta},\violet{\bP}}(\br)}
 		\qqtext{with} 
 		\violet{\zeta} = \red{\alpha} + \blue{\beta} 
 		\qqtext{and} 
 		\violet{\bP} = \frac{\red{\alpha \bA} + \blue{\beta \bB}}{\red{\alpha} + \blue{\beta} } 
-		\end{equation}		
-		\begin{equation}
+		\end{equation*}		
+		\begin{equation*}
 			K_{\violet{\zeta},\violet{\bP}} = \exp( -\frac{\red{\alpha} \blue{\beta}}{\red{\alpha} + \blue{\beta} } \abs{\red{\bA} - \blue{\bB}}^2)
 			\qq{$\Rightarrow$}
 			\text{decay exponentially fast with $\abs{\red{\bA} - \blue{\bB}}$}
-		\end{equation}		
+		\end{equation*}		
 	\end{block}
 	\begin{block}{Overlap}
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 %			\rbraket{\red{\ba}}{ \blue{\bb} }
 			\int G_{\red{\alpha},\red{\bA}}(\br) G_{\blue{\beta},\blue{\bB}}(\br) \dd{\br}
@@ -1231,117 +1281,111 @@ decoration={snake,
 			\qq{$\Rightarrow$}
 			\text{\alert{cartesian factorization!}}
 		\end{split}	
-		\end{equation}	
+		\end{equation*}	
 	\end{block}
 \end{frame}
 
 \begin{frame}{One-electron integrals over Gaussian functions}
-	\begin{block}{Three basic types of one-electron integrals}
-		For two Gaussian basis functions $\chi_\mu$ and $\chi_\nu$, one needs
-		\begin{equation}
-			\begin{aligned}
-				S_{\mu\nu}
-				& = \braket{\chi_\mu}{\chi_\nu}
-				&& \qqtext{\alert{overlap}}
-				\\
-				T_{\mu\nu}
-				& = \mel{\chi_\mu}{-\frac{1}{2}\nabla^2}{\chi_\nu}
-				&& \qqtext{\alert{kinetic energy}}
-				\\
-				V_{\mu\nu}^{A}
-				& = \mel{\chi_\mu}{-\frac{Z_A}{\abs{\br-\bR_A}}}{\chi_\nu}
-				&& \qqtext{\alert{nuclear attraction}}
-			\end{aligned}
-		\end{equation}
-	\end{block}
-	\vfill
-	\begin{block}{$s$-type Gaussian functions}
-		Using the Gaussian product rule,
-		\begin{equation}
-			G_{\alpha,\bA}(\br) G_{\beta,\bB}(\br)
-			=
-			K_{\zeta,\bP} G_{\zeta,\bP}(\br),
-			\qquad
-			\zeta = \alpha+\beta
-		\end{equation}
-		one obtains
-		\begin{equation}
-			S_{ss}
-			=
-			K_{\zeta,\bP}
-			\qty(\frac{\pi}{\zeta})^{3/2}
-		\end{equation}
-		and
-		\begin{equation}
-			T_{ss}
-			=
-			\frac{\alpha\beta}{\zeta}
-			\qty(
-				3 - 2\frac{\alpha\beta}{\zeta}\abs{\bA-\bB}^2
-			)
-			S_{ss}.
-		\end{equation}
-	\end{block}
-\end{frame}
+    \begin{block}{Kinetic energy}
+    	\begin{equation*}
+    		-\frac{1}{2}\laplacian G_{\blue{\beta},\blue{\bB}}(\br)
+    		=
+    		\qty[
+    			3\blue{\beta}
+    			-
+    			2\blue{\beta}^2 \abs{\br-\blue{\bB}}^2
+    		]
+    		G_{\blue{\beta},\blue{\bB}}(\br)
+    	\end{equation*}
+    	\begin{equation*}
+    		\begin{split}
+    %			\mel{\red{\ba}}{-\frac{1}{2}\laplacian}{\blue{\bb}}
+    			-\frac{1}{2}
+    			\int
+    			G_{\red{\alpha},\red{\bA}}(\br)
+    			\laplacian
+    			G_{\blue{\beta},\blue{\bB}}(\br)
+    			\dd{\br}
+    			& =
+    			\int
+    			G_{\red{\alpha},\red{\bA}}(\br)
+    			\qty[
+    				3\blue{\beta}
+    				-
+    				2\blue{\beta}^2
+    				\abs{\br-\blue{\bB}}^2
+    			]
+    			G_{\blue{\beta},\blue{\bB}}(\br)
+    			\dd{\br}
+    			\\
+    			& =
+    			\frac{\red{\alpha}\blue{\beta}}{\violet{\zeta}}
+    			\qty[
+    				3
+    				-
+    				2\frac{\red{\alpha}\blue{\beta}}{\violet{\zeta}}
+    				\abs{\red{\bA}-\blue{\bB}}^2
+    			]
+    			K_{\violet{\zeta},\violet{\bP}}
+    			\qty(\frac{\pi}{\violet{\zeta}})^{3/2}
+    		\end{split}
+    	\end{equation*}
+    \end{block}
 
-
-\begin{frame}{One-electron Coulomb integrals}
-	\begin{block}{Nuclear attraction integrals}
-		For a nucleus $A$ located at $\bR_A$,
-		\begin{equation}
-			V_{ss}^{A}
-			=
-			-Z_A
-			K_{\zeta,\bP}
-			\int
-			\frac{
-				e^{-\zeta\abs{\br-\bP}^2}
-			}{
-				\abs{\br-\bR_A}
-			}
-			\dd{\br}.
-		\end{equation}
-		Using the Laplace representation of the Coulomb operator,
-		\begin{equation}
-			\boxed{
-				V_{ss}^{A}
-				=
-				-\frac{2\pi Z_A}{\zeta}
-				K_{\zeta,\bP}
-				F_0\qty(
-					\zeta\abs{\bP-\bR_A}^2
-				)
-			}
-		\end{equation}
-		where
-		\begin{equation}
-			F_0(x)
-			=
-			\int_0^1 e^{-xt^2} \dd{t}
-			=
-			\sqrt{\frac{\pi}{4x}} \erf(\sqrt{x}).
-		\end{equation}
-	\end{block}
-	\vfill
-	\centering
-	$\Rightarrow$
-	\alert{The Boys function already appears in one-electron Coulomb integrals!}
-	\\[0.5em]
-	$\Rightarrow$
-	The same mathematical structure reappears for electron-repulsion integrals.
+    \begin{block}{Nuclear attraction}
+    	For a nucleus of charge $Z_C$ located at $\bC$
+    	\begin{equation*}
+    		\begin{split}
+    			-Z_C
+    			\int
+    			G_{\red{\alpha},\red{\bA}}(\br)
+    			\frac{1}{\abs{\br-\bC}}
+    			G_{\blue{\beta},\blue{\bB}}(\br)
+    			\dd{\br}
+    			& =
+    			-Z_C
+    			K_{\violet{\zeta},\violet{\bP}}
+    			\int
+    			\frac{
+    				e^{-\violet{\zeta}\abs{\br-\violet{\bP}}^2}
+    			}{
+    				\abs{\br-\bC}
+    			}
+    			\dd{\br}
+    			\\
+    			& =
+    			-\frac{2Z_C}{\sqrt{\pi}}
+    			K_{\violet{\zeta},\violet{\bP}}
+    			\int_0^\infty
+    			\dd{t}
+    			\int
+    			e^{-\violet{\zeta}\abs{\br-\violet{\bP}}^2}
+    			e^{-t^2\abs{\br-\bC}^2}
+    			\dd{\br}
+    			\\
+    			& =
+    			-\frac{2\pi Z_C}{\violet{\zeta}}
+    			K_{\violet{\zeta},\violet{\bP}}
+    			F_0\qty(
+    				\violet{\zeta}
+    				\abs{\violet{\bP}-\bC}^2
+    			)
+    		\end{split}
+    	\end{equation*}
+    \end{block}
 \end{frame}
 
 \begin{frame}{Four-center electron repulsion integrals}
 	\begin{block}{Gaussian product rule for ERIs}
 		\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 			\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
 			& = \iint G_{\red{\alpha},\red{\bA}}(\br_1) G_{\blue{\beta},\blue{\bB}}(\br_1) \frac{1}{r_{12}} G_{\orange{\gamma},\orange{\bC}}(\br_2) G_{\green{\delta},\green{\bD}}(\br_2) \dd{\br_1} \dd{\br_2} 
 			\\
 			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint G_{\violet{\zeta},\violet{\bP}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bQ}}(\br_2) \dd{\br_1} \dd{\br_2} 
 		\end{split}	
-		\end{equation}	
+		\end{equation*}	
 		\alert{The number of ``significant'' ERIs in a large system is $\order{N^2}$!}
 	\end{block}
 	\begin{block}{Shell pairs and shell quartets}
@@ -1361,23 +1405,23 @@ decoration={snake,
 
 \begin{frame}{Fundamental $ssss$ integral}
 	\begin{block}{Definition}
-    	\begin{equation}
+    	\begin{equation*}
     		\begin{split} 
     			\sbraket{\bs\bs}{\bs\bs}	
     			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint G_{\violet{\zeta},\violet{\bP}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bQ}}(\br_2) \dd{\br_1} \dd{\br_2} 
 				\\
     			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint e^{-\violet{\zeta} \abs{\br_1 - \violet{\bP}}^2} \frac{1}{r_{12}} e^{-\purple{\eta} \abs{\br_2 - \purple{\bQ}}^2} \dd{\br_1} \dd{\br_2} 
     		\end{split}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 	\begin{block}{Laplace transform of the Coulomb operator}
-    	\begin{equation}
+    	\begin{equation*}
 			\frac{1}{r_{12}} 
 			= \frac{2}{\sqrt{\pi}} \int_0^\infty e^{- t^2 r_{12}^2} \dd{t}
 			= \frac{2}{\sqrt{\pi}} \int_0^\infty e^{- t^2 (x_1 - x_2)^2} e^{- t^2 (y_1 - y_2)^2} e^{- t^2 (z_1 - z_2)^2} \dd{t}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
-	    	\begin{equation}
+	    	\begin{equation*}
     		\begin{split} 
     			\sbraket{\bs\bs}{\bs\bs}	
     			= \frac{2}{\sqrt{\pi}} K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \int_0^\infty \dd{t} 
@@ -1399,12 +1443,12 @@ decoration={snake,
 				e^{-\purple{\eta} (z_2 - \purple{Q}_z)^2}
 				\dd{z_1} \dd{z_2} )				
     		\end{split}
-    	\end{equation}
+    	\end{equation*}
 \end{frame}
 
 \begin{frame}{Fundamental $ssss$ integral}
 			Defining $\vartheta = \violet{\zeta} \purple{\eta} /(\violet{\zeta} + \purple{\eta})$, we have
-	    	\begin{equation}
+	    	\begin{equation*}
     		\begin{split} 
     			\sbraket{\bs\bs}{\bs\bs}	
     			& = \frac{2}{\sqrt{\pi}} K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \int_0^\infty
@@ -1415,31 +1459,31 @@ decoration={snake,
 				& = \frac{2\pi^{5/2}}{(\violet{\zeta} \purple{\eta})^{3/2}}  K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}}  \int_0^\infty 
 				\frac{e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 \frac{t^2}{t^2+\vartheta}} }{\qty(1+ \frac{t^2}{\vartheta})^{3/2}} \dd{t} 
     		\end{split}
-    		\end{equation}
-			\begin{equation}
+    		\end{equation*}
+			\begin{equation*}
 				\qq{Setting $t^2 = \vartheta \frac{u^2}{1- u^2}$}
 				\qq{$\Rightarrow$}
 				\sbraket{\bs\bs}{\bs\bs} = \sqrt{\frac{4\vartheta}{\pi}} \qty(\frac{\pi}{\violet{\zeta}})^{3/2} K_{\violet{\zeta},\violet{\bP}} 
 				\qty(\frac{\pi}{\purple{\eta}})^{3/2} K_{\purple{\eta},\purple{\bQ}}  
 				\underbrace{\int_0^1 e^{-\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2 u^2} \dd{u}}_{F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2) \text{ = \alert{Boys function}}}
-			\end{equation}
-			\begin{equation}
+			\end{equation*}
+			\begin{equation*}
 				\boxed{
 				\sbraket{\bO\bO}{\bO\bO}^{(0)} = \sqrt{\frac{4\vartheta}{\pi}} \qty(\frac{\pi}{\violet{\zeta}})^{3/2} K_{\violet{\zeta},\violet{\bP}} 
 				\qty(\frac{\pi}{\purple{\eta}})^{3/2} K_{\purple{\eta},\purple{\bQ}}  
 				F_0(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 				}
-			\end{equation}
+			\end{equation*}
 			
 \end{frame}
 
 \begin{frame}{Boys function}
 	\begin{block}{Generalized Boys function}
-		\begin{equation}
+		\begin{equation*}
 			F_m(x) = \int_0^1 t^{2m} \exp(-x t^2) \dd{t}
 			\qquad
 			F_0(x) = \sqrt{\frac{\pi}{4x}} \erf(\sqrt{x})
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Computation}
 		\begin{itemize}
@@ -1448,16 +1492,16 @@ decoration={snake,
 		\end{itemize}
 	\end{block}
 	\begin{block}{Downward recursion}
-		\begin{equation}
+		\begin{equation*}
 			F_m(x) = \frac{2x F_{m+1} (x) + \exp(-x)}{2m+1}
-		\end{equation}
+		\end{equation*}
 		Downward recursion is numerically stable, whereas upward recursion can become unstable for small $x$
 	\end{block}
 	\begin{block}{Asymptotic behavior}
-		\begin{equation}
+		\begin{equation*}
 			F_m(x) \sim \frac{(2m-1)!!}{2^{m+1}} \sqrt{\frac{\pi}{x^{2m+1}}}
 			\qq{for large $x$}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -1476,7 +1520,7 @@ higher-order Boys functions $F_m$.
 
 It is therefore convenient to define the hierarchy
 
-\begin{equation}
+\begin{equation*}
 \boxed{
 \sbraket{\bO\bO}{\bO\bO}^{(m)}
 =
@@ -1487,7 +1531,7 @@ K_{\violet{\zeta},\violet{\bP}}
 K_{\purple{\eta},\purple{\bQ}}
 F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 }
-\end{equation}
+\end{equation*}
 
 \end{block}
 
@@ -1505,13 +1549,13 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 
 %\begin{frame}{Obara-Saika (OS) recurrence relation}
 %	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using, in particular, the relation
-%	\begin{equation}
+%	\begin{equation*}
 %		 \pdv{\sket{\red{\ba}}}{A_i} = 2\alpha \sket{\red{\ba}+\bI_i} - a_i \sket{\red{\ba}-\bI_i}
 %		 \qq{$\Rightarrow$}
 %		 \sket{\red{\ba}+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\red{\ba}}}{A_i} + a_i \sket{\red{\ba}-\bI_i} )
-%	\end{equation}
+%	\end{equation*}
 %	one gets
-%	\begin{equation}
+%	\begin{equation*}
 %	\boxed{\begin{split}
 %		\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
 %		& = (P_i - A_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
@@ -1528,7 +1572,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 %		& + \frac{c_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{(\orange{\bc}-\bI_i)\green{\bd}}^{(m+1)}
 %		+ \frac{d_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}(\green{\bd}-\bI_i)}^{(m+1)}
 %	\end{split}}
-%	\end{equation}	
+%	\end{equation*}	
 %	with analogues which increments $\blue{\bb}$, $\orange{\bc}$, and $\green{\bd}$.
 %	\\
 %	\vfill
@@ -1537,9 +1581,9 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 %\end{frame}
 
 %\begin{frame}{Auxiliary fundamental integrals}
-%	\begin{equation}
+%	\begin{equation*}
 %		\boxed{\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)}
-%	\end{equation}
+%	\end{equation*}
 %	\begin{itemize}
 %		\item $F_m$ is the generalized Boys function
 %		\item $m = 0$ are true ERIs while integrals with $m > 0$ are auxiliary integrals defined by OS
@@ -1557,7 +1601,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 
 	\begin{block}{Key identity}
 		For a Cartesian Gaussian,
-		\begin{equation}
+		\begin{equation*}
 			\pdv{\sket{\red{\ba}}}{A_i}
             =
             2\alpha
@@ -1576,7 +1620,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
             a_i\sket{\red{\ba}-\bI_i}
             ]
             }
-		\end{equation}
+		\end{equation*}
 	\end{block}
 
 	Applying this identity to the auxiliary ERIs generates recurrence relations connecting different angular momenta and different Boys orders
@@ -1584,7 +1628,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 
     \vfill
     
-    \begin{equation}
+    \begin{equation*}
     \boxed{
     \sbraket{00}{00}^{(m)}
     \quad\longrightarrow\quad
@@ -1592,7 +1636,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
     \quad\longrightarrow\quad
     \sbraket{\red{a}0}{\orange{c}0}^{(m)}
     }
-    \end{equation}
+    \end{equation*}
     
     \vfill
     
@@ -1609,7 +1653,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 \begin{frame}{Strategy for building an ERI}
 
 	Starting from the fundamental auxiliary integrals,
-    \begin{equation}
+    \begin{equation*}
         \boxed{
         \sbraket{00}{00}^{(m)}
         \;
@@ -1625,7 +1669,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
         \;
         \rbraket{\red{a}\blue{b}}{\orange{c}\green{d}}
         }
-    \end{equation}
+    \end{equation*}
 
 	\vfill
     \begin{itemize}
@@ -1636,13 +1680,13 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 
 	\vfill
 
-    \begin{equation}
+    \begin{equation*}
         \boxed{
         \text{\red{VRRs create angular momentum}
         \qquad
         \text{\blue{HRRs redistribute it}}}
         }
-    \end{equation}
+    \end{equation*}
 
 \end{frame}
 
@@ -1657,7 +1701,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 
 \begin{block}{VRR on the bra pair: build angular momentum on $\bA$}
 
-\begin{equation}
+\begin{equation*}
 \begin{split}
 \sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)}
 ={}&
@@ -1678,14 +1722,14 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
 ]
 \end{split}
-\end{equation}
+\end{equation*}
 
 \end{block}
 
 
 \begin{block}{VRR on the ket pair: build angular momentum on $\bC$}
 
-\begin{equation}
+\begin{equation*}
 \begin{split}
 \sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)}
 ={}&
@@ -1710,7 +1754,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 \frac{a_i}{2(\zeta+\eta)}
 \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
 \end{split}
-\end{equation}
+\end{equation*}
 
 
 \end{block}
@@ -1729,7 +1773,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 Once angular momentum has been generated on one center of a Gaussian
 pair, it can be shifted to the other center:
 
-\begin{equation}
+\begin{equation*}
 \boxed{
 \sbraket{\red{\ba}(\blue{\bb}+\bI_i)}
         {\orange{\bc}\green{\bd}}
@@ -1741,7 +1785,7 @@ pair, it can be shifted to the other center:
 \sbraket{\red{\ba}\blue{\bb}}
         {\orange{\bc}\green{\bd}}
 }
-\end{equation}
+\end{equation*}
 
 and, similarly, angular momentum can be transferred from $\bC$ to $\bD$
 
@@ -1754,7 +1798,7 @@ it is \alert{independent of the Gaussian exponents}
 
 Therefore, the same recurrence applies directly to contracted integrals
 
-\begin{equation}
+\begin{equation*}
 \boxed{
 \rbraket{\red{\ba}(\blue{\bb}+\bI_i)}
         {\orange{\bc}\green{\bd}}
@@ -1766,7 +1810,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 \rbraket{\red{\ba}\blue{\bb}}
         {\orange{\bc}\green{\bd}}
 }
-\end{equation}
+\end{equation*}
 
 \end{block}
 
@@ -1827,7 +1871,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 %	\small
 %	\begin{block}{First vertical recurrence relation (VRR1)}
 %		Based on OS, one gets
-%		\begin{equation}
+%		\begin{equation*}
 %		\begin{split}
 %    		\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)} 
 %    		& = (P_i - A_i) \sbraket{\red{\ba}\bO}{\bO\bO}^{(m)} 
@@ -1837,12 +1881,12 @@ Therefore, the same recurrence applies directly to contracted integrals
 %    			\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
 %    			]
 %		\end{split}	
-%		\end{equation}	
+%		\end{equation*}	
 %		$\Rightarrow$ \red{This increases angular momentum on the first center!}
 %	\end{block}
 %	\begin{block}{Second vertical recurrence relation (VRR2)}
 %		Still based on OS, one gets
-%	\begin{equation}
+%	\begin{equation*}
 %	\begin{split}
 %		\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)} 
 %		& = (Q_i - C_i) \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)} 
@@ -1854,7 +1898,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 %		\\
 %		& + \frac{a_i}{2(\zeta+\eta)} \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
 %	\end{split}	
-%	\end{equation}
+%	\end{equation*}
 %		$\Rightarrow$ \orange{This increases angular momentum on the third center!}
 %	\end{block}
 %\end{frame}
@@ -1862,13 +1906,13 @@ Therefore, the same recurrence applies directly to contracted integrals
 %\begin{frame}{Horizontal recurrence relations}
 %	\begin{block}{Horizontal recurrence relation}
 %		The HRR shifts angular momentum from one center to the other on the same electron coordinate
-%		\begin{equation}
+%		\begin{equation*}
 %			\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-%		\end{equation}
+%		\end{equation*}
 %		Independent of the exponents, it can thus be applied to contracted integrals!
-%		\begin{equation}
+%		\begin{equation*}
 %			\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \rbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-%		\end{equation}
+%		\end{equation*}
 %	\end{block}	
 %\end{frame}
 %
@@ -1932,14 +1976,14 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\end{block}
 		\end{column}
 		\begin{column}{0.6\textwidth}
-    		\begin{equation}
+    		\begin{equation*}
     			\boxed{\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} \le B}
-    		\end{equation}
+    		\end{equation*}
 		\end{column}
 	\end{columns}
 	\bigskip
 	\begin{block}{Cauchy-Schwartz bound}
-		\begin{equation}
+		\begin{equation*}
 			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
 			\le 
 			\sqrt{\rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} }} 
@@ -1949,10 +1993,10 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\le 
 			\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
 			\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{The family of generalized H\"older bounds}
-		\begin{equation}
+		\begin{equation*}
 			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
 			\le 
 			\qty[ \rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} } ]^{1/\purple{m}} 
@@ -1961,21 +2005,21 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\frac{1}{\purple{m}} + \frac{1}{\violet{n}} = 1
 			\qq{and}
 			\purple{m},\violet{n} > 1
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Screening electron-repulsion integrals}
 	\begin{block}{Cauchy--Schwarz upper bound}
 		For any two charge distributions $\rho_1$ and $\rho_2$,
-		\begin{equation}
+		\begin{equation*}
 			\abs{\rbraket{\rho_1}{\rho_2}}^2
 			\leq
 			\rbraket{\rho_1}{\rho_1}
 			\rbraket{\rho_2}{\rho_2}
-		\end{equation}
+		\end{equation*}
 		which, for ERIs, gives
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
 				\leq
@@ -1986,33 +2030,33 @@ Therefore, the same recurrence applies directly to contracted integrals
 					\rbraket{\orange{\bc}\green{\bd}}{\orange{\bc}\green{\bd}}
 				}
 			}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\begin{block}{Shell-pair screening}
 		For each shell pair $(ab)$, define
-		\begin{equation}
+		\begin{equation*}
 			Q_{ab}
 			=
 			\max_{\ba\in a,\bb\in b}
 			\sqrt{
 				\rbraket{\ba\bb}{\ba\bb}
 			}.
-		\end{equation}
+		\end{equation*}
 		Then, for an entire shell quartet,
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\abs{\rbraket{\ba\bb}{\bc\bd}}
 				\leq
 				Q_{ab}Q_{cd}
 			}
-		\end{equation}
+		\end{equation*}
 		and therefore
-		\begin{equation}
+		\begin{equation*}
 			Q_{ab}Q_{cd} < \tau
 			\qq{$\Rightarrow$}
 			\text{\alert{discard the entire shell quartet!}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\centering
@@ -2021,13 +2065,13 @@ Therefore, the same recurrence applies directly to contracted integrals
 \end{frame}
 
 \begin{frame}{Cauchy-Schwartz bound}
-	\begin{equation}
+	\begin{equation*}
 		\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }}
 		= \abs{\rbraket{\violet{\bP}}{\purple{\bQ}}}
 		\le 
 		\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
 		\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
-	\end{equation}
+	\end{equation*}
 	\begin{itemize}
 		\item $\rbraket{\violet{\bP}}{\purple{\bQ}}$ should decay as $1/\abs{\violet{\bP} - \purple{\bQ}}$ or faster
 		\item However, there is no distance information in the product $\rbraket{\violet{\bP}}{\violet{\bP}} \rbraket{\purple{\bQ}}{\purple{\bQ}}$
@@ -2070,15 +2114,15 @@ Therefore, the same recurrence applies directly to contracted integrals
 
 \begin{frame}{Asymptotic scaling of two-electron integrals}
 	\begin{block}{Number of significant two-electron integrals}
-		\begin{equation}
+		\begin{equation*}
 			\braket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} } \equiv \rmel{ \red{\ba} \blue{\bb} }{ \chO_2 }{ \orange{\bc} \green{\bd}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\bigskip
 	\begin{block}{Long-range vs short-range operators}
-		\begin{equation}
+		\begin{equation*}
 			N_\text{sig} =  c\,N^{\alpha}
-		\end{equation}
+		\end{equation*}
 		\center
 		\begin{tabular}{lcrccrc}
 			\hline
@@ -2170,11 +2214,11 @@ Therefore, the same recurrence applies directly to contracted integrals
 \end{frame}
 
 \begin{frame}{Computation of the Coulomb matrix}
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 		J_{\red{\mu}\blue{\nu}} = \sum_{\red{\mu}\blue{\nu}} P_{\orange{\la}\violet{\si}} \rbraket{\red{\mu}\blue{\nu} }{ \orange{\la}\violet{\si}}
 		} 
-	\end{equation}
+	\end{equation*}
 	\begin{algorithmic}
 		\Procedure{Computing the Coulomb matrix}{}
 			\For{$\red{\mu}=1,N$}
@@ -2198,35 +2242,33 @@ Therefore, the same recurrence applies directly to contracted integrals
 \begin{frame}{Direct SCF algorithm}
 	\begin{block}{From ERIs to the Fock matrix}
 		The Coulomb and exchange matrices are
-		\begin{equation}
+		\begin{align*}
 			J_{\mu\nu}
-			=
+			& =
 			\sum_{\lambda\sigma}
 			P_{\lambda\sigma}
 			\rbraket{\mu\nu}{\lambda\sigma}
-		\end{equation}
-		and
-		\begin{equation}
+			&
 			K_{\mu\nu}
-			=
+			& =
 			\sum_{\lambda\sigma}
 			P_{\lambda\sigma}
-			\rbraket{\mu\lambda}{\nu\sigma}.
-		\end{equation}
+			\rbraket{\mu\lambda}{\nu\sigma}
+		\end{align*}
 	\end{block}
 	\vfill
 	\begin{block}{Direct evaluation}
-		Instead of storing all $\order{N^4}$ ERIs,
+		Instead of storing all $\order{N^4}$ ERIs
 		\begin{enumerate}
-			\item loop over shell quartets $(ab|cd)$;
-			\item use an upper bound to discard negligible quartets;
-			\item compute the significant ERIs;
-			\item immediately accumulate their contributions to $\bJ$ and $\bK$;
-			\item discard the ERIs.
+			\item loop over shell quartets $(ab|cd)$
+			\item use an upper bound to discard negligible quartets
+			\item compute the significant ERIs
+			\item immediately accumulate their contributions to $\bJ$ and $\bK$
+			\item discard the ERIs
 		\end{enumerate}
 	\end{block}
 	\vfill
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\text{screen}
 			\;\longrightarrow\;
@@ -2236,7 +2278,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\;\longrightarrow\;
 			\text{discard}
 		}
-	\end{equation}
+	\end{equation*}
 	\vfill
 	\centering
 	$\Rightarrow$
@@ -2246,17 +2288,17 @@ Therefore, the same recurrence applies directly to contracted integrals
 %%% SLIDE X %%%
 \begin{frame}{Resolution of the identity}
 	\begin{block}{Resolution of the identity (RI)}
-		\begin{equation}
+		\begin{equation*}
 			\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI
 			\qq{with}
 			\braket{\green{A}}{\green{B}} = \delta_{AB}
 			\qq{$\Leftrightarrow$}
 			\sum_{\green{A}=1}^{\red{\infty}} \green{A}(\br_1) \green{A}(\br_2)  
 			= \delta(\br_1 - \br_2) 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Generalization to a two-body operator $\hO$}
-		\begin{equation}
+		\begin{equation*}
 			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \dyad{\green{\Tilde{A}}} = \hO
 			\qq{with}
 			\mel{\green{A}}{\hO}{\green{B}} = \delta_{AB}
@@ -2265,7 +2307,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\qq{$\Leftrightarrow$}
 			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \green{\Tilde{A}}(\br_1) \green{\Tilde{A}}(\br_2)  
 			= \hO(\br_1,\br_2) 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 %
@@ -2273,14 +2315,14 @@ Therefore, the same recurrence applies directly to contracted integrals
 %%% SLIDE X %%%
 \begin{frame}{Resolution of the Coulomb operator}
 	\begin{block}{RI in practice = RI \alert{approximation}}
-		\begin{equation}
+		\begin{equation*}
 			\boxed{\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI 
 			\qqtext{and, in practice, }
 			\sum_{\green{A}=1}^{\red{K}} \dyad{\green{A}} \approx \hI}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Computing the Coulomb matrix within the RI approximation}
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 				J_{\red{\mu\nu}} 
 				& = \sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu\nu}|\blue{\la\si})
@@ -2291,7 +2333,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} (\green{A}|\blue{\la\si})}_{\order{KN^2} \text{ and $K$ storage}}
 				= \underbrace{\sum_{\green{A}} (\red{\mu\nu}|\green{A})  \rho_{\green{A}}}_{\order{KN^2}}
 			\end{split}
-		\end{equation}
+		\end{equation*}
 		\\
 		Similar (more effective) approaches are named Cholesky decomposition, low-rank approximation, etc. 
 	\end{block}
@@ -2305,7 +2347,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 \begin{frame}{Resolution of the identity (RI)}
 	\begin{block}{The product space is the problem}
 		An ERI is the Coulomb interaction between two \alert{pair densities},
-		\begin{equation}
+		\begin{equation*}
 			\rbraket{\mu\nu}{\lambda\sigma}
 			=
 			\iint
@@ -2313,7 +2355,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\frac{1}{r_{12}}
 			\underbrace{\chi_\lambda(\br_2)\chi_\sigma(\br_2)}_{\rho_{\lambda\sigma}(\br_2)}
 			\dd{\br_1}\dd{\br_2}.
-		\end{equation}
+		\end{equation*}
 		With $N$ orbital basis functions, there are formally $\order{N^2}$
 		different pair densities $\rho_{\mu\nu}$.
 	\end{block}
@@ -2321,7 +2363,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\begin{block}{Density fitting}
 		Instead of representing each product $\chi_\mu\chi_\nu$ exactly,
 		we expand it in a smaller \alert{auxiliary basis} $\{\chi_A^\text{aux}\}$,
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\rho_{\mu\nu}(\br)
 				\approx
@@ -2330,11 +2372,11 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\sum_A C_{\mu\nu}^{A}
 				\chi_A^\text{aux}(\br)
 			}
-		\end{equation}
+		\end{equation*}
 		with typically
-		\begin{equation}
+		\begin{equation*}
 			N_\text{aux} \sim \order{N}.
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\centering
@@ -2350,7 +2392,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 \begin{frame}{RI in the Coulomb metric}
 	\begin{block}{How should the pair density be fitted?}
 		Define the Coulomb inner product
-		\begin{equation}
+		\begin{equation*}
 			(f|g)
 			=
 			\iint
@@ -2358,9 +2400,9 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\frac{1}{r_{12}}
 			g(\br_2)
 			\dd{\br_1}\dd{\br_2}.
-		\end{equation}
+		\end{equation*}
 		The optimal coefficients minimize the Coulomb norm of the fitting error,
-		\begin{equation}
+		\begin{equation*}
 			\Delta_{\mu\nu}
 			=
 			\qty(
@@ -2368,20 +2410,20 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\middle|
 				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
 			).
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\begin{block}{Least-squares equations}
 		Minimization with respect to $C_{\mu\nu}^{A}$ gives
-		\begin{equation}
+		\begin{equation*}
 			\sum_B
 			\underbrace{(A|B)}_{V_{AB}}
 			C_{\mu\nu}^{B}
 			=
 			\underbrace{(A|\mu\nu)}_{\text{three-center integral}},
-		\end{equation}
+		\end{equation*}
 		and therefore
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				C_{\mu\nu}^{A}
 				=
@@ -2389,7 +2431,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\qty(\bV^{-1})_{AB}
 				(B|\mu\nu)
 			}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\centering
@@ -2405,7 +2447,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 \begin{frame}{RI approximation to the ERIs}
 	\begin{block}{From four-center to three-center integrals}
 		Inserting the fitted pair densities gives
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
@@ -2414,24 +2456,24 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\qty(\bV^{-1})_{AB}
 				(B|\lambda\sigma)
 			}
-		\end{equation}
+		\end{equation*}
 		where
-		\begin{equation}
+		\begin{equation*}
 			V_{AB}=(A|B).
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\begin{block}{Symmetric factorization}
 		Defining the orthonormalized three-index quantities
-		\begin{equation}
+		\begin{equation*}
 			B_{\mu\nu}^{P}
 			=
 			\sum_A
 			(\mu\nu|A)
 			\qty(\bV^{-1/2})_{AP},
-		\end{equation}
+		\end{equation*}
 		one obtains the particularly simple form
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
@@ -2439,7 +2481,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				B_{\mu\nu}^{P}
 				B_{\lambda\sigma}^{P}
 			}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\centering
@@ -2451,40 +2493,40 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\begin{block}{Resolution of the identity = Density fitting}
 		In RI/DF, the AO pair densities are expanded in a
 		\alert{predefined auxiliary basis} $\{\chi_A^\text{aux}\}$,
-		\begin{equation}
+		\begin{equation*}
 			\chi_\mu(\br)\chi_\nu(\br)
 			\approx
 			\sum_A C_{\mu\nu}^A \chi_A^\text{aux}(\br),
-		\end{equation}
+		\end{equation*}
 		leading to
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
 				\sum_P
 				B_{\mu\nu}^P B_{\lambda\sigma}^P
 			}
-		\end{equation}
+		\end{equation*}
 		$\Rightarrow$ \alert{The quality of the approximation depends on the auxiliary basis}
 	\end{block}
 	\vfill
 	\begin{block}{Cholesky decomposition (CD)}
 		The ERI tensor can be viewed as a positive semidefinite matrix
 		in the compound indices $(\mu\nu)$ and $(\lambda\sigma)$,
-		\begin{equation}
+		\begin{equation*}
 			\bV_{(\mu\nu),(\lambda\sigma)}
 			=
 			\rbraket{\mu\nu}{\lambda\sigma}.
-		\end{equation}
+		\end{equation*}
 		A pivoted Cholesky decomposition directly generates
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
 				\sum_{P=1}^{N_\text{CD}}
 				L_{\mu\nu}^{P} L_{\lambda\sigma}^{P}
 			}
-		\end{equation}
+		\end{equation*}
 		until the remaining error is smaller than a prescribed threshold $\tau_\text{CD}$.
 	\end{block}
 	\vfill
@@ -2500,15 +2542,15 @@ Therefore, the same recurrence applies directly to contracted integrals
 \begin{frame}{RI in practice}
 	\begin{block}{Construction of the Coulomb matrix}
 		Starting from
-		\begin{equation}
+		\begin{equation*}
 			J_{\mu\nu}
 			=
 			\sum_{\lambda\sigma}
 			P_{\lambda\sigma}
 			\rbraket{\mu\nu}{\lambda\sigma},
-		\end{equation}
+		\end{equation*}
 		the RI approximation gives
-		\begin{equation}
+		\begin{equation*}
 			J_{\mu\nu}
 			\approx
 			\sum_{AB}
@@ -2519,9 +2561,9 @@ Therefore, the same recurrence applies directly to contracted integrals
 				P_{\lambda\sigma}
 				(B|\lambda\sigma)
 			}_{d_B}.
-		\end{equation}
+		\end{equation*}
 		Thus,
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\bP
 				\;\longrightarrow\;
@@ -2531,7 +2573,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\;\longrightarrow\;
 				\bJ
 			}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\vfill
 	\begin{itemize}

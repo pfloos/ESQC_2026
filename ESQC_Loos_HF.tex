@@ -225,15 +225,15 @@
 %-----------------------------------------------------
 \begin{frame}{The Hamiltonian}
 	In the \alert{Schr\"odinger equation}
-	\begin{equation}
+	\begin{equation*}
 		\chH \Phi(\{\br_i\},\{\bR_A\}) = \cE \Phi(\{\br_i\},\{\bR_A\})
-	\end{equation}
+	\end{equation*}
 	the \alert{total Hamiltonian} is 
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 		\chH = \green{\chT_\text{n}} +  \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}} +  \violet{\chV_\text{nn}}
 		}
-	\end{equation}
+	\end{equation*}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
         	\begin{block}{What are all these terms?}
@@ -263,7 +263,7 @@
 		\begin{column}{0.4\textwidth}
 			\begin{block}{In atomic units ($m = e = \hbar = 1$)}
 				\begin{subequations}
-				\begin{align}
+				\begin{align*}
 					& \green{\chT_\text{n}} = - \sum_{A=1}^{M} \frac{\laplacian_A}{2 M_A} 
 					 \\	
 					&  \blue{\chT_\text{e}} =  - \sum_{i=1}^{N} \frac{\laplacian_i}{2} 
@@ -273,7 +273,7 @@
 					& \alert{\chV_\text{ee}} =  \sum_{i<j}^N \frac{1}{r_{ij}} 
 					 \\
 					&  \violet{\chV_\text{nn}} = \sum_{A<B}^{M} \frac{Z_A Z_B}{R_{AB}} 
-				\end{align}
+				\end{align*}
 				\end{subequations}
 			\end{block}
 		\end{column}
@@ -299,27 +299,27 @@
 \begin{frame}{The Born-Oppenheimer approximation}
 	\begin{block}{Born-Oppenheimer approximation = decoupling nuclei and electrons}
 		Because $M_A \gg 1$, the electrons in a molecule move in the field of fixed nuclei
-		\begin{equation}
+		\begin{equation*}
 			\Phi(\{\br_i\},\{\bR_A\}) = \Phi_\text{nucl}(\{\bR_A\}) \Phi_\text{elec}(\{\br_i\},\{\bR_A\})
 			\qq{with}
 			\cE_\text{tot} = \cE_\text{elec} + \sum_{A<B}^{M} \frac{Z_A Z_B}{R_{AB}} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Electronic Hamiltonian}
 		The \alert{electronic Hamiltonian} is
-		\begin{equation}
+		\begin{equation*}
 			\chH_\text{elec} \Phi_\text{elec} = \cE_\text{elec} \Phi_\text{elec}
 			\qq{with}
 			\boxed{\chH_\text{elec} = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Nuclear Hamiltonian}
 		The \alert{nuclear Hamiltonian} is
-		\begin{equation}
+		\begin{equation*}
 			\chH_\text{nucl} \Phi_\text{nucl} = \cE_\text{nucl} \Phi_\text{nucl}
 			\qq{with}
 			\boxed{\chH_\text{nucl} = \green{\chT_\text{n}} + \violet{\chV_\text{nn}} + \cE_\text{elec}(\{\bR_A\})}
-		\end{equation}
+		\end{equation*}
 		It describes nuclear motions on the \red{potential energy surface} characterized by $\violet{\chV_\text{nn}} + \cE_\text{elec}(\{\bR_A\})$
 	\end{block}
 \end{frame}
@@ -360,7 +360,7 @@
 		$ \ket{\blue{\alpha}} = \ket{\frac{1}{2},+\frac{1}{2}}$ = \blue{spin-up} electron 
 		$\qquad$ 
 		$\ket{\red{\beta}}= \ket{\frac{1}{2},-\frac{1}{2}}$ = \red{spin-down} electron\\
-		\begin{align}
+		\begin{align*}
 			\int \blue{\alpha}^*(\omega) \red{\beta}(\omega) \dd{\omega} & = \int \red{\beta}^*(\omega) \blue{\alpha}(\omega) \dd{\omega} & = 0 	
 			& & 
 			\int \blue{\alpha}^*(\omega) \blue{\alpha}(\omega) \dd{\omega} & = \int \red{\beta}^*(\omega) \red{\beta}(\omega) \dd{\omega} & = 1 	
@@ -368,26 +368,26 @@
 			\braket{\blue{\alpha}}{\red{\beta}} & = \braket{\red{\beta}}{\blue{\alpha}} & = 0	
 			& &  	
 			\braket{\blue{\alpha}}{\blue{\alpha}} & = \braket{\red{\beta}}{\red{\beta}} & = 1
-		\end{align}
+		\end{align*}
 	\end{block}
 	\bigskip
 	The \violet{composite variable $\bx$} combines \orange{spin ($\omega$)} and \red{spatial ($\br$)} coordinates: $\boxed{\violet{\bx} = (\orange{\omega},\red{\br})}$
 	\begin{block}{Pauli exclusion principle}
-		\begin{equation}
+		\begin{equation*}
 			\chH_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N) = \cE_\text{elec} \Phi(\bx_1,\bx_2,\ldots,\bx_N)
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\Phi(\bx_1,\ldots,\bx_i,\ldots,\bx_j,\ldots,\bx_N) = - \Phi(\bx_1,\ldots,\bx_j,\ldots,\bx_i,\ldots,\bx_N)
-		\end{equation}		
+		\end{equation*}		
 	\end{block}
 \end{frame}
 
 \begin{frame}{Bosons vs Fermions}
 	\begin{block}{Symmetry vs Antisymmetry}
 		Indistinguishable particles means 
-		\begin{equation}
+		\begin{equation*}
 			\boxed{\abs{\Psi(\bx_1,\bx_2)}^2 = \abs{\Psi(\bx_2,\bx_1)}^2  \qq{$\Rightarrow$}  \Psi(\bx_1,\bx_2) = \alert{\pm} \Psi(\bx_2,\bx_1)}
-		\end{equation}
+		\end{equation*}
 		\\
 		\bigskip
 %		\pause
@@ -395,9 +395,9 @@
 		\\
 		\bigskip
 		Let's put them at the same spot, i.e. \alert{$\bx = \bx_1 = \bx_2$}
-		\begin{equation}
+		\begin{equation*}
 			\text{\orange{For Fermions, }} \Psi(\bx,\bx) = - \Psi(\bx,\bx)	\qq{$\Rightarrow$} 	\boxed{\Psi(\bx,\bx) = 0}
-		\end{equation}
+		\end{equation*}
 		\alert{The wavefunction vanishes: this is the origin of the Fermi (exchange) hole}
 	\end{block}
 \end{frame}
@@ -409,11 +409,11 @@
 	\pause
 	\begin{block}{Solution}
 		A possible solution is
-		\begin{equation}
+		\begin{equation*}
 			\Psi(\red{\bx_1},\blue{\bx_2}) = \frac{1}{\sqrt{2}} \qty[ \chi_1(\red{\bx_1}) \chi_2(\blue{\bx_2}) -  \chi_2(\red{\bx_1}) \chi_1(\blue{\bx_2}) ] 
-		\end{equation}
+		\end{equation*}
 		This has been popularized by Slater:
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 			\Psi(\red{\bx_1},\blue{\bx_2}) = 
 			\frac{1}{\sqrt{2}} 
@@ -423,7 +423,7 @@
 			\end{vmatrix}
 			= \frac{1}{\sqrt{2}} \qty[ \chi_1(\red{\bx_1}) \chi_2(\blue{\bx_2}) -  \chi_2(\red{\bx_1}) \chi_1(\blue{\bx_2}) ]
 			}
-		\end{equation}
+		\end{equation*}
 		\alert{This is called a Slater determinant!}
 		\\
 		\bigskip
@@ -436,7 +436,7 @@
 %-----------------------------------------------------
 \begin{frame}{The Hartree-Fock wavefunction}
 	\begin{block}{A Slater determinant}
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 				\Psi_\text{HF}(\bx_1,\bx_2,\ldots,\bx_N) 
 				& = \frac{1}{\sqrt{N!}}
@@ -451,7 +451,7 @@
 				& = \blue{\chA}\qty[\chi_1(\bx_1) \chi_2(\bx_2) \ldots \chi_N(\bx_N)]
 				= \blue{\chA}\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
 			\end{split}	
-		\end{equation}
+		\end{equation*}
 		\begin{itemize}
 			\item $\blue{\chA}$ is called the \blue{antisymmetrizer}
 			\item $\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}$ is a \green{Hartree product}
@@ -461,7 +461,7 @@
 \end{frame}
 
 \begin{frame}{Spin orbitals}
-	\begin{equation}
+	\begin{equation*}
 		\chi_p(\bx) = \red{\underbrace{\sigma(\omega)}_{\text{spin}}} \blue{\underbrace{\psi_p^{\red{\sigma}}(\br)}_{\text{spatial}}}
 		\qq{with}
 		\red{\sigma(\omega)} =
@@ -472,9 +472,9 @@
 		\end{cases}
 		\qand
 		\blue{\psi_p^{\red{\sigma}}(\br)} = \underbrace{\sum_\mu^K C^{\red{\sigma}}_{\mu p} \green{\phi_{\mu}(\br)}}_{\text{\green{LCAO}}}
-	\end{equation}
+	\end{equation*}
 	\begin{block}{The spin orbitals are orthogonal}
-		\begin{equation}
+		\begin{equation*}
 		\begin{split}
 			\braket{ \chi_p }{ \chi_q } 
 			& = \int \chi_p^*(\bx) \chi_q(\bx) \dd{\bx} 
@@ -487,15 +487,15 @@
 			\end{cases}
 			\text{ \alert{ = Kronecker delta}}	
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 %	\begin{block}{The spatial orbitals are orthogonal}
-%		\begin{equation}
+%		\begin{equation*}
 %			\braket{ \psi^{\red{\sigma}}_p }{ \psi^{\red{\sigma'}}_q }  = \int \psi_p^*(\br) \psi_q(\br) \dd{\br} = \delta_{pq} \delta_{^{\red{\sigma}}^{\red{\sigma'}}}
-%		\end{equation}
+%		\end{equation*}
 %	\end{block}
 	\begin{block}{The basis functions are, a priori, not orthogonal}
-		\begin{equation}
+		\begin{equation*}
 		\begin{split}
 			\braket{ \phi_\mu }{ \phi_\nu } 
 			& = \int \phi_\mu^*(\br) \phi_\nu(\br) \dd{\br} 
@@ -503,7 +503,7 @@
 			& = S_{\mu \nu} 
 			\text{ \alert{ = Overlap matrix elements}}	
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -513,7 +513,7 @@
 	\begin{block}{Restricted formalism}
 		\begin{itemize}
 			\item \alert{Restricted HF (RHF)} is made to describe \alert{closed-shell systems}
-			\begin{equation}
+			\begin{equation*}
 				\chi_p^\text{RHF}(\bx) 
 				= 
 				\begin{cases}
@@ -527,14 +527,14 @@
 					\\
 					\red{\Bar{\psi}_p(\br)}
 				\end{cases}
-			\end{equation}
+			\end{equation*}
 			\item The closed-shell RHF ansatz does \textbf{not} describe \alert{open-shell} systems
 		\end{itemize}
 	\end{block}
 	\begin{block}{Unrestricted formalism}
 		\begin{itemize}
 			\item For open-shell systems, one can use \alert{unrestricted HF (UHF)}
-			\begin{equation}
+			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) 
 				= 
 				\begin{cases}
@@ -542,7 +542,7 @@
 					\\
 					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
-			\end{equation}
+			\end{equation*}
 			\item UHF may break spin symmetry!
 			\item \green{Restricted open-shell HF (ROHF)} retains shared spatial orbitals
 			\\
@@ -559,21 +559,21 @@
 
 \begin{frame}{Spatial orbitals}
 	\begin{block}{The restricted spatial orbitals are orthogonal}
-		\begin{equation}
+		\begin{equation*}
 			\braket{ \psi_p }{ \psi_q }  = \int \psi_p^*(\br) \psi_q(\br) \dd{\br} = \delta_{pq} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{The same-spin unrestricted spatial orbitals are orthogonal}
-		\begin{align}
+		\begin{align*}
 			\braket{ \psi^{\blue{\alpha}}_p }{ \psi^{\blue{\alpha}}_q } & = \int \psi^{\blue{\alpha}*}_p(\br) \psi^{\blue{\alpha}}_q(\br) \dd{\br} = \delta_{pq} 
 			\\ 
 			\braket{ \psi^{\red{\beta}}_p }{ \psi^{\red{\beta}}_q } & = \int \psi^{\red{\beta}*}_p(\br) \psi^{\red{\beta}}_q(\br) \dd{\br} = \delta_{pq} 
-		\end{align}
+		\end{align*}
 	\end{block}
 	\begin{block}{The opposite-spin unrestricted spatial orbitals are, a priori, not orthogonal}
-		\begin{equation}
+		\begin{equation*}
 			\braket{ \psi^{\blue{\alpha}}_p }{ \psi^{\red{\beta}}_q }  = \int \psi^{\blue{\alpha}*}_p(\br) \psi^{\red{\beta}}_q(\br) \dd{\br} = S_{pq}^{\blue{\alpha}\red{\beta}} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -613,78 +613,78 @@
 %-----------------------------------------------------
 \begin{frame}{The Hartree-Fock energy}
 	\begin{block}{HF energy}
-		\begin{equation}
+		\begin{equation*}
 			\boxed{\EHF = \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}}
 			\qq{where}
 			\chH_\text{elec} = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} +  \alert{\chV_\text{ee}} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{One-electron Hamiltonian (or core Hamiltonian)}
-		\begin{equation}
+		\begin{equation*}
 			\chO_1 = \blue{\chT_\text{e}} +  \orange{\chV_\text{ne}} = \sum_{i=1}^N \hh(\bx_i)	
 			\qq{where}	
 			\hh(\bx_i) = -\frac{\laplacian_i}{2} - \sum_{A=1}^{M} \frac{Z_A}{r_{iA}} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Two-electron Hamiltonian (electron-electron repulsion)}
-		\begin{equation}
+		\begin{equation*}
 			\chO_2 = \alert{\chV_\text{ee}} = \sum_{i<j}^N \frac{1}{r_{ij}} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{One-electron contributions to the HF energy}
 	\begin{block}{Electronic Hamiltonian}
-	\begin{equation}
+	\begin{equation*}
 		\boxed{\chH_\text{elec} = \sum_{i=1}^N \hh(\bx_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
-	\end{equation}	
+	\end{equation*}	
 	\end{block}	
 	\begin{block}{Nuclear repulsion}
-			\begin{equation} 
+			\begin{equation*} 
 				\mel{ \Psi_\text{HF} }{\violet{\chV_\text{nn}} }{ \Psi_\text{HF} } = \violet{V_\text{nn}} \braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = \violet{V_\text{nn}}
 				\qif
 				\braket{ \Psi_\text{HF} }{ \Psi_\text{HF} } = 1
-			\end{equation}
+			\end{equation*}
 	\end{block}
 	\begin{block}{Core Hamiltonian}
-			\begin{equation} 
+			\begin{equation*} 
 				\mel{ \Psi_\text{HF} }{ \chO_1 }{ \Psi_\text{HF} }  = \sum_{i=1}^N \mel{ \chi_i(\bx_1) }{ \hh(\bx_1) }{ \chi_i(\bx_1) } = \sum_{i=1}^N h_{ii}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 \end{frame}
 
 
 \begin{frame}{Two-electron contributions to the HF energy}
 	\begin{block}{Two-electron Hamiltonian}
-			\begin{equation}
+			\begin{equation*}
 			\begin{split} 
 				\mel{ \Psi_\text{HF} }{ \chO_2 }{ \Psi_\text{HF} }  	
 				& = \sum_{i<j}^N \qty[ \mel{ \chi_i(\bx_1) \chi_j(\bx_2) }{ r_{12}^{-1} }{ \chi_i(\bx_1) \chi_j(\bx_2) } - \mel{ \chi_i(\bx_1) \chi_j(\bx_2) }{ r_{12}^{-1} }{ \chi_j(\bx_1) \chi_i(\bx_2) } ]
 				\\
 				& = \sum_{i<j}^N \qty( \underbrace{\cJ_{ij}}_{\text{\green{Coulomb}}} - \underbrace{\cK_{ij}}_{\text{\red{Exchange}}} ) = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N \qty( \cJ_{ij} - \cK_{ij} ) \qq{because} \alert{\boxed{\cJ_{ii} = \cK_{ii}}}
 			\end{split}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 	\begin{block}{HF energy}
-			\begin{equation}
+			\begin{equation*}
 				\boxed{\EHF = \sum_{i=1}^N h_{ii} +\sum_{i<j}^N (\cJ_{ij} - \cK_{ij}) }
-			\end{equation}
+			\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Coulomb operator}
 	\begin{block}{Coulomb operator}
-			\begin{equation}
+			\begin{equation*}
 			\begin{split}
 				 \chJ_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\green{j}}(\red{\bx_2})  }  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 \\
 				 & = \qty[ \int \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\red{\bx_2}) \dd{\red{\bx_2}} ]  \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 			\end{split}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 		\begin{block}{Coulomb matrix elements}
-			\begin{equation}
+			\begin{equation*}
 			\begin{split}
 				 \cJ_{\purple{i}\green{j}}
 				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\chJ_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
@@ -693,22 +693,22 @@
 				 \\
 				 & = \iint \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\blue{\bx_1}) \chi_{\green{j}}(\red{\bx_2}) \dd{\blue{\bx_1}} \dd{\red{\bx_2}} 
 			\end{split}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 \end{frame}
 \begin{frame}{Exchange operator}
 		\begin{block}{(non-local) Exchange operator}
-			\begin{equation}
+			\begin{equation*}
 			\begin{split}
 				\chK_{\green{j}}(\blue{\bx_1}) \ket{ \chi_{\purple{i}}(\blue{\bx_1}) } 
 				 & = \mel{ \chi_{\green{j}}(\red{\bx_2}) }{ r_{\blue{1}\red{2}}^{-1} }{ \chi_{\purple{i}}(\red{\bx_2})  }  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
 				 \\
 				 & = \qty[ \int \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\purple{i}}(\red{\bx_2}) \dd{\red{\bx_2}} ]  \ket{ \chi_{\green{j}}(\blue{\bx_1}) } 
 			\end{split}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 		\begin{block}{Exchange matrix elements}
-			\begin{equation}
+			\begin{equation*}
 			\begin{split}
 				\cK_{\green{i}\purple{j}} 
 				 & = \mel{\chi_{\purple{i}}(\blue{\bx_1})}{\chK_{\green{j}}(\blue{\bx_1})}{\chi_{\purple{i}}(\blue{\bx_1})} 
@@ -717,7 +717,7 @@
 				 \\
 				 & = \iint \chi_{\purple{i}}^*(\blue{\bx_1}) \chi_{\green{j}}^*(\red{\bx_2}) r_{\blue{1}\red{2}}^{-1} \chi_{\green{j}}(\blue{\bx_1}) \chi_{\purple{i}}(\red{\bx_2}) \dd{\blue{\bx_1}} \dd{\red{\bx_2}} 
 			\end{split}
-			\end{equation}
+			\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -726,54 +726,54 @@
 %-----------------------------------------------------
 \begin{frame}{Integral notations}
 	\begin{block}{Spin orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1) \dd{\bx_1} 
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\braket{ij}{kl} 
 			= \braket{\chi_i \chi_j}{\chi_k \chi_l}
 			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\mel{ij}{}{kl} 
 			= \braket{ij}{kl} - \braket{ij}{lk} 
 			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \underbrace{\chP_{12}}_{\text{permute 1 \& 2}}) \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Spatial orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\rmel{i}{\hh}{j} = h_{ij} = \rmel{\psi_i}{\hh}{\psi_j} = \int \psi_i^*(\br_1) \hh(\br_1) \psi_j(\br_1) \dd{\br_1} 
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\rbraket{ij}{kl} 
 			= \rbraket{\psi_i \psi_j}{\psi_k \psi_l}
 			= \iint \psi_i^*(\br_1) \psi_j(\br_1) \frac{1}{r_{12}} \psi_k^*(\br_2) \psi_l(\br_2) \dd{\br_1} \dd{\br_2} 
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Permutation symmetry}
 	\begin{block}{Permutation symmetry in physicists' notation}
-		\begin{equation}
+		\begin{equation*}
 			\braket{ij}{kl} 
 			= \braket{\chi_i \chi_j}{\chi_k \chi_l} 
 			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\qq*{\red{Complex-valued integrals:}} 
 			\braket{ij}{kl} = \braket{ji}{lk} = \braket{kl}{ij}^* = \braket{lk}{ji}^*
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Permutation symmetry in chemists' notation}
-		\begin{equation}
+		\begin{equation*}
 			\rbraket{ij}{kl}
 			= \rbraket{\chi_i \chi_j}{\chi_k \chi_l}
 			= \iint \chi_i^*(\bx_1) \chi_j(\bx_1) \frac{1}{r_{12}} \chi_k^*(\bx_2) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\qq*{\green{Real-valued integrals:}} 
 			\rbraket{ij}{kl} = \rbraket{ji}{kl} = \rbraket{ij}{lk} = \rbraket{ji}{lk} = \rbraket{kl}{ij} = \rbraket{lk}{ij} = \rbraket{kl}{ji} = \rbraket{lk}{ji}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -782,9 +782,9 @@
 %-----------------------------------------------------
 \begin{frame}{Reference determinant}
 	\begin{block}{Reference ground-state determinant}	
-		\begin{equation}
+		\begin{equation*}
 			\qq*{\alert{The electrons are in the $N$ lowest spin orbitals (Aufbau principle):}} \ket{\Psi_0} = \ket{\chi_1 \ldots \chi_{\green{i}} \chi_{\green{j}} \ldots \chi_N}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{center}
 		\includegraphics[width=0.30\textwidth]{fig/HF_det}
@@ -793,20 +793,20 @@
 
 \begin{frame}{Excited determinants}
 	\begin{block}{Singly-excited determinants}	
-		\begin{equation}
+		\begin{equation*}
 			\qq*{Electron in $\green{i}$ promoted in $\red{a}$:} 
 			\ket{\Psi_{\green{i}}^{\red{a}}} 
 			= \ket*{\chi_1 \ldots \chi_{\red{a}} \chi_{\green{j}} \ldots \chi_N}
 			= \cre{\red{a}} \ani{\green{i}} \ket{\Psi_0}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Doubly-excited determinants}	
-		\begin{equation}
+		\begin{equation*}
 			\qq*{Electrons in $\green{i}$ and $\green{j}$ promoted in $\red{a}$ and $\red{b}$:} 
 			\ket*{\Psi_{\green{ij}}^{\red{ab}}} 
 			= \ket{\chi_1 \ldots \chi_{\red{a}} \chi_{\red{b}} \ldots \chi_N}
 			= \cre{\red{a}} \cre{\red{b}} \ani{\green{j}} \ani{\green{i}} \ket{\Psi_0}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{center}
 		\includegraphics[width=0.22\textwidth]{fig/single}
@@ -821,63 +821,63 @@
 %-----------------------------------------------------
 \begin{frame}{Slater-Condon rules: One-electron operators}
 	\small
-	\begin{equation}
+	\begin{equation*}
 		\boxed{\chO_1 = \sum_i^N \hh(\br_i)}
-	\end{equation}
+	\end{equation*}
 	\begin{block}{Case 1: determinants differ by zero spin orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$} 
 			\mel{\red{K}}{\chO_1}{\red{K}} = \sum_i^N \mel{i}{\hh}{i}
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_1}{\Psi_0} = \sum_i^N h_{ii}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Case 2: determinants differ by one spin orbital}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_1}{\blue{L}} = \mel{i}{\hh}{k}
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_1}{\Psi_{\green{i}}^{\red{a}}} = h_{\green{i}\red{a}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Case 3: determinants differ by two spin orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \ldots}$ and $\ket{\blue{L}} = \ket{\cdots k l \ldots} \quad \Rightarrow$}
 			\mel{\red{K}}{\chO_1}{\blue{L}} = 0
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_1}{\Psi_{\green{ij}}^{\red{ab}}} = 0
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Slater-Condon rules: Two-electron operators}
 	\small
-	\begin{equation}
+	\begin{equation*}
 		\boxed{\chO_2 = \sum_{i<j}^N r_{ij}^{-1}}
-	\end{equation}
+	\end{equation*}
 	\begin{block}{Case 1: determinants differ by zero spin orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\red{K}} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_2}{\Psi_0} = \frac{1}{2} \sum_{ij}^N \mel{ij}{}{ij}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Case 2: determinants differ by one spin orbital}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k j \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\blue{L}} = \sum_j^N \mel{ij}{}{kj}
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_2}{\Psi_{\green{i}}^{\red{a}}} = \sum_k^N \mel{\green{i}k}{}{\red{a}k}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Case 3: determinants differ by two spin orbitals}
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\ket{\red{K}} = \ket{\cdots i j \cdots}$ and $\ket{\blue{L}} = \ket{\cdots k l \cdots} \quad \Rightarrow$}	
 			\mel{\red{K}}{\chO_2}{\blue{L}} = \mel{ij}{}{kl}
 			\qq{\orange{Example:}}
 			\mel*{\Psi_0}{\chO_2}{\Psi_{\green{ij}}^{\red{ab}}} = \mel{\green{ij}}{}{\red{ab}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -908,7 +908,7 @@
 	\begin{block}{Brillouin's theorem}
 		For a stationary HF reference, the Hamiltonian does not couple
 		the reference determinant to a singly-excited determinant:
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 				\mel{\Psi_0}{\chH_\text{elec}}{\Psi_{\green{i}}^{\red{a}}}
 				=
@@ -918,7 +918,7 @@
 				=
 				0
 			}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\centering
 	\vfill
@@ -930,15 +930,15 @@
 \begin{frame}{Spin of many-electron wavefunctions}
 	\begin{block}{Spin operators}
     	In the nonrelativistic, spin-free framework, $\chH$ commutes with the \alert{total spin operators}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     			\comm{\chH}{\purple{\chS^2}}=0
     			\qquad\text{and}\qquad
     			\comm{\chH}{\violet{\chS_z}}=0
     		}
-    	\end{equation}  
+    	\end{equation*}  
     	The eigenfunctions of $\chH$ may therefore be chosen as simultaneous eigenfunctions of $\purple{\chS^2}$ and $\violet{\chS_z}$:
-    	\begin{align}
+    	\begin{align*}
     		\purple{\chS^2}\ket{S,M_S}
     		& =
     		S(S+1)\ket{S,M_S}
@@ -946,7 +946,7 @@
     		\violet{\chS_z}\ket{S,M_S}
     		& =
     		M_S\ket{S,M_S}
-    	\end{align}
+    	\end{align*}
 	\end{block}
 	\begin{block}{Spin quantum numbers}
 		\begin{itemize}
@@ -966,23 +966,23 @@
 
 \begin{frame}{Are HF wavefunctions spin eigenfunctions?}
 	For a \alert{collinear$^*$} determinant $\ket{\Psi}$ containing $N^\alpha$ spin-up and $N^\beta$ spin-down orbitals, one has
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\violet{\chS_z}\ket{\Psi} = M_S\ket{\Psi}
 			\qq{with}
 			M_S=\frac{N^\alpha-N^\beta}{2}
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Closed-shell RHF}
 				Every spatial orbital is doubly occupied:
-				\begin{equation}
+				\begin{equation*}
 					\purple{\chS^2}\ket{\Psi_{\text{RHF}}}
 					=
 					0
-				\end{equation}
+				\end{equation*}
 				The determinant is a \alert{pure singlet}
 			\end{block}
 		\end{column}
@@ -990,11 +990,11 @@
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Open-shell UHF}
 				The spin-up and spin-down spatial orbitals are different:
-				\begin{equation}
+				\begin{equation*}
 					\purple{\chS^2}\ket{\Psi_{\text{UHF}}}
 					\neq
 					S(S+1)\ket{\Psi_{\text{UHF}}}
-				\end{equation}
+				\end{equation*}
 				in general
 			\end{block}
 		\end{column}
@@ -1012,7 +1012,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Spin contamination in UHF}
 	For $N^\alpha \geq N^\beta$, a UHF determinant satisfies
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\expval{\purple{\chS^2}}_{\text{UHF}}
 			=
@@ -1028,17 +1028,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\underbrace{S_{ij}^{\alpha\beta}}_{\text{overlap}}
 		=
 		\braket{\psi_i^\alpha}{\psi_j^\beta}
-	\end{equation}
+	\end{equation*}
 	\begin{block}{Spin contamination}
 		For a target high-spin state with $S=M_S$,
-		\begin{equation}
+		\begin{equation*}
 			\Delta S^2
 			=
 			\expval{\purple{\chS^2}}_{\text{UHF}}
 			-
 			\expval{\purple{\chS^2}}_{\text{exact}}
 			\geq 0
-		\end{equation}
+		\end{equation*}
 
     	\begin{itemize}
     		\item A singlet may be contaminated by triplets, quintets, \ldots 
@@ -1052,7 +1052,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Are excited determinants based on restricted orbitals spin eigenfunctions?}
 	Starting from a closed-shell singlet reference $\ket{\Psi_0}$
-	\begin{align}
+	\begin{align*}
 		\ket*{D_\alpha}
 		& =
 		\cre{a\alpha}\ani{i\alpha}\ket{\Psi_0}
@@ -1064,7 +1064,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\violet{\chS_z}\ket{D_\sigma} & = 0
 		&
 		\mel{D_\sigma}{\purple{\chS^2}}{D_\sigma} & = 1
-	\end{align}
+	\end{align*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.46\textwidth}
@@ -1112,7 +1112,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{How to get pure singlets and triplets?}
 	In the two-determinant basis $\{\ket*{D_\alpha},\ket*{D_\beta}\}$,
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\left[\purple{\chS^2}\right]_{\{D_\alpha,D_\beta\}}
 			=
@@ -1121,39 +1121,39 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				-1 &  +1
 			\end{pmatrix}
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Pure singlet}
-				\begin{equation}
+				\begin{equation*}
 					\boxed{
 						\ket{{}^1\Psi_i^a}
 						=
 						\frac{\ket*{D_\alpha} \alert{+} \ket*{D_\beta}}{\sqrt2}
 					}
-				\end{equation}
-				\begin{equation}
+				\end{equation*}
+				\begin{equation*}
 					\purple{\chS^2}\ket*{{}^1\Psi_i^a}=0
 					\qq{$\Rightarrow$} S=0
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{Pure triplet with $M_S=0$}
-				\begin{equation}
+				\begin{equation*}
 					\boxed{
 						\ket{{}^{3,0}\Psi_i^a}
 						=
 						\frac{\ket*{D_\alpha} \alert{-} \ket*{D_\beta}}{\sqrt2}
 					}
-				\end{equation}
-				\begin{equation}
+				\end{equation*}
+				\begin{equation*}
 					\purple{\chS^2}\ket*{{}^{3,0}\Psi_i^a}
 					=
 					2\ket*{{}^{3,0}\Psi_i^a}
 					\qq{$\Rightarrow$} S=1
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -1166,7 +1166,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{Spin and spatial symmetries}
 	\begin{block}{Open-shell singlet}
     	For the two open-shell spatial orbitals $i$ and $a$, the singlet is
-    	\begin{equation}
+    	\begin{equation*}
     		\ket*{{}^1\Psi_{i}^{a}}
     		=
     		\frac{1}{2}
@@ -1180,7 +1180,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     				\alpha(1)\beta(2)-\beta(1)\alpha(2)
     			\right]
     		}_{\text{spin antisymmetric}}
-    	\end{equation}
+    	\end{equation*}
 
 		\centering
 		\green{symmetric spatial part}
@@ -1190,7 +1190,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 	\begin{block}{Triplet with $M_S=0$}
     	The $M_S=0$ triplet is
-    	\begin{equation}
+    	\begin{equation*}
     		\ket*{{}^{3,0}\Psi_{i}^{a}}
     		=
     		\frac{1}{2}
@@ -1204,7 +1204,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     				\alpha(1)\beta(2)+\beta(1)\alpha(2)
     			\right]
     		}_{\text{spin symmetric}}
-    	\end{equation}
+    	\end{equation*}
 
 		\centering
 		\red{antisymmetric spatial part}
@@ -1220,7 +1220,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{The three components of the triplet}
 	\begin{block}{Components of the $S=1$ multiplet}
-		\begin{align}
+		\begin{align*}
 			\ket{{}^{3,+1}\Psi_i^a}
 				&=\ket*{\cdots i^\alpha a^\alpha\cdots}
 				&
@@ -1229,23 +1229,23 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				&
 			\ket{{}^{3,-1}\Psi_i^a}
 				&=\ket*{\cdots i^\beta a^\beta\cdots}
-		\end{align}
+		\end{align*}
 	\end{block}
 
 	Every component satisfies
-	\begin{align}
+	\begin{align*}
 		\purple{\chS^2}\ket{1,M_S} & = 2\ket{1,M_S}
 		&
 		\violet{\chS_z}\ket{1,M_S} & = M_S \ket{1,M_S}
-	\end{align}
+	\end{align*}
 
 	They are connected by
-	\begin{equation}
+	\begin{equation*}
 		\underbrace{\chS_\pm}_{\text{\alert{ladder operator}}}\ket{S,M_S}
 		=
 		\sqrt{S(S+1)-M_S(M_S\pm1)}
 		\ket{S,M_S\pm1}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
@@ -1531,18 +1531,18 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Closed-shell Hartree-Fock energy in spatial orbitals}
 	\begin{block}{General expression}
-		\begin{equation}
+		\begin{equation*}
 			\EHF 
 			= \sum_i^N \mel{i}{\hh}{i} + \frac{1}{2} \sum_i^N \sum_j^N \qty[ \braket{ij}{ij} - \braket{ij}{ji} ]
 			= 2 \sum_i^{N/2} \rmel{i}{\hh}{i} + \sum_i^{N/2} \sum_j^{N/2} \qty[ 2\rbraket{ii}{jj} - \rbraket{ij}{ji} ]
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{One- and two-electron terms}
 		\small
-		\begin{equation}
+		\begin{equation*}
 			\sum_i^N \mel{i}{\hh}{i} = \sum_i^{N/2} \mel{i}{\hh}{i} + \sum_i^{N/2} \mel{\Bar{i}}{\hh}{\Bar{i}} = 2 \sum_i^{N/2} \rmel{i}{\hh}{i}
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 		\begin{split}
 			\frac{1}{2} \sum_i^N \sum_j^N \qty[ \braket{ij}{ij} - \braket{ij}{ji} ]
 			& = \frac{1}{2} \Bigg\{  
@@ -1555,7 +1555,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\\
 			& = \sum_i^{N/2} \sum_j^{N/2} \qty[ 2\rbraket{ii}{jj} - \rbraket{ij}{ji} ]
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}	
 \end{frame}
 
@@ -1588,35 +1588,35 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{The Fock operator}
 	\begin{block}{Hartree-Fock Lagrangian}
 		We would like to minimize $E_\text{HF}$ with the constraint that the spin orbitals remain orthonormal:
-		\begin{equation}
+		\begin{equation*}
 			\mathcal{L}[\{\chi_i\}] = E_\text{HF}[\{\chi_i\}] - \sum_{ij} \underbrace{\epsilon_{ji}}_{\substack{\text{\red{Lagrange}} \\ \text{\red{multipliers}}}} \underbrace{\qty( \braket{\chi_i}{\chi_j} - \delta_{ij})}_{\substack{\text{\green{orthonormality}} \\ \text{\green{constraint}}}} 
-		\end{equation}	
+		\end{equation*}	
 	\end{block}
 	The \alert{stationarity of the HF Lagrangian} with respect to the spin orbitals implies that 
-	\begin{equation}
+	\begin{equation*}
 		\fdv{\mathcal{L}}{\chi_i^*(\bx)} = 0
 		\qq{$\Rightarrow$}
 		\boxed{
 		\hf(\bx) \chi_i(\bx) = \sum_j \epsilon_{ji} \chi_j(\bx)
 		}
-	\end{equation}	
+	\end{equation*}	
 	\begin{block}{One-electron Fock operator}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{ \hf(\bx) = \hh(\bx) + \underbrace{\sum_i^N [\chJ_i(\bx) - \chK_i(\bx)]}_{\Hat{v}^\text{HF}(\bx) \text{ = \alert{Hartree-Fock potential}}}}
-    	\end{equation}	
+    	\end{equation*}	
 	\end{block}	
 \end{frame}
 
 \begin{frame}{Canonical Hartree-Fock equations}
 		There exists a \alert{unitary} transformation $\purple{\bU}$ such that $\widetilde{\bepsilon} = \purple{\bU}^\dag \cdot \bepsilon \cdot \purple{\bU}$ is \alert{diagonal}:
-		\begin{equation}
+		\begin{equation*}
 			\widetilde{\chi}_i(\bx) = \sum_j \chi_j(\bx) \purple{U}_{ji}
 			\qq{$\Rightarrow$}
 			\ket*{\widetilde{\Psi}_\text{HF}} = \det(\purple{\bU}) \ket*{\Psi_\text{HF}} = e^{\ii \theta} \ket*{\Psi_\text{HF}}
 			\qq{and}
 			\boxed{\widetilde{f}(\bx) = \hf(\bx)}
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\purple{\bU}^\dag \cdot \purple{\bU} = \bI
 			\qq{$\Rightarrow$}
 			\det(\purple{\bU}^\dag \cdot \purple{\bU}) = 1
@@ -1624,14 +1624,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\abs{\det(\purple{\bU})}^2 = 1
 			\qq{$\Rightarrow$}
 			\det(\purple{\bU}) = e^{\ii \theta}
-		\end{equation}
+		\end{equation*}
 	\begin{block}{Canonical HF equations}
 		Dropping the tildes from hereon, we get
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     		\hf(\bx_1) \chi_i(\bx) = \epsilon_{i} \chi_i(\bx)
     		}
-    	\end{equation}
+    	\end{equation*}
     	\begin{itemize}
     		\item Eigenfunctions $\{ \chi_i \}$ are called \alert{canonical spin orbitals}
     		\item Eigenvalues $\{ \epsilon_i \}$ are called \alert{orbital energies}
@@ -1684,17 +1684,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{Koopmans' theorem}
 	\small
 	\begin{block}{Ground-state energy of the $N$-electron system}
-		\begin{equation}
+		\begin{equation*}
 			{}^{N} E_0  = \sum_{i} h_{ii} + \frac{1}{2} \sum_{ij} \mel{ij}{}{ij}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Energy of the $(N-1)$-electron system (cation)}
-		\begin{equation}
+		\begin{equation*}
 			{}^{N-1}E_k  = \sum_{i \neq k} h_{ii} + \frac{1}{2} \sum_{i \neq k} \sum_{j \neq k} \mel{ij}{}{ij}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Ionization potential (IP)}
-		\begin{equation}
+		\begin{equation*}
 		\begin{split}
 			\text{IP} 
 			& \approx {}^{N-1}E_k - {}^{N} E_0
@@ -1704,7 +1704,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			& = - \mel{k}{\hh}{k} - \sum_{i} \mel{ik}{}{ik} 
 			= - \epsilon_k 
 		\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -1714,7 +1714,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{block}
 	\pause
 	\begin{block}{Solution}
-		\begin{equation}
+		\begin{equation*}
 		\begin{split}
 			\text{EA} 
 			& \approx {}^{N}E_0 - {}^{N+1} E^c
@@ -1723,7 +1723,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\\
 			& = - \epsilon_c 
 		\end{split}
-		\end{equation}
+		\end{equation*}
 
 	\end{block}
 \end{frame}
@@ -1784,43 +1784,43 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Hartree-Fock Hamiltonian}
 	\begin{block}{Definition}
-		\begin{equation}
+		\begin{equation*}
 			\underbrace{\chH^\text{HF}}_{\text{\alert{$N$-electron} operator}} 
 			= \sum_i^N \underbrace{\hf(\bx_i)}_{\text{\alert{one-electron} operator}}
 			= \sum_i^N \qty[ \hh(\bx_i) + \Hat{v}^\text{HF}(\bx_i) ]
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Warnings!}
-		\begin{equation}
+		\begin{equation*}
 			\chH^\text{HF} \ket{\Psi_\text{HF}} 
 			\green{=} \qty( \sum_i^N \epsilon_i ) \ket{\Psi_\text{HF}}
 			\alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
-		\end{equation}
+		\end{equation*}
 		The HF wavefunction is an eigenfunction of the HF Hamiltonian, but the eigenvalue is \alert{not} the HF energy!
-		\begin{equation}
+		\begin{equation*}
 			\chH \ket{\Psi_\text{HF}} \alert{\neq} E_\text{HF} \ket{\Psi_\text{HF}}
-		\end{equation}
+		\end{equation*}
 		The HF wavefunction is \alert{not} an eigenfunction of the electronic Hamiltonian!
-		\begin{equation}
+		\begin{equation*}
 			\mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}} \green{=} E_\text{HF}
-		\end{equation}
+		\end{equation*}
 		The HF energy is the expectation value of the HF wavefunction of the electronic Hamiltonian
 	\end{block}
 \end{frame}
 
 \begin{frame}{Connection with perturbation theory}
 	\begin{block}{Double counting}
-		\begin{gather}
+		\begin{gather*}
 			\sum_i^N \epsilon_i = \sum_i^N h_{ii} + \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
 			\\
 			\text{\rotatebox[origin=c]{90}{\alert{$\neq$}}}
 			\\
 			E_\text{HF} = \sum_i^N h_{ii} + \alert{\frac{1}{2}} \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
-		\end{gather}
+		\end{gather*}
 		One double-counts the electron-electron interaction!
-		\begin{equation}
+		\begin{equation*}
 			\mel{\Psi_\text{HF}}{\sum_{i<j} \frac{1}{r_{ij}} - \sum_i^N v^\text{HF}(\bx_i)}{\Psi_\text{HF}} = - \frac{1}{2} \sum_{ij}^N (\cJ_{ij} - \cK_{ij})
-		\end{equation}
+		\end{equation*}
 		This is the first-order correction in \alert{M{\o}ller-Plesset perturbation theory}!
 	\end{block}		
 \end{frame}
@@ -1863,7 +1863,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{The Roothaan-Hall matrix equations}
 	\small
 	\begin{block}{Matrix form of the Roothaan-Hall equations}
-		\begin{align}
+		\begin{align*}
 			\bF \cdot \bC & = \bS \cdot \bC \cdot \bE 
 			&
 			& \Leftrightarrow  
@@ -1875,12 +1875,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\bC & = \bX \cdot  \bC'
 			& 
 			\bX^\dag \cdot  \bS \cdot  \bX & = \bI
-		\end{align}
+		\end{align*}
 		\begin{itemize}	
 			\item \alert{Fock matrix} $ F_{\mu\nu} = \mel{ \mu }{ \hf }{ \nu }$ and \alert{overlap matrix} $S_{\mu\nu} = \braket{ \mu }{ \nu }$
 			\item We need to determine the \alert{coefficient matrix} $\bC$ and the \alert{orbital energies} $\bE$
 		\end{itemize}
-		\begin{align}
+		\begin{align*}
 			\bC & = 
 			\begin{pmatrix}
 				C_{11}	&	C_{12}	&	\cdots	&	C_{1K}	\\
@@ -1896,14 +1896,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\vdots		&	\vdots		&	\ddots	&	\vdots		\\
 				0			&	0			&	\cdots	&	\epsilon_{K}	\\				
 			\end{pmatrix}		
-		\end{align}
+		\end{align*}
 	\end{block}
 	\begin{block}{Self-consistent field (SCF) procedure}
-		\begin{equation}
+		\begin{equation*}
 			\bF(\bC) \cdot \bC 
 			= \bS \cdot \bC \cdot \bE
 			\qquad \text{\alert{How do we solve these HF equations?}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -1942,7 +1942,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
         	\begin{block}{Solution}
-            	\begin{equation}
+            	\begin{equation*}
             		\begin{split}
             			F_{\mu \nu} 
             			& = \mel{\mu}{\hh + \sum_i^N (\chJ_i - \chK_i)}{\nu} 
@@ -1957,24 +1957,24 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     					& = H_{\mu\nu} + \underbrace{\sum_{\lambda\sigma} \alert{P_{\lambda\sigma}} \mel{\mu\sigma}{}{\nu\lambda}}_{\alert{G_{\mu\nu}}}
             			= H_{\mu\nu} + G_{\mu\nu}
             		\end{split}
-            	\end{equation}
+            	\end{equation*}
         	\end{block}
 		\end{column}
 		\begin{column}{0.4\textwidth}
         	\begin{block}{Core Hamiltonian}
-            	\begin{equation}
+            	\begin{equation*}
             		H_{\mu\nu} = \mel{\mu}{\hh}{\nu}
-            	\end{equation}
+            	\end{equation*}
         	\end{block}
          	\begin{block}{Density matrix}
-     		  	\begin{equation}
+     		  	\begin{equation*}
 	        		P_{\lambda\sigma} = \sum_i^N C_{\lambda i} C_{\sigma i}^*
-    	    	\end{equation}
+    	    	\end{equation*}
         	\end{block}
          	\begin{block}{Two-electron part}
-     		  	\begin{equation}
+     		  	\begin{equation*}
 	        		G_{\mu\nu} = \sum_{\lambda\sigma} P_{\lambda\sigma} \mel{\mu\sigma}{}{\nu\lambda}
-    	    	\end{equation}
+    	    	\end{equation*}
         	\end{block}
 		\end{column}
 	\end{columns}
@@ -1989,7 +1989,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{block}
 	\pause
 	\begin{block}{Solution}
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 				E_\text{HF} 
 				& = \sum_i^N h_{ii} + \frac{1}{2} \sum_{ij}^N \qty(\cJ_{ij} - \cK_{ij}) 
@@ -2001,32 +2001,32 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\\
 				& = \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \qty( H_{\mu\nu} + F_{\mu\nu} ) = \frac{1}{2} \Tr\qty[\bP \cdot (\bH + \bF)]
 			\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 
 \begin{frame}{Computation of the Fock matrix and energy}
 	\begin{block}{Density matrix (closed-shell system)}
-		\begin{equation}
+		\begin{equation*}
 			 P_{\red{\mu \nu}} = 2 \sum_{i=1}^{N/2} C_{\red{\mu} i} C_{\red{\nu} i}^*
 			\qqtext{or} 
 			\boxed{\bP = 2 \bC_{\text{o}} \cdot \bC_{\text{o}}^{\dag}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Fock matrix in the AO basis (closed-shell system)}
-		\begin{equation}
+		\begin{equation*}
 			F_{\red{\mu\nu}} 
 			= H_{\red{\mu\nu}} 
 			+ \underbrace{\sum_{\blue{\la \si}} P_{\blue{\si\la}} \rbraket{\red{\mu\nu}}{\blue{\la\si}}}_{J_{\red{\mu \nu}} = \text{ Coulomb}}
 			\underbrace{ - \frac{1}{2} \sum_{\blue{\la\si}} P_{\blue{\si\la}} \rbraket{\red{\mu}\blue{\si}}{\blue{\la}\red{\nu}}}_{K_{\red{\mu \nu}} = \text{ exchange}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{HF energy in the AO basis (closed-shell system)}
-		\begin{equation}
+		\begin{equation*}
 			E_\text{HF} = \sum_{\red{\mu\nu}} P_{\red{\nu\mu}} H_{\red{\mu \nu}} 
 			+ \frac{1}{2} \sum_{\red{\mu\nu} \blue{\la\si}} P_{\red{\nu\mu}} \qty[ \rbraket{\red{\mu \nu} }{ \blue{\lambda \sigma}} - \frac{1}{2} \rbraket{\red{\mu} \blue{\sigma} }{ \red{\lambda} \blue{\nu}} ] P_{\blue{\sigma\lambda}}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -2060,26 +2060,26 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
 			\begin{block}{Symmetric (or L\"owdin) orthogonalization}
-				\begin{equation}
+				\begin{equation*}
 					\text{$\bX =\bS^{-1/2} = \bU \cdot  \bs^{-1/2} \cdot  \bU^\dag$ is one solution}
-				\end{equation}
+				\end{equation*}
 				\alert{Is it working?}
-				\begin{equation}
+				\begin{equation*}
 					\bX^\dag \cdot \bS \cdot \bX 
 					= \bS^{-1/2} \cdot \bS \cdot \bS^{-1/2} 
 					= \bI \quad \green{\checkmark}
-				\end{equation}
+				\end{equation*}
 			\end{block}
 			\begin{block}{Canonical orthogonalization}
-				\begin{equation}
+				\begin{equation*}
 					\text{$\bX =\bU \cdot \bs^{-1/2}$ is another solution, useful when linear dependencies are present}
-				\end{equation}
+				\end{equation*}
 					\alert{Is it working?}
-				\begin{equation}
+				\begin{equation*}
 					\bX^\dag \cdot \bS \cdot  \bX 
 					= \bs^{-1/2} \cdot \underbrace{\bU^{\dag} \cdot \bS \cdot \bU}_{\bs} \cdot \bs^{-1/2} 
 					= \bI \quad \green{\checkmark}
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 		\begin{column}{0.3\textwidth}
@@ -2111,7 +2111,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{How do I know I have converged (or not)?}
 	The SCF procedure defines an iterative map
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\bP^{(n)}
 			\longrightarrow
@@ -2119,16 +2119,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\longrightarrow
 			\bP^{(n+1)}
 		}
-	\end{equation}
+	\end{equation*}
 	At convergence,
-	\begin{equation}
+	\begin{equation*}
 		\bP^{(n+1)}=\bP^{(n)}=\bP^\star
-	\end{equation}
+	\end{equation*}
 
 	\begin{enumerate}
 		\item One can check the \alert{energy and/or the density matrix}
 		\item At self-consistency, the \alert{generalized commutator} vanishes:
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     			\be^{(n)}
     			=
@@ -2136,20 +2136,20 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     			-
     			\bS \cdot \bP^{(n)} \cdot \bF^{(n)}
     		}
-    	\end{equation}
-    	\begin{equation}
+    	\end{equation*}
+    	\begin{equation*}
     		\bP^{(n)}=\bP^\star
     		\qquad\Longrightarrow\qquad
     		\be^{(n)}=\bO
     		\qquad\Longrightarrow\qquad
     		\max \abs*{\be^{(n)}} < \tau_\text{SCF}
-    	\end{equation}
+    	\end{equation*}
 
 		\item \alert{DIIS (direct inversion in the iterative subspace)} is usually used to speed up convergence:\\
-		\begin{equation}
+		\begin{equation*}
 			\qq*{$\Rightarrow$ \alert{Extrapolation of the Fock matrix} using the $m$ previous iterations:}
 			\boxed{\bF^{(n+1)} = \sum_{i=n-m}^{n} c_i \bF^{(i)}}
-		\end{equation}
+		\end{equation*}
 	\end{enumerate}
 \end{frame}
 
@@ -2158,7 +2158,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{How does DIIS work?}
 	Using the $m$ stored iterations, DIIS constructs
-	\begin{align}
+	\begin{align*}
 		\bF_\text{DIIS}^{(m+1)}
 		&=
 		\sum_{i=1}^{m}c_i\bF^{(i)}
@@ -2166,10 +2166,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\be_\text{DIIS}^{(m+1)}
 		&\alert{\approx}
 		\sum_{i=1}^{m}c_i\be^{(i)}
-	\end{align}
+	\end{align*}
 
 	The coefficients minimize the residual norm:
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\min_{\bc}
 			\norm{
@@ -2180,10 +2180,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\qquad
 			\sum_{i=1}^{m}c_i=1
 		}
-	\end{equation}
+	\end{equation*}
 
 	Define the DIIS overlap matrix
-	\begin{equation}
+	\begin{equation*}
 		B_{ij}
 		=
 		\braket*{\be^{(i)}}{\be^{(j)}}
@@ -2191,23 +2191,23 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\Tr[
 			\be^{(i)\dagger} \cdot \be^{(j)}
 		]
-	\end{equation}
+	\end{equation*}
 
 	Then
-	\begin{equation}
+	\begin{equation*}
 		\norm{\be_\text{DIIS}^{(m+1)}}_F^2
 		=
 		\sum_{ij}c_iB_{ij}c_j
 		=
 		\bc^\mathsf{T} \cdot \bB \cdot \bc
-	\end{equation}
+	\end{equation*}
 \end{frame}
 
 %-----------------------------------------------------
 
 \begin{frame}{DIIS weights and extrapolated Fock matrix}
 	\begin{block}{DIIS Lagrangian}
-	\begin{equation}
+	\begin{equation*}
 		\mathcal{L}(\bc,\lambda)
 		=
 		\bc^\mathsf{T} \cdot \bB \cdot \bc
@@ -2216,11 +2216,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\left(
 			\sum_{i=1}^{m}c_i - 1
 		\right)
-	\end{equation}
+	\end{equation*}
 	\end{block}
 
 	\begin{block}{Stationarity conditions}
-	\begin{equation}
+	\begin{equation*}
 		\pdv{\mathcal{L}(\bc,\lambda)}{\bc} = \bO
 		\qand
 		\pdv{\mathcal{L}(\bc,\lambda)}{\lambda} = 0
@@ -2228,11 +2228,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\bB \cdot \bc-\lambda\boldsymbol{1}=\bO
 		\qand
 		\sum_{i=1}^{m}c_i=1
-	\end{equation}
+	\end{equation*}
 	\end{block}
 
 	\begin{block}{DIIS linear system}
-	\begin{equation}
+	\begin{equation*}
 		\begin{pmatrix}
 			B_{11} & \cdots & B_{1m} & -1 \\
 			\vdots & \ddots & \vdots & \vdots \\
@@ -2253,7 +2253,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			=
 			\sum_{i=1}^{m}c_i\bF^{(i)}
 		}
-	\end{equation}
+	\end{equation*}
 	\end{block}
 	\vfill
 	\qq{$\Rightarrow$} \alert{The linear system has dimension only $(m+1)\times(m+1)$}
@@ -2391,7 +2391,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{Maximum overlap method (MOM)}
 	Let $\bC_{\text{o}}^\text{ref}$ contain the coefficients of the occupied reference spin orbitals defining
 	the target configuration.
-	\begin{equation}
+	\begin{equation*}
 		\qq*{$\forall \chi_p^\text{new}$ \quad compute}
 		O_{ip}
 		=
@@ -2408,7 +2408,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\sum_{i\in\mathcal{O}_{\text{ref}}}
 			\abs{O_{ip}}^2
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
@@ -2553,9 +2553,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\begin{block}{Conventional SCF}
 				\centering
 				Occupy the lowest orbital energies
-				\begin{equation}
+				\begin{equation*}
 					\epsilon_1\leq\epsilon_2\leq\cdots\leq\epsilon_N
-				\end{equation}
+				\end{equation*}
 				$\Rightarrow$ finds a low-energy solution
 			\end{block}
 		\end{column}
@@ -2563,9 +2563,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\begin{block}{MOM-SCF}
 				\centering
 				Occupy the largest $w$ values
-				\begin{equation}
+				\begin{equation*}
 					w_1 \geq w_2 \geq \cdots \geq w_N
-				\end{equation}
+				\end{equation*}
 				$\Rightarrow$ follows a chosen SCF solution
 			\end{block}
 		\end{column}
@@ -2618,55 +2618,55 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Dipole moments}
 	\begin{block}{Classical vs Quantum}
-		\begin{equation}
+		\begin{equation*}
 			\boldsymbol{\mu} = (\mu_x,\mu_y,\mu_z)
 			= \underbrace{\green{\sum_i q_i \br_i}}_{\text{\green{classical definition}}}
-		\end{equation}
-		\begin{equation}
+		\end{equation*}
+		\begin{equation*}
 			\boldsymbol{\mu} = (\mu_x,\mu_y,\mu_z)
 			= \underbrace{\red{\mel{\Psi_0}{- \sum_i^N \br_i}{\Psi_0}}}_{\text{\red{electrons}}} + \underbrace{\blue{\sum_A^M Z_A \bR_A}}_{\text{\blue{nuclei}}}
 			=  \red{- \sum_{\mu \nu} P_{\mu\nu} \rmel{\nu}{\br}{\mu}} + \blue{\sum_A^M Z_A \bR_A}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Vector components}
-		\begin{equation}
+		\begin{equation*}
 			\mu_x = \red{- \sum_{\mu \nu} P_{\mu\nu} \rmel{\nu}{x}{\mu}} + \blue{\sum_A^M Z_A X_A}
 			\qq{with}
 			\underbrace{\rmel{\nu}{x}{\mu}}_{\text{one-electron integrals}} = \int \phi_\nu^*(\br) \,x\, \phi_\mu(\br) \dd{\br}  
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Charge analysis}
 	\begin{block}{Electron density}
-		\begin{equation}
+		\begin{equation*}
 			\rho(\br) = \sum_{\mu\nu} \phi_\mu(\br) P_{\mu\nu} \phi_\nu^*(\br) 
 			\qq{with}
 			\int \rho(\br) \dd{\br} = N
 			\qq{$\Rightarrow$}
 			N = \sum_{\mu\nu} P_{\mu\nu} S_{\nu\mu} = \sum_\mu (\bP \cdot \bS)_{\mu\mu} = \Tr(\bP \cdot \bS)
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{Mulliken population analysis}
 		Assuming that the basis functions are atom-centered
-		\begin{equation}
+		\begin{equation*}
 			\underbrace{\blue{q_A^\text{Mulliken}}}_{\text{net charge on $A$}} = Z_A - \sum_{\mu \in A} (\bP \cdot \bS)_{\mu\mu}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 	\begin{block}{L{\"o}wdin population analysis}
 		Because $\Tr(\bA \cdot \bB) = \Tr(\bB \cdot \bA)$, we have, for any $\alpha$, 
 		$N = \sum_{\mu} (\bS^{\alpha} \cdot \bP \cdot \bS^{1-\alpha})_{\mu\mu}$
-		\begin{equation}
+		\begin{equation*}
 			\qq*{For \red{$\alpha = 1/2$}, we get:}
 			N = \sum_{\mu} (\bS^{1/2} \cdot \bP \cdot \bS^{1/2})_{\mu\mu}
 			\qq{$\Rightarrow$}
 			\red{q_A^\text{L{\"o}wdin}} = Z_A - \sum_{\mu \in A} (\bS^{1/2} \cdot \bP \cdot \bS^{1/2})_{\mu\mu}
-		\end{equation}
+		\end{equation*}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Localized orbitals}
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\widetilde{\bC}_\text{o}
 			=
@@ -2676,13 +2676,13 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\qq{$\Leftrightarrow$}
 			\text{\purple{unitary transformation}}
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
 			\begin{block}{The density matrix is unchanged}
 				For a closed-shell determinant,
-				\begin{equation}
+				\begin{equation*}
 					\widetilde{\bP}
 					=
 					2\widetilde{\bC}_\text{o}
@@ -2694,16 +2694,16 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\bC_\text{o}^\dagger
 					=
 					\bP
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{block}{The determinant changes only by a phase}
-				\begin{equation}
+				\begin{equation*}
 					\ket*{\widetilde{\Psi}_0}
 					=
 					\det(\purple{\bU})\ket{\Psi_0}
-				\end{equation}
+				\end{equation*}
 				The \alert{density}, \alert{energy}, and \alert{every expectation value} are unchanged
 			\end{block}
 		\end{column}
@@ -2735,17 +2735,17 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Localization procedures}
 	\begin{block}{Edmiston-Ruedenberg functional}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     			\Omega_\text{ER}
     			=
     			\sum_i \rbraket{\psi_i \psi_i}{\psi_i \psi_i}
     			\quad\longrightarrow\quad\max \text{orbital self-repulsion}
     		}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}	
 	\begin{block}{Foster-Boys functional}
-    	\begin{equation}
+    	\begin{equation*}
     	\begin{split}
     			\Omega_\text{BF}
     			& =
@@ -2764,7 +2764,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     			]
     			\quad\longrightarrow\quad\max \text{distance between centroids}
     	\end{split}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 
 	\begin{columns}[T,onlytextwidth]
@@ -2790,21 +2790,21 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Pipek-Mezey localization procedure}
 	For an atomic population $q_{i}^{A}$ of orbital $i$ on atom $A$, the original Pipek-Mezey criterion maximizes
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\Omega_\text{PM}
 			=
 			\sum_A \sum_i
 			\abs*{q_{i}^{A}}^2
 		}
-	\end{equation}
+	\end{equation*}
 	using Mulliken populations
-	\begin{equation}
+	\begin{equation*}
 		q_{i}^{A}
 		=
 		\sum_{\mu\in A} \sum_{\nu}
 		C_{\mu i}^* S_{\mu\nu} C_{\nu i}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
@@ -2840,9 +2840,9 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 					\item The density matrix and electron density
 					\item The HF energy and molecular properties
 					\item The zero occupied-virtual Fock block
-    				\begin{equation}
+    				\begin{equation*}
     					\widetilde{\bff}_\text{ov} = \bff_\text{ov}  = \bO
-    				\end{equation}
+    				\end{equation*}
 				\end{itemize}
 			\end{block}
 			\begin{block}{Why localize?}
@@ -2858,11 +2858,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\begin{block}{What changes}
 				\begin{itemize}
 					\item Localized orbitals are generally not eigenfunctions of the Fock operator:
-    				\begin{equation}
+    				\begin{equation*}
     					\widetilde{\bff}_\text{oo}
     					=
     					\purple{\bU}^\dagger \cdot \bepsilon_\text{o} \cdot \purple{\bU}
-    				\end{equation}
+    				\end{equation*}
     				\item Orbital energies cannot therefore be assigned to localized orbitals
 				\end{itemize}
 			\end{block}
@@ -2891,23 +2891,23 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{How to model open-shell systems?}
 		\begin{itemize}
 			\item For open-shell systems one uses \alert{unrestricted spin orbitals}
-			\begin{equation}
+			\begin{equation*}
 				\chi_p^\text{UHF}(\bx) = 
 				\begin{cases}
 					\alpha(\omega) \blue{\psi_p^\alpha(\br)}
 					\\
 					\beta(\omega) \red{\psi_p^\beta(\br)}
 				\end{cases}
-			\end{equation}		
+			\end{equation*}		
 			\item UHF may break spin symmetry: the determinant need not be an eigenfunction of $\purple{\chS^2}$
 			\item The HF wavefunction is no longer a pure spin function
 			\item Singlets are contaminated by triplets, quintets, etc
 			\item Doublets are contaminated by quartets, sextets, etc
 			\item Generalized HF also allows spin mixing and need not preserve $\violet{\chS_z}$
-			\begin{equation}
+			\begin{equation*}
 				\chi_p^\text{GHF}(\bx) = \alpha(\omega) \blue{\psi_p^\alpha(\br)} + \beta(\omega) \red{\psi_p^\beta(\br)}
 				\qq{$\Rightarrow$ \alert{two-component spinor}}
-			\end{equation}
+			\end{equation*}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -2920,7 +2920,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{UHF equations for unrestricted spin orbitals}
 		\bigskip
 		\alert{To minimize the UHF energy}, the unrestricted spatial orbitals must be eigenfunctions of the \alert{$\alpha$ and $\beta$ Fock operators}:
-		\begin{align}
+		\begin{align*}
 			& \boxed{
 			\blue{f^\alpha(\br_1) \psi_i^\alpha(\br_1) = \epsilon_i^\alpha \psi_i^\alpha(\br_1)}
 			}
@@ -2928,19 +2928,19 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			& \boxed{
 			\red{f^\beta(\br_1) \psi_i^\beta(\br_1) = \epsilon_i^\beta \psi_i^\beta(\br_1)}
 			}
-		\end{align}
+		\end{align*}
 		where
-		\begin{align}
+		\begin{align*}
 			\blue{f^\alpha(\br_1)} & = h(\br_1) + \sum_{i}^{N^\alpha} [ \blue{J_i^\alpha(\br_1) - K_i^\alpha(\br_1)} ]  + \sum_{i}^{N^\beta} \red{J_i^\beta(\br_1)}
 			\\
 			\red{f^\beta(\br_1)} & = h(\br_1) + \sum_{i}^{N^\beta} [ \red{J_i^\beta(\br_1) - K_i^\beta(\br_1)} ]  + \sum_{i}^{N^\alpha} \blue{J_i^\alpha(\br_1)}
-		\end{align}	
+		\end{align*}	
 		The \blue{Coulomb} and \violet{Exchange} operators are
-		\begin{align}
+		\begin{align*}
 			\blue{J_i^\sigma(\br_1)} & = \int \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_i^\sigma(\br_2) \dd{\br_2} 
 			& 
 			\violet{K_i^\sigma(\br_1)} \psi_j^\sigma(\br_1) & =  \qty[ \int \psi_i^{\sigma *}(\br_2) r_{12}^{-1} \psi_j^\sigma(\br_2) \dd{\br_2} ] \psi_i^\sigma(\br_1)
-		\end{align}		
+		\end{align*}		
 	\end{block}
 \end{frame}
 
@@ -2948,12 +2948,12 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\begin{block}{UHF energy}
 		\bigskip
 		The UHF energy comprises three contributions:	
-		\begin{equation}
+		\begin{equation*}
 			E_\text{UHF} = \blue{E_\text{UHF}^{\alpha\alpha}} + \red{E_\text{UHF}^{\beta\beta}} + \violet{E_\text{UHF}^{\alpha\beta}}	
-		\end{equation}		
+		\end{equation*}		
 		which yields
 		{\small
-		\begin{equation}
+		\begin{equation*}
 			\boxed{
 			E_\text{UHF} = 
 			\blue{\sum_{i}^{N^\alpha} h_{ii}^\alpha 
@@ -2962,15 +2962,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			+ \frac{1}{2} \sum_{ij}^{N^\beta} (J_{ij}^{\beta\beta} - K_{ij}^{\beta\beta})}
 			+ \violet{\sum_{i}^{N^\alpha} \sum_{j}^{N^\beta} J_{ij}^{\alpha\beta}} 
 			}
-		\end{equation}}	
+		\end{equation*}}	
 		The matrix elements are given by			
-		\begin{align}
+		\begin{align*}
 			h_{ii}^\sigma & = \mel{ \psi_i^\sigma }{ h }{ \psi_i^\sigma } 
 			& 
 			J_{ij}^{\sigma\sigma'} & = \braket*{ \psi_i^\sigma \psi_j^{\sigma'} }{  \psi_i^\sigma \psi_j^{\sigma'} } 
 			&
 			K_{ij}^{\sigma\sigma} & = \braket*{ \psi_i^\sigma \psi_j^\sigma }{  \psi_j^\sigma \psi_i^\sigma } 
-		\end{align}	
+		\end{align*}	
 		Note that \alert{there is no exchange between opposite-spin electrons}
 	\end{block}
 \end{frame}
@@ -2993,19 +2993,19 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{The Pople-Nesbet equations}
 	\small
 	\begin{block}{Expansion of the unrestricted spin orbitals in a basis}
-		\begin{align}
+		\begin{align*}
 			\psi_i^\alpha (\br) & = \sum_{\mu=1}^K \blue{C_{\mu i}^\alpha} \phi_{\mu} (\br)
 			& 
 			\psi_i^\beta (\br) & = \sum_{\mu=1}^K \red{C_{\mu i}^\beta} \phi_{\mu} (\br)
-		\end{align}
+		\end{align*}
 	\end{block}
 	\begin{block}{The Pople-Nesbet equations}
-		\begin{align}
+		\begin{align*}
 			\blue{\bF^\alpha} \cdot \blue{\bC^\alpha} & = \bS \cdot  \blue{\bC^\alpha} \cdot  \bE^\alpha
 			& 
 			\red{\bF^\beta} \cdot \red{\bC^\beta} & = \bS \cdot  \red{\bC^\beta} \cdot  \bE^\beta
-		\end{align}
-		\begin{gather}
+		\end{align*}
+		\begin{gather*}
 			\blue{F_{\mu \nu}^\alpha} 
 			= H_{\mu \nu} 
 			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} [ \rbraket{\mu \nu }{ \sigma \lambda} - \rbraket{\mu \lambda }{ \sigma \nu} ] 
@@ -3015,7 +3015,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			= H_{\mu \nu} 
 			+ \sum_{\lambda \sigma} \red{P_{\lambda \sigma}^\beta} [ \rbraket{\mu \nu }{ \sigma \lambda} - \rbraket{\mu \lambda }{ \sigma \nu} ] 
 			+ \sum_{\lambda \sigma} \blue{P_{\lambda \sigma}^\alpha} \rbraket{\mu \nu }{ \sigma \lambda} 		
-		\end{gather}
+		\end{gather*}
 		$\blue{\bF^\alpha}$ and $\red{\bF^\beta}$ are both functions of $\blue{\bC^\alpha}$ and $\red{\bC^\beta}$
 		$\Rightarrow$ \alert{There's a coupling between $\alpha$ and $\beta$ orbitals!}
 	\end{block}
@@ -3023,7 +3023,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 
 \begin{frame}{Unrestricted Density Matrices}
 	\begin{block}{Spin-up and spin-down density matrices}
-		\begin{align}
+		\begin{align*}
 			&\boxed{
 				\blue{P_{\mu \nu}^\alpha} = \sum_{i=1}^{N^\alpha} C_{\mu i}^\alpha C_{\nu i}^{\alpha *}
 				\quad \Leftrightarrow \quad \blue{\bP^\alpha}
@@ -3033,21 +3033,21 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				\red{P_{\mu \nu}^\beta} = \sum_{i=1}^{N^\beta} C_{\mu i}^\beta C_{\nu i}^{\beta *}
 				\quad \Leftrightarrow \quad \red{\bP^\beta}
 			}
-		\end{align}
+		\end{align*}
 	\end{block}
 	\begin{block}{Properties of the density $(\sigma = \alpha \text{ or } \beta)$}
-		\begin{align}
+		\begin{align*}
 			\rho^\sigma(\br) & = \sum_{\mu \nu} \phi_{\mu}(\br) P_{\mu \nu}^\sigma \phi^*_{\nu}(\br)
 			&
 			\int \rho^\sigma(\br) \dd{\br} & = N^\sigma
-		\end{align}
+		\end{align*}
 	\end{block}
 	\begin{block}{Total and Spin density matrices}
-		\begin{align}
+		\begin{align*}
 			\underbrace{\blue{\bP^\text{T}}}_{\blue{\text{Charge density}}} & = \blue{\bP^\alpha} + \red{\bP^\beta}
 			&
 			\underbrace{\violet{\bP^\text{S}}}_{\violet{\text{Spin density}}} & = \blue{\bP^\alpha} - \red{\bP^\beta}
-		\end{align}
+		\end{align*}
 	\end{block}
 \end{frame}
 
@@ -3112,7 +3112,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Hartree-Fock for minimal-basis \ce{H2}}
 	Start from one normalized $1s$ function on each atom
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\psi_g
 			=
@@ -3124,7 +3124,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		}
 		\qq{with}
 		S=\braket{\phi_A}{\phi_B}
-	\end{equation}
+	\end{equation*}
 
 	\begin{block}{Why is it special?}
 		For two electrons in two spatial orbitals, UHF reduces to
@@ -3147,7 +3147,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{RHF problem}
 	\begin{block}{RHF wavefunction and energy}
-    	\begin{equation}
+    	\begin{equation*}
     		\ket{\Psi_\text{RHF}}
     		=
     		\ket{\psi_g\Bar{\psi}_g}
@@ -3155,10 +3155,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		E_\text{RHF}
     		=
     		2h_{gg}+J_{gg}+\frac{1}{R}
-    	\end{equation}
+    	\end{equation*}
     
     	At large $R$, where $S\rightarrow0$,
-    	\begin{equation}
+    	\begin{equation*}
     		\psi_g(1)\psi_g(2)
     		\longrightarrow
     		\frac{1}{2}
@@ -3171,7 +3171,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     				\phi_A(1)\phi_A(2)+\phi_B(1)\phi_B(2)
     			}_{\text{ionic}}
     		]
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 
 	\begin{block}{The RHF dissociation error}
@@ -3188,7 +3188,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \begin{frame}{UHF problem}
 	\small
 	\begin{block}{UHF orbitals}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     		\begin{aligned}
     			\psi^\alpha(\theta)
@@ -3199,7 +3199,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		}
     		\qq{with}
     		\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)
-    	\end{equation}
+    	\end{equation*}
     	The two choices $\pm\theta$ are degenerate and exchange the spin localization
 	\end{block}
 
@@ -3244,7 +3244,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{UHF energy and stationary points}
 	With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$,
-	\begin{equation}
+	\begin{equation*}
 		E_\text{UHF}(\theta)
 		=
 		2\cos^2\theta\,h_{gg}
@@ -3253,10 +3253,10 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		+\sin^4\theta\,J_{uu}
 		+2\sin^2\theta\cos^2\theta
 		\qty(J_{gu}-2K_{gu})
-	\end{equation}
+	\end{equation*}
 
 	Besides the restricted stationary point $\theta=0$, a \alert{broken-symmetry stationary solution} satisfies
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\cos^2 \theta^\star
 			=
@@ -3266,7 +3266,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 				J_{gg}+J_{uu}-2J_{gu}+4K_{gu}
 			}
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
@@ -3281,7 +3281,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{column}
 	\end{columns}
 	\begin{block}{Coulson-Fischer (CF) point}
-    	\begin{equation}
+    	\begin{equation*}
     		\eval{\dv[2]{E}{\theta}}_{\theta=0}
     		=
     		4\left(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}\right)
@@ -3291,7 +3291,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     			\quad\Longleftrightarrow\quad
     			\eval{\dv[2]{E}{\theta}}_{\theta=0}=0
     		}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 \end{frame}
 
@@ -3440,32 +3440,32 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\begin{column}{0.38\textwidth}
 			\small
 			At $R\rightarrow\infty$,
-			\begin{equation}
+			\begin{equation*}
 				S\rightarrow0
 				\qquad
 				\psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}
-			\end{equation}
+			\end{equation*}
 
 			Define the positive on-site repulsion
-			\begin{equation}
+			\begin{equation*}
 				U=(AA|AA)
-			\end{equation}
+			\end{equation*}
 
 			\begin{block}{Restricted limit}
-				\begin{equation}
+				\begin{equation*}
 					\boxed{
 						E_\text{RHF}^{\infty}
 						=2E_\text{H}+\frac12 U
 					}
-				\end{equation}
+				\end{equation*}
 				The ionic terms leave a finite error
 			\end{block}
 
 			\begin{block}{Unrestricted limit}
 				Since $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$,
-				\begin{equation}
+				\begin{equation*}
 					\boxed{E_\text{UHF}^{\infty}=2E_\text{H}}
-				\end{equation}
+				\end{equation*}
 			\end{block}
 		\end{column}
 	\end{columns}
@@ -3474,7 +3474,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{Symmetry-broken UHF}
 	For the two-electron $M_S=0$ determinant,
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\expval{\purple{\chS^2}}_\text{UHF}
 			=
@@ -3482,7 +3482,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			=
 			\sin^2(2\theta)
 		}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
@@ -3499,7 +3499,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{column}
 	\end{columns}
 
-	\begin{equation}
+	\begin{equation*}
 		\ket{A\alpha\,B\beta}
 		=
 		\frac{1}{\sqrt2}
@@ -3509,7 +3509,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			\ket{\text{triplet},M_S=0}
 		\right)
 		\qq{as} R\to\infty
-	\end{equation}
+	\end{equation*}
 	\vfill
 	\centering
 	$\Rightarrow$
@@ -3531,7 +3531,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\fbox{\textbf{Key idea:} GHF allows every orbital to choose its spin direction}
 	\end{center}
 	A GHF orbital is a \alert{two-component spinor}:
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\chi_p^\text{GHF}(\bx)
 			=
@@ -3539,15 +3539,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 			+
 			\beta(\omega)\,\red{\psi_p^\beta(\br)}
 		}
-	\end{equation}
+	\end{equation*}
 	Both components are expanded in the same spatial AO basis
-	\begin{equation}
+	\begin{equation*}
 		\psi_i^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br)
 		\qq{with}
 		\boldsymbol{\mathcal{C}} = \mqty(\bC^\alpha\\\bC^\beta)
 		\qand
 		\boldsymbol{\mathcal{C}} \in \mathbb{C}^{2K\times N}
-	\end{equation}
+	\end{equation*}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.31\textwidth}
@@ -3576,7 +3576,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{GHF density matrix}
 	\begin{block}{Density matrix}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     			\boldsymbol{\mathcal{P}} =
     			\mqty(
@@ -3588,7 +3588,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		P_{\mu\nu}^{\sigma\sigma'}
     		=
     		\sum_{i=1}^{N}C_{\mu i}^{\sigma}C_{\nu i}^{\sigma' *}
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 
 	\begin{block}{What do the blocks mean?}
@@ -3600,7 +3600,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\end{itemize}
 	\end{block}
 
-	\begin{equation}
+	\begin{equation*}
 		\boldsymbol{\mathcal{P}} 
 		= \mqty(
 		\bP + \bM_z & \bM_x - \ii \bM_y
@@ -3612,23 +3612,23 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\bM = \mqty( \bM_x \\ \bM_y \\ \bM_z) 
 		\qq{and}
 		\boldsymbol{\sigma} = \mqty( \boldsymbol{\sigma}_x \\ \boldsymbol{\sigma}_y \\ \boldsymbol{\sigma}_z) 
-	\end{equation}
+	\end{equation*}
 \end{frame}
 
 %-----------------------------------------------------
 \begin{frame}{GHF equations: Roothaan-Hall in spinor space}
 	\begin{block}{Generalized eigenvalue problem}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{\boldsymbol{\mathcal{F}} \cdot \boldsymbol{\mathcal{C}} = \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} \cdot \boldsymbol{\mathcal{E}}}
     		\qq{with}
     		\boldsymbol{\mathcal{S}}=\mqty(\bS&\bO\\\bO&\bS)
     		\qand
     		\boldsymbol{\mathcal{C}}^\dagger \cdot \boldsymbol{\mathcal{S}} \cdot \boldsymbol{\mathcal{C}} = \bI
-    	\end{equation}
+    	\end{equation*}
 	\end{block}
 
 	\begin{block}{Fock matrix}
-    	\begin{equation}
+    	\begin{equation*}
     		\boxed{
     		\boldsymbol{\mathcal{F}} =
     		\mqty(
@@ -3641,15 +3641,15 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
     		\bh + \bJ[\bP^{\alpha\alpha}] + \bJ[\bP^{\beta\beta}] -\bK[\bP^{\beta\beta}]
     		)
     		}
-    	\end{equation}
+    	\end{equation*}
     	with 
-    	\begin{align}
+    	\begin{align*}
     		J_{\mu\nu}[\bP]
     		&=\sum_{\lambda\sigma}P_{\lambda\sigma}\rbraket{\mu\nu}{\lambda\sigma}
     		&
     		K_{\mu\nu}[\bP]
     		&=\sum_{\lambda\sigma}P_{\lambda\sigma}\rbraket{\mu\sigma}{\lambda\nu}
-    	\end{align}
+    	\end{align*}
     	\alert{The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components self-consistently}
 	\end{block}
 
@@ -3664,7 +3664,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 \begin{frame}{RHF, UHF, and GHF}
 	\centering
-	\begin{equation}
+	\begin{equation*}
 		\boxed{
 			\{\Phi_\text{RHF}\}
 			\subset
@@ -3674,7 +3674,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		}
 		\qquad\Longrightarrow\qquad
 		\alert{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}
-	\end{equation}
+	\end{equation*}
 	for the corresponding global minima in the same one-electron basis
 
 	\begin{columns}[T,onlytextwidth]
