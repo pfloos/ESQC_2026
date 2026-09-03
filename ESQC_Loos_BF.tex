@@ -1095,7 +1095,7 @@ decoration={snake,
 			\text{decay exponentially fast with $\abs{\red{\bA} - \blue{\bB}}$}
 		\end{equation}		
 	\end{block}
-	\begin{block}{Overalp}
+	\begin{block}{Overlap}
 		\begin{equation}
 			\begin{split}
 			\rbraket{\red{\ba}}{ \blue{\bb} }
@@ -1129,12 +1129,22 @@ decoration={snake,
 		\end{equation}	
 		\alert{The number of ``significant'' ERIs in a large system is $\order{N^2}$!}
 	\end{block}
+	\begin{block}{Shell pairs and shell quartets}
+	   	\begin{itemize}
+			\bigskip
+    		\item $\rbra{ \red{\ba} \blue{\bb} }$ = single primitive bra and $\rbra{ \red{a} \blue{b} }$ = entire primitive shell pair 
+    		\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single primitive integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire primitive shell quartet 
+			\bigskip
+    		\item $\rbra{ \red{\ba} \blue{\bb} }$ = single contracted bra and $\rbra{ \red{a} \blue{b} }$ = entire contracted shell pair 
+    		\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single contracted integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire contracted shell quartet 
+    	\end{itemize}
+	\end{block}
 \end{frame}
 %
 
 
 
-\begin{frame}{Fundamental integrals}
+\begin{frame}{Fundamental $ssss$ integral}
 	\begin{block}{Definition}
     	\begin{equation}
     		\begin{split} 
@@ -1177,7 +1187,7 @@ decoration={snake,
     	\end{equation}
 \end{frame}
 
-\begin{frame}{Fundamental integrals}
+\begin{frame}{Fundamental $ssss$ integral}
 			Defining $\vartheta = \violet{\zeta} \purple{\eta} /(\violet{\zeta} + \purple{\eta})$, we have
 	    	\begin{equation}
     		\begin{split} 
@@ -1225,10 +1235,8 @@ decoration={snake,
 	\begin{block}{Downward recursion}
 		\begin{equation}
 			F_m(x) = \frac{2x F_{m+1} (x) + \exp(-x)}{2m+1}
-			\qquad
-			F_\infty(x) = 0
 		\end{equation}
-		Upward recursion is numerically unstable
+		Downward recursion is numerically stable, whereas upward recursion can become unstable for small $x$
 	\end{block}
 	\begin{block}{Asymptotic behavior}
 		\begin{equation}
@@ -1238,148 +1246,463 @@ decoration={snake,
 	\end{block}
 \end{frame}
 
-
-\begin{frame}{Obara-Saika (OS) recurrence relation}
-	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using, in particular, the relation
-	\begin{equation}
-		 \pdv{\sket{\red{\ba}}}{A_i} = 2\alpha \sket{\red{\ba}+\bI_i} - a_i \sket{\red{\ba}-\bI_i}
-		 \qq{$\Rightarrow$}
-		 \sket{\red{\ba}+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\red{\ba}}}{A_i} + a_i \sket{\red{\ba}-\bI_i} )
-	\end{equation}
-	one gets
-	\begin{equation}
-	\boxed{\begin{split}
-		\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
-		& = (P_i - A_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
-		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)} 
-		\\
-		& + \frac{a_i}{2\zeta} \qty(
-			\sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)}
-			)
-		\\
-		& + \frac{b_i}{2\zeta} \qty( 
-			\sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m+1)}
-			)
-		\\
-		& + \frac{c_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{(\orange{\bc}-\bI_i)\green{\bd}}^{(m+1)}
-		+ \frac{d_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}(\green{\bd}-\bI_i)}^{(m+1)}
-	\end{split}}
-	\end{equation}	
-	with analogues which increments $\blue{\bb}$, $\orange{\bc}$, and $\green{\bd}$.
-	\\
-	\vfill
-	\centering
-	$\Rightarrow$ \alert{What's the best way to apply this recurrence relation?}
-\end{frame}
+% ======================================================================
+% Auxiliary integrals
+% ======================================================================
 
 \begin{frame}{Auxiliary fundamental integrals}
-	\begin{equation}
-		\boxed{\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)}
-	\end{equation}
-	\begin{itemize}
-		\item $F_m$ is the generalized Boys function
-		\item $m = 0$ are true ERIs while integrals with $m > 0$ are auxiliary integrals defined by OS
-		\item These are necessary to obtain true ERIs of higher angular momentum as a linear combination of integrals of lower angular momentum
-		\item To compute $\sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}$, one must compute fundamental integrals up to $m = a+b+c+d$
-	\end{itemize}
+
+\begin{block}{Why do higher-order Boys functions appear?}
+
+The physical $ssss$ ERI involves only $F_0$.
+
+However, generating angular momentum by differentiation produces
+higher-order Boys functions $F_m$.
+
+It is therefore convenient to define the hierarchy
+
+\begin{equation}
+\boxed{
+\sbraket{\bO\bO}{\bO\bO}^{(m)}
+=
+\sqrt{\frac{4\vartheta}{\pi}}
+\qty(\frac{\pi}{\violet{\zeta}})^{3/2}
+K_{\violet{\zeta},\violet{\bP}}
+\qty(\frac{\pi}{\purple{\eta}})^{3/2}
+K_{\purple{\eta},\purple{\bQ}}
+F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
+}
+\end{equation}
+
+\end{block}
+
+\begin{itemize}
+	\item $m=0$: \alert{physical} $ssss$ ERI
+	\item $m>0$: \alert{auxiliary integrals}, used only as intermediates
+	\item Angular-momentum recurrences couple auxiliary orders $m$ and $m+1$
+	\item For total angular momentum $L=a+b+c+d$
+	\\
+	$\Rightarrow$ one needs fundamental auxiliary integrals up to $m=L$.
+\end{itemize}
+
 \end{frame}
 
+
+%\begin{frame}{Obara-Saika (OS) recurrence relation}
+%	Defining $R_i = \frac{\zeta P_i + \eta Q_i}{\zeta+\eta}$ and using, in particular, the relation
+%	\begin{equation}
+%		 \pdv{\sket{\red{\ba}}}{A_i} = 2\alpha \sket{\red{\ba}+\bI_i} - a_i \sket{\red{\ba}-\bI_i}
+%		 \qq{$\Rightarrow$}
+%		 \sket{\red{\ba}+\bI_i} = \frac{1}{2\alpha} \qty( \pdv{\sket{\red{\ba}}}{A_i} + a_i \sket{\red{\ba}-\bI_i} )
+%	\end{equation}
+%	one gets
+%	\begin{equation}
+%	\boxed{\begin{split}
+%		\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
+%		& = (P_i - A_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} 
+%		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)} 
+%		\\
+%		& + \frac{a_i}{2\zeta} \qty(
+%			\sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}}^{(m+1)}
+%			)
+%		\\
+%		& + \frac{b_i}{2\zeta} \qty( 
+%			\sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{\red{\ba}(\blue{\bb}-\bI_i)}{\orange{\bc}\green{\bd}}^{(m+1)}
+%			)
+%		\\
+%		& + \frac{c_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{(\orange{\bc}-\bI_i)\green{\bd}}^{(m+1)}
+%		+ \frac{d_i}{2(\zeta+\eta)} \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}(\green{\bd}-\bI_i)}^{(m+1)}
+%	\end{split}}
+%	\end{equation}	
+%	with analogues which increments $\blue{\bb}$, $\orange{\bc}$, and $\green{\bd}$.
+%	\\
+%	\vfill
+%	\centering
+%	$\Rightarrow$ \alert{What's the best way to apply this recurrence relation?}
+%\end{frame}
+
+%\begin{frame}{Auxiliary fundamental integrals}
+%	\begin{equation}
+%		\boxed{\sbraket{\bO\bO}{\bO\bO}^{(m)} \propto F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)}
+%	\end{equation}
+%	\begin{itemize}
+%		\item $F_m$ is the generalized Boys function
+%		\item $m = 0$ are true ERIs while integrals with $m > 0$ are auxiliary integrals defined by OS
+%		\item These are necessary to obtain true ERIs of higher angular momentum as a linear combination of integrals of lower angular momentum
+%		\item To compute $\sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}$, one must compute fundamental integrals up to $m = a+b+c+d$
+%	\end{itemize}
+%\end{frame}
+
+
+% ======================================================================
+% OS principle
+% ======================================================================
+
+\begin{frame}{Obara-Saika: generating angular momentum}
+
+	\begin{block}{Key identity}
+		For a Cartesian Gaussian,
+		\begin{equation}
+			\pdv{\sket{\red{\ba}}}{A_i}
+            =
+            2\alpha
+            \sket{\red{\ba}+\bI_i}
+            -
+            a_i
+            \sket{\red{\ba}-\bI_i}
+            \qq{$\Rightarrow$}
+            \boxed{
+            \sket{\red{\ba}+\bI_i}
+            =
+            \frac{1}{2\alpha}
+            \qty[
+            \pdv{\sket{\red{\ba}}}{A_i}
+            +
+            a_i\sket{\red{\ba}-\bI_i}
+            ]
+            }
+		\end{equation}
+	\end{block}
+
+	Applying this identity to the auxiliary ERIs generates recurrence relations connecting different angular momenta and different Boys orders
+	$\Rightarrow$ \alert{Obara-Saika or vertical recurrence relations}
+
+    \vfill
+    
+    \begin{equation}
+    \boxed{
+    \sbraket{00}{00}^{(m)}
+    \quad\longrightarrow\quad
+    \sbraket{\red{a}0}{00}^{(m)}
+    \quad\longrightarrow\quad
+    \sbraket{\red{a}0}{\orange{c}0}^{(m)}
+    }
+    \end{equation}
+    
+    \vfill
+    
+    \centering
+    \alert{Instead of evaluating every ERI from scratch, we build them recursively}
+
+\end{frame}
+
+
+% ======================================================================
+% Strategy
+% ======================================================================
+
+\begin{frame}{Strategy for building an ERI}
+
+	Starting from the fundamental auxiliary integrals,
+    \begin{equation}
+        \boxed{
+        \sbraket{00}{00}^{(m)}
+        \;
+        \xrightarrow{\;\red{\mathrm{VRR}}\;}
+        \;
+        \sbraket{\red{a}0}{\orange{c}0}^{(m)}
+        \;
+        \xrightarrow{\;\orange{\mathrm{contraction}}\;}
+        \;
+        \rbraket{\red{a}0}{\orange{c}0}
+        \;
+        \xrightarrow{\;\blue{\mathrm{HRR}}\;}
+        \;
+        \rbraket{\red{a}\blue{b}}{\orange{c}\green{d}}
+        }
+    \end{equation}
+
+	\vfill
+    \begin{itemize}
+    	\item \red{Vertical recurrence relations (VRRs)}: create angular momentum on one center of each Gaussian pair
+    	\item \orange{Contraction}: combine primitive integrals into contracted integrals
+    	\item \blue{Horizontal recurrence relations (HRRs)}: redistribute angular momentum within each Gaussian pair
+    \end{itemize}
+
+	\vfill
+
+    \begin{equation}
+        \boxed{
+        \text{\red{VRRs create angular momentum}
+        \qquad
+        \text{\blue{HRRs redistribute it}}}
+        }
+    \end{equation}
+
+\end{frame}
+
+
+% ======================================================================
+% VRR on A
+% ======================================================================
 
 \begin{frame}{Vertical recurrence relations}
-	\small
-	\begin{block}{First vertical recurrence relation (VRR1)}
-		Based on OS, one gets
-		\begin{equation}
-		\begin{split}
-    		\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)} 
-    		& = (P_i - A_i) \sbraket{\red{\ba}\bO}{\bO\bO}^{(m)} 
-    		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)} 
-    		\\
-    		& + \frac{a_i}{2\zeta} \qty[ 
-    			\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
-    			]
-		\end{split}	
-		\end{equation}	
-		$\Rightarrow$ \red{This increases angular momentum on the first center!}
-	\end{block}
-	\begin{block}{Second vertical recurrence relation (VRR2)}
-		Still based on OS, one gets
-	\begin{equation}
-	\begin{split}
-		\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)} 
-		& = (Q_i - C_i) \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)} 
-		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)} 
-		\\
-		& + \frac{c_i}{2\eta} \qty( 
-			\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)} - \frac{\zeta}{\zeta+\eta} \sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m+1)}
-			)
-		\\
-		& + \frac{a_i}{2(\zeta+\eta)} \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
-	\end{split}	
-	\end{equation}
-		$\Rightarrow$ \orange{This increases angular momentum on the third center!}
-	\end{block}
+
+\small
+
+\begin{block}{VRR on the bra pair: build angular momentum on $\bA$}
+
+\begin{equation}
+\begin{split}
+\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)}
+={}&
+(P_i-A_i)
+\sbraket{\red{\ba}\bO}{\bO\bO}^{(m)}
+\\
+&+
+\frac{\eta}{\zeta+\eta}
+(P_i-Q_i)
+\sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)}
+\\
+&+
+\frac{a_i}{2\zeta}
+\qty[
+\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)}
+-
+\frac{\eta}{\zeta+\eta}
+\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
+]
+\end{split}
+\end{equation}
+
+\end{block}
+
+
+\begin{block}{VRR on the ket pair: build angular momentum on $\bC$}
+
+\begin{equation}
+\begin{split}
+\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)}
+={}&
+(Q_i-C_i)
+\sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)}
+\\
+&+
+\frac{\zeta}{\zeta+\eta}
+(Q_i-P_i)
+\sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)}
+\\
+&+
+\frac{c_i}{2\eta}
+\qty[
+\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)}
+-
+\frac{\zeta}{\zeta+\eta}
+\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m+1)}
+]
+\\
+&+
+\frac{a_i}{2(\zeta+\eta)}
+\sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
+\end{split}
+\end{equation}
+
+
+\end{block}
+
 \end{frame}
-	
+
+
+% ======================================================================
+% HRR
+% ======================================================================
+
 \begin{frame}{Horizontal recurrence relations}
-	\begin{block}{Horizontal recurrence relation}
-		The HRR shifts angular momentum from one center to the other on the same electron coordinate
-		\begin{equation}
-			\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-		\end{equation}
-		Independent of the exponents, it can thus be applied to contracted integrals!
-		\begin{equation}
-			\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \rbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-		\end{equation}
-	\end{block}	
+
+\begin{block}{Redistributing angular momentum}
+
+Once angular momentum has been generated on one center of a Gaussian
+pair, it can be shifted to the other center:
+
+\begin{equation}
+\boxed{
+\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}
+        {\orange{\bc}\green{\bd}}
+=
+\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}
+        {\orange{\bc}\green{\bd}}
++
+(A_i-B_i)
+\sbraket{\red{\ba}\blue{\bb}}
+        {\orange{\bc}\green{\bd}}
+}
+\end{equation}
+
+and, similarly, angular momentum can be transferred from $\bC$ to $\bD$
+
+\end{block}
+
+\begin{block}{Why apply HRRs after contraction?}
+
+The HRR depends only on the geometry through $A_i-B_i$:
+it is \alert{independent of the Gaussian exponents}
+
+Therefore, the same recurrence applies directly to contracted integrals
+
+\begin{equation}
+\boxed{
+\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}
+        {\orange{\bc}\green{\bd}}
+=
+\rbraket{(\red{\ba}+\bI_i)\blue{\bb}}
+        {\orange{\bc}\green{\bd}}
++
+(A_i-B_i)
+\rbraket{\red{\ba}\blue{\bb}}
+        {\orange{\bc}\green{\bd}}
+}
+\end{equation}
+
+\end{block}
+
 \end{frame}
 
 
-\begin{frame}{Late-contraction path algorithm (Head-Gordon-Pople \& PRISM inspired)}
-	\center
-	\begin{tikzpicture}
-		\begin{scope}[
-			very thick,
-			node distance=1.5cm,on grid,>=stealth',
-			boxSP/.style={rectangle,draw,fill=purple!40},
-			box0m/.style={rectangle,draw,fill=red!40},
-			boxCm/.style={rectangle,draw,fill=gray!40},
-			boxA/.style={rectangle,draw,fill=red!40},
-			boxAA/.style={rectangle,draw,fill=red!40},
-			boxAAA/.style={rectangle,draw,fill=red!40},
-			boxC/.style={rectangle,draw,fill=gray!40},
-			boxCC/.style={rectangle,draw,fill=orange!40},
-			boxCCC/.style={rectangle,draw,fill=orange!40},
-			boxCCCCCC/.style={rectangle,draw,fill=blue!40},
-			],
-			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
-			\node [box0m, align=center]			(0m)			[right=of SP,xshift=1.25cm]		{$\sbraket{00}{00}^{(m)}$};
-			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{(m)}$};
-			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{a0}{00}^{(m)}$};
-			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\rbraket{a 0}{00}^{(m)}$};
-			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a 0}{c0}$};
-			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a 0}{c0}$};
-			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\rbraket{a b}{c d}$};
-			\path 
-			(SP)		edge[->]			node[below,purple]{}									(0m)
-			(0m)		edge[->]			node[left,red]{}			node [right,red]{VRR1}	(A)
-			(0m)		edge[->,gray!70]														(Cm)
-			(A)		edge[->]			node[left,red]{}			node [right,red]{VRR2}	(AA)
-			(A)		edge[->,gray!70]														(C)
-			(AA)		edge[->]			node [below,orange]{CC}											(CC)
-			(Cm)		edge[->,gray!70]														(C)
-			(C)		edge[->,gray!70]														(CC)
-			(CC)	edge[->]			node [above,blue]{}		node [below,blue]{HRR}		(CCCC)
-			;
-		\end{scope}
-	\end{tikzpicture}
-	\bigskip
-	\begin{itemize}
-		\item \red{VRR} = vertical recurrence relations based on Obara-Saika
-		\item \orange{CC} = contraction
-		\item \blue{HRR} = horizontal recurrence relation
-	\end{itemize}
+% ======================================================================
+% Final algorithm
+% ======================================================================
+
+\begin{frame}{Late-contraction ERI algorithm}
+
+    \begin{equation*}
+        \boxed{
+        \underbrace{
+        \sbraket{00}{00}^{(m)}
+        }_{\substack{\text{fundamental}\\\text{auxiliary integrals}}}
+        \quad
+        \xrightarrow{\;\red{\mathrm{VRR}}\;}
+        \quad
+        \underbrace{
+        \sbraket{\red{a}0}{\orange{c}0}
+        }_{\text{primitive integrals}}
+        \quad
+        \xrightarrow{\;\orange{\mathrm{contract}}\;}
+        \quad
+        \underbrace{
+        \rbraket{\red{a}0}{\orange{c}0}
+        }_{\text{contracted integrals}}
+        \quad
+        \xrightarrow{\;\blue{\mathrm{HRR}}\;}
+        \quad
+        \underbrace{
+        \rbraket{\red{a}\blue{b}}{\orange{c}\green{d}}
+        }_{\text{target ERIs}}
+        }
+    \end{equation*}
+
+	\vfill
+
+    \begin{enumerate}
+    	\item Compute the required Boys functions $F_m(T)$
+    	\item Form the fundamental auxiliary integrals $\sbraket{00}{00}^{(m)}$
+    	\item Use \red{VRRs} to build angular momentum on $\bA$ and $\bC$
+    	\item \orange{Contract} the primitive integrals
+    	\item Use exponent-independent \blue{HRRs} to transfer angular momentum $\bA \rightarrow \bB$ and $\bC \rightarrow \bD$
+    \end{enumerate}
+
+	\vfill
+
+	\centering
+	\alert{Expensive exponent-dependent recurrences are performed before contraction, while the cheap exponent-independent HRRs are performed afterwards}
+
 \end{frame}
+
+
+%\begin{frame}{Vertical recurrence relations}
+%	\small
+%	\begin{block}{First vertical recurrence relation (VRR1)}
+%		Based on OS, one gets
+%		\begin{equation}
+%		\begin{split}
+%    		\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)} 
+%    		& = (P_i - A_i) \sbraket{\red{\ba}\bO}{\bO\bO}^{(m)} 
+%    		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)} 
+%    		\\
+%    		& + \frac{a_i}{2\zeta} \qty[ 
+%    			\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
+%    			]
+%		\end{split}	
+%		\end{equation}	
+%		$\Rightarrow$ \red{This increases angular momentum on the first center!}
+%	\end{block}
+%	\begin{block}{Second vertical recurrence relation (VRR2)}
+%		Still based on OS, one gets
+%	\begin{equation}
+%	\begin{split}
+%		\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)} 
+%		& = (Q_i - C_i) \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)} 
+%		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)} 
+%		\\
+%		& + \frac{c_i}{2\eta} \qty( 
+%			\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)} - \frac{\zeta}{\zeta+\eta} \sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m+1)}
+%			)
+%		\\
+%		& + \frac{a_i}{2(\zeta+\eta)} \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
+%	\end{split}	
+%	\end{equation}
+%		$\Rightarrow$ \orange{This increases angular momentum on the third center!}
+%	\end{block}
+%\end{frame}
+%	
+%\begin{frame}{Horizontal recurrence relations}
+%	\begin{block}{Horizontal recurrence relation}
+%		The HRR shifts angular momentum from one center to the other on the same electron coordinate
+%		\begin{equation}
+%			\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
+%		\end{equation}
+%		Independent of the exponents, it can thus be applied to contracted integrals!
+%		\begin{equation}
+%			\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \rbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
+%		\end{equation}
+%	\end{block}	
+%\end{frame}
+%
+%
+%\begin{frame}{Late-contraction path algorithm (Head-Gordon-Pople \& PRISM inspired)}
+%	\center
+%	\begin{tikzpicture}
+%		\begin{scope}[
+%			very thick,
+%			node distance=1.5cm,on grid,>=stealth',
+%			boxSP/.style={rectangle,draw,fill=purple!40},
+%			box0m/.style={rectangle,draw,fill=red!40},
+%			boxCm/.style={rectangle,draw,fill=gray!40},
+%			boxA/.style={rectangle,draw,fill=red!40},
+%			boxAA/.style={rectangle,draw,fill=red!40},
+%			boxAAA/.style={rectangle,draw,fill=red!40},
+%			boxC/.style={rectangle,draw,fill=gray!40},
+%			boxCC/.style={rectangle,draw,fill=orange!40},
+%			boxCCC/.style={rectangle,draw,fill=orange!40},
+%			boxCCCCCC/.style={rectangle,draw,fill=blue!40},
+%			],
+%			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
+%			\node [box0m, align=center]			(0m)			[right=of SP,xshift=1.25cm]		{$\sbraket{00}{00}^{(m)}$};
+%			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{(m)}$};
+%			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{a0}{00}^{(m)}$};
+%			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\rbraket{a 0}{00}^{(m)}$};
+%			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a 0}{c0}$};
+%			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a 0}{c0}$};
+%			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\rbraket{a b}{c d}$};
+%			\path 
+%			(SP)		edge[->]			node[below,purple]{}									(0m)
+%			(0m)		edge[->]			node[left,red]{}			node [right,red]{VRR1}	(A)
+%			(0m)		edge[->,gray!70]														(Cm)
+%			(A)		edge[->]			node[left,red]{}			node [right,red]{VRR2}	(AA)
+%			(A)		edge[->,gray!70]														(C)
+%			(AA)		edge[->]			node [below,orange]{CC}											(CC)
+%			(Cm)		edge[->,gray!70]														(C)
+%			(C)		edge[->,gray!70]														(CC)
+%			(CC)	edge[->]			node [above,blue]{}		node [below,blue]{HRR}		(CCCC)
+%			;
+%		\end{scope}
+%	\end{tikzpicture}
+%	\bigskip
+%	\begin{itemize}
+%		\item \red{VRR} = vertical recurrence relations based on Obara-Saika
+%		\item \orange{CC} = contraction
+%		\item \blue{HRR} = horizontal recurrence relation
+%	\end{itemize}
+%\end{frame}
 
 
 \begin{frame}{Upper bounds for ERIs}
@@ -1397,10 +1720,6 @@ decoration={snake,
     		\begin{equation}
     			\boxed{\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} \le B}
     		\end{equation}
-    		\begin{itemize}
-    			\item $\rbra{ \red{\ba} \blue{\bb} }$ = single bra and $\rbra{ \red{a} \blue{b} }$ = entire shell pair 
-    			\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire shell quartet 
-    		\end{itemize}
 		\end{column}
 	\end{columns}
 	\bigskip
