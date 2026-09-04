@@ -2,6 +2,5 @@
 
 # Basis & Integrals
 
-- rewrite RI section
+- clean up RI section
 - possible error in OS
-- clean up screening
