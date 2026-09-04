@@ -2071,15 +2071,16 @@ Therefore, the same recurrence applies directly to contracted integrals
 		\end{align*}
 	\end{block}
 	\vfill
-	\begin{block}{Direct evaluation}
+	\begin{block}{Direct SCF: trading disk storage for repeated integral evaluation}
 		Instead of storing all $\order{K^4}$ ERIs
 		\begin{enumerate}
-			\item loop over shell quartets $(ab|cd)$
+			\item loop over shell quartets $\rbraket{\mu\nu}{\la\si}$
 			\item use an upper bound to discard negligible quartets
 			\item compute the significant ERIs
 			\item immediately accumulate their contributions to $\bJ$ and $\bK$
 			\item discard the ERIs
 		\end{enumerate}
+		\alert{The density matrix elements can be included in the screening process}
 	\end{block}
 	\vfill
 	\begin{equation*}
@@ -2093,10 +2094,6 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\text{discard}
 		}
 	\end{equation*}
-	\vfill
-	\centering
-	$\Rightarrow$
-	\alert{Direct SCF trades disk storage for repeated integral evaluation}
 \end{frame}
 
 %%%% SLIDE X %%%
@@ -2204,7 +2201,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\begin{block}{How should the pair density be fitted?}
 		Define the Coulomb inner product
 		\begin{equation*}
-			(f|g)
+			\rbraket{f}{g}
 			=
 			\iint
 			f(\br_1)
@@ -2216,11 +2213,11 @@ Therefore, the same recurrence applies directly to contracted integrals
 		\begin{equation*}
 			\Delta_{\mu\nu}
 			=
-			\qty(
+			\rbraket{
 				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
-				\middle|
+				}{
 				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
-			)
+			}
 		\end{equation*}
 	\end{block}
 	\vfill
@@ -2228,19 +2225,17 @@ Therefore, the same recurrence applies directly to contracted integrals
 		Minimization with respect to $C_{\mu\nu}^{A}$ gives
 		\begin{equation*}
 			\sum_B
-			\underbrace{(A|B)}_{V_{AB}}
+			\underbrace{\rbraket{A}{B}}_{V_{AB}}
 			C_{\mu\nu}^{B}
 			=
-			\underbrace{(A|\mu\nu)}_{\text{three-center integral}}
-		\end{equation*}
-		and therefore
-		\begin{equation*}
+			\underbrace{\rbraket{A}{\mu\nu}}_{\text{three-center integral}}
+			\qq{$\Rightarrow$}
 			\boxed{
 				C_{\mu\nu}^{A}
 				=
 				\sum_B
 				\qty(\bV^{-1})_{AB}
-				(B|\mu\nu)
+				\rbraket{B}{\mu\nu}
 			}
 		\end{equation*}
 	\end{block}
@@ -2276,7 +2271,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			B_{\mu\nu}^{P}
 			=
 			\sum_A
-			(\mu\nu|A)
+			\rbraket{\mu\nu}{A}
 			\qty(\bV^{-1/2})_{AP}
 		\end{equation*}
 		one obtains the particularly simple form
@@ -2304,9 +2299,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\chi_\mu(\br)\chi_\nu(\br)
 			\approx
 			\sum_A C_{\mu\nu}^A \chi_A^\text{aux}(\br)
-		\end{equation*}
-		leading to
-		\begin{equation*}
+			\qq{$\Rightarrow$}
 			\boxed{
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
@@ -2318,13 +2311,8 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{block}
 	\vfill
 	\begin{block}{Cholesky decomposition (CD)}
-		The ERI tensor can be viewed as a positive semidefinite matrix
-		in the compound indices $(\mu\nu)$ and $(\lambda\sigma)$,
-		\begin{equation*}
-			\bV_{(\mu\nu),(\lambda\sigma)}
-			=
-			\rbraket{\mu\nu}{\lambda\sigma}
-		\end{equation*}
+		The ERI tensor $\bV_{(\mu\nu),(\lambda\sigma)} = \rbraket{\mu\nu}{\lambda\sigma}$ can be viewed as a positive semidefinite matrix
+		in the compound indices $(\mu\nu)$ and $(\lambda\sigma)$.
 		A pivoted Cholesky decomposition directly generates
 		\begin{equation*}
 			\boxed{
@@ -2334,7 +2322,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				L_{\mu\nu}^{P} L_{\lambda\sigma}^{P}
 			}
 		\end{equation*}
-		until the remaining error is smaller than a prescribed threshold $\tau_\text{CD}$.
+		until the remaining error is smaller than a prescribed threshold $\tau_\text{CD}$
 	\end{block}
 	\vfill
 	\centering
@@ -2361,12 +2349,12 @@ Therefore, the same recurrence applies directly to contracted integrals
 			J_{\mu\nu}
 			\approx
 			\sum_{AB}
-			(\mu\nu|A)
+			\rbraket{\mu\nu}{A}
 			\qty(\bV^{-1})_{AB}
 			\underbrace{
 				\sum_{\lambda\sigma}
 				P_{\lambda\sigma}
-				(B|\lambda\sigma)
+				\rbraket{B}{\lambda\sigma}
 			}_{d_B}.
 		\end{equation*}
 		Thus,
@@ -2384,8 +2372,8 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{block}
 	\vfill
 	\begin{itemize}
-		\item No need to store the full $\order{N^4}$ ERI tensor
-		\item Only \alert{two-center} $(A|B)$ and \alert{three-center} $(\mu\nu|A)$ integrals are required
+		\item No need to store the full $\order{K^4}$ ERI tensor
+		\item Only \alert{two-center} $\rbraket{A}{B}$ and \alert{three-center} $\rbraket{\mu\nu}{A}$ integrals are required
 		\item Auxiliary basis sets are optimized to make the fitting error very small
 		\item RI is also commonly called \alert{density fitting (DF)}
 	\end{itemize}
