@@ -1378,7 +1378,7 @@ decoration={snake,
 
 \begin{frame}{Four-center electron repulsion integrals}
 	\begin{block}{Gaussian product rule for ERIs}
-		\alert{Formally, one has to compute $\order{N^4}$ ERIs!}
+		\alert{Formally, one has to compute $\order{K^4}$ ERIs!}
 		\begin{equation*}
 			\begin{split}
 			\rbraket{\red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }
@@ -1387,7 +1387,7 @@ decoration={snake,
 			& = K_{\violet{\zeta},\violet{\bP}} K_{\purple{\eta},\purple{\bQ}} \iint G_{\violet{\zeta},\violet{\bP}}(\br_1) \frac{1}{r_{12}} G_{\purple{\eta},\purple{\bQ}}(\br_2) \dd{\br_1} \dd{\br_2} 
 		\end{split}	
 		\end{equation*}	
-		\alert{The number of ``significant'' ERIs in a large system is $\order{N^2}$!}
+		\alert{The number of ``significant'' ERIs in a large system is $\order{K^2}$!}
 	\end{block}
 	\begin{block}{Shell pairs and shell quartets}
 	   	\begin{itemize}
@@ -1868,121 +1868,16 @@ Therefore, the same recurrence applies directly to contracted integrals
 \end{frame}
 
 
-%\begin{frame}{Vertical recurrence relations}
-%	\small
-%	\begin{block}{First vertical recurrence relation (VRR1)}
-%		Based on OS, one gets
-%		\begin{equation*}
-%		\begin{split}
-%    		\sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)} 
-%    		& = (P_i - A_i) \sbraket{\red{\ba}\bO}{\bO\bO}^{(m)} 
-%    		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)} 
-%    		\\
-%    		& + \frac{a_i}{2\zeta} \qty[ 
-%    			\sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)} - \frac{\eta}{\zeta+\eta} \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m+1)}
-%    			]
-%		\end{split}	
-%		\end{equation*}	
-%		$\Rightarrow$ \red{This increases angular momentum on the first center!}
-%	\end{block}
-%	\begin{block}{Second vertical recurrence relation (VRR2)}
-%		Still based on OS, one gets
-%	\begin{equation*}
-%	\begin{split}
-%		\sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)} 
-%		& = (Q_i - C_i) \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)} 
-%		+ \frac{\eta}{\zeta+\eta} R_i \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)} 
-%		\\
-%		& + \frac{c_i}{2\eta} \qty( 
-%			\sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)} - \frac{\zeta}{\zeta+\eta} \sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m+1)}
-%			)
-%		\\
-%		& + \frac{a_i}{2(\zeta+\eta)} \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}
-%	\end{split}	
-%	\end{equation*}
-%		$\Rightarrow$ \orange{This increases angular momentum on the third center!}
-%	\end{block}
-%\end{frame}
-%	
-%\begin{frame}{Horizontal recurrence relations}
-%	\begin{block}{Horizontal recurrence relation}
-%		The HRR shifts angular momentum from one center to the other on the same electron coordinate
-%		\begin{equation*}
-%			\sbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \sbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \sbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-%		\end{equation*}
-%		Independent of the exponents, it can thus be applied to contracted integrals!
-%		\begin{equation*}
-%			\rbraket{\red{\ba}(\blue{\bb}+\bI_i)}{\orange{\bc}\green{\bd}} = \rbraket{(\red{\ba}+\bI_i)\blue{\bb}}{\orange{\bc}\green{\bd}} + (A_i - B_i) \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
-%		\end{equation*}
-%	\end{block}	
-%\end{frame}
-%
-%
-%\begin{frame}{Late-contraction path algorithm (Head-Gordon-Pople \& PRISM inspired)}
-%	\center
-%	\begin{tikzpicture}
-%		\begin{scope}[
-%			very thick,
-%			node distance=1.5cm,on grid,>=stealth',
-%			boxSP/.style={rectangle,draw,fill=purple!40},
-%			box0m/.style={rectangle,draw,fill=red!40},
-%			boxCm/.style={rectangle,draw,fill=gray!40},
-%			boxA/.style={rectangle,draw,fill=red!40},
-%			boxAA/.style={rectangle,draw,fill=red!40},
-%			boxAAA/.style={rectangle,draw,fill=red!40},
-%			boxC/.style={rectangle,draw,fill=gray!40},
-%			boxCC/.style={rectangle,draw,fill=orange!40},
-%			boxCCC/.style={rectangle,draw,fill=orange!40},
-%			boxCCCCCC/.style={rectangle,draw,fill=blue!40},
-%			],
-%			\node [boxSP, align=center]			(SP)									{Shell-pair \\ data};
-%			\node [box0m, align=center]			(0m)			[right=of SP,xshift=1.25cm]		{$\sbraket{00}{00}^{(m)}$};
-%			\node [boxCm, align=center]			(Cm)			[right=of 0m,xshift=1.75cm]	{$\braket{00}{00}^{(m)}$};
-%			\node [boxA, align=center] 			(A)			[below=of 0m]				{$\sbraket{a0}{00}^{(m)}$};
-%			\node [boxC, align=center] 			(C)			[right=of A,xshift=1.75cm]		{$\rbraket{a 0}{00}^{(m)}$};
-%			\node [boxAA, align=center] 			(AA)			[below=of A]				{$\sbraket{a 0}{c0}$};
-%			\node [boxCC, align=center] 			(CC)			[right=of AA,xshift=1.75cm]	{$\braket{a 0}{c0}$};
-%			\node [boxCCCCCC, align=center] 		(CCCC)	[right=of CC,xshift=2cm]		{$\rbraket{a b}{c d}$};
-%			\path 
-%			(SP)		edge[->]			node[below,purple]{}									(0m)
-%			(0m)		edge[->]			node[left,red]{}			node [right,red]{VRR1}	(A)
-%			(0m)		edge[->,gray!70]														(Cm)
-%			(A)		edge[->]			node[left,red]{}			node [right,red]{VRR2}	(AA)
-%			(A)		edge[->,gray!70]														(C)
-%			(AA)		edge[->]			node [below,orange]{CC}											(CC)
-%			(Cm)		edge[->,gray!70]														(C)
-%			(C)		edge[->,gray!70]														(CC)
-%			(CC)	edge[->]			node [above,blue]{}		node [below,blue]{HRR}		(CCCC)
-%			;
-%		\end{scope}
-%	\end{tikzpicture}
-%	\bigskip
-%	\begin{itemize}
-%		\item \red{VRR} = vertical recurrence relations based on Obara-Saika
-%		\item \orange{CC} = contraction
-%		\item \blue{HRR} = horizontal recurrence relation
-%	\end{itemize}
-%\end{frame}
 
 
 \begin{frame}{Upper bounds for ERIs}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{block}{A ``good'' upper bound must be}
-				\begin{itemize}
-					\item simple, i.e, cheap to compute
-					\item strong, i.e., a good estimate
-					\item scaling-consistent, i.e., $N_\text{sig} = \order*{N_\text{upper}}$
-				\end{itemize}
-			\end{block}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-    		\begin{equation*}
-    			\boxed{\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} \le B}
-    		\end{equation*}
-		\end{column}
-	\end{columns}
-	\bigskip
+	\begin{block}{A ``good'' upper bound must be}
+		\begin{itemize}
+			\item simple, i.e, cheap to compute
+			\item strong, i.e., a good estimate
+			\item scaling-consistent, i.e., $N_\text{sig} = \order*{N_\text{upper}}$
+		\end{itemize}
+	\end{block}
 	\begin{block}{Cauchy-Schwartz bound}
 		\begin{equation*}
 			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
@@ -1995,128 +1890,72 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
 			\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
 		\end{equation*}
+    	\begin{itemize}
+    		\item $\rbraket{\violet{\bP}}{\purple{\bQ}}$ should decay as $1/\abs{\violet{\bP} - \purple{\bQ}}$ or faster
+    		\item However, there is no distance information in the product $\rbraket{\violet{\bP}}{\violet{\bP}} \rbraket{\purple{\bQ}}{\purple{\bQ}}$
+    		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs
+    	\end{itemize}
 	\end{block}
-	\begin{block}{The family of generalized H\"older bounds}
-		\begin{equation*}
-			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
-			\le 
-			\qty[ \rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} } ]^{1/\purple{m}} 
-			\qty[ \rbraket{ \orange{\bc} \green{\bd} }{ \orange{\bc} \green{\bd} } ]^{1/\violet{n}}
-			\qqtext{with}
-			\frac{1}{\purple{m}} + \frac{1}{\violet{n}} = 1
-			\qq{and}
-			\purple{m},\violet{n} > 1
-		\end{equation*}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Screening electron-repulsion integrals}
-	\begin{block}{Cauchy--Schwarz upper bound}
-		For any two charge distributions $\rho_1$ and $\rho_2$,
-		\begin{equation*}
-			\abs{\rbraket{\rho_1}{\rho_2}}^2
-			\leq
-			\rbraket{\rho_1}{\rho_1}
-			\rbraket{\rho_2}{\rho_2}
-		\end{equation*}
-		which, for ERIs, gives
-		\begin{equation*}
-			\boxed{
-				\abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
-				\leq
-				\sqrt{
-					\rbraket{\red{\ba}\blue{\bb}}{\red{\ba}\blue{\bb}}
-				}
-				\sqrt{
-					\rbraket{\orange{\bc}\green{\bd}}{\orange{\bc}\green{\bd}}
-				}
-			}
-		\end{equation*}
-	\end{block}
-	\vfill
-	\begin{block}{Shell-pair screening}
-		For each shell pair $(ab)$, define
-		\begin{equation*}
-			Q_{ab}
-			=
-			\max_{\ba\in a,\bb\in b}
-			\sqrt{
-				\rbraket{\ba\bb}{\ba\bb}
-			}.
-		\end{equation*}
-		Then, for an entire shell quartet,
-		\begin{equation*}
-			\boxed{
-				\abs{\rbraket{\ba\bb}{\bc\bd}}
-				\leq
-				Q_{ab}Q_{cd}
-			}
-		\end{equation*}
-		and therefore
-		\begin{equation*}
-			Q_{ab}Q_{cd} < \tau
-			\qq{$\Rightarrow$}
-			\text{\alert{discard the entire shell quartet!}}
-		\end{equation*}
-	\end{block}
+%	\begin{block}{The family of generalized H\"older bounds}
+%		\begin{equation*}
+%			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
+%			\le 
+%			\qty[ \rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} } ]^{1/\purple{m}} 
+%			\qty[ \rbraket{ \orange{\bc} \green{\bd} }{ \orange{\bc} \green{\bd} } ]^{1/\violet{n}}
+%			\qqtext{with}
+%			\frac{1}{\purple{m}} + \frac{1}{\violet{n}} = 1
+%			\qq{and}
+%			\purple{m},\violet{n} > 1
+%		\end{equation*}
+%	\end{block}
 	\vfill
 	\centering
 	$\Rightarrow$
-	\alert{A cheap upper bound avoids the evaluation of negligible ERIs}
-\end{frame}
-
-\begin{frame}{Cauchy-Schwartz bound}
-	\begin{equation*}
-		\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }}
-		= \abs{\rbraket{\violet{\bP}}{\purple{\bQ}}}
-		\le 
-		\sqrt{\rbraket{\violet{\bP}}{\violet{\bP}}} 
-		\sqrt{\rbraket{\purple{\bQ}}{\purple{\bQ}}}
-	\end{equation*}
-	\begin{itemize}
-		\item $\rbraket{\violet{\bP}}{\purple{\bQ}}$ should decay as $1/\abs{\violet{\bP} - \purple{\bQ}}$ or faster
-		\item However, there is no distance information in the product $\rbraket{\violet{\bP}}{\violet{\bP}} \rbraket{\purple{\bQ}}{\purple{\bQ}}$
-		\item The Cauchy-Schwarz bound is rigorous and cheap but is not tight for well-separated shell pairs
-	\end{itemize}
+	\alert{A cheap upper bound avoids the evaluation of negligible ERIs}		
 \end{frame}
 
 
-\begin{frame}{A tale of three strategies}
-\begin{itemize}
-	\item \orange{\bf Integral bound}
-		\\
+\begin{frame}{Screening ERIs}
+
+	\begin{block}{Integral bound}
 		We seek a single number that bounds a particular integral
 		\begin{equation*}
-			\abs{\sbraket{\ba_1\ba_2}{\bb_1\bb_2}} \le \sbraket{\ba_1\ba_1}{\bb_1\bb_1}^{1/2} \sbraket{\ba_2\ba_2}{\bb_2\bb_2}^{1/2}
+			\abs{\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }} 
+			\le 
+			\sqrt{\rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} }} 
+			\sqrt{\rbraket{ \orange{\bc} \green{\bd} }{ \orange{\bc} \green{\bd} }}
 		\end{equation*}
-		With $\order{N^{2}}$ $\sbraket{\ba_1\ba_1}{\bb_1\bb_1}$ bound factors, we can upper bound $\order{N^{4}}$ $\sbraket{\ba_1\ba_2}{\bb_1\bb_2}$ integrals
+		With $\order{K^{2}}$ $\rbraket{ \red{\ba} \blue{\bb} }{ \red{\ba} \blue{\bb} }$ bound factors, we can upper bound $\order{K^{4}}$ $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ integrals
+	\end{block}
 
-	\item \alert{\bf Non-factorizable class bound}
-		\\
-		We seek a single number that bounds an entire class*
+	\begin{block}{Class bound}
+		We seek a single number that bounds an entire class
 		\begin{equation*}
-			\abs{\sbraket{a_1a_2}{b_1b_2}} \le \sbraket{\sba_{1} \sba_{2}}{\sbb_{1} \sbb_{2}}
+			\abs{\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }} 
+			\le Q_{\red{a} \blue{b}} Q_{\orange{c} \green{d}}
+			\qq{with}
+			Q_{\red{a} \blue{b}}
+			=
+			\max_{\substack{\red{\ba}\in a \\ \blue{\bb}\in b}}
+			\sqrt{
+				\rbraket{\red{\ba}\blue{\bb}}{\red{\ba}\blue{\bb}}
+			}
 		\end{equation*}
-	\item \violet{\bf Factorizable class bound}
-		\\
-		We combine the two previous ideas
+		Therefore,
 		\begin{equation*}
-			\begin{split}
-				\left| \sbraket{a_1a_2}{b_1b_2}  \right| 
-				& \le \sbraket{\sba_{1} \sba_{2}}{\sbb_{1} \sbb_{2}}
-				\\
-				& \le \sbraket{\sba_1\sba_1}{\sbb_1\sbb_1}^{1/2} \sbraket{\sba_2\sba_2}{\sbb_2\sbb_2}^{1/2}
-			\end{split}
+			\qif* Q_{\red{a} \blue{b}} Q_{\orange{c} \green{d}} < \tau
+			\qthen
+			\text{\alert{discard the entire shell quartet!}}
 		\end{equation*}
-\end{itemize}
-*{\small The simple $\sbraket{dd}{dd}$ class is made of 625 integrals!}
+	\end{block}
+	*{\small The simple $\rbraket{dd}{dd}$ class is made of 1296 integrals!}
 \end{frame}
 
 
 \begin{frame}{Asymptotic scaling of two-electron integrals}
 	\begin{block}{Number of significant two-electron integrals}
 		\begin{equation*}
-			\braket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} } \equiv \rmel{ \red{\ba} \blue{\bb} }{ \chO_2 }{ \orange{\bc} \green{\bd}}
+			\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} } \equiv \rmel{ \red{\ba} \blue{\bb} }{ \chO_2 }{ \orange{\bc} \green{\bd}}
 		\end{equation*}
 	\end{block}
 	\bigskip
@@ -2147,47 +1986,47 @@ Therefore, the same recurrence applies directly to contracted integrals
 
 
 
-\begin{frame}{Screening algorithm for two-electron integrals}
-
-\resizebox{\textwidth}{!}{
-\begin{tikzpicture}
-	\begin{scope}[very thick,
-		node distance=2.5cm,on grid,>=stealth',
-		bound2/.style={diamond,draw,fill=blue!40},
-		bound4/.style={diamond,draw,fill=blue!40},
-		bound6/.style={diamond,draw,fill=blue!40},
-		shell/.style={circle,draw,fill=green!40},
-		shellpair/.style={circle,draw,fill=green!40},
-		shellquartet/.style={circle,draw,fill=green!40},
-		shell1/.style={rectangle,draw,fill=yellow!40},
-		shell2/.style={rectangle,draw,fill=orange!40},
-		shell3/.style={rectangle,draw,fill=red!40},
-		integral/.style={rectangle,draw,fill=violet!40}],
-		\node [shell1, align=center]		(1)											{Primitive\\shells\\$\sket{a}$};
-		\node [bound2, align=center] 		(B2)			[right=of 1]				{$\sexpval{B_2}$};
-		\node [shell, align=center]			(S1T)		[above=of B2, yshift=-0.5cm]	{$\sket{a}$};
-		\node [shell, align=center]			(S1B)		[below=of B2, yshift=0.5cm]		{$\sket{b}$};
-		\node [shell2, align=center] 		(2)			[right=of B2,xshift=0.75cm]		{Contracted\\shell-pairs\\$\ket{ab}$};
-		\node [bound4, align=center]		(B4)			[right=of 2]				{$\expval{B_4}$} ;
-		\node [shellpair, align=center]		(S2T)		[above=of B4, yshift=-0.5cm]	{$\ket{a_1b_1}$};
-		\node [shellpair, align=center]		(S2B)		[below=of B4, yshift=0.5cm]		{$\ket{a_2b_2}$};
-		\node [shell3, align=center]		(3)			[right=of B4]					{Two-Electron\\integrals\\$\braket{a_1b_1}{a_2b_2}$};
-		\path 
-		(1) edge [->,bend left]				(S1T)
-		(1) edge [->,bend right]			(S1B)
-		(S1T) edge [snake it]				(B2)
-		(S1B) edge [snake it]				(B2)
-		(B2) edge [->,color=red] 	node [below] {\small Contraction}		(2)
-		(2) edge [->,bend left] 				(S2T)
-		(2) edge [->,bend right] 			(S2B)
-		(S2T) edge [snake it]				(B4)
-		(S2B) edge [snake it]				(B4)
-		(B4) edge [->] 					(3)
-		;
-	\end{scope}
-\end{tikzpicture}
-}
-\end{frame}
+%\begin{frame}{Screening algorithm for two-electron integrals}
+%
+%\resizebox{\textwidth}{!}{
+%\begin{tikzpicture}
+%	\begin{scope}[very thick,
+%		node distance=2.5cm,on grid,>=stealth',
+%		bound2/.style={diamond,draw,fill=blue!40},
+%		bound4/.style={diamond,draw,fill=blue!40},
+%		bound6/.style={diamond,draw,fill=blue!40},
+%		shell/.style={circle,draw,fill=green!40},
+%		shellpair/.style={circle,draw,fill=green!40},
+%		shellquartet/.style={circle,draw,fill=green!40},
+%		shell1/.style={rectangle,draw,fill=yellow!40},
+%		shell2/.style={rectangle,draw,fill=orange!40},
+%		shell3/.style={rectangle,draw,fill=red!40},
+%		integral/.style={rectangle,draw,fill=violet!40}],
+%		\node [shell1, align=center]		(1)											{Primitive\\shells\\$\sket{a}$};
+%		\node [bound2, align=center] 		(B2)			[right=of 1]				{$\sexpval{B_2}$};
+%		\node [shell, align=center]			(S1T)		[above=of B2, yshift=-0.5cm]	{$\sket{a}$};
+%		\node [shell, align=center]			(S1B)		[below=of B2, yshift=0.5cm]		{$\sket{b}$};
+%		\node [shell2, align=center] 		(2)			[right=of B2,xshift=0.75cm]		{Contracted\\shell-pairs\\$\ket{ab}$};
+%		\node [bound4, align=center]		(B4)			[right=of 2]				{$\expval{B_4}$} ;
+%		\node [shellpair, align=center]		(S2T)		[above=of B4, yshift=-0.5cm]	{$\ket{a_1b_1}$};
+%		\node [shellpair, align=center]		(S2B)		[below=of B4, yshift=0.5cm]		{$\ket{a_2b_2}$};
+%		\node [shell3, align=center]		(3)			[right=of B4]					{Two-Electron\\integrals\\$\braket{a_1b_1}{a_2b_2}$};
+%		\path 
+%		(1) edge [->,bend left]				(S1T)
+%		(1) edge [->,bend right]			(S1B)
+%		(S1T) edge [snake it]				(B2)
+%		(S1B) edge [snake it]				(B2)
+%		(B2) edge [->,color=red] 	node [below] {\small Contraction}		(2)
+%		(2) edge [->,bend left] 				(S2T)
+%		(2) edge [->,bend right] 			(S2B)
+%		(S2T) edge [snake it]				(B4)
+%		(S2B) edge [snake it]				(B4)
+%		(B4) edge [->] 					(3)
+%		;
+%	\end{scope}
+%\end{tikzpicture}
+%}
+%\end{frame}
 
 
 
@@ -2214,32 +2053,6 @@ Therefore, the same recurrence applies directly to contracted integrals
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Computation of the Coulomb matrix}
-	\begin{equation*}
-		\boxed{
-		J_{\red{\mu}\blue{\nu}} = \sum_{\red{\mu}\blue{\nu}} P_{\orange{\la}\violet{\si}} \rbraket{\red{\mu}\blue{\nu} }{ \orange{\la}\violet{\si}}
-		} 
-	\end{equation*}
-	\begin{algorithmic}
-		\Procedure{Computing the Coulomb matrix}{}
-			\For{$\red{\mu}=1,N$}
-				\For{$\blue{\nu}=1,N$}
-					\State $J_{\red{\mu}\blue{\nu}} = 0$ \Comment{Initialization of the array}
-					\For{$\orange{\la}=1,N$}
-						\For{$\violet{\si}=1,N$}
-							\State $J_{\red{\mu}\blue{\nu}} 
-							= J_{\red{\mu}\blue{\nu}} 
-							+ P_{\orange{\la}\violet{\si}} \rbraket{\red{\mu}\blue{\nu} }{ \orange{\la}\violet{\si} }$ 
-							\Comment{Accumulation step}
-						\EndFor
-					\EndFor 
-				\EndFor
-			\EndFor 
-		\EndProcedure
-		\Comment{\red{This is a $\order{N^4}$ algorithm as it involves four loops}}
-	\end{algorithmic}
-\end{frame}
-
 \begin{frame}{Direct SCF algorithm}
 	\begin{block}{From ERIs to the Fock matrix}
 		The Coulomb and exchange matrices are
@@ -2259,7 +2072,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\end{block}
 	\vfill
 	\begin{block}{Direct evaluation}
-		Instead of storing all $\order{N^4}$ ERIs
+		Instead of storing all $\order{K^4}$ ERIs
 		\begin{enumerate}
 			\item loop over shell quartets $(ab|cd)$
 			\item use an upper bound to discard negligible quartets
@@ -2286,60 +2099,60 @@ Therefore, the same recurrence applies directly to contracted integrals
 	\alert{Direct SCF trades disk storage for repeated integral evaluation}
 \end{frame}
 
-%%% SLIDE X %%%
-\begin{frame}{Resolution of the identity}
-	\begin{block}{Resolution of the identity (RI)}
-		\begin{equation*}
-			\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI
-			\qq{with}
-			\braket{\green{A}}{\green{B}} = \delta_{AB}
-			\qq{$\Leftrightarrow$}
-			\sum_{\green{A}=1}^{\red{\infty}} \green{A}(\br_1) \green{A}(\br_2)  
-			= \delta(\br_1 - \br_2) 
-		\end{equation*}
-	\end{block}
-	\begin{block}{Generalization to a two-body operator $\hO$}
-		\begin{equation*}
-			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \dyad{\green{\Tilde{A}}} = \hO
-			\qq{with}
-			\mel{\green{A}}{\hO}{\green{B}} = \delta_{AB}
-			\qq{and}
-			\hO \ket{\green{A}} = \ket{\green{\Tilde{A}}}
-			\qq{$\Leftrightarrow$}
-			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \green{\Tilde{A}}(\br_1) \green{\Tilde{A}}(\br_2)  
-			= \hO(\br_1,\br_2) 
-		\end{equation*}
-	\end{block}
-\end{frame}
+%%%% SLIDE X %%%
+%\begin{frame}{Resolution of the identity}
+%	\begin{block}{Resolution of the identity (RI)}
+%		\begin{equation*}
+%			\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI
+%			\qq{with}
+%			\braket{\green{A}}{\green{B}} = \delta_{AB}
+%			\qq{$\Leftrightarrow$}
+%			\sum_{\green{A}=1}^{\red{\infty}} \green{A}(\br_1) \green{A}(\br_2)  
+%			= \delta(\br_1 - \br_2) 
+%		\end{equation*}
+%	\end{block}
+%	\begin{block}{Generalization to a two-body operator $\hO$}
+%		\begin{equation*}
+%			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \dyad{\green{\Tilde{A}}} = \hO
+%			\qq{with}
+%			\mel{\green{A}}{\hO}{\green{B}} = \delta_{AB}
+%			\qq{and}
+%			\hO \ket{\green{A}} = \ket{\green{\Tilde{A}}}
+%			\qq{$\Leftrightarrow$}
+%			\sum_{\green{\Tilde{A}}=1}^{\red{\infty}} \green{\Tilde{A}}(\br_1) \green{\Tilde{A}}(\br_2)  
+%			= \hO(\br_1,\br_2) 
+%		\end{equation*}
+%	\end{block}
+%\end{frame}
+%%
 %
-
-%%% SLIDE X %%%
-\begin{frame}{Resolution of the Coulomb operator}
-	\begin{block}{RI in practice = RI \alert{approximation}}
-		\begin{equation*}
-			\boxed{\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI 
-			\qqtext{and, in practice, }
-			\sum_{\green{A}=1}^{\red{K}} \dyad{\green{A}} \approx \hI}
-		\end{equation*}
-	\end{block}
-	\begin{block}{Computing the Coulomb matrix within the RI approximation}
-		\begin{equation*}
-			\begin{split}
-				J_{\red{\mu\nu}} 
-				& = \sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu\nu}|\blue{\la\si})
-				\\
-				& \stackrel{\text{\green{RI}}}{=}  \sum_{\blue{\la \si}} P_{\blue{\la\si}} \sum_{\green{A}} (\red{\mu\nu}|\green{A}) (\green{A}|\blue{\la\si})
-				\\
-				& = \sum_{\green{A}} (\red{\mu\nu}|\green{A})  
-				\underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} (\green{A}|\blue{\la\si})}_{\order{KN^2} \text{ and $K$ storage}}
-				= \underbrace{\sum_{\green{A}} (\red{\mu\nu}|\green{A})  \rho_{\green{A}}}_{\order{KN^2}}
-			\end{split}
-		\end{equation*}
-		\\
-		Similar (more effective) approaches are named Cholesky decomposition, low-rank approximation, etc. 
-	\end{block}
-\end{frame}
-%
+%%%% SLIDE X %%%
+%\begin{frame}{Resolution of the Coulomb operator}
+%	\begin{block}{RI in practice = RI \alert{approximation}}
+%		\begin{equation*}
+%			\boxed{\sum_{\green{A}=1}^{\red{\infty}} \dyad{\green{A}} = \hI 
+%			\qqtext{and, in practice, }
+%			\sum_{\green{A}=1}^{\red{K}} \dyad{\green{A}} \approx \hI}
+%		\end{equation*}
+%	\end{block}
+%	\begin{block}{Computing the Coulomb matrix within the RI approximation}
+%		\begin{equation*}
+%			\begin{split}
+%				J_{\red{\mu\nu}} 
+%				& = \sum_{\blue{\la \si}} P_{\blue{\la\si}} (\red{\mu\nu}|\blue{\la\si})
+%				\\
+%				& \stackrel{\text{\green{RI}}}{=}  \sum_{\blue{\la \si}} P_{\blue{\la\si}} \sum_{\green{A}} (\red{\mu\nu}|\green{A}) (\green{A}|\blue{\la\si})
+%				\\
+%				& = \sum_{\green{A}} (\red{\mu\nu}|\green{A})  
+%				\underbrace{\sum_{\blue{\la \si}} P_{\blue{\la\si}} (\green{A}|\blue{\la\si})}_{\order{KN^2} \text{ and $K$ storage}}
+%				= \underbrace{\sum_{\green{A}} (\red{\mu\nu}|\green{A})  \rho_{\green{A}}}_{\order{KN^2}}
+%			\end{split}
+%		\end{equation*}
+%		\\
+%		Similar (more effective) approaches are named Cholesky decomposition, low-rank approximation, etc. 
+%	\end{block}
+%\end{frame}
+%%
 
 % ======================================================================
 % Resolution of the identity
@@ -2352,18 +2165,18 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\rbraket{\mu\nu}{\lambda\sigma}
 			=
 			\iint
-			\underbrace{\chi_\mu(\br_1)\chi_\nu(\br_1)}_{\rho_{\mu\nu}(\br_1)}
+			\underbrace{\phi_\mu(\br_1)\phi_\nu(\br_1)}_{\rho_{\mu\nu}(\br_1)}
 			\frac{1}{r_{12}}
-			\underbrace{\chi_\lambda(\br_2)\chi_\sigma(\br_2)}_{\rho_{\lambda\sigma}(\br_2)}
-			\dd{\br_1}\dd{\br_2}.
+			\underbrace{\phi_\lambda(\br_2)\phi_\sigma(\br_2)}_{\rho_{\lambda\sigma}(\br_2)}
+			\dd{\br_1}\dd{\br_2}
 		\end{equation*}
-		With $N$ orbital basis functions, there are formally $\order{N^2}$
-		different pair densities $\rho_{\mu\nu}$.
+		With $K$ basis functions, there are formally $\order{K^2}$
+		different pair densities $\rho_{\mu\nu}$
 	\end{block}
 	\vfill
 	\begin{block}{Density fitting}
-		Instead of representing each product $\chi_\mu\chi_\nu$ exactly,
-		we expand it in a smaller \alert{auxiliary basis} $\{\chi_A^\text{aux}\}$,
+		Instead of representing each product $\phi_\mu\phi_\nu$ exactly,
+		we expand it in a smaller \alert{auxiliary basis} $\{\varphi_A^\text{aux}\}$,
 		\begin{equation*}
 			\boxed{
 				\rho_{\mu\nu}(\br)
@@ -2371,13 +2184,10 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\widetilde{\rho}_{\mu\nu}(\br)
 				=
 				\sum_A C_{\mu\nu}^{A}
-				\chi_A^\text{aux}(\br)
+				\varphi_A^\text{aux}(\br)
 			}
 		\end{equation*}
-		with typically
-		\begin{equation*}
-			N_\text{aux} \sim \order{N}.
-		\end{equation*}
+		with typically $K_\text{aux} = \order{K}$
 	\end{block}
 	\vfill
 	\centering
@@ -2400,7 +2210,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			f(\br_1)
 			\frac{1}{r_{12}}
 			g(\br_2)
-			\dd{\br_1}\dd{\br_2}.
+			\dd{\br_1}\dd{\br_2}
 		\end{equation*}
 		The optimal coefficients minimize the Coulomb norm of the fitting error,
 		\begin{equation*}
@@ -2410,7 +2220,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
 				\middle|
 				\rho_{\mu\nu}-\widetilde{\rho}_{\mu\nu}
-			).
+			)
 		\end{equation*}
 	\end{block}
 	\vfill
@@ -2421,7 +2231,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			\underbrace{(A|B)}_{V_{AB}}
 			C_{\mu\nu}^{B}
 			=
-			\underbrace{(A|\mu\nu)}_{\text{three-center integral}},
+			\underbrace{(A|\mu\nu)}_{\text{three-center integral}}
 		\end{equation*}
 		and therefore
 		\begin{equation*}
@@ -2453,14 +2263,10 @@ Therefore, the same recurrence applies directly to contracted integrals
 				\rbraket{\mu\nu}{\lambda\sigma}
 				\approx
 				\sum_{AB}
-				(\mu\nu|A)
+				\rbraket{\mu\nu}{A}
 				\qty(\bV^{-1})_{AB}
-				(B|\lambda\sigma)
+				\rbraket{B}{\lambda\sigma}
 			}
-		\end{equation*}
-		where
-		\begin{equation*}
-			V_{AB}=(A|B).
 		\end{equation*}
 	\end{block}
 	\vfill
@@ -2471,7 +2277,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 			=
 			\sum_A
 			(\mu\nu|A)
-			\qty(\bV^{-1/2})_{AP},
+			\qty(\bV^{-1/2})_{AP}
 		\end{equation*}
 		one obtains the particularly simple form
 		\begin{equation*}
@@ -2497,7 +2303,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 		\begin{equation*}
 			\chi_\mu(\br)\chi_\nu(\br)
 			\approx
-			\sum_A C_{\mu\nu}^A \chi_A^\text{aux}(\br),
+			\sum_A C_{\mu\nu}^A \chi_A^\text{aux}(\br)
 		\end{equation*}
 		leading to
 		\begin{equation*}
@@ -2517,7 +2323,7 @@ Therefore, the same recurrence applies directly to contracted integrals
 		\begin{equation*}
 			\bV_{(\mu\nu),(\lambda\sigma)}
 			=
-			\rbraket{\mu\nu}{\lambda\sigma}.
+			\rbraket{\mu\nu}{\lambda\sigma}
 		\end{equation*}
 		A pivoted Cholesky decomposition directly generates
 		\begin{equation*}
