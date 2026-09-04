@@ -1019,7 +1019,8 @@ decoration={snake,
 		\end{equation*}
 		For example, $E_{\red{A}}^{\blue{AB}}$ is the energy of fragment $A$
 		computed using the basis functions centered on both $A$ and $B$.
-		The basis functions on $B$ are then \alert{ghost functions}
+		\\
+		The basis functions on $B$ are then \violet{ghost functions}
 		(no nucleus and no electrons on $B$).
 	\end{block}
 	\vfill
@@ -1045,9 +1046,9 @@ decoration={snake,
 			\node at (0,1.6) {$E_{\red{A}}^{\blue{AB}}$};
 			\node[basis]      (basisA2) at (-0.9,0) {};
 			\node[atom]       (A2)      at (-0.9,0) {$A$};
-			\node[ghostbasis] (basisB2) at ( 0.9,0) {};
-			\node[ghost]      (B2)      at ( 0.9,0) {$B$};
-			\node at (0,-0.9) {\small basis on $A$ + ghost basis on $B$};
+			\node[ghostbasis,violet] (basisB2) at ( 0.9,0) {};
+			\node[ghost,violet]      (B2)      at ( 0.9,0) {$B$};
+			\node at (0,-0.9) {\small basis on $A$ + \violet{ghost basis} on $B$};
 
 			% ------------------------------------------------------------
 			% Dimer AB
@@ -1073,7 +1074,7 @@ decoration={snake,
 \end{frame}
 
 \begin{frame}{Counterpoise correction}
-	\begin{block}{Boys--Bernardi counterpoise correction}
+	\begin{block}{Boys-Bernardi counterpoise correction}
 		With a finite atom-centered basis, each fragment can
 		\alert{borrow basis functions from the other fragment}
 		\begin{equation*}
