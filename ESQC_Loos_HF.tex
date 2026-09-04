@@ -2267,14 +2267,14 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		\item Start from the current density $\bP^{(n)}$
 
 		\item Build the corresponding Fock matrix
-			   $$\bF^{(n)}=\bF[\bP^{(n)}]$$
+			  $\bF^{(n)}=\bF[\bP^{(n)}]$
 
 		\item Evaluate the commutator residual
-			      $$\be^{(n)}
+			      $\be^{(n)}
 			      =
 			      \bF^{(n)} \cdot \bP^{(n)} \cdot \bS
 			      -
-			      \bS \cdot \bP^{(n)} \cdot \bF^{(n)}$$
+			      \bS \cdot \bP^{(n)} \cdot \bF^{(n)}$
 
 		\item Store the pair
 		      $\{\bF^{(n)},\be^{(n)}\}$ and update the DIIS subspace
@@ -2283,16 +2283,74 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		      the coefficients $\{c_i\}$
 
 		\item Extrapolate the Fock matrix
-			      $$\bF^\text{DIIS}
+			      $\bF^\text{DIIS}
 			      =
-			      \sum_i c_i\bF^{(i)}$$
+			      \sum_i c_i\bF^{(i)}$
 
 		\item Solve
-			      $$\bF^\text{DIIS} \cdot \bC
+			      $\bF^\text{DIIS} \cdot \bC
 			      =
-			      \bS \cdot \bC \cdot \bE$$
+			      \bS \cdot \bC \cdot \bE$
 		      and form the next density $\bP^{(n+1)}$
 	\end{enumerate}
+	\bigskip
+	\centering
+	\begin{tikzpicture}[
+		>=stealth,
+		node distance=0.55cm and 0.65cm,
+		scfstep/.style={
+			draw=hfGreen,
+			rounded corners=2pt,
+			fill=hfGreenLight,
+			minimum width=2.45cm,
+			minimum height=0.72cm,
+			align=center
+		},
+		decision/.style={
+			draw=hfRed,
+			rounded corners=8pt,
+			fill=hfPale,
+			minimum width=2.45cm,
+			minimum height=0.72cm,
+			align=center
+		}
+	]
+		\node[scfstep] (mol)
+			{Molecule\\and basis set};
+		\node[scfstep,right=of mol] (ints)
+			{Compute\\integrals};
+		\node[scfstep,right=of ints] (guess)
+			{Initial density\\$\bP^{(0)}$};
+		\node[scfstep,right=of guess] (fock)
+			{Build Fock matrix\\$\bF[\bP^{(n)}]$};
+
+		\node[scfstep,below=1.15cm of fock] (solve)
+			{Solve\\$\bF \cdot \bC = \bS \cdot \bC \cdot \bE$};
+		\node[scfstep,left=of solve] (density)
+			{New density\\$\bP^{(n+1)}$};
+		\node[decision,left=of density] (conv)
+			{Converged?};
+		\node[scfstep,left=of conv] (properties)
+			{Energy and\\properties};
+
+		\draw[->,thick] (mol) -- (ints);
+		\draw[->,thick] (ints) -- (guess);
+		\draw[->,thick] (guess) -- (fock);
+		\draw[->,thick] (fock) -- (solve);
+		\draw[->,thick] (solve) -- (density);
+		\draw[->,thick] (density) -- (conv);
+
+		\draw[->,thick,draw=hfGreen]
+			(conv) -- (properties)
+			node[midway,above,text=hfGreen] {yes};
+
+		\draw[->,thick,draw=hfRed]
+			(conv.north) -- ++(0,0.45) -| (fock.south)
+			node[pos=0.18,above,text=hfRed] {no};
+
+		\node[below=0.18cm of density,text=hfViolet]
+			{\small optional damping or DIIS};
+	\end{tikzpicture}
 
 \end{frame}
 	
@@ -3573,6 +3631,152 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\alert{GHF does not require a common spin-quantization axis or fixed values of $N^\alpha$ and $N^\beta$}
 \end{frame}
 
+\begin{frame}{GHF allows arbitrary spin directions}
+	\centering
+	\begin{tikzpicture}[>=stealth,scale=0.84]
+
+		% ============================================================
+		% RHF
+		% ============================================================
+		\begin{scope}[shift={(-5.7,1.0)}]
+			% Bloch sphere
+			\draw[hfInk,thick] (0,0) circle (1.00);
+			\draw[hfInk!50] (-1.00,0) arc (180:360:1.00 and 0.28);
+			\draw[hfInk!50,dashed] (-1.00,0) arc (180:0:1.00 and 0.28);
+
+			% z axis
+			\draw[->,hfInk!50] (0,-1.18) -- (0,1.18);
+			\node[right,hfInk!60] at (0,1.2) {$z$};
+
+			% alpha / beta
+			\draw[->,very thick,hfBlue] (0,0) -- (0,0.80);
+			\draw[->,very thick,hfRed]  (0,0) -- (0,-0.80);
+
+			\node[right,text=hfBlue] at (0.05,0.62) {$\alpha$};
+			\node[right,text=hfRed]  at (0.05,-0.62) {$\beta$};
+		\end{scope}
+
+		\node[above] at (-5.7,2.20) {\textbf{RHF}};
+		\node[align=center] at (-5.7,-0.55)
+			{common $z$ axis\\
+			 \alert{same spatial orbital}};
+
+
+		% ============================================================
+		% UHF
+		% ============================================================
+		\begin{scope}[shift={(-1.9,1.0)}]
+			% Bloch sphere
+			\draw[hfInk,thick] (0,0) circle (1.00);
+			\draw[hfInk!50] (-1.00,0) arc (180:360:1.00 and 0.28);
+			\draw[hfInk!50,dashed] (-1.00,0) arc (180:0:1.00 and 0.28);
+
+			% z axis
+			\draw[->,hfInk!50] (0,-1.18) -- (0,1.18);
+			\node[right,hfInk!60] at (0,1.2) {$z$};
+
+			% alpha / beta
+			\draw[->,very thick,hfBlue] (0,0) -- (0,0.80);
+			\draw[->,very thick,hfRed]  (0,0) -- (0,-0.80);
+
+			\node[right,text=hfBlue] at (0.05,0.62) {$\alpha$};
+			\node[right,text=hfRed]  at (0.05,-0.62) {$\beta$};
+		\end{scope}
+
+		\node[above] at (-1.9,2.20) {\textbf{UHF}};
+		\node[align=center] at (-1.9,-0.55)
+			{common $z$ axis\\
+			 \alert{different spatial orbitals}};
+
+
+% ============================================================
+% Rotated UHF
+% ============================================================
+\begin{scope}[shift={(1.9,1.0)}]
+	% Bloch sphere
+	\draw[hfInk,thick] (0,0) circle (1.00);
+	\draw[hfInk!50] (-1.00,0) arc (180:360:1.00 and 0.28);
+	\draw[hfInk!50,dashed] (-1.00,0) arc (180:0:1.00 and 0.28);
+
+	% laboratory z axis
+	\draw[->,hfInk!35] (0,-1.18) -- (0,1.18);
+	\node[right,hfInk!50] at (0,1.2) {$z$};
+
+	% antiparallel spin directions
+	\draw[->,very thick,hfViolet]
+		(0,0) -- (0.66,0.58);
+	\draw[->,very thick,hfOrange]
+		(0,0) -- (-0.66,-0.58);
+
+	% labels outside the sphere
+	\node[above right,text=hfViolet]
+		at (0.0,0.4) {$\boldsymbol{s}$};
+	\node[below left,text=hfOrange]
+		at (0.0,-0.4) {$\boldsymbol{s}'$};
+\end{scope}
+
+\node[above] at (1.9,2.20) {\textbf{Rotated UHF}};
+\node[align=center] at (1.9,-0.55)
+	{spinors along\\
+	 \alert{a common tilted axis}};
+
+
+% ============================================================
+% Genuine GHF
+% ============================================================
+\begin{scope}[shift={(5.7,1.0)}]
+	% Bloch sphere
+	\draw[hfInk,thick] (0,0) circle (1.00);
+	\draw[hfInk!50] (-1.00,0) arc (180:360:1.00 and 0.28);
+	\draw[hfInk!50,dashed] (-1.00,0) arc (180:0:1.00 and 0.28);
+
+	% laboratory z axis
+	\draw[->,hfInk!35] (0,-1.18) -- (0,1.18);
+	\node[right,hfInk!50] at (0,1.2) {$z$};
+
+	% non-collinear spin directions
+	\draw[->,very thick,hfViolet]
+		(0,0) -- (0.70,0.56);
+	\draw[->,very thick,hfOrange]
+		(0,0) -- (-0.48,0.72);
+
+	% labels outside the sphere
+	\node[above right,text=hfViolet]
+		at (0.0,0.4) {$\boldsymbol{s}$};
+	\node[above left,text=hfOrange]
+		at (-0.3,0.1) {$\boldsymbol{s}'$};
+\end{scope}
+
+\node[above] at (5.7,2.20) {\textbf{GHF}};
+\node[align=center] at (5.7,-0.55)
+	{spinors along\\
+	 \alert{different tilted axes}};
+
+	\end{tikzpicture}
+
+	\vfill
+
+	\begin{block}{Collinear vs non-collinear solutions}
+		\begin{equation}
+			\underbrace{
+				\text{UHF}
+				\xrightarrow{\text{global spin rotation}}
+				\text{rotated UHF}
+			}_{\text{physically equivalent collinear solutions}}
+			\qquad\neq\qquad
+			\underbrace{
+				\text{genuine GHF}
+			}_{\text{non-collinear}}
+		\end{equation}
+	\end{block}
+
+	\vfill
+
+	\centering
+	$\Rightarrow$
+	\alert{A tilted spin axis alone does not imply a genuinely non-collinear GHF solution}
+\end{frame}
+
 %-----------------------------------------------------
 \begin{frame}{GHF density matrix}
 	\begin{block}{Density matrix}
@@ -3911,861 +4115,5 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 	\end{columns}
 \end{frame}
 
-%\begin{frame}{Coulomb operator: density creates a local potential}
-%	\begin{columns}[T]
-%		\begin{column}{0.57\textwidth}
-%			\centering
-%			\begin{tikzpicture}[
-%				>=stealth,
-%				box/.style={
-%					draw=hfGreen,
-%					rounded corners=2pt,
-%					fill=hfGreenLight,
-%					minimum width=3.4cm,
-%					minimum height=0.85cm,
-%					align=center
-%				}
-%			]
-%				\node[box] (rhoj) at (0,2.8)
-%					{$\green{\rho_j(\bx_2)=\abs{\chi_j(\bx_2)}^2}$\\
-%					 source charge density};
-%
-%				\node[box] (pot) at (0,1.25)
-%					{$\blue{v_j^\text{J}(\br_1)}$\\
-%					 electrostatic potential};
-%
-%				\node[box] (rhoi) at (-2.0,-0.45)
-%					{$\violet{\rho_i(\bx_1)}$\\
-%					 probe density};
-%
-%				\node[box] (energy) at (2.0,-0.45)
-%					{$\orange{J_{ij}}$\\
-%					 Coulomb energy};
-%
-%				\draw[->,very thick,hfBlue] (rhoj) -- (pot)
-%					node[midway,right,text=hfInk] {$r_{12}^{-1}$};
-%
-%				\draw[->,very thick,hfOrange] (pot.south) -- ++(0,-0.35)
-%					-| (energy.north);
-%
-%				\draw[->,very thick,hfViolet] (rhoi) -- (energy);
-%			\end{tikzpicture}
-%		\end{column}
-%		%
-%		\begin{column}{0.43\textwidth}
-%			\begin{block}{Step 1: generate the potential}
-%				\begin{equation}
-%					\blue{v_j^\text{J}(\br_1)}
-%					=
-%					\int
-%					\frac{\green{\rho_j(\bx_2)}}{r_{12}}
-%					\dd{\bx_2}
-%				\end{equation}
-%			\end{block}
-%			\begin{block}{Step 2: probe the potential}
-%				\begin{equation}
-%					\orange{J_{ij}}
-%					=
-%					\int
-%					\violet{\rho_i(\bx_1)}
-%					\blue{v_j^\text{J}(\br_1)}
-%					\dd{\bx_1}
-%				\end{equation}
-%			\end{block}
-%		\end{column}
-%	\end{columns}
-%
-%	\begin{equation}
-%		\boxed{
-%			\hJ_j(\bx_1)\chi_i(\bx_1)
-%			=
-%			v_j^\text{J}(\br_1)\chi_i(\bx_1)
-%		}
-%		\qquad
-%		\Rightarrow
-%		\qquad
-%		\alert{$\hJ_j$ is a local multiplicative operator}
-%	\end{equation}
-%\end{frame}
-
-\begin{frame}{Exchange operator: a nonlocal quantum effect}
-	\begin{columns}[T]
-		\begin{column}{0.52\textwidth}
-			\begin{block}{Coulomb operator}
-				\centering
-				\begin{tikzpicture}[
-					>=stealth,
-					box/.style={
-						draw=hfGreen,
-						rounded corners=2pt,
-						fill=hfGreenLight,
-						minimum width=2.5cm,
-						minimum height=0.75cm,
-						align=center
-					}
-				]
-					\node[box] (in) at (0,2.0)
-						{$\chi_i(\bx_1)$};
-					\node[box] (op) at (0,0.8)
-						{$\blue{v_j^\text{J}(\br_1)}$};
-					\node[box] (out) at (0,-0.4)
-						{$v_j^\text{J}(\br_1)\chi_i(\bx_1)$};
-
-					\draw[->,thick] (in) -- (op);
-					\draw[->,thick] (op) -- (out);
-				\end{tikzpicture}
-
-				The input orbital remains $\chi_i$:
-				\[
-					\hJ_j\chi_i=v_j^\text{J}\chi_i.
-				\]
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Exchange operator}
-				\centering
-				\begin{tikzpicture}[
-					>=stealth,
-					box/.style={
-						draw=hfGreen,
-						rounded corners=2pt,
-						fill=hfGreenLight,
-						minimum width=2.8cm,
-						minimum height=0.75cm,
-						align=center
-					}
-				]
-					\node[box] (in) at (0,2.0)
-						{$\chi_i(\bx_2)$};
-					\node[box] (op) at (0,0.8)
-						{$\violet{\chi_j^*(\bx_2)\chi_i(\bx_2)}$};
-					\node[box] (out) at (0,-0.4)
-						{$k_{ji}(\br_1)\chi_j(\bx_1)$};
-
-					\draw[->,thick] (in) -- (op);
-					\draw[->,thick] (op) -- (out);
-				\end{tikzpicture}
-
-				The output is proportional to $\chi_j$:
-				\[
-					\hK_j\chi_i
-					=
-					\left[
-					\int
-					\frac{\chi_j^*(\bx_2)\chi_i(\bx_2)}
-					     {r_{12}}
-					\dd{\bx_2}
-					\right]\chi_j(\bx_1).
-				\]
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{center}
-		\alert{Exchange has no classical electrostatic analogue:
-		it is orbital dependent and nonlocal.}
-	\end{center}
-\end{frame}
-
-%\begin{frame}{The self-consistent-field cycle}
-%	\centering
-%	\begin{tikzpicture}[
-%		>=stealth,
-%		node distance=0.55cm and 0.65cm,
-%		step/.style={
-%			draw=hfGreen,
-%			rounded corners=2pt,
-%			fill=hfGreenLight,
-%			minimum width=2.45cm,
-%			minimum height=0.72cm,
-%			align=center
-%		},
-%		decision/.style={
-%			draw=hfRed,
-%			rounded corners=8pt,
-%			fill=hfPale,
-%			minimum width=2.45cm,
-%			minimum height=0.72cm,
-%			align=center
-%		}
-%	]
-%		\node[step] (mol)
-%			{Molecule\\and basis set};
-%		\node[step,right=of mol] (ints)
-%			{Compute\\integrals};
-%		\node[step,right=of ints] (guess)
-%			{Initial density\\$\bP^{(0)}$};
-%		\node[step,right=of guess] (fock)
-%			{Build Fock matrix\\$\bF[\bP^{(n)}]$};
-%
-%		\node[step,below=1.15cm of fock] (solve)
-%			{Solve\\$\bF\bC=\bS\bC\bE$};
-%		\node[step,left=of solve] (density)
-%			{New density\\$\bP^{(n+1)}$};
-%		\node[decision,left=of density] (conv)
-%			{Converged?};
-%		\node[step,left=of conv] (properties)
-%			{Energy and\\properties};
-%
-%		\draw[->,thick] (mol) -- (ints);
-%		\draw[->,thick] (ints) -- (guess);
-%		\draw[->,thick] (guess) -- (fock);
-%		\draw[->,thick] (fock) -- (solve);
-%		\draw[->,thick] (solve) -- (density);
-%		\draw[->,thick] (density) -- (conv);
-%		\draw[->,thick,hfGreen] (conv) -- (properties)
-%			node[midway,above,text=hfGreen] {yes};
-%
-%		\draw[->,thick,hfRed]
-%			(conv.north) -- ++(0,0.45) -| (fock.south)
-%			node[pos=0.18,above,text=hfRed] {no};
-%
-%		\node[below=0.18cm of density,text=hfViolet]
-%			{optional damping or DIIS};
-%	\end{tikzpicture}
-%
-%	\begin{block}{Self-consistency}
-%		\begin{equation}
-%			\boxed{
-%				\bP^{(n)}
-%				\longrightarrow
-%				\bF[\bP^{(n)}]
-%				\longrightarrow
-%				\bP^{(n+1)}
-%			}
-%			\qquad
-%			\text{and at convergence}
-%			\qquad
-%			\bP^{(n+1)}=\bP^{(n)}=\bP^\star
-%		\end{equation}
-%	\end{block}
-%\end{frame}
-
-\begin{frame}{DIIS searches for a nearly vanishing residual}
-	\begin{columns}[T]
-		\begin{column}{0.53\textwidth}
-			\begin{block}{Residual space}
-				\centering
-				\begin{tikzpicture}[scale=0.83,>=stealth]
-					\draw[->] (-0.3,0) -- (5.0,0);
-					\draw[->] (0,-0.3) -- (0,4.1);
-					\node[below left] at (0,0) {$\bO$};
-
-					\draw[dashed,hfInk,thick]
-						(0.7,3.6) -- (4.8,1.0)
-						node[right] {affine subspace};
-
-					\fill[hfBlue] (1.1,3.35) circle (2.5pt)
-						node[above right] {$\be^{(1)}$};
-					\fill[hfOrange] (2.7,2.34) circle (2.5pt)
-						node[above right] {$\be^{(2)}$};
-					\fill[hfViolet] (4.25,1.35) circle (2.5pt)
-						node[above right] {$\be^{(3)}$};
-
-					\fill[hfRed] (1.72,2.95) circle (3pt)
-						node[above right] {$\be_\text{DIIS}$};
-
-					\draw[dotted,very thick,hfRed]
-						(0,0) -- (1.72,2.95);
-
-					\node[align=center,text=hfRed] at (3.5,3.55)
-						{closest accessible\\point to zero};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.47\textwidth}
-			\begin{block}{Linear combination}
-				\begin{equation}
-					\be_\text{DIIS}
-					=
-					\sum_{i=1}^{m}c_i\be^{(i)}
-				\end{equation}
-				\begin{equation}
-					\boxed{
-					\min_{\bc}
-					\norm{\sum_i c_i\be^{(i)}}^2
-					\quad
-					\text{subject to}
-					\quad
-					\sum_i c_i=1
-					}
-				\end{equation}
-			\end{block}
-
-			\begin{block}{Why the constraint?}
-				$\sum_i c_i=1$ defines an
-				\alert{affine combination} of the stored iterations,
-				rather than an arbitrary rescaling toward zero.
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{center}
-		\green{DIIS combines previous Fock matrices so that their
-		combined SCF residual is as small as possible.}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Spin contamination as a mixture of spin states}
-	\begin{columns}[T]
-		\begin{column}{0.53\textwidth}
-			\begin{block}{A UHF determinant is generally not spin pure}
-				\begin{equation}
-					\ket{\Phi_\text{UHF}}
-					=
-					c_S\ket{S,M_S}
-					+
-					c_{S+1}\ket{S+1,M_S}
-					+
-					c_{S+2}\ket{S+2,M_S}
-					+\cdots
-				\end{equation}
-				The components have the same $M_S$, but different
-				eigenvalues of $\chS^2$.
-			\end{block}
-
-			\begin{equation}
-				\expval{\chS^2}_\text{UHF}
-				=
-				\sum_{S'}\abs{c_{S'}}^2S'(S'+1)
-			\end{equation}
-		\end{column}
-		%
-		\begin{column}{0.47\textwidth}
-			\begin{block}{Schematic composition}
-				\centering
-				\begin{tikzpicture}
-					\draw[fill=hfBlue!75,draw=none]
-						(0,0) rectangle (2.2,3.9);
-					\draw[fill=hfOrange!80,draw=none]
-						(0,3.9) rectangle (2.2,4.8);
-					\draw[fill=hfViolet!80,draw=none]
-						(0,4.8) rectangle (2.2,5.35);
-
-					\draw[hfInk,thick] (0,0) rectangle (2.2,5.35);
-
-					\node[white,align=center] at (1.1,1.95)
-						{target\\$\ket{S,M_S}$};
-					\node[white] at (1.1,4.35)
-						{$S+1$};
-					\node[white] at (1.1,5.07)
-						{$S+2,\ldots$};
-
-					\node[right,align=left] at (2.45,2.0)
-						{desired\\component};
-					\node[right,align=left,text=hfRed] at (2.45,4.7)
-						{spin\\contamination};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{equation}
-		\boxed{
-			\Delta S^2
-			=
-			\expval{\chS^2}_\text{UHF}
-			-
-			S(S+1)
-			\geq 0
-		}
-		\qquad
-		\text{for a target state with $S=M_S$.}
-	\end{equation}
-\end{frame}
-
-\begin{frame}{Molecular orbitals are built from atomic basis functions}
-	\begin{block}{Constructive and destructive combinations}
-		\centering
-		\begin{tikzpicture}[scale=0.9,>=stealth]
-			% Bonding row
-			\node at (-0.4,2.1) {\green{in phase}};
-			\fill[hfBlue!70] (1.1,2.1) ellipse (0.65 and 0.34);
-			\fill[hfBlue!70] (2.5,2.1) ellipse (0.65 and 0.34);
-			\node[white] at (1.1,2.1) {$+$};
-			\node[white] at (2.5,2.1) {$+$};
-			\fill[hfInk] (1.55,2.1) circle (1.7pt);
-			\fill[hfInk] (2.05,2.1) circle (1.7pt);
-
-			\draw[->,very thick] (3.3,2.1) -- (4.3,2.1);
-
-			\fill[hfBlue!60] (5.8,2.1) ellipse (1.55 and 0.48);
-			\fill[hfInk] (5.55,2.1) circle (1.7pt);
-			\fill[hfInk] (6.05,2.1) circle (1.7pt);
-			\node at (7.65,2.1) {$\psi_\text{bonding}$};
-
-			% Antibonding row
-			\node at (-0.4,0.2) {\red{out of phase}};
-			\fill[hfBlue!70] (1.1,0.2) ellipse (0.65 and 0.34);
-			\fill[hfRed!70]  (2.5,0.2) ellipse (0.65 and 0.34);
-			\node[white] at (1.1,0.2) {$+$};
-			\node[white] at (2.5,0.2) {$-$};
-			\fill[hfInk] (1.55,0.2) circle (1.7pt);
-			\fill[hfInk] (2.05,0.2) circle (1.7pt);
-
-			\draw[->,very thick] (3.3,0.2) -- (4.3,0.2);
-
-			\fill[hfBlue!70] (5.15,0.2) ellipse (0.72 and 0.42);
-			\fill[hfRed!70]  (6.45,0.2) ellipse (0.72 and 0.42);
-			\draw[white,very thick] (5.8,-0.35) -- (5.8,0.75);
-			\fill[hfInk] (5.55,0.2) circle (1.7pt);
-			\fill[hfInk] (6.05,0.2) circle (1.7pt);
-			\node at (7.75,0.2) {$\psi_\text{antibonding}$};
-		\end{tikzpicture}
-	\end{block}
-
-	\begin{equation}
-		\boxed{
-			\psi_p(\br)
-			=
-			\sum_{\mu=1}^{K} C_{\mu p}\phi_\mu(\br)
-		}
-	\end{equation}
-
-	\begin{itemize}
-		\item The coefficients determine the \alert{weight and phase}
-			of each basis function.
-		\item Constructive overlap increases density between the nuclei;
-			destructive overlap produces a node.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{The dipole moment measures charge separation}
-	\begin{columns}[T]
-		\begin{column}{0.57\textwidth}
-			\begin{block}{Electronic and nuclear charge centers}
-				\centering
-				\begin{tikzpicture}[>=stealth,scale=0.9]
-					% Electron cloud
-					\fill[hfBlue!18]
-						(0,0) ellipse (3.2 and 1.55);
-					\fill[hfBlue!16]
-						(-1.1,0.2) ellipse (1.7 and 1.05);
-					\fill[hfBlue!16]
-						(1.45,-0.15) ellipse (1.45 and 0.95);
-
-					% Nuclei
-					\fill[hfOrange] (-1.5,0.15) circle (5pt);
-					\fill[hfOrange] (0.8,0.45) circle (4pt);
-					\fill[hfOrange] (1.75,-0.45) circle (4pt);
-
-					\node[above,text=hfOrange] at (-1.5,0.3) {$Z_A$};
-					\node[above,text=hfOrange] at (0.8,0.6) {$Z_B$};
-					\node[below,text=hfOrange] at (1.75,-0.6) {$Z_C$};
-
-					% Charge centers
-					\fill[hfBlue] (-0.45,-0.25) circle (3pt);
-					\node[below,text=hfBlue] at (-0.45,-0.35)
-						{$\bR_-$};
-
-					\fill[hfRed] (0.45,0.15) circle (3pt);
-					\node[above,text=hfRed] at (0.45,0.25)
-						{$\bR_+$};
-
-					\draw[->,very thick,hfViolet]
-						(-0.45,-0.25) -- (0.45,0.15)
-						node[midway,above] {$\boldsymbol{\mu}$};
-
-					\node[text=hfBlue] at (0,-1.9)
-						{electronic density};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.43\textwidth}
-			\begin{block}{Quantum-mechanical expression}
-				\begin{equation}
-					\boldsymbol{\mu}
-					=
-					-\int
-					\br\,\rho(\br)\dd{\br}
-					+
-					\sum_A Z_A\bR_A
-				\end{equation}
-				\begin{equation}
-					\mu_x
-					=
-					-\sum_{\mu\nu}
-					P_{\mu\nu}
-					\mel{\phi_\mu}{x}{\phi_\nu}
-					+
-					\sum_A Z_A X_A
-				\end{equation}
-			\end{block}
-
-			\begin{block}{Physical picture}
-				For a neutral system,
-				\[
-					\boldsymbol{\mu}
-					\propto
-					\bR_+-\bR_-.
-				\]
-			\end{block}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Population analysis partitions an overlapping basis}
-	\begin{columns}[T]
-		\begin{column}{0.49\textwidth}
-			\begin{block}{Mulliken population analysis}
-				\centering
-				\begin{tikzpicture}[scale=0.9]
-					\fill[hfBlue!35]
-						(-0.75,0) ellipse (1.6 and 0.9);
-					\fill[hfOrange!35]
-						(0.75,0) ellipse (1.6 and 0.9);
-
-					\fill[hfBlue] (-1.25,0) circle (3pt);
-					\fill[hfOrange] (1.25,0) circle (3pt);
-
-					\node[below] at (-1.25,-0.15) {$A$};
-					\node[below] at (1.25,-0.15) {$B$};
-					\node at (0,0.25) {overlap};
-					\node at (0,-1.25)
-						{$S_{\mu\nu}\neq0$};
-				\end{tikzpicture}
-
-				\[
-					q_A^\text{Mulliken}
-					=
-					Z_A-\sum_{\mu\in A}(\bP\cdot\bS)_{\mu\mu}.
-				\]
-
-				The overlap population is assigned directly
-				in the original AO basis.
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.51\textwidth}
-			\begin{block}{Löwdin population analysis}
-				\centering
-				\begin{tikzpicture}[scale=0.9,>=stealth]
-					\fill[hfBlue!35]
-						(-1.7,0) ellipse (1.15 and 0.85);
-					\fill[hfOrange!35]
-						(1.7,0) ellipse (1.15 and 0.85);
-
-					\fill[hfBlue] (-1.7,0) circle (3pt);
-					\fill[hfOrange] (1.7,0) circle (3pt);
-
-					\node[below] at (-1.7,-0.15) {$A$};
-					\node[below] at (1.7,-0.15) {$B$};
-					\node at (0,-1.25)
-						{$\widetilde{\bS}=\bI$};
-				\end{tikzpicture}
-
-				\[
-					\widetilde{\bP}
-					=
-					\bS^{1/2}\bP\bS^{1/2},
-					\qquad
-					q_A^\text{Löwdin}
-					=
-					Z_A-\sum_{\mu\in A}\widetilde P_{\mu\mu}.
-				\]
-
-				The basis is symmetrically orthogonalized
-				before populations are assigned.
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{center}
-		\alert{Atomic charges are not observables:
-		they depend on the chosen partitioning scheme.}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Charge and spin densities contain different information}
-	\centering
-	\begin{tikzpicture}[
-		>=stealth,
-		panel/.style={
-			draw=hfGreen,
-			rounded corners=2pt,
-			fill=hfGreenLight,
-			minimum width=2.35cm,
-			minimum height=2.0cm,
-			align=center
-		}
-	]
-		\node[panel] (a) at (-4.2,1.25) {
-			\blue{$\rho^\alpha(\br)$}\\[0.4em]
-			\begin{tikzpicture}
-				\fill[hfBlue!65] (-0.45,0) circle (0.42);
-				\fill[hfBlue!25] (0.45,0) circle (0.24);
-				\fill[hfInk] (-0.45,0) circle (1.5pt);
-				\fill[hfInk] (0.45,0) circle (1.5pt);
-			\end{tikzpicture}
-		};
-
-		\node[panel] (b) at (-1.4,1.25) {
-			\red{$\rho^\beta(\br)$}\\[0.4em]
-			\begin{tikzpicture}
-				\fill[hfRed!25] (-0.45,0) circle (0.24);
-				\fill[hfRed!65] (0.45,0) circle (0.42);
-				\fill[hfInk] (-0.45,0) circle (1.5pt);
-				\fill[hfInk] (0.45,0) circle (1.5pt);
-			\end{tikzpicture}
-		};
-
-		\node[panel] (total) at (2.2,2.25) {
-			\green{$\rho^\text{T}(\br)$}\\
-			$\rho^\alpha+\rho^\beta$\\[0.4em]
-			\begin{tikzpicture}
-				\fill[hfGreen!45] (-0.45,0) circle (0.40);
-				\fill[hfGreen!45] (0.45,0) circle (0.40);
-				\fill[hfInk] (-0.45,0) circle (1.5pt);
-				\fill[hfInk] (0.45,0) circle (1.5pt);
-			\end{tikzpicture}
-		};
-
-		\node[panel] (spin) at (2.2,-0.75) {
-			\violet{$\rho^\text{S}(\br)$}\\
-			$\rho^\alpha-\rho^\beta$\\[0.4em]
-			\begin{tikzpicture}
-				\fill[hfBlue!65] (-0.45,0) circle (0.38);
-				\fill[hfRed!65]  (0.45,0) circle (0.38);
-				\node[white] at (-0.45,0) {$+$};
-				\node[white] at (0.45,0) {$-$};
-			\end{tikzpicture}
-		};
-
-		\draw[->,very thick,hfGreen]
-			(a.east) -- ++(0.35,0) |- (total.west);
-		\draw[->,very thick,hfGreen]
-			(b.east) -- ++(0.45,0) |- (total.west);
-
-		\draw[->,very thick,hfViolet]
-			(a.east) -- ++(0.35,0) |- (spin.west);
-		\draw[->,very thick,hfViolet]
-			(b.east) -- ++(0.45,0) |- (spin.west);
-	\end{tikzpicture}
-
-	\begin{block}{Density matrices}
-		\begin{equation}
-			\boxed{
-				\bP^\text{T}=\bP^\alpha+\bP^\beta
-			}
-			\qquad
-			\boxed{
-				\bP^\text{S}=\bP^\alpha-\bP^\beta
-			}
-		\end{equation}
-		The total density describes the charge distribution;
-		the spin density reveals where the unpaired electrons reside.
-	\end{block}
-\end{frame}
-
-\begin{frame}{GHF allows arbitrary spin directions}
-	\centering
-	\begin{tikzpicture}[>=stealth,scale=0.92]
-		% RHF
-		\draw[hfInk,thick] (-4.2,1.0) circle (1.15);
-		\draw[hfInk!50] (-5.35,1.0) arc (180:360:1.15 and 0.32);
-		\draw[hfInk!50,dashed] (-5.35,1.0) arc (180:0:1.15 and 0.32);
-		\draw[->,very thick,hfBlue] (-4.2,1.0) -- (-4.2,1.9);
-		\draw[->,very thick,hfRed]  (-4.2,1.0) -- (-4.2,0.1);
-		\node[above] at (-4.2,2.35) {\textbf{RHF}};
-		\node[align=center] at (-4.2,-0.65)
-			{paired $\alpha/\beta$\\same spatial orbital};
-
-		% UHF
-		\draw[hfInk,thick] (0,1.0) circle (1.15);
-		\draw[hfInk!50] (-1.15,1.0) arc (180:360:1.15 and 0.32);
-		\draw[hfInk!50,dashed] (-1.15,1.0) arc (180:0:1.15 and 0.32);
-		\draw[->,very thick,hfBlue] (0,1.0) -- (0,1.9);
-		\node[above,text=hfBlue] at (0,1.9) {$+z$};
-		\node[below,text=hfRed] at (0,0.1) {$-z$};
-		\node[above] at (0,2.35) {\textbf{UHF}};
-		\node[align=center] at (0,-0.65)
-			{spin restricted to\\the common $z$ axis};
-
-		% GHF
-		\draw[hfInk,thick] (4.2,1.0) circle (1.15);
-		\draw[hfInk!50] (3.05,1.0) arc (180:360:1.15 and 0.32);
-		\draw[hfInk!50,dashed] (3.05,1.0) arc (180:0:1.15 and 0.32);
-		\draw[->,very thick,hfViolet]
-			(4.2,1.0) -- (4.95,1.68);
-		\node[above] at (4.2,2.35) {\textbf{GHF}};
-		\node[align=center] at (4.2,-0.65)
-			{each orbital may choose\\its own spin direction};
-	\end{tikzpicture}
-
-	\begin{block}{Two-component spinor}
-		\begin{equation}
-			\boxed{
-				\chi_p^\text{GHF}(\bx)
-				=
-				\alpha(\omega)\blue{\psi_p^\alpha(\br)}
-				+
-				\beta(\omega)\red{\psi_p^\beta(\br)}
-			}
-		\end{equation}
-	\end{block}
-
-	\begin{center}
-		\alert{GHF does not require a common spin-quantization axis.}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Born--Oppenheimer: electrons follow the nuclei}
-	\begin{columns}[T]
-		\begin{column}{0.50\textwidth}
-			\begin{block}{Separation of time scales}
-				\centering
-				\begin{tikzpicture}[>=stealth,scale=0.9]
-					% Nuclei
-					\fill[hfOrange] (-1.7,0) circle (8pt);
-					\fill[hfOrange] (1.7,0) circle (8pt);
-					\node[below] at (-1.7,-0.25) {nucleus};
-					\node[below] at (1.7,-0.25) {nucleus};
-
-					% Electrons
-					\fill[hfBlue] (-0.4,0.65) circle (3pt);
-					\fill[hfBlue] (0.55,-0.55) circle (3pt);
-					\fill[hfBlue] (0.9,0.75) circle (3pt);
-
-					\draw[->,hfBlue,thick]
-						(-0.8,0.9) arc (150:-110:0.55);
-					\draw[->,hfBlue,thick]
-						(0.1,-0.75) arc (210:520:0.55);
-
-					\draw[<->,very thick,hfOrange]
-						(-1.45,0) -- (1.45,0)
-						node[midway,above] {$R$};
-
-					\node[text=hfBlue,align=center] at (0,1.75)
-						{fast electronic\\motion};
-					\node[text=hfOrange,align=center] at (0,-1.45)
-						{slow nuclear\\motion};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.50\textwidth}
-			\begin{block}{Potential-energy surface}
-				\centering
-				\begin{tikzpicture}[scale=0.8,>=stealth]
-					\draw[->] (0,0) -- (4.8,0)
-						node[right] {$R$};
-					\draw[->] (0,0) -- (0,3.6)
-						node[above] {$E$};
-
-					\draw[very thick,hfBlue]
-						plot[smooth] coordinates {
-							(0.55,3.25)
-							(0.85,1.70)
-							(1.25,0.75)
-							(1.75,0.45)
-							(2.35,0.65)
-							(3.10,1.05)
-							(4.30,1.35)
-						};
-
-					\draw[dashed,hfRed]
-						(1.75,0) -- (1.75,0.45);
-					\node[below] at (1.75,0) {$R_\text{eq}$};
-					\node[above right,text=hfBlue]
-						at (2.45,0.72) {$E_\text{elec}(R)$};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{equation}
-		\boxed{
-			\chH_\text{elec}(\br;\bR)
-			\Phi_k(\br;\bR)
-			=
-			E_k(\bR)\Phi_k(\br;\bR)
-		}
-	\end{equation}
-
-	\begin{center}
-		For each fixed nuclear geometry $\bR$, solve the electronic problem;
-		the resulting $E_k(\bR)$ governs the nuclear motion.
-	\end{center}
-\end{frame}
-
-\begin{frame}{The Fock operator describes one electron in a mean field}
-	\begin{columns}[T]
-		\begin{column}{0.52\textwidth}
-			\begin{block}{Physical picture}
-				\centering
-				\begin{tikzpicture}[>=stealth,scale=0.92]
-					% Mean-field density
-					\fill[hfBlue!15]
-						(0,0) ellipse (3.0 and 1.5);
-					\fill[hfBlue!16]
-						(-1.1,0.2) ellipse (1.45 and 0.9);
-					\fill[hfBlue!16]
-						(1.15,-0.15) ellipse (1.5 and 0.95);
-
-					% Nuclei
-					\fill[hfOrange] (-1.3,0) circle (5pt);
-					\fill[hfOrange] (1.3,0) circle (5pt);
-					\node[below] at (-1.3,-0.2) {$A$};
-					\node[below] at (1.3,-0.2) {$B$};
-
-					% Probe electron
-					\fill[hfRed] (0.35,1.5) circle (4pt);
-					\node[above,text=hfRed] at (0.35,1.6)
-						{electron $i$};
-
-					\draw[->,thick,hfOrange]
-						(0.25,1.35) -- (-1.1,0.2)
-						node[midway,left] {nuclear attraction};
-
-					\draw[->,thick,hfBlue]
-						(0.45,1.35) -- (1.1,0.15)
-						node[midway,right,align=left]
-						{average\\electron field};
-
-					\node[text=hfBlue] at (0,-1.8)
-						{density of the other electrons};
-				\end{tikzpicture}
-			\end{block}
-		\end{column}
-		%
-		\begin{column}{0.48\textwidth}
-			\begin{block}{Effective one-electron operator}
-				\begin{equation}
-					\boxed{
-						\hf(\bx)
-						=
-						\hh(\bx)
-						+
-						\sum_{j=1}^{N}
-						\left[
-							\hJ_j(\bx)-\hK_j(\bx)
-						\right]
-					}
-				\end{equation}
-				\begin{itemize}
-					\item $\hh$: kinetic energy and nuclear attraction
-					\item $\hJ_j$: classical Coulomb repulsion
-					\item $\hK_j$: nonlocal exchange contribution
-				\end{itemize}
-			\end{block}
-
-			\begin{block}{Self-consistent mean field}
-				The potential depends on the occupied orbitals,
-				which are themselves eigenfunctions of $\hf$:
-				\begin{equation}
-					\hf\chi_i=\epsilon_i\chi_i.
-				\end{equation}
-			\end{block}
-		\end{column}
-	\end{columns}
-
-	\begin{center}
-		\alert{Each electron moves in the average field generated
-		by all the others.}
-	\end{center}
-\end{frame}
 
 \end{document}
