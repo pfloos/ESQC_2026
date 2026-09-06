@@ -648,7 +648,9 @@
 \begin{frame}{One-electron contributions to the HF energy}
 	\begin{block}{Electronic Hamiltonian}
 	\begin{equation*}
-		\boxed{\chH_\text{elec} = \sum_{i=1}^N \hh(\bx_i) + \sum_{i<j}^N \frac{1}{r_{ij}}}
+		\boxed{\chH_\text{elec} 
+		= \underbrace{\sum_{i=1}^N \hh(\bx_i)}_{\text{\alert{one-electron part $\chO_1$}}} 
+		+ \underbrace{\sum_{i<j}^N \frac{1}{r_{ij}}}_{\text{\alert{two-electron part $\chO_2$}}}}
 	\end{equation*}	
 	\end{block}	
 	\begin{block}{Nuclear repulsion}
