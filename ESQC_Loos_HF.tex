@@ -384,22 +384,24 @@
 
 \begin{frame}{Bosons vs Fermions}
 	\begin{block}{Symmetry vs Antisymmetry}
-		Indistinguishable particles means 
+		Indistinguishable particles mean 
 		\begin{equation*}
-			\boxed{\abs{\Psi(\bx_1,\bx_2)}^2 = \abs{\Psi(\bx_2,\bx_1)}^2  \qq{$\Rightarrow$}  \Psi(\bx_2,\bx_1) = \alert{e^{\ii \theta}} \Psi(\bx_1,\bx_2)}
+			\boxed{\abs{\Psi(\red{\bx_1},\blue{\bx_2})}^2 = \abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2  
+			\qq{$\Rightarrow$}  
+			\Psi(\blue{\bx_2},\red{\bx_1}) = \green{e^{\ii \theta}} \Psi(\red{\bx_1},\blue{\bx_2})}
 		\end{equation*}
 		Applying twice the \alert{permutation operator} $\chP_{12}$ gives
 		\begin{gather*}
-			\chP_{12} \Psi(\bx_1,\bx_2) = \Psi(\bx_2,\bx_1) = \alert{e^{\ii \theta}} \Psi(\bx_1,\bx_2)
+			\chP_{12} \Psi(\red{\bx_1},\blue{\bx_2}) = \Psi(\blue{\bx_2},\red{\bx_1}) = \green{e^{\ii \theta}} \Psi(\red{\bx_1},\blue{\bx_2})
 			\qquad
-			\chP_{12}^2 \Psi(\bx_1,\bx_2) = \alert{e^{2\ii \theta}} \Psi(\bx_1,\bx_2) = \Psi(\bx_1,\bx_2)
+			\chP_{12}^2 \Psi(\red{\bx_1},\blue{\bx_2}) = \green{e^{2\ii \theta}} \Psi(\red{\bx_1},\blue{\bx_2}) = \Psi(\red{\bx_1},\blue{\bx_2})
 			\\
 			\qq{$\Rightarrow$}
-			\alert{e^{2\ii \theta}} = 1 
+			\green{e^{2\ii \theta}} = 1 
 			\qq{$\Rightarrow$}
-			\alert{\theta} = n\pi
+			\green{\theta} = n\pi
 			\qq{$\Rightarrow$}
-			\boxed{\alert{e^{\ii \theta}} = \pm 1}
+			\boxed{\green{e^{\ii \theta}} = \pm 1}
 		\end{gather*}
 		\violet{Bosons} mean \violet{$\Psi(\bx_1,\bx_2) = \Psi(\bx_2,\bx_1)$} and \orange{Fermions} mean \orange{$\Psi(\bx_1,\bx_2) = -\Psi(\bx_2,\bx_1)$}
 		\\
