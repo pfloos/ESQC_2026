@@ -386,11 +386,21 @@
 	\begin{block}{Symmetry vs Antisymmetry}
 		Indistinguishable particles means 
 		\begin{equation*}
-			\boxed{\abs{\Psi(\bx_1,\bx_2)}^2 = \abs{\Psi(\bx_2,\bx_1)}^2  \qq{$\Rightarrow$}  \Psi(\bx_1,\bx_2) = \alert{\pm} \Psi(\bx_2,\bx_1)}
+			\boxed{\abs{\Psi(\bx_1,\bx_2)}^2 = \abs{\Psi(\bx_2,\bx_1)}^2  \qq{$\Rightarrow$}  \Psi(\bx_2,\bx_1) = \alert{e^{\ii \theta}} \Psi(\bx_1,\bx_2)}
 		\end{equation*}
-		\\
-		\bigskip
-%		\pause
+		Applying twice the \alert{permutation operator} $\chP_{12}$ gives
+		\begin{gather*}
+			\chP_{12} \Psi(\bx_1,\bx_2) = \Psi(\bx_2,\bx_1) = \alert{e^{\ii \theta}} \Psi(\bx_1,\bx_2)
+			\qquad
+			\chP_{12}^2 \Psi(\bx_1,\bx_2) = \alert{e^{2\ii \theta}} \Psi(\bx_1,\bx_2) = \Psi(\bx_1,\bx_2)
+			\\
+			\qq{$\Rightarrow$}
+			\alert{e^{2\ii \theta}} = 1 
+			\qq{$\Rightarrow$}
+			\alert{\theta} = n\pi
+			\qq{$\Rightarrow$}
+			\boxed{\alert{e^{\ii \theta}} = \pm 1}
+		\end{gather*}
 		\violet{Bosons} mean \violet{$\Psi(\bx_1,\bx_2) = \Psi(\bx_2,\bx_1)$} and \orange{Fermions} mean \orange{$\Psi(\bx_1,\bx_2) = -\Psi(\bx_2,\bx_1)$}
 		\\
 		\bigskip
@@ -737,7 +747,7 @@
 		\begin{equation*}
 			\mel{ij}{}{kl} 
 			= \braket{ij}{kl} - \braket{ij}{lk} 
-			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \underbrace{\chP_{12}}_{\text{permute 1 \& 2}}) \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
+			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \chP_{12}) \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation*}
 	\end{block}
 	\begin{block}{Spatial orbitals}
