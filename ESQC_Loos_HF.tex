@@ -161,6 +161,13 @@
 \newcommand{\cre}[1]{\Hat{a}_{#1}^\dag}
 \newcommand{\ani}[1]{\Hat{a}_{#1}}
 
+\usepackage{stackengine}
+\usepackage{scalerel}
+\newcommand\dangersign[1][3ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny\bfseries !}}{#1}%
+}
+
 %	*************
 %	* HEAD DATA *
 %	*************
@@ -198,6 +205,59 @@
 	\begin{center}
 		\includegraphics[width=\textwidth]{fig/amazon}
 	\end{center}
+\end{frame}
+
+\begin{frame}{Outline}
+	\begin{columns}[T]
+		\begin{column}{0.49\textwidth}
+			\begin{block}{Foundations}
+				\begin{enumerate}
+					\item \textbf{\blue{The electronic problem}}
+					\\
+					Molecular Hamiltonian, Born-Oppenheimer approximation,
+					and Pauli principle
+					\medskip
+
+					\item \textbf{\orange{Hartree-Fock approximation}}
+					\\
+					Slater determinants, Hartree--Fock energy,
+					Coulomb and exchange operators
+					\medskip
+
+					\item \textbf{\violet{Determinants and spin}}
+					\\
+					Excited determinants, Slater-Condon rules,
+					spin adaptation and spin contamination
+				\end{enumerate}
+			\end{block}
+		\end{column}
+		%
+		\begin{column}{0.49\textwidth}
+			\begin{block}{Equations and solutions}
+				\begin{enumerate}
+					\setcounter{enumi}{3}
+
+					\item \textbf{\blue{Finite-basis Hartree-Fock}}
+					\\
+					Fock operator, orbital energies,
+					Roothaan--Hall equations and Koopmans' theorem
+					\medskip
+
+					\item \textbf{\orange{Hartree-Fock in practice}}
+					\\
+					SCF convergence, DIIS, excited-state SCF,
+					properties and orbital localization
+					\medskip
+
+					\item \textbf{\violet{Beyond closed-shell RHF}}
+					\\
+					UHF, symmetry breaking in \ce{H2},
+					the Coulson--Fischer point and GHF
+				\end{enumerate}
+			\end{block}
+		\end{column}
+	\end{columns}
+
 \end{frame}
 
 %-----------------------------------------------------
@@ -648,9 +708,12 @@
 \begin{frame}{One-electron contributions to the HF energy}
 	\begin{block}{Electronic Hamiltonian}
 	\begin{equation*}
-		\boxed{\chH_\text{elec} 
-		= \underbrace{\sum_{i=1}^N \hh(\bx_i)}_{\text{\alert{one-electron part $\chO_1$}}} 
-		+ \underbrace{\sum_{i<j}^N \frac{1}{r_{ij}}}_{\text{\alert{two-electron part $\chO_2$}}}}
+		\boxed{
+		\chH_\text{elec} 
+		= \chO_1 + \chO_2
+		= \sum_{i=1}^N \hh(\bx_i)
+		+ \sum_{i<j}^N \frac{1}{r_{ij}}
+		}
 	\end{equation*}	
 	\end{block}	
 	\begin{block}{Nuclear repulsion}
@@ -738,8 +801,8 @@
 %-----------------------------------------------------
 \subsection{Integrals}
 %-----------------------------------------------------
-\begin{frame}{Integral notations}
-	\begin{block}{Spin orbitals}
+\begin{frame}{Notations for one-electron integrals and electron repulsion integrals (ERIs)}
+	\begin{block}{Dirac or Physicists' notations}
 		\begin{equation*}
 			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1) \dd{\bx_1} 
 		\end{equation*}
@@ -754,16 +817,19 @@
 			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \qty(1 - \chP_{12}) \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation*}
 	\end{block}
-	\begin{block}{Spatial orbitals}
+	\begin{block}{Mulliken or Chemists' notations}
 		\begin{equation*}
-			\rmel{i}{\hh}{j} = h_{ij} = \rmel{\psi_i}{\hh}{\psi_j} = \int \psi_i^*(\br_1) \hh(\br_1) \psi_j(\br_1) \dd{\br_1} 
+			\rmel{i}{\hh}{j} = h_{ij} = \rmel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\bx_1) \chi_j(\bx_1) \dd{\bx_1} 
 		\end{equation*}
 		\begin{equation*}
 			\rbraket{ij}{kl} 
-			= \rbraket{\psi_i \psi_j}{\psi_k \psi_l}
-			= \iint \psi_i^*(\br_1) \psi_j(\br_1) \frac{1}{r_{12}} \psi_k^*(\br_2) \psi_l(\br_2) \dd{\br_1} \dd{\br_2} 
+			= \rbraket{\chi_i \chi_j}{\chi_k \chi_l}
+			= \iint \chi_i^*(\bx_1) \chi_j(\bx_1) \frac{1}{r_{12}} \chi_k^*(\bx_2) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation*}
 	\end{block}
+	\vfill
+	\center
+	\alert{Warning!} We will use the same notation for spin and spatial orbitals!
 \end{frame}
 
 \begin{frame}{Permutation symmetry}
@@ -773,10 +839,13 @@
 			= \braket{\chi_i \chi_j}{\chi_k \chi_l} 
 			= \iint \chi_i^*(\bx_1) \chi_j^*(\bx_2) \frac{1}{r_{12}} \chi_k(\bx_1) \chi_l(\bx_2) \dd{\bx_1} \dd{\bx_2} 
 		\end{equation*}
-		\begin{equation*}
+		\begin{align*}
 			\qq*{\red{Complex-valued integrals:}} 
-			\braket{ij}{kl} = \braket{ji}{lk} = \braket{kl}{ij}^* = \braket{lk}{ji}^*
-		\end{equation*}
+			\braket{ij}{kl} & = \braket{ji}{lk} = \braket{kl}{ij}^* = \braket{lk}{ji}^*
+			\\
+			\qq*{\green{Real-valued integrals:}} 
+			\braket{ij}{kl} & = \braket{ji}{lk} = \braket{kl}{ij} = \braket{lk}{ji} = \braket{kj}{il} = \braket{jk}{li} = \braket{il}{kj} = \braket{li}{jk}		
+		\end{align*}
 	\end{block}
 	\begin{block}{Permutation symmetry in chemists' notation}
 		\begin{equation*}
@@ -789,6 +858,9 @@
 			\rbraket{ij}{kl} = \rbraket{ji}{kl} = \rbraket{ij}{lk} = \rbraket{ji}{lk} = \rbraket{kl}{ij} = \rbraket{lk}{ij} = \rbraket{kl}{ji} = \rbraket{lk}{ji}
 		\end{equation*}
 	\end{block}
+	\vfill
+	\center
+	For real-valued orbitals, the ERIs possess \alert{8-fold permutation symmetry}!
 \end{frame}
 
 %-----------------------------------------------------
