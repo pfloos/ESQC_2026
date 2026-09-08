@@ -804,7 +804,7 @@
 \begin{frame}{Notations for one-electron integrals and electron repulsion integrals (ERIs)}
 	\begin{block}{Dirac or Physicists' notations}
 		\begin{equation*}
-			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\br_1) \chi_j(\bx_1) \dd{\bx_1} 
+			\mel{i}{\hh}{j} = h_{ij} = \mel{\chi_i}{\hh}{\chi_j} = \int \chi_i^*(\bx_1) \hh(\bx_1) \chi_j(\bx_1) \dd{\bx_1} 
 		\end{equation*}
 		\begin{equation*}
 			\braket{ij}{kl} 
@@ -1077,7 +1077,7 @@
 		\begin{equation*}
 		\begin{split}
 			\rmel{\chi_1}{\hh}{\chi_1}
-			& = \int \chi_1^*(\bx) \hh(\br) \chi_1(\bx) \dd{\bx} 
+			& = \int \chi_1^*(\bx) \hh(\bx) \chi_1(\bx) \dd{\bx} 
 			\\
 			& = \iint \alpha^*(\omega) \psi_1^*(\br) \hh(\br) \alpha(\omega) \psi_1(\br) \dd{\omega} \dd{\br} 
 			\\
@@ -1088,7 +1088,7 @@
 		\begin{equation*}
 		\begin{split}
 			\rmel{\chi_2}{\hh}{\chi_2} 
-			& = \int \chi_2^*(\bx) \hh(\br) \chi_2(\bx) \dd{\bx} 
+			& = \int \chi_2^*(\bx) \hh(\bx) \chi_2(\bx) \dd{\bx} 
 			\\
 			& = \iint \beta^*(\omega) \psi_1^*(\br) \hh(\br) \beta(\omega) \psi_1(\br) \dd{\omega} \dd{\br} 
 			\\
@@ -1717,7 +1717,7 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 		Dropping the tildes from hereon, we get
     	\begin{equation*}
     		\boxed{
-    		\hf(\bx_1) \chi_i(\bx) = \epsilon_{i} \chi_i(\bx)
+    		\hf(\bx) \chi_i(\bx) = \epsilon_{i} \chi_i(\bx)
     		}
     	\end{equation*}
     	\begin{itemize}
@@ -2445,9 +2445,11 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 %-----------------------------------------------------
 
 \begin{frame}{DIIS take-home messages}
+	\begin{center}
+		\fbox{\textbf{Key idea:} DIIS accelerates SCF convergence by finding a linear combination of Fock matrices}
+	\end{center}
+	\bigskip
 	\begin{itemize}
-		\item \textbf{Key idea:} DIIS accelerates SCF convergence by finding a linear combination of previous Fock matrices whose extrapolated residual is minimal
-		\bigskip
 		\item[\cmark] A small \alert{rolling subspace} is normally sufficient: commonly $m\approx6$--$10$
 		\bigskip
 		\item[\xmark] DIIS requires additional \alert{storage}: $\sim 2mK^2$
