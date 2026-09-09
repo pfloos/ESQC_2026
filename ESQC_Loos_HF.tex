@@ -2814,17 +2814,27 @@ $^*$In a collinear determinant, the occupied spin orbitals all have spin aligned
 \end{frame}
 
 \begin{frame}{Localized orbitals}
-	\begin{equation*}
+\end{frame}
+	
+\begin{frame}{Localized orbitals}
+	\only<1>{\begin{equation*}
+		\bff = \mqty( \bff_\text{oo} & \bff_\text{ov} \\  \bff_\text{vo} &  \bff_\text{vv} )
+		\qq{$\xrightarrow{\text{HF convergence}}$}
+		\mqty( \bff_\text{oo} & \bO \\  \bO &  \bff_\text{vv} )
+		\qq{$\xrightarrow{\text{canonicalization}}$}
+		\mqty( \bepsilon_\text{o} & \bO \\  \bO &  \bepsilon_\text{v} )
+	\end{equation*}}
+	\only<2->{\begin{equation*}
 		\boxed{
 			\widetilde{\bC}_\text{o}
 			=
-			\underbrace{\bC_\text{o}}_{\substack{\text{occupied} \\ \text{orbitals}}} \cdot \purple{\bU}
+			\bC_\text{o} \cdot \purple{\bU}
 			\qquad
 			\purple{\bU}^\dagger \cdot \purple{\bU} = \bI
 			\qq{$\Leftrightarrow$}
 			\text{\purple{unitary transformation}}
 		}
-	\end{equation*}
+	\end{equation*}}
 
 	\begin{columns}[T,onlytextwidth]
 		\begin{column}{0.48\textwidth}
