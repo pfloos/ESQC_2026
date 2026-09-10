@@ -524,6 +524,7 @@ decoration={snake,
 	\end{columns}
 	\begin{block}{}
     	\begin{itemize}
+			\item $s$ shell: $s = (0,0,0)$ 
 			\item $p$ shell: $p_x = (1,0,0)$ \quad $p_y = (0,1,0)$ \quad $p_z = (0,0,1)$
 			\item $d$ shell: $(2,0,0), (0,2,0), (0,0,2), (1,1,0), (1,0,1), (0,1,1)$
 			$\Rightarrow$ \alert{6 $d$ cartesian functions!}
@@ -974,14 +975,14 @@ decoration={snake,
 		\begin{column}{0.485\textwidth}
 			\begin{block}{Advantages}
 				\begin{itemize}
-					\item Compact representation of molecular orbitals
-					\item Efficient analytic evaluation of multicenter
+					\item[$\cmark$] Compact representation of molecular orbitals
+					\item[$\cmark$] Efficient analytic evaluation of multicenter
 					      integrals
-					\item Practical all-electron calculations, especially
+					\item[$\cmark$] Practical all-electron calculations, especially
 					      for light and medium elements
-					\item Locality enables integral screening and
+					\item[$\cmark$] Locality enables integral screening and
 					      sparse algorithms
-					\item Well suited to mean-field and
+					\item[$\cmark$] Well suited to mean-field and
 					      correlated methods
 				\end{itemize}
 			\end{block}
@@ -990,13 +991,13 @@ decoration={snake,
 		\begin{column}{0.485\textwidth}
 			\begin{block}{Limitations}
 				\begin{itemize}
-					\item Nonorthogonal basis:
+					\item[$\xmark$] Nonorthogonal basis:
 					      possible linear-dependence problems
-					\item Diffuse functions required for anions,
+					\item[$\xmark$] Diffuse functions required for anions,
 					      Rydberg states, and long-range density tails
-					\item Individual Gaussians have neither the correct
+					\item[$\xmark$] Individual Gaussians have neither the correct
 					      nuclear cusp nor exponential asymptotic decay
-					\item Atom-centered basis produces Pulay terms when
+					\item[$\xmark$] Atom-centered basis produces Pulay terms when
 					      nuclei move
 				\end{itemize}
 			\end{block}
@@ -1392,8 +1393,8 @@ decoration={snake,
 	\begin{block}{Shell pairs and shell quartets}
 	   	\begin{itemize}
 			\bigskip
-    		\item $\rbra{ \red{\ba} \blue{\bb} }$ = single primitive bra and $\rbra{ \red{a} \blue{b} }$ = entire primitive shell pair 
-    		\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single primitive integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire primitive shell quartet 
+    		\item $\sbra{ \red{\ba} \blue{\bb} }$ = single primitive bra and $\sbra{ \red{a} \blue{b} }$ = entire primitive shell pair 
+    		\item $\sbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single primitive integral and $\sbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire primitive shell quartet 
 			\bigskip
     		\item $\rbra{ \red{\ba} \blue{\bb} }$ = single contracted bra and $\rbra{ \red{a} \blue{b} }$ = entire contracted shell pair 
     		\item $\rbraket{ \red{\ba} \blue{\bb} }{ \orange{\bc} \green{\bd} }$ = single contracted integral and $\rbraket{ \red{a} \blue{b} }{ \orange{c} \green{d} }$ = entire contracted shell quartet 
@@ -1489,7 +1490,7 @@ decoration={snake,
 	\begin{block}{Computation}
 		\begin{itemize}
 			\item $F_m(x)$ computed using pretabulated values on a grid and Taylor expansion (Chebyshev interpolation table)
-			\item higher $m$ values computed via downward recursion
+			\item lower $m$ values computed via downward recursion
 		\end{itemize}
 	\end{block}
 	\begin{block}{Downward recursion}
@@ -1523,14 +1524,14 @@ It is therefore convenient to define the hierarchy
 
 \begin{equation*}
 \boxed{
-\sbraket{\bO\bO}{\bO\bO}^{(m)}
+\sbraket{\bO\bO}{\bO\bO}^{(\red{m})}
 =
 \sqrt{\frac{4\vartheta}{\pi}}
 \qty(\frac{\pi}{\violet{\zeta}})^{3/2}
 K_{\violet{\zeta},\violet{\bP}}
 \qty(\frac{\pi}{\purple{\eta}})^{3/2}
 K_{\purple{\eta},\purple{\bQ}}
-F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
+F_{\red{m}}(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 }
 \end{equation*}
 
@@ -1542,7 +1543,7 @@ F_m(\vartheta \abs{\violet{\bP} - \purple{\bQ}}^2)
 	\item Angular-momentum recurrences couple auxiliary orders $m$ and $m+1$
 	\item For total angular momentum $L=a+b+c+d$
 	\\
-	$\Rightarrow$ one needs fundamental auxiliary integrals up to $m=L$.
+	$\Rightarrow$ one needs fundamental auxiliary integrals up to $m=L$
 \end{itemize}
 
 \end{frame}
