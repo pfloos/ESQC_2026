@@ -775,7 +775,148 @@ Applying the preceding result to every occupied pair gives
 \end{equation}
 
 \subsubsection{From spin orbitals to spatial orbitals}
+
+Consider closed-shell \ce{H2} in a minimal basis. The two occupied spin
+orbitals share the same spatial orbital,
+\begin{equation}
+  \chi_1(\bx)=\psi_1(\br)\alpha(\omega),
+  \qquad
+  \chi_2(\bx)=\psi_1(\br)\beta(\omega).
+\end{equation}
+In the spin-orbital representation, its energy is
+\begin{equation}
+  \EHF
+  =\mel{\chi_1}{\hh}{\chi_1}+\mel{\chi_2}{\hh}{\chi_2}
+  +\braket{\chi_1\chi_2}{\chi_1\chi_2}
+  -\braket{\chi_1\chi_2}{\chi_2\chi_1}.
+\end{equation}
+
+The core Hamiltonian acts only on the spatial coordinate. Consequently, the
+spin and spatial integrations factorize. For the $\alpha$ spin orbital,
+\begin{align}
+  \rmel{\chi_1}{\hh}{\chi_1}
+  &=\iint\alpha^*(\omega)\psi_1^*(\br)\hh(\br)
+    \alpha(\omega)\psi_1(\br)\dd{\omega}\dd{\br}
+  \\
+  &=\underbrace{\int\alpha^*(\omega)\alpha(\omega)\dd{\omega}}_{1}
+    \underbrace{\int\psi_1^*(\br)\hh(\br)\psi_1(\br)\dd{\br}}
+    _{\rmel{\psi_1}{\hh}{\psi_1}}.
+\end{align}
+The same argument applies to the $\beta$ spin orbital, so both electrons
+contribute the same spatial one-electron integral.
+
+The Coulomb term contains diagonal spin overlaps and therefore survives the
+spin integration,
+\begin{align}
+  \rbraket{\chi_1\chi_1}{\chi_2\chi_2}
+  &=\underbrace{\braket{\alpha}{\alpha}}_{1}
+    \underbrace{\braket{\beta}{\beta}}_{1}
+    \rbraket{\psi_1\psi_1}{\psi_1\psi_1}
+  \\
+  &=\rbraket{\psi_1\psi_1}{\psi_1\psi_1}.
+\end{align}
+The exchange term contains the opposite-spin overlaps
+$\braket{\alpha}{\beta}$ and $\braket{\beta}{\alpha}$, both of which vanish,
+\begin{equation}
+  \rbraket{\chi_1\chi_2}{\chi_2\chi_1}=0.
+\end{equation}
+Hence the spatial-orbital expression for minimal-basis \ce{H2} is
+\begin{equation}
+  \boxed{
+  \EHF=2\rmel{\psi_1}{\hh}{\psi_1}
+  +\rbraket{\psi_1\psi_1}{\psi_1\psi_1}
+  =2\rmel{1}{\hh}{1}+\rbraket{11}{11}
+  }.
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.55\textwidth]{H2}
+  \caption{Closed-shell occupation of the spatial orbital in the minimal-basis
+  description of \ce{H2}.}
+  \label{fig:h2-closed-shell}
+\end{figure}
+
+For a general closed-shell determinant, every occupied spatial orbital has
+one $\alpha$ and one $\beta$ electron. Separating the four possible spin
+combinations in the double sum gives
+\begin{equation}
+  \boxed{
+  \EHF
+  =2\sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
+  +\sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+  \left[2\rbraket{ii}{jj}-\rbraket{ij}{ji}\right]
+  }.
+  \label{eq:rhf-energy-spatial}
+\end{equation}
+The factor of two in the one-electron part comes from the two spin functions
+associated with each occupied spatial orbital. In the two-electron part, all
+four spin combinations contribute Coulomb terms, whereas exchange survives
+only between electrons of the same spin.
+
+The same bookkeeping applies to open-shell determinants. For the \ce{Li}
+atom, take
+\begin{equation}
+  \chi_1=\alpha\psi_1,
+  \qquad \chi_2=\beta\psi_1,
+  \qquad \chi_3=\alpha\psi_2.
+\end{equation}
+The energy in terms of spatial-orbital integrals is then
+\begin{equation}
+  \boxed{E_\text{HF}=2h_{11}+h_{22}+J_{11}+2J_{12}-K_{12}}.
+\end{equation}
+For the occupation used in the slides for the \ce{B} atom, the corresponding
+expression is
+\begin{equation}
+\begin{split}
+  E_\text{HF}={}&2h_{11}+2h_{22}+h_{33}+J_{11}+4J_{12}+J_{22}-2K_{12}
+  \\
+  &+2J_{13}+2J_{23}-K_{13}-K_{23}.
+\end{split}
+\end{equation}
+
 \subsubsection{Excited determinants}
+
+In the reference ground-state determinant, the Aufbau principle places the
+electrons in the $N$ lowest spin orbitals,
+\begin{equation}
+  \ket{\Psi_0}=\ket{\chi_1\ldots\chi_i\chi_j\ldots\chi_N}.
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.34\textwidth]{HF_det}
+  \caption{Reference Hartree--Fock determinant constructed from the occupied
+  spin orbitals.}
+  \label{fig:hf-reference-determinant}
+\end{figure}
+
+A singly excited determinant replaces one occupied spin orbital $\green{i}$
+by one vacant spin orbital $\red{a}$. In determinant and second-quantized
+notation,
+\begin{equation}
+  \ket{\Psi_{\green{i}}^{\red{a}}}
+  =\ket{\chi_1\ldots\chi_{\red{a}}\chi_j\ldots\chi_N}
+  =\cre{\red{a}}\ani{\green{i}}\ket{\Psi_0}.
+\end{equation}
+A double excitation replaces occupied orbitals $\green{i}$ and $\green{j}$
+by vacant orbitals $\red{a}$ and $\red{b}$,
+\begin{equation}
+  \ket{\Psi_{\green{ij}}^{\red{ab}}}
+  =\ket{\chi_1\ldots\chi_{\red{a}}\chi_{\red{b}}\ldots\chi_N}
+  =\cre{\red{a}}\cre{\red{b}}\ani{\green{j}}\ani{\green{i}}
+   \ket{\Psi_0}.
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.25\textwidth]{single}
+  \hspace{0.16\textwidth}
+  \includegraphics[width=0.25\textwidth]{double}
+  \caption{Singly excited (left) and doubly excited (right) determinants.}
+  \label{fig:excited-determinants}
+\end{figure}
+
 \subsubsection{Slater--Condon rules}
 \subsubsection{The Fock operator}
 \subsubsection{Koopmans' theorem}
