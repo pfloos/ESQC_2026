@@ -2792,6 +2792,36 @@ The practical cautions are to
 
 \subsection{Unrestricted Hartree--Fock theory}
 \subsubsection{Unrestricted Hartree--Fock}
+
+For open-shell systems, one uses \red{unrestricted spin orbitals},
+\begin{equation}
+  \chi_p^\text{UHF}(\bx)
+  =\begin{cases}
+    \alpha(\omega)\blue{\psi_p^\alpha(\br)},\\
+    \beta(\omega)\red{\psi_p^\beta(\br)}.
+  \end{cases}
+\end{equation}
+The $\alpha$ and $\beta$ spatial orbitals are therefore allowed to differ.
+The consequences stated in the slides are
+\begin{itemize}
+  \item UHF may break spin symmetry: the determinant need not be an
+    eigenfunction of $\purple{\chS^2}$;
+  \item the HF wavefunction is no longer a pure spin function;
+  \item singlets may be contaminated by triplets, quintets, and higher-spin
+    states;
+  \item doublets may be contaminated by quartets, sextets, and higher-spin
+    states.
+\end{itemize}
+Generalized Hartree--Fock also permits spin mixing and need not preserve
+$\violet{\chS_z}$. Its orbitals have the form
+\begin{equation}
+  \chi_p^\text{GHF}(\bx)
+  =\alpha(\omega)\blue{\psi_p^\alpha(\br)}
+  +\beta(\omega)\red{\psi_p^\beta(\br)}
+  \qquad\Rightarrow\qquad
+  \red{\text{two-component spinor}}.
+\end{equation}
+
 \subsubsection{The unrestricted Hartree--Fock equations}
 \subsubsection{The Pople--Nesbet equations}
 \subsubsection{The SCF procedure for unrestricted Hartree--Fock}
