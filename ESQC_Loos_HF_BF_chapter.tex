@@ -349,6 +349,12 @@ field of fixed nuclei, and the molecular wavefunction is written as
   = \Phi_\text{nucl}(\{\bR_A\})
     \Phi_\text{elec}(\{\br_i\},\{\bR_A\}).
 \end{equation}
+The corresponding total energy at fixed nuclear geometry is
+\begin{equation}
+  \cE_\text{tot}
+  = \cE_\text{elec}
+  + \sum_{A<B}^{M}\frac{Z_AZ_B}{R_{AB}}.
+\end{equation}
 At a fixed nuclear geometry, the electronic factor satisfies
 \begin{equation}
   \chH_\text{elec}\Phi_\text{elec}
@@ -374,18 +380,20 @@ The nuclear factor obeys
   + \cE_\text{elec}(\{\bR_A\})
   }.
 \end{equation}
-Thus the nuclei move on the potential-energy surface defined by
-$\violet{\chV_\text{nn}}+\cE_\text{elec}(\{\bR_A\})$. For a fixed nuclear
-geometry, the corresponding total energy is
-\begin{equation}
-  \cE_\text{tot}
-  = \cE_\text{elec}
-  + \sum_{A<B}^{M}\frac{Z_AZ_B}{R_{AB}}.
-\end{equation}
+Thus the nuclei move on the \red{potential-energy surface} defined by
+$\violet{\chV_\text{nn}}+\cE_\text{elec}(\{\bR_A\})$.
 
 \subsubsection{The Pauli principle}
 
-Electrons are spin-$1/2$ fermions. Their two spin functions are
+Electrons are spin-$1/2$ fermions. Their spin functions satisfy
+\begin{equation}
+  \ket{\omega}=\ket{s,m_s},
+  \qquad
+  s^2\ket{s,m_s}=s(s+1)\ket{s,m_s},
+  \qquad
+  s_z\ket{s,m_s}=m_s\ket{s,m_s}.
+\end{equation}
+The two one-electron spin functions are
 \begin{equation}
   \ket{\blue{\alpha}}
   = \ket{\tfrac{1}{2},+\tfrac{1}{2}},
@@ -396,6 +404,12 @@ Electrons are spin-$1/2$ fermions. Their two spin functions are
 corresponding respectively to spin-up and spin-down electrons. They are
 orthonormal,
 \begin{align}
+  \int\blue{\alpha}^*(\omega)\red{\beta}(\omega)\dd{\omega}
+  &=\int\red{\beta}^*(\omega)\blue{\alpha}(\omega)\dd{\omega}=0,
+  &
+  \int\blue{\alpha}^*(\omega)\blue{\alpha}(\omega)\dd{\omega}
+  &=\int\red{\beta}^*(\omega)\red{\beta}(\omega)\dd{\omega}=1,
+  \\
   \braket{\blue{\alpha}}{\red{\beta}}
   &= \braket{\red{\beta}}{\blue{\alpha}}=0,
   &
@@ -411,48 +425,88 @@ the composite coordinate
 Indistinguishability requires the probability density to remain unchanged
 when two particle labels are exchanged. For two particles,
 \begin{equation}
-  \abs{\Psi(\bx_1,\bx_2)}^2
-  = \abs{\Psi(\bx_2,\bx_1)}^2,
-\end{equation}
-so the two wavefunctions may differ only by a phase,
-\begin{equation}
-  \Psi(\bx_2,\bx_1)=e^{\ii\theta}\Psi(\bx_1,\bx_2).
+  \boxed{
+  \abs{\Psi(\red{\bx_1},\blue{\bx_2})}^2
+  =\abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2
+  \quad\Rightarrow\quad
+  \Psi(\blue{\bx_2},\red{\bx_1})
+  =\green{e^{\ii\theta}}\Psi(\red{\bx_1},\blue{\bx_2}) }.
 \end{equation}
 Applying the permutation operator $\chP_{12}$ twice restores the original
-ordering. Consequently $e^{2\ii\theta}=1$, and therefore
-$e^{\ii\theta}=\pm1$. Bosonic wavefunctions take the positive sign, whereas
-fermionic wavefunctions take the negative sign. The electronic wavefunction
-must therefore satisfy the Pauli antisymmetry condition
+ordering:
+\begin{align}
+  \chP_{12}\Psi(\red{\bx_1},\blue{\bx_2})
+  &=\Psi(\blue{\bx_2},\red{\bx_1})
+  =\green{e^{\ii\theta}}\Psi(\red{\bx_1},\blue{\bx_2}),
+  \\
+  \chP_{12}^2\Psi(\red{\bx_1},\blue{\bx_2})
+  &=\green{e^{2\ii\theta}}\Psi(\red{\bx_1},\blue{\bx_2})
+  =\Psi(\red{\bx_1},\blue{\bx_2}).
+\end{align}
+Consequently,
+\begin{equation}
+  \green{e^{2\ii\theta}}=1
+  \quad\Rightarrow\quad
+  \green{\theta}=n\pi
+  \quad\Rightarrow\quad
+  \boxed{\green{e^{\ii\theta}}=\pm1}.
+\end{equation}
+The plus sign defines \violet{bosons}, for which
+$\violet{\Psi(\bx_1,\bx_2)=\Psi(\bx_2,\bx_1)}$. The minus sign defines
+\orange{fermions}, for which
+$\orange{\Psi(\bx_1,\bx_2)=-\Psi(\bx_2,\bx_1)}$.
+
+The electronic Schr\"odinger equation and Pauli antisymmetry condition are
+therefore
+\begin{equation}
+  \chH_\text{elec}\Phi(\bx_1,\bx_2,\ldots,\bx_N)
+  =\cE_\text{elec}\Phi(\bx_1,\bx_2,\ldots,\bx_N),
+\end{equation}
+and
 \begin{equation}
   \Phi(\bx_1,\ldots,\bx_i,\ldots,\bx_j,\ldots,\bx_N)
   =-
   \Phi(\bx_1,\ldots,\bx_j,\ldots,\bx_i,\ldots,\bx_N).
   \label{eq:pauli-antisymmetry}
 \end{equation}
-For two electrons at the same point, this relation gives
-$\Psi(\bx,\bx)=-\Psi(\bx,\bx)$ and hence
+Putting the two particles at the same point, $\bx=\bx_1=\bx_2$, gives
 \begin{equation}
+  \text{For fermions,}\qquad
+  \Psi(\bx,\bx)=-\Psi(\bx,\bx)
+  \quad\Rightarrow\quad
   \boxed{\Psi(\bx,\bx)=0}.
 \end{equation}
 The vanishing probability of finding two same-spin electrons at the same
 point is the origin of the Fermi, or exchange, hole.
 
-Given two one-electron functions $\chi_1(\bx)$ and $\chi_2(\bx)$, the
-normalized antisymmetric two-electron wavefunction is
-\begin{align}
-  \Psi(\bx_1,\bx_2)
-  &=\frac{1}{\sqrt{2}}
+\paragraph{Problem.}
+\violet{\textit{Given two one-electron functions $\chi_1(\bx)$ and
+$\chi_2(\bx)$, construct a two-electron fermionic wavefunction
+$\Psi(\bx_1,\bx_2)$.}}
+
+\paragraph{Solution.}
+A possible normalized antisymmetric combination is
+\begin{equation}
+  \Psi(\red{\bx_1},\blue{\bx_2})
+  =\frac{1}{\sqrt{2}}\left[
+    \chi_1(\red{\bx_1})\chi_2(\blue{\bx_2})
+    -\chi_2(\red{\bx_1})\chi_1(\blue{\bx_2})
+  \right].
+\end{equation}
+Slater popularized the determinant representation of this combination,
+\begin{equation}
+  \boxed{
+  \Psi(\red{\bx_1},\blue{\bx_2})
+  =\frac{1}{\sqrt{2}}
     \begin{vmatrix}
-      \chi_1(\bx_1)&\chi_2(\bx_1)\\
-      \chi_1(\bx_2)&\chi_2(\bx_2)
+      \chi_1(\red{\bx_1})&\chi_2(\red{\bx_1})\\
+      \chi_1(\blue{\bx_2})&\chi_2(\blue{\bx_2})
     \end{vmatrix}
-  \\
-  &=\frac{1}{\sqrt{2}}
-    \left[
-      \chi_1(\bx_1)\chi_2(\bx_2)
-      -\chi_2(\bx_1)\chi_1(\bx_2)
-    \right].
-\end{align}
+  =\frac{1}{\sqrt{2}}\left[
+    \chi_1(\red{\bx_1})\chi_2(\blue{\bx_2})
+    -\chi_2(\red{\bx_1})\chi_1(\blue{\bx_2})
+  \right] }.
+\end{equation}
 This construction is a \red{Slater determinant}. By contrast, the simple
 product
 \begin{equation}
@@ -474,14 +528,18 @@ Slater determinant,
     \chi_1(\bx_N)&\chi_2(\bx_N)&\cdots&\chi_N(\bx_N)
   \end{vmatrix}
   \\
-  &\equiv \ket{\chi_1\chi_2\cdots\chi_N}
-  =\blue{\chA}\left[
+  &\equiv \ket{\chi_1(\bx_1)\chi_2(\bx_2)\cdots\chi_N(\bx_N)}
+  \\
+  &=\blue{\chA}\left[
     \chi_1(\bx_1)\chi_2(\bx_2)\cdots\chi_N(\bx_N)
-  \right].
+  \right]
+  =\blue{\chA}\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}.
   \label{eq:hf-determinant}
 \end{align}
-The operator $\blue{\chA}$ is the antisymmetrizer. It converts the Hartree
-product into an antisymmetric many-electron wavefunction.
+The operator $\blue{\chA}$ is the antisymmetrizer and
+$\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}$ is the Hartree product. Thus the
+many-electron HF wavefunction is an antisymmetrized product of one-electron
+functions.
 
 Each spin orbital separates into spin and spatial factors,
 \begin{equation}
@@ -499,12 +557,23 @@ functions,
 \end{equation}
 The spin orbitals are orthonormal,
 \begin{equation}
-  \braket{\chi_p}{\chi_q}=\delta_{pq},
+\begin{split}
+  \braket{\chi_p}{\chi_q}
+  &=\int\chi_p^*(\bx)\chi_q(\bx)\dd{\bx}
+  \\
+  &=\delta_{pq}
+  =\begin{cases}1&\text{if $p=q$},\\0&\text{otherwise},\end{cases}
+\end{split}
 \end{equation}
 where $\delta_{pq}$ is the Kronecker delta. The underlying basis functions
-need not be orthogonal. Their overlaps define the matrix elements
+are, a priori, not orthogonal. Their overlaps define the matrix elements
 \begin{equation}
-  \braket{\phi_\mu}{\phi_\nu}=S_{\mu\nu}.
+\begin{split}
+  \braket{\phi_\mu}{\phi_\nu}
+  &=\int\phi_\mu^*(\br)\phi_\nu(\br)\dd{\br}
+  \\
+  &=S_{\mu\nu}.
+\end{split}
 \end{equation}
 
 In restricted Hartree--Fock theory, which describes closed-shell systems,
@@ -515,6 +584,11 @@ the $\alpha$ and $\beta$ electrons in a pair share the same spatial orbital,
   \begin{cases}
     \blue{\alpha(\omega)}\psi_p(\br),\\
     \red{\beta(\omega)}\psi_p(\br).
+  \end{cases}
+  =
+  \begin{cases}
+    \blue{\psi_p(\br)},\\
+    \red{\Bar{\psi}_p(\br)}.
   \end{cases}
 \end{equation}
 The closed-shell RHF ansatz does not describe open-shell systems. In
@@ -542,28 +616,44 @@ shared spatial orbitals, but the slides do not discuss that formalism.
 
 Restricted spatial orbitals satisfy
 \begin{equation}
-  \braket{\psi_p}{\psi_q}=\delta_{pq}.
+  \braket{\psi_p}{\psi_q}
+  =\int\psi_p^*(\br)\psi_q(\br)\dd{\br}=\delta_{pq}.
 \end{equation}
 For UHF orbitals, orthogonality holds separately within each spin sector,
-\begin{equation}
-  \braket{\psi_p^\alpha}{\psi_q^\alpha}=\delta_{pq},
-  \qquad
-  \braket{\psi_p^\beta}{\psi_q^\beta}=\delta_{pq},
-\end{equation}
+\begin{align}
+  \braket{\psi_p^\alpha}{\psi_q^\alpha}
+  &=\int\psi_p^{\alpha*}(\br)\psi_q^\alpha(\br)\dd{\br}=\delta_{pq},
+  \\
+  \braket{\psi_p^\beta}{\psi_q^\beta}
+  &=\int\psi_p^{\beta*}(\br)\psi_q^\beta(\br)\dd{\br}=\delta_{pq},
+\end{align}
 whereas opposite-spin spatial orbitals need not be orthogonal,
 \begin{equation}
-  \braket{\psi_p^\alpha}{\psi_q^\beta}=S_{pq}^{\alpha\beta}.
+  \braket{\psi_p^\alpha}{\psi_q^\beta}
+  =\int\psi_p^{\alpha*}(\br)\psi_q^\beta(\br)\dd{\br}
+  =S_{pq}^{\alpha\beta}.
 \end{equation}
 
-We use Greek indices $\mu,\nu,\ldots$ for the $K$ basis functions
-$\{\phi_\mu\}$. General spatial-orbital and spin-orbital indices are
-$p,q,r,s,\ldots$. The $K$ basis functions generate $K$ spatial orbitals and
-$2K$ spin orbitals. Among the latter, $N$ are occupied and carry indices
-$i,j,k,l,\ldots$, while the remaining $2K-N$ vacant orbitals carry indices
-$a,b,c,d,\ldots$. A system with two electrons in each occupied spatial
-orbital is closed shell. Otherwise it is open shell. For the ground state of
-a closed-shell system, the first $N/2$ spatial orbitals are doubly occupied
-and the remaining $K-N/2$ spatial orbitals are vacant.
+The orbital sets and index conventions are
+\begin{align}
+  \{\phi_\mu\mid\mu=1,\ldots,K\}
+  &:\ \green{\text{basis functions or atomic orbitals (AOs)}},
+  \\
+  \{\psi_p\mid p=1,\ldots,K\}
+  &:\ \violet{\text{restricted spatial orbitals or molecular orbitals (MOs)}},
+  \\
+  \{\chi_p\mid p=1,\ldots,2K\}
+  &:\ \orange{\text{spin orbitals}}.
+\end{align}
+With $K$ basis functions, one obtains $K$ spatial orbitals and $2K$ spin
+orbitals, labeled by $\red{p,q,r,s,\ldots}$. Among the spin orbitals, $N$ are
+occupied and carry indices $\red{i,j,k,l,\ldots}$. The remaining $2K-N$ are
+unoccupied or vacant and carry indices $\red{a,b,c,d,\ldots}$.
+
+A system with \red{two electrons in each occupied spatial orbital} is closed
+shell. Otherwise it is open shell. For the ground state of a closed-shell
+system, the first $N/2$ spatial orbitals are \red{doubly occupied}, and the
+remaining $K-N/2$ spatial orbitals are \red{vacant}.
 
 \subsection{The Hartree--Fock approximation}
 \subsubsection{The Hartree--Fock energy}
