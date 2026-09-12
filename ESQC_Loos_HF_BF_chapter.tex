@@ -1713,70 +1713,108 @@ The frozen-orbital ionization potential is therefore
     -\frac{1}{2}\sum_j\mel{kj}{}{kj}
   \\
   &=-\mel{k}{\hh}{k}-\sum_i\mel{ik}{}{ik}
-  =\boxed{-\epsilon_k}.
+  =-\epsilon_k.
 \end{align}
-Similarly, attachment to vacant spin orbital $c$ gives
+
+\paragraph{Problem: Koopmans' theorem for electron affinity.}
+
+\violet{``Show that Koopmans' theorem applies to electron affinities.''}
+
+\paragraph{Solution.}
+
+For attachment to the vacant spin orbital $c$,
 \begin{align}
   \text{EA}&\approx{}^N E_0-{}^{N+1}E^c
   \\
   &=-\mel{c}{\hh}{c}-\sum_i\mel{ci}{}{ci}
-  =\boxed{-\epsilon_c}.
+  \\
+  &=-\epsilon_c.
 \end{align}
 
 Koopmans' estimate is usually more accurate for ionization potentials than
-for electron affinities. For ionization,
-\begin{equation}
-  \text{IP}=-\epsilon_i
+for electron affinities. For ionization, the exact IP is decomposed as
+\begin{align}
+  \text{IP}
+  &=E_\text{exact}^{N-1}-E_\text{exact}^{N}
+  \\[1mm]
+  &=E_\text{HF}^{N-1}-E_\text{HF}^{N}
+  +E_\text{corr}^{N-1}-E_\text{corr}^{N}
+  \\[1mm]
+  &=-\epsilon_i
   +\underbrace{\Delta_\text{relax}^{N-1}}_{\blue{<0}}
-  +\underbrace{\Delta_\text{corr}}_{\red{>0}},
-\end{equation}
-so orbital relaxation and correlation partially cancel. For attachment,
-\begin{equation}
-  \text{EA}=-\epsilon_a
+  +\underbrace{\Delta_\text{corr}}_{\red{>0}}.
+\end{align}
+Thus, $\cmark$ \blue{relaxation} and \red{correlation} partially cancel.
+For attachment, the analogous exact EA decomposition is
+\begin{align}
+  \text{EA}
+  &=E_\text{exact}^{N}-E_\text{exact}^{N+1}
+  \\[1mm]
+  &=E_\text{HF}^{N}-E_\text{HF}^{N+1}
+  +E_\text{corr}^{N}-E_\text{corr}^{N+1}
+  \\[1mm]
+  &=-\epsilon_a
   +\underbrace{\Delta_\text{relax}^{N+1}}_{\blue{>0}}
-  +\underbrace{\Delta_\text{corr}}_{\red{>0}},
-\end{equation}
-and the corrections have the same sign.
+  +\underbrace{\Delta_\text{corr}}_{\red{>0}}.
+\end{align}
+Here, $\xmark$ \blue{relaxation} and \red{correlation} do not cancel.
+Therefore, \red{Koopmans' theorem is usually more accurate for IPs than for
+EAs}.
 
 The $N$-electron Hartree--Fock Hamiltonian is the sum of the one-electron
 Fock operators,
 \begin{equation}
-  \underbrace{\chH^\text{HF}}_{N\text{-electron operator}}
-  =\sum_{i=1}^{N}\underbrace{\hf(\bx_i)}_{\text{one-electron operator}}
-  =\sum_{i=1}^{N}\left[\hh(\bx_i)+\Hat{v}^\text{HF}(\bx_i)\right].
+  \underbrace{\chH^\text{HF}}_{\text{\red{$N$-electron} operator}}
+  =\sum_{i=1}^{N}
+  \underbrace{\hf(\bx_i)}_{\text{\red{one-electron} operator}}
+  =\sum_{i=1}^{N}\qty[\hh(\bx_i)+\Hat{v}^\text{HF}(\bx_i)].
 \end{equation}
-Although
+Three warnings distinguish this auxiliary Hamiltonian from the electronic
+Hamiltonian and its energy. First,
 \begin{equation}
   \chH^\text{HF}\ket{\Psi_\text{HF}}
-  =\left(\sum_i\epsilon_i\right)\ket{\Psi_\text{HF}},
+  \green{=}\qty(\sum_{i=1}^{N}\epsilon_i)\ket{\Psi_\text{HF}}
+  \red{\neq}E_\text{HF}\ket{\Psi_\text{HF}}.
 \end{equation}
-the eigenvalue is \red{not} the HF energy. Nor is the HF determinant, in
-general, an eigenfunction of the electronic Hamiltonian. Instead,
+The HF wavefunction is an eigenfunction of the HF Hamiltonian, but the
+eigenvalue is \red{not} the HF energy. Second,
 \begin{equation}
   \chH_\text{elec}\ket{\Psi_\text{HF}}
-  \ne E_\text{HF}\ket{\Psi_\text{HF}},
-  \qquad
-  \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}=E_\text{HF}.
+  \red{\neq}E_\text{HF}\ket{\Psi_\text{HF}}.
 \end{equation}
+Thus, the HF wavefunction is \red{not} an eigenfunction of the electronic
+Hamiltonian. Third,
+\begin{equation}
+  \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}
+  \green{=}E_\text{HF}.
+\end{equation}
+The HF energy is the expectation value of the electronic Hamiltonian with the
+HF wavefunction.
 
-The sum of the orbital energies counts every electron pair twice,
-\begin{equation}
-  \sum_i\epsilon_i=\sum_i h_{ii}+\sum_{ij}(\cJ_{ij}-\cK_{ij}),
-\end{equation}
-whereas the HF energy contains the required factor $1/2$,
-\begin{equation}
-  E_\text{HF}=\sum_i h_{ii}
-  +\frac{1}{2}\sum_{ij}(\cJ_{ij}-\cK_{ij}).
-\end{equation}
-It follows that
+\paragraph{Connection with perturbation theory.}
+
+The sum of the orbital energies and the HF energy are
+\begin{gather}
+  \sum_{i=1}^{N}\epsilon_i
+  =\sum_{i=1}^{N}h_{ii}
+  +\sum_{ij}^{N}(\cJ_{ij}-\cK_{ij})
+  \notag\\[-1mm]
+  \red{\neq}
+  \notag\\[-1mm]
+  E_\text{HF}
+  =\sum_{i=1}^{N}h_{ii}
+  +\red{\frac{1}{2}}\sum_{ij}^{N}(\cJ_{ij}-\cK_{ij}).
+\end{gather}
+Thus, the sum of the orbital energies double-counts the electron--electron
+interaction. More precisely,
 \begin{equation}
   \mel{\Psi_\text{HF}}{
-  \sum_{i<j}r_{ij}^{-1}-\sum_i v^\text{HF}(\bx_i)
+  \sum_{i<j}\frac{1}{r_{ij}}-\sum_{i=1}^{N}v^\text{HF}(\bx_i)
   }{\Psi_\text{HF}}
-  =-\frac{1}{2}\sum_{ij}(\cJ_{ij}-\cK_{ij}).
+  =-\frac{1}{2}\sum_{ij}^{N}(\cJ_{ij}-\cK_{ij}).
 \end{equation}
-This is the first-order correction in \red{M\o ller--Plesset perturbation
-theory}.
+This is the first-order correction in
+\red{M{\o}ller--Plesset perturbation theory}.
 
 \subsection{The Roothaan--Hall equations}
 \subsubsection{The basis-set approximation}
