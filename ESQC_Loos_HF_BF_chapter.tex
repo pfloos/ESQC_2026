@@ -1275,8 +1275,155 @@ theory}.
 
 \subsection{The Roothaan--Hall equations}
 \subsubsection{The basis-set approximation}
+
+The molecular orbitals are expanded in a finite set of $K$ basis functions,
+\begin{equation}
+  \psi_i(\br)=\sum_{\mu=1}^{K}C_{\mu i}\phi_\mu(\br),
+  \qquad
+  \ket{i}=\sum_{\mu=1}^{K}C_{\mu i}\ket{\mu}.
+\end{equation}
+Substitution into the canonical HF equation gives
+\begin{equation}
+  \hf\sum_\nu C_{\nu i}\ket{\nu}
+  =\epsilon_i\sum_\nu C_{\nu i}\ket{\nu}.
+\end{equation}
+Projection from the left with $\bra{\mu}$ yields
+\begin{equation}
+  \sum_\nu F_{\mu\nu}C_{\nu i}
+  =\sum_\nu S_{\mu\nu}C_{\nu i}\epsilon_i,
+\end{equation}
+where
+\begin{equation}
+  F_{\mu\nu}=\mel{\mu}{\hf}{\nu},
+  \qquad
+  S_{\mu\nu}=\braket{\mu}{\nu}.
+\end{equation}
+Collecting all orbitals gives the \red{Roothaan--Hall equations}
+\begin{equation}
+  \boxed{\bF\bC=\bS\bC\bE}.
+  \label{eq:roothaan-hall}
+\end{equation}
+The coefficient matrix $\bC$ contains the molecular-orbital coefficients,
+while the diagonal matrix $\bE$ contains the orbital energies,
+\begin{equation}
+  \bC=
+  \begin{pmatrix}
+    C_{11}&C_{12}&\cdots&C_{1K}\\
+    C_{21}&C_{22}&\cdots&C_{2K}\\
+    \vdots&\vdots&\ddots&\vdots\\
+    C_{K1}&C_{K2}&\cdots&C_{KK}
+  \end{pmatrix},
+  \qquad
+  \bE=\operatorname{diag}(\epsilon_1,\epsilon_2,\ldots,\epsilon_K).
+\end{equation}
+
+Because the original basis is generally nonorthogonal, Eq.~\eqref{eq:roothaan-hall}
+is a generalized eigenvalue problem with metric $\bS$. Introduce an
+orthogonalizing matrix $\bX$ satisfying
+\begin{equation}
+  \bX^\dag\bS\bX=\bI,
+  \qquad
+  \bC=\bX\bC'.
+\end{equation}
+Left multiplication of Eq.~\eqref{eq:roothaan-hall} by $\bX^\dag$ gives
+\begin{align}
+  \bX^\dag\bF\bX\bC'
+  &=\bX^\dag\bS\bX\bC'\bE
+  \\
+  \bF'\bC'&=\bC'\bE,
+\end{align}
+where $\bF'=\bX^\dag\bF\bX$. Thus orthogonalization converts the
+generalized problem into a standard Hermitian eigenvalue problem.
+
 \subsubsection{The Fock matrix}
+
+Expansion of the occupied spin orbitals in the basis gives the AO Fock
+matrix
+\begin{align}
+  F_{\mu\nu}
+  &=\mel{\mu}{\hh+\sum_i(\chJ_i-\chK_i)}{\nu}
+  \\
+  &=\underbrace{\mel{\mu}{\hh}{\nu}}_{H_{\mu\nu}}
+  +\sum_i\left(
+    \mel{\mu\chi_i}{r_{12}^{-1}}{\nu\chi_i}
+    -\mel{\mu\chi_i}{r_{12}^{-1}}{\chi_i\nu}
+  \right)
+  \\
+  &=H_{\mu\nu}
+  +\sum_{\lambda\sigma}P_{\lambda\sigma}
+    \left(\braket{\mu\sigma}{\nu\lambda}
+    -\braket{\mu\sigma}{\lambda\nu}\right)
+  \\
+  &=H_{\mu\nu}
+  +\underbrace{\sum_{\lambda\sigma}P_{\lambda\sigma}
+    \mel{\mu\sigma}{}{\nu\lambda}}_{G_{\mu\nu}}.
+\end{align}
+Here
+\begin{equation}
+  H_{\mu\nu}=\mel{\mu}{\hh}{\nu},
+  \qquad
+  P_{\lambda\sigma}=\sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*,
+  \qquad
+  F_{\mu\nu}=H_{\mu\nu}+G_{\mu\nu}.
+\end{equation}
+The Fock matrix therefore depends on the occupied-orbital coefficients through
+the \red{density matrix} $\bP$. This dependence makes the Roothaan--Hall
+equations nonlinear and motivates the self-consistent-field procedure.
+
 \subsubsection{The Hartree--Fock energy}
+
+Substituting the basis expansion into the spin-orbital energy expression gives
+\begin{align}
+  E_\text{HF}
+  &=\sum_{\mu\nu}P_{\nu\mu}
+    \left(H_{\mu\nu}
+    +\frac{1}{2}\sum_{\lambda\sigma}P_{\sigma\lambda}
+      \mel{\mu\lambda}{}{\nu\sigma}\right)
+  \\
+  &=\frac{1}{2}\sum_{\mu\nu}P_{\nu\mu}
+    (H_{\mu\nu}+F_{\mu\nu})
+  \\
+  &=\boxed{\frac{1}{2}\Tr[\bP(\bH+\bF)]}.
+  \label{eq:hf-energy-matrix}
+\end{align}
+
+For a closed-shell system, the density matrix is
+\begin{equation}
+  P_{\red{\mu\nu}}
+  =2\sum_{i=1}^{N/2}C_{\red{\mu}i}C_{\red{\nu}i}^*,
+  \qquad
+  \boxed{\bP=2\bC_\text{o}\bC_\text{o}^\dag},
+\end{equation}
+where $\bC_\text{o}$ contains the occupied MO coefficients. In chemists'
+notation, the closed-shell AO Fock matrix becomes
+\begin{equation}
+  F_{\red{\mu\nu}}=H_{\red{\mu\nu}}
+  +\underbrace{\sum_{\blue{\lambda\sigma}}
+    P_{\blue{\sigma\lambda}}
+    \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}}_{J_{\red{\mu\nu}}}
+  -\underbrace{\frac{1}{2}\sum_{\blue{\lambda\sigma}}
+    P_{\blue{\sigma\lambda}}
+    \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}}
+    _{K_{\red{\mu\nu}}}.
+  \label{eq:rhf-fock-ao}
+\end{equation}
+The corresponding energy is
+\begin{equation}
+\begin{split}
+  E_\text{HF}={}&\sum_{\red{\mu\nu}}
+    P_{\red{\nu\mu}}H_{\red{\mu\nu}}
+  \\
+  &+\frac{1}{2}\sum_{\red{\mu\nu}\blue{\lambda\sigma}}
+    P_{\red{\nu\mu}}
+    \left[
+      \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}
+      -\frac{1}{2}
+       \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}
+    \right]
+    P_{\blue{\sigma\lambda}}.
+\end{split}
+\end{equation}
+
 \subsubsection{The self-consistent-field procedure}
 \subsubsection{Direct inversion in the iterative subspace}
 \subsubsection{Excited-state SCF and the maximum overlap method}
