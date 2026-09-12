@@ -2064,6 +2064,126 @@ The corresponding energy is
 \end{equation}
 
 \subsubsection{The self-consistent-field procedure}
+
+\paragraph{The SCF algorithm.}
+
+In practice, a restricted Hartree--Fock calculation proceeds as follows.
+\begin{enumerate}
+  \item \red{Specify the molecule} through $\{\bR_A\}$ and $\{Z_A\}$ and
+    choose the \red{basis set} $\{\phi_\mu\}$.
+  \item Calculate the integrals $S_{\mu\nu}$, $H_{\mu\nu}$, and
+    $\braket{\mu\nu}{\lambda\sigma}$.
+  \item Diagonalize $\bS$ and compute $\bX$.
+  \item Choose an \red{initial density matrix} $\bP$, and perform the
+    following iterative steps:
+    \begin{enumerate}
+      \item[1.] Calculate $\bG$ and then $\bF=\bH+\bG$.
+      \item[2.] Compute
+        $\bF'=\bX^\dag\cdot\bF\cdot\bX$.
+      \item[3.] Diagonalize $\bF'$ to obtain $\bC'$ and $\bE$.
+      \item[4.] Calculate $\bC=\bX\cdot\bC'$.
+      \item[5.] Form a \red{new density matrix}
+        $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$.
+      \item[6.] Ask \red{whether the calculation is converged}. If it is
+        not, return to step 1 of this inner iteration.
+    \end{enumerate}
+  \item Evaluate the desired observables, including $\EHF$.
+\end{enumerate}
+
+\paragraph{The orthogonalization matrix.}
+
+We seek a matrix that orthogonalizes the AO basis, that is,
+\begin{equation}
+  \red{\bX^\dag\cdot\bS\cdot\bX=\bI}.
+\end{equation}
+For the \red{symmetric}, or \red{L\"owdin}, orthogonalization,
+\begin{equation}
+  \bX=\bS^{-1/2}
+  =\bU\cdot\bs^{-1/2}\cdot\bU^\dag
+\end{equation}
+is one solution. Direct substitution verifies it:
+\begin{equation}
+  \bX^\dag\cdot\bS\cdot\bX
+  =\bS^{-1/2}\cdot\bS\cdot\bS^{-1/2}
+  =\bI
+  \qquad\green{\checkmark}.
+\end{equation}
+The \red{canonical orthogonalization},
+\begin{equation}
+  \bX=\bU\cdot\bs^{-1/2},
+\end{equation}
+is another solution and is useful when linear dependencies are present. In
+this case,
+\begin{equation}
+  \bX^\dag\cdot\bS\cdot\bX
+  =\bs^{-1/2}\cdot
+   \underbrace{\bU^\dag\cdot\bS\cdot\bU}_{\bs}
+   \cdot\bs^{-1/2}
+  =\bI
+  \qquad\green{\checkmark}.
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.42\textwidth]{ortho}
+  \caption{Orthogonalization of the atomic-orbital basis.}
+  \label{fig:ao-orthogonalization}
+\end{figure}
+
+\paragraph{Initial guesses for the molecular orbitals or density matrix.}
+
+Several initial density matrices are possible.
+\begin{enumerate}
+  \item Set \red{$\bP=\bO$, so that $\bF=\bH$}. This \red{core guess} is
+    usually poor, but it is easy to implement.
+  \item Use \red{extended H\"uckel theory or a semi-empirical method}. This
+    option is inexpensive, although it is now less common.
+  \item Use \red{tabulated atomic densities}. This gives the
+    superposition-of-atomic-densities (SAD) guess.
+  \item \red{Read the molecular orbitals from a previous calculation}. This
+    option is very common and very useful.
+\end{enumerate}
+
+\paragraph{SCF convergence.}
+
+The SCF procedure defines the iterative map
+\begin{equation}
+  \boxed{
+    \bP^{(n)}
+    \longrightarrow\bF[\bP^{(n)}]
+    \longrightarrow\bP^{(n+1)}
+  }.
+\end{equation}
+At convergence,
+\begin{equation}
+  \bP^{(n+1)}=\bP^{(n)}=\bP^\star.
+\end{equation}
+One may check the \red{energy and/or the density matrix}. At
+self-consistency, the \red{generalized commutator} vanishes:
+\begin{equation}
+  \boxed{
+    \be^{(n)}
+    =\bF^{(n)}\cdot\bP^{(n)}\cdot\bS
+    -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}
+  }.
+\end{equation}
+Accordingly,
+\begin{equation}
+  \bP^{(n)}=\bP^\star
+  \qquad\Longrightarrow\qquad
+  \be^{(n)}=\bO
+  \qquad\Longrightarrow\qquad
+  \max\abs*{\be^{(n)}}<\tau_\text{SCF}.
+\end{equation}
+Finally, \red{DIIS (direct inversion in the iterative subspace)} is usually
+used to accelerate convergence. It extrapolates the Fock matrix from the
+$m$ previous iterations according to
+\begin{equation}
+  \boxed{
+    \bF^{(n+1)}=\sum_{i=n-m}^{n}c_i\bF^{(i)}
+  }.
+\end{equation}
+
 \subsubsection{Direct inversion in the iterative subspace}
 \subsubsection{Excited-state SCF and the maximum overlap method}
 \subsubsection{Properties}
