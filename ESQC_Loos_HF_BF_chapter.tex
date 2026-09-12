@@ -1822,32 +1822,46 @@ This is the first-order correction in
 The molecular orbitals are expanded in a finite set of $K$ basis functions,
 \begin{equation}
   \psi_i(\br)=\sum_{\mu=1}^{K}C_{\mu i}\phi_\mu(\br),
-  \qquad
+  \qquad\equiv\qquad
   \ket{i}=\sum_{\mu=1}^{K}C_{\mu i}\ket{\mu}.
 \end{equation}
-Substitution into the canonical HF equation gives
-\begin{equation}
+Substitution into the canonical HF equation followed by projection from the
+left with $\bra{\mu}$ gives the complete derivation
+\begin{align}
+  \hf\ket{i}=\epsilon_i\ket{i}
+  &\quad\Rightarrow\quad
   \hf\sum_\nu C_{\nu i}\ket{\nu}
-  =\epsilon_i\sum_\nu C_{\nu i}\ket{\nu}.
-\end{equation}
-Projection from the left with $\bra{\mu}$ yields
+  =\epsilon_i\sum_\nu C_{\nu i}\ket{\nu}
+  \\
+  &\quad\xRightarrow{\ \bra{\mu}\ }\quad
+  \sum_\nu C_{\nu i}
+  \underbrace{\mel{\mu}{\hf}{\nu}}_{F_{\mu\nu}}
+  =\epsilon_i\sum_\nu C_{\nu i}
+  \underbrace{\braket{\mu}{\nu}}_{S_{\mu\nu}}
+  \\
+  &\quad\Rightarrow\quad
+  \boxed{
+    \sum_\nu F_{\mu\nu}C_{\nu i}
+    =\sum_\nu S_{\mu\nu}C_{\nu i}\epsilon_i
+  }
+  \\
+  &\quad\Rightarrow\quad
+  \bF\cdot\bC=\bS\cdot\bC\cdot\bE
+  \qquad\text{in matrix form}.
+\end{align}
+Thus, the \red{Roothaan--Hall equations} are
 \begin{equation}
-  \sum_\nu F_{\mu\nu}C_{\nu i}
-  =\sum_\nu S_{\mu\nu}C_{\nu i}\epsilon_i,
+  \boxed{\bF\cdot\bC=\bS\cdot\bC\cdot\bE}.
+  \label{eq:roothaan-hall}
 \end{equation}
-where
+Here, the \red{Fock matrix} and \red{overlap matrix} are, respectively,
 \begin{equation}
   F_{\mu\nu}=\mel{\mu}{\hf}{\nu},
   \qquad
   S_{\mu\nu}=\braket{\mu}{\nu}.
 \end{equation}
-Collecting all orbitals gives the \red{Roothaan--Hall equations}
-\begin{equation}
-  \boxed{\bF\bC=\bS\bC\bE}.
-  \label{eq:roothaan-hall}
-\end{equation}
-The coefficient matrix $\bC$ contains the molecular-orbital coefficients,
-while the diagonal matrix $\bE$ contains the orbital energies,
+We must determine the \red{coefficient matrix} $\bC$ and the
+\red{orbital-energy matrix} $\bE$:
 \begin{equation}
   \bC=
   \begin{pmatrix}
@@ -1857,26 +1871,63 @@ while the diagonal matrix $\bE$ contains the orbital energies,
     C_{K1}&C_{K2}&\cdots&C_{KK}
   \end{pmatrix},
   \qquad
-  \bE=\operatorname{diag}(\epsilon_1,\epsilon_2,\ldots,\epsilon_K).
+  \bE=
+  \begin{pmatrix}
+    \epsilon_1&0&\cdots&0\\
+    0&\epsilon_2&\cdots&0\\
+    \vdots&\vdots&\ddots&\vdots\\
+    0&0&\cdots&\epsilon_K
+  \end{pmatrix}.
+\end{equation}
+Because the Fock matrix depends on the coefficients, the SCF problem is
+\begin{equation}
+  \bF(\bC)\cdot\bC=\bS\cdot\bC\cdot\bE,
+  \qquad
+  \red{\text{How do we solve these HF equations?}}
 \end{equation}
 
 Because the original basis is generally nonorthogonal, Eq.~\eqref{eq:roothaan-hall}
-is a generalized eigenvalue problem with metric $\bS$. Introduce an
-orthogonalizing matrix $\bX$ satisfying
-\begin{equation}
-  \bX^\dag\bS\bX=\bI,
-  \qquad
-  \bC=\bX\bC'.
-\end{equation}
-Left multiplication of Eq.~\eqref{eq:roothaan-hall} by $\bX^\dag$ gives
+is a generalized eigenvalue problem with metric $\bS$. It can be related to
+a standard eigenvalue problem through
 \begin{align}
-  \bX^\dag\bF\bX\bC'
-  &=\bX^\dag\bS\bX\bC'\bE
+  \bF\cdot\bC&=\bS\cdot\bC\cdot\bE,
+  &
+  \bF'\cdot\bC'&=\bC'\cdot\bE,
   \\
-  \bF'\bC'&=\bC'\bE,
+  \bF'&=\bX^\dag\cdot\bF\cdot\bX,
+  &
+  \bC&=\bX\cdot\bC',
+  &
+  \bX^\dag\cdot\bS\cdot\bX&=\bI.
 \end{align}
-where $\bF'=\bX^\dag\bF\bX$. Thus orthogonalization converts the
-generalized problem into a standard Hermitian eigenvalue problem.
+Every step from the generalized problem to the standard problem is
+\begin{gather}
+  \bF\cdot\bC
+  =\underbrace{\bS}_{\text{metric}}\cdot\bC\cdot\bE
+  \qquad\Longleftrightarrow\qquad
+  \red{\text{generalized eigenvalue problem}}
+  \notag\\
+  \Downarrow
+  \notag\\
+  \bX^\dag\cdot\bF\cdot
+  \underbrace{\bC}_{\bX\cdot\bC'}
+  =\bX^\dag\cdot\bS\cdot
+  \underbrace{\bC}_{\bX\cdot\bC'}\cdot\bE
+  \notag\\
+  \Downarrow
+  \notag\\
+  \underbrace{\bX^\dag\cdot\bF\cdot\bX}_{\bF'}\cdot\bC'
+  =\underbrace{\bX^\dag\cdot\bS\cdot\bX}_{\bI}
+   \cdot\bC'\cdot\bE
+  \notag\\
+  \Downarrow
+  \notag\\
+  \bF'\cdot\bC'=\bC'\cdot\bE
+  \qquad\Longleftrightarrow\qquad
+  \red{\text{standard eigenvalue problem}}.
+\end{gather}
+Thus, orthogonalization converts the generalized problem into a standard
+eigenvalue problem.
 
 \subsubsection{The Fock matrix}
 
