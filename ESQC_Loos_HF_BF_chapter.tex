@@ -1986,18 +1986,42 @@ equations nonlinear and motivates the self-consistent-field procedure.
 
 \subsubsection{The Hartree--Fock energy}
 
-Substituting the basis expansion into the spin-orbital energy expression gives
+\paragraph{Problem.}
+
+\violet{\textit{``Find the expression of the HF energy in terms of the one-
+and two-electron integrals.''}}
+
+\paragraph{Solution.}
+
+Starting from the spin-orbital energy and explicitly substituting each basis
+expansion gives
 \begin{align}
   E_\text{HF}
+  &=\sum_{i=1}^{N}h_{ii}
+    +\frac{1}{2}\sum_{ij}^{N}\qty(\cJ_{ij}-\cK_{ij})
+  \\
+  &=\sum_{i=1}^{N}
+    \mel{\sum_\mu C_{\mu i}^*\phi_\mu}{\hh}
+        {\sum_\nu C_{\nu i}\phi_\nu}
+    \notag\\
+  &\quad+\frac{1}{2}\sum_{ij}^{N}
+    \mel{
+      \qty(\sum_\mu C_{\mu i}^*\phi_\mu)
+      \qty(\sum_\lambda C_{\lambda j}^*\phi_\lambda)
+    }{}{
+      \qty(\sum_\nu C_{\nu i}\phi_\nu)
+      \qty(\sum_\sigma C_{\sigma j}\phi_\sigma)
+    }
+  \\
   &=\sum_{\mu\nu}P_{\nu\mu}
-    \left(H_{\mu\nu}
+    \qty(H_{\mu\nu}
     +\frac{1}{2}\sum_{\lambda\sigma}P_{\sigma\lambda}
-      \mel{\mu\lambda}{}{\nu\sigma}\right)
+      \mel{\mu\lambda}{}{\nu\sigma})
   \\
   &=\frac{1}{2}\sum_{\mu\nu}P_{\nu\mu}
-    (H_{\mu\nu}+F_{\mu\nu})
+    \qty(H_{\mu\nu}+F_{\mu\nu})
   \\
-  &=\boxed{\frac{1}{2}\Tr[\bP(\bH+\bF)]}.
+  &=\frac{1}{2}\Tr\qty[\bP\cdot(\bH+\bF)].
   \label{eq:hf-energy-matrix}
 \end{align}
 
@@ -2006,7 +2030,7 @@ For a closed-shell system, the density matrix is
   P_{\red{\mu\nu}}
   =2\sum_{i=1}^{N/2}C_{\red{\mu}i}C_{\red{\nu}i}^*,
   \qquad
-  \boxed{\bP=2\bC_\text{o}\bC_\text{o}^\dag},
+  \boxed{\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag},
 \end{equation}
 where $\bC_\text{o}$ contains the occupied MO coefficients. In chemists'
 notation, the closed-shell AO Fock matrix becomes
@@ -2014,11 +2038,12 @@ notation, the closed-shell AO Fock matrix becomes
   F_{\red{\mu\nu}}=H_{\red{\mu\nu}}
   +\underbrace{\sum_{\blue{\lambda\sigma}}
     P_{\blue{\sigma\lambda}}
-    \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}}_{J_{\red{\mu\nu}}}
+    \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}}
+    _{J_{\red{\mu\nu}}=\text{ Coulomb}}
   -\underbrace{\frac{1}{2}\sum_{\blue{\lambda\sigma}}
     P_{\blue{\sigma\lambda}}
     \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}}
-    _{K_{\red{\mu\nu}}}.
+    _{K_{\red{\mu\nu}}=\text{ exchange}}.
   \label{eq:rhf-fock-ao}
 \end{equation}
 The corresponding energy is
@@ -2032,7 +2057,7 @@ The corresponding energy is
     \left[
       \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}
       -\frac{1}{2}
-       \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}
+       \rbraket{\red{\mu}\blue{\sigma}}{\red{\lambda}\blue{\nu}}
     \right]
     P_{\blue{\sigma\lambda}}.
 \end{split}
