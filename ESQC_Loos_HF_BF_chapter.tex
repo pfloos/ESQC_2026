@@ -1931,34 +1931,54 @@ eigenvalue problem.
 
 \subsubsection{The Fock matrix}
 
-Expansion of the occupied spin orbitals in the basis gives the AO Fock
-matrix
+\paragraph{Problem.}
+
+\violet{\textit{``Find the expression of the Fock matrix in terms of the
+one- and two-electron integrals.''}}
+
+\paragraph{Solution.}
+
+Expanding the occupied spin orbitals in the basis gives the AO Fock matrix.
+Keeping every intermediate step,
 \begin{align}
   F_{\mu\nu}
-  &=\mel{\mu}{\hh+\sum_i(\chJ_i-\chK_i)}{\nu}
+  &=\mel{\mu}{\hh+\sum_{i=1}^{N}(\chJ_i-\chK_i)}{\nu}
   \\
-  &=\underbrace{\mel{\mu}{\hh}{\nu}}_{H_{\mu\nu}}
-  +\sum_i\left(
+  &=\underbrace{\mel{\mu}{\hh}{\nu}}_{\red{H_{\mu\nu}}}
+  +\sum_{i=1}^{N}\mel{\mu}{\chJ_i-\chK_i}{\nu}
+  \\
+  &=H_{\mu\nu}+\sum_{i=1}^{N}\qty(
     \mel{\mu\chi_i}{r_{12}^{-1}}{\nu\chi_i}
     -\mel{\mu\chi_i}{r_{12}^{-1}}{\chi_i\nu}
-  \right)
+  )
   \\
   &=H_{\mu\nu}
-  +\sum_{\lambda\sigma}P_{\lambda\sigma}
-    \left(\braket{\mu\sigma}{\nu\lambda}
-    -\braket{\mu\sigma}{\lambda\nu}\right)
+  +\sum_{i=1}^{N}\sum_{\lambda\sigma}
+    C_{\lambda i}C_{\sigma i}^*
+    \qty(
+      \mel{\mu\sigma}{r_{12}^{-1}}{\nu\lambda}
+      -\mel{\mu\sigma}{r_{12}^{-1}}{\lambda\nu}
+    )
   \\
   &=H_{\mu\nu}
-  +\underbrace{\sum_{\lambda\sigma}P_{\lambda\sigma}
-    \mel{\mu\sigma}{}{\nu\lambda}}_{G_{\mu\nu}}.
+  +\sum_{\lambda\sigma}\red{P_{\lambda\sigma}}
+    \qty(\braket{\mu\sigma}{\nu\lambda}
+    -\braket{\mu\sigma}{\lambda\nu})
+  \\
+  &=H_{\mu\nu}
+  +\underbrace{\sum_{\lambda\sigma}\red{P_{\lambda\sigma}}
+    \mel{\mu\sigma}{}{\nu\lambda}}_{\red{G_{\mu\nu}}}
+  =H_{\mu\nu}+G_{\mu\nu}.
 \end{align}
-Here
+The three quantities introduced in this derivation are the core Hamiltonian,
+the density matrix, and the two-electron part:
 \begin{equation}
   H_{\mu\nu}=\mel{\mu}{\hh}{\nu},
   \qquad
   P_{\lambda\sigma}=\sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*,
   \qquad
-  F_{\mu\nu}=H_{\mu\nu}+G_{\mu\nu}.
+  G_{\mu\nu}=\sum_{\lambda\sigma}P_{\lambda\sigma}
+  \mel{\mu\sigma}{}{\nu\lambda}.
 \end{equation}
 The Fock matrix therefore depends on the occupied-orbital coefficients through
 the \red{density matrix} $\bP$. This dependence makes the Roothaan--Hall
