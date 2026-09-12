@@ -1,0 +1,315 @@
+% !TeX program = pdflatex
+% Compile from the repository root with:
+%   latexmk -pdf ESQC_Loos_HF_BF_chapter.tex
+
+\documentclass[11pt,oneside,openany]{book}
+
+% Page and typography
+\usepackage[a4paper,margin=30mm,headheight=14pt]{geometry}
+\usepackage[T1]{fontenc}
+
+% Mathematics and scientific notation
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage[version=4]{mhchem}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{microtype}
+
+% Tables, algorithms, and figures
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{colortbl}
+\usepackage{pifont}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows,positioning,shapes.geometric}
+\usetikzlibrary{decorations.pathmorphing}
+\pgfplotsset{compat=1.18}
+\usepackage{algorithmicx,algorithm,algpseudocode}
+
+% Chapter layout and navigation
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{hyperref}
+
+\graphicspath{{fig/}}
+
+% Colors retained from the Hartree--Fock slides. The basis-set slides use a
+% lighter definition of hfGreen; the two source decks remain unchanged.
+\definecolor{hfNavy}{HTML}{17324D}
+\definecolor{hfBlue}{HTML}{1769AA}
+\definecolor{hfTeal}{HTML}{007C83}
+\definecolor{hfRed}{HTML}{B23A48}
+\definecolor{hfOrange}{HTML}{D96C22}
+\definecolor{hfPurple}{HTML}{9A7300}
+\definecolor{hfViolet}{HTML}{775DA6}
+\definecolor{hfInk}{HTML}{202A33}
+\definecolor{hfPale}{HTML}{EDF2F6}
+\definecolor{hfGreen}{HTML}{00685C}
+\definecolor{hfGreenDark}{HTML}{00574D}
+\definecolor{hfGreenLight}{HTML}{F2F8F6}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=hfTeal,
+  filecolor=hfPurple,
+  urlcolor=hfTeal,
+  citecolor=hfPurple,
+  pdftitle={Hartree--Fock Theory, Basis Sets, and Molecular Integrals},
+  pdfauthor={Pierre-Fran\c{c}ois Loos}
+}
+\urlstyle{same}
+
+\titleformat{\chapter}[display]
+  {\normalfont\color{hfGreenDark}}
+  {\filleft\Large\bfseries\chaptertitlename\ \thechapter}
+  {1ex}
+  {\titlerule[1.2pt]\vspace{1.5ex}\Huge\bfseries}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{hfGreenDark}}
+  {\thesection}{0.75em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{hfNavy}}
+  {\thesubsection}{0.75em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\numberwithin{equation}{section}
+
+% Commands from both slide decks
+
+% energies
+\newcommand{\Ec}{E_\text{c}}
+\newcommand{\EHF}{E_\text{HF}}
+
+% bold symbols
+\newcommand{\ba}{\boldsymbol{a}}
+\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bc}{\boldsymbol{c}}
+\newcommand{\bd}{\boldsymbol{d}}
+\newcommand{\be}{\boldsymbol{e}}
+\newcommand{\bff}{\boldsymbol{f}}
+\newcommand{\bh}{\boldsymbol{h}}
+\newcommand{\bk}{\boldsymbol{k}}
+\newcommand{\bo}{\boldsymbol{o}}
+\newcommand{\br}{\boldsymbol{r}}
+\newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bD}{\boldsymbol{D}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bG}{\boldsymbol{G}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\bI}{\boldsymbol{1}}
+\newcommand{\bJ}{\boldsymbol{J}}
+\newcommand{\bK}{\boldsymbol{K}}
+\newcommand{\bM}{\boldsymbol{M}}
+\newcommand{\bO}{\boldsymbol{0}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bQ}{\boldsymbol{Q}}
+\newcommand{\bR}{\boldsymbol{R}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bT}{\boldsymbol{T}}
+\newcommand{\bU}{\boldsymbol{U}}
+\newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bepsilon}{\boldsymbol{\epsilon}}
+
+% hat symbols
+\newcommand{\hH}{\Hat{H}}
+\newcommand{\hh}{\Hat{h}}
+\newcommand{\hf}{\Hat{f}}
+\newcommand{\hT}{\Hat{T}}
+\newcommand{\hV}{\Hat{V}}
+\newcommand{\hO}{\Hat{O}}
+\newcommand{\hI}{\Hat{I}}
+\newcommand{\hJ}{\Hat{J}}
+\newcommand{\hK}{\chK}
+\newcommand{\hS}{\Hat{S}}
+
+% curly symbols
+\newcommand{\chA}{\Hat{\mathcal{A}}}
+\newcommand{\chO}{\Hat{\mathcal{O}}}
+\newcommand{\chJ}{\Hat{\mathcal{J}}}
+\newcommand{\chK}{\Hat{\mathcal{K}}}
+\newcommand{\chH}{\Hat{\mathcal{H}}}
+\newcommand{\chT}{\Hat{\mathcal{T}}}
+\newcommand{\chV}{\Hat{\mathcal{V}}}
+\newcommand{\chP}{\Hat{\mathcal{P}}}
+\newcommand{\chS}{\Hat{\mathcal{S}}}
+
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+
+% colors and other shortcuts
+\newcommand{\mc}{\multicolumn}
+\newcommand{\purple}[1]{\textcolor{hfPurple}{#1}}
+\newcommand{\red}[1]{\textcolor{hfRed}{#1}}
+\newcommand{\orange}[1]{\textcolor{hfOrange}{#1}}
+\newcommand{\green}[1]{\textcolor{hfGreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{hfBlue}{#1}}
+\newcommand{\violet}[1]{\textcolor{hfViolet}{#1}}
+\newcommand{\pub}[1]{{\small\textcolor{hfPurple}{#1}}}
+
+% spin-orbital and spatial-orbital bracket notation
+\newcommand{\sbra}[1]{[ #1 |}
+\newcommand{\sket}[1]{| #1 ]}
+\newcommand{\sexpval}[1]{[ #1 ]}
+\newcommand{\sbraket}[2]{[ #1 | #2 ]}
+\newcommand{\smel}[3]{[ #1 | #2 | #3 ]}
+
+\newcommand{\rbra}[1]{( #1 |}
+\newcommand{\rket}[1]{| #1 )}
+\newcommand{\rexpval}[1]{( #1 )}
+\newcommand{\rbraket}[2]{( #1 | #2 )}
+\newcommand{\rmel}[3]{( #1 | #2 | #3 )}
+
+% remaining shortcuts
+\newcommand{\si}{\sigma}
+\newcommand{\la}{\lambda}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\cre}[1]{\Hat{a}_{#1}^\dag}
+\newcommand{\ani}[1]{\Hat{a}_{#1}}
+\newcommand{\cmark}{\textbf{\green{\ding{51}}}}
+\newcommand{\xmark}{\textbf{\red{\ding{55}}}}
+\newcommand{\sba}{\mathring{a}}
+\newcommand{\sbb}{\mathring{b}}
+\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
+
+\newcommand\dangersign[1][3ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny\bfseries !}}{#1}%
+}
+
+\newcommand{\HtwoOrbitalPlot}[1]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth,
+      height=0.48\textheight,
+      xmin=-3,xmax=3,
+      ymin=-0.05,ymax=1.48,
+      axis x line=middle,
+      axis y line=none,
+      xtick=\empty,
+      ytick=\empty,
+      clip=false,
+      samples=120,
+      domain=-3:3,
+    ]
+      \addplot[hfBlue,very thick]
+        {cos(#1)*(exp(-1.7*(x+1.15)^2)+exp(-1.7*(x-1.15)^2))/sqrt(2)
+        +sin(#1)*(exp(-1.7*(x+1.15)^2)-exp(-1.7*(x-1.15)^2))/sqrt(2)};
+      \addplot[hfRed,very thick,dashed]
+        {cos(#1)*(exp(-1.7*(x+1.15)^2)+exp(-1.7*(x-1.15)^2))/sqrt(2)
+        -sin(#1)*(exp(-1.7*(x+1.15)^2)-exp(-1.7*(x-1.15)^2))/sqrt(2)};
+      \addplot[only marks,mark=*,mark size=1.7pt,hfInk]
+        coordinates {(-1.15,0) (1.15,0)};
+      \node[below,font=\scriptsize] at (axis cs:-1.15,0) {$A$};
+      \node[below,font=\scriptsize] at (axis cs: 1.15,0) {$B$};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+\tikzset{snake it/.style={
+  decoration={snake,amplitude=.4mm,segment length=2mm},decorate
+}}
+
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}
+
+% Front matter
+\title{Hartree--Fock Theory, Basis Sets, and Molecular Integrals}
+\author{Pierre-Fran\c{c}ois (Titou) Loos}
+\date{ESQC 2026}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+
+\chapter{Hartree--Fock Theory, Basis Sets, and Molecular Integrals}
+
+% ============================================================================
+% Presentation I: ESQC_Loos_HF.tex
+% The section and subsection order below follows the slide source.
+% ============================================================================
+
+\section{Hartree--Fock theory}
+
+\subsection{The electronic problem}
+\subsubsection{Motivations}
+\subsubsection{The Born--Oppenheimer approximation}
+\subsubsection{The Pauli principle}
+\subsubsection{The Hartree--Fock wavefunction}
+
+\subsection{The Hartree--Fock approximation}
+\subsubsection{The Hartree--Fock energy}
+\subsubsection{Integrals}
+\subsubsection{Examples}
+\subsubsection{From spin orbitals to spatial orbitals}
+\subsubsection{Excited determinants}
+\subsubsection{Slater--Condon rules}
+\subsubsection{The Fock operator}
+\subsubsection{Koopmans' theorem}
+
+\subsection{The Roothaan--Hall equations}
+\subsubsection{The basis-set approximation}
+\subsubsection{The Fock matrix}
+\subsubsection{The Hartree--Fock energy}
+\subsubsection{The self-consistent-field procedure}
+\subsubsection{Direct inversion in the iterative subspace}
+\subsubsection{Excited-state SCF and the maximum overlap method}
+\subsubsection{Properties}
+
+\subsection{Unrestricted Hartree--Fock theory}
+\subsubsection{Unrestricted Hartree--Fock}
+\subsubsection{The unrestricted Hartree--Fock equations}
+\subsubsection{The Pople--Nesbet equations}
+\subsubsection{The SCF procedure for unrestricted Hartree--Fock}
+\subsubsection{Dissociation of \ce{H2}}
+\subsubsection{Classification of Hartree--Fock solutions}
+
+% ============================================================================
+% Presentation II: ESQC_Loos_BF.tex
+% The presentation currently has no explicit LaTeX section hierarchy. Its
+% contents will be expanded below in the existing frame order.
+% ============================================================================
+
+\clearpage
+\section{Basis sets and molecular integrals}
+
+% Content from ESQC_Loos_BF.tex will be inserted here in slide order.
+
+\backmatter
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+% Bibliographic entries will be added when the references in the slides are
+% transferred to the chapter.
+
+\end{document}
