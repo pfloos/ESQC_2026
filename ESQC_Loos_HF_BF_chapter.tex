@@ -980,50 +980,107 @@ Applying the preceding expansion to all three electron pairs gives
 
 \subsubsection{From spin orbitals to spatial orbitals}
 
-Consider closed-shell \ce{H2} in a minimal basis. The two occupied spin
-orbitals share the same spatial orbital,
-\begin{equation}
-  \chi_1(\bx)=\psi_1(\br)\alpha(\omega),
-  \qquad
-  \chi_2(\bx)=\psi_1(\br)\beta(\omega).
-\end{equation}
-In the spin-orbital representation, its energy is
+Consider closed-shell \ce{H2} in a minimal basis. In the spin-orbital
+representation, its energy is
 \begin{equation}
   \EHF
   =\mel{\chi_1}{\hh}{\chi_1}+\mel{\chi_2}{\hh}{\chi_2}
   +\braket{\chi_1\chi_2}{\chi_1\chi_2}
   -\braket{\chi_1\chi_2}{\chi_2\chi_1}.
 \end{equation}
+The two occupied spin orbitals share the same spatial orbital. The
+transformation from spin orbitals to spatial orbitals is
+\begin{align}
+  \chi_1(\bx)&\equiv\psi_1(\bx)=\psi_1(\br)\alpha(\omega),
+  \\
+  \chi_2(\bx)&\equiv\Bar{\psi}_1(\bx)=\psi_1(\br)\beta(\omega).
+\end{align}
+Consequently, the same energy may be written as
+\begin{equation}
+  \EHF
+  =\rmel{\psi_1}{\hh}{\psi_1}
+  +\rmel{\Bar{\psi}_1}{\hh}{\Bar{\psi}_1}
+  +\rbraket{\psi_1\psi_1}{\Bar{\psi}_1\Bar{\psi}_1}
+  -\rbraket{\psi_1\Bar{\psi}_1}{\Bar{\psi}_1\psi_1}.
+\end{equation}
 
 The core Hamiltonian acts only on the spatial coordinate. Consequently, the
 spin and spatial integrations factorize. For the $\alpha$ spin orbital,
 \begin{align}
   \rmel{\chi_1}{\hh}{\chi_1}
+  &=\int\chi_1^*(\bx)\hh(\bx)\chi_1(\bx)\dd{\bx}
+  \\
   &=\iint\alpha^*(\omega)\psi_1^*(\br)\hh(\br)
     \alpha(\omega)\psi_1(\br)\dd{\omega}\dd{\br}
   \\
-  &=\underbrace{\int\alpha^*(\omega)\alpha(\omega)\dd{\omega}}_{1}
-    \underbrace{\int\psi_1^*(\br)\hh(\br)\psi_1(\br)\dd{\br}}
+  &=\underbrace{\qty[\int\alpha^*(\omega)\alpha(\omega)\dd{\omega}]}_{=1}
+    \underbrace{\qty[\int\psi_1^*(\br)\hh(\br)\psi_1(\br)\dd{\br}]}
     _{\rmel{\psi_1}{\hh}{\psi_1}}.
 \end{align}
-The same argument applies to the $\beta$ spin orbital, so both electrons
-contribute the same spatial one-electron integral.
+For the $\beta$ spin orbital, the corresponding steps are
+\begin{align}
+  \rmel{\chi_2}{\hh}{\chi_2}
+  &=\int\chi_2^*(\bx)\hh(\bx)\chi_2(\bx)\dd{\bx}
+  \\
+  &=\iint\beta^*(\omega)\psi_1^*(\br)\hh(\br)
+    \beta(\omega)\psi_1(\br)\dd{\omega}\dd{\br}
+  \\
+  &=\underbrace{\qty[\int\beta^*(\omega)\beta(\omega)\dd{\omega}]}_{=1}
+    \underbrace{\qty[\int\psi_1^*(\br)\hh(\br)\psi_1(\br)\dd{\br}]}
+    _{\rmel{\psi_1}{\hh}{\psi_1}}.
+\end{align}
+Thus, both electrons contribute the same spatial one-electron integral.
 
 The Coulomb term contains diagonal spin overlaps and therefore survives the
-spin integration,
+spin integration. The complete integration is
 \begin{align}
   \rbraket{\chi_1\chi_1}{\chi_2\chi_2}
-  &=\underbrace{\braket{\alpha}{\alpha}}_{1}
-    \underbrace{\braket{\beta}{\beta}}_{1}
-    \rbraket{\psi_1\psi_1}{\psi_1\psi_1}
+  &=\iint\chi_1^*(\bx_1)\chi_1(\bx_1)r_{12}^{-1}
+    \chi_2^*(\bx_2)\chi_2(\bx_2)\dd{\bx_1}\dd{\bx_2}
   \\
-  &=\rbraket{\psi_1\psi_1}{\psi_1\psi_1}.
+  &=\iiiint\alpha^*(\omega_1)\psi_1^*(\br_1)
+    \alpha(\omega_1)\psi_1(\br_1)r_{12}^{-1}
+    \notag\\
+  &\qquad\times\beta^*(\omega_2)\psi_1^*(\br_2)
+    \beta(\omega_2)\psi_1(\br_2)
+    \dd{\omega_1}\dd{\br_1}\dd{\omega_2}\dd{\br_2}
+  \\
+  &=\underbrace{\qty[\int\alpha^*(\omega_1)\alpha(\omega_1)
+      \dd{\omega_1}]}_{=1}
+    \underbrace{\qty[\int\beta^*(\omega_2)\beta(\omega_2)
+      \dd{\omega_2}]}_{=1}
+    \notag\\
+  &\qquad\times
+    \underbrace{\qty[\iint\psi_1^*(\br_1)\psi_1(\br_1)r_{12}^{-1}
+      \psi_1^*(\br_2)\psi_1(\br_2)\dd{\br_1}\dd{\br_2}]}
+      _{\rbraket{\psi_1\psi_1}{\psi_1\psi_1}}.
 \end{align}
 The exchange term contains the opposite-spin overlaps
-$\braket{\alpha}{\beta}$ and $\braket{\beta}{\alpha}$, both of which vanish,
-\begin{equation}
-  \rbraket{\chi_1\chi_2}{\chi_2\chi_1}=0.
-\end{equation}
+$\braket{\alpha}{\beta}$ and $\braket{\beta}{\alpha}$, both of which vanish.
+The complete exchange integration is
+\begin{align}
+  \rbraket{\chi_1\chi_2}{\chi_2\chi_1}
+  &=\iint\chi_1^*(\bx_1)\chi_2(\bx_1)r_{12}^{-1}
+    \chi_2^*(\bx_2)\chi_1(\bx_2)\dd{\bx_1}\dd{\bx_2}
+  \\
+  &=\iiiint\alpha^*(\omega_1)\psi_1^*(\br_1)
+    \beta(\omega_1)\psi_1(\br_1)r_{12}^{-1}
+    \notag\\
+  &\qquad\times\beta^*(\omega_2)\psi_1^*(\br_2)
+    \alpha(\omega_2)\psi_1(\br_2)
+    \dd{\omega_1}\dd{\br_1}\dd{\omega_2}\dd{\br_2}
+  \\
+  &=\underbrace{\qty[\int\alpha^*(\omega_1)\beta(\omega_1)
+      \dd{\omega_1}]}_{=0}
+    \underbrace{\qty[\int\beta^*(\omega_2)\alpha(\omega_2)
+      \dd{\omega_2}]}_{=0}
+    \notag\\
+  &\qquad\times
+    \underbrace{\qty[\iint\psi_1^*(\br_1)\psi_1(\br_1)r_{12}^{-1}
+      \psi_1^*(\br_2)\psi_1(\br_2)\dd{\br_1}\dd{\br_2}]}
+      _{\rbraket{\psi_1\psi_1}{\psi_1\psi_1}}
+  =0.
+\end{align}
 Hence the spatial-orbital expression for minimal-basis \ce{H2} is
 \begin{equation}
   \boxed{
@@ -1042,8 +1099,52 @@ Hence the spatial-orbital expression for minimal-basis \ce{H2} is
 \end{figure}
 
 For a general closed-shell determinant, every occupied spatial orbital has
-one $\alpha$ and one $\beta$ electron. Separating the four possible spin
-combinations in the double sum gives
+one $\alpha$ and one $\beta$ electron. The general expression in spin and
+spatial orbitals is
+\begin{align}
+  \EHF
+  &=\sum_{i=1}^{N}\mel{i}{\hh}{i}
+    +\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}
+    \qty[\braket{ij}{ij}-\braket{ij}{ji}]
+  \\
+  &=2\sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
+    +\sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+    \qty[2\rbraket{ii}{jj}-\rbraket{ij}{ji}].
+\end{align}
+The one-electron contribution becomes
+\begin{equation}
+  \sum_{i=1}^{N}\mel{i}{\hh}{i}
+  =\sum_{i=1}^{N/2}\mel{i}{\hh}{i}
+  +\sum_{i=1}^{N/2}\mel{\Bar{i}}{\hh}{\Bar{i}}
+  =2\sum_{i=1}^{N/2}\rmel{i}{\hh}{i}.
+\end{equation}
+Separating all four spin combinations in the two-electron contribution gives
+\begin{align}
+  &\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}
+    \qty[\braket{ij}{ij}-\braket{ij}{ji}]
+  \notag\\
+  &\quad=\frac{1}{2}\Bigg\{
+    \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+      \qty(\braket{ij}{ij}-\braket{ij}{ji})
+  \notag\\
+  &\qquad\quad+
+    \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+      \qty(\braket{\Bar{i}j}{\Bar{i}j}-\braket{\Bar{i}j}{j\Bar{i}})
+  \notag\\
+  &\qquad\quad+
+    \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+      \qty(\braket{i\Bar{j}}{i\Bar{j}}-\braket{i\Bar{j}}{\Bar{j}i})
+  \notag\\
+  &\qquad\quad+
+    \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+      \qty(\braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
+      -\braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}})
+    \Bigg\}
+  \\
+  &\quad=\sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
+    \qty[2\rbraket{ii}{jj}-\rbraket{ij}{ji}].
+\end{align}
+Combining the one- and two-electron contributions gives
 \begin{equation}
   \boxed{
   \EHF
@@ -1058,8 +1159,14 @@ associated with each occupied spatial orbital. In the two-electron part, all
 four spin combinations contribute Coulomb terms, whereas exchange survives
 only between electrons of the same spin.
 
-The same bookkeeping applies to open-shell determinants. For the \ce{Li}
-atom, take
+\paragraph{Problem: HF energy of the \ce{Li} atom.}
+
+\violet{``Find the HF energy of the \ce{Li} atom in terms of spatial
+orbitals.''}
+
+\paragraph{Solution.}
+
+The three occupied spin orbitals are
 \begin{equation}
   \chi_1=\alpha\psi_1,
   \qquad \chi_2=\beta\psi_1,
@@ -1069,8 +1176,15 @@ The energy in terms of spatial-orbital integrals is then
 \begin{equation}
   \boxed{E_\text{HF}=2h_{11}+h_{22}+J_{11}+2J_{12}-K_{12}}.
 \end{equation}
-For the occupation used in the slides for the \ce{B} atom, the corresponding
-expression is
+
+\paragraph{Problem: HF energy of the \ce{B} atom.}
+
+\violet{``Find the HF energy of the \ce{B} atom in terms of spatial
+orbitals.''}
+
+\paragraph{Solution.}
+
+For the occupation used for the \ce{B} atom, the corresponding expression is
 \begin{equation}
 \begin{split}
   E_\text{HF}={}&2h_{11}+2h_{22}+h_{33}+J_{11}+4J_{12}+J_{22}-2K_{12}
@@ -1081,10 +1195,11 @@ expression is
 
 \subsubsection{Excited determinants}
 
-In the reference ground-state determinant, the Aufbau principle places the
-electrons in the $N$ lowest spin orbitals,
+In the reference ground-state determinant,
+\red{the electrons are in the $N$ lowest spin orbitals (Aufbau principle)}:
 \begin{equation}
-  \ket{\Psi_0}=\ket{\chi_1\ldots\chi_i\chi_j\ldots\chi_N}.
+  \ket{\Psi_0}
+  =\ket{\chi_1\ldots\chi_{\green{i}}\chi_{\green{j}}\ldots\chi_N}.
 \end{equation}
 
 \begin{figure}[htbp]
@@ -1095,18 +1210,17 @@ electrons in the $N$ lowest spin orbitals,
   \label{fig:hf-reference-determinant}
 \end{figure}
 
-A singly excited determinant replaces one occupied spin orbital $\green{i}$
-by one vacant spin orbital $\red{a}$. In determinant and second-quantized
-notation,
+For a singly excited determinant, the electron in $\green{i}$ is promoted to
+$\red{a}$. In determinant and second-quantized notation,
 \begin{equation}
   \ket{\Psi_{\green{i}}^{\red{a}}}
-  =\ket{\chi_1\ldots\chi_{\red{a}}\chi_j\ldots\chi_N}
+  =\ket*{\chi_1\ldots\chi_{\red{a}}\chi_{\green{j}}\ldots\chi_N}
   =\cre{\red{a}}\ani{\green{i}}\ket{\Psi_0}.
 \end{equation}
-A double excitation replaces occupied orbitals $\green{i}$ and $\green{j}$
-by vacant orbitals $\red{a}$ and $\red{b}$,
+For a doubly excited determinant, the electrons in $\green{i}$ and
+$\green{j}$ are promoted to $\red{a}$ and $\red{b}$, respectively:
 \begin{equation}
-  \ket{\Psi_{\green{ij}}^{\red{ab}}}
+  \ket*{\Psi_{\green{ij}}^{\red{ab}}}
   =\ket{\chi_1\ldots\chi_{\red{a}}\chi_{\red{b}}\ldots\chi_N}
   =\cre{\red{a}}\cre{\red{b}}\ani{\green{j}}\ani{\green{i}}
    \ket{\Psi_0}.
