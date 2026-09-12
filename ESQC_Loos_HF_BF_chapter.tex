@@ -918,6 +918,214 @@ by vacant orbitals $\red{a}$ and $\red{b}$,
 \end{figure}
 
 \subsubsection{Slater--Condon rules}
+
+The Slater--Condon rules express matrix elements between determinants in
+terms of spin-orbital integrals. For the one-electron operator
+\begin{equation}
+  \boxed{\chO_1=\sum_{i=1}^{N}\hh(\br_i)},
+\end{equation}
+the result depends on the number of spin orbitals by which the determinants
+differ. If they are identical,
+\begin{equation}
+  \mel{K}{\chO_1}{K}=\sum_{i=1}^{N}\mel{i}{\hh}{i},
+  \qquad
+  \mel{\Psi_0}{\chO_1}{\Psi_0}=\sum_{i=1}^{N}h_{ii}.
+\end{equation}
+If $\ket{K}=\ket{\cdots i j\cdots}$ and
+$\ket{L}=\ket{\cdots k j\cdots}$ differ by one spin orbital, then
+\begin{equation}
+  \mel{K}{\chO_1}{L}=\mel{i}{\hh}{k},
+  \qquad
+  \mel{\Psi_0}{\chO_1}{\Psi_i^a}=h_{ia}.
+\end{equation}
+A one-electron operator cannot connect determinants that differ by two spin
+orbitals, so
+\begin{equation}
+  \mel{\Psi_0}{\chO_1}{\Psi_{ij}^{ab}}=0.
+\end{equation}
+
+For the two-electron operator
+\begin{equation}
+  \boxed{\chO_2=\sum_{i<j}^{N}r_{ij}^{-1}},
+\end{equation}
+identical determinants give
+\begin{equation}
+  \mel{K}{\chO_2}{K}=\frac{1}{2}\sum_{ij}^{N}\mel{ij}{}{ij}.
+\end{equation}
+Determinants differing by one spin orbital obey
+\begin{equation}
+  \mel{K}{\chO_2}{L}=\sum_{j}^{N}\mel{ij}{}{kj},
+  \qquad
+  \mel{\Psi_0}{\chO_2}{\Psi_i^a}
+  =\sum_{k}^{N}\mel{ik}{}{ak},
+\end{equation}
+whereas two substitutions give
+\begin{equation}
+  \mel{K}{\chO_2}{L}=\mel{ij}{}{kl},
+  \qquad
+  \mel{\Psi_0}{\chO_2}{\Psi_{ij}^{ab}}=\mel{ij}{}{ab}.
+\end{equation}
+
+An excited determinant constructed by substituting orbitals within the fixed
+reference set is a valid many-electron basis function and supplies a building
+block for configuration-interaction and coupled-cluster expansions. In
+general, however, it is neither a separately optimized HF state nor a
+stationary point of the HF energy, and it need not be an eigenfunction of
+$\chS^2$. Orbital substitution and state-specific optimization therefore
+represent different procedures.
+
+For a stationary HF reference, \red{Brillouin's theorem} states that the
+Hamiltonian does not couple the reference determinant to any singly excited
+determinant,
+\begin{equation}
+  \boxed{
+  \mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}
+  =h_{ia}+\sum_{k}^{N}\mel{ik}{}{ak}
+  =f_{ia}=0
+  }.
+  \label{eq:brillouin-theorem}
+\end{equation}
+
+\paragraph{Spin quantum numbers.}
+Within the nonrelativistic spin-free framework, the Hamiltonian commutes with
+the total-spin operators,
+\begin{equation}
+  \boxed{
+  \comm{\chH}{\purple{\chS^2}}=0,
+  \qquad
+  \comm{\chH}{\violet{\chS_z}}=0
+  }.
+\end{equation}
+Its eigenfunctions may therefore be chosen as simultaneous eigenfunctions of
+$\chS^2$ and $\chS_z$,
+\begin{equation}
+  \purple{\chS^2}\ket{S,M_S}=S(S+1)\ket{S,M_S},
+  \qquad
+  \violet{\chS_z}\ket{S,M_S}=M_S\ket{S,M_S}.
+\end{equation}
+The spin quantum number $S$ determines the multiplicity $2S+1$: $S=0$,
+$1/2$, and $1$ correspond to singlets, doublets, and triplets. The projection
+quantum number takes the values $M_S=-S,-S+1,\ldots,S$.
+
+For a collinear determinant containing $N^\alpha$ spin-up and $N^\beta$
+spin-down orbitals,
+\begin{equation}
+  \boxed{
+  \violet{\chS_z}\ket{\Psi}=M_S\ket{\Psi},
+  \qquad
+  M_S=\frac{N^\alpha-N^\beta}{2}
+  }.
+\end{equation}
+Here, collinear means that all occupied spin orbitals use one common spin
+quantization axis. Every RHF or UHF determinant of this form has a definite
+$M_S$. A closed-shell RHF determinant also satisfies
+$\purple{\chS^2}\ket{\Psi_\text{RHF}}=0$ and is therefore a pure singlet.
+For an open-shell UHF determinant, the different $\alpha$ and $\beta$ spatial
+orbitals generally prevent the determinant from having a definite $S$.
+
+For $N^\alpha\geq N^\beta$, the UHF expectation value is
+\begin{equation}
+  \boxed{
+  \expval{\purple{\chS^2}}_\text{UHF}
+  =M_S(M_S+1)+N^\beta
+  -\sum_{i=1}^{N^\alpha}\sum_{j=1}^{N^\beta}
+   \abs{S_{ij}^{\alpha\beta}}^2
+  },
+  \qquad
+  S_{ij}^{\alpha\beta}=\braket{\psi_i^\alpha}{\psi_j^\beta}.
+  \label{eq:uhf-spin-contamination}
+\end{equation}
+For a target high-spin state with $S=M_S$, the spin contamination is
+\begin{equation}
+  \Delta S^2
+  =\expval{\purple{\chS^2}}_\text{UHF}
+  -\expval{\purple{\chS^2}}_\text{exact}\geq0.
+\end{equation}
+A singlet may contain triplet, quintet, and higher-spin character. A doublet
+may contain quartet, sextet, and higher-spin character, while a triplet may
+contain quintet, septet, and higher-spin character. Restoring spin symmetry
+requires spin projection or a linear combination of determinants.
+
+\paragraph{Spin adaptation of singly excited determinants.}
+Starting from a closed-shell singlet reference, define the two $M_S=0$
+determinants
+\begin{equation}
+  \ket{D_\alpha}=\cre{a\alpha}\ani{i\alpha}\ket{\Psi_0},
+  \qquad
+  \ket{D_\beta}=\cre{a\beta}\ani{i\beta}\ket{\Psi_0}.
+\end{equation}
+Each determinant has $M_S=0$ and
+$\mel{D_\sigma}{\purple{\chS^2}}{D_\sigma}=1$, but neither has a definite
+total spin. In the basis $\{\ket{D_\alpha},\ket{D_\beta}\}$,
+\begin{equation}
+  \boxed{
+  [\purple{\chS^2}]_{\{D_\alpha,D_\beta\}}
+  =\begin{pmatrix}1&-1\\-1&1\end{pmatrix}
+  }.
+\end{equation}
+Diagonalizing this matrix produces the pure singlet
+\begin{equation}
+  \boxed{
+  \ket{{}^1\Psi_i^a}
+  =\frac{\ket{D_\alpha}+\ket{D_\beta}}{\sqrt{2}}
+  },
+  \qquad
+  \purple{\chS^2}\ket{{}^1\Psi_i^a}=0,
+\end{equation}
+and the $M_S=0$ component of the pure triplet,
+\begin{equation}
+  \boxed{
+  \ket{{}^{3,0}\Psi_i^a}
+  =\frac{\ket{D_\alpha}-\ket{D_\beta}}{\sqrt{2}}
+  },
+  \qquad
+  \purple{\chS^2}\ket{{}^{3,0}\Psi_i^a}
+  =2\ket{{}^{3,0}\Psi_i^a}.
+\end{equation}
+Spin adaptation is thus the diagonalization of $\chS^2$ in a determinant
+space.
+
+For two open-shell spatial orbitals $i$ and $a$, the singlet separates into a
+spatially symmetric factor and a spin-antisymmetric factor,
+\begin{equation}
+  \ket{{}^1\Psi_i^a}
+  =\frac{1}{2}
+  \green{[\ket{\phi_i(1)\phi_a(2)}+\ket{\phi_a(1)\phi_i(2)}]}
+  \red{[\alpha(1)\beta(2)-\beta(1)\alpha(2)]}.
+\end{equation}
+The $M_S=0$ triplet instead combines a spatially antisymmetric factor with a
+spin-symmetric factor,
+\begin{equation}
+  \ket{{}^{3,0}\Psi_i^a}
+  =\frac{1}{2}
+  \red{[\ket{\phi_i(1)\phi_a(2)}-\ket{\phi_a(1)\phi_i(2)}]}
+  \green{[\alpha(1)\beta(2)+\beta(1)\alpha(2)]}.
+\end{equation}
+The total electronic wavefunction remains antisymmetric in both cases.
+
+The three components of the $S=1$ multiplet are
+\begin{align}
+  \ket{{}^{3,+1}\Psi_i^a}&=\ket{\cdots i^\alpha a^\alpha\cdots},
+  &
+  \ket{{}^{3,0}\Psi_i^a}
+  &=\frac{\ket{D_\alpha}-\ket{D_\beta}}{\sqrt{2}},
+  &
+  \ket{{}^{3,-1}\Psi_i^a}&=\ket{\cdots i^\beta a^\beta\cdots}.
+\end{align}
+Each satisfies
+\begin{equation}
+  \purple{\chS^2}\ket{1,M_S}=2\ket{1,M_S},
+  \qquad
+  \violet{\chS_z}\ket{1,M_S}=M_S\ket{1,M_S}.
+\end{equation}
+The ladder operators connect the components according to
+\begin{equation}
+  \chS_\pm\ket{S,M_S}
+  =\sqrt{S(S+1)-M_S(M_S\pm1)}\ket{S,M_S\pm1}.
+\end{equation}
+The $M_S=\pm1$ components are single spin-pure determinants, while the pure
+$M_S=0$ triplet requires two determinants.
+
 \subsubsection{The Fock operator}
 \subsubsection{Koopmans' theorem}
 
