@@ -1583,16 +1583,23 @@ $M_S=0$ triplet requires two determinants.
 
 \subsubsection{The Fock operator}
 
-The occupied spin orbitals minimize the HF energy subject to orthonormality.
-Introducing the matrix of \red{Lagrange multipliers} $\epsilon_{ji}$ gives
+We seek to minimize $E_\text{HF}$ under the constraint that the spin orbitals
+remain orthonormal. Introducing the Lagrange multipliers gives the
+Hartree--Fock Lagrangian
 \begin{equation}
   \mathcal{L}[\{\chi_i\}]=E_\text{HF}[\{\chi_i\}]
-  -\sum_{ij}\epsilon_{ji}
-  \left(\braket{\chi_i}{\chi_j}-\delta_{ij}\right).
+  -\sum_{ij}
+  \underbrace{\epsilon_{ji}}_{\substack{\text{\red{Lagrange}}\\
+    \text{\red{multipliers}}}}
+  \underbrace{\qty(\braket{\chi_i}{\chi_j}-\delta_{ij})}
+    _{\substack{\text{\green{orthonormality}}\\
+    \text{\green{constraint}}}}.
 \end{equation}
-The stationarity condition $\fdv*{\mathcal{L}}{\chi_i^*(\bx)}=0$ produces
-the coupled HF equations
+The \red{stationarity of the HF Lagrangian} with respect to the spin orbitals
+implies
 \begin{equation}
+  \fdv{\mathcal{L}}{\chi_i^*(\bx)}=0
+  \quad\Rightarrow\quad
   \boxed{\hf(\bx)\chi_i(\bx)=\sum_j\epsilon_{ji}\chi_j(\bx)},
 \end{equation}
 with the one-electron Fock operator
@@ -1600,48 +1607,91 @@ with the one-electron Fock operator
   \boxed{
   \hf(\bx)=\hh(\bx)
   +\underbrace{\sum_{i=1}^{N}[\chJ_i(\bx)-\chK_i(\bx)]}
-  _{\Hat{v}^{\text{HF}}(\bx)} }.
+  _{\Hat{v}^{\text{HF}}(\bx)\text{ = \red{Hartree--Fock potential}}} }.
   \label{eq:fock-operator}
 \end{equation}
-The second term is the \red{Hartree--Fock potential}.
 
 The Hermitian multiplier matrix can be diagonalized by a unitary
-transformation $\purple{\bU}$,
+transformation $\purple{\bU}$. In particular,
 \begin{equation}
-  \widetilde{\bepsilon}=\purple{\bU}^{\dag}\bepsilon\purple{\bU},
+  \widetilde{\bepsilon}
+  =\purple{\bU}^{\dag}\cdot\bepsilon\cdot\purple{\bU}
+  \quad\text{is diagonal}.
+\end{equation}
+The transformed spin orbitals and Hartree--Fock determinant obey
+\begin{equation}
+  \widetilde{\chi}_i(\bx)=\sum_j\chi_j(\bx)\purple{U}_{ji}
+  \quad\Rightarrow\quad
+  \ket*{\widetilde{\Psi}_\text{HF}}
+  =\det(\purple{\bU})\ket*{\Psi_\text{HF}}
+  =e^{\ii\theta}\ket*{\Psi_\text{HF}},
   \qquad
-  \widetilde{\chi}_i=\sum_j\chi_j\purple{U}_{ji}.
+  \boxed{\widetilde{f}(\bx)=\hf(\bx)}.
 \end{equation}
-This occupied-orbital rotation leaves the HF state unchanged apart from a
-phase. Indeed, $\purple{\bU}^{\dag}\purple{\bU}=\bI$ implies
-$\det(\purple{\bU})=e^{\ii\theta}$ and
+The phase relation follows step by step from unitarity:
 \begin{equation}
-  \ket{\widetilde{\Psi}_\text{HF}}
-  =e^{\ii\theta}\ket{\Psi_\text{HF}}.
+  \purple{\bU}^{\dag}\cdot\purple{\bU}=\bI
+  \quad\Rightarrow\quad
+  \det(\purple{\bU}^{\dag}\cdot\purple{\bU})=1
+  \quad\Rightarrow\quad
+  \abs{\det(\purple{\bU})}^2=1
+  \quad\Rightarrow\quad
+  \det(\purple{\bU})=e^{\ii\theta}.
 \end{equation}
+Thus, this occupied-orbital rotation leaves the HF state unchanged apart from
+a phase.
 After dropping the tildes, one obtains the \red{canonical HF equations}
 \begin{equation}
   \boxed{\hf(\bx)\chi_i(\bx)=\epsilon_i\chi_i(\bx)}.
   \label{eq:canonical-hf}
 \end{equation}
-Their eigenfunctions are the canonical spin orbitals and their eigenvalues
-are the orbital energies.
+The eigenfunctions $\{\chi_i\}$ are called \red{canonical spin orbitals}, and
+the eigenvalues $\{\epsilon_i\}$ are called \red{orbital energies}.
 
-The Fock matrix elements in the spin-orbital basis are
+\paragraph{Problem: Fock matrix elements in the spin-orbital basis.}
+
+\violet{``Find the expression of the matrix elements
+$f_{ij}=\mel{\chi_i}{\hf}{\chi_j}$.''}
+
+\paragraph{Solution.}
+
+Expanding the Fock operator gives every step of the derivation:
 \begin{align}
-  f_{ij}=\mel{\chi_i}{\hf}{\chi_j}
+  \mel{\chi_i}{\hf}{\chi_j}
+  &=\mel{\chi_i}{\hh+\sum_k\qty(\chJ_k-\chK_k)}{\chi_j}
+  \\
+  &=\mel{\chi_i}{\hh}{\chi_j}
+    +\sum_k\qty(
+      \mel{\chi_i}{\chJ_k}{\chi_j}
+      -\mel{\chi_i}{\chK_k}{\chi_j})
+  \\
   &=\mel{i}{\hh}{j}
-    +\sum_k\left[\braket{ik}{jk}-\braket{ik}{kj}\right]
+    +\sum_k\qty[\braket{ik}{jk}-\braket{ik}{kj}]
   \\
   &=\mel{i}{\hh}{j}+\sum_k\mel{ik}{}{jk}.
 \end{align}
-Projection of Eq.~\eqref{eq:canonical-hf} onto $\chi_i$ gives
-\begin{equation}
-  \boxed{
+
+\paragraph{Problem: orbital energies in the spin-orbital basis.}
+
+\violet{``Deduce the expression of $\epsilon_i$.''}
+
+\paragraph{Solution.}
+
+Starting from the canonical HF equation and using the normalization of
+$\chi_i$ gives the complete chain
+\begin{align}
+  \hf\ket{\chi_i}=\epsilon_i\ket{\chi_i}
+  &\quad\Rightarrow\quad
+  \mel{\chi_i}{\hf}{\chi_i}
+  =\epsilon_i\braket{\chi_i}{\chi_i}=\epsilon_i
+  \\
+  &\quad\Rightarrow\quad
   \epsilon_i=\mel{i}{\hh}{i}
-  +\sum_k\left[\braket{ik}{ik}-\braket{ik}{ki}\right]
-  =\mel{i}{\hh}{i}+\sum_k\mel{ik}{}{ik} }.
-\end{equation}
+  +\sum_k\qty[\braket{ik}{ik}-\braket{ik}{ki}]
+  \\
+  &\quad\Rightarrow\quad
+  \boxed{\epsilon_i=\mel{i}{\hh}{i}+\sum_k\mel{ik}{}{ik}}.
+\end{align}
 \subsubsection{Koopmans' theorem}
 
 Koopmans' theorem estimates removal and attachment energies while keeping the
