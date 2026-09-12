@@ -2185,6 +2185,184 @@ $m$ previous iterations according to
 \end{equation}
 
 \subsubsection{Direct inversion in the iterative subspace}
+
+Using the $m$ stored iterations, DIIS constructs an extrapolated Fock matrix
+and approximates its error vector as
+\begin{align}
+  \bF_\text{DIIS}^{(m+1)}
+  &=\sum_{i=1}^{m}c_i\bF^{(i)},
+  &
+  \be_\text{DIIS}^{(m+1)}
+  &\red{\approx}\sum_{i=1}^{m}c_i\be^{(i)}.
+\end{align}
+The coefficients minimize the squared Frobenius norm of the residual subject
+to the affine constraint
+\begin{equation}
+  \boxed{
+    \min_{\bc}
+    \norm{\sum_{i=1}^{m}c_i\be^{(i)}}_F^2
+    \qquad\text{subject to}\qquad
+    \sum_{i=1}^{m}c_i=1
+  }.
+\end{equation}
+Define the DIIS overlap matrix by
+\begin{equation}
+  B_{ij}
+  =\braket*{\be^{(i)}}{\be^{(j)}}
+  =\Tr\qty[\be^{(i)\dagger}\cdot\be^{(j)}].
+\end{equation}
+The squared residual norm is then
+\begin{equation}
+  \norm{\be_\text{DIIS}^{(m+1)}}_F^2
+  =\sum_{ij}c_iB_{ij}c_j
+  =\bc^\mathsf{T}\cdot\bB\cdot\bc.
+\end{equation}
+
+\paragraph{DIIS weights and extrapolated Fock matrix.}
+
+The constrained minimization is described by the DIIS Lagrangian
+\begin{equation}
+  \mathcal{L}(\bc,\lambda)
+  =\bc^\mathsf{T}\cdot\bB\cdot\bc
+  -2\lambda\qty(\sum_{i=1}^{m}c_i-1).
+\end{equation}
+Its stationarity conditions are
+\begin{equation}
+  \pdv{\mathcal{L}(\bc,\lambda)}{\bc}=\bO,
+  \qquad
+  \pdv{\mathcal{L}(\bc,\lambda)}{\lambda}=0,
+\end{equation}
+which imply
+\begin{equation}
+  \bB\cdot\bc-\lambda\boldsymbol{1}=\bO,
+  \qquad
+  \sum_{i=1}^{m}c_i=1.
+\end{equation}
+These equations form the augmented DIIS linear system
+\begin{equation}
+  \begin{pmatrix}
+    B_{11}&\cdots&B_{1m}&-1\\
+    \vdots&\ddots&\vdots&\vdots\\
+    B_{m1}&\cdots&B_{mm}&-1\\
+    -1&\cdots&-1&0
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    c_1\\ \vdots\\ c_m\\ \lambda
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    0\\ \vdots\\ 0\\ -1
+  \end{pmatrix}.
+\end{equation}
+After solving for the coefficients, the extrapolated Fock matrix is
+\begin{equation}
+  \boxed{
+    \bF_\text{DIIS}^{(m+1)}
+    =\sum_{i=1}^{m}c_i\bF^{(i)}
+  }.
+\end{equation}
+The linear system has dimension only \red{$(m+1)\times(m+1)$}.
+
+\paragraph{DIIS algorithm.}
+
+The complete algorithm is as follows.
+\begin{enumerate}
+  \item Start from the current density $\bP^{(n)}$.
+  \item Build the corresponding Fock matrix
+    $\bF^{(n)}=\bF[\bP^{(n)}]$.
+  \item Evaluate the commutator residual
+    \begin{equation}
+      \be^{(n)}
+      =\bF^{(n)}\cdot\bP^{(n)}\cdot\bS
+      -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}.
+    \end{equation}
+  \item Store the pair $\{\bF^{(n)},\be^{(n)}\}$ and update the DIIS
+    subspace.
+  \item Construct $\bB$, solve the augmented linear system, and obtain the
+    coefficients $\{c_i\}$.
+  \item Extrapolate the Fock matrix,
+    \begin{equation}
+      \bF^\text{DIIS}=\sum_i c_i\bF^{(i)}.
+    \end{equation}
+  \item Solve
+    \begin{equation}
+      \bF^\text{DIIS}\cdot\bC
+      =\bS\cdot\bC\cdot\bE
+    \end{equation}
+    and form the next density $\bP^{(n+1)}$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[
+  >=stealth,
+  node distance=0.55cm and 0.65cm,
+  scfstep/.style={
+    draw=hfGreen,
+    rounded corners=2pt,
+    fill=hfGreenLight,
+    minimum width=2.45cm,
+    minimum height=0.72cm,
+    align=center
+  },
+  decision/.style={
+    draw=hfRed,
+    rounded corners=8pt,
+    fill=hfPale,
+    minimum width=2.45cm,
+    minimum height=0.72cm,
+    align=center
+  }
+]
+  \node[scfstep] (mol) {Molecule\\and basis set};
+  \node[scfstep,right=of mol] (ints) {Compute\\integrals};
+  \node[scfstep,right=of ints] (guess) {Initial density\\$\bP^{(0)}$};
+  \node[scfstep,right=of guess] (fock)
+    {Build Fock matrix\\$\bF[\bP^{(n)}]$};
+
+  \node[scfstep,below=1.15cm of fock] (solve)
+    {Solve\\$\bF\cdot\bC=\bS\cdot\bC\cdot\bE$};
+  \node[scfstep,left=of solve] (density)
+    {New density\\$\bP^{(n+1)}$};
+  \node[decision,left=of density] (conv) {Converged?};
+  \node[scfstep,left=of conv] (properties) {Energy and\\properties};
+
+  \draw[->,thick] (mol)--(ints);
+  \draw[->,thick] (ints)--(guess);
+  \draw[->,thick] (guess)--(fock);
+  \draw[->,thick] (fock)--(solve);
+  \draw[->,thick] (solve)--(density);
+  \draw[->,thick] (density)--(conv);
+  \draw[->,thick,draw=hfGreen]
+    (conv)--(properties)
+    node[midway,above,text=hfGreen] {yes};
+  \draw[->,thick,draw=hfRed]
+    (conv.north)--++(0,0.45)-|(fock.south)
+    node[pos=0.18,above,text=hfRed] {no};
+  \node[below=0.18cm of density,text=hfViolet]
+    {\small optional damping or DIIS};
+\end{tikzpicture}
+\end{center}
+
+\paragraph{DIIS take-home messages.}
+
+\begin{center}
+  \fbox{\textbf{Key idea:} DIIS accelerates SCF convergence by finding a
+  linear combination of Fock matrices.}
+\end{center}
+The practical consequences are
+\begin{itemize}
+  \item[\cmark] A small \red{rolling subspace} is normally sufficient,
+    commonly $m\approx6$--$10$.
+  \item[\xmark] DIIS requires additional \red{storage}, approximately
+    $2mK^2$.
+  \item[\xmark] The extrapolated energy is not guaranteed to decrease
+    monotonically.
+  \item[\xmark] $\bB$ can be \red{singular} because of nearly linear
+    dependence among the residuals; a restart may be required.
+  \item[\cmark] DIIS can be used for many other methods.
+\end{itemize}
+
 \subsubsection{Excited-state SCF and the maximum overlap method}
 \subsubsection{Properties}
 
