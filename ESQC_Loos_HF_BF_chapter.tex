@@ -2549,6 +2549,247 @@ The corresponding cautions are
 
 \subsubsection{Properties}
 
+\paragraph{Dipole moments.}
+
+The classical dipole vector is
+\begin{equation}
+  \boldsymbol{\mu}=(\mu_x,\mu_y,\mu_z)
+  =\underbrace{\green{\sum_i q_i\br_i}}
+    _{\text{\green{classical definition}}}.
+\end{equation}
+For a molecule, the corresponding quantum-mechanical expression separates
+the electronic and nuclear contributions:
+\begin{align}
+  \boldsymbol{\mu}
+  &=(\mu_x,\mu_y,\mu_z)
+  \\
+  &=\underbrace{\red{\mel{\Psi_0}{-\sum_{i=1}^{N}\br_i}{\Psi_0}}}
+      _{\text{\red{electrons}}}
+    +\underbrace{\blue{\sum_{A=1}^{M}Z_A\bR_A}}
+      _{\text{\blue{nuclei}}}
+  \\
+  &=\red{-\sum_{\mu\nu}P_{\mu\nu}\rmel{\nu}{\br}{\mu}}
+    +\blue{\sum_{A=1}^{M}Z_A\bR_A}.
+\end{align}
+For example, its $x$ component is
+\begin{equation}
+  \mu_x
+  =\red{-\sum_{\mu\nu}P_{\mu\nu}\rmel{\nu}{x}{\mu}}
+  +\blue{\sum_{A=1}^{M}Z_AX_A},
+  \qquad
+  \underbrace{\rmel{\nu}{x}{\mu}}_{\text{one-electron integrals}}
+  =\int\phi_\nu^*(\br)\,x\,\phi_\mu(\br)\dd{\br}.
+\end{equation}
+
+\paragraph{Charge analysis.}
+
+The electron density is
+\begin{equation}
+  \rho(\br)=\sum_{\mu\nu}\phi_\mu(\br)P_{\mu\nu}\phi_\nu^*(\br),
+  \qquad
+  \int\rho(\br)\dd{\br}=N.
+\end{equation}
+Consequently,
+\begin{equation}
+  N=\sum_{\mu\nu}P_{\mu\nu}S_{\nu\mu}
+  =\sum_\mu(\bP\cdot\bS)_{\mu\mu}
+  =\Tr(\bP\cdot\bS).
+\end{equation}
+Assuming that the basis functions are atom-centered, the Mulliken population
+analysis assigns the net charge
+\begin{equation}
+  \underbrace{\blue{q_A^\text{Mulliken}}}_{\text{net charge on $A$}}
+  =Z_A-\sum_{\mu\in A}(\bP\cdot\bS)_{\mu\mu}.
+\end{equation}
+For L\"owdin population analysis, cyclic invariance of the trace,
+$\Tr(\bA\cdot\bB)=\Tr(\bB\cdot\bA)$, gives, for any $\alpha$,
+\begin{equation}
+  N=\sum_\mu
+  (\bS^\alpha\cdot\bP\cdot\bS^{1-\alpha})_{\mu\mu}.
+\end{equation}
+For \red{$\alpha=1/2$}, this becomes
+\begin{equation}
+  N=\sum_\mu
+  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu},
+  \qquad\Rightarrow\qquad
+  \red{q_A^\text{L\"owdin}}
+  =Z_A-\sum_{\mu\in A}
+  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu}.
+\end{equation}
+
+\paragraph{Localized orbitals.}
+
+At HF convergence and after canonicalization and localization, the Fock
+matrix passes through the sequence
+\begin{equation}
+  \bff=
+  \mqty(\bff_\text{oo}&\bff_\text{ov}\\
+        \bff_\text{vo}&\bff_\text{vv})
+  \xrightarrow{\text{HF convergence}}
+  \mqty(\bff_\text{oo}&\bO\\
+        \bO&\bff_\text{vv})
+  \xrightarrow{\text{canonicalization}}
+  \mqty(\bepsilon_\text{o}&\bO\\
+        \bO&\bepsilon_\text{v})
+  \xrightarrow{\text{localization}}
+  \mqty(\widetilde{\bff}_\text{oo}&\bO\\
+        \bO&\widetilde{\bff}_\text{vv}).
+\end{equation}
+The localized occupied orbitals are obtained through a unitary
+transformation,
+\begin{equation}
+  \boxed{
+    \widetilde{\bC}_\text{o}
+    =\bC_\text{o}\cdot\purple{\bU},
+    \qquad
+    \purple{\bU}^\dagger\cdot\purple{\bU}=\bI
+    \quad\Longleftrightarrow\quad
+    \text{\purple{unitary transformation}}
+  }.
+\end{equation}
+For a closed-shell determinant, the density matrix is unchanged:
+\begin{equation}
+  \widetilde{\bP}
+  =2\widetilde{\bC}_\text{o}
+   \cdot\widetilde{\bC}_\text{o}^\dagger
+  =2\bC_\text{o}\cdot\bC_\text{o}^\dagger
+  =\bP.
+\end{equation}
+The determinant changes only by a phase,
+\begin{equation}
+  \ket*{\widetilde{\Psi}_0}
+  =\det(\purple{\bU})\ket{\Psi_0},
+\end{equation}
+so the \red{density}, \red{energy}, and \red{every expectation value} are
+unchanged.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-4.1,1.15) {canonical orbitals};
+  \node[font=\bfseries] at (4.1,1.15) {localized orbitals};
+  \foreach \x in {-5.0,-4.1,-3.2}{\fill[hfInk] (\x,0) circle (0.07);}
+  \draw[hfBlue,very thick]
+    (-5.7,0.35)..controls(-4.8,1.05)and(-3.4,1.05)..(-2.5,0.35);
+  \draw[hfRed,very thick,dashed]
+    (-5.7,-0.10)..controls(-4.8,0.70)and(-3.4,-0.70)..(-2.5,0.10);
+  \draw[hfTeal,very thick,dotted]
+    (-5.7,-0.45)..controls(-4.6,-1.00)and(-3.5,1.00)..(-2.5,-0.45);
+  \draw[hfNavy,very thick,->] (-1.5,0.05)--(1.5,0.05)
+    node[midway,above] {\purple{unitary transformation}};
+  \foreach \x in {3.2,4.1,5.0}{\fill[hfInk] (\x,0) circle (0.07);}
+  \draw[hfBlue,very thick]
+    (2.65,0.05)..controls(3.0,0.95)and(3.4,0.95)..(3.75,0.05);
+  \draw[hfRed,very thick]
+    (3.55,0.05)..controls(3.9,0.95)and(4.3,0.95)..(4.65,0.05);
+  \draw[hfTeal,very thick]
+    (4.45,0.05)..controls(4.8,0.95)and(5.2,0.95)..(5.55,0.05);
+\end{tikzpicture}
+\end{center}
+
+Only \red{occupied--occupied} or \red{virtual--virtual} rotations are
+invariant. Mixing \red{occupied and virtual} orbitals changes the wavefunction
+and the energy. Localization functionals are generally \red{nonconvex}, so
+different guesses may converge to different local extrema.
+
+\paragraph{Localization procedures.}
+
+The Edmiston--Ruedenberg functional is
+\begin{equation}
+  \boxed{
+    \Omega_\text{ER}
+    =\sum_i\rbraket{\psi_i\psi_i}{\psi_i\psi_i}
+    \quad\longrightarrow\quad
+    \max\ \text{orbital self-repulsion}
+  }.
+\end{equation}
+The Foster--Boys functional may be written in two equivalent forms:
+\begin{align}
+  \Omega_\text{BF}
+  &=\frac{1}{2}\sum_i
+    \qty[\mel{\psi_i\psi_i}{r_{12}^2}{\psi_i\psi_i}]
+    \quad\longrightarrow\quad
+    \min\ \text{spatial extent}
+  \\
+  &\red{\equiv}\sum_i\qty[
+    \mel{\psi_i}{r^2}{\psi_i}
+    -\abs{\mel{\psi_i}{\br}{\psi_i}}^2]
+    \quad\longrightarrow\quad
+    \max\ \text{distance between centroids}.
+\end{align}
+Its strengths are
+\begin{itemize}
+  \item[\cmark] it requires only one-electron integrals;
+  \item[\cmark] it produces compact bonds and lone pairs.
+\end{itemize}
+Its limitations are
+\begin{itemize}
+  \item[\xmark] it does not explicitly preserve $\sigma/\pi$ separation;
+  \item[\xmark] diffuse virtual orbitals may be difficult to localize.
+\end{itemize}
+
+For an atomic population $q_i^A$ of orbital $i$ on atom $A$, the original
+Pipek--Mezey criterion maximizes
+\begin{equation}
+  \boxed{
+    \Omega_\text{PM}=\sum_A\sum_i\abs*{q_i^A}^2
+  },
+\end{equation}
+using the Mulliken populations
+\begin{equation}
+  q_i^A
+  =\sum_{\mu\in A}\sum_\nu
+    C_{\mu i}^*S_{\mu\nu}C_{\nu i}.
+\end{equation}
+Its strengths are
+\begin{itemize}
+  \item[\cmark] it often preserves separation between $\sigma$ and $\pi$
+    orbitals;
+  \item[\cmark] it produces intuitive bonds, lone pairs, and core orbitals.
+\end{itemize}
+Its limitations are
+\begin{itemize}
+  \item[\xmark] the original Mulliken form can be basis-set dependent;
+  \item[\xmark] L\"owdin populations or intrinsic atomic orbitals provide
+    more robust alternatives.
+\end{itemize}
+There is \red{no universally best localized-orbital set}; the criterion should
+match the intended interpretation or computational use.
+
+\paragraph{Summary of orbital localization.}
+
+The following quantities remain unchanged:
+\begin{itemize}
+  \item the occupied subspace and Slater determinant;
+  \item the density matrix and electron density;
+  \item the HF energy and molecular properties;
+  \item the zero occupied--virtual Fock block,
+    \begin{equation}
+      \widetilde{\bff}_\text{ov}=\bff_\text{ov}=\bO.
+    \end{equation}
+\end{itemize}
+What changes is that localized orbitals are generally not eigenfunctions of
+the Fock operator:
+\begin{equation}
+  \widetilde{\bff}_\text{oo}
+  =\purple{\bU}^\dagger\cdot\bepsilon_\text{o}\cdot\purple{\bU}.
+\end{equation}
+Orbital energies therefore cannot be assigned to localized orbitals.
+
+Localization is useful to
+\begin{itemize}
+  \item identify bonds, lone pairs, and fragments;
+  \item enable local correlation and embedding methods;
+  \item select active spaces and domains;
+  \item construct Wannier functions in periodic systems.
+\end{itemize}
+The practical cautions are to
+\begin{itemize}
+  \item localize occupied and virtual spaces separately;
+  \item often localize core and valence orbitals separately;
+  \item check for multiple extrema and discontinuous solutions;
+  \item remember that spatial symmetry may be lost.
+\end{itemize}
+
 \subsection{Unrestricted Hartree--Fock theory}
 \subsubsection{Unrestricted Hartree--Fock}
 \subsubsection{The unrestricted Hartree--Fock equations}
