@@ -1127,7 +1127,151 @@ The $M_S=\pm1$ components are single spin-pure determinants, while the pure
 $M_S=0$ triplet requires two determinants.
 
 \subsubsection{The Fock operator}
+
+The occupied spin orbitals minimize the HF energy subject to orthonormality.
+Introducing the matrix of \red{Lagrange multipliers} $\epsilon_{ji}$ gives
+\begin{equation}
+  \mathcal{L}[\{\chi_i\}]=E_\text{HF}[\{\chi_i\}]
+  -\sum_{ij}\epsilon_{ji}
+  \left(\braket{\chi_i}{\chi_j}-\delta_{ij}\right).
+\end{equation}
+The stationarity condition $\fdv*{\mathcal{L}}{\chi_i^*(\bx)}=0$ produces
+the coupled HF equations
+\begin{equation}
+  \boxed{\hf(\bx)\chi_i(\bx)=\sum_j\epsilon_{ji}\chi_j(\bx)},
+\end{equation}
+with the one-electron Fock operator
+\begin{equation}
+  \boxed{
+  \hf(\bx)=\hh(\bx)
+  +\underbrace{\sum_{i=1}^{N}[\chJ_i(\bx)-\chK_i(\bx)]}
+  _{\Hat{v}^{\text{HF}}(\bx)} }.
+  \label{eq:fock-operator}
+\end{equation}
+The second term is the \red{Hartree--Fock potential}.
+
+The Hermitian multiplier matrix can be diagonalized by a unitary
+transformation $\purple{\bU}$,
+\begin{equation}
+  \widetilde{\bepsilon}=\purple{\bU}^{\dag}\bepsilon\purple{\bU},
+  \qquad
+  \widetilde{\chi}_i=\sum_j\chi_j\purple{U}_{ji}.
+\end{equation}
+This occupied-orbital rotation leaves the HF state unchanged apart from a
+phase. Indeed, $\purple{\bU}^{\dag}\purple{\bU}=\bI$ implies
+$\det(\purple{\bU})=e^{\ii\theta}$ and
+\begin{equation}
+  \ket{\widetilde{\Psi}_\text{HF}}
+  =e^{\ii\theta}\ket{\Psi_\text{HF}}.
+\end{equation}
+After dropping the tildes, one obtains the \red{canonical HF equations}
+\begin{equation}
+  \boxed{\hf(\bx)\chi_i(\bx)=\epsilon_i\chi_i(\bx)}.
+  \label{eq:canonical-hf}
+\end{equation}
+Their eigenfunctions are the canonical spin orbitals and their eigenvalues
+are the orbital energies.
+
+The Fock matrix elements in the spin-orbital basis are
+\begin{align}
+  f_{ij}=\mel{\chi_i}{\hf}{\chi_j}
+  &=\mel{i}{\hh}{j}
+    +\sum_k\left[\braket{ik}{jk}-\braket{ik}{kj}\right]
+  \\
+  &=\mel{i}{\hh}{j}+\sum_k\mel{ik}{}{jk}.
+\end{align}
+Projection of Eq.~\eqref{eq:canonical-hf} onto $\chi_i$ gives
+\begin{equation}
+  \boxed{
+  \epsilon_i=\mel{i}{\hh}{i}
+  +\sum_k\left[\braket{ik}{ik}-\braket{ik}{ki}\right]
+  =\mel{i}{\hh}{i}+\sum_k\mel{ik}{}{ik} }.
+\end{equation}
 \subsubsection{Koopmans' theorem}
+
+Koopmans' theorem estimates removal and attachment energies while keeping the
+HF orbitals frozen. The ground-state energy of the $N$-electron system is
+\begin{equation}
+  {}^N E_0=\sum_i h_{ii}+\frac{1}{2}\sum_{ij}\mel{ij}{}{ij}.
+\end{equation}
+Removing the electron from occupied spin orbital $k$ gives
+\begin{equation}
+  {}^{N-1}E_k=\sum_{i\ne k}h_{ii}
+  +\frac{1}{2}\sum_{i\ne k}\sum_{j\ne k}\mel{ij}{}{ij}.
+\end{equation}
+The frozen-orbital ionization potential is therefore
+\begin{align}
+  \text{IP}&\approx{}^{N-1}E_k-{}^N E_0
+  \\
+  &=-\mel{k}{\hh}{k}
+    -\frac{1}{2}\sum_i\mel{ik}{}{ik}
+    -\frac{1}{2}\sum_j\mel{kj}{}{kj}
+  \\
+  &=-\mel{k}{\hh}{k}-\sum_i\mel{ik}{}{ik}
+  =\boxed{-\epsilon_k}.
+\end{align}
+Similarly, attachment to vacant spin orbital $c$ gives
+\begin{align}
+  \text{EA}&\approx{}^N E_0-{}^{N+1}E^c
+  \\
+  &=-\mel{c}{\hh}{c}-\sum_i\mel{ci}{}{ci}
+  =\boxed{-\epsilon_c}.
+\end{align}
+
+Koopmans' estimate is usually more accurate for ionization potentials than
+for electron affinities. For ionization,
+\begin{equation}
+  \text{IP}=-\epsilon_i
+  +\underbrace{\Delta_\text{relax}^{N-1}}_{\blue{<0}}
+  +\underbrace{\Delta_\text{corr}}_{\red{>0}},
+\end{equation}
+so orbital relaxation and correlation partially cancel. For attachment,
+\begin{equation}
+  \text{EA}=-\epsilon_a
+  +\underbrace{\Delta_\text{relax}^{N+1}}_{\blue{>0}}
+  +\underbrace{\Delta_\text{corr}}_{\red{>0}},
+\end{equation}
+and the corrections have the same sign.
+
+The $N$-electron Hartree--Fock Hamiltonian is the sum of the one-electron
+Fock operators,
+\begin{equation}
+  \underbrace{\chH^\text{HF}}_{N\text{-electron operator}}
+  =\sum_{i=1}^{N}\underbrace{\hf(\bx_i)}_{\text{one-electron operator}}
+  =\sum_{i=1}^{N}\left[\hh(\bx_i)+\Hat{v}^\text{HF}(\bx_i)\right].
+\end{equation}
+Although
+\begin{equation}
+  \chH^\text{HF}\ket{\Psi_\text{HF}}
+  =\left(\sum_i\epsilon_i\right)\ket{\Psi_\text{HF}},
+\end{equation}
+the eigenvalue is \red{not} the HF energy. Nor is the HF determinant, in
+general, an eigenfunction of the electronic Hamiltonian. Instead,
+\begin{equation}
+  \chH_\text{elec}\ket{\Psi_\text{HF}}
+  \ne E_\text{HF}\ket{\Psi_\text{HF}},
+  \qquad
+  \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}=E_\text{HF}.
+\end{equation}
+
+The sum of the orbital energies counts every electron pair twice,
+\begin{equation}
+  \sum_i\epsilon_i=\sum_i h_{ii}+\sum_{ij}(\cJ_{ij}-\cK_{ij}),
+\end{equation}
+whereas the HF energy contains the required factor $1/2$,
+\begin{equation}
+  E_\text{HF}=\sum_i h_{ii}
+  +\frac{1}{2}\sum_{ij}(\cJ_{ij}-\cK_{ij}).
+\end{equation}
+It follows that
+\begin{equation}
+  \mel{\Psi_\text{HF}}{
+  \sum_{i<j}r_{ij}^{-1}-\sum_i v^\text{HF}(\bx_i)
+  }{\Psi_\text{HF}}
+  =-\frac{1}{2}\sum_{ij}(\cJ_{ij}-\cK_{ij}).
+\end{equation}
+This is the first-order correction in \red{M\o ller--Plesset perturbation
+theory}.
 
 \subsection{The Roothaan--Hall equations}
 \subsubsection{The basis-set approximation}
