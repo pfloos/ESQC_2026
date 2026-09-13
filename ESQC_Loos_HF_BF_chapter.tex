@@ -3023,25 +3023,572 @@ Finally, the total and spin density matrices are
 \end{align}
 
 \subsubsection{The SCF procedure for unrestricted Hartree--Fock}
+
+The practical UHF SCF algorithm is
+\begin{enumerate}
+  \item \red{Specify the molecule} $\{\bR_A\}$ and $\{Z_A\}$ and the
+    \red{basis set} $\{\phi_\mu\}$, as in RHF.
+  \item Calculate $S_{\mu\nu}$, $H_{\mu\nu}$, and
+    $\braket{\mu\nu}{\lambda\sigma}$, as in RHF.
+  \item Diagonalize $\bS$ and compute $\bX$, as in RHF.
+  \item Choose \red{initial density matrices} $\bP^\alpha$ and $\bP^\beta$,
+    then iterate:
+    \begin{enumerate}
+      \item[1a.] Calculate $\bG^\alpha$ and
+        $\bF^\alpha=\bH+\bG^\alpha$.
+      \item[1b.] Calculate $\bG^\beta$ and
+        $\bF^\beta=\bH+\bG^\beta$.
+      \item[2.] Compute
+        $(\bF^\alpha)'=\bX^\dag\cdot\bF^\alpha\cdot\bX$ and
+        $(\bF^\beta)'=\bX^\dag\cdot\bF^\beta\cdot\bX$.
+      \item[3a.] Diagonalize $(\bF^\alpha)'$ to obtain
+        $(\bC^\alpha)'$ and $\bE^\alpha$.
+      \item[3b.] Diagonalize $(\bF^\beta)'$ to obtain
+        $(\bC^\beta)'$ and $\bE^\beta$.
+      \item[4.] Calculate
+        $\bC^\alpha=\bX\cdot(\bC^\alpha)'$ and
+        $\bC^\beta=\bX\cdot(\bC^\beta)'$.
+      \item[5.] Form the \red{new density matrices} $\bP^\alpha$ and
+        $\bP^\beta$, and compute
+        $\bP^\text{T}=\bP^\alpha+\bP^\beta$.
+      \item[6.] Test convergence. If the calculation is not converged,
+        return to step 1a.
+    \end{enumerate}
+  \item Evaluate the desired observables, including $E_\text{UHF}$.
+\end{enumerate}
+
 \subsubsection{Dissociation of \ce{H2}}
+
+Start from one normalized $1s$ function on each atom:
+\begin{equation}
+  \boxed{
+    \psi_g=\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}},
+    \qquad
+    \psi_u=\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}}
+  },
+  \qquad S=\braket{\phi_A}{\phi_B}.
+\end{equation}
+For two electrons in two spatial orbitals, UHF reduces to a
+\red{single-parameter problem}.
+
+\begin{center}
+\begin{tikzpicture}[x=1.25cm,y=1.25cm]
+  \fill[hfBlue!18] (-2.0,0) circle (0.52);
+  \fill[hfRed!18] (2.0,0) circle (0.52);
+  \fill[hfInk] (-2.0,0) circle (0.08) node[below=0.15cm] {$A$};
+  \fill[hfInk] (2.0,0) circle (0.08) node[below=0.15cm] {$B$};
+  \draw[hfNavy,thick,<->] (-1.85,0.72)--(1.85,0.72)
+    node[midway,fill=white,inner sep=1pt] {$R$};
+  \node[hfBlue] at (-2.0,-0.75) {$\phi_A$};
+  \node[hfRed] at (2.0,-0.75) {$\phi_B$};
+\end{tikzpicture}
+\end{center}
+
+\paragraph{The RHF problem.}
+
+The RHF wavefunction and energy are
+\begin{equation}
+  \ket{\Psi_\text{RHF}}=\ket{\psi_g\Bar{\psi}_g},
+  \qquad
+  E_\text{RHF}=2h_{gg}+J_{gg}+\frac{1}{R}.
+\end{equation}
+At large $R$, where $S\rightarrow0$,
+\begin{equation}
+  \psi_g(1)\psi_g(2)\longrightarrow\frac{1}{2}\qty[
+    \underbrace{\phi_A(1)\phi_B(2)+\phi_B(1)\phi_A(2)}
+      _{\text{covalent}}
+    +\underbrace{\phi_A(1)\phi_A(2)+\phi_B(1)\phi_B(2)}
+      _{\text{ionic}}
+  ].
+\end{equation}
+RHF retains \red{$50\%$ ionic character} as $R\rightarrow\infty$. Both
+electrons are forced to share the same spatial orbital, so its energy lies
+above that of two separated H atoms. Hence, \red{RHF is qualitatively correct
+near equilibrium but not at dissociation}.
+
+\paragraph{The UHF problem.}
+
+The UHF orbitals can be parametrized as
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    \psi^\alpha(\theta)&=\cos\theta\,\psi_g+\sin\theta\,\psi_u,\\
+    \psi^\beta(\theta)&=\cos\theta\,\psi_g-\sin\theta\,\psi_u,
+  \end{aligned}}
+  \qquad
+  \braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta).
+\end{equation}
+The two choices $\pm\theta$ are degenerate and exchange the spin
+localization.
+
+\begin{center}
+\begin{minipage}[t]{0.31\textwidth}
+  \centering\textbf{$\theta=0^\circ$: RHF limit}
+
+  \HtwoOrbitalPlot{0}
+
+  $\psi^\alpha=\psi^\beta=\psi_g$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+  \centering\textbf{$0<\theta<45^\circ$: polarization}
+
+  \HtwoOrbitalPlot{22.5}
+
+  $\alpha$ shifts to $A$; $\beta$ shifts to $B$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+  \centering\textbf{$\theta=45^\circ$: dissociation}
+
+  \HtwoOrbitalPlot{45}
+
+  $\psi^\alpha\to\phi_A$; $\psi^\beta\to\phi_B$
+\end{minipage}
+\end{center}
+
+With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the energy is
+\begin{align}
+  E_\text{UHF}(\theta)={}&2\cos^2\theta\,h_{gg}
+  +2\sin^2\theta\,h_{uu}
+  +\cos^4\theta\,J_{gg}
+  +\sin^4\theta\,J_{uu}
+  \notag\\
+  &+2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu}).
+\end{align}
+Besides the restricted stationary point $\theta=0$, a
+\red{broken-symmetry stationary solution} satisfies
+\begin{equation}
+  \boxed{
+    \cos^2\theta^\star
+    =\frac{h_{uu}-h_{gg}+J_{uu}-J_{gu}+2K_{gu}}
+      {J_{gg}+J_{uu}-2J_{gu}+4K_{gu}}
+  }.
+\end{equation}
+At short bond lengths, only the minimum at $\theta=0$ is physically
+accessible and UHF reduces to RHF. At large bond lengths, when
+$0\leq\cos^2\theta^\star\leq1$, two minima appear at $\pm\theta^\star$ and
+RHF becomes unstable to spin polarization.
+
+The RHF curvature is
+\begin{equation}
+  \eval{\dv[2]{E}{\theta}}_{\theta=0}
+  =4\qty(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}),
+\end{equation}
+and the \red{Coulson--Fischer point} is defined by
+\begin{equation}
+  \boxed{
+    R=R_\text{CF}
+    \quad\Longleftrightarrow\quad
+    \eval{\dv[2]{E}{\theta}}_{\theta=0}=0
+  }.
+\end{equation}
+For $R<R_\text{CF}$, the RHF curvature is positive and there is one minimum
+at $\theta=0$. At $R=R_\text{CF}$ it vanishes and the minimum becomes flat.
+For $R>R_\text{CF}$ it is negative and two UHF minima occur at
+$\pm\theta^\star$. The RHF determinant does not disappear: it changes from a
+minimum to an unstable stationary point while two degenerate UHF minima
+emerge.
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.31\textwidth}
+\centering\textbf{$R<R_\text{CF}$}
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=0.65\linewidth,xmin=-45,xmax=45,
+ymin=-0.06,ymax=1.08,axis x line=bottom,axis y line=left,
+xtick={-45,0,45},xticklabels={$-45^\circ$,$0$,$45^\circ$},ytick=\empty,
+xlabel={$\theta$},ylabel={$E(\theta)$},samples=120,domain=-45:45]
+\addplot[hfNavy,very thick] {(x/45)^2};
+\addplot[only marks,mark=*,mark size=2.2pt,hfTeal] coordinates {(0,0)};
+\end{axis}
+\end{tikzpicture}
+
+\green{one minimum at $\theta=0$}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+\centering\textbf{$R=R_\text{CF}$}
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=0.65\linewidth,xmin=-45,xmax=45,
+ymin=-0.06,ymax=1.08,axis x line=bottom,axis y line=left,
+xtick={-45,0,45},xticklabels={$-45^\circ$,$0$,$45^\circ$},ytick=\empty,
+xlabel={$\theta$},samples=120,domain=-45:45]
+\addplot[hfViolet,very thick] {(x/45)^4};
+\addplot[only marks,mark=*,mark size=2.2pt,hfRed] coordinates {(0,0)};
+\end{axis}
+\end{tikzpicture}
+
+\red{the minimum becomes flat}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+\centering\textbf{$R>R_\text{CF}$}
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=0.65\linewidth,xmin=-45,xmax=45,
+ymin=-0.06,ymax=1.08,axis x line=bottom,axis y line=left,
+xtick={-45,0,45},xticklabels={$-45^\circ$,$0$,$45^\circ$},ytick=\empty,
+xlabel={$\theta$},samples=120,domain=-45:45]
+\addplot[hfRed,very thick] {0.65*((x/30)^2-1)^2};
+\addplot[only marks,mark=*,mark size=2.2pt,hfTeal]
+coordinates {(-30,0) (30,0)};
+\addplot[only marks,mark=o,mark size=2.5pt,hfRed] coordinates {(0,0.65)};
+\end{axis}
+\end{tikzpicture}
+
+\green{two UHF minima at $\pm\theta^\star$}
+\end{minipage}
+\caption{Evolution of the stationary points at the Coulson--Fischer point.}
+\label{fig:coulson-fischer}
+\end{figure}
+
+At dissociation,
+\begin{equation}
+  S\rightarrow0,
+  \qquad
+  \psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2},
+  \qquad
+  U=(AA|AA)>0.
+\end{equation}
+The restricted and unrestricted limits are
+\begin{equation}
+  \boxed{E_\text{RHF}^\infty=2E_\text{H}+\frac12U},
+  \qquad
+  \boxed{E_\text{UHF}^\infty=2E_\text{H}}.
+\end{equation}
+The ionic terms therefore leave a finite RHF error, whereas
+$\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$ give the correct UHF limit.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.72\textwidth,height=0.42\textwidth,
+xmin=0.45,xmax=6.15,ymin=-1.02,ymax=0.80,xlabel={$R$},
+ylabel={$E(R)-2E_\text{H}$},xtick={2.30},xticklabels={$R_\text{CF}$},
+ytick={0,0.55},yticklabels={$0$,$\tfrac12U$},
+legend style={draw=none,fill=white,font=\scriptsize,
+at={(0.98,0.03)},anchor=south east},clip=false]
+\addplot[hfNavy,very thick,smooth] coordinates {
+(0.55,0.72) (0.80,-0.18) (1.15,-0.68) (1.45,-0.79)
+(1.75,-0.73) (2.05,-0.60) (2.30,-0.48) (2.65,-0.27)
+(3.05,-0.02) (3.50,0.19) (4.00,0.35) (4.60,0.46)
+(5.30,0.52) (6.05,0.55)};
+\addlegendentry{RHF}
+\addplot[hfRed,very thick,smooth] coordinates {
+(0.55,0.72) (0.80,-0.18) (1.15,-0.68) (1.45,-0.79)
+(1.75,-0.73) (2.05,-0.60) (2.30,-0.48) (2.55,-0.34)
+(2.85,-0.22) (3.25,-0.13) (3.75,-0.065) (4.35,-0.027)
+(5.05,-0.008) (6.05,0.00)};
+\addlegendentry{UHF}
+\addplot[hfTeal,thick,dashed,smooth] coordinates {
+(0.55,0.67) (0.80,-0.24) (1.15,-0.76) (1.45,-0.88)
+(1.75,-0.82) (2.10,-0.67) (2.50,-0.48) (2.95,-0.31)
+(3.50,-0.17) (4.10,-0.080) (4.80,-0.030) (5.50,-0.008)
+(6.05,0.00)};
+\addlegendentry{near-exact}
+\end{axis}
+\end{tikzpicture}
+\caption{Schematic RHF, UHF, and near-exact dissociation curves for
+minimal-basis \ce{H2}.}
+\label{fig:h2-dissociation}
+\end{figure}
+
+For the two-electron $M_S=0$ determinant,
+\begin{equation}
+  \boxed{
+    \expval{\purple{\chS^2}}_\text{UHF}
+    =1-\abs{\braket{\psi^\alpha}{\psi^\beta}}^2
+    =\sin^2(2\theta)
+  }.
+\end{equation}
+Near equilibrium, $\theta=0$ and $\expval*{\purple{\chS^2}}=0$, so the
+determinant is a pure singlet. At dissociation, $\theta\rightarrow\pi/4$ and
+$\expval*{\purple{\chS^2}}\rightarrow1$, so it is an equal mixture of a
+singlet and an $M_S=0$ triplet:
+\begin{equation}
+  \ket{A\alpha\,B\beta}
+  =\frac{1}{\sqrt2}\qty(
+    \ket{\text{covalent singlet}}
+    +\ket{\text{triplet},M_S=0})
+  \qquad\text{as }R\to\infty.
+\end{equation}
+Thus, \red{the UHF energy is physically useful, but the UHF wavefunction is
+spin-contaminated}. The three take-home messages are
+\begin{enumerate}
+  \item a stationary SCF solution need not be stable;
+  \item the Coulson--Fischer point marks a continuous RHF-to-UHF transition;
+  \item symmetry breaking mimics static correlation at the price of a
+    contaminated wavefunction.
+\end{enumerate}
+
+\paragraph{Generalized Hartree--Fock.}
+
+The key idea is that GHF allows every orbital to choose its spin direction.
+A GHF orbital is a \red{two-component spinor}:
+\begin{equation}
+  \boxed{
+    \chi_p^\text{GHF}(\bx)
+    =\alpha(\omega)\blue{\psi_p^\alpha(\br)}
+    +\beta(\omega)\red{\psi_p^\beta(\br)}
+  }.
+\end{equation}
+Both components are expanded in the same spatial AO basis,
+\begin{equation}
+  \psi_i^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br),
+  \qquad
+  \boldsymbol{\mathcal C}=\mqty(\bC^\alpha\\\bC^\beta),
+  \qquad
+  \boldsymbol{\mathcal C}\in\mathbb C^{2K\times N}.
+\end{equation}
+RHF pairs electrons in one spatial orbital and preserves both
+$\purple{\chS^2}$ and $\violet{\chS_z}$. UHF uses orbitals that are purely
+$\alpha$ or $\beta$, has a collinear spin density, and preserves
+$\violet{\chS_z}$. GHF permits each orbital to mix $\alpha$ and $\beta$, so
+in general neither $\purple{\chS^2}$ nor $\violet{\chS_z}$ is preserved.
+GHF therefore does not require a common spin-quantization axis or fixed values
+of $N^\alpha$ and $N^\beta$.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=0.70]
+\foreach \x/\name/\desc in {
+ -5.7/RHF/{same spatial orbital},
+ -1.9/UHF/{different spatial orbitals},
+  1.9/{Rotated UHF}/{a common tilted axis},
+  5.7/GHF/{different tilted axes}}{
+ \begin{scope}[shift={(\x,1.0)}]
+  \draw[hfInk,thick] (0,0) circle (1.00);
+  \draw[hfInk!50] (-1.00,0) arc (180:360:1.00 and 0.28);
+  \draw[hfInk!50,dashed] (-1.00,0) arc (180:0:1.00 and 0.28);
+  \draw[->,hfInk!40] (0,-1.18)--(0,1.18);
+  \node[right,hfInk!60] at (0,1.2) {$z$};
+ \end{scope}
+ \node[above] at (\x,2.20) {\textbf{\name}};
+ \node[align=center,text width=3.2cm] at (\x,-0.60) {\desc};
+}
+\draw[->,very thick,hfBlue] (-5.7,1.0)--(-5.7,1.80);
+\draw[->,very thick,hfRed] (-5.7,1.0)--(-5.7,0.20);
+\node[right,hfBlue] at (-5.65,1.62) {$\alpha$};
+\node[right,hfRed] at (-5.65,0.38) {$\beta$};
+\draw[->,very thick,hfBlue] (-1.9,1.0)--(-1.9,1.80);
+\draw[->,very thick,hfRed] (-1.9,1.0)--(-1.9,0.20);
+\node[right,hfBlue] at (-1.85,1.62) {$\alpha$};
+\node[right,hfRed] at (-1.85,0.38) {$\beta$};
+\draw[->,very thick,hfViolet] (1.9,1.0)--(2.56,1.58);
+\draw[->,very thick,hfOrange] (1.9,1.0)--(1.24,0.42);
+\node[above right,hfViolet] at (2.25,1.28) {$\boldsymbol{s}$};
+\node[below left,hfOrange] at (1.55,0.72) {$\boldsymbol{s}'$};
+\draw[->,very thick,hfViolet] (5.7,1.0)--(6.40,1.56);
+\draw[->,very thick,hfOrange] (5.7,1.0)--(5.22,1.72);
+\node[above right,hfViolet] at (6.05,1.28) {$\boldsymbol{s}$};
+\node[above left,hfOrange] at (5.46,1.36) {$\boldsymbol{s}'$};
+\end{tikzpicture}
+\begin{equation}
+ \underbrace{\text{UHF}\xrightarrow{\text{global spin rotation}}
+ \text{rotated UHF}}_{\text{physically equivalent collinear solutions}}
+ \qquad\neq\qquad
+ \underbrace{\text{genuine GHF}}_{\text{non-collinear}}.
+\end{equation}
+\caption{RHF, UHF, globally rotated UHF, and genuinely noncollinear GHF spin
+directions. A tilted spin axis alone does not imply a genuinely noncollinear
+GHF solution.}
+\label{fig:ghf-spin-directions}
+\end{figure}
+
+The GHF density matrix is
+\begin{equation}
+  \boxed{
+    \boldsymbol{\mathcal P}=\mqty(
+      \bP^{\alpha\alpha}&\bP^{\alpha\beta}\\
+      \bP^{\beta\alpha}&\bP^{\beta\beta})
+  },
+  \qquad
+  P_{\mu\nu}^{\sigma\sigma'}
+  =\sum_{i=1}^{N}C_{\mu i}^\sigma C_{\nu i}^{\sigma' *}.
+\end{equation}
+Its charge and magnetization blocks are
+\begin{align}
+  \bP&=\frac12\qty(\bP^{\alpha\alpha}+\bP^{\beta\beta}),
+  &
+  \bM_z&=\frac12\qty(\bP^{\alpha\alpha}-\bP^{\beta\beta}),
+  \\
+  \bM_y&=\frac{1}{2\ii}\qty(\bP^{\beta\alpha}-\bP^{\alpha\beta}),
+  &
+  \bM_x&=\frac12\qty(\bP^{\beta\alpha}+\bP^{\alpha\beta}).
+\end{align}
+Equivalently,
+\begin{equation}
+  \boldsymbol{\mathcal P}
+  =\mqty(
+    \bP+\bM_z&\bM_x-\ii\bM_y\\
+    \bM_x+\ii\bM_y&\bP-\bM_z)
+  =\bP\otimes\bI+\bM\otimes\boldsymbol{\sigma},
+\end{equation}
+with
+\begin{equation}
+  \bM=\mqty(\bM_x\\\bM_y\\\bM_z),
+  \qquad
+  \boldsymbol{\sigma}
+  =\mqty(\boldsymbol{\sigma}_x\\\boldsymbol{\sigma}_y\\
+    \boldsymbol{\sigma}_z).
+\end{equation}
+
+The Roothaan--Hall equation in spinor space is
+\begin{equation}
+  \boxed{
+    \boldsymbol{\mathcal F}\cdot\boldsymbol{\mathcal C}
+    =\boldsymbol{\mathcal S}\cdot\boldsymbol{\mathcal C}
+     \cdot\boldsymbol{\mathcal E}
+  },
+  \qquad
+  \boldsymbol{\mathcal S}=\mqty(\bS&\bO\\\bO&\bS),
+\end{equation}
+with normalization
+\begin{equation}
+  \boldsymbol{\mathcal C}^\dagger\cdot\boldsymbol{\mathcal S}
+  \cdot\boldsymbol{\mathcal C}=\bI.
+\end{equation}
+The GHF Fock matrix is
+\begin{equation}
+\boxed{
+\boldsymbol{\mathcal F}=\mqty(
+  \bh+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
+    -\bK[\bP^{\alpha\alpha}]
+  &-\bK[\bP^{\alpha\beta}]\\
+  -\bK[\bP^{\beta\alpha}]
+  &\bh+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
+    -\bK[\bP^{\beta\beta}])
+}
+\end{equation}
+where
+\begin{equation}
+  J_{\mu\nu}[\bP]
+  =\sum_{\lambda\sigma}P_{\lambda\sigma}
+    \rbraket{\mu\nu}{\lambda\sigma},
+  \qquad
+  K_{\mu\nu}[\bP]
+  =\sum_{\lambda\sigma}P_{\lambda\sigma}
+    \rbraket{\mu\sigma}{\lambda\nu}.
+\end{equation}
+The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components
+self-consistently. The SCF procedure builds all four density blocks, builds
+all four Fock blocks, solves a $2K\times2K$ generalized eigenvalue problem,
+occupies the $N$ lowest spinors, and iterates.
+
+For the corresponding global minima in the same one-electron basis,
+\begin{equation}
+  \boxed{
+    \{\Phi_\text{RHF}\}\subset\{\Phi_\text{UHF}\}
+    \subset\{\Phi_\text{GHF}\}
+  }
+  \qquad\Longrightarrow\qquad
+  \red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}.
+\end{equation}
+A converged UHF determinant may remain unstable to occupied--virtual rotations
+that mix $\alpha$ and $\beta$ orbitals; following a negative-curvature
+direction gives a lower-energy GHF solution. Not every GHF solution is
+noncollinear: RHF and UHF are special cases, and a global spin rotation of a
+UHF determinant changes its apparent quantization axis while remaining
+physically collinear.
+
+Lowering the variational energy may require breaking exact symmetries. UHF
+may break $\chS^2$; GHF may break both $\chS^2$ and $\chS_z$; and complex GHF
+may also break time-reversal symmetry. GHF remains a single determinant, so
+correlation is not included, and $S$ and $M_S$ are generally not good quantum
+numbers. The many stationary solutions make the initial guess and
+\red{stability analysis} important. A putative GHF solution may be a globally
+rotated UHF solution, requiring a \red{collinearity test}. Equilateral
+\red{\ce{H3}} and \red{triangular magnetic clusters} are typical genuine
+noncollinear examples. GHF is the most general \red{number-conserving}
+single-determinant HF ansatz; particle-number symmetry can instead be broken
+within \red{Hartree--Fock--Bogoliubov (HFB) theory}.
+
 \subsubsection{Classification of Hartree--Fock solutions}
+
+The Stuber--Paldus classification is summarized in
+Table~\ref{tab:stuber-paldus}.
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{
+  >{\centering\arraybackslash}m{0.14\textwidth}
+  >{\centering\arraybackslash}m{0.19\textwidth}
+  >{\centering\arraybackslash}m{0.17\textwidth}
+  >{\centering\arraybackslash}m{0.39\textwidth}}
+\rowcolor{hfPale}
+\makecell{\textbf{Fukutome}\\\textbf{designation}}&
+\makecell{\textbf{Stuber--Paldus}\\\textbf{designation}}&
+\makecell{\textbf{Symmetries}\\\textbf{preserved}}&
+\makecell{\textbf{Structure of the orbital}\\
+          \textbf{coefficient matrix $\bC$}}\\
+$\text{TICS}^{a}$&real RHF&$\chS^2,\chS_z,\chK,\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}),
+\ \bC\in\mathbb R$\\
+$\text{CCW}^{b}$&complex RHF&$\chS^2,\chS_z$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma})$\\
+$\text{ASCW}^{c}$&paired UHF&$\chS_z,\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}^*)$\\
+$\text{ASDW}^{d}$&real UHF&$\chS_z,\chK$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'}),
+\ \bC\in\mathbb R$\\
+$\text{ASW}^{e}$&complex UHF&$\chS_z$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'})$\\
+$\text{TSCW}^{f}$&paired GHF&$\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+-\bC_{\sigma\sigma'}^*&\bC_{\sigma\sigma}^*)$\\
+$\text{TSDW}^{g}$&real GHF&$\chK$&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'}),\ \bC\in\mathbb R$\\
+$\text{TSW}^{h}$&complex GHF&---&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'})$
+\end{tabular}
+\caption{Stuber--Paldus classification of Hartree--Fock solutions.}
+\label{tab:stuber-paldus}
+\end{table}
+
+Here TICS denotes time-reversal-invariant closed-shell; CCW, charge current
+wave; ASCW, axial spin current wave; ASDW, axial spin density wave; ASW,
+axial spin wave; TSCW, torsional spin current wave; TSDW, torsional spin
+density wave; and TSW, torsional spin wave. The operators $\chK$ and
+$\hat\Theta$ are complex conjugation and time reversal, respectively.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.66\textwidth]{StuberPaldus}
+  \caption{Graphical Stuber--Paldus classification of Hartree--Fock
+  solutions.}
+  \label{fig:stuber-paldus}
+\end{figure}
+
+\subsection{Recommended references}
+
+The books recommended in the slides are
+\begin{itemize}
+  \item \emph{Introduction to Computational Chemistry}, Jensen;
+  \item \emph{Essentials of Computational Chemistry}, Cramer;
+  \item \emph{Modern Quantum Chemistry}, Szabo and Ostlund;
+  \item \emph{Molecular Electronic Structure Theory}, Helgaker, J{\o}rgensen,
+    and Olsen.
+\end{itemize}
+\begin{center}
+  \includegraphics[height=0.12\textheight]{Jensen}\hspace{1em}
+  \includegraphics[height=0.12\textheight]{Cramer}\hspace{1em}
+  \includegraphics[height=0.12\textheight]{Szabo}\hspace{1em}
+  \includegraphics[height=0.12\textheight]{Helgaker}
+\end{center}
 
 % ============================================================================
 % Presentation II: ESQC_Loos_BF.tex
-% The presentation currently has no explicit LaTeX section hierarchy. Its
-% contents will be expanded below in the existing frame order.
+% The presentation has no explicit LaTeX section hierarchy; its content is
+% organized below in the original frame order.
 % ============================================================================
 
 \clearpage
 \section{Basis sets and molecular integrals}
 
-% Content from ESQC_Loos_BF.tex will be inserted here in slide order.
+\input{ESQC_Loos_BF_chapter_content}
 
 \backmatter
 \chapter*{References}
 \addcontentsline{toc}{chapter}{References}
-
-% Bibliographic entries will be added when the references in the slides are
-% transferred to the chapter.
 
 \end{document}
