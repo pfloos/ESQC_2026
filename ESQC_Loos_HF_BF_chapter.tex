@@ -2941,6 +2941,87 @@ For the occupation shown above,
 \end{equation}
 
 \subsubsection{The Pople--Nesbet equations}
+
+The unrestricted spatial orbitals are expanded in the same AO basis with
+separate spin-dependent coefficients:
+\begin{align}
+  \psi_i^\alpha(\br)
+  &=\sum_{\mu=1}^{K}\blue{C_{\mu i}^\alpha}\phi_\mu(\br),
+  &
+  \psi_i^\beta(\br)
+  &=\sum_{\mu=1}^{K}\red{C_{\mu i}^\beta}\phi_\mu(\br).
+\end{align}
+The resulting Pople--Nesbet equations are
+\begin{align}
+  \blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
+  &=\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha,
+  &
+  \red{\bF^\beta}\cdot\red{\bC^\beta}
+  &=\bS\cdot\red{\bC^\beta}\cdot\bE^\beta.
+\end{align}
+Their spin-dependent Fock matrices are
+\begin{align}
+  \blue{F_{\mu\nu}^\alpha}
+  ={}&H_{\mu\nu}
+  +\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
+    \qty[
+      \rbraket{\mu\nu}{\sigma\lambda}
+      -\rbraket{\mu\lambda}{\sigma\nu}
+    ]
+  \notag\\
+  &+\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
+    \rbraket{\mu\nu}{\sigma\lambda},
+  \\
+  \red{F_{\mu\nu}^\beta}
+  ={}&H_{\mu\nu}
+  +\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
+    \qty[
+      \rbraket{\mu\nu}{\sigma\lambda}
+      -\rbraket{\mu\lambda}{\sigma\nu}
+    ]
+  \notag\\
+  &+\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
+    \rbraket{\mu\nu}{\sigma\lambda}.
+\end{align}
+Both $\blue{\bF^\alpha}$ and $\red{\bF^\beta}$ depend on
+$\blue{\bC^\alpha}$ and $\red{\bC^\beta}$. Therefore, \red{the $\alpha$
+and $\beta$ orbitals are coupled}.
+
+\paragraph{Unrestricted density matrices.}
+
+The spin-up and spin-down density matrices are
+\begin{align}
+  &\boxed{
+    \blue{P_{\mu\nu}^\alpha}
+    =\sum_{i=1}^{N^\alpha}C_{\mu i}^\alpha C_{\nu i}^{\alpha *}
+    \quad\Longleftrightarrow\quad\blue{\bP^\alpha}
+  },
+  &
+  &\boxed{
+    \red{P_{\mu\nu}^\beta}
+    =\sum_{i=1}^{N^\beta}C_{\mu i}^\beta C_{\nu i}^{\beta *}
+    \quad\Longleftrightarrow\quad\red{\bP^\beta}
+  }.
+\end{align}
+For $\sigma=\alpha$ or $\beta$, the corresponding real-space density and
+its normalization are
+\begin{align}
+  \rho^\sigma(\br)
+  &=\sum_{\mu\nu}\phi_\mu(\br)P_{\mu\nu}^\sigma
+    \phi_\nu^*(\br),
+  &
+  \int\rho^\sigma(\br)\dd{\br}
+  &=N^\sigma.
+\end{align}
+Finally, the total and spin density matrices are
+\begin{align}
+  \underbrace{\blue{\bP^\text{T}}}_{\blue{\text{charge density}}}
+  &=\blue{\bP^\alpha}+\red{\bP^\beta},
+  &
+  \underbrace{\violet{\bP^\text{S}}}_{\violet{\text{spin density}}}
+  &=\blue{\bP^\alpha}-\red{\bP^\beta}.
+\end{align}
+
 \subsubsection{The SCF procedure for unrestricted Hartree--Fock}
 \subsubsection{Dissociation of \ce{H2}}
 \subsubsection{Classification of Hartree--Fock solutions}
