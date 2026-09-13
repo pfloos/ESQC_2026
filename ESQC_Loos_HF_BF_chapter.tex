@@ -261,10 +261,10 @@
 % The section and subsection order below follows the slide source.
 % ============================================================================
 
-\section{Hartree--Fock theory}
+\section{Electronic structure and the Hartree--Fock framework}
 
-\subsection{The electronic problem}
-\subsubsection{Motivations}
+\subsection{The electronic many-body problem}
+\subsubsection{Motivation and scope}
 
 We consider the \red{time-independent} Schr\"odinger equation and seek
 stationary electronic states. Hartree--Fock (HF) theory provides an
@@ -383,7 +383,7 @@ The nuclear factor obeys
 Thus the nuclei move on the \red{potential-energy surface} defined by
 $\violet{\chV_\text{nn}}+\cE_\text{elec}(\{\bR_A\})$.
 
-\subsubsection{The Pauli principle}
+\subsubsection{The Pauli principle and antisymmetry}
 
 Electrons are spin-$1/2$ fermions. Their spin functions satisfy
 \begin{equation}
@@ -514,7 +514,7 @@ product
 \end{equation}
 is a \green{Hartree product} and does not possess the required antisymmetry.
 
-\subsubsection{The Hartree--Fock wavefunction}
+\subsubsection{The single-determinant ansatz}
 
 Hartree--Fock theory approximates the $N$-electron wavefunction by a single
 Slater determinant,
@@ -655,8 +655,8 @@ shell. Otherwise it is open shell. For the ground state of a closed-shell
 system, the first $N/2$ spatial orbitals are \red{doubly occupied}, and the
 remaining $K-N/2$ spatial orbitals are \red{vacant}.
 
-\subsection{The Hartree--Fock approximation}
-\subsubsection{The Hartree--Fock energy}
+\subsection{The Hartree--Fock energy functional}
+\subsubsection{Energy expectation value}
 
 For fixed nuclei, the Hartree--Fock energy is the expectation value of the
 electronic Hamiltonian over the normalized Slater determinant,
@@ -776,7 +776,7 @@ It is therefore nonlocal. Its matrix element is
     \chi_j(\bx_1)\chi_i(\bx_2)\dd{\bx_1}\dd{\bx_2}.
 \end{align}
 
-\subsubsection{Integrals}
+\subsubsection{One- and two-electron integrals}
 
 We use both physicists' and chemists' notations. A one-electron integral is
 written equivalently as
@@ -852,7 +852,7 @@ and the \green{real-valued} symmetry is
 Thus, for real-valued orbitals, ERIs possess
 \red{eightfold permutation symmetry}.
 
-\subsubsection{Examples}
+\subsubsection{Worked examples}
 
 \paragraph{Problem: normalization of the HF wavefunction.}
 \violet{\textit{Show that the HF wavefunction built with two normalized,
@@ -978,6 +978,7 @@ Applying the preceding expansion to all three electron pairs gives
   -\cK_{12}-\cK_{13}-\cK_{23} }.
 \end{equation}
 
+\subsection{Spin-orbital and spatial-orbital formulations}
 \subsubsection{From spin orbitals to spatial orbitals}
 
 Consider closed-shell \ce{H2} in a minimal basis. In the spin-orbital
@@ -1193,6 +1194,7 @@ For the occupation used for the \ce{B} atom, the corresponding expression is
 \end{split}
 \end{equation}
 
+\subsection{Excited determinants and Hamiltonian matrix elements}
 \subsubsection{Excited determinants}
 
 In the reference ground-state determinant,
@@ -1581,6 +1583,7 @@ The ladder operators connect the components according to
 The $M_S=\pm1$ components are single spin-pure determinants, while the pure
 $M_S=0$ triplet requires two determinants.
 
+\subsection{The Fock operator and orbital energies}
 \subsubsection{The Fock operator}
 
 We seek to minimize $E_\text{HF}$ under the constraint that the spin orbitals
@@ -1815,6 +1818,8 @@ interaction. More precisely,
 \end{equation}
 This is the first-order correction in
 \red{M{\o}ller--Plesset perturbation theory}.
+
+\section{Finite-basis Hartree--Fock and self-consistent-field methods}
 
 \subsection{The Roothaan--Hall equations}
 \subsubsection{The basis-set approximation}
@@ -2063,7 +2068,7 @@ The corresponding energy is
 \end{split}
 \end{equation}
 
-\subsubsection{The self-consistent-field procedure}
+\subsection{The SCF algorithm and convergence}
 
 \paragraph{The SCF algorithm.}
 
@@ -2184,7 +2189,7 @@ $m$ previous iterations according to
   }.
 \end{equation}
 
-\subsubsection{Direct inversion in the iterative subspace}
+\subsection{Direct inversion in the iterative subspace (DIIS)}
 
 Using the $m$ stored iterations, DIIS constructs an extrapolated Fock matrix
 and approximates its error vector as
@@ -2363,7 +2368,7 @@ The practical consequences are
   \item[\cmark] DIIS can be used for many other methods.
 \end{itemize}
 
-\subsubsection{Excited-state SCF and the maximum overlap method}
+\subsection{Excited-state SCF and the maximum-overlap method}
 
 \paragraph{Variational collapse.}
 
@@ -2547,7 +2552,7 @@ The corresponding cautions are
   \item[\xmark] MOM can drift or converge to an unintended solution.
 \end{itemize}
 
-\subsubsection{Properties}
+\subsection{Molecular properties and orbital analysis}
 
 \paragraph{Dipole moments.}
 
@@ -2790,8 +2795,10 @@ The practical cautions are to
   \item remember that spatial symmetry may be lost.
 \end{itemize}
 
+\section{Open-shell and generalized Hartree--Fock methods}
+
 \subsection{Unrestricted Hartree--Fock theory}
-\subsubsection{Unrestricted Hartree--Fock}
+\subsubsection{The unrestricted ansatz}
 
 For open-shell systems, one uses \red{unrestricted spin orbitals},
 \begin{equation}
@@ -2822,7 +2829,7 @@ $\violet{\chS_z}$. Its orbitals have the form
   \red{\text{two-component spinor}}.
 \end{equation}
 
-\subsubsection{The unrestricted Hartree--Fock equations}
+\subsubsection{The unrestricted Hartree--Fock equations and energy}
 
 To \red{minimize the UHF energy}, the unrestricted spatial orbitals must be
 eigenfunctions of the separate \red{$\alpha$ and $\beta$ Fock operators}:
@@ -2940,7 +2947,7 @@ For the occupation shown above,
   +J_{11}^{\alpha\beta}+J_{21}^{\alpha\beta}.
 \end{equation}
 
-\subsubsection{The Pople--Nesbet equations}
+\subsubsection{The Pople--Nesbet matrix equations}
 
 The unrestricted spatial orbitals are expanded in the same AO basis with
 separate spin-dependent coefficients:
@@ -3022,7 +3029,7 @@ Finally, the total and spin density matrices are
   &=\blue{\bP^\alpha}-\red{\bP^\beta}.
 \end{align}
 
-\subsubsection{The SCF procedure for unrestricted Hartree--Fock}
+\subsubsection{The unrestricted SCF procedure}
 
 The practical UHF SCF algorithm is
 \begin{enumerate}
@@ -3057,7 +3064,7 @@ The practical UHF SCF algorithm is
   \item Evaluate the desired observables, including $E_\text{UHF}$.
 \end{enumerate}
 
-\subsubsection{Dissociation of \ce{H2}}
+\subsection{Symmetry breaking in the dissociation of \ce{H2}}
 
 Start from one normalized $1s$ function on each atom:
 \begin{equation}
@@ -3317,7 +3324,7 @@ spin-contaminated}. The three take-home messages are
     contaminated wavefunction.
 \end{enumerate}
 
-\paragraph{Generalized Hartree--Fock.}
+\subsection{Generalized Hartree--Fock theory}
 
 The key idea is that GHF allows every orbital to choose its spin direction.
 A GHF orbital is a \red{two-component spinor}:
@@ -3499,7 +3506,7 @@ noncollinear examples. GHF is the most general \red{number-conserving}
 single-determinant HF ansatz; particle-number symmetry can instead be broken
 within \red{Hartree--Fock--Bogoliubov (HFB) theory}.
 
-\subsubsection{Classification of Hartree--Fock solutions}
+\subsection{Classification of Hartree--Fock solutions}
 
 The Stuber--Paldus classification is summarized in
 Table~\ref{tab:stuber-paldus}.
@@ -3559,7 +3566,7 @@ $\hat\Theta$ are complex conjugation and time reversal, respectively.
   \label{fig:stuber-paldus}
 \end{figure}
 
-\subsection{Recommended references}
+\section{Further reading on Hartree--Fock theory}
 
 The books recommended in the slides are
 \begin{itemize}
@@ -3583,12 +3590,8 @@ The books recommended in the slides are
 % ============================================================================
 
 \clearpage
-\section{Basis sets and molecular integrals}
+\section{One-electron basis sets}
 
 \input{ESQC_Loos_BF_chapter_content}
-
-\backmatter
-\chapter*{References}
-\addcontentsline{toc}{chapter}{References}
 
 \end{document}

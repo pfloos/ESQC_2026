@@ -1,4 +1,4 @@
-\subsection{Expanding molecular orbitals}
+\subsection{Basis-set expansions and design principles}
 
 In practical molecular calculations, each molecular orbital is expanded in a
 finite set of known one-electron functions,
@@ -16,7 +16,7 @@ These requirements compete: a larger and more flexible basis improves the
 description of the orbitals, but increases both the computational cost and the
 risk of linear dependence.
 
-\paragraph{The LEGO principle.}
+\subsubsection{The LEGO principle}
 
 Basis-set construction follows a LEGO-like philosophy: a small collection of
 well-designed building blocks is combined to describe chemically diverse
@@ -28,7 +28,7 @@ systems.
   molecular orbitals are assembled.}
 \end{figure}
 
-\subsubsection{Common basis functions}
+\subsubsection{Principal families of basis functions}
 
 Several families of one-electron functions are routinely used.
 \begin{itemize}
@@ -51,7 +51,7 @@ Several families of one-electron functions are routinely used.
   \textsc{SIESTA}.
 \end{itemize}
 
-\subsection{Plane waves}
+\subsection{Plane-wave basis sets}
 
 In a unit cell of volume $\Omega$, a normalized plane wave is
 \begin{equation}
@@ -136,7 +136,7 @@ correlated methods expensive.
 Plane waves are therefore especially effective for periodic valence-electron
 calculations, usually in conjunction with pseudopotentials.
 
-\subsection{Slater and Gaussian orbitals}
+\subsection{Slater-type and Gaussian-type orbitals}
 
 The general Slater- and Gaussian-type orbitals used in the comparison are
 \begin{equation}
@@ -169,7 +169,7 @@ A Gaussian instead decays too rapidly. Multicenter STO integrals are hard to
 compute, whereas multicenter GTO integrals are easy. GTOs usually win, but more
 of them are required.
 
-\subsubsection{Primitive and contracted Gaussians}
+\subsubsection{Primitive and contracted Gaussian functions}
 
 A primitive Cartesian Gaussian centered at $\bA$ is
 \begin{equation}
@@ -228,7 +228,7 @@ requires $10^4$ primitive $ssss$ integrals for a single four-center integral.
 Basis-set definitions can be inspected and downloaded from the
 \href{https://www.basissetexchange.org}{Basis Set Exchange}.
 
-\subsection{Choosing a Gaussian basis}
+\subsection{Gaussian basis-set design and selection}
 
 Different physical effects demand different forms of flexibility.
 \begin{itemize}
@@ -251,7 +251,7 @@ Different physical effects demand different forms of flexibility.
   large number of orbital and auxiliary basis sets.}
 \end{figure}
 
-\paragraph{STO-$n$G.}
+\subsubsection{STO-$n$G minimal basis sets}
 
 In an STO-$n$G basis, there is one contracted basis function for every occupied
 orbital in the minimal atomic description. Each contracted GTO contains $n$
@@ -263,7 +263,7 @@ single-$\zeta$ basis sets; STO-3G is the most familiar member.
   \includegraphics[width=0.42\textwidth]{STO}
 \end{center}
 
-\paragraph{Pople basis sets.}
+\subsubsection{Pople split-valence basis sets}
 
 The notation explicitly records the contractions and augmentations. In
 6-31+G*, the core function is contracted from six primitives; the valence
@@ -276,7 +276,7 @@ polarization functions to hydrogen. Finally, 6-311G(2df,2pd) adds two $d$ and
 one $f$ polarization shells to non-hydrogen atoms, and two $p$ and one $d$
 shell to hydrogen.
 
-\paragraph{Dunning correlation-consistent basis sets.}
+\subsubsection{Dunning correlation-consistent basis sets}
 
 The main sequence is
 \begin{equation}
@@ -322,7 +322,7 @@ core--valence sequence, the corresponding decomposition is
  \text{cc-pCVQZ: }&8s7p5d3f1g=4s3p2d1f+4s4p3d2f1g.
 \end{align}
 
-\paragraph{Jensen polarization-consistent basis sets.}
+\subsubsection{Jensen polarization-consistent basis sets}
 
 The sequence has shell contents
 \begin{equation}
@@ -349,7 +349,7 @@ dependence when many diffuse functions are used. There is consequently no
 single best Gaussian basis: the appropriate choice depends on the property,
 the electronic-structure method, and the desired accuracy.
 
-\subsubsection{Basis-set superposition error}
+\subsubsection{Basis-set superposition error and counterpoise correction}
 
 Let $E_X^Y$ denote the energy of system $X$ evaluated in basis $Y$. In a
 dimer $AB$, each fragment can borrow the basis functions of the other fragment
@@ -374,7 +374,7 @@ and the basis-set superposition error is
   =(E_A^A-E_A^{AB})+(E_B^B-E_B^{AB})\geq0}.
 \end{equation}
 
-\subsection{Effective core potentials}
+\subsection{Effective core potentials and pseudopotentials}
 
 The key idea of an effective core potential is to treat only the chemically
 relevant electrons explicitly. It replaces the nuclear attraction and the
@@ -432,7 +432,9 @@ flexibility at higher cost. Common Gaussian-basis ECP families include:
 \end{itemize}
 Most ECPs have dedicated basis sets.
 
-\subsection{Properties of Gaussian functions}
+\section{Molecular integrals over Gaussian functions}
+
+\subsection{The Gaussian product theorem and overlap integrals}
 
 The central algebraic fact behind Gaussian integral technology is the
 \red{Gaussian product rule}: the product of two Gaussians is another Gaussian.
@@ -481,7 +483,7 @@ For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
  \qty(\frac{\pi}{\violet{\zeta}})^{3/2}.
 \end{align}
 
-\subsubsection{One-electron Gaussian integrals}
+\subsection{One-electron Gaussian integrals}
 
 The Laplacian of an $s$ Gaussian is
 \begin{equation}
@@ -674,7 +676,7 @@ intermediates. Angular-momentum recurrences couple orders $m$ and $m+1$.
 For total angular momentum $L=a+b+c+d$, fundamental auxiliary integrals are
 needed through $m=L$.
 
-\subsubsection{Obara--Saika recurrences}
+\subsubsection{Obara--Saika recurrence relations}
 
 For a Cartesian Gaussian, the key identity is
 \begin{equation}
@@ -774,7 +776,7 @@ Thus the expensive exponent-dependent recurrences are performed before
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
 
-\subsection{Bounds and screening}
+\subsection{Integral bounds, screening, and direct SCF}
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
@@ -857,7 +859,7 @@ $\rbraket{(\ba+\bI_i)\bO}{\bO\bO}
 +\rbraket{(\ba-\bI_i)\bO}{\bO\bO}$; and ingredient 3 is an upper bound
 $\abs{\rbraket{\ba\bb}{\bc\bd}}\leq B$.
 
-\subsubsection{Direct SCF}
+\subsubsection{Direct SCF evaluation}
 
 The Coulomb and exchange matrices are
 \begin{align}
@@ -883,7 +885,9 @@ criterion. In compact form, the algorithm is
  \text{accumulate}\longrightarrow\text{discard}}.
 \end{equation}
 
-\subsection{Resolution of the identity}
+\section{Low-rank representations of electron-repulsion integrals}
+
+\subsection{Resolution of the identity and density fitting}
 
 An ERI is the Coulomb interaction between two pair densities,
 \begin{equation}
@@ -905,7 +909,7 @@ $\{\varphi_A^\text{aux}\}$:
  \qquad K_\text{aux}=\order{K}.
 \end{equation}
 
-\subsubsection{The Coulomb metric}
+\subsubsection{Fitting in the Coulomb metric}
 
 Define the Coulomb inner product
 \begin{equation}
@@ -946,7 +950,7 @@ the factorization becomes
 The four-index tensor has thereby been replaced by products of three-index
 tensors.
 
-\subsubsection{Low-rank representations and RI in practice}
+\subsubsection{RI, Cholesky decomposition, and practical contractions}
 
 In RI/DF, the AO products are expanded in a predefined auxiliary basis,
 \begin{equation}
