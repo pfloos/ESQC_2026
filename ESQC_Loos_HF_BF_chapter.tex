@@ -291,12 +291,12 @@ equations governing this problem are known. The difficulty lies not in writing
 down the Hamiltonian, but in solving the resulting many-electron
 Schr\"odinger equation.
 
-The origin of this difficulty is the electron--electron interaction. Because
+The origin of this difficulty is the electron-electron interaction. Because
 the Coulomb repulsion couples the motion of all electrons, the electronic
 wavefunction depends simultaneously on all their coordinates and cannot, in
 general, be decomposed into independent one-electron contributions. The
 problem is therefore intrinsically many-body. Exact solutions are restricted
-to exceptionally small systems, and practical electronic-structure theory
+to exceptionally small systems, and practical electronic structure theory
 must rely on approximations that retain the essential physics while reducing
 the complexity of the many-electron problem.
 
@@ -315,7 +315,7 @@ The price of this simplification is equally fundamental. A single determinant
 cannot describe the full correlated motion of interacting electrons.
 Hartree--Fock theory accounts for exchange exactly within its
 single-determinant framework, but neglects electron correlation beyond
-exchange. Nevertheless, HF occupies a unique position in electronic-structure
+exchange. Nevertheless, HF occupies a unique position in electronic structure
 theory. It provides a remarkably useful orbital picture of atoms and
 molecules, establishes the language of occupied and virtual molecular
 orbitals, and serves as the reference state for a large fraction of more
@@ -332,8 +332,7 @@ represented and has a direct impact on both accuracy and computational cost.
 It also reduces the continuous Hartree--Fock equations to a matrix problem
 whose elements are one- and two-electron molecular integrals. Basis sets and
 molecular integrals are therefore not peripheral technical details: they are
-an integral part of the practical formulation of electronic-structure
-theory.
+an integral part of the practical formulation of electronic structure theory.
 
 This chapter develops these ideas from the ground up. We first formulate the
 electronic many-body problem and introduce the approximations that separate
@@ -370,7 +369,7 @@ many-electron wavefunction. Instead of allowing an arbitrary antisymmetric
 $N$-electron wavefunction, we restrict it to a \red{single Slater
 determinant}. The orbitals entering this determinant are then optimized
 variationally so as to minimize the electronic energy. Hartree--Fock is thus
-not obtained by simply turning off the electron--electron interaction. The
+not obtained by simply turning off the electron-electron interaction. The
 Coulomb repulsion remains present, but its effect is recast into an effective
 one-electron operator generated self-consistently by the occupied orbitals.
 
@@ -401,7 +400,7 @@ formulations developed later in the chapter.
 \subsubsection{The Born--Oppenheimer approximation}
 
 A molecule is a quantum system composed of both electrons and nuclei. Before
-introducing any electronic-structure approximation, the electronic and nuclear
+introducing any electronic structure approximation, the electronic and nuclear
 degrees of freedom are therefore treated on equal footing. For a molecule
 containing $N$ electrons and $M$ nuclei, the molecular wavefunction depends on
 the electronic coordinates $\{\br_i\}$ and nuclear coordinates $\{\bR_A\}$,
@@ -415,7 +414,6 @@ and satisfies the time-independent Schr\"odinger equation
 \end{equation}
 The full non-relativistic molecular Hamiltonian contains five contributions,
 \begin{equation}
-  \boxed{
   \chH
   =
   \green{\chT_\text{n}}
@@ -427,15 +425,15 @@ The full non-relativistic molecular Hamiltonian contains five contributions,
   \red{\chV_\text{ee}}
   +
   \violet{\chV_\text{nn}}
-  }.
+  .
   \label{eq:total-hamiltonian}
 \end{equation}
 Here, $\green{\chT_\text{n}}$ and $\blue{\chT_\text{e}}$ are the nuclear
 and electronic kinetic-energy operators, respectively.
 The operator $\orange{\chV_\text{ne}}$ describes the Coulomb attraction
 between nuclei and electrons, while $\red{\chV_\text{ee}}$ and
-$\violet{\chV_\text{nn}}$ describe the electron--electron and
-nucleus--nucleus Coulomb repulsions.
+$\violet{\chV_\text{nn}}$ describe the electron-electron and
+nucleus-nucleus Coulomb repulsions.
 
 \begin{figure}[htbp]
   \centering
@@ -452,7 +450,7 @@ In atomic units, for which $m=e=\hbar=1$, these operators read
   &=
   -\sum_{A=1}^{M}
   \frac{\laplacian_A}{2M_A},
-  \\
+  &
   \blue{\chT_\text{e}}
   &=
   -\sum_{i=1}^{N}
@@ -463,12 +461,12 @@ In atomic units, for which $m=e=\hbar=1$, these operators read
   -\sum_{A=1}^{M}
   \sum_{i=1}^{N}
   \frac{Z_A}{r_{iA}},
-  \\
+  &
   \red{\chV_\text{ee}}
   &=
   \sum_{i<j}^{N}
   \frac{1}{r_{ij}},
-  \\
+  &
   \violet{\chV_\text{nn}}
   &=
   \sum_{A<B}^{M}
@@ -478,10 +476,10 @@ In atomic units, for which $m=e=\hbar=1$, these operators read
 The quantities $M_A$ and $Z_A$ are the mass and charge of nucleus $A$,
 $r_{iA}$ is the distance between electron $i$ and nucleus $A$, $r_{ij}$ is
 the distance between electrons $i$ and $j$, and $R_{AB}$ is the distance
-between nuclei $A$ and $B$.
+between nuclei $A$ and $B$ (see Fig.~\ref{fig:molecular-coordinates}).
 
 Equation~\eqref{eq:total-hamiltonian} defines a formidable quantum
-many-body problem. Even if the electron--electron interaction could somehow
+many-body problem. Even if the electron-electron interaction could somehow
 be treated exactly, the electronic and nuclear motions would remain coupled.
 The key observation behind the Born--Oppenheimer approximation is the large
 separation of mass scales between electrons and nuclei. In atomic units, the
@@ -496,7 +494,6 @@ the electrons rapidly adjust to a given nuclear configuration. The first step
 is consequently to solve a \red{clamped-nuclei electronic problem}. For fixed
 nuclear positions $\{\bR_A\}$, one defines the electronic Hamiltonian
 \begin{equation}
-  \boxed{
   \chH_\text{elec}
   =
   \blue{\chT_\text{e}}
@@ -504,7 +501,6 @@ nuclear positions $\{\bR_A\}$, one defines the electronic Hamiltonian
   \orange{\chV_\text{ne}}
   +
   \red{\chV_\text{ee}}
-  }
   \label{eq:electronic-hamiltonian}
 \end{equation}
 and solves
@@ -529,14 +525,13 @@ a constant with respect to the electronic coordinates. Once the electronic
 problem has been solved, it can be added to the electronic energy to define
 the energy surface
 \begin{equation}
-  \boxed{
   U_I(\{\bR_A\})
   =
   \cE_\text{elec}^{(I)}(\{\bR_A\})
   +
   \sum_{A<B}^{M}
   \frac{Z_A Z_B}{R_{AB}}
-  }.
+  .
   \label{eq:potential-energy-surface}
 \end{equation}
 Repeating the electronic calculation for different nuclear geometries traces
@@ -586,7 +581,6 @@ single electronic potential-energy surface.
 
 For electronic state $I$, the resulting nuclear Schr\"odinger equation is
 \begin{equation}
-  \boxed{
   \qty[
     \green{\chT_\text{n}}
     +
@@ -596,12 +590,11 @@ For electronic state $I$, the resulting nuclear Schr\"odinger equation is
   =
   \cE_\text{tot}
   \Phi_\text{nucl}^{(I)}(\{\bR_A\})
-  }.
+  .
   \label{eq:nuclear-BO}
 \end{equation}
 Equivalently,
 \begin{equation}
-  \boxed{
   \chH_\text{nucl}
   =
   \green{\chT_\text{n}}
@@ -609,7 +602,7 @@ Equivalently,
   \violet{\chV_\text{nn}}
   +
   \cE_\text{elec}^{(I)}(\{\bR_A\})
-  }.
+  .
 \end{equation}
 Thus, within the Born--Oppenheimer picture, the electrons determine the
 potential on which the nuclei move.
@@ -617,12 +610,11 @@ potential on which the nuclei move.
 For a single isolated electronic state, the molecular wavefunction is then
 approximated by the product
 \begin{equation}
-  \boxed{
   \Phi(\{\br_i\},\{\bR_A\})
   \approx
   \Phi_\text{nucl}(\{\bR_A\})
   \Phi_\text{elec}(\{\br_i\};\{\bR_A\})
-  }.
+  .
   \label{eq:BO-product}
 \end{equation}
 This familiar factorized form should therefore be viewed as the
@@ -646,13 +638,12 @@ Unless stated otherwise, the nuclear positions will therefore be regarded as
 fixed, and we will seek approximate solutions of the clamped-nuclei
 electronic Schr\"odinger equation
 \begin{equation}
-  \boxed{
   \chH_\text{elec}
   \Phi_\text{elec}
   =
   \cE_\text{elec}
   \Phi_\text{elec}
-  }.
+  .
   \label{eq:electronic-SE}
 \end{equation}
 The next question is then not how the nuclei move, but what restrictions must
@@ -709,7 +700,7 @@ orthonormal basis for the one-electron spin space,
 It is therefore convenient to combine the spin coordinate $\omega$ and the
 spatial coordinate $\br$ into a single composite coordinate,
 \begin{equation}
-  \boxed{\violet{\bx}=(\orange{\omega},\red{\br})}.
+  \violet{\bx}=(\orange{\omega},\red{\br}).
 \end{equation}
 An $N$-electron wavefunction is consequently a function of $N$ such
 coordinates,
@@ -718,7 +709,7 @@ coordinates,
 \end{equation}
 Although the Hamiltonian is spin independent in the present treatment, the
 spin coordinates are indispensable because the symmetry of the full
-spin--spatial wavefunction determines whether the state is compatible with
+spin-spatial wavefunction determines whether the state is compatible with
 fermionic statistics.
 
 \paragraph{Indistinguishability and permutation symmetry.}
@@ -790,7 +781,7 @@ whereas the minus sign defines \orange{fermions},
 \end{equation}
 Electrons are fermions and must therefore be described by an antisymmetric
 wavefunction. The connection between half-integer spin and fermionic
-statistics is the content of the spin--statistics theorem; within
+statistics is the content of the spin-statistics theorem; within
 non-relativistic quantum mechanics, fermionic antisymmetry is imposed as a
 fundamental property of the electronic wavefunction.
 
@@ -1050,7 +1041,7 @@ an $\alpha$ or a $\beta$ spin function.
 The distinction between \emph{spin orbital} and \emph{spatial orbital} will
 be important throughout the chapter. The Slater determinant itself is built
 from spin orbitals because antisymmetry applies to the complete
-spin--spatial coordinates of the electrons. In practical molecular
+spin-spatial coordinates of the electrons. In practical molecular
 calculations, however, it is usually the spatial functions
 $\psi_p^\sigma(\br)$ that are expanded and optimized.
 
@@ -1430,7 +1421,7 @@ so that
   \sum_{i=1}^{N}\hh(\bx_i).
 \end{equation}
 It contains the kinetic energy of electron $i$ and its attraction to all
-nuclei. The explicit electron--electron interaction is contained in the
+nuclei. The explicit electron-electron interaction is contained in the
 two-electron operator
 \begin{equation}
   \boxed{
@@ -1474,9 +1465,9 @@ we obtain simply
   \label{eq:hf-one-electron-energy}
 \end{equation}
 Thus, the one-electron part of the HF energy is obtained by adding the kinetic
-and electron--nuclear energies associated with each occupied spin orbital.
+and electron-nuclear energies associated with each occupied spin orbital.
 
-The nucleus--nucleus repulsion does not belong to the electronic Hamiltonian
+The nucleus-nucleus repulsion does not belong to the electronic Hamiltonian
 because, within the clamped-nuclei problem, it contains no electronic
 coordinates. Nevertheless, it must be added when the total
 Born--Oppenheimer energy is required. For a normalized electronic
@@ -1505,7 +1496,7 @@ unless stated otherwise.
 \paragraph{Two-electron contribution: Coulomb and exchange.}
 
 The effect of antisymmetry first appears explicitly in the expectation value
-of the electron--electron interaction. For each pair of occupied spin
+of the electron-electron interaction. For each pair of occupied spin
 orbitals, two contributions arise,
 \begin{align}
   \mel{\Psi_\text{HF}}{\chO_2}{\Psi_\text{HF}}
@@ -1591,7 +1582,7 @@ $\chi_j$ have opposite spin,
 \begin{equation}
   \braket{\alpha}{\beta}=0
   \qquad\Longrightarrow\qquad
-  \boxed{\cK_{ij}=0}.
+  \cK_{ij}=0.
 \end{equation}
 Exchange therefore acts only between electrons of the same spin in the
 collinear RHF and UHF formulations considered here. Coulomb interactions, by
@@ -1618,9 +1609,7 @@ At first sight, the terms with $i=j$ in this expression might appear to
 describe the Coulomb interaction of an electron with itself. However,
 \begin{equation}
   \red{
-  \boxed{
   \cJ_{ii}=\cK_{ii}
-  }
   },
 \end{equation}
 because
@@ -1646,7 +1635,6 @@ exchange in Hartree--Fock theory.
 Combining the one- and two-electron contributions gives the fundamental HF
 energy expression
 \begin{equation}
-  \boxed{
   \EHF
   =
   \sum_{i=1}^{N}h_{ii}
@@ -1655,12 +1643,11 @@ energy expression
   \left(
     \cJ_{ij}-\cK_{ij}
   \right)
-  }.
+  .
   \label{eq:hf-energy-spin-orbitals}
 \end{equation}
 Equivalently,
 \begin{equation}
-  \boxed{
   \EHF
   =
   \sum_{i=1}^{N}h_{ii}
@@ -1671,7 +1658,7 @@ Equivalently,
   \left(
     \cJ_{ij}-\cK_{ij}
   \right)
-  }.
+  .
   \label{eq:hf-energy-spin-orbitals-double}
 \end{equation}
 
@@ -1696,7 +1683,6 @@ $\chJ_j$ acts on $\chi_i$ as
 \end{equation}
 or explicitly,
 \begin{equation}
-  \boxed{
   \chJ_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
   \left[
@@ -1707,7 +1693,7 @@ or explicitly,
     \dd{\bx_2}
   \right]
   \ket{\chi_i(\bx_1)}
-  }.
+  .
   \label{eq:coulomb-operator}
 \end{equation}
 The quantity in square brackets is the electrostatic potential generated by
@@ -1759,7 +1745,6 @@ defined by
 \end{equation}
 or explicitly,
 \begin{equation}
-  \boxed{
   \chK_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
   \left[
@@ -1770,7 +1755,7 @@ or explicitly,
     \dd{\bx_2}
   \right]
   \ket{\chi_j(\bx_1)}
-  }.
+  .
   \label{eq:exchange-operator}
 \end{equation}
 Its matrix element is
@@ -1805,13 +1790,12 @@ single multiplicative potential.
 
 This distinction between the local Coulomb operator and the nonlocal exchange
 operator is one of the defining features of Hartree--Fock theory. Both arise
-from the same electron--electron Coulomb interaction, but the exchange term
+from the same electron-electron Coulomb interaction, but the exchange term
 is generated solely by the antisymmetry of the Slater determinant.
 
 The HF energy can therefore be regarded as a functional of the occupied
 orbitals,
 \begin{equation}
-  \boxed{
   \EHF[\{\chi_i\}]
   =
   \sum_i
@@ -1822,7 +1806,7 @@ orbitals,
   \left(
     \cJ_{ij}-\cK_{ij}
   \right)
-  },
+  ,
   \qquad
   \braket{\chi_i}{\chi_j}=\delta_{ij}.
   \label{eq:hf-energy-functional}
@@ -1852,7 +1836,6 @@ many-body-theory literature.
 For a general one-electron operator $\hh$, the matrix element between spin
 orbitals $\chi_i$ and $\chi_j$ is
 \begin{equation}
-  \boxed{
   \mel{i}{\hh}{j}
   =
   h_{ij}
@@ -1864,7 +1847,7 @@ orbitals $\chi_i$ and $\chi_j$ is
   \hh(\bx_1)
   \chi_j(\bx_1)
   \dd{\bx_1}
-  }.
+  .
   \label{eq:one-electron-integral}
 \end{equation}
 For the Hartree--Fock problem, $\hh$ is the core Hamiltonian,
@@ -1876,13 +1859,11 @@ For the Hartree--Fock problem, $\hh$ is the core Hamiltonian,
   \sum_A\frac{Z_A}{r_A},
 \end{equation}
 so that $h_{ij}$ contains both the electronic kinetic energy and the
-electron--nuclear attraction.
+electron-nuclear attraction.
 
 Since $\hh$ is Hermitian,
 \begin{equation}
-  \boxed{
-  h_{ij}=h_{ji}^*
-  }.
+  h_{ij}=h_{ji}^*.
 \end{equation}
 For real orbitals and a real one-electron operator, this reduces to
 \begin{equation}
@@ -1914,7 +1895,6 @@ The matrix element of the Coulomb interaction between two-electron product
 states defines an \red{electron-repulsion integral} (ERI). In physicists'
 notation,
 \begin{equation}
-  \boxed{
   \braket{ij}{kl}
   =
   \braket{\chi_i\chi_j}{\chi_k\chi_l}
@@ -1926,10 +1906,10 @@ notation,
   \chi_k(\bx_1)
   \chi_l(\bx_2)
   \dd{\bx_1}\dd{\bx_2}
-  }.
+  .
   \label{eq:eri-physicists}
 \end{equation}
-The ordering of the indices reflects the underlying bra--ket structure:
+The ordering of the indices reflects the underlying braket structure:
 $i$ and $j$ label the two orbitals in the bra, whereas $k$ and $l$ label
 those in the ket. More importantly, the first and third indices refer to
 electron coordinate $\bx_1$, while the second and fourth refer to $\bx_2$:
@@ -1946,11 +1926,10 @@ electron coordinate $\bx_1$, while the second and fourth refer to $\bx_2$:
 With this notation, the Coulomb and exchange integrals introduced in the
 previous section are simply
 \begin{equation}
-  \boxed{
   \cJ_{ij}=\braket{ij}{ij},
   \qquad
   \cK_{ij}=\braket{ij}{ji}
-  }.
+  .
   \label{eq:JK-physicists}
 \end{equation}
 The only difference between the two is therefore the permutation of the two
@@ -1959,13 +1938,12 @@ indices in the ket.
 This observation motivates the introduction of the
 \red{antisymmetrized two-electron integral},
 \begin{equation}
-  \boxed{
   \mel{ij}{}{kl}
   =
   \braket{ij}{kl}
   -
   \braket{ij}{lk}
-  }.
+  .
   \label{eq:antisymmetrized-eri}
 \end{equation}
 Explicitly,
@@ -1995,11 +1973,10 @@ Explicitly,
 The antisymmetrized integral combines the direct Coulomb contribution and
 its exchange counterpart into a single object. For example,
 \begin{equation}
-  \boxed{
   \mel{ij}{}{ij}
   =
   \cJ_{ij}-\cK_{ij}
-  }.
+  .
 \end{equation}
 The HF energy can therefore also be written compactly as
 \begin{equation}
@@ -2032,7 +2009,6 @@ repeatedly occur together.
 Quantum-chemistry literature very often uses a different grouping of the
 same four orbital indices. In Mulliken, or chemists', notation,
 \begin{equation}
-  \boxed{
   \rbraket{ij}{kl}
   =
   \rbraket{\chi_i\chi_j}{\chi_k\chi_l}
@@ -2044,7 +2020,7 @@ same four orbital indices. In Mulliken, or chemists', notation,
   \chi_k^*(\bx_2)
   \chi_l(\bx_2)
   \dd{\bx_1}\dd{\bx_2}
-  }.
+  .
   \label{eq:eri-chemists}
 \end{equation}
 Here, the first pair of indices belongs to electron coordinate $\bx_1$ and
@@ -2060,25 +2036,22 @@ the second pair belongs to electron coordinate $\bx_2$:
 The two notations therefore differ only by an index permutation. Comparing
 Eqs.~\eqref{eq:eri-physicists} and \eqref{eq:eri-chemists} gives
 \begin{equation}
-  \boxed{
   \braket{ij}{kl}
   =
   \rbraket{ik}{jl}
-  }.
+  .
   \label{eq:phys-chem-map}
 \end{equation}
 This simple correspondence is worth remembering:
 \begin{equation}
-  \boxed{
   \text{physicists: }\braket{ij}{kl}
   \qquad\longleftrightarrow\qquad
   \text{chemists: }\rbraket{ik}{jl}
-  }.
+  .
 \end{equation}
 
 Consequently, the Coulomb and exchange integrals become
 \begin{equation}
-  \boxed{
   \cJ_{ij}
   =
   \rbraket{ii}{jj},
@@ -2086,7 +2059,6 @@ Consequently, the Coulomb and exchange integrals become
   \cK_{ij}
   =
   \rbraket{ij}{ji}
-  }
   \qquad
   \text{(chemists' notation)}.
 \end{equation}
@@ -2134,11 +2106,10 @@ For the exchange integral,
 \end{equation}
 this requires $\sigma_i=\sigma_j$. Hence,
 \begin{equation}
-  \boxed{
   \cK_{ij}=0
   \qquad
   \text{for opposite-spin orbitals}
-  }.
+  .
 \end{equation}
 This is the integral form of the same-spin nature of Hartree--Fock exchange
 discussed in the previous section.
@@ -2271,7 +2242,7 @@ $\chi_1$ and $\chi_2$. Throughout the following examples, the shorthand
 \begin{equation}
   \chi_p(i)\equiv\chi_p(\bx_i)
 \end{equation}
-will be used, where $i$ labels the complete spin--spatial coordinate of
+will be used, where $i$ labels the complete spin-spatial coordinate of
 electron $i$.
 
 % ============================================================================
@@ -2777,7 +2748,7 @@ These few-electron examples provide an explicit derivation of the
 Slater--Condon expressions used above. They also reveal the structure that
 will remain throughout Hartree--Fock theory: one-electron contributions are
 associated with individual occupied spin orbitals, while the
-electron--electron interaction generates pairwise Coulomb and exchange
+electron-electron interaction generates pairwise Coulomb and exchange
 terms.
 
 So far, all expressions have been written in terms of spin orbitals. For
@@ -3687,7 +3658,7 @@ virtual orbital $a$:
   \text{one particle }a
   }.
 \end{equation}
-This particle--hole language will reappear naturally in excited-state and
+This particle-hole language will reappear naturally in excited-state and
 many-body formulations.
 
 Because one occupied orbital has been replaced by an orthogonal virtual
@@ -4046,7 +4017,7 @@ More generally,
 
 \paragraph{Two-electron operators.}
 
-Consider now the electron--electron interaction,
+Consider now the electron-electron interaction,
 \begin{equation}
   \boxed{
   \chO_2
@@ -4314,7 +4285,7 @@ give
   \sum_{k}^{N}
   \mel{ik}{}{ak}.
 \end{align}
-The right-hand side is precisely an occupied--virtual matrix element of the
+The right-hand side is precisely an occupied-virtual matrix element of the
 Fock operator,
 \begin{equation}
   f_{ia}
@@ -4325,7 +4296,7 @@ Fock operator,
   \mel{ik}{}{ak}.
 \end{equation}
 
-At a stationary Hartree--Fock solution, occupied--virtual orbital rotations
+At a stationary Hartree--Fock solution, occupied-virtual orbital rotations
 cannot lower the energy to first order. The corresponding Fock matrix
 elements therefore vanish:
 \begin{equation}
@@ -4360,7 +4331,7 @@ to other configurations.
 
 The theorem also provides a useful physical interpretation of HF
 stationarity: the orbitals have already been optimized so that infinitesimal
-occupied--virtual mixing produces no first-order lowering of the energy.
+occupied-virtual mixing produces no first-order lowering of the energy.
 
 % ============================================================================
 % Spin
@@ -5233,7 +5204,7 @@ satisfies
   \label{eq:canonical-fock-diagonal}
 \end{equation}
 
-In particular, the occupied--virtual block vanishes,
+In particular, the occupied-virtual block vanishes,
 \begin{equation}
   \boxed{
   f_{ia}
@@ -5334,7 +5305,7 @@ Therefore,
 Thus, each Fock matrix element contains the bare one-electron contribution
 plus the Coulomb and exchange interactions with all occupied spin orbitals.
 
-For an occupied--virtual matrix element,
+For an occupied-virtual matrix element,
 \begin{equation}
   f_{ia}
   =
@@ -6127,7 +6098,7 @@ Consequently,
 
 Thus, in the conventional M{\o}ller--Plesset partitioning, the sum of the
 occupied HF orbital energies is the zeroth-order energy, while the
-first-order correction removes the double counting of the electron--electron
+first-order correction removes the double counting of the electron-electron
 interaction. Correlation beyond Hartree--Fock first appears at second order,
 leading to the MP2 correlation energy.
 
@@ -7104,7 +7075,7 @@ The factor of one half multiplying the two-electron contribution removes the
 double counting that would otherwise arise when the interaction of each
 electron pair is summed from the one-electron Fock operators. Equivalently,
 the compact trace formula contains one full copy of the one-electron energy
-and one half of the mean-field electron--electron energy.
+and one half of the mean-field electron-electron energy.
 
 At this stage the finite-basis Hartree--Fock problem is completely specified:
 $\bP$ determines $\bF$, the generalized eigenvectors of $\bF$ determine a new
@@ -7835,7 +7806,7 @@ For \red{$\alpha=1/2$}, this becomes
 
 \paragraph{Localized orbitals.}
 
-Canonical orbitals diagonalize the occupied--occupied and virtual--virtual
+Canonical orbitals diagonalize the occupied-occupied and virtual-virtual
 blocks of the Fock matrix, but they are often delocalized over an entire
 molecule. Because unitary rotations within either subspace leave the Slater
 determinant invariant, the same Hartree--Fock state can be represented by
@@ -7908,7 +7879,7 @@ unchanged.
 \end{tikzpicture}
 \end{center}
 
-Only \red{occupied--occupied} or \red{virtual--virtual} rotations are
+Only \red{occupied-occupied} or \red{virtual-virtual} rotations are
 invariant. Mixing \red{occupied and virtual} orbitals changes the wavefunction
 and the energy. Localization functionals are generally \red{nonconvex}, so
 different guesses may converge to different local extrema.
@@ -7994,7 +7965,7 @@ The following quantities remain unchanged:
   \item the occupied subspace and Slater determinant;
   \item the density matrix and electron density;
   \item the HF energy and molecular properties;
-  \item the zero occupied--virtual Fock block,
+  \item the zero occupied-virtual Fock block,
     \begin{equation}
       \widetilde{\bff}_\text{ov}=\bff_\text{ov}=\bO.
     \end{equation}
@@ -8846,7 +8817,7 @@ For the corresponding global minima in the same one-electron basis,
   \qquad\Longrightarrow\qquad
   \red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}.
 \end{equation}
-A converged UHF determinant may remain unstable to occupied--virtual rotations
+A converged UHF determinant may remain unstable to occupied-virtual rotations
 that mix $\alpha$ and $\beta$ orbitals; following a negative-curvature
 direction gives a lower-energy GHF solution. Not every GHF solution is
 noncollinear: RHF and UHF are special cases, and a global spin rotation of a
