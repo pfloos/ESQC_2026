@@ -9,7 +9,7 @@ number of coefficients.
 In practical molecular calculations, each molecular orbital is expanded in a
 finite set of known one-electron functions,
 \begin{equation}
-  \boxed{\psi_p(\br)=\sum_{\mu=1}^{K}C_{\mu p}\phi_\mu(\br)}.
+  \psi_p(\br)=\sum_{\mu=1}^{K}C_{\mu p}\phi_\mu(\br).
 \end{equation}
 The basis functions $\phi_\mu$ are fixed, whereas the coefficients $C_{\mu p}$
 are determined variationally. Increasing $K$ systematically enlarges the
@@ -47,25 +47,23 @@ through the variational coefficients that combine these fixed building blocks.
 \subsubsection{Principal families of basis functions}
 
 Several families of one-electron functions are routinely used.
-\begin{itemize}
-  \item \red{Gaussian-type orbitals (GTOs)}, proportional to
-  $\exp(-\alpha r^2)$, are atom centered and are the standard choice for
-  molecules. Their multicenter integrals are efficient. They are used in, for
-  example, \textsc{Orca}, \textsc{Q-Chem}, \textsc{Molcas}, \textsc{Molpro},
-  \textsc{PySCF}, \textsc{Psi4}, \textsc{CFOUR}, \textsc{MRCC}, and
-  \textsc{GAMESS}.
-  \item \blue{Slater-type orbitals (STOs)}, proportional to
-  $\exp(-\zeta r)$, are atom centered and have the correct nuclear cusp and
-  long-range tail. They are used, for example, in \textsc{ADF}.
-  \item \orange{Plane waves (PWs)}, proportional to $\exp(\ii\bk\cdot\br)$,
-  are delocalized, mutually orthonormal, and naturally adapted to periodic
-  boundary conditions. Their size is controlled by an energy cutoff. They are
-  used in \textsc{Quantum Espresso}, \textsc{VASP}, \textsc{ABINIT}, and
-  \textsc{CASTEP}.
-  \item \green{Numerical atomic orbitals (NAOs)} have tabulated radial parts.
-  They are compact and flexible and are used in \textsc{FHI-aims} and
-  \textsc{SIESTA}.
-\end{itemize}
+\red{Gaussian-type orbitals (GTOs)}, which are proportional to
+$\exp(-\alpha r^2)$, are atom centered and are the standard choice for
+molecules because their multicenter integrals can be evaluated efficiently.
+They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
+\textsc{Molcas}, \textsc{Molpro}, \textsc{PySCF}, \textsc{Psi4},
+\textsc{CFOUR}, \textsc{MRCC}, and \textsc{GAMESS}.
+
+\blue{Slater-type orbitals (STOs)} are also atom centered, but are
+proportional to $\exp(-\zeta r)$. They possess the correct nuclear cusp and
+long-range tail and are used, for example, in \textsc{ADF}. By contrast,
+\orange{plane waves (PWs)}, proportional to $\exp(\ii\bk\cdot\br)$, are
+delocalized, mutually orthonormal, and naturally adapted to periodic boundary
+conditions. Their basis size is controlled by an energy cutoff, and they are
+used in \textsc{Quantum Espresso}, \textsc{VASP}, \textsc{ABINIT}, and
+\textsc{CASTEP}. Finally, \green{numerical atomic orbitals (NAOs)} have
+tabulated radial parts. Their compactness and flexibility make them useful in
+programs such as \textsc{FHI-aims} and \textsc{SIESTA}.
 
 \subsection{Plane-wave basis sets}
 
@@ -181,11 +179,11 @@ exact local behavior and forms that permit efficient multicenter integration.
 
 The general Slater- and Gaussian-type orbitals used in the comparison are
 \begin{equation}
- \boxed{\phi_{\zeta n\ell m}^\text{STO}(\br)
- \propto r^{n-1}e^{-\zeta r}Y_{\ell m}(\hat{\br})},
+ \phi_{\zeta n\ell m}^\text{STO}(\br)
+ \propto r^{n-1}e^{-\zeta r}Y_{\ell m}(\hat{\br}),
  \qquad
- \boxed{\phi_{\alpha n\ell m}^\text{GTO}(\br)
- \propto r^{2(n-1)-\ell}e^{-\alpha r^2}Y_{\ell m}(\hat{\br})}.
+ \phi_{\alpha n\ell m}^\text{GTO}(\br)
+ \propto r^{2(n-1)-\ell}e^{-\alpha r^2}Y_{\ell m}(\hat{\br}).
 \end{equation}
 For their $1s$ representatives, the STO has the correct nuclear cusp,
 \begin{equation}
@@ -229,9 +227,8 @@ A primitive Cartesian Gaussian centered at $\bA$ is
 \end{equation}
 A contracted Gaussian is a fixed linear combination of primitives,
 \begin{equation}
-  \boxed{
   \ket{\ba}\equiv\phi_{\ba}^{\bA}(\br)
-  =\sum_{k=1}^{K}D_k\sket{\ba_k}}.
+  =\sum_{k=1}^{K}D_k\sket{\ba_k}.
 \end{equation}
 Here $\alpha$ is the exponent, $\bA$ the center, and
 $\ba=(a_x,a_y,a_z)$ the angular-momentum vector, with total angular momentum
@@ -293,18 +290,16 @@ Efficient algorithms reorganize these contraction sums.
 No single enlargement of a Gaussian basis improves every physical feature in
 the same way. Different physical effects demand different forms of
 flexibility.
-\begin{itemize}
-  \item \red{Radial flexibility} is provided by multiple-$\zeta$ functions,
-  for example double-$\zeta$, triple-$\zeta$, and quadruple-$\zeta$ bases.
-  \item \blue{Angular flexibility} is supplied by polarization functions,
-  such as $d$ functions on second-row atoms and $p$ functions on hydrogen.
-  \item \orange{Long-range flexibility} is supplied by diffuse functions
-  with small exponents, which are important for anions, Rydberg states,
-  noncovalent interactions, multipoles, and (hyper)polarizabilities.
-  \item \green{Core flexibility} is supplied by tight functions and is needed
-  for core correlation, nuclear magnetic shielding, and spin--spin coupling
-  constants.
-\end{itemize}
+\red{Radial flexibility} is provided by multiple-$\zeta$ functions, as in
+double-$\zeta$, triple-$\zeta$, and quadruple-$\zeta$ bases.
+\blue{Angular flexibility} is supplied by polarization functions, such as
+$d$ functions on second-row atoms and $p$ functions on hydrogen.
+\orange{Long-range flexibility} is supplied by diffuse functions with small
+exponents. Such functions are important for anions, Rydberg states,
+noncovalent interactions, multipoles, and (hyper)polarizabilities.
+\green{Core flexibility}, in turn, is supplied by tight functions and is
+needed for core correlation, nuclear magnetic shielding, and spin--spin
+coupling constants.
 
 The phrase \emph{larger basis} should therefore be interpreted structurally. Additional
 functions may refine the radial description, introduce new angular shapes,
@@ -361,7 +356,7 @@ The correlation-consistent construction organizes functions into successive
 balanced layers designed to recover angular correlation systematically. The
 main sequence is
 \begin{equation}
-  \boxed{\text{cc-pVXZ},\qquad X=\mathrm{D,T,Q,5,6}}.
+  \text{cc-pVXZ},\qquad X=\mathrm{D,T,Q,5,6}.
 \end{equation}
 These bases were designed for correlated calculations, with balanced layers
 of polarization functions and a systematically increasing valence space. A
@@ -424,8 +419,8 @@ sets were designed for HF and Kohn--Sham calculations, with higher angular
 momenta selected according to their energetic importance. Diffuse variants
 are denoted aug-pc-$n$. Their HF convergence is described by
 \begin{equation}
-  \boxed{E_\text{HF}(L)=E_\text{HF}^\text{CBS}
-  +A(L+1)\exp(-B\sqrt L)}.
+  E_\text{HF}(L)=E_\text{HF}^\text{CBS}
+  +A(L+1)\exp(-B\sqrt L).
 \end{equation}
 
 Gaussian bases are compact, atom centered, chemically transferable, supported
@@ -457,14 +452,14 @@ which makes the uncorrected interaction energy
 artificially too attractive. The Boys--Bernardi counterpoise correction uses
 the full dimer basis for every term,
 \begin{equation}
-  \boxed{\Delta E_\text{int}^\text{CP}
-  =E_{AB}^{AB}-E_A^{AB}-E_B^{AB}},
+  \Delta E_\text{int}^\text{CP}
+  =E_{AB}^{AB}-E_A^{AB}-E_B^{AB},
 \end{equation}
 and the basis-set superposition error is
 \begin{equation}
-  \boxed{\mathrm{BSSE}
+  \mathrm{BSSE}
   =\Delta E_\text{int}^\text{CP}-\Delta E_\text{int}
-  =(E_A^A-E_A^{AB})+(E_B^B-E_B^{AB})\geq0}.
+  =(E_A^A-E_A^{AB})+(E_B^B-E_B^{AB})\geq0.
 \end{equation}
 
 The partner's basis functions are retained as ghost functions: they provide
@@ -486,9 +481,9 @@ chemically inactive core electrons by an effective one-electron operator,
  \hh(\br)=-\frac{\nabla^2}{2}
  -\sum_A\frac{Z_A}{\abs{\br-\bR_A}}
  \longrightarrow
- \boxed{\hh^\text{ECP}(\br)=-\frac{\nabla^2}{2}
+ \hh^\text{ECP}(\br)=-\frac{\nabla^2}{2}
  -\sum_A\frac{\green{Q_A}}{\abs{\br-\bR_A}}
- +\sum_A\hat U_A^\text{ECP}(\br)},
+ +\sum_A\hat U_A^\text{ECP}(\br),
  \qquad \green{Q_A}=Z_A-N_A^\text{core}.
 \end{equation}
 This lowers the cost by reducing the number of explicit electrons and removing
@@ -520,19 +515,16 @@ For silver, a large-core ECP removes 36 electrons and treats explicitly the
 $4d^{10}5s^1$ shells, leaving 11 electrons. A small-core ECP removes 28
 electrons and retains $4s^24p^64d^{10}5s^1$, leaving 19 explicit electrons;
 the semicore $4s$ and $4p$ shells are therefore retained, providing more
-flexibility at higher cost. Common Gaussian-basis ECP families include:
-\begin{itemize}
- \item LANL and SBK/SBKJC, established families in which LANL2DZ combines an
- ECP with a double-$\zeta$ valence basis;
- \item \href{https://www.tc.uni-koeln.de/PP/clickpse.en.html}
- {Stuttgart/Cologne energy-consistent pseudopotentials}, offered with different
- core sizes and dedicated bases;
- \item def2-ECPs, paired with the def2 bases of Weigend and Ahlrichs;
- \item Burkatzki--Filippi--Dolg (BFD) potentials, developed for quantum Monte
- Carlo calculations;
- \item \href{https://pseudopotentiallibrary.org}{correlation-consistent ECPs
- (ccECPs)}, developed for high-accuracy correlated many-body methods.
-\end{itemize}
+flexibility at higher cost. Several Gaussian-basis ECP families are commonly
+used. LANL and SBK/SBKJC are established families; in particular, LANL2DZ
+combines an ECP with a double-$\zeta$ valence basis. The
+\href{https://www.tc.uni-koeln.de/PP/clickpse.en.html}
+{Stuttgart/Cologne energy-consistent pseudopotentials} are offered with
+different core sizes and dedicated bases, while the def2-ECPs are paired with
+the def2 bases of Weigend and Ahlrichs. The Burkatzki--Filippi--Dolg (BFD)
+potentials were developed for quantum Monte Carlo calculations, whereas the
+\href{https://pseudopotentiallibrary.org}{correlation-consistent ECPs
+(ccECPs)} were developed for high-accuracy correlated many-body methods.
 Most ECPs have dedicated basis sets.
 
 The core size is consequently a controlled compromise. A large-core potential
@@ -558,10 +550,10 @@ If
 \end{equation}
 then
 \begin{equation}
- \boxed{G_{\red{\alpha},\red{\bA}}(\br)
+ G_{\red{\alpha},\red{\bA}}(\br)
  G_{\blue{\beta},\blue{\bB}}(\br)
  =K_{\violet{\zeta},\violet{\bP}}
- G_{\violet{\zeta},\violet{\bP}}(\br)},
+ G_{\violet{\zeta},\violet{\bP}}(\br),
 \end{equation}
 with
 \begin{equation}
@@ -775,12 +767,11 @@ With the substitution $t^2=\vartheta u^2/(1-u^2)$,
 \end{align}
 The fundamental auxiliary notation is therefore
 \begin{equation}
- \boxed{
  \sbraket{\bO\bO}{\bO\bO}^{(0)}
  =\sqrt{\frac{4\vartheta}{\pi}}
  \qty(\frac{\pi}{\violet{\zeta}})^{3/2}K_{\violet{\zeta},\violet{\bP}}
  \qty(\frac{\pi}{\purple{\eta}})^{3/2}K_{\purple{\eta},\purple{\bQ}}
- F_0\qty(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2)}.
+ F_0\qty(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2).
 \end{equation}
 
 The original six-dimensional Coulomb integral has thus been reduced to
@@ -822,12 +813,11 @@ The physical $ssss$ integral contains only $F_0$, but differentiation to
 generate angular momentum produces higher Boys orders. It is therefore useful
 to define the complete hierarchy
 \begin{equation}
- \boxed{
  \sbraket{\bO\bO}{\bO\bO}^{(\red m)}
  =\sqrt{\frac{4\vartheta}{\pi}}
  \qty(\frac{\pi}{\violet{\zeta}})^{3/2}K_{\violet{\zeta},\violet{\bP}}
  \qty(\frac{\pi}{\purple{\eta}})^{3/2}K_{\purple{\eta},\purple{\bQ}}
- F_{\red m}\qty(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2)}.
+ F_{\red m}\qty(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2).
 \end{equation}
 The $m=0$ member is the physical $ssss$ ERI; the $m>0$ members are auxiliary
 intermediates. Angular-momentum recurrences couple orders $m$ and $m+1$.
@@ -853,18 +843,18 @@ For a Cartesian Gaussian, the key identity is
  =2\alpha\sket{\red{\ba}+\bI_i}
  -a_i\sket{\red{\ba}-\bI_i},
  \qquad
- \boxed{\sket{\red{\ba}+\bI_i}
+ \sket{\red{\ba}+\bI_i}
  =\frac{1}{2\alpha}\qty[
  \pdv{\sket{\red{\ba}}}{A_i}
- +a_i\sket{\red{\ba}-\bI_i}]}.
+ +a_i\sket{\red{\ba}-\bI_i}].
 \end{equation}
 Applying this identity to auxiliary ERIs creates the Obara--Saika vertical
 recurrence relations (VRRs), so that integrals are built recursively rather
 than independently:
 \begin{equation}
- \boxed{\sbraket{00}{00}^{(m)}\longrightarrow
+ \sbraket{00}{00}^{(m)}\longrightarrow
  \sbraket{\red a0}{00}^{(m)}\longrightarrow
- \sbraket{\red a0}{\orange c0}^{(m)}}.
+ \sbraket{\red a0}{\orange c0}^{(m)}.
 \end{equation}
 
 On the bra pair, angular momentum is built on $\bA$ according to
@@ -894,14 +884,13 @@ On the ket pair, angular momentum is built on $\bC$ according to
 
 The intended construction is
 \begin{equation}
- \boxed{
  \sbraket{00}{00}^{(m)}
  \xrightarrow{\red{\mathrm{VRR}}}
  \sbraket{\red a0}{\orange c0}^{(m)}
  \xrightarrow{\orange{\mathrm{contraction}}}
  \rbraket{\red a0}{\orange c0}
  \xrightarrow{\blue{\mathrm{HRR}}}
- \rbraket{\red a\blue b}{\orange c\green d}}.
+ \rbraket{\red a\blue b}{\orange c\green d}.
 \end{equation}
 The VRRs create angular momentum on one center of each Gaussian pair;
 contraction combines primitive integrals; and the horizontal recurrence
@@ -912,37 +901,31 @@ relations (HRRs) redistribute angular momentum within each pair.
 Once angular momentum has been generated on one center, it is shifted to the
 other through
 \begin{equation}
- \boxed{
  \sbraket{\red{\ba}(\blue{\bb}+\bI_i)}
  {\orange{\bc}\green{\bd}}
  =\sbraket{(\red{\ba}+\bI_i)\blue{\bb}}
  {\orange{\bc}\green{\bd}}
  +(A_i-B_i)\sbraket{\red{\ba}\blue{\bb}}
- {\orange{\bc}\green{\bd}}}.
+ {\orange{\bc}\green{\bd}}.
 \end{equation}
 An analogous relation transfers angular momentum from $\bC$ to $\bD$.
 Because the HRR depends only on $A_i-B_i$, it is independent of the Gaussian
 exponents and applies directly to contracted integrals:
 \begin{equation}
- \boxed{
  \rbraket{\red{\ba}(\blue{\bb}+\bI_i)}
  {\orange{\bc}\green{\bd}}
  =\rbraket{(\red{\ba}+\bI_i)\blue{\bb}}
  {\orange{\bc}\green{\bd}}
  +(A_i-B_i)\rbraket{\red{\ba}\blue{\bb}}
- {\orange{\bc}\green{\bd}}}.
+ {\orange{\bc}\green{\bd}}.
 \end{equation}
 
-The resulting late-contraction algorithm retains every stage:
-\begin{enumerate}
- \item compute the required Boys functions $F_m(T)$;
- \item form the fundamental auxiliary integrals
- $\sbraket{00}{00}^{(m)}$;
- \item use the VRRs to build angular momentum on $\bA$ and $\bC$;
- \item contract the primitive integrals;
- \item use exponent-independent HRRs to transfer angular momentum
- $\bA\rightarrow\bB$ and $\bC\rightarrow\bD$.
-\end{enumerate}
+The resulting late-contraction algorithm retains every stage. It begins by
+computing the required Boys functions $F_m(T)$ and forming the fundamental
+auxiliary integrals $\sbraket{00}{00}^{(m)}$. The VRRs are then used to build
+angular momentum on $\bA$ and $\bC$, after which the primitive integrals are
+contracted. Finally, the exponent-independent HRRs transfer angular momentum
+according to $\bA\rightarrow\bB$ and $\bC\rightarrow\bD$.
 Thus the expensive exponent-dependent recurrences are performed before
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
@@ -1063,19 +1046,16 @@ The Coulomb and exchange matrices are
  \rbraket{\mu\lambda}{\nu\sigma}.
 \end{align}
 Direct SCF trades disk storage for repeated integral evaluation. Instead of
-storing all $\order{K^4}$ ERIs, it performs the following cycle:
-\begin{enumerate}
- \item loop over shell quartets $\rbraket{\mu\nu}{\lambda\sigma}$;
- \item use an upper bound to discard negligible quartets;
- \item compute the significant ERIs;
- \item immediately accumulate their contributions to $\bJ$ and $\bK$;
- \item discard the ERIs.
-\end{enumerate}
+storing all $\order{K^4}$ ERIs, it loops over the shell quartets
+$\rbraket{\mu\nu}{\lambda\sigma}$ and uses an upper bound to discard
+negligible quartets before their integrals are evaluated. The significant
+ERIs are computed, their contributions are accumulated immediately in $\bJ$
+and $\bK$, and the integrals are then discarded.
 The density-matrix elements can themselves be included in the screening
 criterion. In compact form, the algorithm is
 \begin{equation}
- \boxed{\text{screen}\longrightarrow\text{compute}\longrightarrow
- \text{accumulate}\longrightarrow\text{discard}}.
+ \text{screen}\longrightarrow\text{compute}\longrightarrow
+ \text{accumulate}\longrightarrow\text{discard}.
 \end{equation}
 
 Because the Fock build contains products of density-matrix elements and ERIs,
@@ -1109,9 +1089,9 @@ pair densities. Resolution of the identity, or density fitting, replaces this
 large product space by a compact auxiliary basis
 $\{\varphi_A^\text{aux}\}$:
 \begin{equation}
- \boxed{\rho_{\mu\nu}(\br)\approx
+ \rho_{\mu\nu}(\br)\approx
  \widetilde\rho_{\mu\nu}(\br)
- =\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br)},
+ =\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br),
  \qquad K_\text{aux}=\order{K}.
 \end{equation}
 The auxiliary basis is therefore not a second orbital basis. It is designed
@@ -1156,7 +1136,7 @@ Hence the least-squares equations are
  \sum_B\underbrace{\rbraket{A}{B}}_{V_{AB}}C_{\mu\nu}^B
  =\underbrace{\rbraket{A}{\mu\nu}}_{\text{three-center integral}},
  \qquad
- \boxed{C_{\mu\nu}^A=\sum_B(\bV^{-1})_{AB}\rbraket{B}{\mu\nu}}.
+ C_{\mu\nu}^A=\sum_B(\bV^{-1})_{AB}\rbraket{B}{\mu\nu}.
 \end{equation}
 Thus the Coulomb metric determines the optimal auxiliary expansion.
 
@@ -1174,9 +1154,9 @@ three-center quantities:
 \end{align}
 Equivalently,
 \begin{equation}
- \boxed{\rbraket{\mu\nu}{\lambda\sigma}
+ \rbraket{\mu\nu}{\lambda\sigma}
  \approx\sum_{AB}\rbraket{\mu\nu}{A}(\bV^{-1})_{AB}
- \rbraket{B}{\lambda\sigma}}.
+ \rbraket{B}{\lambda\sigma}.
 \end{equation}
 With the symmetrically orthonormalized quantities
 \begin{equation}
@@ -1184,8 +1164,8 @@ With the symmetrically orthonormalized quantities
 \end{equation}
 the factorization becomes
 \begin{equation}
- \boxed{\rbraket{\mu\nu}{\lambda\sigma}
- \approx\sum_PB_{\mu\nu}^PB_{\lambda\sigma}^P}.
+ \rbraket{\mu\nu}{\lambda\sigma}
+ \approx\sum_PB_{\mu\nu}^PB_{\lambda\sigma}^P.
 \end{equation}
 The four-index tensor has thereby been replaced by products of three-index
 tensors.
@@ -1205,8 +1185,8 @@ In RI/DF, the AO products are expanded in a predefined auxiliary basis,
  \chi_\mu(\br)\chi_\nu(\br)
  \approx\sum_AC_{\mu\nu}^A\chi_A^\text{aux}(\br)
  \quad\Longrightarrow\quad
- \boxed{\rbraket{\mu\nu}{\lambda\sigma}
- \approx\sum_PB_{\mu\nu}^PB_{\lambda\sigma}^P}.
+ \rbraket{\mu\nu}{\lambda\sigma}
+ \approx\sum_PB_{\mu\nu}^PB_{\lambda\sigma}^P.
 \end{equation}
 The quality of the approximation therefore depends on the auxiliary basis.
 Alternatively, the ERI tensor
@@ -1214,8 +1194,8 @@ $\bV_{(\mu\nu),(\lambda\sigma)}=\rbraket{\mu\nu}{\lambda\sigma}$ is a
 positive-semidefinite matrix in the compound indices. A pivoted Cholesky
 decomposition constructs an auxiliary space adaptively,
 \begin{equation}
- \boxed{\rbraket{\mu\nu}{\lambda\sigma}
- \approx\sum_{P=1}^{N_\text{CD}}L_{\mu\nu}^PL_{\lambda\sigma}^P},
+ \rbraket{\mu\nu}{\lambda\sigma}
+ \approx\sum_{P=1}^{N_\text{CD}}L_{\mu\nu}^PL_{\lambda\sigma}^P,
 \end{equation}
 until the residual is below a prescribed threshold $\tau_\text{CD}$. RI/DF
 therefore uses a predefined auxiliary space, whereas Cholesky decomposition
@@ -1232,8 +1212,8 @@ For the Coulomb matrix,
 \end{align}
 The practical sequence is
 \begin{equation}
- \boxed{\bP\longrightarrow\{d_A\}\longrightarrow
- \{c_A\}=\bV^{-1}\cdot\{d_A\}\longrightarrow\bJ}.
+ \bP\longrightarrow\{d_A\}\longrightarrow
+ \{c_A\}=\bV^{-1}\cdot\{d_A\}\longrightarrow\bJ.
 \end{equation}
 The full $\order{K^4}$ ERI tensor need not be stored; only two-center
 $\rbraket{A}{B}$ and three-center $\rbraket{\mu\nu}{A}$ integrals are needed;
