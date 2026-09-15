@@ -605,6 +605,8 @@ and nuclear-attraction integrals reduce to Gaussian moments about the product
 center. The $s$-type formulas expose the essential structure before angular
 momentum is introduced.
 
+\paragraph{Kinetic-energy integral.}
+
 The Laplacian of an $s$ Gaussian is
 \begin{equation}
  -\frac12\laplacian G_{\blue{\beta},\blue{\bB}}(\br)
@@ -626,6 +628,14 @@ intermediate step:
  K_{\violet{\zeta},\violet{\bP}}
  \qty(\frac{\pi}{\violet{\zeta}})^{3/2}.
 \end{align}
+
+The result has the same overlap prefactor as the preceding integral. The
+additional polynomial factor is the consequence of differentiating the
+Gaussian centered at $\blue{\bB}$ twice. It contains both a local curvature
+term, $3\blue{\beta}$, and a term that depends on the separation of the two
+centers.
+
+\paragraph{Nuclear-attraction integral.}
 
 For a nucleus of charge $Z_C$ located at $\bC$, the nuclear-attraction
 integral is
@@ -652,6 +662,8 @@ molecular Hartree--Fock theory. Four basis functions and the nonseparable
 Coulomb kernel appear, but the product theorem reduces the four original
 centers to two Gaussian product centers.
 
+\paragraph{Gaussian-pair reduction.}
+
 Applying the Gaussian product rule to both electron coordinates gives
 \begin{align}
  \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
@@ -667,6 +679,8 @@ Applying the Gaussian product rule to both electron coordinates gives
 \end{align}
 There are formally $\order{K^4}$ ERIs, although only $\order{K^2}$ are
 significant in a sufficiently large, spatially extended system.
+
+\paragraph{Functions, shell pairs, and shell quartets.}
 
 The notation distinguishes individual functions from shells and primitives
 from contractions. Thus $\sbra{\red{\ba}\blue{\bb}}$ is one primitive bra,
@@ -782,6 +796,15 @@ function,
  \qquad
  F_0(x)=\sqrt{\frac{\pi}{4x}}\erf(\sqrt x).
 \end{equation}
+At the origin, the exponential becomes unity and the limiting value follows
+directly:
+\begin{equation}
+ F_m(0)=\int_0^1t^{2m}\dd t=\frac{1}{2m+1}.
+\end{equation}
+This limit is particularly useful because the expression for $F_0(x)$ in
+terms of the error function has an apparent singularity at $x=0$, although
+the Boys function itself is perfectly finite there.
+
 In implementations, $F_m(x)$ is evaluated from pretabulated grid values and
 a Taylor expansion, often with a Chebyshev interpolation table. Lower orders
 are then obtained by the downward recurrence
@@ -821,6 +844,8 @@ Deriving a separate closed expression for every angular-momentum combination
 would be inefficient. Obara--Saika instead uses differentiation identities to
 generate the required quantities recursively from lower-angular-momentum
 integrals.
+
+\paragraph{Generating angular momentum vertically.}
 
 For a Cartesian Gaussian, the key identity is
 \begin{equation}
@@ -882,6 +907,8 @@ The VRRs create angular momentum on one center of each Gaussian pair;
 contraction combines primitive integrals; and the horizontal recurrence
 relations (HRRs) redistribute angular momentum within each pair.
 
+\paragraph{Redistributing angular momentum horizontally.}
+
 Once angular momentum has been generated on one center, it is shifted to the
 other through
 \begin{equation}
@@ -931,6 +958,8 @@ local systems because most products of distant basis functions are negligible.
 Screening converts this locality into a computational saving by testing a
 cheap upper bound before evaluating an integral or shell quartet.
 
+\paragraph{Cauchy--Schwarz bounds.}
+
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
 $N_\text{sig}=\order{N_\text{upper}}$. The Cauchy--Schwarz inequality gives
@@ -951,6 +980,8 @@ $1/\abs{\violet{\bP}-\purple{\bQ}}$ or faster. The product on the right has
 no information about the separation between the two charge distributions, so
 the Cauchy--Schwarz bound is rigorous and cheap but not tight for well-separated
 shell pairs. Even so, a cheap upper bound avoids evaluating negligible ERIs.
+
+\paragraph{Shell-quartet screening.}
 
 At the individual-integral level, only $\order{K^2}$ diagonal factors
 $\rbraket{\red{\ba}\blue{\bb}}{\red{\ba}\blue{\bb}}$ are required to bound
@@ -1047,6 +1078,14 @@ criterion. In compact form, the algorithm is
  \text{accumulate}\longrightarrow\text{discard}}.
 \end{equation}
 
+Because the Fock build contains products of density-matrix elements and ERIs,
+screening can be tightened by bounding the contribution to the matrix rather
+than the integral alone. A shell quartet whose bound is small in isolation is
+certainly negligible, while a density-weighted criterion can also discard a
+formally non-negligible quartet when the density elements multiplying it are
+small at the current SCF iteration. The screening threshold must therefore be
+chosen consistently with the target accuracy of the SCF energy and residual.
+
 \section{Low-rank representations of electron-repulsion integrals}
 
 \subsection{Resolution of the identity and density fitting}
@@ -1075,6 +1114,11 @@ $\{\varphi_A^\text{aux}\}$:
  =\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br)},
  \qquad K_\text{aux}=\order{K}.
 \end{equation}
+The auxiliary basis is therefore not a second orbital basis. It is designed
+to represent products of orbital functions, and its index $A$ labels
+functions in this approximate product space. The reduction from
+$\order{K^2}$ pair densities to $\order{K}$ auxiliary functions is the source
+of the lower-rank representation.
 
 \subsubsection{Fitting in the Coulomb metric}
 
@@ -1087,11 +1131,27 @@ errors by their Coulomb self-interaction. Define the Coulomb inner product
 \end{equation}
 The optimal fitting coefficients minimize the Coulomb norm of the error,
 \begin{equation}
- \Delta_{\mu\nu}=\rbraket{ho_{\mu\nu}-\widetilde\rho_{\mu\nu}}
+ \Delta_{\mu\nu}=\rbraket{\rho_{\mu\nu}-\widetilde\rho_{\mu\nu}}
  {\rho_{\mu\nu}-\widetilde\rho_{\mu\nu}}.
 \end{equation}
-Differentiation with respect to $C_{\mu\nu}^A$ yields the least-squares
-equations
+Substituting the auxiliary expansion and using the symmetry of the Coulomb
+metric gives
+\begin{align}
+ \Delta_{\mu\nu}
+ ={}&\rbraket{\rho_{\mu\nu}}{\rho_{\mu\nu}}
+ -2\sum_A C_{\mu\nu}^A\rbraket{A}{\mu\nu}
+ +\sum_{AB}C_{\mu\nu}^A
+ \underbrace{\rbraket{A}{B}}_{V_{AB}}C_{\mu\nu}^B.
+\end{align}
+The first term is independent of the fitting coefficients. Differentiating
+the remaining two terms with respect to one coefficient gives every
+intermediate step in the stationarity condition,
+\begin{equation}
+ \pdv{\Delta_{\mu\nu}}{C_{\mu\nu}^A}
+ =-2\rbraket{A}{\mu\nu}
+ +2\sum_BV_{AB}C_{\mu\nu}^B=0.
+\end{equation}
+Hence the least-squares equations are
 \begin{equation}
  \sum_B\underbrace{\rbraket{A}{B}}_{V_{AB}}C_{\mu\nu}^B
  =\underbrace{\rbraket{A}{\mu\nu}}_{\text{three-center integral}},
@@ -1106,6 +1166,13 @@ auxiliary space under the Coulomb norm.
 
 Inserting the fitted pair densities converts the four-center ERI to
 three-center quantities:
+\begin{align}
+ \rbraket{\mu\nu}{\lambda\sigma}
+ &\approx\sum_A C_{\lambda\sigma}^A\rbraket{\mu\nu}{A}\\
+ &=\sum_{AB}\rbraket{\mu\nu}{A}(\bV^{-1})_{AB}
+ \rbraket{B}{\lambda\sigma}.
+\end{align}
+Equivalently,
 \begin{equation}
  \boxed{\rbraket{\mu\nu}{\lambda\sigma}
  \approx\sum_{AB}\rbraket{\mu\nu}{A}(\bV^{-1})_{AB}
@@ -1122,6 +1189,10 @@ the factorization becomes
 \end{equation}
 The four-index tensor has thereby been replaced by products of three-index
 tensors.
+This last form follows by splitting the inverse metric symmetrically,
+$\bV^{-1}=\bV^{-1/2}\cdot\bV^{-1/2}$. The explicit matrix multiplication
+symbol emphasizes that the auxiliary indices are contracted through the
+metric rather than multiplied element by element.
 
 \subsubsection{RI, Cholesky decomposition, and practical contractions}
 

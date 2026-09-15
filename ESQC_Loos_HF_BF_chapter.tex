@@ -6871,6 +6871,21 @@ the point at which the one-electron Hamiltonian, the electron--electron
 interaction, and the occupied molecular orbitals are brought together in a
 single matrix quantity.
 
+\paragraph{From the orbital operator to AO matrix elements.}
+
+The spin-orbital Fock operator is a one-electron operator even though it
+contains the mean effect of the two-electron interaction. Its matrix element
+between two AO basis functions therefore separates naturally into a fixed
+one-electron contribution and a density-dependent contribution,
+\begin{equation}
+  F_{\mu\nu}
+  =
+  H_{\mu\nu}
+  G_{\mu\nu}[\bP].
+\end{equation}
+The purpose of the following exercise is to make the contraction hidden in
+$G_{\mu\nu}[\bP]$ explicit.
+
 \paragraph{Problem.}
 
 \violet{\textit{``Find the expression of the Fock matrix in terms of the
@@ -6910,6 +6925,27 @@ Keeping every intermediate step,
     \mel{\mu\sigma}{}{\nu\lambda}}_{\red{G_{\mu\nu}}}
   =H_{\mu\nu}+G_{\mu\nu}.
 \end{align}
+
+The fourth line follows by expanding both occurrences of the occupied orbital
+$\chi_i$,
+\begin{equation}
+  \chi_i
+  =
+  \sum_\lambda C_{\lambda i}\phi_\lambda,
+  \qquad
+  \chi_i^*
+  =
+  \sum_\sigma C_{\sigma i}^*\phi_\sigma^*.
+\end{equation}
+The sum over occupied orbitals can then be performed before the integral
+contraction:
+\begin{equation}
+  \sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*
+  =
+  P_{\lambda\sigma}.
+\end{equation}
+Thus the occupied orbitals enter the Fock matrix only through their
+one-particle density matrix.
 The three quantities introduced in this derivation are the core Hamiltonian,
 the density matrix, and the two-electron part:
 \begin{equation}
@@ -6934,12 +6970,32 @@ whenever the density changes. Thus, although each diagonalization is an
 ordinary linear-algebra operation, the complete Hartree--Fock problem remains
 self-consistent.
 
+\paragraph{Interpretation of the AO contraction.}
+
+For every pair $(\mu,\nu)$, the two-electron part is obtained by contracting
+the four-index integral tensor with the two-index density matrix. The density
+selects the occupied part of the one-electron space, while the integral tensor
+supplies the Coulomb interaction and its exchange counterpart. Schematically,
+\begin{equation}
+  \boxed{
+  \text{density}
+  \quad+\quad
+  \text{two-electron integrals}
+  \quad\longrightarrow\quad
+  \text{mean-field potential}
+  }.
+\end{equation}
+This contraction is the central repeated operation in a conventional SCF
+calculation.
+
 \subsubsection{The Hartree--Fock energy}
 
 The matrix form of the energy is obtained from the same ingredients. It is
 particularly useful in an implementation because it allows the energy to be
 evaluated directly from the density, core Hamiltonian, and converged Fock
 matrix, without transforming all integrals to the molecular-orbital basis.
+
+\paragraph{Energy in the AO representation.}
 
 \paragraph{Problem.}
 
@@ -6980,6 +7036,28 @@ expansion gives
   \label{eq:hf-energy-matrix}
 \end{align}
 
+To see the origin of the trace expression, define the two-electron matrix
+$\bG=\bF-\bH$. The preceding result may then be written as
+\begin{align}
+  E_\text{HF}
+  &=
+  \sum_{\mu\nu}P_{\nu\mu}H_{\mu\nu}
+  +
+  \frac12\sum_{\mu\nu}P_{\nu\mu}G_{\mu\nu}
+  \\
+  &=
+  \frac12\sum_{\mu\nu}P_{\nu\mu}
+  \qty(H_{\mu\nu}+H_{\mu\nu}+G_{\mu\nu})
+  \\
+  &=
+  \frac12\sum_{\mu\nu}P_{\nu\mu}
+  \qty(H_{\mu\nu}+F_{\mu\nu}),
+\end{align}
+which is precisely Eq.~\eqref{eq:hf-energy-matrix}. The ordering of the
+indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
+
+\paragraph{Closed-shell specialization.}
+
 For a closed-shell system, the density matrix is
 \begin{equation}
   P_{\red{\mu\nu}}
@@ -7001,6 +7079,10 @@ notation, the closed-shell AO Fock matrix becomes
     _{K_{\red{\mu\nu}}=\text{ exchange}}.
   \label{eq:rhf-fock-ao}
 \end{equation}
+The factor of two in $\bP$ accounts for the two electrons occupying each
+spatial orbital. Correspondingly, the exchange term in
+Eq.~\eqref{eq:rhf-fock-ao} carries a factor of one half when the
+spin-summed closed-shell density is used.
 The corresponding energy is
 \begin{equation}
 \begin{split}
@@ -7038,6 +7120,15 @@ solves the associated generalized eigenvalue problem, and uses the occupied
 eigenvectors to construct a new density. The process is repeated until the
 input and output densities describe the same mean field.
 
+\paragraph{Fixed quantities and iterative quantities.}
+
+The geometry, basis functions, overlap matrix, core Hamiltonian, and
+electron-repulsion integrals remain fixed throughout an SCF calculation. The
+density, Fock matrix, orbital coefficients, orbital energies, and total energy
+change from one iteration to the next. Separating these two groups clarifies
+why the expensive integral generation is performed before the iterative cycle,
+whereas the Fock build and diagonalization are repeated.
+
 \paragraph{The SCF algorithm.}
 
 In practice, a restricted Hartree--Fock calculation proceeds as follows.
@@ -7062,6 +7153,11 @@ In practice, a restricted Hartree--Fock calculation proceeds as follows.
     \end{enumerate}
   \item Evaluate the desired observables, including $\EHF$.
 \end{enumerate}
+
+At a given iteration the diagonalization solves exactly the linear
+eigenvalue problem defined by the current Fock matrix. It does not solve the
+nonlinear Hartree--Fock problem until the occupied eigenvectors reproduce the
+density from which that Fock matrix was constructed.
 
 \paragraph{The orthogonalization matrix.}
 
@@ -7149,6 +7245,12 @@ The SCF procedure defines the iterative map
     \longrightarrow\bP^{(n+1)}
   }.
 \end{equation}
+
+In an orthonormal basis, the corresponding condition is simply that the Fock
+and density matrices commute. The factors of $\bS$ in the AO expression are
+the metric factors required by the nonorthogonality of the original basis.
+At self-consistency, the occupied and virtual subspaces therefore do not mix
+under the Fock operator.
 At convergence,
 \begin{equation}
   \bP^{(n+1)}=\bP^{(n)}=\bP^\star.
@@ -7191,6 +7293,8 @@ vectors contain information about the direction in which the residual is
 decreasing. DIIS uses this information to form an extrapolated Fock matrix
 whose estimated residual is as small as possible within the affine space
 spanned by the stored iterations.
+
+\paragraph{Residual minimization.}
 
 Using the $m$ stored iterations, DIIS constructs an extrapolated Fock matrix
 and approximates its error vector as
@@ -7242,7 +7346,25 @@ Its stationarity conditions are
   \qquad
   \pdv{\mathcal{L}(\bc,\lambda)}{\lambda}=0,
 \end{equation}
-which imply
+Writing the first condition component by component gives
+\begin{align}
+  \pdv{\mathcal L}{c_k}
+  &=
+  2\sum_{j=1}^{m}B_{kj}c_j-2\lambda
+  =
+  0,
+  \\
+  \pdv{\mathcal L}{\lambda}
+  &=
+  -2\qty(\sum_{i=1}^{m}c_i-1)
+  =
+  0.
+\end{align}
+Hence every row obeys
+\begin{equation}
+  \sum_{j=1}^{m}B_{kj}c_j-\lambda=0,
+\end{equation}
+together with the normalization constraint. These relations imply
 \begin{equation}
   \bB\cdot\bc-\lambda\boldsymbol{1}=\bO,
   \qquad
@@ -7307,6 +7429,11 @@ The complete algorithm is as follows.
     \end{equation}
     and form the next density $\bP^{(n+1)}$.
 \end{enumerate}
+
+The subspace is normally updated as a rolling history: after its maximum size
+has been reached, the oldest Fock matrix and residual are discarded when a new
+pair is added. If the residuals become nearly linearly dependent, restarting
+with a smaller history restores a well-conditioned extrapolation problem.
 
 \begin{center}
 \begin{tikzpicture}[
@@ -7451,6 +7578,17 @@ orbital $\chi_p^\text{new}$, compute
     w_p=\sum_{i\in\mathcal{O}_\text{ref}}\abs{O_{ip}}^2
   }.
 \end{equation}
+In matrix form, the overlap matrix between the reference occupied orbitals and
+the new orbitals is
+\begin{equation}
+  \bO
+  =
+  \bC_\text{o}^{\text{ref}\dagger}
+  \cdot\bS\cdot
+  \bC^\text{new}.
+\end{equation}
+The weight $w_p$ is the squared norm of column $p$ of this matrix. It therefore
+measures how much of the new orbital lies in the occupied reference subspace.
 The MOM procedure is
 \begin{itemize}
   \item compute $w_p$ for every new orbital;
@@ -7612,6 +7750,21 @@ The classical dipole vector is
   =\underbrace{\green{\sum_i q_i\br_i}}
     _{\text{\green{classical definition}}}.
 \end{equation}
+
+The electronic term follows from the one-particle density:
+\begin{align}
+  -\sum_i\mel{\chi_i}{\br}{\chi_i}
+  &=
+  -\sum_i\sum_{\mu\nu}
+  C_{\mu i}^*C_{\nu i}
+  \rmel{\mu}{\br}{\nu}
+  \\
+  &=
+  -\sum_{\mu\nu}P_{\nu\mu}
+  \rmel{\mu}{\br}{\nu}.
+\end{align}
+Thus the many-electron expectation value reduces to a contraction of the AO
+density with one-electron dipole integrals.
 For a molecule, the corresponding quantum-mechanical expression separates
 the electronic and nuclear contributions:
 \begin{align}
@@ -7649,6 +7802,9 @@ The electron density is
   \qquad
   \int\rho(\br)\dd{\br}=N.
 \end{equation}
+The identity $N=\Tr(\bP\cdot\bS)$ expresses electron-number conservation in a
+nonorthogonal basis. A population analysis partitions the diagonal
+contributions to this trace among the atoms.
 Consequently,
 \begin{equation}
   N=\sum_{\mu\nu}P_{\mu\nu}S_{\nu\mu}
@@ -7763,6 +7919,11 @@ determinant; localization rotates only within an already optimized subspace
 and changes its representation without changing the state.
 
 \paragraph{Localization procedures.}
+
+Different localization procedures choose different scalar measures of orbital
+compactness. Since all admissible transformations are unitary within the
+selected subspace, optimizing any of these measures leaves the Hartree--Fock
+state itself unchanged.
 
 The Edmiston--Ruedenberg functional is
 \begin{equation}
@@ -8306,6 +8467,33 @@ With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the energy is
   \notag\\
   &+2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu}).
 \end{align}
+Introducing
+\begin{equation}
+  x=\cos^2\theta,
+  \qquad
+  A=J_{gu}-2K_{gu},
+\end{equation}
+allows the same energy to be written as
+\begin{equation}
+  E_\text{UHF}(x)
+  =
+  2xh_{gg}+2(1-x)h_{uu}
+  +x^2J_{gg}+(1-x)^2J_{uu}
+  +2x(1-x)A.
+\end{equation}
+Its derivative is
+\begin{equation}
+  \dv{E_\text{UHF}}{x}
+  =
+  2\qty[
+  h_{gg}-h_{uu}-J_{uu}+A
+  +x\qty(J_{gg}+J_{uu}-2A)
+  ].
+\end{equation}
+Because $\dd x/\dd\theta=-\sin(2\theta)$, stationarity requires either
+$\sin(2\theta)=0$ or $\dd E_\text{UHF}/\dd x=0$. The first condition contains
+the restricted solution $\theta=0$; the second gives the broken-symmetry
+solution.
 Besides the restricted stationary point $\theta=0$, a
 \red{broken-symmetry stationary solution} satisfies
 \begin{equation}
@@ -8647,6 +8835,8 @@ problem as before, now expressed in a doubled spinor space. The off-diagonal
 exchange blocks are precisely the new terms that permit the spin direction to
 rotate away from the common UHF axis.
 
+\paragraph{Variational hierarchy and stability.}
+
 For the corresponding global minima in the same one-electron basis,
 \begin{equation}
   \boxed{
@@ -8663,6 +8853,12 @@ noncollinear: RHF and UHF are special cases, and a global spin rotation of a
 UHF determinant changes its apparent quantization axis while remaining
 physically collinear.
 
+The energy inequalities compare minima over nested variational spaces. They do
+not imply that every numerical GHF stationary point lies below every UHF or
+RHF stationary point. Establishing whether a converged solution is a local
+minimum requires a stability analysis with respect to the orbital rotations
+allowed in the larger space.
+
 Lowering the variational energy may require breaking exact symmetries. UHF
 may break $\chS^2$; GHF may break both $\chS^2$ and $\chS_z$; and complex GHF
 may also break time-reversal symmetry. GHF remains a single determinant, so
@@ -8674,6 +8870,14 @@ rotated UHF solution, requiring a \red{collinearity test}. Equilateral
 noncollinear examples. GHF is the most general \red{number-conserving}
 single-determinant HF ansatz; particle-number symmetry can instead be broken
 within \red{Hartree--Fock--Bogoliubov (HFB) theory}.
+
+\paragraph{Practical interpretation.}
+
+The charge and magnetization matrices provide a direct diagnostic of the
+solution. Collinear determinants admit one global spin axis along which only
+one magnetization component remains. A genuinely noncollinear GHF solution
+cannot be reduced to that form by a single global spin rotation. This is why a
+tilted axis, by itself, is insufficient evidence of noncollinearity.
 
 \subsection{Classification of Hartree--Fock solutions}
 
