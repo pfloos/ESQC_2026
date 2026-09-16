@@ -534,6 +534,15 @@ to be treated as a matched pair.
 
 \section{Molecular integrals over Gaussian functions}
 
+Once the orbital basis and any effective core potential have been selected,
+the abstract matrix elements of the finite-basis Hartree--Fock equations must
+be evaluated. Gaussian functions are especially valuable because their
+products and derivatives can be reduced to a small set of fundamental
+integrals. The discussion below develops that reduction from overlap and
+one-electron terms to four-center electron-repulsion integrals, and then shows
+how recurrence relations and screening turn the resulting formulas into a
+practical algorithm.
+
 \subsection{The Gaussian product theorem and overlap integrals}
 
 The efficiency of Gaussian basis sets follows from a closure property that
@@ -994,8 +1003,8 @@ The number of significant integrals may be represented by
  {\orange{\bc}\green{\bd}},
  \qquad N_\text{sig}=cN^\alpha.
 \end{equation}
-The numerical examples in the slides contrast the long-range Coulomb operator
-with a short-range Gaussian operator:
+The numerical data below contrast the long-range Coulomb operator with a
+short-range Gaussian operator:
 \begin{center}
 \small
 \begin{tabular}{lrrrrr}
@@ -1022,14 +1031,16 @@ more slowly than that of the short-range Gaussian operator. Nevertheless, the
 data show that the number of numerically significant Coulomb integrals grows
 much more slowly than the formal quartic count in sufficiently large systems.
 
-The complete recipe has three ingredients. The ``cake'' is the set of target
-two-electron integrals $\rbraket{\ba\bb}{\bc\bd}$. Ingredient 1 is the set of
-fundamental integrals $\rbraket{\bO\bO}{\bO\bO}^{(m)}$; ingredient 2 is the
-set of recurrence relations, schematically
+The complete integral-evaluation strategy has three components. The target
+quantities are the two-electron integrals
+$\rbraket{\ba\bb}{\bc\bd}$. Their construction requires the fundamental
+integrals $\rbraket{\bO\bO}{\bO\bO}^{(m)}$, the recurrence relations,
+represented schematically by
 $\rbraket{(\ba+\bI_i)\bO}{\bO\bO}
 =\rbraket{\ba\bO}{\bO\bO}
-+\rbraket{(\ba-\bI_i)\bO}{\bO\bO}$; and ingredient 3 is an upper bound
-$\abs{\rbraket{\ba\bb}{\bc\bd}}\leq B$.
++\rbraket{(\ba-\bI_i)\bO}{\bO\bO}$, and an upper bound
+$\abs{\rbraket{\ba\bb}{\bc\bd}}\leq B$ that permits insignificant
+integrals to be discarded before evaluation.
 
 \subsubsection{Direct SCF evaluation}
 
@@ -1066,9 +1077,14 @@ formally non-negligible quartet when the density elements multiplying it are
 small at the current SCF iteration. The screening threshold must therefore be
 chosen consistently with the target accuracy of the SCF energy and residual.
 
-\section{Low-rank representations of electron-repulsion integrals}
+\section{Resolution of the identity and low-rank ERI representations}
 
-\subsection{Resolution of the identity and density fitting}
+Screening avoids work associated with small individual integrals, but it does
+not alter the four-index structure of the ERI tensor. Low-rank
+representations address this complementary problem by replacing the
+four-center quantities with contractions over a smaller auxiliary index. The
+resulting factorization connects the integral technology developed above to
+more economical Fock-matrix construction.
 
 Screening reduces the number of ERIs that must be evaluated, whereas
 resolution of the identity changes their algebraic representation. Its
@@ -1100,7 +1116,7 @@ functions in this approximate product space. The reduction from
 $\order{K^2}$ pair densities to $\order{K}$ auxiliary functions is the source
 of the lower-rank representation.
 
-\subsubsection{Fitting in the Coulomb metric}
+\subsection{Fitting pair densities in the Coulomb metric}
 
 The fitted coefficients depend on the norm used to measure the residual pair
 density. For electron-repulsion integrals, the natural choice weights fitting
@@ -1174,7 +1190,7 @@ $\bV^{-1}=\bV^{-1/2}\cdot\bV^{-1/2}$. The explicit matrix multiplication
 symbol emphasizes that the auxiliary indices are contracted through the
 metric rather than multiplied element by element.
 
-\subsubsection{RI, Cholesky decomposition, and practical contractions}
+\subsection{RI, Cholesky decomposition, and practical contractions}
 
 Both density fitting and Cholesky decomposition expose the low numerical rank
 of the ERI matrix in compound pair indices. They differ in how the
@@ -1225,3 +1241,11 @@ The computational gain is that contractions can be ordered through the
 auxiliary index instead of four orbital indices. The approximation is
 controlled by the auxiliary basis in RI/DF or by the decomposition threshold
 in Cholesky decomposition.
+
+Taken together, the basis-set and integral constructions complete the
+practical formulation of Hartree--Fock theory. The basis determines the
+variational one-electron space, Gaussian integral algorithms provide the
+matrix elements required within that space, and screening or low-rank
+factorization controls the cost of assembling the mean-field operators. These
+components lead back to the Roothaan--Hall and SCF equations developed in the
+preceding sections.
