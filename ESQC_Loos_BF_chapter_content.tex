@@ -47,21 +47,21 @@ through the variational coefficients that combine these fixed building blocks.
 \subsubsection{Principal families of basis functions}
 
 Several families of one-electron functions are routinely used.
-\red{Gaussian-type orbitals (GTOs)}, which are proportional to
+Gaussian-type orbitals (GTOs), which are proportional to
 $\exp(-\alpha r^2)$, are atom centered and are the standard choice for
 molecules because their multicenter integrals can be evaluated efficiently.
 They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
 \textsc{Molcas}, \textsc{Molpro}, \textsc{PySCF}, \textsc{Psi4},
 \textsc{CFOUR}, \textsc{MRCC}, and \textsc{GAMESS}.
 
-\blue{Slater-type orbitals (STOs)} are also atom centered, but are
+Slater-type orbitals (STOs) are also atom centered, but are
 proportional to $\exp(-\zeta r)$. They possess the correct nuclear cusp and
 long-range tail and are used, for example, in \textsc{ADF}. By contrast,
-\orange{plane waves (PWs)}, proportional to $\exp(\ii\bk\cdot\br)$, are
+plane waves (PWs), proportional to $\exp(\ii\bk\cdot\br)$, are
 delocalized, mutually orthonormal, and naturally adapted to periodic boundary
 conditions. Their basis size is controlled by an energy cutoff, and they are
 used in \textsc{Quantum Espresso}, \textsc{VASP}, \textsc{ABINIT}, and
-\textsc{CASTEP}. Finally, \green{numerical atomic orbitals (NAOs)} have
+\textsc{CASTEP}. Finally, numerical atomic orbitals (NAOs) have
 tabulated radial parts. Their compactness and flexibility make them useful in
 programs such as \textsc{FHI-aims} and \textsc{SIESTA}.
 
@@ -290,14 +290,14 @@ Efficient algorithms reorganize these contraction sums.
 No single enlargement of a Gaussian basis improves every physical feature in
 the same way. Different physical effects demand different forms of
 flexibility.
-\red{Radial flexibility} is provided by multiple-$\zeta$ functions, as in
+Radial flexibility is provided by multiple-$\zeta$ functions, as in
 double-$\zeta$, triple-$\zeta$, and quadruple-$\zeta$ bases.
-\blue{Angular flexibility} is supplied by polarization functions, such as
+Angular flexibility is supplied by polarization functions, such as
 $d$ functions on second-row atoms and $p$ functions on hydrogen.
-\orange{Long-range flexibility} is supplied by diffuse functions with small
+Long-range flexibility is supplied by diffuse functions with small
 exponents. Such functions are important for anions, Rydberg states,
 noncovalent interactions, multipoles, and (hyper)polarizabilities.
-\green{Core flexibility}, in turn, is supplied by tight functions and is
+Core flexibility, in turn, is supplied by tight functions and is
 needed for core correlation, nuclear magnetic shielding, and spin--spin
 coupling constants.
 
@@ -548,7 +548,7 @@ practical algorithm.
 The efficiency of Gaussian basis sets follows from a closure property that
 reduces multicenter products to single-center quantities. The central
 algebraic fact behind Gaussian integral technology is the
-\red{Gaussian product rule}: the product of two Gaussians is another Gaussian.
+Gaussian product rule: the product of two Gaussians is another Gaussian.
 If
 \begin{equation}
  G_{\red{\alpha},\red{\bA}}(\br)
