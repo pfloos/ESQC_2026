@@ -56,7 +56,7 @@ They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
 
 Slater-type orbitals (STOs) are also atom centered, but are
 proportional to $\exp(-\zeta r)$. They possess the correct nuclear cusp and
-long-range tail and are used, for example, in \textsc{ADF}. By contrast,
+long-range tail \citep{Kato1957} and are used, for example, in \textsc{ADF}. By contrast,
 plane waves (PWs), proportional to $\exp(\ii\bk\cdot\br)$, are
 delocalized, mutually orthonormal, and naturally adapted to periodic boundary
 conditions. Their basis size is controlled by an energy cutoff, and they are
@@ -320,7 +320,8 @@ In an STO-$n$G basis, there is one contracted basis function for every occupied
 orbital in the minimal atomic description. Each contracted GTO contains $n$
 primitive GTOs, whose contraction coefficients and exponents are selected so
 that the contraction approximates an STO. STO-$n$G bases are therefore minimal,
-single-$\zeta$ basis sets; STO-3G is the most familiar member.
+single-$\zeta$ basis sets; STO-3G is the most familiar member
+\citep{Hehre1969}.
 \begin{center}
   \includegraphics[width=0.42\textwidth]{STO-3G}\hspace{1em}
   \includegraphics[width=0.42\textwidth]{STO}
@@ -333,7 +334,7 @@ radial and angular flexibility limits quantitative accuracy.
 
 \subsubsection{Pople split-valence basis sets}
 
-Pople basis sets extend the minimal description by splitting the valence space
+Pople basis sets \citep{Hehre1972} extend the minimal description by splitting the valence space
 and by adding optional diffuse and polarization shells. Their notation
 explicitly records the contractions and augmentations. In
 6-31+G*, the core function is contracted from six primitives; the valence
@@ -352,7 +353,7 @@ functions. It is therefore more detailed than a simple label of basis size.
 
 \subsubsection{Dunning correlation-consistent basis sets}
 
-The correlation-consistent construction organizes functions into successive
+The correlation-consistent construction \citep{Dunning1989} organizes functions into successive
 balanced layers designed to recover angular correlation systematically. The
 main sequence is
 \begin{equation}
@@ -404,7 +405,7 @@ core--valence sequence, the corresponding decomposition is
 
 \subsubsection{Jensen polarization-consistent basis sets}
 
-Jensen's polarization-consistent sets apply systematic improvement to HF and
+Jensen's polarization-consistent sets \citep{Jensen2001} apply systematic improvement to HF and
 Kohn--Sham calculations, with functions selected according to their energetic
 importance. The sequence has shell contents
 \begin{equation}
@@ -449,7 +450,8 @@ which makes the uncorrected interaction energy
 \begin{equation}
   \Delta E_\text{int}=E_{AB}^{AB}-E_A^A-E_B^B
 \end{equation}
-artificially too attractive. The Boys--Bernardi counterpoise correction uses
+artificially too attractive. The Boys--Bernardi counterpoise correction
+\citep{BoysBernardi1970} uses
 the full dimer basis for every term,
 \begin{equation}
   \Delta E_\text{int}^\text{CP}
@@ -474,7 +476,7 @@ only indirectly in chemical bonding. Effective core potentials exploit this
 separation by replacing selected core electrons and their nuclear interaction
 with an operator acting on the remaining explicit electrons.
 
-The key idea of an effective core potential is to treat only the chemically
+The key idea of an effective core potential \citep{WadtHay1985} is to treat only the chemically
 relevant electrons explicitly. It replaces the nuclear attraction and the
 chemically inactive core electrons by an effective one-electron operator,
 \begin{equation}
@@ -549,6 +551,8 @@ The efficiency of Gaussian basis sets follows from a closure property that
 reduces multicenter products to single-center quantities. The central
 algebraic fact behind Gaussian integral technology is the
 Gaussian product rule: the product of two Gaussians is another Gaussian.
+This closure property underlies the classical Gaussian integral formulation
+of Boys \citep{Boys1950}.
 If
 \begin{equation}
  G_{\red{\alpha},\red{\bA}}(\br)
@@ -842,7 +846,7 @@ angular momentum couples neighboring Boys orders.
 Deriving a separate closed expression for every angular-momentum combination
 would be inefficient. Obara--Saika instead uses differentiation identities to
 generate the required quantities recursively from lower-angular-momentum
-integrals.
+integrals \citep{ObaraSaika1986}.
 
 \paragraph{Generating angular momentum vertically.}
 
@@ -954,7 +958,8 @@ cheap upper bound before evaluating an integral or shell quartet.
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
-$N_\text{sig}=\order{N_\text{upper}}$. The Cauchy--Schwarz inequality gives
+$N_\text{sig}=\order{N_\text{upper}}$. The commonly used Schwarz screening
+construction \citep{Schwarz1978} gives
 \begin{equation}
  \abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
  \leq
@@ -1056,7 +1061,7 @@ The Coulomb and exchange matrices are
  K_{\mu\nu}&=\sum_{\lambda\sigma}P_{\lambda\sigma}
  \rbraket{\mu\lambda}{\nu\sigma}.
 \end{align}
-Direct SCF trades disk storage for repeated integral evaluation. Instead of
+Direct SCF \citep{Almlof1982} trades disk storage for repeated integral evaluation. Instead of
 storing all $\order{K^4}$ ERIs, it loops over the shell quartets
 $\rbraket{\mu\nu}{\lambda\sigma}$ and uses an upper bound to discard
 negligible quartets before their integrals are evaluated. The significant
@@ -1103,7 +1108,7 @@ An ERI is the Coulomb interaction between two pair densities,
 With $K$ orbital basis functions, there are formally $\order{K^2}$ different
 pair densities. Resolution of the identity, or density fitting, replaces this
 large product space by a compact auxiliary basis
-$\{\varphi_A^\text{aux}\}$:
+$\{\varphi_A^\text{aux}\}$ \citep{Whitten1973}:
 \begin{equation}
  \rho_{\mu\nu}(\br)\approx
  \widetilde\rho_{\mu\nu}(\br)
@@ -1208,7 +1213,8 @@ The quality of the approximation therefore depends on the auxiliary basis.
 Alternatively, the ERI tensor
 $\bV_{(\mu\nu),(\lambda\sigma)}=\rbraket{\mu\nu}{\lambda\sigma}$ is a
 positive-semidefinite matrix in the compound indices. A pivoted Cholesky
-decomposition constructs an auxiliary space adaptively,
+decomposition constructs an auxiliary space adaptively
+\citep{BeebeLinderberg1977},
 \begin{equation}
  \rbraket{\mu\nu}{\lambda\sigma}
  \approx\sum_{P=1}^{N_\text{CD}}L_{\mu\nu}^PL_{\lambda\sigma}^P,
