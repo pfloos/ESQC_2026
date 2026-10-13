@@ -874,7 +874,7 @@ On the bra pair, angular momentum is built on $\bA$ according to
 \begin{align}
  \sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)}
  ={}&(P_i-A_i)\sbraket{\red{\ba}\bO}{\bO\bO}^{(m)}
- +\frac{\eta}{\zeta+\eta}(P_i-Q_i)
+ -\frac{\eta}{\zeta+\eta}(P_i-Q_i)
  \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)}\notag\\
  &+\frac{a_i}{2\zeta}\qty[
  \sbraket{(\red{\ba}-\bI_i)\bO}{\bO\bO}^{(m)}
@@ -885,7 +885,7 @@ On the ket pair, angular momentum is built on $\bC$ according to
 \begin{align}
  \sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)}
  ={}&(Q_i-C_i)\sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)}
- +\frac{\zeta}{\zeta+\eta}(Q_i-P_i)
+ -\frac{\zeta}{\zeta+\eta}(Q_i-P_i)
  \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)}\notag\\
  &+\frac{c_i}{2\eta}\qty[
  \sbraket{\red{\ba}\bO}{(\orange{\bc}-\bI_i)\bO}^{(m)}
@@ -894,6 +894,21 @@ On the ket pair, angular momentum is built on $\bC$ according to
  &+\frac{a_i}{2(\zeta+\eta)}
  \sbraket{(\red{\ba}-\bI_i)\bO}{\orange{\bc}\bO}^{(m+1)}.
 \end{align}
+
+The signs of the product-center terms can be checked directly from the
+fundamental integral. With $T=\vartheta\abs{\bP-\bQ}^2$, the definition of
+the Boys function gives $\dv{F_m(T)}{T}=-F_{m+1}(T)$. Since
+$\pdv{P_i}{A_i}=\alpha/\zeta$, differentiating the fundamental integral
+and dividing by $2\alpha$ yields
+\begin{equation}
+ \sbraket{\bI_i\bO}{\bO\bO}^{(m)}
+ =(P_i-A_i)\sbraket{\bO\bO}{\bO\bO}^{(m)}
+ -\frac{\vartheta}{\zeta}(P_i-Q_i)
+ \sbraket{\bO\bO}{\bO\bO}^{(m+1)}.
+\end{equation}
+Here $\vartheta/\zeta=\eta/(\zeta+\eta)$. The ket-pair result follows
+by exchanging the two pairs. These negative signs correct the corresponding
+product-center terms in the lecture slides.
 
 The intended construction is
 \begin{equation}
@@ -939,7 +954,9 @@ auxiliary integrals $\sbraket{00}{00}^{(m)}$. The VRRs are then used to build
 angular momentum on $\bA$ and $\bC$, after which the primitive integrals are
 contracted. Finally, the exponent-independent HRRs transfer angular momentum
 according to $\bA\rightarrow\bB$ and $\bC\rightarrow\bD$.
-Thus the expensive exponent-dependent recurrences are performed before
+This combination of vertical and horizontal recurrences is the
+Head--Gordon--Pople late-contraction strategy; the vertical recurrences are
+those of Obara--Saika. Thus the expensive exponent-dependent recurrences are performed before
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
 
@@ -1096,7 +1113,9 @@ resolution of the identity changes their algebraic representation. Its
 starting point is that products of orbital basis functions occupy a much
 larger and highly redundant space compared with the orbital basis itself.
 
-An ERI is the Coulomb interaction between two pair densities,
+In this section, orbital and auxiliary functions are taken to be real, as in
+the Gaussian integral formulas above. An ERI is the Coulomb interaction
+between two pair densities,
 \begin{equation}
  \rbraket{\mu\nu}{\lambda\sigma}
  =\iint
@@ -1159,14 +1178,32 @@ Hence the least-squares equations are
  \qquad
  C_{\mu\nu}^A=\sum_B(\bV^{-1})_{AB}\rbraket{B}{\mu\nu}.
 \end{equation}
-Thus the Coulomb metric determines the optimal auxiliary expansion.
+Thus the Coulomb metric determines the optimal auxiliary expansion. The
+stationarity condition also states that the residual is Coulomb-orthogonal
+to every auxiliary function:
+\begin{equation}
+ \rbraket{A}{\rho_{\mu\nu}-\widetilde\rho_{\mu\nu}}=0.
+ \label{eq:ri-projection-orthogonality}
+\end{equation}
 
 The inverse metric accounts for the nonorthogonality of the auxiliary
-functions. The resulting coefficients are optimal within the selected
+functions. These expressions assume that the retained auxiliary functions
+are linearly independent in the Coulomb metric. If the metric has
+near-zero eigenvalues, the inverse is formed in the retained eigenspace,
+using the same principle as canonical orthogonalization of the orbital
+overlap matrix. The resulting coefficients are optimal within that
 auxiliary space under the Coulomb norm.
 
-Inserting the fitted pair densities converts the four-center ERI to
-three-center quantities:
+Because a fitted density belongs to the auxiliary space,
+Eq.~\eqref{eq:ri-projection-orthogonality} gives
+\begin{equation}
+ \rbraket{\widetilde\rho_{\mu\nu}}{\widetilde\rho_{\lambda\sigma}}
+ =\rbraket{\rho_{\mu\nu}}{\widetilde\rho_{\lambda\sigma}}
+ =\rbraket{\widetilde\rho_{\mu\nu}}{\rho_{\lambda\sigma}}.
+\end{equation}
+Thus fitting both densities is equivalent to fitting either one in this
+Coulomb projection. Inserting the fitted pair densities converts the
+four-center ERI to three-center quantities:
 \begin{align}
  \rbraket{\mu\nu}{\lambda\sigma}
  &\approx\sum_A C_{\lambda\sigma}^A\rbraket{\mu\nu}{A}\\
