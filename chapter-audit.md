@@ -20,4 +20,27 @@ coverage baseline. Commented-out frames are not additional required material.
   The script also checks RI projection and contraction in a nonorthogonal,
   incomplete auxiliary space.
 
+## Pass 2: equations, notation, and physics-package conventions
+
+- Restored explicit `\cdot` in the remaining matrix products, including
+  the orthogonalization derivation and its intermediate normalization steps.
+- Removed sentence-ending periods, commas, and semicolons from displayed
+  equations. Mathematical separators in tuples and sets are retained.
+  Invisible `\left.`/`\right.` delimiters remain where a multirow expression
+  requires them.
+- Converted applicable paired delimiters to `\qty`, explicit matrices to
+  `\pmqty`, determinants to `\mdet`, derivatives to `\dv`, and the
+  commutator to `\comm`. Existing `\pdv`, `\fdv`, `\dd`, `\abs`, `\norm`,
+  `\Tr`, and bra–ket commands are retained. The slides' custom paired
+  integral commands are preserved. Delimiters split across alignment rows
+  remain explicit because a single `\qty` argument cannot span those rows.
+- Restored missing `\quad`/`\qquad` commands and corrected the cc-pVTZ
+  shell decomposition's `2s` transcription to `2d`.
+- Corrected the STO derivative to include its value at the nucleus, and
+  distinguished a cusp-shaped exponential from satisfaction of the actual
+  point-nucleus cusp condition.
+- Corrected the Boys localization optimization direction and explained
+  why minimizing the two spread expressions maximizes centroid separation.
+- Verification: source-convention check and full LaTeX/BibTeX compilation.
+
 The remaining passes will be recorded here as they are completed.

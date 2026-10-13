@@ -414,7 +414,7 @@ and satisfies the time-independent Schr\"odinger equation
   \Phi(\{\br_i\},\{\bR_A\})
   =
   \cE
-  \Phi(\{\br_i\},\{\bR_A\}).
+  \Phi(\{\br_i\},\{\bR_A\})
 \end{equation}
 The full non-relativistic molecular Hamiltonian contains five contributions,
 \begin{equation}
@@ -428,7 +428,7 @@ The full non-relativistic molecular Hamiltonian contains five contributions,
   +
   \red{\chV_\text{ee}}
   +
-  \violet{\chV_\text{nn}}.
+  \violet{\chV_\text{nn}}
   \label{eq:total-hamiltonian}
 \end{equation}
 Here, $\green{\chT_\text{n}}$ and $\blue{\chT_\text{e}}$ are the nuclear
@@ -452,28 +452,28 @@ In atomic units, for which $m=e=\hbar=1$, these operators read
   \green{\chT_\text{n}}
   &=
   -\sum_{A=1}^{M}
-  \frac{\laplacian_A}{2M_A},
+  \frac{\laplacian_A}{2M_A}
   &
   \blue{\chT_\text{e}}
   &=
   -\sum_{i=1}^{N}
-  \frac{\laplacian_i}{2},
+  \frac{\laplacian_i}{2}
   \\
   \orange{\chV_\text{ne}}
   &=
   -\sum_{A=1}^{M}
   \sum_{i=1}^{N}
-  \frac{Z_A}{r_{iA}},
+  \frac{Z_A}{r_{iA}}
   &
   \red{\chV_\text{ee}}
   &=
   \sum_{i<j}^{N}
-  \frac{1}{r_{ij}},
+  \frac{1}{r_{ij}}
   &
   \violet{\chV_\text{nn}}
   &=
   \sum_{A<B}^{M}
-  \frac{Z_A Z_B}{R_{AB}}.
+  \frac{Z_A Z_B}{R_{AB}}
 \end{align}
 \end{subequations}
 The quantities $M_A$ and $Z_A$ are the mass and charge of nucleus $A$,
@@ -514,7 +514,7 @@ and solves
   =
   \cE_\text{elec}^{(I)}(\{\bR_A\})
   \Phi_\text{elec}^{(I)}
-  (\{\br_i\};\{\bR_A\}).
+  (\{\br_i\};\{\bR_A\})
   \label{eq:clamped-nuclei}
 \end{equation}
 The semicolon emphasizes the different roles played by electronic and nuclear
@@ -533,7 +533,7 @@ the energy surface
   \cE_\text{elec}^{(I)}(\{\bR_A\})
   +
   \sum_{A<B}^{M}
-  \frac{Z_A Z_B}{R_{AB}}.
+  \frac{Z_A Z_B}{R_{AB}}
   \label{eq:potential-energy-surface}
 \end{equation}
 Repeating the electronic calculation for different nuclear geometries traces
@@ -552,7 +552,7 @@ clamped-nuclei electronic states,
   \sum_I
   \Phi_\text{nucl}^{(I)}(\{\bR_A\})
   \Phi_\text{elec}^{(I)}
-  (\{\br_i\};\{\bR_A\}).
+  (\{\br_i\};\{\bR_A\})
   \label{eq:born-huang-expansion}
 \end{equation}
 This Born--Huang expansion is, in principle, exact if the electronic basis is
@@ -573,7 +573,7 @@ states. Their leading contributions involve the derivative couplings
     \nabla_A
   }{
     \Phi_\text{elec}^{(J)}
-  },
+  }
   \label{eq:nonadiabatic-coupling}
 \end{equation}
 which measure how rapidly the electronic wavefunctions change as nucleus $A$
@@ -591,7 +591,7 @@ For electronic state $I$, the resulting nuclear Schr\"odinger equation is
   \Phi_\text{nucl}^{(I)}(\{\bR_A\})
   =
   \cE_\text{tot}
-  \Phi_\text{nucl}^{(I)}(\{\bR_A\}).
+  \Phi_\text{nucl}^{(I)}(\{\bR_A\})
   \label{eq:nuclear-BO}
 \end{equation}
 Equivalently,
@@ -602,7 +602,7 @@ Equivalently,
   +
   \violet{\chV_\text{nn}}
   +
-  \cE_\text{elec}^{(I)}(\{\bR_A\}).
+  \cE_\text{elec}^{(I)}(\{\bR_A\})
 \end{equation}
 Thus, within the Born--Oppenheimer picture, the electrons determine the
 potential on which the nuclei move.
@@ -613,7 +613,7 @@ approximated by the product
   \Phi(\{\br_i\},\{\bR_A\})
   \approx
   \Phi_\text{nucl}(\{\bR_A\})
-  \Phi_\text{elec}(\{\br_i\};\{\bR_A\}).
+  \Phi_\text{elec}(\{\br_i\};\{\bR_A\})
   \label{eq:BO-product}
 \end{equation}
 This familiar factorized form should therefore be viewed as the
@@ -641,7 +641,7 @@ electronic Schr\"odinger equation
   \Phi_\text{elec}
   =
   \cE_\text{elec}
-  \Phi_\text{elec}.
+  \Phi_\text{elec}
   \label{eq:electronic-SE}
 \end{equation}
 The next question is then not how the nuclei move, but what restrictions must
@@ -665,45 +665,45 @@ description of an electron must contain both its spatial coordinate and its
 intrinsic spin degree of freedom. Electrons have spin $s=1/2$, and their spin
 functions satisfy
 \begin{equation}
-  \ket{\omega}=\ket{s,m_s},
+  \ket{\omega}=\ket{s,m_s}
   \qquad
-  s^2\ket{s,m_s}=s(s+1)\ket{s,m_s},
+  s^2\ket{s,m_s}=s(s+1)\ket{s,m_s}
   \qquad
-  s_z\ket{s,m_s}=m_s\ket{s,m_s}.
+  s_z\ket{s,m_s}=m_s\ket{s,m_s}
 \end{equation}
 The two one-electron spin functions are
 \begin{equation}
   \ket{\blue{\alpha}}
-  = \ket{\tfrac{1}{2},+\tfrac{1}{2}},
+  = \ket{\tfrac{1}{2},+\tfrac{1}{2}}
   \qquad
   \ket{\red{\beta}}
-  = \ket{\tfrac{1}{2},-\tfrac{1}{2}},
+  = \ket{\tfrac{1}{2},-\tfrac{1}{2}}
 \end{equation}
 corresponding respectively to spin-up and spin-down electrons. They form an
 orthonormal basis for the one-electron spin space,
 \begin{align}
   \int\blue{\alpha}^*(\omega)\red{\beta}(\omega)\dd{\omega}
-  &=\int\red{\beta}^*(\omega)\blue{\alpha}(\omega)\dd{\omega}=0,
+  &=\int\red{\beta}^*(\omega)\blue{\alpha}(\omega)\dd{\omega}=0
   &
   \int\blue{\alpha}^*(\omega)\blue{\alpha}(\omega)\dd{\omega}
-  &=\int\red{\beta}^*(\omega)\red{\beta}(\omega)\dd{\omega}=1,
+  &=\int\red{\beta}^*(\omega)\red{\beta}(\omega)\dd{\omega}=1
   \\
   \braket{\blue{\alpha}}{\red{\beta}}
-  &= \braket{\red{\beta}}{\blue{\alpha}}=0,
+  &= \braket{\red{\beta}}{\blue{\alpha}}=0
   &
   \braket{\blue{\alpha}}{\blue{\alpha}}
-  &= \braket{\red{\beta}}{\red{\beta}}=1.
+  &= \braket{\red{\beta}}{\red{\beta}}=1
 \end{align}
 
 It is therefore convenient to combine the spin coordinate $\omega$ and the
 spatial coordinate $\br$ into a single composite coordinate,
 \begin{equation}
-  \violet{\bx}=(\orange{\omega},\red{\br}).
+  \violet{\bx}=(\orange{\omega},\red{\br})
 \end{equation}
 An $N$-electron wavefunction is consequently a function of $N$ such
 coordinates,
 \begin{equation}
-  \Phi(\bx_1,\bx_2,\ldots,\bx_N).
+  \Phi(\bx_1,\bx_2,\ldots,\bx_N)
 \end{equation}
 Although the Hamiltonian is spin independent in the present treatment, the
 spin coordinates are indispensable because the symmetry of the full
@@ -719,7 +719,7 @@ probability density satisfies
 \begin{equation}
   \abs{\Psi(\red{\bx_1},\blue{\bx_2})}^2
   =
-  \abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2.
+  \abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2
 \end{equation}
 The two wavefunctions can thus differ at most by a phase,
 \begin{equation}
@@ -727,7 +727,7 @@ The two wavefunctions can thus differ at most by a phase,
   =\abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2
   \quad\Rightarrow\quad
   \Psi(\blue{\bx_2},\red{\bx_1})
-  =\green{e^{\ii\theta}}\Psi(\red{\bx_1},\blue{\bx_2}).
+  =\green{e^{\ii\theta}}\Psi(\red{\bx_1},\blue{\bx_2})
 \end{equation}
 
 Introducing the permutation operator $\chP_{12}$, which exchanges particles
@@ -738,14 +738,14 @@ $1$ and $2$, gives
   \Psi(\blue{\bx_2},\red{\bx_1})
   =
   \green{e^{\ii\theta}}
-  \Psi(\red{\bx_1},\blue{\bx_2}),
+  \Psi(\red{\bx_1},\blue{\bx_2})
   \\
   \chP_{12}^2\Psi(\red{\bx_1},\blue{\bx_2})
   &=
   \green{e^{2\ii\theta}}
   \Psi(\red{\bx_1},\blue{\bx_2})
   =
-  \Psi(\red{\bx_1},\blue{\bx_2}).
+  \Psi(\red{\bx_1},\blue{\bx_2})
 \end{align}
 Because exchanging the same pair twice restores the original labeling,
 $\chP_{12}^2=1$, and consequently
@@ -754,7 +754,7 @@ $\chP_{12}^2=1$, and consequently
   \quad\Rightarrow\quad
   \green{\theta}=n\pi
   \quad\Rightarrow\quad
-  \green{e^{\ii\theta}}=\pm1.
+  \green{e^{\ii\theta}}=\pm1
 \end{equation}
 
 The wavefunction can therefore belong to either a symmetric or an
@@ -765,7 +765,7 @@ for which
   \Psi(\bx_1,\bx_2)
   =
   \Psi(\bx_2,\bx_1)
-  },
+  }
 \end{equation}
 whereas the minus sign defines \orange{fermions},
 \begin{equation}
@@ -774,7 +774,7 @@ whereas the minus sign defines \orange{fermions},
   =
   -
   \Psi(\bx_2,\bx_1)
-  }.
+  }
 \end{equation}
 Electrons are fermions and must therefore be described by an antisymmetric
 wavefunction. The connection between half-integer spin and fermionic
@@ -785,27 +785,27 @@ fundamental property of the electronic wavefunction.
 For an arbitrary pair of electrons $i$ and $j$, the antisymmetry requirement
 can be written compactly as
 \begin{equation}
-  \chP_{ij}\Phi=-\Phi.
+  \chP_{ij}\Phi=-\Phi
 \end{equation}
 The electronic Schr\"odinger equation and Pauli antisymmetry condition are
 therefore
 \begin{equation}
   \chH_\text{elec}\Phi(\bx_1,\bx_2,\ldots,\bx_N)
   =
-  \cE_\text{elec}\Phi(\bx_1,\bx_2,\ldots,\bx_N),
+  \cE_\text{elec}\Phi(\bx_1,\bx_2,\ldots,\bx_N)
 \end{equation}
 and
 \begin{equation}
   \Phi(\bx_1,\ldots,\bx_i,\ldots,\bx_j,\ldots,\bx_N)
   =
   -
-  \Phi(\bx_1,\ldots,\bx_j,\ldots,\bx_i,\ldots,\bx_N).
+  \Phi(\bx_1,\ldots,\bx_j,\ldots,\bx_i,\ldots,\bx_N)
   \label{eq:pauli-antisymmetry}
 \end{equation}
 Since the electronic Hamiltonian is invariant under the exchange of two
 electron labels,
 \begin{equation}
-  [\chH_\text{elec},\chP_{ij}]=0,
+  \comm{\chH_\text{elec}}{\chP_{ij}}=0
 \end{equation}
 this antisymmetry is preserved by the electronic dynamics.
 
@@ -817,11 +817,11 @@ composite coordinate, $\bx=\bx_1=\bx_2$, then
 \begin{equation}
   \Psi(\bx,\bx)
   =
-  -\Psi(\bx,\bx),
+  -\Psi(\bx,\bx)
 \end{equation}
 and hence
 \begin{equation}
-  \Psi(\bx,\bx)=0.
+  \Psi(\bx,\bx)=0
 \end{equation}
 The probability of finding two electrons with the same spin at exactly the
 same spatial position therefore vanishes. This is one manifestation of the
@@ -857,25 +857,25 @@ the two electrons,
 \begin{equation}
   \chi_1(\bx_1)\chi_2(\bx_2)
   \qquad\text{and}\qquad
-  \chi_2(\bx_1)\chi_1(\bx_2),
+  \chi_2(\bx_1)\chi_1(\bx_2)
 \end{equation}
 the required antisymmetric combination is obtained by taking their
 difference,
 \begin{equation}
   \Psi(\red{\bx_1},\blue{\bx_2})
   =
-  \frac{1}{\sqrt{2}}\left[
+  \frac{1}{\sqrt{2}}\qty[
     \chi_1(\red{\bx_1})\chi_2(\blue{\bx_2})
     -
     \chi_2(\red{\bx_1})\chi_1(\blue{\bx_2})
-  \right].
+  ]
   \label{eq:two-electron-antisym}
 \end{equation}
 Indeed, exchanging the two electron coordinates immediately yields
 \begin{equation}
   \Psi(\bx_2,\bx_1)
   =
-  -\Psi(\bx_1,\bx_2).
+  -\Psi(\bx_1,\bx_2)
 \end{equation}
 For orthonormal $\chi_1$ and $\chi_2$, the prefactor $1/\sqrt{2}$ ensures
 normalization.
@@ -886,16 +886,16 @@ Slater popularized the determinant representation of this combination
   \Psi(\red{\bx_1},\blue{\bx_2})
   =
   \frac{1}{\sqrt{2}}
-    \begin{vmatrix}
+    \mdet{
       \chi_1(\red{\bx_1})&\chi_2(\red{\bx_1})\\
       \chi_1(\blue{\bx_2})&\chi_2(\blue{\bx_2})
-    \end{vmatrix}
+    }
   =
-  \frac{1}{\sqrt{2}}\left[
+  \frac{1}{\sqrt{2}}\qty[
     \chi_1(\red{\bx_1})\chi_2(\blue{\bx_2})
     -
     \chi_2(\red{\bx_1})\chi_1(\blue{\bx_2})
-  \right].
+  ]
 \end{equation}
 The determinant is ideally suited to fermions because interchanging two
 electron coordinates corresponds to exchanging two rows of the determinant,
@@ -936,22 +936,22 @@ Thus,
   \Psi_\text{HF}(\bx_1,\ldots,\bx_N)
   &=
   \frac{1}{\sqrt{N!}}
-  \begin{vmatrix}
+  \mdet{
     \chi_1(\bx_1)&\chi_2(\bx_1)&\cdots&\chi_N(\bx_1)\\
     \chi_1(\bx_2)&\chi_2(\bx_2)&\cdots&\chi_N(\bx_2)\\
     \vdots&\vdots&\ddots&\vdots\\
     \chi_1(\bx_N)&\chi_2(\bx_N)&\cdots&\chi_N(\bx_N)
-  \end{vmatrix}
+  }
   \nonumber\\
   &\equiv
   \ket{\chi_1(\bx_1)\chi_2(\bx_2)\cdots\chi_N(\bx_N)}
   \nonumber\\
   &=
-  \blue{\chA}\left[
+  \blue{\chA}\qty[
     \chi_1(\bx_1)\chi_2(\bx_2)\cdots\chi_N(\bx_N)
-  \right]
+  ]
   =
-  \blue{\chA}\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}.
+  \blue{\chA}\green{\Pi(\bx_1,\bx_2,\ldots,\bx_N)}
   \label{eq:hf-determinant}
 \end{align}
 Here,
@@ -971,7 +971,7 @@ The role of $\chA$ can be made explicit by writing
   =
   \frac{1}{\sqrt{N!}}
   \sum_{P}
-  (-1)^P \chP,
+  (-1)^P \chP
 \end{equation}
 where the sum runs over the $N!$ permutations of the electron labels,
 $\chP$ denotes the corresponding permutation operator, and $(-1)^P$ is
@@ -993,7 +993,7 @@ The normalization factor $1/\sqrt{N!}$ in
 Eq.~\eqref{eq:hf-determinant} assumes that the spin orbitals are
 orthonormal. Under this condition,
 \begin{equation}
-  \braket{\Psi_\text{HF}}{\Psi_\text{HF}}=1.
+  \braket{\Psi_\text{HF}}{\Psi_\text{HF}}=1
 \end{equation}
 A normalized Slater determinant is thus completely specified by its $N$
 occupied one-electron spin orbitals.
@@ -1017,9 +1017,9 @@ initially, a spin orbital separates into spin and spatial factors,
   \chi_p(\bx)
   =
   \red{\sigma(\omega)}
-  \blue{\psi_p^\sigma(\br)},
+  \blue{\psi_p^\sigma(\br)}
   \qquad
-  \sigma(\omega)\in\{\alpha(\omega),\beta(\omega)\}.
+  \sigma(\omega)\in\{\alpha(\omega),\beta(\omega)\}
   \label{eq:spin-orbital-factorization}
 \end{equation}
 Thus, a spin orbital is obtained by associating a spatial orbital with either
@@ -1042,7 +1042,7 @@ functions,
   =
   \sum_{\mu=1}^{K}
   C_{\mu p}^{\sigma}
-  \green{\phi_\mu(\br)}.
+  \green{\phi_\mu(\br)}
   \label{eq:lcao-introduction}
 \end{equation}
 The coefficients $C_{\mu p}^{\sigma}$ then become the quantities to be
@@ -1078,8 +1078,8 @@ orthonormal,
   \delta_{pq}
   =
   \begin{cases}
-    1,&\text{if $p=q$},\\
-    0,&\text{otherwise},
+    1,&\text{if $p=q$}\\
+    0,&\text{otherwise}
   \end{cases}
 \end{split}
 \end{equation}
@@ -1097,7 +1097,7 @@ generally overlap. Their pairwise overlaps define the overlap matrix
   \phi_\nu(\br)
   \dd{\br}
   \\
-  &=S_{\mu\nu}.
+  &=S_{\mu\nu}
 \end{split}
 \end{equation}
 Consequently, the orthonormality of the molecular orbitals imposes a
@@ -1111,11 +1111,11 @@ themselves. For example, for a given spin sector,
   S_{\mu\nu}
   C_{\nu q}^{\sigma}
   =
-  \delta_{pq},
+  \delta_{pq}
 \end{equation}
 or, in matrix notation,
 \begin{equation}
-  \bC_\sigma^\dagger \bS \bC_\sigma=\bI.
+  \bC_\sigma^\dagger\cdot\bS\cdot\bC_\sigma=\bI
 \end{equation}
 This distinction between an orthonormal set of molecular orbitals and a
 generally nonorthogonal atomic-orbital basis will become central when we
@@ -1134,13 +1134,13 @@ pair share the same spatial orbital,
   \chi_p^\text{RHF}(\bx)
   =
   \begin{cases}
-    \blue{\alpha(\omega)}\psi_p(\br),\\
-    \red{\beta(\omega)}\psi_p(\br).
+    \blue{\alpha(\omega)}\psi_p(\br)\\
+    \red{\beta(\omega)}\psi_p(\br)
   \end{cases}
   =
   \begin{cases}
-    \blue{\psi_p(\br)},\\
-    \red{\Bar{\psi}_p(\br)}.
+    \blue{\psi_p(\br)}\\
+    \red{\Bar{\psi}_p(\br)}
   \end{cases}
 \end{equation}
 The barred notation will be used when it is convenient to distinguish the
@@ -1166,8 +1166,8 @@ spin components are allowed to use different spatial orbitals,
   \chi_p^\text{UHF}(\bx)
   =
   \begin{cases}
-    \alpha(\omega)\blue{\psi_p^\alpha(\br)},\\
-    \beta(\omega)\red{\psi_p^\beta(\br)}.
+    \alpha(\omega)\blue{\psi_p^\alpha(\br)}\\
+    \beta(\omega)\red{\psi_p^\beta(\br)}
   \end{cases}
 \end{equation}
 This additional variational freedom permits the treatment of open-shell
@@ -1201,7 +1201,7 @@ For RHF, the spatial molecular orbitals form an orthonormal set,
   \psi_q(\br)
   \dd{\br}
   =
-  \delta_{pq}.
+  \delta_{pq}
 \end{equation}
 For UHF, orthonormality holds separately within each spin sector,
 \begin{align}
@@ -1212,7 +1212,7 @@ For UHF, orthonormality holds separately within each spin sector,
   \psi_q^\alpha(\br)
   \dd{\br}
   =
-  \delta_{pq},
+  \delta_{pq}
   \\
   \braket{\psi_p^\beta}{\psi_q^\beta}
   &=
@@ -1221,7 +1221,7 @@ For UHF, orthonormality holds separately within each spin sector,
   \psi_q^\beta(\br)
   \dd{\br}
   =
-  \delta_{pq},
+  \delta_{pq}
 \end{align}
 whereas opposite-spin spatial orbitals need not be orthogonal,
 \begin{equation}
@@ -1232,25 +1232,25 @@ whereas opposite-spin spatial orbitals need not be orthogonal,
   \psi_q^\beta(\br)
   \dd{\br}
   =
-  S_{pq}^{\alpha\beta}.
+  S_{pq}^{\alpha\beta}
 \end{equation}
 There is no contradiction with the orthonormality of the full spin orbitals:
 because
 \begin{equation}
-  \braket{\alpha}{\beta}=0,
+  \braket{\alpha}{\beta}=0
 \end{equation}
 an $\alpha$ spin orbital and a $\beta$ spin orbital are orthogonal regardless
 of the overlap between their spatial parts.
 
 This distinction is useful to keep in mind. In UHF, one may have
 \begin{equation}
-  \braket{\psi_p^\alpha}{\psi_q^\beta}\neq0,
+  \braket{\psi_p^\alpha}{\psi_q^\beta}\neq0
   \qquad\text{but}\qquad
   \braket{
     \alpha\psi_p^\alpha
   }{
     \beta\psi_q^\beta
-  }=0.
+  }=0
 \end{equation}
 
 \paragraph{Orbital spaces and index conventions.}
@@ -1260,15 +1260,15 @@ chapter. The one-electron spaces are
 \begin{align}
   \{\phi_\mu\mid\mu=1,\ldots,K\}
   &:\quad
-  \green{\text{basis functions or atomic orbitals (AOs)}},
+  \green{\text{basis functions or atomic orbitals (AOs)}}
   \\
   \{\psi_p\mid p=1,\ldots,K\}
   &:\quad
-  \violet{\text{restricted spatial orbitals or molecular orbitals (MOs)}},
+  \violet{\text{restricted spatial orbitals or molecular orbitals (MOs)}}
   \\
   \{\chi_p\mid p=1,\ldots,2K\}
   &:\quad
-  \orange{\text{spin orbitals}}.
+  \orange{\text{spin orbitals}}
 \end{align}
 Thus, a basis of $K$ spatial functions generates $K$ spatial molecular
 orbitals and, when the two spin functions are included, $2K$ spin orbitals.
@@ -1277,16 +1277,16 @@ Unless otherwise stated, the following index convention will be used:
 \begin{equation}
   \begin{array}{ccl}
     \mu,\nu,\lambda,\sigma,\ldots
-      &:& \text{basis functions / AOs},
+      &:& \text{basis functions / AOs}
     \\[1mm]
     p,q,r,s,\ldots
-      &:& \text{general orbitals},
+      &:& \text{general orbitals}
     \\[1mm]
     i,j,k,l,\ldots
-      &:& \text{occupied orbitals},
+      &:& \text{occupied orbitals}
     \\[1mm]
     a,b,c,d,\ldots
-      &:& \text{unoccupied or virtual orbitals}.
+      &:& \text{unoccupied or virtual orbitals}
   \end{array}
 \end{equation}
 Among the $2K$ spin orbitals, $N$ are occupied in the HF determinant and are
@@ -1306,7 +1306,7 @@ is called closed shell. Otherwise, it is open shell. For the
 ground state of a closed-shell system containing an even number $N$ of
 electrons, the first $N/2$ spatial orbitals are doubly occupied,
 \begin{equation}
-  \psi_1^2\psi_2^2\cdots\psi_{N/2}^2,
+  \psi_1^2\psi_2^2\cdots\psi_{N/2}^2
 \end{equation}
 while the remaining $K-N/2$ spatial orbitals are vacant.
 
@@ -1336,7 +1336,7 @@ Slater determinant is the expectation value of the electronic Hamiltonian,
 \begin{equation}
   \EHF
   =
-  \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}},
+  \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}
   \qquad
   \chH_\text{elec}
   =
@@ -1344,7 +1344,7 @@ Slater determinant is the expectation value of the electronic Hamiltonian,
   +
   \orange{\chV_\text{ne}}
   +
-  \red{\chV_\text{ee}}.
+  \red{\chV_\text{ee}}
   \label{eq:hf-expectation-value}
 \end{equation}
 Since $\Psi_\text{HF}$ depends on the occupied spin orbitals, this expression
@@ -1352,13 +1352,13 @@ should be regarded as an energy functional,
 \begin{equation}
   \EHF
   =
-  \EHF[\chi_1,\chi_2,\ldots,\chi_N].
+  \EHF[\chi_1,\chi_2,\ldots,\chi_N]
 \end{equation}
 Hartree--Fock theory seeks the stationary point---and, for the ground-state
 solution, the minimum---of this functional subject to the orthonormality
 constraints
 \begin{equation}
-  \braket{\chi_i}{\chi_j}=\delta_{ij}.
+  \braket{\chi_i}{\chi_j}=\delta_{ij}
 \end{equation}
 
 The variational principle guarantees that the energy of any normalized trial
@@ -1366,7 +1366,7 @@ wavefunction lies above or at the exact ground-state energy,
 \begin{equation}
   \mel{\Psi_\text{trial}}{\chH_\text{elec}}{\Psi_\text{trial}}
   \geq
-  \cE_\text{elec}^{(0)}.
+  \cE_\text{elec}^{(0)}
 \end{equation}
 Hartree--Fock therefore finds the lowest energy accessible within the
 restricted manifold of single determinants. The remaining difference between
@@ -1385,7 +1385,7 @@ two-electron parts,
   =
   \sum_{i=1}^{N}\hh(\bx_i)
   +
-  \sum_{i<j}^{N}\frac{1}{r_{ij}}.
+  \sum_{i<j}^{N}\frac{1}{r_{ij}}
   \label{eq:one-two-electron-hamiltonian}
 \end{equation}
 The one-electron, or core, Hamiltonian is
@@ -1394,13 +1394,13 @@ The one-electron, or core, Hamiltonian is
   =
   -\frac{\laplacian_i}{2}
   -
-  \sum_{A=1}^{M}\frac{Z_A}{r_{iA}},
+  \sum_{A=1}^{M}\frac{Z_A}{r_{iA}}
 \end{equation}
 so that
 \begin{equation}
   \chO_1
   =
-  \sum_{i=1}^{N}\hh(\bx_i).
+  \sum_{i=1}^{N}\hh(\bx_i)
 \end{equation}
 It contains the kinetic energy of electron $i$ and its attraction to all
 nuclei. The explicit electron-electron interaction is contained in the
@@ -1410,7 +1410,7 @@ two-electron operator
   =
   \red{\chV_\text{ee}}
   =
-  \sum_{i<j}^{N}\frac{1}{r_{ij}}.
+  \sum_{i<j}^{N}\frac{1}{r_{ij}}
 \end{equation}
 
 The distinction between one- and two-electron operators is important because
@@ -1427,19 +1427,19 @@ to a sum over the occupied spin orbitals,
   \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}
   =
   \sum_{i=1}^{N}
-  \mel{\chi_i}{\hh}{\chi_i}.
+  \mel{\chi_i}{\hh}{\chi_i}
 \end{equation}
 Introducing
 \begin{equation}
   h_{ij}
   =
-  \mel{\chi_i}{\hh}{\chi_j},
+  \mel{\chi_i}{\hh}{\chi_j}
 \end{equation}
 we obtain simply
 \begin{equation}
   \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}
   =
-  \sum_{i=1}^{N}h_{ii}.
+  \sum_{i=1}^{N}h_{ii}
   \label{eq:hf-one-electron-energy}
 \end{equation}
 Thus, the one-electron part of the HF energy is obtained by adding the kinetic
@@ -1458,13 +1458,13 @@ wavefunction,
   =
   \violet{V_\text{nn}}
   \qquad\text{if}\qquad
-  \braket{\Psi_\text{HF}}{\Psi_\text{HF}}=1.
+  \braket{\Psi_\text{HF}}{\Psi_\text{HF}}=1
 \end{equation}
 Hence,
 \begin{equation}
   E_\text{tot}^\text{HF}
   =
-  \EHF+V_\text{nn}.
+  \EHF+V_\text{nn}
 \end{equation}
 In what follows, $\EHF$ will denote the electronic Hartree--Fock energy
 unless stated otherwise.
@@ -1491,11 +1491,11 @@ orbitals, two contributions arise,
   \nonumber\\
   &=
   \sum_{i<j}^{N}
-  \left(
+  \qty(
     \underbrace{\cJ_{ij}}_{\green{\text{Coulomb}}}
     -
     \underbrace{\cK_{ij}}_{\red{\text{exchange}}}
-  \right).
+  )
   \label{eq:hf-two-electron-energy}
 \end{align}
 
@@ -1504,7 +1504,7 @@ The first term,
   \cJ_{ij}
   =
   \mel{\chi_i(\bx_1)\chi_j(\bx_2)}{r_{12}^{-1}}
-       {\chi_i(\bx_1)\chi_j(\bx_2)},
+       {\chi_i(\bx_1)\chi_j(\bx_2)}
 \end{equation}
 is the \green{Coulomb integral}. Written explicitly,
 \begin{equation}
@@ -1514,7 +1514,7 @@ is the \green{Coulomb integral}. Written explicitly,
   \chi_i^*(\bx_1)\chi_j^*(\bx_2)
   \frac{1}{r_{12}}
   \chi_i(\bx_1)\chi_j(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
   \label{eq:coulomb-integral}
 \end{equation}
 It has a direct classical interpretation: it is the electrostatic repulsion
@@ -1525,7 +1525,7 @@ The second term,
   \cK_{ij}
   =
   \mel{\chi_i(\bx_1)\chi_j(\bx_2)}{r_{12}^{-1}}
-       {\chi_j(\bx_1)\chi_i(\bx_2)},
+       {\chi_j(\bx_1)\chi_i(\bx_2)}
 \end{equation}
 is the \red{exchange integral},
 \begin{equation}
@@ -1535,7 +1535,7 @@ is the \red{exchange integral},
   \chi_i^*(\bx_1)\chi_j^*(\bx_2)
   \frac{1}{r_{12}}
   \chi_j(\bx_1)\chi_i(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
   \label{eq:exchange-integral}
 \end{equation}
 Unlike $\cJ_{ij}$, the exchange contribution has no classical electrostatic
@@ -1554,7 +1554,7 @@ $\chi_j$ have opposite spin,
 \begin{equation}
   \braket{\alpha}{\beta}=0
   \qquad\Longrightarrow\qquad
-  \cK_{ij}=0.
+  \cK_{ij}=0
 \end{equation}
 Exchange therefore acts only between electrons of the same spin in the
 collinear RHF and UHF formulations considered here. Coulomb interactions, by
@@ -1570,9 +1570,9 @@ double sum,
   \frac{1}{2}
   \sum_{i=1}^{N}
   \sum_{j=1}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
   \label{eq:hf-double-sum}
 \end{equation}
 The factor $1/2$ avoids counting every distinct electron pair twice.
@@ -1582,7 +1582,7 @@ describe the Coulomb interaction of an electron with itself. However,
 \begin{equation}
   \red{
   \cJ_{ii}=\cK_{ii}
-  },
+  }
 \end{equation}
 because
 \begin{equation}
@@ -1595,11 +1595,11 @@ because
   \abs{\chi_i(\bx_1)}^2
   \abs{\chi_i(\bx_2)}^2
   }{r_{12}}
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{equation}
 Consequently,
 \begin{equation}
-  \cJ_{ii}-\cK_{ii}=0.
+  \cJ_{ii}-\cK_{ii}=0
 \end{equation}
 The spurious Coulomb self-interaction is therefore cancelled exactly by
 exchange in Hartree--Fock theory.
@@ -1612,9 +1612,9 @@ energy expression
   \sum_{i=1}^{N}h_{ii}
   +
   \sum_{i<j}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
   \label{eq:hf-energy-spin-orbitals}
 \end{equation}
 Equivalently,
@@ -1626,9 +1626,9 @@ Equivalently,
   \frac{1}{2}
   \sum_{i=1}^{N}
   \sum_{j=1}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
   \label{eq:hf-energy-spin-orbitals-double}
 \end{equation}
 
@@ -1649,20 +1649,20 @@ $\chJ_j$ acts on $\chi_i$ as
   \chJ_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
   \mel{\chi_j(\bx_2)}{r_{12}^{-1}}{\chi_j(\bx_2)}
-  \ket{\chi_i(\bx_1)},
+  \ket{\chi_i(\bx_1)}
 \end{equation}
 or explicitly,
 \begin{equation}
   \chJ_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
-  \left[
+  \qty[
     \int
     \chi_j^*(\bx_2)
     \frac{1}{r_{12}}
     \chi_j(\bx_2)
     \dd{\bx_2}
-  \right]
-  \ket{\chi_i(\bx_1)}.
+  ]
+  \ket{\chi_i(\bx_1)}
   \label{eq:coulomb-operator}
 \end{equation}
 The quantity in square brackets is the electrostatic potential generated by
@@ -1688,7 +1688,7 @@ Its expectation value is
   \frac{1}{r_{12}}
   \chi_i(\bx_1)
   \chi_j(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{align}
 
 The Coulomb operator is local in the usual one-particle sense. Once the
@@ -1697,7 +1697,7 @@ multiplication with a function of $\bx_1$,
 \begin{equation}
   \chJ_j(\bx_1)\chi_i(\bx_1)
   =
-  J_j(\bx_1)\chi_i(\bx_1).
+  J_j(\bx_1)\chi_i(\bx_1)
 \end{equation}
 Every orbital acted upon by $\chJ_j$ therefore experiences the same
 multiplicative Coulomb potential generated by orbital $j$.
@@ -1710,20 +1710,20 @@ defined by
   \chK_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
   \mel{\chi_j(\bx_2)}{r_{12}^{-1}}{\chi_i(\bx_2)}
-  \ket{\chi_j(\bx_1)},
+  \ket{\chi_j(\bx_1)}
 \end{equation}
 or explicitly,
 \begin{equation}
   \chK_j(\bx_1)\ket{\chi_i(\bx_1)}
   =
-  \left[
+  \qty[
     \int
     \chi_j^*(\bx_2)
     \frac{1}{r_{12}}
     \chi_i(\bx_2)
     \dd{\bx_2}
-  \right]
-  \ket{\chi_j(\bx_1)}.
+  ]
+  \ket{\chi_j(\bx_1)}
   \label{eq:exchange-operator}
 \end{equation}
 Its matrix element is
@@ -1746,7 +1746,7 @@ Its matrix element is
   \frac{1}{r_{12}}
   \chi_j(\bx_1)
   \chi_i(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{align}
 
 Unlike the Coulomb operator, $\chK_j$ is nonlocal. Its value at
@@ -1771,11 +1771,11 @@ orbitals,
   +
   \frac{1}{2}
   \sum_{ij}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right),
+  )
   \qquad
-  \braket{\chi_i}{\chi_j}=\delta_{ij}.
+  \braket{\chi_i}{\chi_j}=\delta_{ij}
   \label{eq:hf-energy-functional}
 \end{equation}
 The remainder of Hartree--Fock theory consists essentially in minimizing this
@@ -1813,7 +1813,7 @@ orbitals $\chi_i$ and $\chi_j$ is
   \chi_i^*(\bx_1)
   \hh(\bx_1)
   \chi_j(\bx_1)
-  \dd{\bx_1}.
+  \dd{\bx_1}
   \label{eq:one-electron-integral}
 \end{equation}
 For the Hartree--Fock problem, $\hh$ is the core Hamiltonian,
@@ -1822,18 +1822,18 @@ For the Hartree--Fock problem, $\hh$ is the core Hamiltonian,
   =
   -\frac{\laplacian}{2}
   -
-  \sum_A\frac{Z_A}{r_A},
+  \sum_A\frac{Z_A}{r_A}
 \end{equation}
 so that $h_{ij}$ contains both the electronic kinetic energy and the
 electron-nuclear attraction.
 
 Since $\hh$ is Hermitian,
 \begin{equation}
-  h_{ij}=h_{ji}^*.
+  h_{ij}=h_{ji}^*
 \end{equation}
 For real orbitals and a real one-electron operator, this reduces to
 \begin{equation}
-  h_{ij}=h_{ji}.
+  h_{ij}=h_{ji}
 \end{equation}
 
 In Mulliken notation, the same one-electron integral may equivalently be
@@ -1849,7 +1849,7 @@ written
   \chi_i^*(\bx_1)
   \hh(\bx_1)
   \chi_j(\bx_1)
-  \dd{\bx_1}.
+  \dd{\bx_1}
 \end{equation}
 Thus, for one-electron quantities, the distinction between physicists' and
 chemists' notation is essentially cosmetic. The important difference appears
@@ -1871,7 +1871,7 @@ notation,
   \frac{1}{r_{12}}
   \chi_k(\bx_1)
   \chi_l(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
   \label{eq:eri-physicists}
 \end{equation}
 The ordering of the indices reflects the underlying braket structure:
@@ -1885,15 +1885,15 @@ electron coordinate $\bx_1$, while the second and fourth refer to $\bx_2$:
   }{
     \underbrace{k}_{\bx_1}
     \underbrace{l}_{\bx_2}
-  }.
+  }
 \end{equation}
 
 With this notation, the Coulomb and exchange integrals introduced in the
 previous section are simply
 \begin{equation}
-  \cJ_{ij}=\braket{ij}{ij},
+  \cJ_{ij}=\braket{ij}{ij}
   \qquad
-  \cK_{ij}=\braket{ij}{ji}.
+  \cK_{ij}=\braket{ij}{ji}
   \label{eq:JK-physicists}
 \end{equation}
 The only difference between the two is therefore the permutation of the two
@@ -1906,7 +1906,7 @@ antisymmetrized two-electron integral,
   =
   \braket{ij}{kl}
   -
-  \braket{ij}{lk}.
+  \braket{ij}{lk}
   \label{eq:antisymmetrized-eri}
 \end{equation}
 Explicitly,
@@ -1917,11 +1917,11 @@ Explicitly,
   \chi_i^*(\bx_1)
   \chi_j^*(\bx_2)
   \frac{1}{r_{12}}
-  \left[
+  \qty[
     \chi_k(\bx_1)\chi_l(\bx_2)
     -
     \chi_l(\bx_1)\chi_k(\bx_2)
-  \right]
+  ]
   \dd{\bx_1}\dd{\bx_2}
   \nonumber\\
   &=
@@ -1931,14 +1931,14 @@ Explicitly,
   \frac{1}{r_{12}}
   (1-\chP_{12})
   \chi_k(\bx_1)\chi_l(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{align}
 The antisymmetrized integral combines the direct Coulomb contribution and
 its exchange counterpart into a single object. For example,
 \begin{equation}
   \mel{ij}{}{ij}
   =
-  \cJ_{ij}-\cK_{ij}.
+  \cJ_{ij}-\cK_{ij}
 \end{equation}
 The HF energy can therefore also be written compactly as
 \begin{equation}
@@ -1948,7 +1948,7 @@ The HF energy can therefore also be written compactly as
   +
   \frac{1}{2}
   \sum_{ij}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
 \end{equation}
 
 As expected from its definition, the antisymmetrized integral changes sign
@@ -1960,7 +1960,7 @@ upon exchanging either pair of fermionic indices,
   =
   -\mel{ij}{}{lk}
   =
-  \mel{ji}{}{lk}.
+  \mel{ji}{}{lk}
 \end{equation}
 This notation becomes particularly convenient in post-Hartree--Fock and
 many-body perturbation theories, where direct and exchange contributions
@@ -1981,7 +1981,7 @@ same four orbital indices. In Mulliken, or chemists', notation,
   \frac{1}{r_{12}}
   \chi_k^*(\bx_2)
   \chi_l(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
   \label{eq:eri-chemists}
 \end{equation}
 Here, the first pair of indices belongs to electron coordinate $\bx_1$ and
@@ -1991,7 +1991,7 @@ the second pair belongs to electron coordinate $\bx_2$:
     \underbrace{ij}_{\bx_1}
   }{
     \underbrace{kl}_{\bx_2}
-  }.
+  }
 \end{equation}
 
 The two notations therefore differ only by an index permutation. Comparing
@@ -1999,27 +1999,27 @@ Eqs.~\eqref{eq:eri-physicists} and \eqref{eq:eri-chemists} gives
 \begin{equation}
   \braket{ij}{kl}
   =
-  \rbraket{ik}{jl}.
+  \rbraket{ik}{jl}
   \label{eq:phys-chem-map}
 \end{equation}
 This simple correspondence is worth remembering:
 \begin{equation}
   \text{physicists: }\braket{ij}{kl}
   \qquad\longleftrightarrow\qquad
-  \text{chemists: }\rbraket{ik}{jl}.
+  \text{chemists: }\rbraket{ik}{jl}
 \end{equation}
 
 Consequently, the Coulomb and exchange integrals become
 \begin{equation}
   \cJ_{ij}
   =
-  \rbraket{ii}{jj},
+  \rbraket{ii}{jj}
   \qquad
   \cK_{ij}
   =
   \rbraket{ij}{ji}
   \qquad
-  \text{(chemists' notation)}.
+  \text{(chemists' notation)}
 \end{equation}
 These expressions also make the physical interpretation transparent:
 $\cJ_{ij}$ couples the densities $\chi_i^*\chi_i$ and
@@ -2036,7 +2036,7 @@ When the $\chi_p$ are collinear spin orbitals,
 \begin{equation}
   \chi_p(\bx)
   =
-  \sigma_p(\omega)\psi_p(\br),
+  \sigma_p(\omega)\psi_p(\br)
 \end{equation}
 integration over the spin coordinates gives
 \begin{equation}
@@ -2050,24 +2050,24 @@ integration over the spin coordinates gives
   \frac{1}{r_{12}}
   \psi_k(\br_1)
   \psi_l(\br_2)
-  \dd{\br_1}\dd{\br_2}.
+  \dd{\br_1}\dd{\br_2}
 \end{equation}
 A spin-orbital ERI therefore vanishes unless the spin on each electron line
 is conserved,
 \begin{equation}
-  \sigma_i=\sigma_k,
+  \sigma_i=\sigma_k
   \qquad
-  \sigma_j=\sigma_l.
+  \sigma_j=\sigma_l
 \end{equation}
 For the exchange integral,
 \begin{equation}
-  \cK_{ij}=\braket{ij}{ji},
+  \cK_{ij}=\braket{ij}{ji}
 \end{equation}
 this requires $\sigma_i=\sigma_j$. Hence,
 \begin{equation}
   \cK_{ij}=0
   \qquad
-  \text{for opposite-spin orbitals}.
+  \text{for opposite-spin orbitals}
 \end{equation}
 This is the integral form of the same-spin nature of Hartree--Fock exchange
 discussed in the previous section.
@@ -2092,7 +2092,7 @@ For reference, the physicists' ERI is
   \frac{1}{r_{12}}
   \chi_k(\bx_1)
   \chi_l(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{equation}
 For \red{complex-valued integrals}, physicists' ERIs obey
 \begin{equation}
@@ -2102,7 +2102,7 @@ For \red{complex-valued integrals}, physicists' ERIs obey
   =
   \braket{kl}{ij}^*
   =
-  \braket{lk}{ji}^*.
+  \braket{lk}{ji}^*
   \label{eq:eri-complex-symmetry}
 \end{equation}
 The first equality corresponds to exchanging the two electron coordinates,
@@ -2141,7 +2141,7 @@ In chemists' notation, the defining integral is
   \frac{1}{r_{12}}
   \chi_k^*(\bx_2)
   \chi_l(\bx_2)
-  \dd{\bx_1}\dd{\bx_2}.
+  \dd{\bx_1}\dd{\bx_2}
 \end{equation}
 For \green{real-valued integrals}, its symmetry relations take the familiar
 form
@@ -2170,7 +2170,7 @@ eightfold permutation symmetry.
 This symmetry has an important computational consequence. A naive set of
 $K$ one-electron basis functions generates $K^4$ four-index ERIs,
 \begin{equation}
-  \rbraket{\mu\nu}{\lambda\sigma}.
+  \rbraket{\mu\nu}{\lambda\sigma}
 \end{equation}
 However, many of these entries are identical by permutation symmetry.
 For four distinct indices, up to eight nominally different integrals
@@ -2217,10 +2217,10 @@ For two electrons, the normalized Slater determinant is
   \Psi_\text{HF}
   =
   \frac{1}{\sqrt{2}}
-  \begin{vmatrix}
+  \mdet{
     \chi_1(1) & \chi_2(1)\\
     \chi_1(2) & \chi_2(2)
-  \end{vmatrix},
+  }
 \end{equation}
 or, after expanding the determinant,
 \begin{equation}
@@ -2230,7 +2230,7 @@ or, after expanding the determinant,
     \chi_1(1)\chi_2(2)
     -
     \chi_2(1)\chi_1(2)
-  }{\sqrt{2}}.
+  }{\sqrt{2}}
   \label{eq:two-electron-determinant-example}
 \end{equation}
 
@@ -2265,7 +2265,7 @@ Its norm is
     +
     \braket{\chi_2(1)\chi_1(2)}
             {\chi_2(1)\chi_1(2)}
-  \Big].
+  \Big]
   \label{eq:two-electron-norm-expansion}
 \end{align}
 
@@ -2279,7 +2279,7 @@ For example,
   \braket{\chi_1(1)}{\chi_1(1)}
   \braket{\chi_2(2)}{\chi_2(2)}
   =
-  1.
+  1
 \end{equation}
 Likewise,
 \begin{align}
@@ -2289,7 +2289,7 @@ Likewise,
   \braket{\chi_1}{\chi_2}
   \braket{\chi_2}{\chi_1}
   \nonumber\\
-  &=0,
+  &=0
 \end{align}
 since the spin orbitals are orthogonal. The same argument applies to the
 other two terms, and therefore
@@ -2298,7 +2298,7 @@ other two terms, and therefore
   =
   \frac{1}{2}[1-0-0+1]
   =
-  1.
+  1
 \end{equation}
 
 This example explains the origin of the normalization factor $1/\sqrt{2}$
@@ -2326,7 +2326,7 @@ For two electrons, the one-electron part of the Hamiltonian is
 \begin{equation}
   \chO_1
   =
-  \hh(1)+\hh(2).
+  \hh(1)+\hh(2)
 \end{equation}
 Using Eq.~\eqref{eq:two-electron-determinant-example},
 \begin{align}
@@ -2369,7 +2369,7 @@ Using Eq.~\eqref{eq:two-electron-determinant-example},
   \mel{\chi_2(1)\chi_1(2)}
       {\hh(1)+\hh(2)}
       {\chi_2(1)\chi_1(2)}
-  \Big].
+  \Big]
   \label{eq:core-two-electron-expansion}
 \end{align}
 
@@ -2377,7 +2377,7 @@ Consider first the diagonal matrix element
 \begin{equation}
   \mel{\chi_1(1)\chi_2(2)}
       {\hh(1)+\hh(2)}
-      {\chi_1(1)\chi_2(2)}.
+      {\chi_1(1)\chi_2(2)}
 \end{equation}
 Because $\hh(1)$ acts only on the coordinates of electron $1$,
 \begin{align}
@@ -2388,7 +2388,7 @@ Because $\hh(1)$ acts only on the coordinates of electron $1$,
   \mel{\chi_1}{\hh}{\chi_1}
   \braket{\chi_2}{\chi_2}
   \nonumber\\
-  &=h_{11}.
+  &=h_{11}
 \end{align}
 Similarly,
 \begin{equation}
@@ -2396,7 +2396,7 @@ Similarly,
       {\hh(2)}
       {\chi_1(1)\chi_2(2)}
   =
-  h_{22},
+  h_{22}
 \end{equation}
 and hence
 \begin{equation}
@@ -2404,7 +2404,7 @@ and hence
       {\hh(1)+\hh(2)}
       {\chi_1(1)\chi_2(2)}
   =
-  h_{11}+h_{22}.
+  h_{11}+h_{22}
 \end{equation}
 
 The off-diagonal terms vanish. For example,
@@ -2419,7 +2419,7 @@ The off-diagonal terms vanish. For example,
   =
   h_{12}\times 0
   =
-  0,
+  0
 \end{align}
 and
 \begin{align}
@@ -2433,7 +2433,7 @@ and
   =
   0\times h_{21}
   =
-  0.
+  0
 \end{align}
 The cancellation therefore does \emph{not} require $h_{12}=0$; it follows
 from the orthogonality of the spectator orbital.
@@ -2446,14 +2446,14 @@ Collecting all terms gives
   [h_{11}+h_{22}-0-0+h_{22}+h_{11}]
   \nonumber\\
   &=
-  h_{11}+h_{22}.
+  h_{11}+h_{22}
 \end{align}
 
 This is the two-electron instance of the general Slater--Condon rule
 \begin{equation}
   \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}
   =
-  \sum_{i=1}^{N}h_{ii}.
+  \sum_{i=1}^{N}h_{ii}
 \end{equation}
 Only diagonal matrix elements over the occupied spin orbitals survive.
 
@@ -2468,7 +2468,7 @@ Only diagonal matrix elements over the occupied spin orbitals survive.
   \mel{\Psi_\text{HF}}{\chO_2}{\Psi_\text{HF}}
   =
   \sum_{i<j}^{N}
-  (\cJ_{ij}-\cK_{ij}),
+  (\cJ_{ij}-\cK_{ij})
 \end{equation}
 \violet{\textit{and write down the HF energy.}}
 
@@ -2478,7 +2478,7 @@ For a two-electron system there is only one distinct electron pair, so
 \begin{equation}
   \chO_2
   =
-  \frac{1}{r_{12}}.
+  \frac{1}{r_{12}}
 \end{equation}
 Direct expansion gives
 \begin{align}
@@ -2509,7 +2509,7 @@ Direct expansion gives
     \mel{\chi_2\chi_1}
         {r_{12}^{-1}}
         {\chi_2\chi_1}
-  \Big].
+  \Big]
   \label{eq:two-electron-two-body-expansion}
 \end{align}
 
@@ -2519,7 +2519,7 @@ The first term is the direct, or Coulomb, contribution,
       {r_{12}^{-1}}
       {\chi_1\chi_2}
   =
-  \cJ_{12},
+  \cJ_{12}
 \end{equation}
 whereas the second is the exchange contribution,
 \begin{equation}
@@ -2527,7 +2527,7 @@ whereas the second is the exchange contribution,
       {r_{12}^{-1}}
       {\chi_2\chi_1}
   =
-  \cK_{12}.
+  \cK_{12}
 \end{equation}
 By exchanging the dummy electron coordinates,
 \begin{equation}
@@ -2539,7 +2539,7 @@ By exchanging the dummy electron coordinates,
       {r_{12}^{-1}}
       {\chi_1\chi_2}
   =
-  \cJ_{12},
+  \cJ_{12}
 \end{equation}
 and similarly,
 \begin{equation}
@@ -2547,7 +2547,7 @@ and similarly,
       {r_{12}^{-1}}
       {\chi_1\chi_2}
   =
-  \cK_{12}.
+  \cK_{12}
 \end{equation}
 
 Consequently,
@@ -2566,7 +2566,7 @@ Consequently,
   ]
   \nonumber\\
   &=
-  \cJ_{12}-\cK_{12}.
+  \cJ_{12}-\cK_{12}
 \end{align}
 
 This simple calculation contains the essential physics of Hartree--Fock
@@ -2585,21 +2585,21 @@ Hartree--Fock energy
   +
   \cJ_{12}
   -
-  \cK_{12}.
+  \cK_{12}
   \label{eq:two-electron-hf-energy}
 \end{equation}
 
 If the two occupied spin orbitals have opposite spin, as in a closed-shell
 two-electron system,
 \begin{equation}
-  \chi_1(\bx)=\psi(\br)\alpha(\omega),
+  \chi_1(\bx)=\psi(\br)\alpha(\omega)
   \qquad
-  \chi_2(\bx)=\psi(\br)\beta(\omega),
+  \chi_2(\bx)=\psi(\br)\beta(\omega)
 \end{equation}
 then their exchange integral vanishes because
 $\braket{\alpha}{\beta}=0$:
 \begin{equation}
-  \cK_{12}=0.
+  \cK_{12}=0
 \end{equation}
 This does not mean that exchange is absent from Hartree--Fock theory; rather,
 exchange couples only same-spin spin orbitals. The corresponding
@@ -2625,7 +2625,7 @@ The one-electron operator contains one contribution for each electron,
   +
   \hh(\bx_2)
   +
-  \hh(\bx_3),
+  \hh(\bx_3)
 \end{equation}
 while the two-electron interaction contains one term for every distinct
 electron pair,
@@ -2636,20 +2636,20 @@ electron pair,
   +
   r_{13}^{-1}
   +
-  r_{23}^{-1}.
+  r_{23}^{-1}
 \end{equation}
 
 There are therefore three one-electron contributions,
 \begin{equation}
-  h_{11}+h_{22}+h_{33},
+  h_{11}+h_{22}+h_{33}
 \end{equation}
 and three distinct orbital pairs,
 \begin{equation}
-  (1,2),
+  (1,2)
   \qquad
-  (1,3),
+  (1,3)
   \qquad
-  (2,3).
+  (2,3)
 \end{equation}
 Each pair contributes one Coulomb term and one exchange term. Applying the
 preceding two-electron result to each pair gives
@@ -2660,7 +2660,7 @@ preceding two-electron result to each pair gives
   +
   \cJ_{12}+\cJ_{13}+\cJ_{23}
   -
-  \cK_{12}-\cK_{13}-\cK_{23}.
+  \cK_{12}-\cK_{13}-\cK_{23}
   \label{eq:three-electron-hf-energy}
 \end{equation}
 
@@ -2671,7 +2671,7 @@ Equivalently,
   \sum_{i=1}^{3}h_{ii}
   +
   \sum_{i<j}^{3}
-  (\cJ_{ij}-\cK_{ij}).
+  (\cJ_{ij}-\cK_{ij})
 \end{equation}
 The pattern is now clear: extending the result to an arbitrary number of
 electrons gives
@@ -2681,7 +2681,7 @@ electrons gives
   \sum_{i=1}^{N}h_{ii}
   +
   \sum_{i<j}^{N}
-  (\cJ_{ij}-\cK_{ij}).
+  (\cJ_{ij}-\cK_{ij})
 \end{equation}
 
 These few-electron examples provide an explicit derivation of the
@@ -2714,11 +2714,11 @@ spin-orbital form,
   +
   \frac{1}{2}
   \sum_{i=1}^{N}\sum_{j=1}^{N}
-  \left[
+  \qty[
     \braket{ij}{ij}
     -
     \braket{ij}{ji}
-  \right].
+  ]
   \label{eq:hf-energy-spin-general}
 \end{equation}
 This expression is compact and applies equally well to restricted and
@@ -2733,13 +2733,13 @@ The essential ingredients are the orthonormality relations
   =
   \braket{\beta}{\beta}
   =
-  1,
+  1
   \qquad
   \braket{\alpha}{\beta}
   =
   \braket{\beta}{\alpha}
   =
-  0.
+  0
   \label{eq:spin-orthogonality-spatial-reduction}
 \end{equation}
 As we shall see, the first two relations preserve the Coulomb interaction
@@ -2760,13 +2760,13 @@ occupied spin orbitals are constructed:
   &\equiv
   \psi_1(\bx)
   =
-  \psi_1(\br)\alpha(\omega),
+  \psi_1(\br)\alpha(\omega)
   \\
   \chi_2(\bx)
   &\equiv
   \Bar{\psi}_1(\bx)
   =
-  \psi_1(\br)\beta(\omega).
+  \psi_1(\br)\beta(\omega)
   \label{eq:h2-spin-orbitals}
 \end{align}
 The bar therefore denotes the $\beta$ spin partner of the corresponding
@@ -2782,7 +2782,7 @@ In the spin-orbital representation, the HF energy is
   +
   \braket{\chi_1\chi_2}{\chi_1\chi_2}
   -
-  \braket{\chi_1\chi_2}{\chi_2\chi_1}.
+  \braket{\chi_1\chi_2}{\chi_2\chi_1}
   \label{eq:h2-spin-orbital-energy}
 \end{equation}
 Using the barred notation, the same expression can be written in
@@ -2796,7 +2796,7 @@ spatial-orbital-style notation as
   +
   \rbraket{\psi_1\psi_1}{\Bar{\psi}_1\Bar{\psi}_1}
   -
-  \rbraket{\psi_1\Bar{\psi}_1}{\Bar{\psi}_1\psi_1}.
+  \rbraket{\psi_1\Bar{\psi}_1}{\Bar{\psi}_1\psi_1}
 \end{equation}
 We now evaluate each contribution by separating the spin and spatial
 coordinates.
@@ -2838,13 +2838,13 @@ $\alpha$ spin orbital,
     \hh(\br)
     \psi_1(\br)
     \dd{\br}
-  ]}_{\rmel{\psi_1}{\hh}{\psi_1}}.
+  ]}_{\rmel{\psi_1}{\hh}{\psi_1}}
 \end{align}
 Thus,
 \begin{equation}
   \rmel{\chi_1}{\hh}{\chi_1}
   =
-  \rmel{\psi_1}{\hh}{\psi_1}.
+  \rmel{\psi_1}{\hh}{\psi_1}
 \end{equation}
 
 Exactly the same argument applies to the $\beta$ spin orbital,
@@ -2880,13 +2880,13 @@ Exactly the same argument applies to the $\beta$ spin orbital,
     \hh(\br)
     \psi_1(\br)
     \dd{\br}
-  ]}_{\rmel{\psi_1}{\hh}{\psi_1}},
+  ]}_{\rmel{\psi_1}{\hh}{\psi_1}}
 \end{align}
 and therefore
 \begin{equation}
   \rmel{\chi_2}{\hh}{\chi_2}
   =
-  \rmel{\psi_1}{\hh}{\psi_1}.
+  \rmel{\psi_1}{\hh}{\psi_1}
 \end{equation}
 
 The two electrons thus contribute identically to the one-electron energy:
@@ -2895,7 +2895,7 @@ The two electrons thus contribute identically to the one-electron energy:
   +
   \rmel{\chi_2}{\hh}{\chi_2}
   =
-  2\rmel{\psi_1}{\hh}{\psi_1}.
+  2\rmel{\psi_1}{\hh}{\psi_1}
 \end{equation}
 The factor of two is simply the occupation number of the doubly occupied
 spatial orbital.
@@ -2953,13 +2953,13 @@ the spin integration. Explicitly,
     \frac{1}{r_{12}}
     \psi_1^*(\br_2)\psi_1(\br_2)
     \dd{\br_1}\dd{\br_2}
-  ]}_{\rbraket{\psi_1\psi_1}{\psi_1\psi_1}}.
+  ]}_{\rbraket{\psi_1\psi_1}{\psi_1\psi_1}}
 \end{align}
 Hence,
 \begin{equation}
   \rbraket{\chi_1\chi_1}{\chi_2\chi_2}
   =
-  \rbraket{\psi_1\psi_1}{\psi_1\psi_1}.
+  \rbraket{\psi_1\psi_1}{\psi_1\psi_1}
 \end{equation}
 
 This is the electrostatic repulsion between the two electrons occupying the
@@ -3020,12 +3020,12 @@ The exchange term behaves differently because the spin functions are crossed:
     \dd{\br_1}\dd{\br_2}
   ]}_{\rbraket{\psi_1\psi_1}{\psi_1\psi_1}}
   \\
-  &=0.
+  &=0
 \end{align}
 
 Thus,
 \begin{equation}
-  \rbraket{\chi_1\chi_2}{\chi_2\chi_1}=0.
+  \rbraket{\chi_1\chi_2}{\chi_2\chi_1}=0
 \end{equation}
 The spatial part of the integral is perfectly finite; it is the
 \emph{orthogonality of the spin functions} that makes the complete
@@ -3047,7 +3047,7 @@ minimal-basis \ce{H2},
   =
   2\rmel{1}{\hh}{1}
   +
-  \rbraket{11}{11}.
+  \rbraket{11}{11}
   \label{eq:h2-rhf-energy}
 \end{equation}
 
@@ -3075,9 +3075,9 @@ by a closed-shell RHF determinant. There are $N/2$ occupied spatial orbitals,
 and each spatial orbital $\psi_i$ generates an $\alpha$ and a $\beta$ spin
 orbital,
 \begin{equation}
-  \psi_i(\br)\alpha(\omega),
+  \psi_i(\br)\alpha(\omega)
   \qquad
-  \psi_i(\br)\beta(\omega).
+  \psi_i(\br)\beta(\omega)
 \end{equation}
 
 To avoid ambiguity, in the remainder of this derivation the indices
@@ -3092,11 +3092,11 @@ Starting from the general spin-orbital expression,
   +
   \frac{1}{2}
   \sum_{p=1}^{N}\sum_{q=1}^{N}
-  \left[
+  \qty[
     \braket{pq}{pq}
     -
     \braket{pq}{qp}
-  \right],
+  ]
   \label{eq:rhf-start-spin}
 \end{equation}
 we now sum explicitly over the two spin components associated with each
@@ -3119,7 +3119,7 @@ components:
   \sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
   \\
   &=
-  2\sum_{i=1}^{N/2}\rmel{i}{\hh}{i}.
+  2\sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
   \label{eq:rhf-one-electron-spatial}
 \end{align}
 Again, the factor of two simply reflects the double occupation of every
@@ -3130,58 +3130,58 @@ occupied spatial orbital.
 For every pair of occupied spatial orbitals $i$ and $j$, four spin
 combinations are possible:
 \begin{equation}
-  \alpha\alpha,
+  \alpha\alpha
   \qquad
-  \alpha\beta,
+  \alpha\beta
   \qquad
-  \beta\alpha,
+  \beta\alpha
   \qquad
-  \beta\beta.
+  \beta\beta
 \end{equation}
 Separating these four possibilities gives
 \begin{align}
   &\frac{1}{2}
   \sum_{p=1}^{N}\sum_{q=1}^{N}
-  \left[
+  \qty[
     \braket{pq}{pq}
     -
     \braket{pq}{qp}
-  \right]
+  ]
   \notag\\
   &\quad=
   \frac{1}{2}
   \Bigg\{
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
-  \left(
+  \qty(
     \braket{ij}{ij}
     -
     \braket{ij}{ji}
-  \right)
+  )
   \notag\\
   &\qquad\quad+
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
-  \left(
+  \qty(
     \braket{\Bar{i}j}{\Bar{i}j}
     -
     \braket{\Bar{i}j}{j\Bar{i}}
-  \right)
+  )
   \notag\\
   &\qquad\quad+
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
-  \left(
+  \qty(
     \braket{i\Bar{j}}{i\Bar{j}}
     -
     \braket{i\Bar{j}}{\Bar{j}i}
-  \right)
+  )
   \notag\\
   &\qquad\quad+
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
-  \left(
+  \qty(
     \braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
     -
     \braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
-  \right)
-  \Bigg\}.
+  )
+  \Bigg\}
   \label{eq:rhf-four-spin-combinations}
 \end{align}
 
@@ -3196,7 +3196,7 @@ spin overlaps. After integration over spin,
   =
   \braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
   =
-  \rbraket{ii}{jj}.
+  \rbraket{ii}{jj}
 \end{equation}
 
 Exchange behaves differently. The two same-spin combinations survive,
@@ -3205,7 +3205,7 @@ Exchange behaves differently. The two same-spin combinations survive,
   =
   \braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
   =
-  \rbraket{ij}{ji},
+  \rbraket{ij}{ji}
 \end{equation}
 whereas the two opposite-spin exchange integrals vanish,
 \begin{equation}
@@ -3213,39 +3213,39 @@ whereas the two opposite-spin exchange integrals vanish,
   =
   \braket{i\Bar{j}}{\Bar{j}i}
   =
-  0.
+  0
 \end{equation}
 
 For each pair of spatial orbitals, the four spin combinations therefore
 produce
 \begin{equation}
   \frac{1}{2}
-  \left[
+  \qty[
     4\rbraket{ii}{jj}
     -
     2\rbraket{ij}{ji}
-  \right]
+  ]
   =
   2\rbraket{ii}{jj}
   -
-  \rbraket{ij}{ji}.
+  \rbraket{ij}{ji}
 \end{equation}
 Consequently,
 \begin{equation}
   \frac{1}{2}
   \sum_{p=1}^{N}\sum_{q=1}^{N}
-  \left[
+  \qty[
     \braket{pq}{pq}
     -
     \braket{pq}{qp}
-  \right]
+  ]
   =
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
-  \left[
+  \qty[
     2\rbraket{ii}{jj}
     -
     \rbraket{ij}{ji}
-  \right].
+  ]
   \label{eq:rhf-two-electron-spatial}
 \end{equation}
 
@@ -3259,11 +3259,11 @@ closed-shell RHF energy,
   +
   \sum_{i=1}^{N/2}
   \sum_{j=1}^{N/2}
-  \left[
+  \qty[
     2\rbraket{ii}{jj}
     -
     \rbraket{ij}{ji}
-  \right].
+  ]
   \label{eq:rhf-energy-spatial}
 \end{equation}
 
@@ -3271,11 +3271,11 @@ Introducing the spatial-orbital Coulomb and exchange integrals
 \begin{equation}
   J_{ij}
   \equiv
-  \rbraket{ii}{jj},
+  \rbraket{ii}{jj}
   \qquad
   K_{ij}
   \equiv
-  \rbraket{ij}{ji},
+  \rbraket{ij}{ji}
 \end{equation}
 the same expression takes the compact form
 \begin{equation}
@@ -3285,9 +3285,9 @@ the same expression takes the compact form
   +
   \sum_{i=1}^{N/2}
   \sum_{j=1}^{N/2}
-  \left(
+  \qty(
     2J_{ij}-K_{ij}
-  \right).
+  )
   \label{eq:rhf-energy-jk}
 \end{equation}
 
@@ -3298,14 +3298,14 @@ combinations contribute to the Coulomb interaction, whereas only the two
 same-spin combinations contribute to exchange. After the overall factor
 $1/2$ removing double counting, the result is precisely
 \begin{equation}
-  2J_{ij}-K_{ij}.
+  2J_{ij}-K_{ij}
 \end{equation}
 
 Notice also that the terms with $i=j$ are perfectly well behaved:
 \begin{equation}
   2J_{ii}-K_{ii}
   =
-  J_{ii},
+  J_{ii}
 \end{equation}
 since $J_{ii}=K_{ii}$. Thus, a doubly occupied spatial orbital contains one
 physical Coulomb repulsion between its $\alpha$ and $\beta$ electrons; the
@@ -3324,11 +3324,11 @@ orbitals.}}
 
 For the determinant considered here, the three occupied spin orbitals are
 \begin{equation}
-  \chi_1=\alpha\psi_1,
+  \chi_1=\alpha\psi_1
   \qquad
-  \chi_2=\beta\psi_1,
+  \chi_2=\beta\psi_1
   \qquad
-  \chi_3=\alpha\psi_2.
+  \chi_3=\alpha\psi_2
 \end{equation}
 The first spatial orbital is therefore doubly occupied, whereas the second
 contains a single $\alpha$ electron.
@@ -3337,23 +3337,23 @@ The one-electron contribution is immediately
 \begin{equation}
   E_1
   =
-  2h_{11}+h_{22}.
+  2h_{11}+h_{22}
 \end{equation}
 
 There are three electron pairs. The two electrons in $\psi_1$ have opposite
 spin and contribute
 \begin{equation}
-  J_{11}.
+  J_{11}
 \end{equation}
 The $\alpha$ electron in $\psi_2$ interacts Coulombically with both
 electrons in $\psi_1$, giving
 \begin{equation}
-  2J_{12}.
+  2J_{12}
 \end{equation}
 Exchange occurs only with the $\alpha$ electron in $\psi_1$, and therefore
 contributes
 \begin{equation}
-  -K_{12}.
+  -K_{12}
 \end{equation}
 The total energy is consequently
 \begin{equation}
@@ -3367,7 +3367,7 @@ The total energy is consequently
   +
   2J_{12}
   -
-  K_{12}.
+  K_{12}
 \end{equation}
 
 This example provides a useful way of reading spatial-orbital HF energies:
@@ -3385,7 +3385,7 @@ For the occupation considered here, the first two spatial orbitals are
 doubly occupied and the third contains a single $\alpha$ electron,
 corresponding schematically to
 \begin{equation}
-  \psi_1^2\psi_2^2\psi_3^1.
+  \psi_1^2\psi_2^2\psi_3^1
 \end{equation}
 The one-electron contribution is therefore
 \begin{equation}
@@ -3395,14 +3395,14 @@ The one-electron contribution is therefore
   +
   2h_{22}
   +
-  h_{33}.
+  h_{33}
 \end{equation}
 
 The two electrons occupying $\psi_1$ contribute $J_{11}$, while those in
 $\psi_2$ contribute $J_{22}$. Between the two doubly occupied orbitals there
 are four Coulomb pairs but only two same-spin exchange pairs, giving
 \begin{equation}
-  4J_{12}-2K_{12}.
+  4J_{12}-2K_{12}
 \end{equation}
 
 The singly occupied $\psi_3$ orbital interacts with both electrons in each
@@ -3442,7 +3442,7 @@ Collecting all terms gives
     -
     K_{13}
     -
-    K_{23}.
+    K_{23}
   \end{split}
 \end{equation}
 
@@ -3493,7 +3493,7 @@ determinant is
     \chi_{\green{j}}
     \ldots
     \chi_N
-  }.
+  }
   \label{eq:hf-reference-determinant}
 \end{equation}
 Here and in the following,
@@ -3519,7 +3519,7 @@ orbital does not.
 Because the spin orbitals form an orthonormal set, the occupied and virtual
 subspaces are mutually orthogonal,
 \begin{equation}
-  \braket{\chi_i}{\chi_a}=0.
+  \braket{\chi_i}{\chi_a}=0
 \end{equation}
 This simple property will have important consequences for matrix elements
 between different determinants.
@@ -3534,11 +3534,11 @@ A singly excited determinant is obtained by removing an electron from
 an occupied spin orbital $i$ and placing it in a virtual spin orbital $a$.
 Symbolically,
 \begin{equation}
-  i\longrightarrow a.
+  i\longrightarrow a
 \end{equation}
 The resulting determinant is denoted
 \begin{equation}
-  \ket{\Psi_{\green{i}}^{\red{a}}}.
+  \ket{\Psi_{\green{i}}^{\red{a}}}
 \end{equation}
 In determinant notation,
 \begin{equation}
@@ -3551,7 +3551,7 @@ In determinant notation,
     \chi_{\green{j}}
     \ldots
     \chi_N
-  }.
+  }
 \end{equation}
 Thus, $\ket{\Psi_i^a}$ differs from the reference determinant by exactly one
 spin orbital.
@@ -3563,7 +3563,7 @@ creation and annihilation operators,
   =
   \cre{\red{a}}
   \ani{\green{i}}
-  \ket{\Psi_0}.
+  \ket{\Psi_0}
   \label{eq:single-excited-determinant}
 \end{equation}
 The annihilation operator $\ani{i}$ first removes the electron occupying
@@ -3578,7 +3578,7 @@ virtual orbital $a$:
   \qquad\Longleftrightarrow\qquad
   \text{one hole }i
   +
-  \text{one particle }a.
+  \text{one particle }a
 \end{equation}
 This particle-hole language will reappear naturally in excited-state and
 many-body formulations.
@@ -3586,7 +3586,7 @@ many-body formulations.
 Because one occupied orbital has been replaced by an orthogonal virtual
 orbital,
 \begin{equation}
-  \braket{\Psi_0}{\Psi_i^a}=0.
+  \braket{\Psi_0}{\Psi_i^a}=0
 \end{equation}
 Thus, every singly excited determinant is orthogonal to the HF reference.
 
@@ -3599,7 +3599,7 @@ Thus, every singly excited determinant is orthogonal to the HF reference.
 A doubly excited determinant is obtained by replacing two occupied
 spin orbitals, $i$ and $j$, by two virtual spin orbitals, $a$ and $b$:
 \begin{equation}
-  ij\longrightarrow ab.
+  ij\longrightarrow ab
 \end{equation}
 In determinant notation,
 \begin{equation}
@@ -3612,7 +3612,7 @@ In determinant notation,
     \chi_{\red{b}}
     \ldots
     \chi_N
-  }.
+  }
 \end{equation}
 In second-quantized notation,
 \begin{equation}
@@ -3622,7 +3622,7 @@ In second-quantized notation,
   \cre{\red{b}}
   \ani{\green{j}}
   \ani{\green{i}}
-  \ket{\Psi_0}.
+  \ket{\Psi_0}
   \label{eq:double-excited-determinant}
 \end{equation}
 The determinant now differs from the reference by two spin orbitals and
@@ -3633,11 +3633,11 @@ interchanging two such operators changes the sign because
 \begin{equation}
   \cre{p}\cre{q}
   =
-  -\cre{q}\cre{p},
+  -\cre{q}\cre{p}
   \qquad
   \ani{p}\ani{q}
   =
-  -\ani{q}\ani{p}.
+  -\ani{q}\ani{p}
 \end{equation}
 A consistent ordering convention therefore fixes the overall phase of each
 excited determinant. This phase has no effect on diagonal expectation
@@ -3664,7 +3664,7 @@ between different determinants.
 The construction extends immediately to higher substitutions. A triple
 excitation replaces three occupied orbitals,
 \begin{equation}
-  ijk\longrightarrow abc,
+  ijk\longrightarrow abc
 \end{equation}
 and may be written
 \begin{equation}
@@ -3672,17 +3672,17 @@ and may be written
   =
   \cre{a}\cre{b}\cre{c}
   \ani{k}\ani{j}\ani{i}
-  \ket{\Psi_0}.
+  \ket{\Psi_0}
 \end{equation}
 More generally, an $m$-fold excited determinant differs from the reference
 by $m$ occupied-to-virtual substitutions. The integer $m$ is called the
 excitation rank:
 \begin{equation}
   \begin{array}{ccl}
-    m=0 &:& \text{reference determinant},\\
-    m=1 &:& \text{single excitation},\\
-    m=2 &:& \text{double excitation},\\
-    m=3 &:& \text{triple excitation},\\
+    m=0 &:& \text{reference determinant}\\
+    m=1 &:& \text{single excitation}\\
+    m=2 &:& \text{double excitation}\\
+    m=3 &:& \text{triple excitation}\\
     &\vdots&
   \end{array}
 \end{equation}
@@ -3692,14 +3692,14 @@ of singly excited determinants is
 \begin{equation}
   N_\text{S}
   =
-  N(2K-N),
+  N(2K-N)
 \end{equation}
 whereas the number of doubly excited determinants is
 \begin{equation}
   N_\text{D}
   =
   \binom{N}{2}
-  \binom{2K-N}{2}.
+  \binom{2K-N}{2}
 \end{equation}
 The number of possible determinants therefore grows extremely rapidly with
 the size of the orbital space. This combinatorial growth is one of the
@@ -3721,7 +3721,7 @@ In general,
 \begin{equation}
   \chH_\text{elec}\ket{\Psi_i^a}
   \neq
-  E_i^a\ket{\Psi_i^a},
+  E_i^a\ket{\Psi_i^a}
 \end{equation}
 and similarly for doubly and higher excited determinants. The exact excited
 states are, in general, linear combinations of many determinants,
@@ -3739,7 +3739,7 @@ states are, in general, linear combinations of many determinants,
   C_{ij}^{ab,(I)}
   \ket{\Psi_{ij}^{ab}}
   +
-  \cdots.
+  \cdots
 \end{equation}
 The determinants introduced here should therefore be viewed as a convenient
 many-electron basis built from the HF orbitals.
@@ -3762,7 +3762,7 @@ Schematically,
 \begin{equation}
   \text{number of orbital substitutions}
   \quad\Longrightarrow\quad
-  \text{structure of the Hamiltonian matrix element}.
+  \text{structure of the Hamiltonian matrix element}
 \end{equation}
 A one-electron operator can connect determinants differing by at most one
 spin orbital, whereas a two-electron operator can connect determinants
@@ -3808,7 +3808,7 @@ Consider a general one-electron operator,
 \begin{equation}
   \chO_1
   =
-  \sum_{p=1}^{N}\hh(\bx_p).
+  \sum_{p=1}^{N}\hh(\bx_p)
   \label{eq:slater-condon-one-body}
 \end{equation}
 The Slater--Condon rule depends on how many spin orbitals differ between the
@@ -3820,21 +3820,21 @@ If the two determinants are identical,
 \begin{equation}
   \ket{\red{K}}
   =
-  \ket{\cdots i j\cdots},
+  \ket{\cdots i j\cdots}
 \end{equation}
 then the matrix element is simply the sum of the one-electron expectation
 values over all occupied spin orbitals:
 \begin{equation}
   \mel{\red{K}}{\chO_1}{\red{K}}
   =
-  \sum_{i\in K}\mel{i}{\hh}{i}.
+  \sum_{i\in K}\mel{i}{\hh}{i}
   \label{eq:sc-one-zero}
 \end{equation}
 For the Hartree--Fock reference,
 \begin{equation}
   \mel{\Psi_0}{\chO_1}{\Psi_0}
   =
-  \sum_{i=1}^{N}h_{ii}.
+  \sum_{i=1}^{N}h_{ii}
 \end{equation}
 
 This is the result already encountered in the derivation of the HF energy:
@@ -3847,16 +3847,16 @@ Consider
 \begin{equation}
   \ket{\red{K}}
   =
-  \ket{\cdots i j\cdots},
+  \ket{\cdots i j\cdots}
   \qquad
   \ket{\blue{L}}
   =
-  \ket{\cdots k j\cdots}.
+  \ket{\cdots k j\cdots}
 \end{equation}
 All occupied spin orbitals are common to the two determinants except for the
 replacement
 \begin{equation}
-  i\longleftrightarrow k.
+  i\longleftrightarrow k
 \end{equation}
 The spectator orbitals integrate to unity, while orthogonality eliminates
 all terms in which the one-electron operator acts on a common orbital.
@@ -3864,14 +3864,14 @@ Consequently,
 \begin{equation}
   \mel{\red{K}}{\chO_1}{\blue{L}}
   =
-  \mel{i}{\hh}{k}.
+  \mel{i}{\hh}{k}
   \label{eq:sc-one-one}
 \end{equation}
 For example, between the HF reference and a singly excited determinant,
 \begin{equation}
   \mel*{\Psi_0}{\chO_1}{\Psi_{\green{i}}^{\red{a}}}
   =
-  h_{\green{i}\red{a}}.
+  h_{\green{i}\red{a}}
 \end{equation}
 
 Thus a one-electron operator can directly remove an electron from one spin
@@ -3883,11 +3883,11 @@ Let
 \begin{equation}
   \ket{\red{K}}
   =
-  \ket{\cdots i j\cdots},
+  \ket{\cdots i j\cdots}
   \qquad
   \ket{\blue{L}}
   =
-  \ket{\cdots k l\cdots},
+  \ket{\cdots k l\cdots}
 \end{equation}
 so that at least two occupied spin orbitals differ. Since $\chO_1$ can act
 on only one electron, it cannot simultaneously repair both substitutions.
@@ -3896,7 +3896,7 @@ remains, and the matrix element vanishes:
 \begin{equation}
   \mel{\red{K}}{\chO_1}{\blue{L}}
   =
-  0.
+  0
   \label{eq:sc-one-two}
 \end{equation}
 In particular,
@@ -3904,13 +3904,13 @@ In particular,
   \mel*{\Psi_0}{\chO_1}
   {\Psi_{\green{ij}}^{\red{ab}}}
   =
-  0.
+  0
 \end{equation}
 
 More generally,
 \begin{equation}
   \chO_1
-  \quad\text{connects determinants differing by at most one spin orbital}.
+  \quad\text{connects determinants differing by at most one spin orbital}
 \end{equation}
 
 % ============================================================================
@@ -3923,7 +3923,7 @@ Consider now the electron-electron interaction,
 \begin{equation}
   \chO_2
   =
-  \sum_{p<q}^{N}\frac{1}{r_{pq}}.
+  \sum_{p<q}^{N}\frac{1}{r_{pq}}
   \label{eq:slater-condon-two-body}
 \end{equation}
 Because this operator acts simultaneously on two electrons, its connectivity
@@ -3937,7 +3937,7 @@ For identical determinants,
   =
   \frac{1}{2}
   \sum_{i\in K}\sum_{j\in K}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
   \label{eq:sc-two-zero}
 \end{equation}
 The antisymmetrized integral
@@ -3958,7 +3958,7 @@ For the HF reference,
   =
   \frac{1}{2}
   \sum_{ij}^{N}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
 \end{equation}
 
 \paragraph{Case 2: determinants differ by one spin orbital.}
@@ -3967,11 +3967,11 @@ Consider again
 \begin{equation}
   \ket{\red{K}}
   =
-  \ket{\cdots i j\cdots},
+  \ket{\cdots i j\cdots}
   \qquad
   \ket{\blue{L}}
   =
-  \ket{\cdots k j\cdots}.
+  \ket{\cdots k j\cdots}
 \end{equation}
 One electron undergoes the substitution $i\rightarrow k$, while the second
 electron acted upon by $\chO_2$ may occupy any spin orbital common to the two
@@ -3980,7 +3980,7 @@ determinants. Summing over these spectator occupied orbitals gives
   \mel{\red{K}}{\chO_2}{\blue{L}}
   =
   \sum_{j\in K\cap L}
-  \mel{ij}{}{kj}.
+  \mel{ij}{}{kj}
   \label{eq:sc-two-one}
 \end{equation}
 For the reference and a singly excited determinant,
@@ -3989,7 +3989,7 @@ For the reference and a singly excited determinant,
   {\Psi_{\green{i}}^{\red{a}}}
   =
   \sum_{k}^{N}
-  \mel{\green{i}k}{}{\red{a}k}.
+  \mel{\green{i}k}{}{\red{a}k}
   \label{eq:sc-reference-single-two-body}
 \end{equation}
 
@@ -4002,18 +4002,18 @@ Let
 \begin{equation}
   \ket{\red{K}}
   =
-  \ket{\cdots i j\cdots},
+  \ket{\cdots i j\cdots}
   \qquad
   \ket{\blue{L}}
   =
-  \ket{\cdots k l\cdots}.
+  \ket{\cdots k l\cdots}
 \end{equation}
 The two-electron operator can now act precisely on the two orbitals that
 differ, giving
 \begin{equation}
   \mel{\red{K}}{\chO_2}{\blue{L}}
   =
-  \mel{ij}{}{kl}.
+  \mel{ij}{}{kl}
   \label{eq:sc-two-two}
 \end{equation}
 Thus,
@@ -4021,7 +4021,7 @@ Thus,
   \mel*{\Psi_0}{\chO_2}
   {\Psi_{\green{ij}}^{\red{ab}}}
   =
-  \mel{\green{ij}}{}{\red{ab}}.
+  \mel{\green{ij}}{}{\red{ab}}
 \end{equation}
 
 This result is particularly important in correlated wavefunction theory:
@@ -4037,14 +4037,14 @@ simultaneously. Therefore,
   =
   0
   \qquad
-  \text{if $K$ and $L$ differ by three or more spin orbitals}.
+  \text{if $K$ and $L$ differ by three or more spin orbitals}
   \label{eq:sc-two-three}
 \end{equation}
 
 Hence,
 \begin{equation}
   \chO_2
-  \quad\text{connects determinants differing by at most two spin orbitals}.
+  \quad\text{connects determinants differing by at most two spin orbitals}
 \end{equation}
 
 % ============================================================================
@@ -4057,7 +4057,7 @@ Because
 \begin{equation}
   \chH_\text{elec}
   =
-  \chO_1+\chO_2,
+  \chO_1+\chO_2
 \end{equation}
 the preceding results may be summarized directly for the electronic
 Hamiltonian.
@@ -4070,7 +4070,7 @@ For identical determinants,
   +
   \frac{1}{2}
   \sum_{i,j\in K}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
   \label{eq:sc-h-zero}
 \end{equation}
 
@@ -4081,7 +4081,7 @@ For determinants differing by a single substitution $i\rightarrow a$,
   h_{ia}
   +
   \sum_{k}^{N}
-  \mel{ik}{}{ak}.
+  \mel{ik}{}{ak}
   \label{eq:sc-h-single}
 \end{equation}
 
@@ -4089,7 +4089,7 @@ For determinants differing by a double substitution $ij\rightarrow ab$,
 \begin{equation}
   \mel{\Psi_0}{\chH_\text{elec}}{\Psi_{ij}^{ab}}
   =
-  \mel{ij}{}{ab}.
+  \mel{ij}{}{ab}
   \label{eq:sc-h-double}
 \end{equation}
 
@@ -4126,7 +4126,7 @@ Thus,
 \begin{equation}
   \text{orbital excitation}
   \neq
-  \text{state-specific orbital optimization}.
+  \text{state-specific orbital optimization}
 \end{equation}
 
 In the first procedure, the reference orbitals remain frozen and only their
@@ -4149,7 +4149,7 @@ give
   h_{ia}
   +
   \sum_{k}^{N}
-  \mel{ik}{}{ak}.
+  \mel{ik}{}{ak}
 \end{align}
 The right-hand side is precisely an occupied-virtual matrix element of the
 Fock operator,
@@ -4159,14 +4159,14 @@ Fock operator,
   h_{ia}
   +
   \sum_{k}^{N}
-  \mel{ik}{}{ak}.
+  \mel{ik}{}{ak}
 \end{equation}
 
 At a stationary Hartree--Fock solution, occupied-virtual orbital rotations
 cannot lower the energy to first order. The corresponding Fock matrix
 elements therefore vanish:
 \begin{equation}
-  f_{ia}=0.
+  f_{ia}=0
 \end{equation}
 Hence,
 \begin{equation}
@@ -4180,7 +4180,7 @@ Hence,
   =
   f_{\green{i}\red{a}}
   =
-  0.
+  0
   \label{eq:brillouin-theorem}
 \end{equation}
 This result is Brillouin's theorem.
@@ -4210,25 +4210,25 @@ Within the nonrelativistic spin-free framework, the electronic Hamiltonian
 commutes with both the total-spin operator and its projection along the
 chosen quantization axis,
 \begin{equation}
-  \comm{\chH}{\purple{\chS^2}}=0,
+  \comm{\chH}{\purple{\chS^2}}=0
   \qquad
-  \comm{\chH}{\violet{\chS_z}}=0.
+  \comm{\chH}{\violet{\chS_z}}=0
 \end{equation}
 The exact eigenfunctions of $\chH$ may therefore be chosen as simultaneous
 eigenfunctions of $\chS^2$ and $\chS_z$:
 \begin{align}
   \purple{\chS^2}\ket{S,M_S}
   &=
-  S(S+1)\ket{S,M_S},
+  S(S+1)\ket{S,M_S}
   \\
   \violet{\chS_z}\ket{S,M_S}
   &=
-  M_S\ket{S,M_S}.
+  M_S\ket{S,M_S}
 \end{align}
 
 The quantum number $S$ determines the spin multiplicity,
 \begin{equation}
-  \text{multiplicity}=2S+1.
+  \text{multiplicity}=2S+1
 \end{equation}
 Thus,
 \begin{equation}
@@ -4237,7 +4237,7 @@ Thus,
 correspond to singlets, doublets, triplets, quartets, and so forth. For a
 given value of $S$, the spin projection takes the values
 \begin{equation}
-  M_S=-S,-S+1,\ldots,S-1,S.
+  M_S=-S,-S+1,\ldots,S-1,S
 \end{equation}
 
 For a collinear determinant containing $N^\alpha$ spin-up and $N^\beta$
@@ -4245,11 +4245,11 @@ spin-down electrons,
 \begin{equation}
   \violet{\chS_z}\ket{\Psi}
   =
-  M_S\ket{\Psi},
+  M_S\ket{\Psi}
   \qquad
   M_S
   =
-  \frac{N^\alpha-N^\beta}{2}.
+  \frac{N^\alpha-N^\beta}{2}
   \label{eq:ms-determinant}
 \end{equation}
 Here, \emph{collinear} means that all occupied spin orbitals are expressed
@@ -4263,16 +4263,16 @@ definite total spin $S$.
 
 For a closed-shell RHF determinant,
 \begin{equation}
-  N^\alpha=N^\beta=\frac{N}{2},
+  N^\alpha=N^\beta=\frac{N}{2}
   \qquad
-  M_S=0.
+  M_S=0
 \end{equation}
 Because every spatial orbital is occupied by one $\alpha$ and one $\beta$
 electron, the determinant is a pure singlet:
 \begin{equation}
   \purple{\chS^2}\ket{\Psi_\text{RHF}}
   =
-  0.
+  0
 \end{equation}
 
 Thus, a closed-shell RHF determinant is simultaneously an eigenfunction of
@@ -4286,12 +4286,12 @@ in general,
 \begin{equation}
   \purple{\chS^2}\ket{\Psi_\text{UHF}}
   \neq
-  S(S+1)\ket{\Psi_\text{UHF}}.
+  S(S+1)\ket{\Psi_\text{UHF}}
 \end{equation}
 Hence,
 \begin{equation}
   \text{every collinear RHF or UHF determinant has definite $M_S$, but
-  only special determinants have definite $S$}.
+  only special determinants have definite $S$}
 \end{equation}
 
 For $N^\alpha\geq N^\beta$, the expectation value of $\chS^2$ for a UHF
@@ -4305,13 +4305,13 @@ determinant is
   -
   \sum_{i=1}^{N^\alpha}
   \sum_{j=1}^{N^\beta}
-  \abs{S_{ij}^{\alpha\beta}}^2,
+  \abs{S_{ij}^{\alpha\beta}}^2
   \qquad
   \underbrace{
   S_{ij}^{\alpha\beta}
   }_{\text{overlap}}
   =
-  \braket{\psi_i^\alpha}{\psi_j^\beta}.
+  \braket{\psi_i^\alpha}{\psi_j^\beta}
   \label{eq:uhf-spin-contamination}
 \end{equation}
 
@@ -4322,7 +4322,7 @@ $\expval{\chS^2}$ may depart from the desired eigenvalue.
 
 For a target high-spin state with
 \begin{equation}
-  S=M_S,
+  S=M_S
 \end{equation}
 the spin contamination may be quantified as
 \begin{equation}
@@ -4331,7 +4331,7 @@ the spin contamination may be quantified as
   \expval{\purple{\chS^2}}_\text{UHF}
   -
   \expval{\purple{\chS^2}}_\text{exact}
-  \geq0.
+  \geq0
 \end{equation}
 More explicitly, a singlet may be contaminated by triplets, quintets, and
 higher-spin states; a doublet may be contaminated by quartets, sextets, and
@@ -4355,11 +4355,11 @@ There are two distinct $M_S=0$ determinants,
 \begin{equation}
   \ket{D_\alpha}
   =
-  \cre{a\alpha}\ani{i\alpha}\ket{\Psi_0},
+  \cre{a\alpha}\ani{i\alpha}\ket{\Psi_0}
   \qquad
   \ket{D_\beta}
   =
-  \cre{a\beta}\ani{i\beta}\ket{\Psi_0}.
+  \cre{a\beta}\ani{i\beta}\ket{\Psi_0}
   \label{eq:spin-adapted-determinants}
 \end{equation}
 The first promotes the $\alpha$ electron and leaves the $\beta$ electron in
@@ -4370,13 +4370,13 @@ open-shell orbitals. Consequently,
 \begin{equation}
   \violet{\chS_z}\ket{D_\sigma}
   =
-  0,
+  0
 \end{equation}
 and each determinant has
 \begin{equation}
   \mel{D_\sigma}{\purple{\chS^2}}{D_\sigma}
   =
-  1.
+  1
 \end{equation}
 The value $1$ is neither the singlet eigenvalue $0$ nor the triplet
 eigenvalue $2$. Therefore, neither determinant is individually an
@@ -4421,24 +4421,24 @@ character. This provides a concrete demonstration that being an eigenfunction
 of $\violet{\chS_z}$ does not imply being an eigenfunction of
 $\purple{\chS^2}$. In particular,
 \begin{equation}
-  \text{an open-shell determinant need not be a pure spin function.}
+  \text{an open-shell determinant need not be a pure spin function}
 \end{equation}
 
 In the determinant basis
 \begin{equation}
-  \left\{
+  \qty{
   \ket{D_\alpha},
   \ket{D_\beta}
-  \right\},
+  }
 \end{equation}
 the matrix representation of $\chS^2$ is
 \begin{equation}
   [\purple{\chS^2}]_{\{D_\alpha,D_\beta\}}
   =
-  \begin{pmatrix}
+  \pmqty{
     1 & -1\\
     -1 & 1
-  \end{pmatrix}.
+  }
 \end{equation}
 The determinant basis is therefore not spin adapted. Diagonalizing this
 $2\times2$ matrix produces eigenvectors with definite values of $S$.
@@ -4451,16 +4451,16 @@ The symmetric combination has eigenvalue zero,
     \ket{D_\alpha}
     \red{+}
     \ket{D_\beta}
-  }{\sqrt{2}},
+  }{\sqrt{2}}
   \qquad
   \purple{\chS^2}
   \ket{{}^1\Psi_i^a}
   =
-  0,
+  0
 \end{equation}
 and is therefore a pure singlet,
 \begin{equation}
-  S=0.
+  S=0
 \end{equation}
 
 The antisymmetric combination has eigenvalue two,
@@ -4471,7 +4471,7 @@ The antisymmetric combination has eigenvalue two,
     \ket{D_\alpha}
     \red{-}
     \ket{D_\beta}
-  }{\sqrt{2}},
+  }{\sqrt{2}}
 \end{equation}
 with
 \begin{equation}
@@ -4479,11 +4479,11 @@ with
   \ket{{}^{3,0}\Psi_i^a}
   =
   2
-  \ket{{}^{3,0}\Psi_i^a},
+  \ket{{}^{3,0}\Psi_i^a}
 \end{equation}
 and therefore
 \begin{equation}
-  S=1.
+  S=1
 \end{equation}
 It is the $M_S=0$ component of a triplet.
 
@@ -4515,7 +4515,7 @@ as
     \alpha(1)\beta(2)
     -
     \beta(1)\alpha(2)
-  ]}_{\text{spin antisymmetric}}.
+  ]}_{\text{spin antisymmetric}}
 \end{equation}
 The spatial factor is \green{symmetric} under exchange of the two electrons,
 whereas the spin factor is \red{antisymmetric}. Their product is therefore
@@ -4537,12 +4537,12 @@ For the $M_S=0$ triplet,
     \alpha(1)\beta(2)
     +
     \beta(1)\alpha(2)
-  ]}_{\text{spin symmetric}}.
+  ]}_{\text{spin symmetric}}
 \end{equation}
 Here the spatial factor is \red{antisymmetric} and the spin factor is
 \green{symmetric}. Again,
 \begin{equation}
-  \text{the total electronic wavefunction is antisymmetric}.
+  \text{the total electronic wavefunction is antisymmetric}
 \end{equation}
 
 This complementary symmetry between spatial and spin parts is a direct
@@ -4552,31 +4552,31 @@ consequence of the Pauli principle introduced earlier in the chapter.
 
 A state with $S=1$ contains three components corresponding to
 \begin{equation}
-  M_S=+1,\quad0,\quad-1.
+  M_S=+1,\quad0,\quad-1
 \end{equation}
 For the two open-shell orbitals $i$ and $a$, these are
 \begin{align}
   \ket{{}^{3,+1}\Psi_i^a}
   &=
-  \ket{\cdots i^\alpha a^\alpha\cdots},
+  \ket{\cdots i^\alpha a^\alpha\cdots}
   &
   \ket{{}^{3,0}\Psi_i^a}
   &=
-  \frac{\ket{D_\alpha}-\ket{D_\beta}}{\sqrt{2}},
+  \frac{\ket{D_\alpha}-\ket{D_\beta}}{\sqrt{2}}
   &
   \ket{{}^{3,-1}\Psi_i^a}
   &=
-  \ket{\cdots i^\beta a^\beta\cdots}.
+  \ket{\cdots i^\beta a^\beta\cdots}
 \end{align}
 All three belong to the same spin multiplet and satisfy
 \begin{equation}
   \purple{\chS^2}\ket{1,M_S}
   =
-  2\ket{1,M_S},
+  2\ket{1,M_S}
   \qquad
   \violet{\chS_z}\ket{1,M_S}
   =
-  M_S\ket{1,M_S}.
+  M_S\ket{1,M_S}
 \end{equation}
 
 The components are connected by the spin ladder operators,
@@ -4589,7 +4589,7 @@ The components are connected by the spin ladder operators,
   \sqrt{
     S(S+1)-M_S(M_S\pm1)
   }
-  \ket{S,M_S\pm1}.
+  \ket{S,M_S\pm1}
 \end{equation}
 The $M_S=\pm1$ triplet components are each represented by a single
 spin-pure determinant. By contrast, the $M_S=0$ component requires a linear
@@ -4618,7 +4618,7 @@ functional of a set of orthonormal occupied spin orbitals,
   +
   \frac{1}{2}
   \sum_{i=1}^{N}\sum_{j=1}^{N}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
   \label{eq:hf-energy-orbital-functional}
 \end{equation}
 The Hartree--Fock problem consists in finding the set of spin orbitals that
@@ -4626,7 +4626,7 @@ makes this energy stationary while preserving their orthonormality,
 \begin{equation}
   \braket{\chi_i}{\chi_j}
   =
-  \delta_{ij}.
+  \delta_{ij}
 \end{equation}
 
 This is a constrained variational problem. Since the orthonormality
@@ -4652,7 +4652,7 @@ multipliers $\bepsilon$ and defines the Hartree--Fock Lagrangian
   }_{
     \substack{\text{\green{orthonormality}}\\
               \text{\green{constraint}}}
-  }.
+  }
   \label{eq:hf-lagrangian}
 \end{equation}
 
@@ -4662,7 +4662,7 @@ $\chi_i^*(\bx)$ requires
 \begin{equation}
   \fdv{\mathcal{L}}{\chi_i^*(\bx)}
   =
-  0.
+  0
   \label{eq:hf-stationarity}
 \end{equation}
 
@@ -4674,7 +4674,7 @@ The one-electron part is straightforward:
   \sum_j
   \mel{\chi_j}{\hh}{\chi_j}
   =
-  \hh(\bx)\chi_i(\bx).
+  \hh(\bx)\chi_i(\bx)
 \end{equation}
 
 The derivative of the two-electron contribution generates the Coulomb and
@@ -4683,34 +4683,34 @@ $1/2$ disappears because the orbital $\chi_i$ may occur in either member
 of an interacting pair:
 \begin{equation}
   \fdv{}{\chi_i^*(\bx)}
-  \left[
+  \qty[
     \frac{1}{2}
     \sum_{jk}
     \mel{jk}{}{jk}
-  \right]
+  ]
   =
   \sum_{j=1}^{N}
-  \left[
+  \qty[
     \chJ_j(\bx)
     -
     \chK_j(\bx)
-  \right]
-  \chi_i(\bx).
+  ]
+  \chi_i(\bx)
 \end{equation}
 
 Consequently,
 \begin{equation}
   \fdv{E_\text{HF}}{\chi_i^*(\bx)}
   =
-  \left\{
+  \qty{
     \hh(\bx)
     +
     \sum_{j=1}^{N}
-    \left[
+    \qty[
       \chJ_j(\bx)-\chK_j(\bx)
-    \right]
-  \right\}
-  \chi_i(\bx).
+    ]
+  }
+  \chi_i(\bx)
 \end{equation}
 
 This motivates the definition of the Fock operator,
@@ -4721,13 +4721,13 @@ This motivates the definition of the Fock operator,
   +
   \underbrace{
     \sum_{j=1}^{N}
-    \left[
+    \qty[
       \chJ_j(\bx)-\chK_j(\bx)
-    \right]
+    ]
   }_{
     \Hat{v}^{\text{HF}}(\bx)
     \text{ = Hartree--Fock potential}
-  }.
+  }
   \label{eq:fock-operator}
 \end{equation}
 
@@ -4744,12 +4744,12 @@ nonlocal one-electron operator.
 Notice also that an electron does not interact with itself. When the Fock
 operator acts on $\chi_i$,
 \begin{equation}
-  \left(
+  \qty(
     \chJ_i-\chK_i
-  \right)
+  )
   \ket{\chi_i}
   =
-  0,
+  0
 \end{equation}
 because the Coulomb and exchange self-interaction contributions are
 identical and cancel exactly.
@@ -4766,14 +4766,14 @@ Eq.~\eqref{eq:hf-lagrangian} gives
   =
   \sum_j
   \epsilon_{ji}
-  \chi_j(\bx).
+  \chi_j(\bx)
 \end{equation}
 The stationarity condition therefore becomes
 \begin{equation}
   \hf(\bx)\chi_i(\bx)
   =
   \sum_j
-  \epsilon_{ji}\chi_j(\bx).
+  \epsilon_{ji}\chi_j(\bx)
   \label{eq:general-hf-equations}
 \end{equation}
 
@@ -4787,24 +4787,24 @@ $\bra{\chi_k}$ and using orthonormality gives
 \begin{equation}
   \epsilon_{ki}
   =
-  \mel{\chi_k}{\hf}{\chi_i}.
+  \mel{\chi_k}{\hf}{\chi_i}
   \label{eq:lagrange-fock}
 \end{equation}
 Since $\hf$ is Hermitian,
 \begin{equation}
   \mel{\chi_k}{\hf}{\chi_i}
   =
-  \mel{\chi_i}{\hf}{\chi_k}^*,
+  \mel{\chi_i}{\hf}{\chi_k}^*
 \end{equation}
 and hence
 \begin{equation}
   \epsilon_{ki}
   =
-  \epsilon_{ik}^*.
+  \epsilon_{ik}^*
 \end{equation}
 The matrix of Lagrange multipliers is therefore Hermitian,
 \begin{equation}
-  \bepsilon^\dag=\bepsilon.
+  \bepsilon^\dag=\bepsilon
 \end{equation}
 
 This property is crucial because every Hermitian matrix can be diagonalized
@@ -4819,7 +4819,7 @@ exchange operators:
 \begin{equation}
   \hf
   =
-  \hf[\chi_1,\chi_2,\ldots,\chi_N].
+  \hf[\chi_1,\chi_2,\ldots,\chi_N]
 \end{equation}
 The orbitals are therefore required to satisfy an equation containing an
 operator constructed from those same orbitals.
@@ -4830,7 +4830,7 @@ Schematically,
   \quad\longrightarrow\quad
   \hf[\{\chi_i\}]
   \quad\longrightarrow\quad
-  \{\chi_i\}.
+  \{\chi_i\}
 \end{equation}
 The Hartree--Fock equations are consequently nonlinear and must be
 solved self-consistently. This is the origin of the term
@@ -4854,11 +4854,11 @@ orbitals,
   =
   \sum_j
   \chi_j(\bx)
-  \purple{U}_{ji},
+  \purple{U}_{ji}
   \qquad
   \purple{\bU}^\dag\cdot\purple{\bU}
   =
-  \bI.
+  \bI
   \label{eq:occupied-unitary-rotation}
 \end{equation}
 The transformed orbitals remain orthonormal:
@@ -4874,7 +4874,7 @@ The transformed orbitals remain orthonormal:
   \sum_k
   U_{ki}^*U_{kj}
   =
-  \delta_{ij}.
+  \delta_{ij}
 \end{align}
 
 More importantly, the occupied one-particle projector is unchanged:
@@ -4898,7 +4898,7 @@ More importantly, the occupied one-particle projector is unchanged:
   &=
   \sum_j
   \chi_j(\bx)
-  \chi_j^*(\bx').
+  \chi_j^*(\bx')
 \end{align}
 Since the Fock operator depends only on the occupied one-particle density,
 it is invariant under this transformation.
@@ -4908,7 +4908,7 @@ The determinant itself transforms as
   \ket*{\widetilde{\Psi}_\text{HF}}
   =
   \det(\purple{\bU})
-  \ket*{\Psi_\text{HF}}.
+  \ket*{\Psi_\text{HF}}
   \label{eq:det-unitary-transform}
 \end{equation}
 Because $\purple{\bU}$ is unitary,
@@ -4921,7 +4921,7 @@ Because $\purple{\bU}$ is unitary,
     \purple{\bU}^{\dag}\cdot\purple{\bU}
   )
   =
-  1,
+  1
 \end{equation}
 and therefore
 \begin{equation}
@@ -4931,14 +4931,14 @@ and therefore
   \quad\Rightarrow\quad
   \det(\purple{\bU})
   =
-  e^{\ii\theta}.
+  e^{\ii\theta}
 \end{equation}
 Hence,
 \begin{equation}
   \ket*{\widetilde{\Psi}_\text{HF}}
   =
   e^{\ii\theta}
-  \ket*{\Psi_\text{HF}}.
+  \ket*{\Psi_\text{HF}}
 \end{equation}
 The two determinants differ only by an irrelevant global phase and describe
 the same physical state.
@@ -4946,7 +4946,7 @@ the same physical state.
 Thus,
 \begin{equation}
   \text{unitary rotations within the occupied space leave
-  $E_\text{HF}$ and $\Psi_\text{HF}$ unchanged}.
+  $E_\text{HF}$ and $\Psi_\text{HF}$ unchanged}
 \end{equation}
 
 \paragraph{Canonical Hartree--Fock orbitals.}
@@ -4967,7 +4967,7 @@ is diagonal:
 \begin{equation}
   \widetilde{\epsilon}_{ij}
   =
-  \epsilon_i\delta_{ij}.
+  \epsilon_i\delta_{ij}
 \end{equation}
 
 Applying the same unitary transformation to the occupied orbitals converts
@@ -4976,21 +4976,21 @@ the general HF equations,
   \hf\ket{\chi_i}
   =
   \sum_j
-  \epsilon_{ji}\ket{\chi_j},
+  \epsilon_{ji}\ket{\chi_j}
 \end{equation}
 into
 \begin{equation}
   \hf\ket{\widetilde{\chi}_i}
   =
   \epsilon_i
-  \ket{\widetilde{\chi}_i}.
+  \ket{\widetilde{\chi}_i}
 \end{equation}
 Dropping the tildes, one obtains the
 canonical Hartree--Fock equations,
 \begin{equation}
   \hf(\bx)\chi_i(\bx)
   =
-  \epsilon_i\chi_i(\bx).
+  \epsilon_i\chi_i(\bx)
   \label{eq:canonical-hf}
 \end{equation}
 The eigenfunctions $\{\chi_i\}$ are called
@@ -5007,7 +5007,7 @@ satisfies
 \begin{equation}
   \mel{\chi_p}{\hf}{\chi_q}
   =
-  \epsilon_p\delta_{pq}.
+  \epsilon_p\delta_{pq}
   \label{eq:canonical-fock-diagonal}
 \end{equation}
 
@@ -5017,7 +5017,7 @@ In particular, the occupied-virtual block vanishes,
   =
   \mel{i}{\hf}{a}
   =
-  0.
+  0
   \label{eq:occupied-virtual-fock-zero}
 \end{equation}
 This is the orbital form of the stationarity condition encountered in
@@ -5027,7 +5027,7 @@ Brillouin's theorem:
   =
   f_{ia}
   =
-  0.
+  0
 \end{equation}
 
 % ============================================================================
@@ -5065,24 +5065,24 @@ Expanding the Fock operator gives
   \mel{\chi_i}{\hh}{\chi_j}
   +
   \sum_k
-  \left[
+  \qty[
     \mel{\chi_i}{\chJ_k}{\chi_j}
     -
     \mel{\chi_i}{\chK_k}{\chi_j}
-  \right].
+  ]
 \end{align}
 
 The Coulomb contribution is
 \begin{equation}
   \mel{\chi_i}{\chJ_k}{\chi_j}
   =
-  \braket{ik}{jk},
+  \braket{ik}{jk}
 \end{equation}
 whereas the exchange contribution is
 \begin{equation}
   \mel{\chi_i}{\chK_k}{\chi_j}
   =
-  \braket{ik}{kj}.
+  \braket{ik}{kj}
 \end{equation}
 Therefore,
 \begin{align}
@@ -5091,17 +5091,17 @@ Therefore,
   \mel{i}{\hh}{j}
   +
   \sum_k
-  \left[
+  \qty[
     \braket{ik}{jk}
     -
     \braket{ik}{kj}
-  \right]
+  ]
   \\
   &=
   \mel{i}{\hh}{j}
   +
   \sum_k
-  \mel{ik}{}{jk}.
+  \mel{ik}{}{jk}
   \label{eq:fock-matrix-spin-orbital}
 \end{align}
 
@@ -5115,7 +5115,7 @@ For an occupied-virtual matrix element,
   h_{ia}
   +
   \sum_k
-  \mel{ik}{}{ak},
+  \mel{ik}{}{ak}
 \end{equation}
 which is precisely the quantity appearing in Brillouin's theorem.
 
@@ -5133,7 +5133,7 @@ For a canonical orbital,
 \begin{equation}
   \hf\ket{\chi_i}
   =
-  \epsilon_i\ket{\chi_i}.
+  \epsilon_i\ket{\chi_i}
 \end{equation}
 Multiplying by $\bra{\chi_i}$ gives
 \begin{align}
@@ -5143,7 +5143,7 @@ Multiplying by $\bra{\chi_i}$ gives
   \braket{\chi_i}{\chi_i}
   \\
   &=
-  \epsilon_i,
+  \epsilon_i
 \end{align}
 because the orbital is normalized. Therefore,
 \begin{align}
@@ -5155,17 +5155,17 @@ because the orbital is normalized. Therefore,
   \mel{i}{\hh}{i}
   +
   \sum_k
-  \left[
+  \qty[
     \braket{ik}{ik}
     -
     \braket{ik}{ki}
-  \right]
+  ]
   \\
   &=
   \mel{i}{\hh}{i}
   +
   \sum_k
-  \mel{ik}{}{ik}.
+  \mel{ik}{}{ik}
   \label{eq:hf-orbital-energy}
 \end{align}
 
@@ -5177,7 +5177,7 @@ The term with $k=i$ vanishes,
   -
   \braket{ii}{ii}
   =
-  0,
+  0
 \end{equation}
 which again reflects the exact cancellation of one-electron
 self-interaction in Hartree--Fock theory.
@@ -5195,7 +5195,7 @@ Indeed, summing the occupied orbital energies gives
   \sum_i h_{ii}
   +
   \sum_{ij}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
 \end{align}
 By comparison, the Hartree--Fock energy is
 \begin{equation}
@@ -5205,7 +5205,7 @@ By comparison, the Hartree--Fock energy is
   +
   \frac{1}{2}
   \sum_{ij}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
 \end{equation}
 Thus,
 \begin{equation}
@@ -5215,7 +5215,7 @@ Thus,
   -
   \frac{1}{2}
   \sum_{ij}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
   \label{eq:hf-energy-orbital-energies}
 \end{equation}
 Equivalently,
@@ -5224,9 +5224,9 @@ Equivalently,
   =
   \frac{1}{2}
   \sum_i
-  \left(
+  \qty(
     h_{ii}+\epsilon_i
-  \right).
+  )
   \label{eq:hf-energy-half-sum}
 \end{equation}
 
@@ -5271,7 +5271,7 @@ Consider the $N$-electron HF ground state. Its electronic energy is
   +
   \frac{1}{2}
   \sum_{ij}
-  \mel{ij}{}{ij}.
+  \mel{ij}{}{ij}
   \label{eq:koopmans-neutral-energy}
 \end{equation}
 All sums run over the occupied spin orbitals of the $N$-electron reference.
@@ -5287,7 +5287,7 @@ $(N-1)$-electron determinant is
   \frac{1}{2}
   \sum_{i\ne k}
   \sum_{j\ne k}
-  \mel{ij}{}{ij},
+  \mel{ij}{}{ij}
   \label{eq:koopmans-cation-frozen}
 \end{equation}
 where the tilde emphasizes that the orbitals have \emph{not} been
@@ -5299,7 +5299,7 @@ The corresponding frozen-orbital ionization potential is
   =
   {}^{N-1}\widetilde{E}_k
   -
-  {}^N E_0.
+  {}^N E_0
 \end{equation}
 Subtracting Eqs.~\eqref{eq:koopmans-neutral-energy} and
 \eqref{eq:koopmans-cation-frozen} gives
@@ -5320,7 +5320,7 @@ Subtracting Eqs.~\eqref{eq:koopmans-neutral-energy} and
   -h_{kk}
   -
   \sum_i
-  \mel{ki}{}{ki},
+  \mel{ki}{}{ki}
 \end{align}
 where the symmetry of the two-electron integrals has been used.
 
@@ -5331,13 +5331,13 @@ From the expression of the canonical orbital energy,
   h_{kk}
   +
   \sum_i
-  \mel{ki}{}{ki},
+  \mel{ki}{}{ki}
 \end{equation}
 we immediately obtain
 \begin{equation}
   \text{IP}_k^\text{K}
   =
-  -\epsilon_k.
+  -\epsilon_k
   \label{eq:koopmans-ip}
 \end{equation}
 
@@ -5350,7 +5350,7 @@ highest occupied molecular orbital (HOMO), giving the familiar estimate
 \begin{equation}
   \text{IP}
   \approx
-  -\epsilon_\text{HOMO}.
+  -\epsilon_\text{HOMO}
 \end{equation}
 
 This result also provides a useful interpretation of the occupied HF
@@ -5379,7 +5379,7 @@ $(N+1)$-electron determinant is
   h_{cc}
   +
   \sum_i
-  \mel{ci}{}{ci}.
+  \mel{ci}{}{ci}
 \end{equation}
 The frozen-orbital electron affinity is defined as
 \begin{equation}
@@ -5387,7 +5387,7 @@ The frozen-orbital electron affinity is defined as
   =
   {}^N E_0
   -
-  {}^{N+1}\widetilde{E}^{c}.
+  {}^{N+1}\widetilde{E}^{c}
 \end{equation}
 Consequently,
 \begin{align}
@@ -5399,7 +5399,7 @@ Consequently,
   \mel{ci}{}{ci}
   \\
   &=
-  -\epsilon_c.
+  -\epsilon_c
   \label{eq:koopmans-ea}
 \end{align}
 
@@ -5407,7 +5407,7 @@ For attachment into the lowest unoccupied molecular orbital (LUMO),
 \begin{equation}
   \text{EA}
   \approx
-  -\epsilon_\text{LUMO}.
+  -\epsilon_\text{LUMO}
 \end{equation}
 
 The algebra is therefore completely analogous to that for electron
@@ -5449,7 +5449,7 @@ Variational optimization can only lower the energy:
 \begin{equation}
   {}^{N-1}E_k^\text{HF}
   \leq
-  {}^{N-1}\widetilde{E}_k.
+  {}^{N-1}\widetilde{E}_k
 \end{equation}
 It is therefore useful to define the ionization relaxation correction as
 \begin{equation}
@@ -5458,7 +5458,7 @@ It is therefore useful to define the ionization relaxation correction as
   {}^{N-1}E_k^\text{HF}
   -
   {}^{N-1}\widetilde{E}_k
-  \leq0.
+  \leq0
 \end{equation}
 Orbital relaxation thus tends to \emph{lower} the ionization potential
 relative to the frozen-orbital Koopmans value.
@@ -5467,7 +5467,7 @@ For electron attachment, the relaxed anion similarly satisfies
 \begin{equation}
   {}^{N+1}E_c^\text{HF}
   \leq
-  {}^{N+1}\widetilde{E}^{c}.
+  {}^{N+1}\widetilde{E}^{c}
 \end{equation}
 However, because the electron affinity is defined with the opposite energy
 difference,
@@ -5476,7 +5476,7 @@ difference,
   =
   {}^N E_0
   -
-  {}^{N+1}E_c,
+  {}^{N+1}E_c
 \end{equation}
 the corresponding relaxation correction is
 \begin{equation}
@@ -5485,7 +5485,7 @@ the corresponding relaxation correction is
   {}^{N+1}\widetilde{E}^{c}
   -
   {}^{N+1}E_c^\text{HF}
-  \geq0.
+  \geq0
 \end{equation}
 Relaxation therefore tends to \emph{increase} the electron affinity
 relative to the frozen-orbital estimate.
@@ -5505,7 +5505,7 @@ Writing
   =
   E_\text{HF}^{M}
   +
-  E_\text{corr}^{M},
+  E_\text{corr}^{M}
 \end{equation}
 the exact ionization potential may be decomposed as
 \begin{align}
@@ -5535,7 +5535,7 @@ the exact ionization potential may be decomposed as
     \Delta_\text{corr}^\text{IP}
   }_{
     E_\text{corr}^{N-1}-E_\text{corr}^{N}
-  }.
+  }
   \label{eq:koopmans-ip-corrections}
 \end{align}
 
@@ -5543,7 +5543,7 @@ For many ordinary molecular ionizations, the neutral system has a somewhat
 larger magnitude of correlation energy than the corresponding cation, so
 that
 \begin{equation}
-  \Delta_\text{corr}^\text{IP}>0.
+  \Delta_\text{corr}^\text{IP}>0
 \end{equation}
 In such cases, relaxation and correlation corrections have opposite signs
 and partially compensate:
@@ -5552,7 +5552,7 @@ and partially compensate:
   \quad+\quad
   \underbrace{\Delta_\text{corr}^\text{IP}}_{>0}
   \quad\longrightarrow\quad
-  \text{partial error compensation}.
+  \text{partial error compensation}
 \end{equation}
 This error compensation is one reason why Koopmans' theorem can yield
 surprisingly reasonable ionization potentials despite neglecting both
@@ -5590,13 +5590,13 @@ For electron attachment,
     \Delta_\text{corr}^\text{EA}
   }_{
     E_\text{corr}^{N}-E_\text{corr}^{N+1}
-  }.
+  }
   \label{eq:koopmans-ea-corrections}
 \end{align}
 For many bound molecular anions, the $(N+1)$-electron system gains more
 correlation energy than the neutral system, so that
 \begin{equation}
-  \Delta_\text{corr}^\text{EA}>0.
+  \Delta_\text{corr}^\text{EA}>0
 \end{equation}
 In this common situation, relaxation and correlation act in the same
 direction rather than compensating one another:
@@ -5605,7 +5605,7 @@ direction rather than compensating one another:
   \quad+\quad
   \underbrace{\Delta_\text{corr}^\text{EA}}_{>0}
   \quad\longrightarrow\quad
-  \text{no analogous error compensation}.
+  \text{no analogous error compensation}
 \end{equation}
 
 Again, the sign of the correlation contribution is system dependent.
@@ -5613,7 +5613,7 @@ Nevertheless, the combination of stronger orbital-relaxation effects,
 unoptimized virtual orbitals, and the frequent absence of favorable error
 compensation explains why
 \begin{equation}
-  \text{Koopmans' theorem is usually more reliable for IPs than for EAs}.
+  \text{Koopmans' theorem is usually more reliable for IPs than for EAs}
 \end{equation}
 
 % ============================================================================
@@ -5639,11 +5639,11 @@ Define the $N$-electron Hartree--Fock Hamiltonian as
   }_{\text{one-electron Fock operator}}
   =
   \sum_{i=1}^{N}
-  \left[
+  \qty[
     \hh(\bx_i)
     +
     \Hat{v}^\text{HF}(\bx_i)
-  \right].
+  ]
   \label{eq:hf-auxiliary-hamiltonian}
 \end{equation}
 Once the HF potential has been converged, $\chH^\text{HF}$ is a sum of
@@ -5654,10 +5654,10 @@ canonical occupied orbitals is therefore an eigenfunction of this
   \chH^\text{HF}
   \ket{\Psi_\text{HF}}
   =
-  \left(
+  \qty(
     \sum_{i=1}^{N}\epsilon_i
-  \right)
-  \ket{\Psi_\text{HF}}.
+  )
+  \ket{\Psi_\text{HF}}
 \end{equation}
 
 Three quantities must not be confused.
@@ -5667,14 +5667,14 @@ First,
   \chH^\text{HF}
   \ket{\Psi_\text{HF}}
   \green{=}
-  \left(
+  \qty(
     \sum_{i=1}^{N}\epsilon_i
-  \right)
-  \ket{\Psi_\text{HF}},
+  )
+  \ket{\Psi_\text{HF}}
   \qquad
   \sum_i\epsilon_i
   \red{\neq}
-  E_\text{HF}.
+  E_\text{HF}
 \end{equation}
 The HF determinant is an eigenfunction of the auxiliary HF Hamiltonian, but
 its eigenvalue is the sum of the occupied orbital energies, not the HF
@@ -5686,7 +5686,7 @@ Second,
   \ket{\Psi_\text{HF}}
   \red{\neq}
   E_\text{HF}
-  \ket{\Psi_\text{HF}}.
+  \ket{\Psi_\text{HF}}
 \end{equation}
 The HF determinant is, in general, \red{not} an eigenfunction of the true
 interacting electronic Hamiltonian.
@@ -5697,7 +5697,7 @@ Third,
       {\chH_\text{elec}}
       {\Psi_\text{HF}}
   \green{=}
-  E_\text{HF}.
+  E_\text{HF}
 \end{equation}
 The Hartree--Fock energy is the \emph{expectation value} of the physical
 electronic Hamiltonian over the optimized HF determinant.
@@ -5707,17 +5707,17 @@ Thus,
   \begin{aligned}
     \chH^\text{HF}\Psi_\text{HF}
     &=
-    \left(\sum_i\epsilon_i\right)\Psi_\text{HF},
+    \qty(\sum_i\epsilon_i)\Psi_\text{HF}
     \\
     \mel{\Psi_\text{HF}}
         {\chH_\text{elec}}
         {\Psi_\text{HF}}
     &=
-    E_\text{HF},
+    E_\text{HF}
     \\
     \chH_\text{elec}\Psi_\text{HF}
     &\neq
-    E_\text{HF}\Psi_\text{HF}.
+    E_\text{HF}\Psi_\text{HF}
   \end{aligned}
 \end{equation}
 
@@ -5734,9 +5734,9 @@ For occupied canonical HF orbitals,
   h_{ii}
   +
   \sum_j
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
 \end{equation}
 Summing over all occupied orbitals gives
 \begin{equation}
@@ -5745,9 +5745,9 @@ Summing over all occupied orbitals gives
   \sum_{i=1}^{N}h_{ii}
   +
   \sum_{ij}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
 \end{equation}
 By contrast,
 \begin{equation}
@@ -5757,15 +5757,15 @@ By contrast,
   +
   \frac{1}{2}
   \sum_{ij}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
 \end{equation}
 Hence,
 \begin{equation}
   \sum_{i=1}^{N}\epsilon_i
   \red{\neq}
-  E_\text{HF}.
+  E_\text{HF}
 \end{equation}
 
 The reason is simple: the orbital energy $\epsilon_i$ contains the
@@ -5781,9 +5781,9 @@ Equivalently,
   -
   \frac{1}{2}
   \sum_{ij}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
   \label{eq:hf-energy-vs-orbital-sum}
 \end{equation}
 
@@ -5806,26 +5806,26 @@ The electronic Hamiltonian can be partitioned as
   }_{\chH^{(0)}}
   +
   \underbrace{
-    \left[
+    \qty[
       \sum_{i<j}\frac{1}{r_{ij}}
       -
       \sum_{i=1}^{N}
       \Hat{v}^\text{HF}(\bx_i)
-    \right]
-  }_{\chV}.
+    ]
+  }_{\chV}
   \label{eq:mp-partition}
 \end{equation}
 The zeroth-order Hamiltonian is therefore the sum of the Fock operators,
 \begin{equation}
   \chH^{(0)}
   =
-  \chH^\text{HF},
+  \chH^\text{HF}
 \end{equation}
 and its ground-state eigenvalue is
 \begin{equation}
   E^{(0)}
   =
-  \sum_{i=1}^{N}\epsilon_i.
+  \sum_{i=1}^{N}\epsilon_i
 \end{equation}
 
 The first-order correction is the expectation value of the perturbation over
@@ -5850,15 +5850,15 @@ the HF determinant:
   &=
   -\frac{1}{2}
   \sum_{ij}^{N}
-  \left(
+  \qty(
     \cJ_{ij}-\cK_{ij}
-  \right).
+  )
 \end{align}
 Consequently,
 \begin{equation}
   E^{(0)}+E^{(1)}
   =
-  E_\text{HF}.
+  E_\text{HF}
 \end{equation}
 
 Thus, in the conventional M{\o}ller--Plesset partitioning, the sum of the
@@ -5892,7 +5892,7 @@ equations for unknown functions,
 \begin{equation}
   \hf(\br)\psi_i(\br)
   =
-  \epsilon_i\psi_i(\br).
+  \epsilon_i\psi_i(\br)
   \label{eq:hf-continuous}
 \end{equation}
 Solving these equations directly in continuous three-dimensional space is
@@ -5911,23 +5911,23 @@ that determinant to a finite-dimensional space.
 
 Let
 \begin{equation}
-  \left\{
+  \qty{
     \phi_\mu(\br)
-  \right\}_{\mu=1}^{K}
+  }_{\mu=1}^{K}
 \end{equation}
 be a set of $K$ basis functions. Each molecular orbital is expanded as
 \begin{equation}
   \psi_i(\br)
   =
   \sum_{\mu=1}^{K}
-  C_{\mu i}\phi_\mu(\br),
+  C_{\mu i}\phi_\mu(\br)
   \qquad
   \equiv
   \qquad
   \ket{i}
   =
   \sum_{\mu=1}^{K}
-  C_{\mu i}\ket{\mu}.
+  C_{\mu i}\ket{\mu}
   \label{eq:lcao-expansion}
 \end{equation}
 The unknown functions $\psi_i(\br)$ have therefore been replaced by the
@@ -5945,7 +5945,7 @@ contained in the matrix
 \begin{equation}
   \bC
   =
-  \left(C_{\mu i}\right).
+  \qty(C_{\mu i})
 \end{equation}
 
 \paragraph{Nonorthogonality of the basis functions.}
@@ -5954,7 +5954,7 @@ The molecular orbitals are required to be orthonormal,
 \begin{equation}
   \braket{\psi_i}{\psi_j}
   =
-  \delta_{ij},
+  \delta_{ij}
 \end{equation}
 but the underlying basis functions generally are not:
 \begin{equation}
@@ -5965,7 +5965,7 @@ but the underlying basis functions generally are not:
   \int
   \phi_\mu^*(\br)
   \phi_\nu(\br)
-  \dd{\br}.
+  \dd{\br}
   \label{eq:ao-overlap}
 \end{equation}
 The matrix $\bS$ is called the overlap matrix.
@@ -5985,21 +5985,21 @@ Substituting the basis expansion into the MO orthonormality condition gives
   S_{\mu\nu}
   C_{\nu j}
   =
-  \delta_{ij}.
+  \delta_{ij}
 \end{align}
 In matrix notation,
 \begin{equation}
   \bC^\dag\cdot\bS\cdot\bC
   =
-  \bI.
+  \bI
   \label{eq:mo-orthonormality-matrix}
 \end{equation}
 
 Thus, the coefficient matrix is generally \emph{not} unitary:
 \begin{equation}
-  \bC^\dag\bC
+  \bC^\dag\cdot\bC
   \neq
-  \bI.
+  \bI
 \end{equation}
 Instead, the molecular orbitals are orthonormal with respect to the
 metric defined by $\bS$.
@@ -6020,14 +6020,14 @@ We now insert the finite-basis expansion into the canonical HF equation,
 \begin{equation}
   \hf\ket{i}
   =
-  \epsilon_i\ket{i}.
+  \epsilon_i\ket{i}
 \end{equation}
 Using
 \begin{equation}
   \ket{i}
   =
   \sum_\nu
-  C_{\nu i}\ket{\nu},
+  C_{\nu i}\ket{\nu}
 \end{equation}
 gives
 \begin{equation}
@@ -6037,7 +6037,7 @@ gives
   =
   \epsilon_i
   \sum_\nu
-  C_{\nu i}\ket{\nu}.
+  C_{\nu i}\ket{\nu}
 \end{equation}
 Projecting from the left with $\bra{\mu}$ yields
 \begin{align}
@@ -6048,7 +6048,7 @@ Projecting from the left with $\bra{\mu}$ yields
   \epsilon_i
   \sum_\nu
   C_{\nu i}
-  \braket{\mu}{\nu}.
+  \braket{\mu}{\nu}
 \end{align}
 
 Defining the Fock matrix
@@ -6062,7 +6062,7 @@ and recalling
 \begin{equation}
   S_{\mu\nu}
   =
-  \braket{\mu}{\nu},
+  \braket{\mu}{\nu}
 \end{equation}
 we obtain
 \begin{equation}
@@ -6073,7 +6073,7 @@ we obtain
   \sum_\nu
   S_{\mu\nu}
   C_{\nu i}
-  \epsilon_i.
+  \epsilon_i
   \label{eq:roothaan-hall-index}
 \end{equation}
 
@@ -6110,14 +6110,14 @@ The complete derivation can therefore be summarized as
   F_{\mu\nu}C_{\nu i}
   =
   \sum_\nu
-  S_{\mu\nu}C_{\nu i}\epsilon_i.
+  S_{\mu\nu}C_{\nu i}\epsilon_i
 \end{align}
 
 Collecting all molecular orbitals simultaneously gives
 \begin{equation}
   \bF\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE.
+  \bS\cdot\bC\cdot\bE
   \label{eq:roothaan-hall}
 \end{equation}
 These are the Roothaan--Hall equations.
@@ -6126,23 +6126,23 @@ Here,
 \begin{equation}
   \bC
   =
-  \begin{pmatrix}
+  \pmqty{
     C_{11}&C_{12}&\cdots&C_{1K}\\
     C_{21}&C_{22}&\cdots&C_{2K}\\
     \vdots&\vdots&\ddots&\vdots\\
     C_{K1}&C_{K2}&\cdots&C_{KK}
-  \end{pmatrix}
+  }
 \end{equation}
 contains the MO coefficients, while
 \begin{equation}
   \bE
   =
-  \begin{pmatrix}
+  \pmqty{
     \epsilon_1&0&\cdots&0\\
     0&\epsilon_2&\cdots&0\\
     \vdots&\vdots&\ddots&\vdots\\
     0&0&\cdots&\epsilon_K
-  \end{pmatrix}
+  }
 \end{equation}
 contains the canonical orbital energies.
 
@@ -6158,40 +6158,40 @@ integro-differential orbital problem into a matrix problem.
 
 If the basis were orthonormal,
 \begin{equation}
-  \bS=\bI,
+  \bS=\bI
 \end{equation}
 the Roothaan--Hall equations would reduce to the ordinary eigenvalue problem
 \begin{equation}
-  \bF\bC
+  \bF\cdot\bC
   =
-  \bC\bE.
+  \bC\cdot\bE
 \end{equation}
 For an atomic-orbital basis, however,
 \begin{equation}
-  \bS\neq\bI,
+  \bS\neq\bI
 \end{equation}
 and the equations instead constitute a
 generalized eigenvalue problem,
 \begin{equation}
-  \bF\bC
+  \bF\cdot\bC
   =
-  \bS\bC\bE.
+  \bS\cdot\bC\cdot\bE
 \end{equation}
 
 For an individual orbital,
 \begin{equation}
-  \bF\bC_i
+  \bF\cdot\bC_i
   =
-  \epsilon_i\bS\bC_i,
+  \epsilon_i\bS\cdot\bC_i
 \end{equation}
 where $\bC_i$ is the $i$th column of $\bC$. Nontrivial solutions satisfy
 the secular equation
 \begin{equation}
-  \det\left(
+  \det\qty(
     \bF-\epsilon_i\bS
-  \right)
+  )
   =
-  0.
+  0
   \label{eq:secular-equation}
 \end{equation}
 
@@ -6213,7 +6213,7 @@ We seek a nonsingular matrix $\bX$ satisfying
 \begin{equation}
   \bX^\dag\cdot\bS\cdot\bX
   =
-  \bI.
+  \bI
   \label{eq:orthogonalizer-condition}
 \end{equation}
 The transformed basis functions may be viewed as
@@ -6221,18 +6221,18 @@ The transformed basis functions may be viewed as
   \ket{\mu'}
   =
   \sum_\nu
-  \ket{\nu}X_{\nu\mu}.
+  \ket{\nu}X_{\nu\mu}
 \end{equation}
 Their overlaps are
 \begin{align}
   \braket{\mu'}{\nu'}
   &=
-  \left(
-    \bX^\dag\bS\bX
-  \right)_{\mu\nu}
+  \qty(
+    \bX^\dag\cdot\bS\cdot\bX
+  )_{\mu\nu}
   \\
   &=
-  \delta_{\mu\nu},
+  \delta_{\mu\nu}
 \end{align}
 so the transformed basis is orthonormal by construction.
 
@@ -6251,23 +6251,23 @@ and substituting into the Roothaan--Hall equations gives
   \\
   \bF\cdot\bX\cdot\bC'
   &=
-  \bS\cdot\bX\cdot\bC'\cdot\bE.
+  \bS\cdot\bX\cdot\bC'\cdot\bE
 \end{align}
 Multiplying from the left by $\bX^\dag$ gives
 \begin{equation}
-  \bX^\dag\bF\bX\bC'
+  \bX^\dag\cdot\bF\cdot\bX\cdot\bC'
   =
-  \bX^\dag\bS\bX\bC'\bE.
+  \bX^\dag\cdot\bS\cdot\bX\cdot\bC'\cdot\bE
 \end{equation}
 Using Eq.~\eqref{eq:orthogonalizer-condition},
 \begin{equation}
   \bF'\cdot\bC'
   =
-  \bC'\cdot\bE,
+  \bC'\cdot\bE
   \qquad
   \bF'
   =
-  \bX^\dag\cdot\bF\cdot\bX.
+  \bX^\dag\cdot\bF\cdot\bX
   \label{eq:orthogonalized-fock}
 \end{equation}
 
@@ -6276,23 +6276,23 @@ Thus,
   \bF\cdot\bC
   &=
   \underbrace{\bS}_{\text{metric}}
-  \cdot\bC\cdot\bE,
+  \cdot\bC\cdot\bE
   &
   \bF'\cdot\bC'
   &=
-  \bC'\cdot\bE,
+  \bC'\cdot\bE
   \\
   \bF'
   &=
-  \bX^\dag\cdot\bF\cdot\bX,
+  \bX^\dag\cdot\bF\cdot\bX
   &
   \bC
   &=
-  \bX\cdot\bC',
+  \bX\cdot\bC'
   &
   \bX^\dag\cdot\bS\cdot\bX
   &=
-  \bI.
+  \bI
 \end{align}
 
 Every step from the generalized problem to the standard problem is
@@ -6330,7 +6330,7 @@ Every step from the generalized problem to the standard problem is
   =
   \bC'\cdot\bE
   \qquad\Longleftrightarrow\qquad
-  \text{standard eigenvalue problem}.
+  \text{standard eigenvalue problem}
 \end{gather}
 Thus, orthogonalization converts the generalized problem into a standard
 eigenvalue problem.
@@ -6339,13 +6339,13 @@ Because $\bF$ is Hermitian and $\bX$ is nonsingular,
 \begin{equation}
   \bF'^\dag
   =
-  \left(
-    \bX^\dag\bF\bX
-  \right)^\dag
+  \qty(
+    \bX^\dag\cdot\bF\cdot\bX
+  )^\dag
   =
-  \bX^\dag\bF\bX
+  \bX^\dag\cdot\bF\cdot\bX
   =
-  \bF',
+  \bF'
 \end{equation}
 so $\bF'$ is also Hermitian. It may therefore be diagonalized by a unitary
 transformation, and its eigenvalues are real.
@@ -6361,16 +6361,16 @@ positive definite, it may be diagonalized as
 \begin{equation}
   \bS
   =
-  \bU\cdot\bs\cdot\bU^\dag,
+  \bU\cdot\bs\cdot\bU^\dag
   \label{eq:overlap-diagonalization}
 \end{equation}
 where
 \begin{equation}
   \bs
   =
-  \operatorname{diag}(s_1,s_2,\ldots,s_K),
+  \operatorname{diag}(s_1,s_2,\ldots,s_K)
   \qquad
-  s_p>0.
+  s_p>0
 \end{equation}
 
 A particularly common choice is the
@@ -6380,26 +6380,26 @@ A particularly common choice is the
   =
   \bS^{-1/2}
   =
-  \bU\cdot\bs^{-1/2}\cdot\bU^\dag.
+  \bU\cdot\bs^{-1/2}\cdot\bU^\dag
   \label{eq:lowdin-orthogonalizer}
 \end{equation}
 Indeed,
 \begin{align}
-  \bX^\dag\bS\bX
+  \bX^\dag\cdot\bS\cdot\bX
   &=
-  \bS^{-1/2}
-  \bS
+  \bS^{-1/2}\cdot
+  \bS\cdot
   \bS^{-1/2}
   \\
   &=
-  \bI.
+  \bI
 \end{align}
 
 Another frequently used choice is the canonical orthogonalizer,
 \begin{equation}
   \bX
   =
-  \bU\cdot\bs^{-1/2}.
+  \bU\cdot\bs^{-1/2}
 \end{equation}
 Both choices span the same one-electron space and produce the same
 generalized eigenvalues. They simply correspond to different orthonormal
@@ -6421,35 +6421,35 @@ After diagonalizing the transformed Fock matrix,
 \begin{equation}
   \bF'\bC'
   =
-  \bC'\bE,
+  \bC'\bE
 \end{equation}
 the coefficients in the original nonorthogonal basis are recovered through
 \begin{equation}
   \bC
   =
-  \bX\bC'.
+  \bX\cdot\bC'
 \end{equation}
 
 Since the eigenvectors of the Hermitian matrix $\bF'$ may be chosen
 orthonormal,
 \begin{equation}
-  \bC'^\dag\bC'
+  \bC'^\dag\cdot\bC'
   =
-  \bI,
+  \bI
 \end{equation}
 we recover the correct generalized normalization,
 \begin{align}
-  \bC^\dag\bS\bC
+  \bC^\dag\cdot\bS\cdot\bC
   &=
-  \bC'^\dag
-  \bX^\dag\bS\bX
+  \bC'^\dag\cdot
+  \bX^\dag\cdot\bS\cdot\bX\cdot
   \bC'
   \\
   &=
-  \bC'^\dag\bC'
+  \bC'^\dag\cdot\bC'
   \\
   &=
-  \bI.
+  \bI
 \end{align}
 
 Thus the orthogonalization procedure does not alter the physical molecular
@@ -6465,9 +6465,9 @@ Hermitian eigensolvers.
 
 At first sight,
 \begin{equation}
-  \bF\bC
+  \bF\cdot\bC
   =
-  \bS\bC\bE
+  \bS\cdot\bC\cdot\bE
 \end{equation}
 looks like an ordinary generalized eigenvalue problem. There is, however,
 one essential complication: the Fock matrix depends on the occupied
@@ -6475,13 +6475,13 @@ molecular orbitals and therefore on the coefficient matrix itself,
 \begin{equation}
   \bF
   =
-  \bF(\bC).
+  \bF(\bC)
 \end{equation}
 The actual Roothaan--Hall problem is therefore
 \begin{equation}
   \bF(\bC)\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE.
+  \bS\cdot\bC\cdot\bE
   \label{eq:nonlinear-roothaan-hall}
 \end{equation}
 It is a nonlinear generalized eigenvalue problem, not a single matrix
@@ -6521,7 +6521,7 @@ Hamiltonian,
   \geq
   E_\text{HF}^{\text{CBS}}
   \geq
-  E_\text{exact}.
+  E_\text{exact}
   \label{eq:hf-basis-variational-hierarchy}
 \end{equation}
 Here, $E_\text{HF}^{(K)}$ is the minimum HF energy in a finite
@@ -6541,7 +6541,7 @@ For a nested sequence of basis spaces,
   \subset
   \mathcal{B}_2
   \subset
-  \cdots,
+  \cdots
 \end{equation}
 the variational principle implies
 \begin{equation}
@@ -6551,7 +6551,7 @@ the variational principle implies
   \geq
   \cdots
   \geq
-  E_\text{HF}^{\text{CBS}}.
+  E_\text{HF}^{\text{CBS}}
 \end{equation}
 Enlarging the variational space can lower, or leave unchanged, the optimized
 HF energy, but cannot raise it.
@@ -6562,7 +6562,7 @@ It is useful to keep these two approximations conceptually separate:
   \quad+\quad
   \text{single determinant}
   \quad\Longrightarrow\quad
-  \text{practical finite-basis Hartree--Fock}.
+  \text{practical finite-basis Hartree--Fock}
 \end{equation}
 The following sections examine first how the Fock matrix is constructed in
 this finite basis and then how the resulting nonlinear Roothaan--Hall
@@ -6587,7 +6587,7 @@ one-electron contribution and a density-dependent contribution,
   =
   H_{\mu\nu}
   +
-  G_{\mu\nu}[\bP].
+  G_{\mu\nu}[\bP]
 \end{equation}
 The following worked example makes the contraction hidden in
 $G_{\mu\nu}[\bP]$ explicit.
@@ -6629,7 +6629,7 @@ Keeping every intermediate step,
   &=H_{\mu\nu}
   +\underbrace{\sum_{\lambda\sigma}\red{P_{\lambda\sigma}}
     \mel{\mu\sigma}{}{\nu\lambda}}_{\red{G_{\mu\nu}}}
-  =H_{\mu\nu}+G_{\mu\nu}.
+  =H_{\mu\nu}+G_{\mu\nu}
 \end{align}
 
 The fourth line follows by expanding both occurrences of the occupied orbital
@@ -6637,18 +6637,18 @@ $\chi_i$,
 \begin{equation}
   \chi_i
   =
-  \sum_\lambda C_{\lambda i}\phi_\lambda,
+  \sum_\lambda C_{\lambda i}\phi_\lambda
   \qquad
   \chi_i^*
   =
-  \sum_\sigma C_{\sigma i}^*\phi_\sigma^*.
+  \sum_\sigma C_{\sigma i}^*\phi_\sigma^*
 \end{equation}
 The sum over occupied orbitals can then be performed before the integral
 contraction:
 \begin{equation}
   \sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*
   =
-  P_{\lambda\sigma}.
+  P_{\lambda\sigma}
 \end{equation}
 Thus the occupied orbitals enter the Fock matrix only through their
 one-particle density matrix.
@@ -6656,12 +6656,12 @@ one-particle density matrix.
 The three quantities introduced in this derivation are the core Hamiltonian,
 the density matrix, and the two-electron part:
 \begin{equation}
-  H_{\mu\nu}=\mel{\mu}{\hh}{\nu},
+  H_{\mu\nu}=\mel{\mu}{\hh}{\nu}
   \qquad
-  P_{\lambda\sigma}=\sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*,
+  P_{\lambda\sigma}=\sum_{i=1}^{N}C_{\lambda i}C_{\sigma i}^*
   \qquad
   G_{\mu\nu}=\sum_{\lambda\sigma}P_{\lambda\sigma}
-  \mel{\mu\sigma}{}{\nu\lambda}.
+  \mel{\mu\sigma}{}{\nu\lambda}
 \end{equation}
 The Fock matrix therefore depends on the occupied-orbital coefficients through
 the density matrix $\bP$. This dependence makes the Roothaan--Hall
@@ -6688,7 +6688,7 @@ supplies the Coulomb interaction and its exchange counterpart. Schematically,
   \quad+\quad
   \text{two-electron integrals}
   \quad\longrightarrow\quad
-  \text{mean-field potential}.
+  \text{mean-field potential}
 \end{equation}
 This contraction is the central repeated operation in a conventional SCF
 calculation.
@@ -6735,7 +6735,7 @@ expansion gives
   &=\frac{1}{2}\sum_{\mu\nu}P_{\nu\mu}
     \qty(H_{\mu\nu}+F_{\mu\nu})
   \\
-  &=\frac{1}{2}\Tr\qty[\bP\cdot(\bH+\bF)].
+  &=\frac{1}{2}\Tr\qty[\bP\cdot(\bH+\bF)]
   \label{eq:hf-energy-matrix}
 \end{align}
 
@@ -6754,7 +6754,7 @@ $\bG=\bF-\bH$. The preceding result may then be written as
   \\
   &=
   \frac12\sum_{\mu\nu}P_{\nu\mu}
-  \qty(H_{\mu\nu}+F_{\mu\nu}),
+  \qty(H_{\mu\nu}+F_{\mu\nu})
 \end{align}
 which is precisely Eq.~\eqref{eq:hf-energy-matrix}. The ordering of the
 indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
@@ -6764,9 +6764,9 @@ indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
 For a closed-shell system, the density matrix is
 \begin{equation}
   P_{\red{\mu\nu}}
-  =2\sum_{i=1}^{N/2}C_{\red{\mu}i}C_{\red{\nu}i}^*,
+  =2\sum_{i=1}^{N/2}C_{\red{\mu}i}C_{\red{\nu}i}^*
   \qquad
-  \bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag,
+  \bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag
 \end{equation}
 where $\bC_\text{o}$ contains the occupied MO coefficients. In chemists'
 notation, the closed-shell AO Fock matrix becomes
@@ -6779,7 +6779,7 @@ notation, the closed-shell AO Fock matrix becomes
   -\underbrace{\frac{1}{2}\sum_{\blue{\lambda\sigma}}
     P_{\blue{\sigma\lambda}}
     \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}}
-    _{K_{\red{\mu\nu}}=\text{ exchange}}.
+    _{K_{\red{\mu\nu}}=\text{ exchange}}
   \label{eq:rhf-fock-ao}
 \end{equation}
 The factor of two in $\bP$ accounts for the two electrons occupying each
@@ -6794,12 +6794,12 @@ The corresponding energy is
   \\
   &+\frac{1}{2}\sum_{\red{\mu\nu}\blue{\lambda\sigma}}
     P_{\red{\nu\mu}}
-    \left[
+    \qty[
       \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}
       -\frac{1}{2}
        \rbraket{\red{\mu}\blue{\sigma}}{\red{\lambda}\blue{\nu}}
-    \right]
-    P_{\blue{\sigma\lambda}}.
+    ]
+    P_{\blue{\sigma\lambda}}
 \end{split}
 \end{equation}
 
@@ -6865,7 +6865,7 @@ convenient representation.
 
 We seek a matrix that orthogonalizes the AO basis, that is,
 \begin{equation}
-  \red{\bX^\dag\cdot\bS\cdot\bX=\bI}.
+  \red{\bX^\dag\cdot\bS\cdot\bX=\bI}
 \end{equation}
 For the symmetric, or \red{L\"owdin}, orthogonalization,
 \begin{equation}
@@ -6877,11 +6877,11 @@ is one solution. Direct substitution verifies it:
   \bX^\dag\cdot\bS\cdot\bX
   =\bS^{-1/2}\cdot\bS\cdot\bS^{-1/2}
   =\bI
-  \qquad\green{\checkmark}.
+  \qquad\green{\checkmark}
 \end{equation}
 The canonical orthogonalization,
 \begin{equation}
-  \bX=\bU\cdot\bs^{-1/2},
+  \bX=\bU\cdot\bs^{-1/2}
 \end{equation}
 is another solution and is useful when linear dependencies are present. In
 this case,
@@ -6891,7 +6891,7 @@ this case,
    \underbrace{\bU^\dag\cdot\bS\cdot\bU}_{\bs}
    \cdot\bs^{-1/2}
   =\bI
-  \qquad\green{\checkmark}.
+  \qquad\green{\checkmark}
 \end{equation}
 
 The two constructions differ only by a unitary transformation within the
@@ -6934,7 +6934,7 @@ The SCF procedure defines the iterative map
 \begin{equation}
     \bP^{(n)}
     \longrightarrow\bF[\bP^{(n)}]
-    \longrightarrow\bP^{(n+1)}.
+    \longrightarrow\bP^{(n+1)}
 \end{equation}
 
 In an orthonormal basis, the corresponding condition is simply that the Fock
@@ -6944,14 +6944,14 @@ At self-consistency, the occupied and virtual subspaces therefore do not mix
 under the Fock operator.
 At convergence,
 \begin{equation}
-  \bP^{(n+1)}=\bP^{(n)}=\bP^\star.
+  \bP^{(n+1)}=\bP^{(n)}=\bP^\star
 \end{equation}
 One may check the energy and/or the density matrix. At
 self-consistency, the generalized commutator vanishes:
 \begin{equation}
     \be^{(n)}
     =\bF^{(n)}\cdot\bP^{(n)}\cdot\bS
-    -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}.
+    -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}
 \end{equation}
 Accordingly,
 \begin{equation}
@@ -6959,13 +6959,13 @@ Accordingly,
   \qquad\Longrightarrow\qquad
   \be^{(n)}=\bO
   \qquad\Longrightarrow\qquad
-  \max\abs*{\be^{(n)}}<\tau_\text{SCF}.
+  \max\abs*{\be^{(n)}}<\tau_\text{SCF}
 \end{equation}
 Finally, DIIS (direct inversion in the iterative subspace) is usually
 used to accelerate convergence. It extrapolates the Fock matrix from the
 $m$ previous iterations according to
 \begin{equation}
-    \bF^{(n+1)}=\sum_{i=n-m}^{n}c_i\bF^{(i)}.
+    \bF^{(n+1)}=\sum_{i=n-m}^{n}c_i\bF^{(i)}
 \end{equation}
 
 The ordinary SCF iteration should therefore be understood as the underlying
@@ -6987,10 +6987,10 @@ Using the $m$ stored iterations, DIIS constructs an extrapolated Fock matrix
 and approximates its error vector as
 \begin{align}
   \bF_\text{DIIS}^{(m+1)}
-  &=\sum_{i=1}^{m}c_i\bF^{(i)},
+  &=\sum_{i=1}^{m}c_i\bF^{(i)}
   &
   \be_\text{DIIS}^{(m+1)}
-  &\red{\approx}\sum_{i=1}^{m}c_i\be^{(i)}.
+  &\red{\approx}\sum_{i=1}^{m}c_i\be^{(i)}
 \end{align}
 The coefficients minimize the squared Frobenius norm of the residual subject
 to the affine constraint
@@ -6998,13 +6998,13 @@ to the affine constraint
     \min_{\bc}
     \norm{\sum_{i=1}^{m}c_i\be^{(i)}}_F^2
     \qquad\text{subject to}\qquad
-    \sum_{i=1}^{m}c_i=1.
+    \sum_{i=1}^{m}c_i=1
 \end{equation}
 Define the DIIS overlap matrix by
 \begin{equation}
   B_{ij}
   =\braket*{\be^{(i)}}{\be^{(j)}}
-  =\Tr\qty[\be^{(i)\dagger}\cdot\be^{(j)}].
+  =\Tr\qty[\be^{(i)\dagger}\cdot\be^{(j)}]
 \end{equation}
 The elements of $\bB$ are therefore pairwise inner products between residual
 matrices. If two iterations have very similar errors, the corresponding rows
@@ -7014,7 +7014,7 @@ The squared residual norm is then
 \begin{equation}
   \norm{\be_\text{DIIS}^{(m+1)}}_F^2
   =\sum_{ij}c_iB_{ij}c_j
-  =\bc^\mathsf{T}\cdot\bB\cdot\bc.
+  =\bc^\mathsf{T}\cdot\bB\cdot\bc
 \end{equation}
 
 \paragraph{DIIS weights and extrapolated Fock matrix.}
@@ -7023,13 +7023,13 @@ The constrained minimization is described by the DIIS Lagrangian
 \begin{equation}
   \mathcal{L}(\bc,\lambda)
   =\bc^\mathsf{T}\cdot\bB\cdot\bc
-  -2\lambda\qty(\sum_{i=1}^{m}c_i-1).
+  -2\lambda\qty(\sum_{i=1}^{m}c_i-1)
 \end{equation}
 Its stationarity conditions are
 \begin{equation}
-  \pdv{\mathcal{L}(\bc,\lambda)}{\bc}=\bO,
+  \pdv{\mathcal{L}(\bc,\lambda)}{\bc}=\bO
   \qquad
-  \pdv{\mathcal{L}(\bc,\lambda)}{\lambda}=0,
+  \pdv{\mathcal{L}(\bc,\lambda)}{\lambda}=0
 \end{equation}
 Writing the first condition component by component gives
 \begin{align}
@@ -7037,45 +7037,45 @@ Writing the first condition component by component gives
   &=
   2\sum_{j=1}^{m}B_{kj}c_j-2\lambda
   =
-  0,
+  0
   \\
   \pdv{\mathcal L}{\lambda}
   &=
   -2\qty(\sum_{i=1}^{m}c_i-1)
   =
-  0.
+  0
 \end{align}
 Hence every row obeys
 \begin{equation}
-  \sum_{j=1}^{m}B_{kj}c_j-\lambda=0,
+  \sum_{j=1}^{m}B_{kj}c_j-\lambda=0
 \end{equation}
 together with the normalization constraint. These relations imply
 \begin{equation}
-  \bB\cdot\bc-\lambda\boldsymbol{1}=\bO,
+  \bB\cdot\bc-\lambda\boldsymbol{1}=\bO
   \qquad
-  \sum_{i=1}^{m}c_i=1.
+  \sum_{i=1}^{m}c_i=1
 \end{equation}
 These equations form the augmented DIIS linear system
 \begin{equation}
-  \begin{pmatrix}
+  \pmqty{
     B_{11}&\cdots&B_{1m}&-1\\
     \vdots&\ddots&\vdots&\vdots\\
     B_{m1}&\cdots&B_{mm}&-1\\
     -1&\cdots&-1&0
-  \end{pmatrix}
+  }
   \cdot
-  \begin{pmatrix}
+  \pmqty{
     c_1\\ \vdots\\ c_m\\ \lambda
-  \end{pmatrix}
+  }
   =
-  \begin{pmatrix}
+  \pmqty{
     0\\ \vdots\\ 0\\ -1
-  \end{pmatrix}.
+  }
 \end{equation}
 After solving for the coefficients, the extrapolated Fock matrix is
 \begin{equation}
     \bF_\text{DIIS}^{(m+1)}
-    =\sum_{i=1}^{m}c_i\bF^{(i)}.
+    =\sum_{i=1}^{m}c_i\bF^{(i)}
 \end{equation}
 The linear system has dimension only \red{$(m+1)\times(m+1)$}.
 
@@ -7093,14 +7093,14 @@ evaluated as
 \begin{equation}
   \be^{(n)}
   =\bF^{(n)}\cdot\bP^{(n)}\cdot\bS
-  -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}.
+  -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}
 \end{equation}
 The pair $\{\bF^{(n)},\be^{(n)}\}$ is stored and the DIIS subspace is
 updated. The matrix $\bB$ is constructed, the augmented linear system is
 solved, and the coefficients $\{c_i\}$ are obtained. These coefficients
 define the extrapolated Fock matrix
 \begin{equation}
-  \bF^\text{DIIS}=\sum_i c_i\bF^{(i)}.
+  \bF^\text{DIIS}=\sum_i c_i\bF^{(i)}
 \end{equation}
 Finally, the generalized eigenvalue problem
 \begin{equation}
@@ -7246,9 +7246,9 @@ orbital $\chi_p^\text{new}$, compute
   O_{ip}
   =\braket{\chi_i^\text{ref}}{\chi_p^\text{new}}
   =\sum_{\mu\nu}C_{\mu i}^{\text{ref}*}
-    S_{\mu\nu}C_{\nu p}^\text{new},
+    S_{\mu\nu}C_{\nu p}^\text{new}
   \qquad
-    w_p=\sum_{i\in\mathcal{O}_\text{ref}}\abs{O_{ip}}^2.
+    w_p=\sum_{i\in\mathcal{O}_\text{ref}}\abs{O_{ip}}^2
 \end{equation}
 In matrix form, the overlap matrix between the reference occupied orbitals and
 the new orbitals is
@@ -7257,7 +7257,7 @@ the new orbitals is
   =
   \bC_\text{o}^{\text{ref}\dagger}
   \cdot\bS\cdot
-  \bC^\text{new}.
+  \bC^\text{new}
 \end{equation}
 The weight $w_p$ is the squared norm of column $p$ of this matrix. It therefore
 measures how much of the new orbital lies in the occupied reference subspace.
@@ -7360,12 +7360,12 @@ The MOM-SCF cycle is
 
 Conventional SCF occupies the lowest orbital energies,
 \begin{equation}
-  \epsilon_1\leq\epsilon_2\leq\cdots\leq\epsilon_N,
+  \epsilon_1\leq\epsilon_2\leq\cdots\leq\epsilon_N
 \end{equation}
 and therefore finds a low-energy solution. MOM-SCF instead occupies the
 largest overlap weights,
 \begin{equation}
-  w_1\geq w_2\geq\cdots\geq w_N,
+  w_1\geq w_2\geq\cdots\geq w_N
 \end{equation}
 and therefore follows a chosen SCF solution. Thus, MOM changes the
 occupation to target non-Aufbau stationary solutions of the HF equations.
@@ -7408,7 +7408,7 @@ The classical dipole vector is
 \begin{equation}
   \boldsymbol{\mu}=(\mu_x,\mu_y,\mu_z)
   =\underbrace{\green{\sum_i q_i\br_i}}
-    _{\text{classical definition}}.
+    _{\text{classical definition}}
 \end{equation}
 
 The electronic term follows from the one-particle density:
@@ -7421,7 +7421,7 @@ The electronic term follows from the one-particle density:
   \\
   &=
   -\sum_{\mu\nu}P_{\nu\mu}
-  \rmel{\mu}{\br}{\nu}.
+  \rmel{\mu}{\br}{\nu}
 \end{align}
 Thus the many-electron expectation value reduces to a contraction of the AO
 density with one-electron dipole integrals.
@@ -7437,16 +7437,16 @@ the electronic and nuclear contributions:
       _{\text{\blue{nuclei}}}
   \\
   &=\red{-\sum_{\mu\nu}P_{\mu\nu}\rmel{\nu}{\br}{\mu}}
-    +\blue{\sum_{A=1}^{M}Z_A\bR_A}.
+    +\blue{\sum_{A=1}^{M}Z_A\bR_A}
 \end{align}
 For example, its $x$ component is
 \begin{equation}
   \mu_x
   =\red{-\sum_{\mu\nu}P_{\mu\nu}\rmel{\nu}{x}{\mu}}
-  +\blue{\sum_{A=1}^{M}Z_AX_A},
+  +\blue{\sum_{A=1}^{M}Z_AX_A}
   \qquad
   \underbrace{\rmel{\nu}{x}{\mu}}_{\text{one-electron integrals}}
-  =\int\phi_\nu^*(\br)\,x\,\phi_\mu(\br)\dd{\br}.
+  =\int\phi_\nu^*(\br)\,x\,\phi_\mu(\br)\dd{\br}
 \end{equation}
 
 \paragraph{Charge analysis.}
@@ -7458,9 +7458,9 @@ L\"owdin analyses differ precisely in this partitioning convention.
 
 The electron density is
 \begin{equation}
-  \rho(\br)=\sum_{\mu\nu}\phi_\mu(\br)P_{\mu\nu}\phi_\nu^*(\br),
+  \rho(\br)=\sum_{\mu\nu}\phi_\mu(\br)P_{\mu\nu}\phi_\nu^*(\br)
   \qquad
-  \int\rho(\br)\dd{\br}=N.
+  \int\rho(\br)\dd{\br}=N
 \end{equation}
 The identity $N=\Tr(\bP\cdot\bS)$ expresses electron-number conservation in a
 nonorthogonal basis. A population analysis partitions the diagonal
@@ -7469,28 +7469,28 @@ Consequently,
 \begin{equation}
   N=\sum_{\mu\nu}P_{\mu\nu}S_{\nu\mu}
   =\sum_\mu(\bP\cdot\bS)_{\mu\mu}
-  =\Tr(\bP\cdot\bS).
+  =\Tr(\bP\cdot\bS)
 \end{equation}
 Assuming that the basis functions are atom-centered, the Mulliken population
 analysis assigns the net charge
 \begin{equation}
   \underbrace{\blue{q_A^\text{Mulliken}}}_{\text{net charge on $A$}}
-  =Z_A-\sum_{\mu\in A}(\bP\cdot\bS)_{\mu\mu}.
+  =Z_A-\sum_{\mu\in A}(\bP\cdot\bS)_{\mu\mu}
 \end{equation}
 For L\"owdin population analysis, cyclic invariance of the trace,
 $\Tr(\bA\cdot\bB)=\Tr(\bB\cdot\bA)$, gives, for any $\alpha$,
 \begin{equation}
   N=\sum_\mu
-  (\bS^\alpha\cdot\bP\cdot\bS^{1-\alpha})_{\mu\mu}.
+  (\bS^\alpha\cdot\bP\cdot\bS^{1-\alpha})_{\mu\mu}
 \end{equation}
 For \red{$\alpha=1/2$}, this becomes
 \begin{equation}
   N=\sum_\mu
-  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu},
+  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu}
   \qquad\Rightarrow\qquad
   \red{q_A^\text{L\"owdin}}
   =Z_A-\sum_{\mu\in A}
-  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu}.
+  (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu}
 \end{equation}
 
 \paragraph{Localized orbitals.}
@@ -7515,17 +7515,17 @@ matrix passes through the sequence
         \bO&\bepsilon_\text{v})
   \xrightarrow{\text{localization}}
   \mqty(\widetilde{\bff}_\text{oo}&\bO\\
-        \bO&\widetilde{\bff}_\text{vv}).
+        \bO&\widetilde{\bff}_\text{vv})
 \end{equation}
 The localized occupied orbitals are obtained through a unitary
 transformation,
 \begin{equation}
     \widetilde{\bC}_\text{o}
-    =\bC_\text{o}\cdot\purple{\bU},
+    =\bC_\text{o}\cdot\purple{\bU}
     \qquad
     \purple{\bU}^\dagger\cdot\purple{\bU}=\bI
     \quad\Longleftrightarrow\quad
-    \text{\purple{unitary transformation}}.
+    \text{\purple{unitary transformation}}
 \end{equation}
 For a closed-shell determinant, the density matrix is unchanged:
 \begin{equation}
@@ -7533,12 +7533,12 @@ For a closed-shell determinant, the density matrix is unchanged:
   =2\widetilde{\bC}_\text{o}
    \cdot\widetilde{\bC}_\text{o}^\dagger
   =2\bC_\text{o}\cdot\bC_\text{o}^\dagger
-  =\bP.
+  =\bP
 \end{equation}
 The determinant changes only by a phase,
 \begin{equation}
   \ket*{\widetilde{\Psi}_0}
-  =\det(\purple{\bU})\ket{\Psi_0},
+  =\det(\purple{\bU})\ket{\Psi_0}
 \end{equation}
 so the density, energy, and every expectation value are
 unchanged.
@@ -7588,7 +7588,7 @@ The Edmiston--Ruedenberg functional \citep{EdmistonRuedenberg1963} is
     \Omega_\text{ER}
     =\sum_i\rbraket{\psi_i\psi_i}{\psi_i\psi_i}
     \quad\longrightarrow\quad
-    \max\ \text{orbital self-repulsion}.
+    \max\ \text{orbital self-repulsion}
 \end{equation}
 The Foster--Boys functional \citep{FosterBoys1960} may be written in two equivalent forms:
 \begin{align}
@@ -7602,8 +7602,14 @@ The Foster--Boys functional \citep{FosterBoys1960} may be written in two equival
     \mel{\psi_i}{r^2}{\psi_i}
     -\abs{\mel{\psi_i}{\br}{\psi_i}}^2]
     \quad\longrightarrow\quad
-    \max\ \text{distance between centroids}.
+    \min\ \text{sum of orbital variances}
 \end{align}
+Within a fixed orbital subspace, $\sum_i\mel{\psi_i}{r^2}{\psi_i}$ is
+invariant under unitary rotations. Minimizing $\Omega_\text{BF}$ is therefore
+equivalent to maximizing $\sum_i\abs{\mel{\psi_i}{\br}{\psi_i}}^2$.
+Since the sum of orbital centroids is also invariant, this maximizes their
+total pairwise squared separation. Both displayed expressions for
+$\Omega_\text{BF}$ are minimized; the centroid criterion is maximized.
 Its strengths are
 that it requires only one-electron integrals and produces compact bonds and
 lone pairs. Its limitations are that it does not explicitly preserve
@@ -7613,13 +7619,13 @@ to localize.
 For an atomic population $q_i^A$ of orbital $i$ on atom $A$, the original
 Pipek--Mezey criterion \citep{PipekMezey1989} maximizes
 \begin{equation}
-    \Omega_\text{PM}=\sum_A\sum_i\abs*{q_i^A}^2,
+    \Omega_\text{PM}=\sum_A\sum_i\abs*{q_i^A}^2
 \end{equation}
 using the Mulliken populations
 \begin{equation}
   q_i^A
   =\sum_{\mu\in A}\sum_\nu
-    C_{\mu i}^*S_{\mu\nu}C_{\nu i}.
+    C_{\mu i}^*S_{\mu\nu}C_{\nu i}
 \end{equation}
 Its strengths are
 that it often preserves the separation between $\sigma$ and $\pi$ orbitals
@@ -7636,13 +7642,13 @@ The occupied subspace and Slater determinant remain unchanged, as do the
 density matrix, electron density, HF energy, and molecular properties. The
 occupied-virtual Fock block also remains zero:
 \begin{equation}
-  \widetilde{\bff}_\text{ov}=\bff_\text{ov}=\bO.
+  \widetilde{\bff}_\text{ov}=\bff_\text{ov}=\bO
 \end{equation}
 What changes is that localized orbitals are generally not eigenfunctions of
 the Fock operator:
 \begin{equation}
   \widetilde{\bff}_\text{oo}
-  =\purple{\bU}^\dagger\cdot\bepsilon_\text{o}\cdot\purple{\bU}.
+  =\purple{\bU}^\dagger\cdot\bepsilon_\text{o}\cdot\purple{\bU}
 \end{equation}
 Orbital energies therefore cannot be assigned to localized orbitals.
 
@@ -7681,8 +7687,8 @@ orbitals,
 \begin{equation}
   \chi_p^\text{UHF}(\bx)
   =\begin{cases}
-    \alpha(\omega)\blue{\psi_p^\alpha(\br)},\\
-    \beta(\omega)\red{\psi_p^\beta(\br)}.
+    \alpha(\omega)\blue{\psi_p^\alpha(\br)}\\
+    \beta(\omega)\red{\psi_p^\beta(\br)}
   \end{cases}
 \end{equation}
 The $\alpha$ and $\beta$ spatial orbitals are therefore allowed to differ.
@@ -7698,7 +7704,7 @@ $\violet{\chS_z}$. Its orbitals have the form
   =\alpha(\omega)\blue{\psi_p^\alpha(\br)}
   +\beta(\omega)\red{\psi_p^\beta(\br)}
   \qquad\Rightarrow\qquad
-  \text{two-component spinor}.
+  \text{two-component spinor}
 \end{equation}
 
 The additional variational freedom can lower the energy, but it changes the
@@ -7715,11 +7721,11 @@ eigenfunctions of the separate \red{$\alpha$ and $\beta$ Fock operators}:
 \begin{align}
   &
     \blue{f^\alpha(\br_1)\psi_i^\alpha(\br_1)
-    =\epsilon_i^\alpha\psi_i^\alpha(\br_1)},
+    =\epsilon_i^\alpha\psi_i^\alpha(\br_1)}
   &
   &
     \red{f^\beta(\br_1)\psi_i^\beta(\br_1)
-    =\epsilon_i^\beta\psi_i^\beta(\br_1)}.
+    =\epsilon_i^\beta\psi_i^\beta(\br_1)}
 \end{align}
 The two Fock operators are
 \begin{align}
@@ -7727,24 +7733,24 @@ The two Fock operators are
   &=h(\br_1)
     +\sum_i^{N^\alpha}
       \qty[\blue{J_i^\alpha(\br_1)-K_i^\alpha(\br_1)}]
-    +\sum_i^{N^\beta}\red{J_i^\beta(\br_1)},
+    +\sum_i^{N^\beta}\red{J_i^\beta(\br_1)}
   \\
   \red{f^\beta(\br_1)}
   &=h(\br_1)
     +\sum_i^{N^\beta}
       \qty[\red{J_i^\beta(\br_1)-K_i^\beta(\br_1)}]
-    +\sum_i^{N^\alpha}\blue{J_i^\alpha(\br_1)}.
+    +\sum_i^{N^\alpha}\blue{J_i^\alpha(\br_1)}
 \end{align}
 The \green{Coulomb} and \red{exchange} operators are defined by
 \begin{align}
   \blue{J_i^\sigma(\br_1)}
   &=\int\psi_i^{\sigma *}(\br_2)r_{12}^{-1}
-    \psi_i^\sigma(\br_2)\dd{\br_2},
+    \psi_i^\sigma(\br_2)\dd{\br_2}
   \\
   \violet{K_i^\sigma(\br_1)}\psi_j^\sigma(\br_1)
   &=\qty[\int\psi_i^{\sigma *}(\br_2)r_{12}^{-1}
     \psi_j^\sigma(\br_2)\dd{\br_2}]
-    \psi_i^\sigma(\br_1).
+    \psi_i^\sigma(\br_1)
 \end{align}
 
 Each spin population contributes a Coulomb field felt by electrons of either
@@ -7760,7 +7766,7 @@ The UHF energy comprises three contributions:
   E_\text{UHF}
   =\blue{E_\text{UHF}^{\alpha\alpha}}
   +\red{E_\text{UHF}^{\beta\beta}}
-  +\violet{E_\text{UHF}^{\alpha\beta}}.
+  +\violet{E_\text{UHF}^{\alpha\beta}}
 \end{equation}
 Explicitly,
 \begin{equation}
@@ -7775,21 +7781,21 @@ Explicitly,
       \qty(J_{ij}^{\beta\beta}-K_{ij}^{\beta\beta})}
   \\
   &+\violet{\sum_i^{N^\alpha}\sum_j^{N^\beta}
-    J_{ij}^{\alpha\beta}}.
+    J_{ij}^{\alpha\beta}}
 \end{aligned}
 \end{equation}
 The matrix elements are
 \begin{align}
   h_{ii}^\sigma
-  &=\mel{\psi_i^\sigma}{h}{\psi_i^\sigma},
+  &=\mel{\psi_i^\sigma}{h}{\psi_i^\sigma}
   &
   J_{ij}^{\sigma\sigma'}
   &=\braket*{\psi_i^\sigma\psi_j^{\sigma'}}
-    {\psi_i^\sigma\psi_j^{\sigma'}},
+    {\psi_i^\sigma\psi_j^{\sigma'}}
   &
   K_{ij}^{\sigma\sigma}
   &=\braket*{\psi_i^\sigma\psi_j^\sigma}
-    {\psi_j^\sigma\psi_i^\sigma}.
+    {\psi_j^\sigma\psi_i^\sigma}
 \end{align}
 There is no exchange between opposite-spin electrons.
 
@@ -7829,7 +7835,7 @@ For the occupation shown above,
   E_\text{UHF}
   =h_{11}^\alpha+h_{11}^\beta+h_{22}^\alpha
   +J_{12}^{\alpha\alpha}-K_{12}^{\alpha\alpha}
-  +J_{11}^{\alpha\beta}+J_{21}^{\alpha\beta}.
+  +J_{11}^{\alpha\beta}+J_{21}^{\alpha\beta}
 \end{equation}
 
 The same-spin interaction between the $1s^\alpha$ and $2s^\alpha$ electrons
@@ -7846,18 +7852,18 @@ expanded in the same AO basis with
 separate spin-dependent coefficients:
 \begin{align}
   \psi_i^\alpha(\br)
-  &=\sum_{\mu=1}^{K}\blue{C_{\mu i}^\alpha}\phi_\mu(\br),
+  &=\sum_{\mu=1}^{K}\blue{C_{\mu i}^\alpha}\phi_\mu(\br)
   &
   \psi_i^\beta(\br)
-  &=\sum_{\mu=1}^{K}\red{C_{\mu i}^\beta}\phi_\mu(\br).
+  &=\sum_{\mu=1}^{K}\red{C_{\mu i}^\beta}\phi_\mu(\br)
 \end{align}
 The resulting Pople--Nesbet equations \citep{PopleNesbet1954} are
 \begin{align}
   \blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
-  &=\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha,
+  &=\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha
   &
   \red{\bF^\beta}\cdot\red{\bC^\beta}
-  &=\bS\cdot\red{\bC^\beta}\cdot\bE^\beta.
+  &=\bS\cdot\red{\bC^\beta}\cdot\bE^\beta
 \end{align}
 Their spin-dependent Fock matrices are
 \begin{align}
@@ -7870,7 +7876,7 @@ Their spin-dependent Fock matrices are
     ]
   \notag\\
   &+\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
-    \rbraket{\mu\nu}{\sigma\lambda},
+    \rbraket{\mu\nu}{\sigma\lambda}
   \\
   \red{F_{\mu\nu}^\beta}
   ={}&H_{\mu\nu}
@@ -7881,7 +7887,7 @@ Their spin-dependent Fock matrices are
     ]
   \notag\\
   &+\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
-    \rbraket{\mu\nu}{\sigma\lambda}.
+    \rbraket{\mu\nu}{\sigma\lambda}
 \end{align}
 Both $\blue{\bF^\alpha}$ and $\red{\bF^\beta}$ depend on
 $\blue{\bC^\alpha}$ and $\red{\bC^\beta}$. Therefore, the $\alpha$
@@ -7899,30 +7905,30 @@ The spin-up and spin-down density matrices are
   &
     \blue{P_{\mu\nu}^\alpha}
     =\sum_{i=1}^{N^\alpha}C_{\mu i}^\alpha C_{\nu i}^{\alpha *}
-    \quad\Longleftrightarrow\quad\blue{\bP^\alpha},
+    \quad\Longleftrightarrow\quad\blue{\bP^\alpha}
   &
   &
     \red{P_{\mu\nu}^\beta}
     =\sum_{i=1}^{N^\beta}C_{\mu i}^\beta C_{\nu i}^{\beta *}
-    \quad\Longleftrightarrow\quad\red{\bP^\beta}.
+    \quad\Longleftrightarrow\quad\red{\bP^\beta}
 \end{align}
 For $\sigma=\alpha$ or $\beta$, the corresponding real-space density and
 its normalization are
 \begin{align}
   \rho^\sigma(\br)
   &=\sum_{\mu\nu}\phi_\mu(\br)P_{\mu\nu}^\sigma
-    \phi_\nu^*(\br),
+    \phi_\nu^*(\br)
   &
   \int\rho^\sigma(\br)\dd{\br}
-  &=N^\sigma.
+  &=N^\sigma
 \end{align}
 Finally, the total and spin density matrices are
 \begin{align}
   \underbrace{\blue{\bP^\text{T}}}_{\blue{\text{charge density}}}
-  &=\blue{\bP^\alpha}+\red{\bP^\beta},
+  &=\blue{\bP^\alpha}+\red{\bP^\beta}
   &
   \underbrace{\violet{\bP^\text{S}}}_{\violet{\text{spin density}}}
-  &=\blue{\bP^\alpha}-\red{\bP^\beta}.
+  &=\blue{\bP^\alpha}-\red{\bP^\beta}
 \end{align}
 
 The sum $\bP^\text{T}$ determines the total charge density. The difference
@@ -7961,7 +7967,7 @@ Convergence therefore requires a fixed point of the coupled map
   \longrightarrow
   (\bF^\alpha,\bF^\beta)
   \longrightarrow
-  (\bP^\alpha,\bP^\beta).
+  (\bP^\alpha,\bP^\beta)
 \end{equation}
 Different initial spin densities can lead to different stationary solutions,
 especially where restricted spin symmetry becomes unstable.
@@ -7976,10 +7982,10 @@ longer a pure eigenfunction of $\chS^2$.
 
 Start from one normalized $1s$ function on each atom:
 \begin{equation}
-    \psi_g=\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}},
+    \psi_g=\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}}
     \qquad
-    \psi_u=\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}},
-  \qquad S=\braket{\phi_A}{\phi_B}.
+    \psi_u=\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}}
+  \qquad S=\braket{\phi_A}{\phi_B}
 \end{equation}
 For two electrons in two spatial orbitals, UHF reduces to a
 single-parameter problem.
@@ -8002,9 +8008,9 @@ single-parameter problem.
 In the restricted description both electrons occupy the gerade bonding
 orbital. The RHF wavefunction and energy are
 \begin{equation}
-  \ket{\Psi_\text{RHF}}=\ket{\psi_g\Bar{\psi}_g},
+  \ket{\Psi_\text{RHF}}=\ket{\psi_g\Bar{\psi}_g}
   \qquad
-  E_\text{RHF}=2h_{gg}+J_{gg}+\frac{1}{R}.
+  E_\text{RHF}=2h_{gg}+J_{gg}+\frac{1}{R}
 \end{equation}
 At large $R$, where $S\rightarrow0$,
 \begin{equation}
@@ -8013,7 +8019,7 @@ At large $R$, where $S\rightarrow0$,
       _{\text{covalent}}
     +\underbrace{\phi_A(1)\phi_A(2)+\phi_B(1)\phi_B(2)}
       _{\text{ionic}}
-  ].
+  ]
 \end{equation}
 RHF retains \red{$50\%$ ionic character} as $R\rightarrow\infty$. Both
 electrons are forced to share the same spatial orbital, so its energy lies
@@ -8032,11 +8038,11 @@ the $\alpha$ and $\beta$ orbitals to rotate in opposite directions. The UHF
 orbitals can be parametrized as
 \begin{equation}
   \begin{aligned}
-    \psi^\alpha(\theta)&=\cos\theta\,\psi_g+\sin\theta\,\psi_u,\\
-    \psi^\beta(\theta)&=\cos\theta\,\psi_g-\sin\theta\,\psi_u,
+    \psi^\alpha(\theta)&=\cos\theta\,\psi_g+\sin\theta\,\psi_u\\
+    \psi^\beta(\theta)&=\cos\theta\,\psi_g-\sin\theta\,\psi_u
   \end{aligned}
   \qquad
-  \braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta).
+  \braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)
 \end{equation}
 The two choices $\pm\theta$ are degenerate and exchange the spin
 localization.
@@ -8078,13 +8084,13 @@ With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the energy is
   +\cos^4\theta\,J_{gg}
   +\sin^4\theta\,J_{uu}
   \notag\\
-  &+2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu}).
+  &+2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu})
 \end{align}
 Introducing
 \begin{equation}
-  x=\cos^2\theta,
+  x=\cos^2\theta
   \qquad
-  A=J_{gu}-2K_{gu},
+  A=J_{gu}-2K_{gu}
 \end{equation}
 allows the same energy to be written as
 \begin{equation}
@@ -8092,7 +8098,7 @@ allows the same energy to be written as
   =
   2xh_{gg}+2(1-x)h_{uu}
   +x^2J_{gg}+(1-x)^2J_{uu}
-  +2x(1-x)A.
+  +2x(1-x)A
 \end{equation}
 Its derivative is
 \begin{equation}
@@ -8101,10 +8107,10 @@ Its derivative is
   2\qty[
   h_{gg}-h_{uu}-J_{uu}+A
   +x\qty(J_{gg}+J_{uu}-2A)
-  ].
+  ]
 \end{equation}
-Because $\dd x/\dd\theta=-\sin(2\theta)$, stationarity requires either
-$\sin(2\theta)=0$ or $\dd E_\text{UHF}/\dd x=0$. The first condition contains
+Because $\dv{x}{\theta}=-\sin(2\theta)$, stationarity requires either
+$\sin(2\theta)=0$ or $\dv{E_\text{UHF}}{x}=0$. The first condition contains
 the restricted solution $\theta=0$; the second gives the broken-symmetry
 solution.
 Besides the restricted stationary point $\theta=0$, a
@@ -8112,7 +8118,7 @@ broken-symmetry stationary solution satisfies
 \begin{equation}
     \cos^2\theta^\star
     =\frac{h_{uu}-h_{gg}+J_{uu}-J_{gu}+2K_{gu}}
-      {J_{gg}+J_{uu}-2J_{gu}+4K_{gu}}.
+      {J_{gg}+J_{uu}-2J_{gu}+4K_{gu}}
 \end{equation}
 At short bond lengths, only the minimum at $\theta=0$ is physically
 accessible and UHF reduces to RHF. At large bond lengths, when
@@ -8122,13 +8128,13 @@ RHF becomes unstable to spin polarization.
 The RHF curvature is
 \begin{equation}
   \eval{\dv[2]{E}{\theta}}_{\theta=0}
-  =4\qty(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu}),
+  =4\qty(h_{uu}-h_{gg}-J_{gg}+J_{gu}-2K_{gu})
 \end{equation}
 and the Coulson--Fischer point \citep{CoulsonFischer1949} is defined by
 \begin{equation}
     R=R_\text{CF}
     \quad\Longleftrightarrow\quad
-    \eval{\dv[2]{E}{\theta}}_{\theta=0}=0.
+    \eval{\dv[2]{E}{\theta}}_{\theta=0}=0
 \end{equation}
 For $R<R_\text{CF}$, the RHF curvature is positive and there is one minimum
 at $\theta=0$. At $R=R_\text{CF}$ it vanishes and the minimum becomes flat.
@@ -8193,17 +8199,17 @@ coordinates {(-30,0) (30,0)};
 
 At dissociation,
 \begin{equation}
-  S\rightarrow0,
+  S\rightarrow0
   \qquad
-  \psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2},
+  \psi_g\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}
   \qquad
-  U=(AA|AA)>0.
+  U=(AA|AA)>0
 \end{equation}
 The restricted and unrestricted limits are
 \begin{equation}
-  E_\text{RHF}^\infty=2E_\text{H}+\frac12U,
+  E_\text{RHF}^\infty=2E_\text{H}+\frac12U
   \qquad
-  E_\text{UHF}^\infty=2E_\text{H}.
+  E_\text{UHF}^\infty=2E_\text{H}
 \end{equation}
 The ionic terms therefore leave a finite RHF error, whereas
 $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$ give the correct UHF limit.
@@ -8246,7 +8252,7 @@ For the two-electron $M_S=0$ determinant,
 \begin{equation}
     \expval{\purple{\chS^2}}_\text{UHF}
     =1-\abs{\braket{\psi^\alpha}{\psi^\beta}}^2
-    =\sin^2(2\theta).
+    =\sin^2(2\theta)
 \end{equation}
 Near equilibrium, $\theta=0$ and $\expval*{\purple{\chS^2}}=0$, so the
 determinant is a pure singlet. At dissociation, $\theta\rightarrow\pi/4$ and
@@ -8257,7 +8263,7 @@ singlet and an $M_S=0$ triplet:
   =\frac{1}{\sqrt2}\qty(
     \ket{\text{covalent singlet}}
     +\ket{\text{triplet},M_S=0})
-  \qquad\text{as }R\to\infty.
+  \qquad\text{as }R\to\infty
 \end{equation}
 Thus, the UHF energy is physically useful, but the UHF wavefunction is
 spin-contaminated. Three conclusions follow. A stationary SCF solution need
@@ -8280,15 +8286,15 @@ A GHF orbital is a two-component spinor:
 \begin{equation}
     \chi_p^\text{GHF}(\bx)
     =\alpha(\omega)\blue{\psi_p^\alpha(\br)}
-    +\beta(\omega)\red{\psi_p^\beta(\br)}.
+    +\beta(\omega)\red{\psi_p^\beta(\br)}
 \end{equation}
 Both components are expanded in the same spatial AO basis,
 \begin{equation}
-  \psi_i^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br),
+  \psi_i^\sigma(\br)=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br)
   \qquad
-  \boldsymbol{\mathcal C}=\mqty(\bC^\alpha\\\bC^\beta),
+  \boldsymbol{\mathcal C}=\mqty(\bC^\alpha\\\bC^\beta)
   \qquad
-  \boldsymbol{\mathcal C}\in\mathbb C^{2K\times N}.
+  \boldsymbol{\mathcal C}\in\mathbb C^{2K\times N}
 \end{equation}
 RHF pairs electrons in one spatial orbital and preserves both
 $\purple{\chS^2}$ and $\violet{\chS_z}$. UHF uses orbitals that are purely
@@ -8341,7 +8347,7 @@ can appear in both spin components of each occupied spinor.
  \underbrace{\text{UHF}\xrightarrow{\text{global spin rotation}}
  \text{rotated UHF}}_{\text{physically equivalent collinear solutions}}
  \qquad\neq\qquad
- \underbrace{\text{genuine GHF}}_{\text{non-collinear}}.
+ \underbrace{\text{genuine GHF}}_{\text{non-collinear}}
 \end{equation}
 \caption{RHF, UHF, globally rotated UHF, and genuinely noncollinear GHF spin
 directions. A tilted spin axis alone does not imply a genuinely noncollinear
@@ -8353,23 +8359,23 @@ The GHF density matrix is
 \begin{equation}
     \boldsymbol{\mathcal P}=\mqty(
       \bP^{\alpha\alpha}&\bP^{\alpha\beta}\\
-      \bP^{\beta\alpha}&\bP^{\beta\beta}),
+      \bP^{\beta\alpha}&\bP^{\beta\beta})
   \qquad
   P_{\mu\nu}^{\sigma\sigma'}
-  =\sum_{i=1}^{N}C_{\mu i}^\sigma C_{\nu i}^{\sigma' *}.
+  =\sum_{i=1}^{N}C_{\mu i}^\sigma C_{\nu i}^{\sigma' *}
 \end{equation}
 The diagonal blocks describe the two collinear spin populations, whereas the
 off-diagonal blocks encode coherence between the $\alpha$ and $\beta$
 components. These off-diagonal blocks vanish for an ordinary UHF determinant.
 Its charge and magnetization blocks are
 \begin{align}
-  \bP&=\frac12\qty(\bP^{\alpha\alpha}+\bP^{\beta\beta}),
+  \bP&=\frac12\qty(\bP^{\alpha\alpha}+\bP^{\beta\beta})
   &
-  \bM_z&=\frac12\qty(\bP^{\alpha\alpha}-\bP^{\beta\beta}),
+  \bM_z&=\frac12\qty(\bP^{\alpha\alpha}-\bP^{\beta\beta})
   \\
-  \bM_y&=\frac{1}{2\ii}\qty(\bP^{\beta\alpha}-\bP^{\alpha\beta}),
+  \bM_y&=\frac{1}{2\ii}\qty(\bP^{\beta\alpha}-\bP^{\alpha\beta})
   &
-  \bM_x&=\frac12\qty(\bP^{\beta\alpha}+\bP^{\alpha\beta}).
+  \bM_x&=\frac12\qty(\bP^{\beta\alpha}+\bP^{\alpha\beta})
 \end{align}
 Equivalently,
 \begin{equation}
@@ -8377,29 +8383,29 @@ Equivalently,
   =\mqty(
     \bP+\bM_z&\bM_x-\ii\bM_y\\
     \bM_x+\ii\bM_y&\bP-\bM_z)
-  =\bP\otimes\bI+\bM\otimes\boldsymbol{\sigma},
+  =\bP\otimes\bI+\bM\otimes\boldsymbol{\sigma}
 \end{equation}
 with
 \begin{equation}
-  \bM=\mqty(\bM_x\\\bM_y\\\bM_z),
+  \bM=\mqty(\bM_x\\\bM_y\\\bM_z)
   \qquad
   \boldsymbol{\sigma}
   =\mqty(\boldsymbol{\sigma}_x\\\boldsymbol{\sigma}_y\\
-    \boldsymbol{\sigma}_z).
+    \boldsymbol{\sigma}_z)
 \end{equation}
 
 The Roothaan--Hall equation in spinor space is
 \begin{equation}
     \boldsymbol{\mathcal F}\cdot\boldsymbol{\mathcal C}
     =\boldsymbol{\mathcal S}\cdot\boldsymbol{\mathcal C}
-     \cdot\boldsymbol{\mathcal E},
+     \cdot\boldsymbol{\mathcal E}
   \qquad
-  \boldsymbol{\mathcal S}=\mqty(\bS&\bO\\\bO&\bS),
+  \boldsymbol{\mathcal S}=\mqty(\bS&\bO\\\bO&\bS)
 \end{equation}
 with normalization
 \begin{equation}
   \boldsymbol{\mathcal C}^\dagger\cdot\boldsymbol{\mathcal S}
-  \cdot\boldsymbol{\mathcal C}=\bI.
+  \cdot\boldsymbol{\mathcal C}=\bI
 \end{equation}
 The GHF Fock matrix is
 \begin{equation}
@@ -8415,11 +8421,11 @@ where
 \begin{equation}
   J_{\mu\nu}[\bP]
   =\sum_{\lambda\sigma}P_{\lambda\sigma}
-    \rbraket{\mu\nu}{\lambda\sigma},
+    \rbraket{\mu\nu}{\lambda\sigma}
   \qquad
   K_{\mu\nu}[\bP]
   =\sum_{\lambda\sigma}P_{\lambda\sigma}
-    \rbraket{\mu\sigma}{\lambda\nu}.
+    \rbraket{\mu\sigma}{\lambda\nu}
 \end{equation}
 The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components
 self-consistently. The SCF procedure builds all four density blocks, builds
@@ -8438,7 +8444,7 @@ For the corresponding global minima in the same one-electron basis,
     \{\Phi_\text{RHF}\}\subset\{\Phi_\text{UHF}\}
     \subset\{\Phi_\text{GHF}\}
   \qquad\Longrightarrow\qquad
-  \red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}.
+  \red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}
 \end{equation}
 A converged UHF determinant may remain unstable to occupied-virtual rotations
 that mix $\alpha$ and $\beta$ orbitals; following a negative-curvature
