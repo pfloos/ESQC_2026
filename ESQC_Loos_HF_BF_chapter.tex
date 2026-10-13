@@ -2,7 +2,7 @@
 % Compile from the repository root with:
 %   latexmk -pdf ESQC_Loos_HF_BF_chapter.tex
 
-\documentclass[11pt,oneside,openany]{book}
+\documentclass[11pt,a4paper,titlepage]{article}
 
 % Page and typography
 \usepackage[a4paper,margin=30mm,headheight=14pt]{geometry}
@@ -32,7 +32,7 @@
 \pgfplotsset{compat=1.18}
 \usepackage{algorithmicx,algorithm,algpseudocode}
 
-% Chapter layout and navigation
+% Article layout and navigation
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{stackengine}
@@ -68,11 +68,6 @@
 \urlstyle{same}
 \newcommand{\doi}[1]{doi:\ \href{https://doi.org/#1}{\nolinkurl{#1}}}
 
-\titleformat{\chapter}[display]
-  {\normalfont\color{hfGreenDark}}
-  {\filleft\Large\bfseries\chaptertitlename\ \thechapter}
-  {1ex}
-  {\titlerule[1.2pt]\vspace{1.5ex}\Huge\bfseries}
 \titleformat{\section}
   {\normalfont\Large\bfseries\color{hfGreenDark}}
   {\thesection}{0.75em}{}
@@ -82,7 +77,7 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyhead[L]{\small\color{hfGreenDark}Hartree--Fock Theory and Basis Functions}
 \fancyhead[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{
@@ -258,7 +253,7 @@
 \algnewcommand\Assert[1]{\State \algorithmicassert(#1)}
 
 % Front matter
-\title{Hartree--Fock Theory, Basis Sets, and Molecular Integrals}
+\title{\color{hfGreenDark}Hartree--Fock Theory, Basis Sets, and Molecular Integrals}
 \author{
 	Pierre-Fran\c{c}ois (Titou) Loos
 	\bigskip
@@ -270,21 +265,20 @@
 
 \begin{document}
 
-\frontmatter
 \hypersetup{pageanchor=false}
 \maketitle
+\pagenumbering{roman}
 \hypersetup{pageanchor=true}
 \tableofcontents
-
-\mainmatter
-
-\chapter{Hartree--Fock Theory, Basis Sets, and Molecular Integrals}
+\clearpage
+\pagenumbering{arabic}
 
 % ============================================================================
 % Hartree--Fock theory
 % ============================================================================
 
 \section{Electronic structure and the Hartree--Fock framework}
+\label{sec:hf-framework}
 
 Predicting electronic structure from first principles is one of the central
 problems of quantum chemistry. Once the electronic structure of a molecular
@@ -343,13 +337,16 @@ This chapter develops these ideas from the ground up. We first formulate the
 electronic many-body problem and introduce the approximations that separate
 electronic and nuclear motion. We then impose the fermionic antisymmetry of
 the wavefunction, introduce Slater determinants, and derive the
-Hartree--Fock energy and equations. Particular attention is paid to the
-finite-basis formulation, the self-consistent-field procedure, the role of
+Hartree--Fock energy and equations in Section~\ref{sec:hf-framework}. Particular attention is paid to the
+finite-basis formulation and the self-consistent-field procedure
+(Section~\ref{sec:finite-basis-hf}), the role of
 orbital rotations, and the different forms of restricted, unrestricted, and
-generalized Hartree--Fock theory. We subsequently turn to the basis functions
-themselves and examine the principal representations used in practice,
+generalized Hartree--Fock theory (Section~\ref{sec:open-shell-hf}). We subsequently turn to the basis functions
+themselves and examine the principal representations used in practice
+(Section~\ref{sec:basis-sets}),
 together with the molecular integrals required to construct and solve the
-Hartree--Fock equations.
+Hartree--Fock equations (Sections~\ref{sec:gaussian-integrals}
+and~\ref{sec:ri}).
 
 \subsection{The electronic many-body problem}
 
@@ -5869,6 +5866,7 @@ interaction. Correlation beyond Hartree--Fock first appears at second order,
 leading to the MP2 correlation energy.
 
 \section{Finite-basis Hartree--Fock and self-consistent-field methods}
+\label{sec:finite-basis-hf}
 
 The orbital equations derived above define the Hartree--Fock stationary
 condition, but they are not yet in a form suited to routine molecular
@@ -7662,6 +7660,7 @@ must check for multiple extrema and discontinuous solutions and remember that
 spatial symmetry may be lost.
 
 \section{Open-shell and generalized Hartree--Fock methods}
+\label{sec:open-shell-hf}
 
 The restricted closed-shell ansatz is efficient and preserves spin symmetry,
 but it is too restrictive whenever the two spin populations require different
@@ -8576,6 +8575,7 @@ solution rather than relying only on its numerical energy.
 
 \clearpage
 \section{One-electron basis sets}
+\label{sec:basis-sets}
 
 The Hartree--Fock formalism determines the optimal orbitals only within the
 one-electron space made available to it. A practical calculation therefore

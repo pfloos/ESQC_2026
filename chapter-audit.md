@@ -98,4 +98,24 @@ coverage baseline. Commented-out frames are not additional required material.
 - Verification: offline citation/DOI-audit consistency check, source check, and
   complete LaTeX/BibTeX compilation with no unresolved citations.
 
-The final pass will be recorded here when it is completed.
+## Pass 5: prose, navigation, and standalone-document presentation
+
+- Changed the single-chapter document from book to article, with a title page,
+  roman-numbered contents, and ordinary section/subsection/subsubsection
+  numbering. Preserved the entire color palette and dark green heading scheme.
+- Removed the duplicated chapter heading and used a short, stable running
+  title instead of a book-style chapter mark.
+- Added a linked section roadmap and targeted references between finite-basis
+  HF, basis design, Gaussian products, Boys functions, recurrences, and RI.
+- Replaced remaining conversion-process wording with explanatory prose,
+  retaining the equations and every intermediate derivation step.
+- Added a numbered caption and source description to the numerical screening
+  table, and corrected the molecule-name typo dodecaexaene to dodecahexaene.
+- Expanded the README with chapter sources, bibliography, build instructions,
+  audit records, and verification commands. Generated chapter PDFs and build
+  auxiliaries are not committed; narrowly scoped ignore rules leave the existing
+  lecture PDFs tracked. Changing class requires clearing the old generated
+  book-class table of contents before rebuilding.
+- Verification: all three source/reference/numerical checks and complete
+  LaTeX/BibTeX compilation, with resolved citations and cross-references.
+  Visual appearance and overflow were intentionally not audited, as requested.

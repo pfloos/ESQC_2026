@@ -1,6 +1,6 @@
 \subsection{Basis-set expansions and design principles}
 
-The preceding derivation shows that a finite one-electron basis converts the
+The derivation in Section~\ref{sec:finite-basis-hf} shows that a finite one-electron basis converts the
 Hartree--Fock equations into a matrix problem. We now examine how this basis is
 chosen and constructed. The objective is to represent the physically relevant
 radial and angular variations of the molecular orbitals with a manageable
@@ -124,8 +124,8 @@ The kinetic-energy integrals are diagonal as well:
     \exp[\ii(\bk_2-\bk_1)\cdot\br]\dd\br
   =\frac{k_2^2}{2}\delta_{\bk_1\bk_2}
 \end{align}
-For the plane-wave ERI, we retain the physicists' index grouping of the
-slides: the first and third indices belong to electron 1, and the second
+For the plane-wave ERI, we use the physicists' index grouping:
+the first and third indices belong to electron 1, and the second
 and fourth to electron 2. Its round-bracket counterpart would therefore be
 $\rbraket{\bk_1\bk_3}{\bk_2\bk_4}$, rather than
 $\rbraket{\bk_1\bk_2}{\bk_3\bk_4}$. The integral begins as
@@ -210,9 +210,9 @@ For their $1s$ representatives, the STO has a nonzero radial slope at the nucleu
 \end{equation}
 The logarithmic slope is $-\zeta$; the electron--nucleus cusp condition
 requires $-Z$ for a point nucleus of charge $Z$ \citep{Kato1957}, and is satisfied by this
-representative when $\zeta=Z$. The factor $\phi(0)$ restores the
-normalization dependence suppressed in the slide's slope expression.
-whereas the GTO is flat at the nucleus,
+representative when $\zeta=Z$. The factor $\phi(0)$ accounts for the
+normalization dependence of the radial derivative.
+By contrast, the GTO is flat at the nucleus,
 \begin{equation}
  \phi_\text{1s}^\text{GTO}(r)\propto e^{-\alpha r^2}
  \qquad
@@ -448,7 +448,8 @@ Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
 members add systematically more radial and angular flexibility. These basis
 sets were designed for HF and Kohn--Sham calculations, with higher angular
 momenta selected according to their energetic importance. Diffuse variants
-are denoted aug-pc-$n$. Their HF convergence is described by \citep{Jensen2005}
+are denoted aug-pc-$n$. Their HF convergence is described by the
+extrapolation form \citep{Jensen2005}
 \begin{equation}
   E_\text{HF}(L)=E_\text{HF}^\text{CBS}
   +A(L+1)\exp(-B\sqrt L)
@@ -601,6 +602,7 @@ flexibility. Consistency requires the ECP and its accompanying valence basis
 to be treated as a matched pair.
 
 \section{Molecular integrals over Gaussian functions}
+\label{sec:gaussian-integrals}
 
 Once the orbital basis and any effective core potential have been selected,
 the abstract matrix elements of the finite-basis Hartree--Fock equations must
@@ -612,6 +614,7 @@ how recurrence relations and screening turn the resulting formulas into a
 practical algorithm.
 
 \subsection{The Gaussian product theorem and overlap integrals}
+\label{sec:gaussian-product}
 
 The efficiency of Gaussian basis sets follows from a closure property that
 reduces multicenter products to single-center quantities. The central
@@ -633,6 +636,7 @@ then
  G_{\blue{\beta},\blue{\bB}}(\br)
  =K_{\violet{\zeta},\violet{\bP}}
  G_{\violet{\zeta},\violet{\bP}}(\br)
+ \label{eq:gaussian-product}
 \end{equation}
 with
 \begin{equation}
@@ -684,8 +688,8 @@ The Laplacian of an $s$ Gaussian is
  =\qty[3\blue{\beta}-2\blue{\beta}^2
  \abs{\br-\blue{\bB}}^2]G_{\blue{\beta},\blue{\bB}}(\br)
 \end{equation}
-Consequently, its kinetic-energy integral is obtained without omitting the
-intermediate step:
+Consequently, using the Gaussian product theorem
+\eqref{eq:gaussian-product}, its kinetic-energy integral becomes
 \begin{align}
  -\frac12\int G_{\red{\alpha},\red{\bA}}(\br)\laplacian
  G_{\blue{\beta},\blue{\bB}}(\br)\dd\br
@@ -858,6 +862,7 @@ elementary Gaussian prefactors and a one-dimensional function. This reduction
 is the foundation of the recurrence construction below.
 
 \subsubsection{Boys functions and auxiliary integrals}
+\label{sec:boys-functions}
 
 The remaining one-dimensional integral is collected into the generalized Boys
 function,
@@ -865,6 +870,7 @@ function,
  F_m(x)=\int_0^1t^{2m}\exp(-xt^2)\dd t
  \qquad
  F_0(x)=\sqrt{\frac{\pi}{4x}}\erf(\sqrt x)
+ \label{eq:boys-functions}
 \end{equation}
 At the origin, the exponential becomes unity and the limiting value follows
 directly:
@@ -908,6 +914,7 @@ are required intermediates: differentiating the fundamental integral to raise
 angular momentum couples neighboring Boys orders.
 
 \subsubsection{Obara--Saika recurrence relations}
+\label{sec:os-recurrences}
 
 Deriving a separate closed expression for every angular-momentum combination
 would be inefficient. Obara--Saika instead uses differentiation identities to
@@ -1014,8 +1021,9 @@ exponents and applies directly to contracted integrals:
  {\orange{\bc}\green{\bd}}
 \end{equation}
 
-The resulting late-contraction algorithm retains every stage. It begins by
-computing the required Boys functions $F_m(T)$ and forming the fundamental
+The late-contraction algorithm begins by
+computing the required Boys functions $F_m(T)$ from
+Section~\ref{sec:boys-functions} and forming the fundamental
 auxiliary integrals $\sbraket{00}{00}^{(m)}$. The VRRs are then used to build
 angular momentum on $\bA$ and $\bC$, after which the primitive integrals are
 contracted. Finally, the exponent-independent HRRs transfer angular momentum
@@ -1031,6 +1039,7 @@ primitive exponent information, while HRRs depend only on the centers and can
 therefore act on the smaller set of contracted quantities.
 
 \subsection{Integral bounds, screening, and direct SCF}
+\label{sec:integral-screening}
 
 A formal count of $K^4$ ERIs greatly overestimates the useful work for large
 local systems because most products of distant basis functions are negligible.
@@ -1092,9 +1101,10 @@ The number of significant integrals may be represented by
  {\orange{\bc}\green{\bd}}
  \qquad N_\text{sig}=cN^\alpha
 \end{equation}
-The numerical data below contrast the long-range Coulomb operator with a
+The numerical data in Table~\ref{tab:screening-scaling} contrast the long-range Coulomb operator with a
 short-range Gaussian operator:
-\begin{center}
+\begin{table}[htbp]
+\centering
 \small
 \begin{tabular}{lrrrrr}
 \toprule
@@ -1108,10 +1118,14 @@ butadiene&16&5,020&3.9&5,020&3.9\\
 hexatriene&24&24,034&3.9&23,670&3.8\\
 octatetraene&32&63,818&3.4&52,808&2.8\\
 decapentaene&40&119,948&2.8&81,404&1.9\\
-dodecaexaene&48&192,059&2.6&109,965&1.6\\
+dodecahexaene&48&192,059&2.6&109,965&1.6\\
 \bottomrule
 \end{tabular}
-\end{center}
+\caption{Numbers of significant integrals and effective scaling exponents
+for Coulomb and short-range Gaussian operators. Numerical data reproduced
+from the lecture slides.}
+\label{tab:screening-scaling}
+\end{table}
 The contrast shows the more rapid approach to low effective scaling for a
 short-range operator.
 
@@ -1146,8 +1160,9 @@ integrals to be discarded before evaluation.
   \draw[very thick,->] (recurrence)--(target);
   \draw[very thick,->] (bound)--(target);
  \end{tikzpicture}
- \caption{The three ingredients of the integral-evaluation recipe in the
- slides: fundamental integrals, recurrence relations, and screening bounds.}
+ \caption{The three ingredients of integral evaluation: fundamental
+ integrals, recurrence relations, and screening bounds.
+ Diagram adapted from the lecture slides.}
  \label{fig:integral-recipe}
 \end{figure}
 
@@ -1187,6 +1202,7 @@ small at the current SCF iteration. The screening threshold must therefore be
 chosen consistently with the target accuracy of the SCF energy and residual.
 
 \section{Resolution of the identity and low-rank ERI representations}
+\label{sec:ri}
 
 Screening avoids work associated with small individual integrals, but it does
 not alter the four-index structure of the ERI tensor. Low-rank
@@ -1377,5 +1393,5 @@ practical formulation of Hartree--Fock theory. The basis determines the
 variational one-electron space, Gaussian integral algorithms provide the
 matrix elements required within that space, and screening or low-rank
 factorization controls the cost of assembling the mean-field operators. These
-components lead back to the Roothaan--Hall and SCF equations developed in the
-preceding sections.
+components lead back to the Roothaan--Hall and SCF equations developed in
+Section~\ref{sec:finite-basis-hf}.
