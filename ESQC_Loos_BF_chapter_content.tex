@@ -340,7 +340,7 @@ property.
   \centering
   \includegraphics[width=0.72\textwidth]{BSE}
   \caption{The Basis Set Exchange provides standardized definitions for a
-  large number of orbital and auxiliary basis sets.}
+  large number of orbital and auxiliary basis sets \citep{Pritchard2019}.}
 \end{figure}
 
 \subsubsection{STO-$n$G minimal basis sets}
@@ -390,14 +390,15 @@ main sequence is
 \end{equation}
 These bases were designed for correlated calculations, with balanced layers
 of polarization functions and a systematically increasing valence space. A
-standard correlation-energy extrapolation is
+standard correlation-energy extrapolation \citep{Helgaker1997} is
 \begin{equation}
   \Ec(X)\approx\Ec^\text{CBS}+AX^{-3}
 \end{equation}
-Diffuse augmentation gives aug-cc-pVXZ, d-aug-cc-pVXZ, and t-aug-cc-pVXZ.
+Diffuse augmentation gives aug-cc-pVXZ, d-aug-cc-pVXZ, and t-aug-cc-pVXZ
+\citep{Kendall1992}.
 Core correlation is described by cc-pCVXZ, optimized for core--core and
-core--valence correlation, or by cc-pwCVXZ, which weights the core--valence
-contribution.
+core--valence correlation \citep{Woon1995}, or by cc-pwCVXZ, which weights the core--valence
+contribution \citep{Peterson2002}.
 
 The cardinal number $X$ labels the level of this hierarchy. Increasing $X$
 adds both radial flexibility and a new layer of higher angular momentum, as
@@ -447,7 +448,7 @@ Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
 members add systematically more radial and angular flexibility. These basis
 sets were designed for HF and Kohn--Sham calculations, with higher angular
 momenta selected according to their energetic importance. Diffuse variants
-are denoted aug-pc-$n$. Their HF convergence is described by
+are denoted aug-pc-$n$. Their HF convergence is described by \citep{Jensen2005}
 \begin{equation}
   E_\text{HF}(L)=E_\text{HF}^\text{CBS}
   +A(L+1)\exp(-B\sqrt L)
@@ -583,15 +584,15 @@ $4d^{10}5s^1$ shells, leaving 11 electrons. A small-core ECP removes 28
 electrons and retains $4s^24p^64d^{10}5s^1$, leaving 19 explicit electrons;
 the semicore $4s$ and $4p$ shells are therefore retained, providing more
 flexibility at higher cost. Several Gaussian-basis ECP families are commonly
-used. LANL and SBK/SBKJC are established families; in particular, LANL2DZ
+used. LANL \citep{WadtHay1985} and SBK/SBKJC \citep{Stevens1992} are established families; in particular, LANL2DZ
 combines an ECP with a double-$\zeta$ valence basis. The
 \href{https://www.tc.uni-koeln.de/PP/clickpse.en.html}
 {Stuttgart/Cologne energy-consistent pseudopotentials} are offered with
-different core sizes and dedicated bases, while the def2-ECPs are paired with
-the def2 bases of Weigend and Ahlrichs. The Burkatzki--Filippi--Dolg (BFD)
-potentials were developed for quantum Monte Carlo calculations, whereas the
+different core sizes and dedicated bases \citep{Bergner1993}, while the def2-ECPs are paired with
+the def2 bases of Weigend and Ahlrichs \citep{WeigendAhlrichs2005}. The Burkatzki--Filippi--Dolg (BFD)
+potentials were developed for quantum Monte Carlo calculations \citep{Burkatzki2007}, whereas the
 \href{https://pseudopotentiallibrary.org}{correlation-consistent ECPs
-(ccECPs)} were developed for high-accuracy correlated many-body methods.
+(ccECPs)} were developed for high-accuracy correlated many-body methods \citep{Bennett2017}.
 Most ECPs have dedicated basis sets.
 
 The core size is consequently a controlled compromise. A large-core potential
@@ -1020,7 +1021,7 @@ angular momentum on $\bA$ and $\bC$, after which the primitive integrals are
 contracted. Finally, the exponent-independent HRRs transfer angular momentum
 according to $\bA\rightarrow\bB$ and $\bC\rightarrow\bD$.
 This combination of vertical and horizontal recurrences is the
-Head--Gordon--Pople late-contraction strategy; the vertical recurrences are
+Head--Gordon--Pople late-contraction strategy \citep{HeadGordonPople1988}; the vertical recurrences are
 those of Obara--Saika. Thus the expensive exponent-dependent recurrences are performed before
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
@@ -1040,8 +1041,7 @@ cheap upper bound before evaluating an integral or shell quartet.
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
-$N_\text{sig}=\order{N_\text{upper}}$. The commonly used Schwarz screening
-construction \citep{Schwarz1978} gives
+$N_\text{sig}=\order{N_\text{upper}}$. The Cauchy--Schwarz inequality gives
 \begin{equation}
  \abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
  \leq
@@ -1059,6 +1059,8 @@ $1/\abs{\violet{\bP}-\purple{\bQ}}$ or faster. The product on the right has
 no information about the separation between the two charge distributions, so
 the Cauchy--Schwarz bound is rigorous and cheap but not tight for well-separated
 shell pairs. Even so, a cheap upper bound avoids evaluating negligible ERIs.
+The practical use of integral bounds in direct-SCF screening is discussed by
+\citet{HaserAhlrichs1989}.
 
 \paragraph{Shell-quartet screening.}
 
@@ -1361,7 +1363,7 @@ The practical sequence is
 \end{equation}
 The full $\order{K^4}$ ERI tensor need not be stored; only two-center
 $\rbraket{A}{B}$ and three-center $\rbraket{\mu\nu}{A}$ integrals are needed;
-and optimized auxiliary bases make the fitting error very small. RI is thus
+and optimized auxiliary bases make the fitting error very small \citep{Weigend2006}. RI is thus
 also commonly called density fitting (DF), and it greatly reduces the cost and
 memory requirements of Coulomb contractions.
 

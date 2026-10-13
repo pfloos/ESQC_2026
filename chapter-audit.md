@@ -77,4 +77,25 @@ coverage baseline. Commented-out frames are not additional required material.
   semantic roles, numerical tables, and individual steps of the derivations.
   Physics-package commands implement equivalent delimiter/matrix notation.
 
-The remaining passes will be recorded here as they are completed.
+## Pass 4: references and source attribution
+
+- Checked every retained article/contributed-chapter identity against
+  publisher-deposited DOI metadata or the publisher's article page.
+  chapter-reference-audit.md records the sources and incomplete-metadata cases.
+- Removed the false Schwarz screening entry: its DOI resolves to an unrelated
+  histology article. The inequality is now named mathematically; practical
+  screening is cited to the genuine Häser–Ahlrichs paper.
+- Corrected the Edmiston–Ruedenberg page range, author initials/suffixes, and
+  German title capitalization. Book editions were checked separately.
+- Added targeted references for Slater–Condon rules, the MP partition,
+  symmetric/canonical orthogonalization, population analysis, IMOM, Basis Set
+  Exchange, diffuse/core–valence bases, both existing extrapolation formulas,
+  the existing ECP families, late contraction, and Coulomb-fitting bases.
+- Kept citations distinct from numerical/illustration provenance: the retained
+  screening data and course diagrams are from the slides, not assigned to an
+  unverified journal article.
+- Made every bibliography DOI a direct clickable DOI link.
+- Verification: offline citation/DOI-audit consistency check, source check, and
+  complete LaTeX/BibTeX compilation with no unresolved citations.
+
+The final pass will be recorded here when it is completed.

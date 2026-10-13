@@ -66,6 +66,7 @@
   pdfauthor={Pierre-Fran\c{c}ois Loos}
 }
 \urlstyle{same}
+\newcommand{\doi}[1]{doi:\ \href{https://doi.org/#1}{\nolinkurl{#1}}}
 
 \titleformat{\chapter}[display]
   {\normalfont\color{hfGreenDark}}
@@ -3782,7 +3783,7 @@ in this determinant basis.
 At first sight, evaluating a matrix element between two $N$-electron Slater
 determinants might appear to require an explicit expansion of both
 determinants into their $N!$ Hartree products. The
-Slater--Condon rules avoid this combinatorial expansion. They express
+Slater--Condon rules \citep{Slater1929,Condon1930} avoid this combinatorial expansion. They express
 matrix elements of one- and two-electron operators directly in terms of
 one- and two-electron orbital integrals.
 
@@ -5795,7 +5796,7 @@ Equivalently,
 
 This distinction between the sum of the orbital energies and the HF energy
 also provides the natural starting point for
-\red{M{\o}ller--Plesset perturbation theory}.
+\red{M{\o}ller--Plesset perturbation theory} \citep{MollerPlesset1934}.
 
 The electronic Hamiltonian can be partitioned as
 \begin{equation}
@@ -6374,7 +6375,7 @@ where
 \end{equation}
 
 A particularly common choice is the
-\red{symmetric, or L\"owdin, orthogonalizer},
+\red{symmetric, or L\"owdin, orthogonalizer} \citep{Lowdin1950},
 \begin{equation}
   \bX
   =
@@ -6395,7 +6396,7 @@ Indeed,
   \bI
 \end{align}
 
-Another frequently used choice is the canonical orthogonalizer,
+Another frequently used choice is the canonical orthogonalizer \citep{Lowdin1970},
 \begin{equation}
   \bX
   =
@@ -7264,7 +7265,7 @@ measures how much of the new orbital lies in the occupied reference subspace.
 The MOM procedure computes $w_p$ for every new orbital and occupies the $N$
 spin orbitals with the largest $w_p$. In MOM, the reference occupied
 space is taken from the previous iteration, whereas in IMOM the
-reference orbitals remain fixed to the initial guess.
+reference orbitals remain fixed to the initial guess \citep{Barca2018}.
 
 \begin{center}
 \begin{tikzpicture}[x=0.78cm,y=0.72cm,font=\scriptsize]
@@ -7472,12 +7473,12 @@ Consequently,
   =\Tr(\bP\cdot\bS)
 \end{equation}
 Assuming that the basis functions are atom-centered, the Mulliken population
-analysis assigns the net charge
+analysis \citep{Mulliken1955} assigns the net charge
 \begin{equation}
   \underbrace{\blue{q_A^\text{Mulliken}}}_{\text{net charge on $A$}}
   =Z_A-\sum_{\mu\in A}(\bP\cdot\bS)_{\mu\mu}
 \end{equation}
-For L\"owdin population analysis, cyclic invariance of the trace,
+For L\"owdin population analysis \citep{Lowdin1950}, cyclic invariance of the trace,
 $\Tr(\bA\cdot\bB)=\Tr(\bB\cdot\bA)$, gives, for any $\alpha$,
 \begin{equation}
   N=\sum_\mu
