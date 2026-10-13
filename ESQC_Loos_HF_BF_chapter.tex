@@ -6965,7 +6965,7 @@ Finally, DIIS (direct inversion in the iterative subspace) is usually
 used to accelerate convergence. It extrapolates the Fock matrix from the
 $m$ previous iterations according to
 \begin{equation}
-    \bF^{(n+1)}=\sum_{i=n-m}^{n}c_i\bF^{(i)}
+    \bF^{(n+1)}=\sum_{i=n-m+1}^{n}c_i\bF^{(i)}
 \end{equation}
 
 The ordinary SCF iteration should therefore be understood as the underlying
@@ -8121,9 +8121,13 @@ broken-symmetry stationary solution satisfies
       {J_{gg}+J_{uu}-2J_{gu}+4K_{gu}}
 \end{equation}
 At short bond lengths, only the minimum at $\theta=0$ is physically
-accessible and UHF reduces to RHF. At large bond lengths, when
-$0\leq\cos^2\theta^\star\leq1$, two minima appear at $\pm\theta^\star$ and
+accessible and UHF reduces to RHF. On the dissociating branch, the
+coefficient $J_{gg}+J_{uu}-2J_{gu}+4K_{gu}$ is positive. When
+$0<\cos^2\theta^\star<1$, two minima appear at $\pm\theta^\star$ and
 RHF becomes unstable to spin polarization.
+The endpoint $\cos^2\theta^\star=1$ is the point at which these solutions
+meet RHF; positivity of the quadratic coefficient distinguishes a minimum
+from a maximum of $E_\text{UHF}(x)$.
 
 The RHF curvature is
 \begin{equation}
@@ -8383,7 +8387,8 @@ Equivalently,
   =\mqty(
     \bP+\bM_z&\bM_x-\ii\bM_y\\
     \bM_x+\ii\bM_y&\bP-\bM_z)
-  =\bP\otimes\bI+\bM\otimes\boldsymbol{\sigma}
+  =\bI_\text{spin}\otimes\bP
+   +\sum_{k=x,y,z}\boldsymbol{\sigma}_k\otimes\bM_k
 \end{equation}
 with
 \begin{equation}
@@ -8393,6 +8398,12 @@ with
   =\mqty(\boldsymbol{\sigma}_x\\\boldsymbol{\sigma}_y\\
     \boldsymbol{\sigma}_z)
 \end{equation}
+Here $\bI_\text{spin}$ is the $2\times2$ spin identity. Spin is the outer
+block index, so the order of the tensor factors is spin followed by AO.
+The explicit sum replaces the slide's vector shorthand and fixes the tensor
+ordering to agree with the displayed block matrix. In this decomposition,
+$\bP$ is half of the total charge-density matrix, whereas
+$\boldsymbol{\mathcal P}$ is the full spinor density matrix.
 
 The Roothaan--Hall equation in spinor space is
 \begin{equation}
@@ -8425,8 +8436,14 @@ where
   \qquad
   K_{\mu\nu}[\bP]
   =\sum_{\lambda\sigma}P_{\lambda\sigma}
-    \rbraket{\mu\sigma}{\lambda\nu}
+    \rbraket{\mu\lambda}{\sigma\nu}
 \end{equation}
+The AO functions in these contractions are real, but the spinor coefficients
+and density blocks may be complex. The exchange indices follow the definition
+$P_{\lambda\sigma}=\sum_i C_{\lambda i}C_{\sigma i}^*$; exchanging
+$\lambda$ and $\sigma$ in the integral without also transposing the density
+would be incorrect for complex orbitals. This corrects the corresponding
+GHF exchange contraction in the slides.
 The off-diagonal exchange blocks couple the $\alpha$ and $\beta$ components
 self-consistently. The SCF procedure builds all four density blocks, builds
 all four Fock blocks, solves a $2K\times2K$ generalized eigenvalue problem,

@@ -43,4 +43,38 @@ coverage baseline. Commented-out frames are not additional required material.
   why minimizing the two spread expressions maximizes centroid separation.
 - Verification: source-convention check and full LaTeX/BibTeX compilation.
 
+## Pass 3: fidelity to both lecture presentations
+
+- Reviewed all 100 active HF frame blocks and all 48 active basis/integral
+  frame blocks; their chapter destinations are recorded individually in
+  `chapter-slide-coverage.md`. Commented-out frames and presentation
+  scaffolding are distinguished from the scientific content.
+- Checked the normalization, one- and two-electron, spin-to-spatial, and
+  atomic worked examples; all Slater--Condon cases; spin adaptation and
+  contamination; Koopmans IP/EA energy decompositions; canonicalization;
+  AO Fock/energy contractions; SCF, DIIS, and MOM stages; properties;
+  localization; UHF/H2; and GHF/classification.
+- Checked the basis-family comparisons, shell counts, contraction example,
+  ECP operators and families, Gaussian product and one-electron formulas,
+  Laplace-transform stages of the ssss derivation, Boys limits/recurrences,
+  VRR/HRR stages, numerical screening table, direct SCF, and RI/CD.
+- Restored the ghost-basis diagram, the integral-recipe diagram, the explicit
+  ten-primitive carbon contraction, and the Gaussian-basis remarks on Pulay
+  terms, all-electron practicality, and locality.
+- Restored physicists' brackets on the plane-wave ERI derivation, matching
+  the slides' actual index grouping. Explained the periodic Coulomb kernel,
+  reciprocal-vector relabeling, and the excluded zero-transfer term.
+- Corrected DIIS's history sum to contain exactly m stored iterations.
+- Corrected GHF's spin/AO tensor-factor ordering and exchange contraction for
+  complex density matrices; an independent numerical kernel check verifies
+  the latter. Distinguished the half-charge GHF block from the full density.
+- Qualified monotonic basis improvement to nested variational spaces and
+  corrected the claim that all basis parameters are necessarily empirical.
+- Made the positive-quadratic-coefficient condition explicit in the H2
+  stationary-point discussion. These changes clarify or correct existing
+  material; no additional electronic-structure topic was introduced.
+- Preserved the slides' mathematical command vocabulary, colors with local
+  semantic roles, numerical tables, and individual steps of the derivations.
+  Physics-package commands implement equivalent delimiter/matrix notation.
+
 The remaining passes will be recorded here as they are completed.

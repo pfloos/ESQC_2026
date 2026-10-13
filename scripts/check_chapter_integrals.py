@@ -113,6 +113,46 @@ def check_ri():
     print("RI: orthogonality, fitted-pair equality, metric contraction, and residual error passed")
 
 
+def check_ghf():
+    # Arbitrary complex occupied spinors in a real two-function AO basis.
+    occupied = [(0.5+0.2j, -0.3+0.4j, 0.1-0.7j, 0.6+0.1j),
+                (0.2-0.1j, 0.4+0.5j, -0.2+0.3j, 0.1+0.8j)]
+    full = [[sum(c[i]*c[j].conjugate() for c in occupied) for j in range(4)] for i in range(4)]
+    blocks = [[[full[2*s+i][2*t+j] for j in range(2)] for i in range(2)]
+              for s in range(2) for t in range(2)]
+    aa, ab, ba, bb = blocks
+    charge = [[(aa[i][j]+bb[i][j])/2 for j in range(2)] for i in range(2)]
+    mx = [[(ab[i][j]+ba[i][j])/2 for j in range(2)] for i in range(2)]
+    my = [[(ba[i][j]-ab[i][j])/(2j) for j in range(2)] for i in range(2)]
+    mz = [[(aa[i][j]-bb[i][j])/2 for j in range(2)] for i in range(2)]
+    pauli = [((0,1),(1,0)), ((0,-1j),(1j,0)), ((1,0),(0,-1))]
+    for s in range(2):
+        for t in range(2):
+            for i in range(2):
+                for j in range(2):
+                    reconstructed = (charge[i][j] if s==t else 0)
+                    reconstructed += sum(sigma[s][t]*moment[i][j] for sigma,moment in zip(pauli,(mx,my,mz)))
+                    check_close(reconstructed, full[2*s+i][2*t+j], "spin-first tensor order")
+    # Discretize the real-space nonlocal exchange kernel independently.
+    phi = ((1.0,0.2), (0.4,1.1), (-0.2,0.7))
+    coulomb = ((2.0,0.8,0.4), (0.8,1.5,0.6), (0.4,0.6,1.8))
+    def eri(mu,nu,lam,sig):
+        return sum(phi[x][mu]*phi[x][nu]*coulomb[x][y]*phi[y][lam]*phi[y][sig]
+                   for x in range(3) for y in range(3))
+    for density in blocks:
+        for mu in range(2):
+            for nu in range(2):
+                contracted = sum(density[lam][sig]*eri(mu,lam,sig,nu)
+                                 for lam in range(2) for sig in range(2))
+                kernel = sum(phi[x][mu]*phi[y][nu]*coulomb[x][y]
+                             * sum(phi[x][lam]*density[lam][sig]*phi[y][sig]
+                                   for lam in range(2) for sig in range(2))
+                             for x in range(3) for y in range(3))
+                check_close(contracted, kernel, "complex-density exchange kernel")
+    print("GHF: spin/AO tensor ordering and complex-density exchange contraction passed")
+
+
 if __name__ == "__main__":
     check_os()
     check_ri()
+    check_ghf()

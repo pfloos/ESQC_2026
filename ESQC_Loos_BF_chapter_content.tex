@@ -12,10 +12,13 @@ finite set of known one-electron functions,
   \psi_p(\br)=\sum_{\mu=1}^{K}C_{\mu p}\phi_\mu(\br)
 \end{equation}
 The basis functions $\phi_\mu$ are fixed, whereas the coefficients $C_{\mu p}$
-are determined variationally. Increasing $K$ systematically enlarges the
-variational space and moves the result toward the complete-basis-set (CBS)
-limit. Consequently, the basis set is the only source of empirical parameters
-in an otherwise ab initio calculation.
+are determined variationally. Enlarging a nested sequence of basis spaces
+increases the variational freedom and lowers, or leaves unchanged, the minimum
+HF energy as the complete-basis-set (CBS) limit is approached. Basis exponents
+and contraction coefficients are fixed numerical parameters, often obtained
+from atomic electronic-structure calculations. Their presence does not by
+itself make the method empirical; they specify the finite representation of
+the otherwise ab initio problem.
 
 For a fixed basis, orbital optimization changes only the coefficients. The
 shapes, centers, and nonlinear parameters of the basis functions are selected
@@ -55,8 +58,9 @@ They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
 \textsc{CFOUR}, \textsc{MRCC}, and \textsc{GAMESS}.
 
 Slater-type orbitals (STOs) are also atom centered, but are
-proportional to $\exp(-\zeta r)$. They possess the correct nuclear cusp and
-long-range tail \citep{Kato1957} and are used, for example, in \textsc{ADF}. By contrast,
+proportional to $\exp(-\zeta r)$. Their radial form can reproduce a nuclear
+cusp and an exponential long-range tail, and they are used, for example, in
+\textsc{ADF}. By contrast,
 plane waves (PWs), proportional to $\exp(\ii\bk\cdot\br)$, are
 delocalized, mutually orthonormal, and naturally adapted to periodic boundary
 conditions. Their basis size is controlled by an energy cutoff, and they are
@@ -90,7 +94,7 @@ The reciprocal-lattice vector is
 where, for direct-lattice vectors $\ba_1,\ba_2,\ba_3$,
 \begin{align}
   \Omega&=\ba_1\cdot(\ba_2\times\ba_3)
-  &\bA&=(\ba_1,\ba_2,\ba_3),\\
+  &\bA&=(\ba_1,\ba_2,\ba_3)\\
   \bb_1&=2\pi\frac{\ba_2\times\ba_3}{\Omega}
   &\bb_2&=2\pi\frac{\ba_3\times\ba_1}{\Omega}
   &\bb_3&=2\pi\frac{\ba_1\times\ba_2}{\Omega}
@@ -112,30 +116,39 @@ The overlap integrals are diagonal:
 \end{align}
 The kinetic-energy integrals are diagonal as well:
 \begin{align}
-  \mel{\bk_1}{-\frac12\nabla^2}{\bk_2}
+  \mel{\bk_1}{-\frac12\laplacian}{\bk_2}
   &=\frac{1}{\Omega}\int_\Omega
     \exp[-\ii\bk_1\cdot\br]
-    \qty(-\frac12\nabla^2)\exp[\ii\bk_2\cdot\br]\dd\br\\
+    \qty(-\frac12\laplacian)\exp[\ii\bk_2\cdot\br]\dd\br\\
   &=\frac{k_2^2}{2\Omega}\int_\Omega
     \exp[\ii(\bk_2-\bk_1)\cdot\br]\dd\br
   =\frac{k_2^2}{2}\delta_{\bk_1\bk_2}
 \end{align}
-The electron-repulsion integral begins as
+For the plane-wave ERI, we retain the physicists' index grouping of the
+slides: the first and third indices belong to electron 1, and the second
+and fourth to electron 2. Its round-bracket counterpart would therefore be
+$\rbraket{\bk_1\bk_3}{\bk_2\bk_4}$, rather than
+$\rbraket{\bk_1\bk_2}{\bk_3\bk_4}$. The integral begins as
 \begin{align}
-  \rbraket{\bk_1\bk_2}{\bk_3\bk_4}
+  \braket{\bk_1\bk_2}{\bk_3\bk_4}
   &=\frac{1}{\Omega^2}\iint_\Omega
   \frac{\exp[\ii(\bk_3-\bk_1)\cdot\br_1]
         \exp[\ii(\bk_4-\bk_2)\cdot\br_2]}
        {r_{12}}\dd\br_1\dd\br_2
 \end{align}
-Using the reciprocal-space resolution of the Coulomb operator,
+Under periodic boundary conditions, the Coulomb kernel is understood as its
+periodic counterpart. With its zero Fourier component omitted, the
+reciprocal-space resolution is
 \begin{equation}
-  \frac{1}{r_{12}}=\frac{1}{\Omega}\sum_{\bk\ne\bO}
+  v_\Omega(\br_1-\br_2)=\frac{1}{\Omega}\sum_{\bk\ne\bO}
   \frac{4\pi}{k^2}\exp[\ii\bk\cdot(\br_1-\br_2)]
 \end{equation}
-where the $\bk=\bO$ term is delicate but can be treated, gives
+The $\bk=\bO$ term requires a specified electrostatic convention, for
+example a neutralizing background. The symbol $r_{12}^{-1}$ in the preceding
+integral represents this periodic kernel in the following calculation.
+Relabeling the reciprocal summation vector $\bk\to-\bk$ gives
 \begin{align}
-  \rbraket{\bk_1\bk_2}{\bk_3\bk_4}
+  \braket{\bk_1\bk_2}{\bk_3\bk_4}
   &=\frac{1}{\Omega^3}\sum_{\bk\ne\bO}\frac{4\pi}{k^2}
   \iint_\Omega\exp[\ii(\bk_3-\bk_1-\bk)\cdot\br_1]
   \exp[\ii(\bk_4-\bk_2+\bk)\cdot\br_2]\dd\br_1\dd\br_2\\
@@ -146,6 +159,9 @@ where the $\bk=\bO$ term is delicate but can be treated, gives
   \delta_{\bk_1+\bk_2,\bk_3+\bk_4}
 \end{align}
 The Kronecker delta expresses conservation of crystal momentum.
+The last expression applies when $\bk_1\ne\bk_3$. For zero momentum
+transfer, the omitted zero Fourier component gives zero under the convention
+used here; the fraction must not be evaluated with a zero denominator.
 
 The simplicity of these expressions follows because differentiation and
 convolution become multiplication in reciprocal space. Overlap and kinetic
@@ -193,7 +209,7 @@ For their $1s$ representatives, the STO has a nonzero radial slope at the nucleu
  =-\zeta\phi_\text{1s}^\text{STO}(0)
 \end{equation}
 The logarithmic slope is $-\zeta$; the electron--nucleus cusp condition
-requires $-Z$ for a point nucleus of charge $Z$, and is satisfied by this
+requires $-Z$ for a point nucleus of charge $Z$ \citep{Kato1957}, and is satisfied by this
 representative when $\zeta=Z$. The factor $\phi(0)$ restores the
 normalization dependence suppressed in the slide's slope expression.
 whereas the GTO is flat at the nucleus,
@@ -203,7 +219,8 @@ whereas the GTO is flat at the nucleus,
  \eval{\dv{\phi_\text{1s}^\text{GTO}(r)}{r}}_{r=0}=0
 \end{equation}
 The STO also has the correct exponential long-range behavior of a molecular
-orbital,
+orbital. For the HOMO, its leading radial exponential factor in the
+frozen-orbital interpretation is
 \begin{equation}
  \phi_\text{HOMO}^\text{STO}(r)
  \propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}
@@ -278,6 +295,13 @@ remove the primitive-integral work. For four contracted functions,
 \end{equation}
 For example, a cc-pVTZ carbon $1s$ function contracted from ten primitives
 requires $10^4$ primitive $ssss$ integrals for a single four-center integral.
+The complete contraction in this example is
+\begin{equation}
+ \rbraket{1s1s}{1s1s}
+ =\sum_{i=1}^{10}\sum_{j=1}^{10}\sum_{k=1}^{10}\sum_{l=1}^{10}
+ D_iD_jD_kD_l
+ \sbraket{s_i^{\alpha_i}s_j^{\alpha_j}}{s_k^{\alpha_k}s_l^{\alpha_l}}
+\end{equation}
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.62\textwidth]{C}
@@ -431,6 +455,12 @@ are denoted aug-pc-$n$. Their HF convergence is described by
 
 Gaussian bases are compact, atom centered, chemically transferable, supported
 by analytic integral technology, and available in systematic hierarchies.
+They make all-electron calculations practical for light and medium elements,
+and their locality supports integral screening and sparse algorithms. The
+physical picture is that a molecule is assembled from atoms whose electron
+distributions are distorted by their environment. Because the basis functions
+move with the nuclei, nuclear derivatives contain Pulay terms in addition to
+the derivatives of the electronic Hamiltonian.
 Their principal limitations are the absent nuclear cusp, the incorrect
 long-range Gaussian decay, basis-set superposition error, and possible linear
 dependence when many diffuse functions are used. There is consequently no
@@ -473,6 +503,36 @@ The partner's basis functions are retained as ghost functions: they provide
 variational flexibility but carry neither electrons nor nuclear charge. The
 counterpoise expression thereby compares the dimer and both fragments in the
 same one-electron space.
+
+\begin{figure}[htbp]
+ \centering
+ \begin{tikzpicture}[
+  atom/.style={circle,draw,minimum size=0.7cm,inner sep=0pt},
+  ghost/.style={circle,draw,dashed,minimum size=0.7cm,inner sep=0pt},
+  basis/.style={ellipse,draw,minimum width=1.5cm,minimum height=1.0cm},
+  ghostbasis/.style={ellipse,draw,dashed,minimum width=1.5cm,minimum height=1.0cm}]
+  \node at (-4.5,1.6) {$E_{\red A}^{\blue A}$};
+  \node[basis] at (-4.5,0) {};
+  \node[atom] at (-4.5,0) {$A$};
+  \node at (-4.5,-0.9) {\small basis on $A$ only};
+  \node at (0,1.6) {$E_{\red A}^{\blue{AB}}$};
+  \node[basis] at (-0.9,0) {};
+  \node[atom] at (-0.9,0) {$A$};
+  \node[ghostbasis,hfViolet] at (0.9,0) {};
+  \node[ghost,hfViolet] at (0.9,0) {$B$};
+  \node at (0,-0.9) {\small basis on $A$ + \violet{ghost basis} on $B$};
+  \node at (4.9,1.6) {$E_{\red{AB}}^{\blue{AB}}$};
+  \node[basis] at (4.0,0) {};
+  \node[atom] at (4.0,0) {$A$};
+  \node[basis] at (5.8,0) {};
+  \node[atom] at (5.8,0) {$B$};
+  \node at (4.9,-0.9) {\small full dimer basis};
+ \end{tikzpicture}
+ \caption{A fragment in its own basis, the same fragment supplemented by
+ ghost functions, and the full dimer. Dashed violet shapes retain basis
+ functions without adding nuclear charge or electrons.}
+ \label{fig:ghost-basis}
+\end{figure}
 
 \subsection{Effective core potentials and pseudopotentials}
 
@@ -1069,6 +1129,26 @@ $\rbraket{(\ba+\bI_i)\bO}{\bO\bO}
 $\abs{\rbraket{\ba\bb}{\bc\bd}}\leq B$ that permits insignificant
 integrals to be discarded before evaluation.
 
+\begin{figure}[htbp]
+ \centering
+ \begin{tikzpicture}[>=stealth',font=\small]
+  \node[draw,fill=hfViolet!15,align=center] (target) at (0,2.5)
+   {Two-electron integrals\\$\rbraket{\ba\bb}{\bc\bd}$};
+  \node[draw,fill=hfRed!15,align=center,text width=3.7cm] (fundamental) at (-4.2,0)
+   {Fundamental integrals\\$\sbraket{\bO\bO}{\bO\bO}^{(m)}$};
+  \node[draw,fill=hfOrange!15,align=center,text width=3.7cm] (recurrence) at (0,0)
+   {Recurrence relations\\VRRs and HRRs};
+  \node[draw,fill=hfGreen!15,align=center,text width=3.7cm] (bound) at (4.2,0)
+   {Upper bounds\\$\abs{\rbraket{\ba\bb}{\bc\bd}}\leq B$};
+  \draw[very thick,->] (fundamental)--(target);
+  \draw[very thick,->] (recurrence)--(target);
+  \draw[very thick,->] (bound)--(target);
+ \end{tikzpicture}
+ \caption{The three ingredients of the integral-evaluation recipe in the
+ slides: fundamental integrals, recurrence relations, and screening bounds.}
+ \label{fig:integral-recipe}
+\end{figure}
+
 \subsubsection{Direct SCF evaluation}
 
 Once screening has identified the significant shell quartets, the resulting
@@ -1245,8 +1325,8 @@ three-index representation is constructed.
 
 In RI/DF, the AO products are expanded in a predefined auxiliary basis,
 \begin{equation}
- \chi_\mu(\br)\chi_\nu(\br)
- \approx\sum_AC_{\mu\nu}^A\chi_A^\text{aux}(\br)
+ \phi_\mu(\br)\phi_\nu(\br)
+ \approx\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br)
  \quad\Longrightarrow\quad
  \rbraket{\mu\nu}{\lambda\sigma}
  \approx\sum_PB_{\mu\nu}^PB_{\lambda\sigma}^P
