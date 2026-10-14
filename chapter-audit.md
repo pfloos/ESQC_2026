@@ -147,3 +147,19 @@ coverage baseline. Commented-out frames are not additional required material.
   approved screening-variable rename. All three existing verification scripts
   pass, and full compilation resolves citations and cross-references.
   Visual/overflow review remains excluded as requested.
+
+## Figure and table source acknowledgments
+
+- Added the author's source identifications to the captions: Szabo and Ostlund
+  for Figures 1, 3-6; Jensen for Figure 2; Burton, Thom, and Loos (2019),
+  Figure 1, for the chapter's Figure 10.
+- Credited Table 1 as reproduced in part from Henderson, Jiménez-Hoyos, and
+  Scuseria (2018), Table I. Explicitly noted that the density-matrix columns
+  are omitted and the notation is adjusted.
+- Verified both new paper records and checked the classification-table match
+  against the author preprint. Existing book references are used without
+  inventing source page/figure numbers.
+- No illustrations have been replaced. The author requested approval of
+  alternative designs before incorporation, including the proposed table
+  replacing the current carbon-contraction image (Figure 12).
+- Verification: chapter compilation and source/reference consistency checks.

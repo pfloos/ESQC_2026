@@ -94,6 +94,30 @@ publication, rather than a search-results page.
 | `Whitten1973` | Coulombic potential energy integrals and approximations | [10.1063/1.1679012](https://doi.org/10.1063/1.1679012) |
 | `Woon1995` | Gaussian basis sets for use in correlated molecular calculations. V. Core-valence basis sets for boron through neon | [10.1063/1.470645](https://doi.org/10.1063/1.470645) |
 
+## Figure and table sources confirmed by the author
+
+The author identified the book origins of Figures 1-6. Captions now credit
+Szabo and Ostlund for Figure 1, the determinant/occupation diagrams, and
+Figure 6, and Jensen for Figure 2. Specific book figure/page numbers have not
+been assumed. The original images are retained pending approval of redraws.
+
+Table 1 matches the orbital-coefficient columns of Table I in Henderson,
+Jiménez-Hoyos, and Scuseria (2018); the density-matrix columns of that source
+are not present in this chapter. The caption therefore says reproduced in
+part, with the omission and notation adjustment stated explicitly. The source
+table was checked in the [author preprint](https://arxiv.org/pdf/1710.00932).
+
+Figure 10 is credited to Figure 1 of Burton, Thom, and Loos (2019), as
+confirmed by the author and the [author preprint](https://arxiv.org/html/1903.08489v2).
+Both new publication records were checked against publisher-deposited DOI
+metadata and published journal issue details. Henderson's article appeared
+online in December 2017 but belongs to volume 14, issue 2 (2018).
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Henderson2018` | Magnetic Structure of Density Matrices | [10.1021/acs.jctc.7b01016](https://doi.org/10.1021/acs.jctc.7b01016) |
+| `BurtonThomLoos2019` | Parity-Time Symmetry in Hartree-Fock Theory | [10.1021/acs.jctc.9b00289](https://doi.org/10.1021/acs.jctc.9b00289) |
+
 ## General books
 
 These are textbooks, not journal articles. Editions and publication years were
