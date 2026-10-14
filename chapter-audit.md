@@ -215,3 +215,11 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill was used to inspect the rendered cover. Chapter content,
   scientific figures, equations, citations, and page-numbering setup are
   unchanged. Full compilation and existing source/reference checks pass.
+
+### Cover typography refinement
+
+- Set `ESQC 2026` on a single line at the upper right and added `(ESQC)`
+  after the conference name in the footer, as requested by the author.
+- Left the decorative illustration unchanged pending selection of an
+  alternative design. Verified full compilation and inspected the revised
+  cover using the PDF skill; no chapter content was altered.
