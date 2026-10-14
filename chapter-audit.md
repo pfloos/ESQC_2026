@@ -223,3 +223,13 @@ coverage baseline. Commented-out frames are not additional required material.
 - Left the decorative illustration unchanged pending selection of an
   alternative design. Verified full compilation and inspected the revised
   cover using the PDF skill; no chapter content was altered.
+
+### Gaussian cover illustration review
+
+- Prepared a separate one-page preview of the author's selected overlapping
+  Gaussian concept: three analytic Gaussian profiles with translucent green
+  fills, replacing only the decorative motif in a draft cover variant.
+- Preserved all title-page typography and wording. The profiles are decorative,
+  with arbitrary scales, rather than a normalized basis-set specification.
+- Compiled the preview and inspected its rendered page using the PDF skill.
+  The active cover and all chapter sources remain unchanged pending approval.

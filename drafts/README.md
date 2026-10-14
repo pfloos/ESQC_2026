@@ -3,6 +3,7 @@
 All six design pages were approved by the author and incorporated on
 14 October 2026. The comparison PDF is retained as the archived approval
 record; its pending-approval banners describe the earlier review stage.
+
 Figure numbers in that review refer to the chapter before incorporation.
 Active, editable illustrations and the table are in
 [`chapter-figures/`](../chapter-figures/), separate from these review drafts.
@@ -44,3 +45,18 @@ The former Figure 12 is now Table 2. Later figure/table numbers have changed
 naturally. The reference and excited-determinant maps remain at their separate
 chapter locations, using the approved common design. The original image files
 remain available to the slide decks; they have not been overwritten or deleted.
+
+## Gaussian cover illustration preview (awaiting approval)
+
+The author selected the overlapping-Gaussian concept as a replacement for
+the decorative cover contours. The new
+[single-page cover preview](../output/pdf/chapter-titlepage-gaussian-review.pdf)
+shows three Gaussian profiles with translucent green fills, without axes or
+labels. Their centers, widths, and heights are illustrative, not a normalized
+basis-set specification. All cover typography and wording are unchanged.
+The current chapter cover remains unchanged pending approval of this design.
+
+The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its
+review document from the repository root with:
+
+    latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-gaussian-review.tex
