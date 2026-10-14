@@ -51,13 +51,13 @@ remain available to the slide decks; they have not been overwritten or deleted.
 The author selected the overlapping-Gaussian concept as a replacement for
 the decorative cover contours. The new
 [single-page cover preview](../output/pdf/chapter-titlepage-gaussian-review.pdf)
-shows two spatially separated two-dimensional Gaussians and their exact
-pointwise product, viewed in perspective. The narrow Gaussian is green, the
-broader Gaussian blue, and the product amber, with smooth transparent surfaces
-and no mesh. Exponents are 0.6 and 0.3, centers are (-1.4,0) and (1.4,0), and
+shows two spatially separated one-dimensional Gaussians and their exact
+pointwise product. The narrow Gaussian is green, the broader Gaussian blue,
+and the product amber, with smooth curves and translucent fills.
+Exponents are 0.6 and 0.3, centers are -1.4 and 1.4, and
 both original peaks are unity, in arbitrary display units. The product is not
-rescaled: its peak is exp(-1.568), about 0.2085, at (-0.4667,0). Tails below
-0.008 are omitted for a clean outline. This is not a normalized basis-set
+rescaled: its peak is exp(-1.568), about 0.2085, at -0.4667.
+Curves are drawn over the display interval [-6,6]. This is not a normalized basis-set
 specification. There are no axes or labels, and all cover typography and
 wording are unchanged.
 The current chapter cover remains unchanged pending approval of this design.

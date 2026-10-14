@@ -256,3 +256,15 @@ coverage baseline. Commented-out frames are not additional required material.
 - Verified the direct product against its completed-square form at 18 points.
   Preview compilation and PDF-skill visual inspection pass. Cover wording and
   typography are preserved; the active cover remains unchanged pending approval.
+
+#### One-dimensional Gaussian product cover preview
+
+- At the author's request, returned the illustration to 1D: two separated
+  green/blue Gaussian curves with different exponents and their amber product,
+  with translucent fills. Retained the exact functions and unscaled product
+  from the preceding design, evaluated along y=0 over [-6,6].
+- Removed the 3D plotting dependency from the preview; the illustration is
+  native TikZ. All cover wording and typography remain identical.
+- Compiled the review PDF, verified the product identity and unchanged cover
+  text, and inspected the rendered page using the PDF skill. The active cover
+  remains unchanged pending approval.
