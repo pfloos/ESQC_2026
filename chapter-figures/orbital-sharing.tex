@@ -1,0 +1,31 @@
+\begingroup
+\input{chapter-figures/styles}
+\begin{tikzpicture}[font=\small,x=1cm,y=1cm]
+ \foreach \x/\title/\subtitle in {0/RHF/Singlet,5.7/ROHF/Doublet,11.4/UHF/Doublet}{
+  \node[font=\large\bfseries,text=hfGreenDark] at (\x,0) {\title};
+  \node[text=hfInk] at (\x,-0.5) {\subtitle};
+ }
+ \foreach \x in {0,5.7}{
+  \foreach \r/\p in {1/3,2/2,3/1}{
+   \node[card,minimum width=34mm] at (\x,-1.45*\r)
+    {$\psi_{\p}$\quad
+      \textcolor{hfBlue}{$\uparrow$}\,
+      \ifnum\r=1\ifdim\x pt=0pt
+      \textcolor{hfRed}{$\downarrow$}\fi
+      \else\textcolor{hfRed}{$\downarrow$}\fi};
+  }
+  \node[align=center,text=hfInk] at (\x,-6.1)
+   {Shared spatial functions\\for the two spin components};
+ }
+ \node[text=hfBlue] at (10.5,-1) {$\alpha$};
+ \node[text=hfRed] at (12.3,-1) {$\beta$};
+ \foreach \r/\p in {1/3,2/2,3/1}{
+  \node[card,draw=hfBlue,fill=hfBlue!6,minimum width=17mm] at (10.5,-1.45*\r-0.25)
+   {$\psi_{\p}^{\alpha}\,\textcolor{hfBlue}{\uparrow}$};
+  \node[card,draw=hfRed,fill=hfRed!6,minimum width=17mm] at (12.3,-1.45*\r-0.25)
+   {$\psi_{\p}^{\beta}\,\ifnum\r=1\circ\else\textcolor{hfRed}{\downarrow}\fi$};
+ }
+ \node[align=center,text=hfInk] at (11.4,-6.1)
+   {Independently optimized\\spatial functions};
+\end{tikzpicture}
+\endgroup

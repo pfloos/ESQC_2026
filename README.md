@@ -27,8 +27,9 @@ Shared illustrations and diagrams are stored in [`fig/`](fig/).
 
 The material from both presentations is also developed as a standalone,
 PhD-level textbook chapter, with full sentences, intermediate derivation
-steps, worked examples, computational remarks, and the scientific figures
-from the slides. It uses the article class, dark green headings, and the
+steps, worked examples, computational remarks, and the scientific figure
+content from the slides, including author-approved native redraws. It uses
+the article class, dark green headings, and the
 slides' notation and custom commands. Equation punctuation is omitted;
 mathematical separators and explicit matrix-multiplication dots are retained.
 
@@ -36,6 +37,8 @@ The main source is [ESQC_Loos_HF_BF_chapter.tex](ESQC_Loos_HF_BF_chapter.tex).
 It includes [ESQC_Loos_BF_chapter_content.tex](ESQC_Loos_BF_chapter_content.tex)
 and uses [ESQC_Loos_HF_BF_chapter.bib](ESQC_Loos_HF_BF_chapter.bib) for the
 bibliography. These files should remain together in the repository root.
+The approved editable figure and table fragments are in
+[`chapter-figures/`](chapter-figures/); retain that directory when compiling.
 The bibliography has direct DOI links; article identities and verification
 exceptions are recorded in [the reference audit](chapter-reference-audit.md).
 

@@ -27,7 +27,7 @@
 \usepackage{colortbl}
 \usepackage{pifont}
 \usepackage{tikz,pgfplots}
-\usetikzlibrary{arrows,positioning,shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta,positioning,shapes.geometric}
 \usetikzlibrary{decorations.pathmorphing}
 \pgfplotsset{compat=1.18}
 \usepackage{algorithmicx,algorithm,algpseudocode}
@@ -424,7 +424,12 @@ nucleus-nucleus Coulomb repulsions.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.62\textwidth]{coord}
+  \resizebox{\linewidth}{!}{\input{chapter-figures/coordinates}}
+  \[
+    \br_{iA}=\br_i-\bR_A\qquad
+    \br_{ij}=\br_i-\br_j\qquad
+    \bR_{AB}=\bR_A-\bR_B
+  \]
   \caption{Electronic and nuclear coordinates entering the molecular
   Hamiltonian. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
   \label{fig:molecular-coordinates}
@@ -1175,12 +1180,13 @@ but do not develop the ROHF formalism further here.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.72\textwidth]{RHF_UHF}
+  \resizebox{\linewidth}{!}{\input{chapter-figures/orbital-sharing}}
   \caption{Restricted, restricted open-shell, and unrestricted choices for the spatial parts of the
   spin orbitals. In RHF, paired $\alpha$ and $\beta$ electrons share the same
   spatial orbital, whereas UHF allows the two spin channels to relax
   independently. ROHF retains a common spatial-orbital set with singly
-  occupied orbitals. Adapted from Jensen \citep{Jensen2017}.}
+  occupied orbitals. The cards illustrate spatial-orbital sharing, not
+  orbital-energy ordering. Adapted from Jensen \citep{Jensen2017}.}
   \label{fig:rhf-uhf-orbitals}
 \end{figure}
 
@@ -3049,7 +3055,12 @@ minimal-basis \ce{H2},
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.55\textwidth]{H2}
+  \resizebox{\linewidth}{!}{$\displaystyle
+    \underbrace{\chi_1=\alpha\psi_1,\quad\chi_2=\beta\psi_1}_{\text{occupied}}
+    \qquad
+    \underbrace{\chi_3=\alpha\psi_2,\quad\chi_4=\beta\psi_2}_{\text{virtual}}
+    \qquad\Longleftrightarrow\qquad\psi_1^2
+  $}
   \caption{Closed-shell occupation of the spatial orbital in the minimal-basis
   description of \ce{H2}. Adapted from Szabo and Ostlund
   \citep{SzaboOstlund1996}.}
@@ -3507,9 +3518,11 @@ orbital does not.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.34\textwidth]{HF_det}
+  \input{chapter-figures/reference-occupation}
   \caption{Reference Hartree--Fock determinant constructed from the occupied
-  spin orbitals. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
+  spin orbitals. Filled green circles indicate occupied spin orbitals; empty
+  circles indicate virtual ones. Rows identify orbitals, not numerical
+  energies. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
   \label{fig:hf-reference-determinant}
 \end{figure}
 
@@ -3643,12 +3656,13 @@ between different determinants.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.25\textwidth]{single}
-  \hspace{0.16\textwidth}
-  \includegraphics[width=0.25\textwidth]{double}
+  \input{chapter-figures/excited-occupations}
   \caption{Singly excited (left) and doubly excited (right) determinants
   obtained by replacing occupied spin orbitals of the Hartree--Fock
-  reference by virtual ones. Adapted from Szabo and Ostlund
+  reference by virtual ones. Filled green circles indicate unchanged
+  occupations, violet circles promoted electrons, and red outlines holes.
+  Empty circles are unoccupied; unshown occupations remain unchanged.
+  Rows identify orbitals, not numerical energies. Adapted from Szabo and Ostlund
   \citep{SzaboOstlund1996}.}
   \label{fig:excited-determinants}
 \end{figure}
@@ -6916,8 +6930,11 @@ overlap eigenvalues can be removed.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.42\textwidth]{ortho}
-  \caption{Orthogonalization of the atomic-orbital basis. Adapted from Szabo
+  \input{chapter-figures/orthogonalization}
+  \caption{Orthogonalization of an illustrative pair of real normalized
+  atomic-orbital functions. Dashed blue vectors show the original functions;
+  solid green vectors show orthonormal functions. The three methods select
+  different orthonormal coordinates in the same space. Adapted from Szabo
   and Ostlund \citep{SzaboOstlund1996}.}
   \label{fig:ao-orthogonalization}
 \end{figure}
@@ -8599,9 +8616,10 @@ density wave; and TSW, torsional spin wave.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.66\textwidth]{StuberPaldus}
-  \caption{Graphical Stuber--Paldus classification of Hartree--Fock
-  solutions. Extracted from Fig.~1 of Burton, Thom, and Loos,
+  \input{chapter-figures/symmetry-classes}
+  \caption{Stuber--Paldus classification of Hartree--Fock
+  solutions, retaining all eight classes and eleven constraint-release
+  connections. New comparison layout based on Fig.~1 of Burton, Thom, and Loos,
   \emph{Parity-Time Symmetry in Hartree--Fock Theory}
   \citep{BurtonThomLoos2019}.}
   \label{fig:stuber-paldus}

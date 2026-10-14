@@ -1,0 +1,40 @@
+\begingroup
+{\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{>{\bfseries}lXXX}
+\toprule
+Space & Real coefficients & Time-reversal paired & Complex coefficients\\
+\midrule
+\rowcolor{hfGreen!7}
+RHF & RHF: $\chS^2,\chS_z,\chK,\hat\Theta$&
+Not a separate class here&
+c-RHF: $\chS^2,\chS_z$\\
+\rowcolor{hfOrange!8}
+UHF & UHF: $\chS_z,\chK$&
+p-UHF: $\chS_z,\hat\Theta$&
+c-UHF: $\chS_z$\\
+\rowcolor{hfRed!6}
+GHF & GHF: $\chK$&
+p-GHF: $\hat\Theta$&
+c-GHF: none of these\\
+\bottomrule
+\end{tabularx}}
+\par\smallskip
+{\small Cells name the retained symmetries. Real and paired classes are
+alternative constraints, not consecutive steps in an ordered chain.\par}
+\par\medskip
+{\small\bfseries\color{hfGreenDark}Constraint-release connections\par}\smallskip
+{\small\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{XX}
+RHF $\to$ c-RHF: release $\hat\Theta,\chK$&
+RHF $\to$ UHF: release $\chS^2,\hat\Theta$\\
+RHF $\to$ p-UHF: release $\chS^2,\chK$&
+c-RHF $\to$ c-UHF: release $\chS^2$\\
+UHF $\to$ GHF: release $\chS_z$&
+UHF $\to$ c-UHF: release $\chK$\\
+p-UHF $\to$ p-GHF: release $\chS_z$&
+p-UHF $\to$ c-UHF: release $\hat\Theta$\\
+c-UHF $\to$ c-GHF: release $\chS_z$&
+GHF $\to$ c-GHF: release $\chK$\\
+p-GHF $\to$ c-GHF: release $\hat\Theta$&
+\end{tabularx}}
+\endgroup

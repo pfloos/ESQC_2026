@@ -99,7 +99,9 @@ publication, rather than a search-results page.
 The author identified the book origins of Figures 1-6. Captions now credit
 Szabo and Ostlund for Figure 1, the determinant/occupation diagrams, and
 Figure 6, and Jensen for Figure 2. Specific book figure/page numbers have not
-been assumed. The original images are retained pending approval of redraws.
+been assumed. The author-approved native redraws now replace these images in
+the chapter, retaining the book credits. Original image files remain unchanged
+for the slide decks.
 
 Table 1 matches the orbital-coefficient columns of Table I in Henderson,
 Jiménez-Hoyos, and Scuseria (2018); the density-matrix columns of that source
@@ -107,11 +109,19 @@ are not present in this chapter. The caption therefore says reproduced in
 part, with the omission and notation adjustment stated explicitly. The source
 table was checked in the [author preprint](https://arxiv.org/pdf/1710.00932).
 
-Figure 10 is credited to Figure 1 of Burton, Thom, and Loos (2019), as
+Figure 10 uses the approved constraint-matrix and release-map layout, based on
+Figure 1 of Burton, Thom, and Loos (2019), as
 confirmed by the author and the [author preprint](https://arxiv.org/html/1903.08489v2).
 Both new publication records were checked against publisher-deposited DOI
 metadata and published journal issue details. Henderson's article appeared
 online in December 2017 but belongs to volume 14, issue 2 (2018).
+
+The carbon-contraction image (formerly Figure 12) is now native Table 2.
+All ten exponents and ten coefficients preserve the approved transcription
+exactly, including the negative ninth coefficient. The caption credits the
+cc-pVTZ family to Dunning (1989) and the Basis Set Exchange data source to
+Pritchard and coworkers (2019). Table 1 remains the separately acknowledged
+partial reproduction from Henderson, Jiménez-Hoyos, and Scuseria.
 
 | BibTeX key | Publication title | DOI record |
 | --- | --- | --- |

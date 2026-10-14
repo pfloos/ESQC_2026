@@ -179,3 +179,27 @@ coverage baseline. Commented-out frames are not additional required material.
   not performed.
 - Newly drawn layouts retain scientific source attribution. No source-credit
   removal or reuse-permission assertion is implied by a redesign.
+
+## Approved figure and table incorporation (14 October 2026)
+
+- Incorporated all six approved design-review pages as native LaTeX/TikZ
+  material in the dark-green chapter scheme. Figure and table source credits
+  remain in the captions; Figure 10 now describes its layout as based on the
+  cited paper, rather than extracted from it.
+- Kept Figures 1-6 and 10 at their existing source locations, with the
+  reference and excitation maps remaining separate figures. The H2
+  spin-orbital/spatial-orbital equivalence uses the approved display schematic.
+- Replaced former Figure 12 with Table 2, preserving all ten exponents and
+  coefficients exactly, including the negative ninth coefficient and shell
+  scale. Subsequent figure/table numbering updates automatically.
+- Kept the partial reproduction and acknowledgment in Table 1 unchanged.
+  Figure 10 retains all eight classes and eleven constraint-release connections.
+- Active fragments are in `chapter-figures/`. The comparison PDF remains an
+  archived approval record; original images and both slide decks are untouched.
+- Verification: full 106-page chapter compiles with citations and references
+  resolved; all three existing verification scripts pass. Compared both chapter
+  sources against the preceding commit after excluding figure/table blocks:
+  all remaining text, equations, derivation steps, and section order are identical.
+- The PDF skill was used to inspect only the changed illustrations and table
+  in their compiled chapter context. No full-chapter layout/overflow audit was
+  performed, in accordance with the author's earlier preference.

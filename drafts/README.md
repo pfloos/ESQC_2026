@@ -1,8 +1,11 @@
-# Figure and table designs awaiting approval
+# Approved figure and table design review
 
-None of these proposed replacements is included in the active chapter.
-Current figure numbers refer to the chapter before any replacement is made.
-The active chapter has received source credits only.
+All six design pages were approved by the author and incorporated on
+14 October 2026. The comparison PDF is retained as the archived approval
+record; its pending-approval banners describe the earlier review stage.
+Figure numbers in that review refer to the chapter before incorporation.
+Active, editable illustrations and the table are in
+[`chapter-figures/`](../chapter-figures/), separate from these review drafts.
 
 The [six-page comparison PDF](../output/pdf/chapter-figure-design-review.pdf)
 shows the current illustration and a proposed replacement on each page:
@@ -21,8 +24,8 @@ shows the current illustration and a proposed replacement on each page:
    in the carbon cc-pVTZ contraction excerpt.
 
 The designs are newly authored LaTeX/TikZ layouts, not edits to the borrowed
-image files. Their captions will retain the sources of the scientific content
-if the author approves incorporation. Recoloring an existing image alone is
+image files. Their chapter captions retain the sources of the scientific content.
+Recoloring an existing image alone is
 not being presented as an original design, and no reuse-permission claim is made.
 
 The table is provided as a separate
@@ -37,6 +40,7 @@ compiled from the repository root with:
 
     latexmk -pdf -outdir=output/pdf output/pdf/chapter-figure-design-review.tex
 
-Approval may be given separately for each page. Figures remain untouched
-until approved; the carbon table will become a numbered chapter table only
-after approval, and later figure/table numbers will then change naturally.
+The former Figure 12 is now Table 2. Later figure/table numbers have changed
+naturally. The reference and excited-determinant maps remain at their separate
+chapter locations, using the approved common design. The original image files
+remain available to the slide decks; they have not been overwritten or deleted.
