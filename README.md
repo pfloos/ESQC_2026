@@ -39,6 +39,9 @@ and uses [ESQC_Loos_HF_BF_chapter.bib](ESQC_Loos_HF_BF_chapter.bib) for the
 bibliography. These files should remain together in the repository root.
 The approved editable figure and table fragments are in
 [`chapter-figures/`](chapter-figures/); retain that directory when compiling.
+The dark-green vector cover is defined in
+[`chapter-titlepage.tex`](chapter-titlepage.tex), which must also remain
+alongside the main source. It requires no external artwork or new packages.
 The bibliography has direct DOI links; article identities and verification
 exceptions are recorded in [the reference audit](chapter-reference-audit.md).
 

@@ -203,3 +203,15 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill was used to inspect only the changed illustrations and table
   in their compiled chapter context. No full-chapter layout/overflow audit was
   performed, in accordance with the author's earlier preference.
+
+## Title-page redesign (14 October 2026)
+
+- Replaced the default article title page with a native, page-relative TikZ
+  cover: a dark-green accent band, large left-aligned title, pale-green lower
+  panel, decorative orbital-inspired contours, and separated author/conference
+  details. Retained the author name, affiliation, title topics, and ESQC year.
+- The cover is isolated in `chapter-titlepage.tex` and reuses the existing
+  typography, colors, and TikZ package. No external artwork is required.
+- The PDF skill was used to inspect the rendered cover. Chapter content,
+  scientific figures, equations, citations, and page-numbering setup are
+  unchanged. Full compilation and existing source/reference checks pass.
