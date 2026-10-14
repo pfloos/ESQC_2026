@@ -46,7 +46,7 @@ naturally. The reference and excited-determinant maps remain at their separate
 chapter locations, using the approved common design. The original image files
 remain available to the slide decks; they have not been overwritten or deleted.
 
-## Gaussian cover illustration preview (awaiting approval)
+## Approved Gaussian cover illustration review
 
 The author selected the overlapping-Gaussian concept as a replacement for
 the decorative cover contours. The new
@@ -60,7 +60,9 @@ rescaled: its peak is exp(-1.568), about 0.2085, at -0.4667.
 Curves are drawn over the display interval [-6,6]. This is not a normalized basis-set
 specification. There are no axes or labels, and all cover typography and
 wording are unchanged.
-The current chapter cover remains unchanged pending approval of this design.
+The author approved this 1D design on 14 October 2026. It is now incorporated
+in the active `chapter-titlepage.tex`. This separate PDF and draft source are
+retained as the archived design-review record.
 
 The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its
 review document from the repository root with:

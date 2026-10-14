@@ -268,3 +268,13 @@ coverage baseline. Commented-out frames are not additional required material.
 - Compiled the review PDF, verified the product identity and unchanged cover
   text, and inspected the rendered page using the PDF skill. The active cover
   remains unchanged pending approval.
+
+#### Approved 1D cover incorporation (14 October 2026)
+
+- Incorporated the author-approved 1D Gaussian/product design into the active
+  `chapter-titlepage.tex`, without changing its curves, colors, transparency,
+  typography, or wording. Retained the separate review as an approval record.
+- Verified the active cover against the approved draft, compiled the full
+  chapter, ran the existing source/reference checks, and inspected the compiled
+  title page using the PDF skill. Chapter content and scientific figures are
+  unchanged.

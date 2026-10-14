@@ -31,20 +31,31 @@
           Basis Sets and\\Molecular Integrals\par}
       \end{minipage}};
 
-    % Decorative orbital-inspired contours, not a quantitative diagram.
-    \begin{scope}[shift={([xshift=139mm,yshift=-194mm]current page.north west)},
-                  rotate=18]
-      \foreach \radius in {12,18,24,30}{
-        \draw[hfGreen!22,line width=0.65pt]
-          (\radius mm,0) ellipse
-          [x radius=\radius mm,y radius=0.62*\radius mm];
-        \draw[hfGreen!22,line width=0.65pt]
-          (-\radius mm,0) ellipse
-          [x radius=\radius mm,y radius=0.62*\radius mm];
-      }
-      \draw[hfGreen!28,line width=0.65pt]
-        (-65mm,0) -- (65mm,0);
-      \fill[hfGreenDark] (0,0) circle (1.2mm);
+    % Two separated 1D Gaussians and their exact pointwise product.
+    % Exponents 0.6 and 0.3, centers -1.4 and 1.4, unit peaks.
+    % The unscaled product peaks at x=-1.4/3 with height exp(-1.568).
+    \begin{scope}[shift={([xshift=105mm,yshift=-218mm]current page.north west)},
+                  x=12mm,y=46mm]
+      \path[fill=hfBlue,fill opacity=0.13]
+        (-6,0) -- plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.3*(\x-1.4)^2)}) -- (6,0) -- cycle;
+      \path[fill=hfGreenDark,fill opacity=0.13]
+        (-6,0) -- plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.6*(\x+1.4)^2)}) -- (6,0) -- cycle;
+      \path[fill=hfOrange,fill opacity=0.25]
+        (-6,0) -- plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.6*(\x+1.4)^2)*exp(-0.3*(\x-1.4)^2)})
+        -- (6,0) -- cycle;
+      \draw[hfInk!20,line width=0.4pt] (-6,0) -- (6,0);
+      \draw[hfBlue,line width=1pt]
+        plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.3*(\x-1.4)^2)});
+      \draw[hfGreenDark,line width=1pt]
+        plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.6*(\x+1.4)^2)});
+      \draw[hfOrange,line width=1.15pt]
+        plot[domain=-6:6,samples=241,smooth]
+        (\x,{exp(-0.6*(\x+1.4)^2)*exp(-0.3*(\x-1.4)^2)});
     \end{scope}
 
     \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
