@@ -68,3 +68,19 @@ The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its
 review document from the repository root with:
 
     latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-gaussian-review.tex
+
+## RHF/UHF/GHF cover preview (awaiting approval)
+
+The [spin-direction cover preview](../output/pdf/chapter-titlepage-spin-review.pdf)
+is based on chapter Figure 9, with only the RHF, UHF, and GHF labels. It omits
+the rotated-UHF panel, coordinate/spin labels, explanatory sentences, and
+equations. The RHF and UHF arrows both remain collinear, as in Figure 9;
+their identical directions do not imply identical spatial orbitals. The GHF
+arrows are noncollinear. This is a spin-direction motif, not a spatial-orbital
+diagram. The actual chapter Figure 9 is unchanged.
+
+The active Gaussian cover remains unchanged pending approval. The editable
+variant is `chapter-titlepage-spin.tex`. Compile the review from the repository
+root with:
+
+    latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-spin-review.tex

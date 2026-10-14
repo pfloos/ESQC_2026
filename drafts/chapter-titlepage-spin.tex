@@ -1,0 +1,79 @@
+% DESIGN PREVIEW: awaiting approval; the active cover is unchanged.
+% Native vector cover; no external artwork or additional package is required.
+% All positions are page-relative, independent of the chapter's text margins.
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[hfGreenDark]
+      (current page.north west) rectangle
+      ([xshift=9mm]current page.south west);
+    \fill[hfGreenLight]
+      ([xshift=9mm,yshift=-152mm]current page.north west) rectangle
+      (current page.south east);
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-27mm]current page.north west)
+      {\sffamily\small\bfseries QUANTUM CHEMISTRY};
+    \node[anchor=north east,inner sep=0pt,align=right,text=hfGreenDark]
+      at ([xshift=-30mm,yshift=-24mm]current page.north east)
+      {\sffamily\bfseries\fontsize{22}{24}\selectfont ESQC 2026};
+    \draw[hfGreenDark,line width=0.7pt]
+      ([xshift=30mm,yshift=-47mm]current page.north west) --
+      ([xshift=-30mm,yshift=-47mm]current page.north east);
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-64mm]current page.north west)
+      {\begin{minipage}{150mm}
+        \raggedright
+        {\fontsize{38}{43}\selectfont\bfseries
+          Hartree--Fock\\Theory\par}
+        \vspace{7mm}
+        {\fontsize{23}{29}\selectfont
+          Basis Sets and\\Molecular Integrals\par}
+      \end{minipage}};
+
+    % Minimal spin-direction motif based on chapter Figure 9.
+    % RHF and UHF remain collinear; GHF permits noncollinear directions.
+    % This is a spin schematic, not a depiction of spatial orbital shapes.
+    \begin{scope}[shift={([xshift=105mm,yshift=-191mm]current page.north west)},
+                  x=1mm,y=1mm,>=stealth]
+      \foreach \x/\method in {-48/RHF,0/UHF,48/GHF}{
+        \begin{scope}[shift={(\x,0)}]
+          \shade[ball color=hfGreen!12,opacity=0.55] (0,0) circle (18);
+          \draw[hfGreen!45,line width=0.6pt] (0,0) circle (18);
+          \draw[hfGreen!35,line width=0.45pt]
+            (-18,0) arc (180:360:18 and 5);
+          \draw[hfGreen!30,densely dashed,line width=0.45pt]
+            (-18,0) arc (180:0:18 and 5);
+          \fill[hfGreenDark] (0,0) circle (0.6);
+          \node[text=hfGreenDark,font=\sffamily\bfseries\large]
+            at (0,-26) {\method};
+        \end{scope}
+      }
+      \foreach \x in {-48,0}{
+        \draw[->,hfBlue,line width=1.4pt] (\x,0) -- (\x,14);
+        \draw[->,hfRed,line width=1.4pt] (\x,0) -- (\x,-14);
+      }
+      \draw[->,hfViolet,line width=1.4pt] (48,0) -- (60.6,10.1);
+      \draw[->,hfOrange,line width=1.4pt] (48,0) -- (39.4,13.0);
+    \end{scope}
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-243mm]current page.north west)
+      {\begin{minipage}{150mm}
+        \raggedright
+        {\large\bfseries Pierre-Fran\c{c}ois (Titou) Loos\par}
+        \vspace{3mm}
+        {\small\color{hfInk}
+          Laboratoire de Chimie et Physique Quantiques (UMR 5626)\\
+          Universit\'e de Toulouse, CNRS, UPS, Toulouse, France\par}
+      \end{minipage}};
+    \draw[hfGreen!35,line width=0.5pt]
+      ([xshift=30mm,yshift=22mm]current page.south west) --
+      ([xshift=-30mm,yshift=22mm]current page.south east);
+    \node[anchor=south west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=14mm]current page.south west)
+      {\sffamily\footnotesize European Summer School in Quantum Chemistry (ESQC)};
+  \end{tikzpicture}
+  \null
+\end{titlepage}
