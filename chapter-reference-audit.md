@@ -123,6 +123,14 @@ cc-pVTZ family to Dunning (1989) and the Basis Set Exchange data source to
 Pritchard and coworkers (2019). Table 1 remains the separately acknowledged
 partial reproduction from Henderson, Jiménez-Hoyos, and Scuseria.
 
+The hydrogen STO-3G data excerpt is now a native coefficient/exponent table.
+All six numbers are transcribed exactly from `fig/STO-3G.png` and independently
+matched as decimal values against the
+[Basis Set Exchange STO-3G hydrogen definition](https://www.basissetexchange.org/api/basis/sto-3g/format/json/?elements=1).
+The table cites Hehre, Stewart, and Pople (1969) and Pritchard and coworkers
+(2019). The original comparison plot is retained as a numbered figure, with
+its STO, contracted STO-3G, and weighted primitive curves identified in the caption.
+
 | BibTeX key | Publication title | DOI record |
 | --- | --- | --- |
 | `Henderson2018` | Magnetic Structure of Density Matrices | [10.1021/acs.jctc.7b01016](https://doi.org/10.1021/acs.jctc.7b01016) |

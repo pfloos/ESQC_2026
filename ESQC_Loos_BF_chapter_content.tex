@@ -368,10 +368,34 @@ primitive GTOs, whose contraction coefficients and exponents are selected so
 that the contraction approximates an STO. STO-$n$G bases are therefore minimal,
 single-$\zeta$ basis sets; STO-3G is the most familiar member
 \citep{Hehre1969}.
-\begin{center}
-  \includegraphics[width=0.42\textwidth]{STO-3G}\hspace{1em}
-  \includegraphics[width=0.42\textwidth]{STO}
-\end{center}
+For hydrogen, Table~\ref{tab:hydrogen-sto3g} lists the three primitives in
+the contraction, and Fig.~\ref{fig:hydrogen-sto3g} shows how their sum
+approximates the Slater-type $1s$ orbital.
+\begin{table}[htbp]
+  \centering
+  {\renewcommand{\arraystretch}{1.22}
+  \input{chapter-figures/hydrogen-sto3g-tabular}}
+  \caption{Primitive exponents and contraction coefficients for the hydrogen
+  $1s$ function in STO-3G, with shell scale $1.00$. The dimensionless
+  coefficients $D_i$ multiply normalized primitive Gaussians; $a_0$ is the
+  Bohr radius. Values are transcribed without rounding from the Basis Set
+  Exchange excerpt in the lecture slides and checked against its STO-3G
+  hydrogen definition \citep{Hehre1969,Pritchard2019}.}
+  \label{tab:hydrogen-sto3g}
+\end{table}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.80\textwidth]{STO}
+  \caption{Radial dependence of the hydrogen $1s$ STO with
+  $\zeta=1.24\,a_0^{-1}$ (blue) and its STO-3G approximation (red).
+  The black curves are the three coefficient-weighted normalized Gaussian
+  primitives whose sum forms the contraction, using the parameters in
+  Table~\ref{tab:hydrogen-sto3g}. The horizontal coordinate is the distance
+  $r$ from the nucleus in Bohr radii; the curves show spatial-orbital
+  amplitudes, not radial probability densities. The plot is retained from
+  the original lecture material.}
+  \label{fig:hydrogen-sto3g}
+\end{figure}
 
 The quality of the contraction is controlled by $n$, but the molecular
 orbital space still contains only the minimal number of functions. Such a

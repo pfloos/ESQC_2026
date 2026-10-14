@@ -16,6 +16,10 @@ with its notation, fonts, physics package, and dark-green palette.
   connections. The separate reproduced classification Table 1 is unchanged.
 - `carbon-contraction-tabular.tex`: Table 2, replacing former Figure 12,
   with all twenty numeric entries preserved exactly from the approved draft.
+- `hydrogen-sto3g-tabular.tex`: native table of the three hydrogen STO-3G
+  exponents and coefficients, transcribed exactly from the lecture image and
+  verified against Basis Set Exchange. The original `fig/STO.pdf` comparison
+  plot is now included as a separately captioned chapter figure.
 
 `styles.tex` is included within local groups, so figure styles do not affect
 other chapter illustrations. Source credits remain in the chapter captions.

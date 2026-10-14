@@ -5,10 +5,14 @@
  \foreach \x/\method in {0/Schmidt,5.4/Symmetric,10.8/Canonical}{
   \begin{scope}[xshift=\x cm]
    \node[font=\large\bfseries,text=hfGreenDark] at (0.8,3.2) {\method};
-   \draw[old] (0,0)--(2,0) node[right] {$\phi_1$};
+   \ifdim\x pt=0pt
+    \draw[old] (0,0)--(2,0);
+   \else
+    \draw[old] (0,0)--(2,0) node[right] {$\phi_1$};
+   \fi
    \draw[old] (0,0)--(1.414,1.414) node[above right] {$\phi_2$};
    \ifdim\x pt=0pt
-    \draw[new] (0,0)--(2,0) node[below] {$\phi_1'$};
+    \draw[new] (0,0)--(2,0) node[below right] {$\phi_1=\phi'_1$};
     \draw[new] (0,0)--(0,2) node[above] {$\phi_2'$};
    \else\ifdim\x pt=5.4pt
     \draw[new] (0,0)--(1.848,-0.765) node[below] {$\phi_1'$};

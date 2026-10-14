@@ -278,3 +278,23 @@ coverage baseline. Commented-out frames are not additional required material.
   chapter, ran the existing source/reference checks, and inspected the compiled
   title page using the PDF skill. Chapter content and scientific figures are
   unchanged.
+
+## Figure captions, labels, running head, and STO-3G presentation
+
+- Expanded Figure 1's caption to define the particle labels, common origin,
+  absolute position vectors, relative displacements and their directions,
+  and the corresponding distances. Retained its textbook acknowledgment.
+- Fixed the UHF alpha/beta labels in Figure 2 by anchoring them above the
+  first orbital boxes. In Figure 6's Schmidt panel, replaced the duplicate
+  first-vector labels with the explicit equality phi_1 = phi'_1.
+- Shortened the running head to `Hartree--Fock Theory` without changing the
+  document title or cover. All chapter derivations are unchanged.
+- Converted the hydrogen STO-3G excerpt into a native table (Table 3), keeping
+  every digit of its three exponents and coefficients. All six values match
+  the Basis Set Exchange STO-3G hydrogen JSON definition exactly. The original
+  STO/STO-3G plot is retained as a numbered figure (Figure 13), with a caption
+  identifying the STO, contraction, and weighted primitive Gaussian curves.
+- Verification: full 106-page compilation and all three existing checks pass;
+  displayed derivations match the preceding commit. The PDF skill was used
+  to inspect only the changed figure/table pages. No full-chapter layout audit
+  was performed. The active Gaussian cover remains unchanged.

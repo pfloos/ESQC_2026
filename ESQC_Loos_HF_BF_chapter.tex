@@ -77,7 +77,7 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{hfGreenDark}Hartree--Fock Theory and Basis Functions}
+\fancyhead[L]{\small\color{hfGreenDark}Hartree--Fock Theory}
 \fancyhead[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{
@@ -432,7 +432,17 @@ nucleus-nucleus Coulomb repulsions.
     \bR_{AB}=\bR_A-\bR_B
   \]
   \caption{Electronic and nuclear coordinates entering the molecular
-  Hamiltonian. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
+  Hamiltonian. Green circles denote nuclei $A$ and $B$, and blue circles
+  denote electrons $i$ and $j$. In the left panel, $O$ is the common origin:
+  $\bR_A$ and $\bR_B$ are the nuclear position vectors, while $\br_i$ and
+  $\br_j$ are the electronic position vectors. In the right panel,
+  $\br_{iA}=\br_i-\bR_A$ points from nucleus $A$ to electron $i$,
+  $\br_{ij}=\br_i-\br_j$ points from electron $j$ to electron $i$, and
+  $\bR_{AB}=\bR_A-\bR_B$ points from nucleus $B$ to nucleus $A$.
+  Their lengths $r_{iA}=\norm{\br_{iA}}$, $r_{ij}=\norm{\br_{ij}}$, and
+  $R_{AB}=\norm{\bR_{AB}}$ are the corresponding electron--nucleus,
+  electron--electron, and internuclear distances. Both panels use the same
+  molecular geometry. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
   \label{fig:molecular-coordinates}
 \end{figure}
 
