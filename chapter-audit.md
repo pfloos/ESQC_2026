@@ -163,3 +163,19 @@ coverage baseline. Commented-out frames are not additional required material.
   alternative designs before incorporation, including the proposed table
   replacing the current carbon-contraction image (Figure 12).
 - Verification: chapter compilation and source/reference consistency checks.
+
+## Pending design review
+
+- Prepared a separate six-page PDF showing current and proposed designs for
+  Figures 1, 2, 3-5, 6, 10, and a table replacing Figure 12.
+- Kept all proposals outside the chapter, with editable LaTeX/TikZ source and
+  an independent table fragment. Approval can be given page by page.
+- Preserved all eight symmetry classes and all eleven constraint-release
+  connections in the alternative classification layout.
+- Transcribed the ten-row carbon contraction and compared all twenty numeric
+  entries exactly with the Basis Set Exchange cc-pVTZ carbon definition.
+- Compiled the review PDF and visually inspected all six pages, repairing
+  label/spacing collisions before delivery. Full-chapter visual review was
+  not performed.
+- Newly drawn layouts retain scientific source attribution. No source-credit
+  removal or reuse-permission assertion is implied by a redesign.

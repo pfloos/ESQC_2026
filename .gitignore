@@ -10,3 +10,12 @@
 /ESQC_Loos_HF_BF_chapter.synctex.gz
 /ESQC_Loos_HF_BF_chapter.toc
 /scripts/__pycache__/
+
+# Auxiliary files for the separate design-review PDF (its source/PDF are kept).
+/output/pdf/*.aux
+/output/pdf/*.log
+/output/pdf/*.out
+/output/pdf/*.fls
+/output/pdf/*.fdb_latexmk
+/output/pdf/*.synctex.gz
+/tmp/pdfs/
