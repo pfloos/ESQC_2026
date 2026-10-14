@@ -233,3 +233,13 @@ coverage baseline. Commented-out frames are not additional required material.
   with arbitrary scales, rather than a normalized basis-set specification.
 - Compiled the preview and inspected its rendered page using the PDF skill.
   The active cover and all chapter sources remain unchanged pending approval.
+
+#### Different exponents, colors, and a 3D surface
+
+- Revised the preview to the sum of two two-dimensional Gaussian functions,
+  shown in perspective. Exponents 2.0 and 0.5 in arbitrary display units
+  distinguish a narrower and broader contribution. Green/blue surface colors
+  encode their relative weights, with a fine mesh to clarify the 3D shape.
+- Kept this revision in the separate review document, leaving the current
+  chapter cover unchanged. The preview compiles and its rendered page was
+  inspected using the PDF skill.

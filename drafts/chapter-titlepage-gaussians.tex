@@ -32,22 +32,35 @@
           Basis Sets and\\Molecular Integrals\par}
       \end{minipage}};
 
-    % Three decorative Gaussian profiles, with arbitrary relative scales.
-    % The illustration is not a normalized basis set or a quantitative plot.
-    \begin{scope}[shift={([xshift=105mm,yshift=-218mm]current page.north west)},
-                  x=1mm,y=1mm]
-      \foreach \center/\width/\height/\tint in {-24/26/30/30,24/26/30/45,0/19/48/65}{
-        \path[fill=hfGreen!\tint,fill opacity=0.18]
-          (-72,0) -- plot[domain=-72:72,samples=160,smooth]
-          (\x,{\height*exp(-((\x-\center)/\width)^2)}) -- (72,0) -- cycle;
-      }
-      \draw[hfGreen!25,line width=0.5pt] (-72,0) -- (72,0);
-      \foreach \center/\width/\height/\tint in {-24/26/30/50,24/26/30/65,0/19/48/90}{
-        \draw[hfGreen!\tint,line width=0.9pt]
-          plot[domain=-72:72,samples=160,smooth]
-          (\x,{\height*exp(-((\x-\center)/\width)^2)});
-      }
-    \end{scope}
+    % Decorative sum of two 2D Gaussians, viewed as a 3D surface.
+    % Exponents 2.0 and 0.5 give visibly different widths in display units.
+    % Color encodes their relative contributions; scales are illustrative.
+    \node[anchor=center,inner sep=0pt]
+      at ([xshift=105mm,yshift=-196mm]current page.north west)
+      {\begin{tikzpicture}
+        \begin{axis}[
+          width=153mm,height=78mm,
+          hide axis,view={-35}{28},
+          domain=-3.4:3.4,y domain=-2.3:2.3,
+          xmin=-3.4,xmax=3.4,ymin=-2.3,ymax=2.3,
+          zmin=0,zmax=1.25,
+          samples=49,samples y=39,
+          z buffer=sort,
+          colormap={coverGaussians}{
+            rgb255(0cm)=(23,105,170);
+            rgb255(1cm)=(0,87,77)},
+          point meta min=0,point meta max=1,
+          declare function={
+            coverGaussA(\x,\y)=exp(-2.0*((\x+1.1)^2+\y^2));
+            coverGaussB(\x,\y)=0.72*exp(-0.5*((\x-1.1)^2+\y^2));
+          }
+        ]
+          \addplot3[surf,shader=faceted interp,
+            faceted color=hfGreenDark!18,line width=0.15pt,
+            point meta={coverGaussA(x,y)/(coverGaussA(x,y)+coverGaussB(x,y))}]
+            {coverGaussA(x,y)+coverGaussB(x,y)};
+        \end{axis}
+      \end{tikzpicture}};
 
     \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
       at ([xshift=30mm,yshift=-243mm]current page.north west)
