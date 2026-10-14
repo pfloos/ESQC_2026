@@ -1,10 +1,9 @@
 \subsection{Basis-set expansions and design principles}
 
-The derivation in Section~\ref{sec:finite-basis-hf} shows that a finite one-electron basis converts the
-Hartree--Fock equations into a matrix problem. We now examine how this basis is
-chosen and constructed. The objective is to represent the physically relevant
-radial and angular variations of the molecular orbitals with a manageable
-number of coefficients.
+The matrix equations in Section~\ref{sec:finite-basis-hf} assumed that the
+orbital basis had already been chosen. We now examine that choice: which
+functions can represent the radial and angular variations of molecular
+orbitals accurately with a manageable number of coefficients?
 
 In practical molecular calculations, each molecular orbital is expanded in a
 finite set of known one-electron functions,
@@ -20,10 +19,10 @@ from atomic electronic-structure calculations. Their presence does not by
 itself make the method empirical; they specify the finite representation of
 the otherwise ab initio problem.
 
-For a fixed basis, orbital optimization changes only the coefficients. The
-shapes, centers, and nonlinear parameters of the basis functions are selected
-before the SCF calculation begins. Basis-set quality therefore determines the
-one-electron space within which the variational minimum can be found.
+Thus orbital optimization combines fixed building blocks rather than
+redesigning them. Their shapes, centers, and nonlinear parameters are selected
+before the SCF calculation begins and determine the available one-electron
+space.
 
 A useful basis must be accurate, compact, numerically stable, and practical.
 These requirements compete: a larger and more flexible basis improves the
@@ -53,6 +52,8 @@ Several families of one-electron functions are routinely used.
 Gaussian-type orbitals (GTOs), which are proportional to
 $\exp(-\alpha r^2)$, are atom centered and are the standard choice for
 molecules because their multicenter integrals can be evaluated efficiently.
+Here $r$ is the distance from the function's center, and $\alpha$ is a
+positive Gaussian exponent.
 They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
 \textsc{Molcas}, \textsc{Molpro}, \textsc{PySCF}, \textsc{Psi4},
 \textsc{CFOUR}, \textsc{MRCC}, and \textsc{GAMESS}.
@@ -60,10 +61,12 @@ They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
 Slater-type orbitals (STOs) are also atom centered, but are
 proportional to $\exp(-\zeta r)$. Their radial form can reproduce a nuclear
 cusp and an exponential long-range tail, and they are used, for example, in
-\textsc{ADF}. By contrast,
+\textsc{ADF}. The positive exponent $\zeta$ controls their radial extent.
+By contrast,
 plane waves (PWs), proportional to $\exp(\ii\bk\cdot\br)$, are
 delocalized, mutually orthonormal, and naturally adapted to periodic boundary
-conditions. Their basis size is controlled by an energy cutoff, and they are
+conditions. Here $\bk$ is the wavevector and $\ii$ the imaginary unit.
+Their basis size is controlled by an energy cutoff, and they are
 used in \textsc{Quantum Espresso}, \textsc{VASP}, \textsc{ABINIT}, and
 \textsc{CASTEP}. Finally, numerical atomic orbitals (NAOs) have
 tabulated radial parts. Their compactness and flexibility make them useful in
@@ -71,11 +74,9 @@ programs such as \textsc{FHI-aims} and \textsc{SIESTA}.
 
 \subsection{Plane-wave basis sets}
 
-These representations emphasize different physical and computational
-advantages. STOs closely reproduce atomic radial behavior, GTOs permit
-efficient molecular integral evaluation, plane waves provide systematic
-periodic representations, and NAOs obtain compactness through numerical
-flexibility.
+The four families balance radial accuracy, integral efficiency, periodicity,
+and numerical flexibility differently. We first examine the delocalized
+plane-wave representation, then return to atom-centered functions.
 
 Plane waves are the natural one-electron functions of a translationally
 invariant system. Under periodic boundary conditions, only reciprocal-lattice
@@ -87,7 +88,7 @@ In a unit cell of volume $\Omega$, a normalized plane wave is
   \qquad \abs{\bk}\leq k_\text{cut}
   \qquad E_\text{cut}=\frac{k_\text{cut}^2}{2}
 \end{equation}
-The reciprocal-lattice vector is
+The reciprocal-lattice vector is indexed by three integers:
 \begin{equation}
   \bk=k_1\bb_1+k_2\bb_2+k_3\bb_3
 \end{equation}
@@ -193,7 +194,10 @@ description by placing radial flexibility where the electronic density is
 concentrated. The central choice is between radial forms that reproduce the
 exact local behavior and forms that permit efficient multicenter integration.
 
-The general Slater- and Gaussian-type orbitals used in the comparison are
+In the following Slater- and Gaussian-type orbitals, $n$ labels the radial
+form, $\ell$ and $m$ are the angular-momentum and magnetic quantum numbers,
+and $Y_{\ell m}(\hat{\br})$ is a spherical harmonic evaluated in the direction
+of $\br$. The general forms used in the comparison are
 \begin{equation}
  \phi_{\zeta n\ell m}^\text{STO}(\br)
  \propto r^{n-1}e^{-\zeta r}Y_{\ell m}(\hat{\br})
@@ -226,9 +230,10 @@ frozen-orbital interpretation is
  \propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}
  \qquad \mathrm{IP}=-\epsilon_\text{HOMO}
 \end{equation}
-A Gaussian instead decays too rapidly. Multicenter STO integrals are hard to
-compute, whereas multicenter GTO integrals are easy. GTOs usually win, but more
-of them are required.
+A Gaussian instead decays too rapidly. Multicenter STO integrals are
+substantially more difficult to evaluate than their Gaussian counterparts.
+This computational advantage usually favors GTOs, although more Gaussian
+functions are required to reproduce comparable radial flexibility.
 
 The practical success of Gaussian basis sets is therefore computational. A
 linear combination of several Gaussians is used to recover the radial
@@ -242,19 +247,25 @@ several primitives of the same center and angular momentum with fixed
 coefficients, so that many primitive shapes share a single variational MO
 coefficient.
 
-A primitive Cartesian Gaussian centered at $\bA$ is
+A primitive Cartesian Gaussian centered at $\bA$ is labeled by
+$\ba=(a_x,a_y,a_z)$, a vector of nonnegative integer powers. Its total angular
+momentum is $a=a_x+a_y+a_z$. In the integral discussion, these angular-momentum
+labels replace the earlier use of $a,b,c,d$ for virtual orbital indices.
+The square ket denotes a primitive function:
 \begin{equation}
   \sket{\ba}=(x-A_x)^{a_x}(y-A_y)^{a_y}(z-A_z)^{a_z}
   \exp[-\alpha\abs{\br-\bA}^2]
 \end{equation}
-A contracted Gaussian is a fixed linear combination of primitives,
+An ordinary ket denotes a contracted Gaussian, a fixed linear combination
+of primitives with coefficients $D_k$:
 \begin{equation}
   \ket{\ba}\equiv\phi_{\ba}^{\bA}(\br)
   =\sum_{k=1}^{K}D_k\sket{\ba_k}
 \end{equation}
-Here $\alpha$ is the exponent, $\bA$ the center, and
-$\ba=(a_x,a_y,a_z)$ the angular-momentum vector, with total angular momentum
-$a=a_x+a_y+a_z$.
+Here $\alpha$ is the primitive exponent. All primitives in a contraction have
+the same center and polynomial powers but may have different exponents.
+The upper limit $K$ in this local contraction sum counts primitives;
+elsewhere $K$ denotes the number of orbital basis functions.
 
 An $s$ shell contains $(0,0,0)$; a $p$ shell contains $(1,0,0)$,
 $(0,1,0)$, and $(0,0,1)$; a Cartesian $d$ shell contains
@@ -266,7 +277,7 @@ and a Cartesian $f$ shell contains
  (1,2,0),(0,2,1),(0,1,2),(1,0,2),(1,1,1)
  \end{gathered}
 \end{equation}
-In general,
+In general, a Cartesian shell of total angular momentum $\ell$ contains
 \begin{equation}
   N_\ell^\text{cart}=\frac{(\ell+1)(\ell+2)}{2}
 \end{equation}
@@ -310,9 +321,9 @@ The complete contraction in this example is
 Basis-set definitions can be inspected and downloaded from the
 \href{https://www.basissetexchange.org}{Basis Set Exchange}.
 
-Contraction reduces the number of MO coefficients and the dimensions of the
-Fock and density matrices, but it does not eliminate primitive-integral work.
-Efficient algorithms reorganize these contraction sums.
+The contraction thus reduces the dimensions of the Fock and density
+matrices, while integral algorithms must still reorganize the underlying
+primitive sums efficiently.
 
 \subsection{Gaussian basis-set design and selection}
 
@@ -388,12 +399,15 @@ main sequence is
 \begin{equation}
   \text{cc-pVXZ},\qquad X=\mathrm{D,T,Q,5,6}
 \end{equation}
-These bases were designed for correlated calculations, with balanced layers
-of polarization functions and a systematically increasing valence space. A
-standard correlation-energy extrapolation \citep{Helgaker1997} is
+In the basis names, D, T, and Q denote double-, triple-, and quadruple-$\zeta$
+quality. The numerical cardinal number $X$ takes the corresponding values
+$2,3,4,5,6$. A standard correlation-energy extrapolation
+\citep{Helgaker1997} is
 \begin{equation}
   \Ec(X)\approx\Ec^\text{CBS}+AX^{-3}
 \end{equation}
+Here $\Ec^\text{CBS}$ is the complete-basis-set correlation energy and $A$
+is an extrapolation coefficient, not an atomic-center label.
 Diffuse augmentation gives aug-cc-pVXZ, d-aug-cc-pVXZ, and t-aug-cc-pVXZ
 \citep{Kendall1992}.
 Core correlation is described by cc-pCVXZ, optimized for core--core and
@@ -445,17 +459,19 @@ importance. The sequence has shell contents
   \text{pc-3}:6s5p4d2f1g
 \end{equation}
 Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
-members add systematically more radial and angular flexibility. These basis
-sets were designed for HF and Kohn--Sham calculations, with higher angular
-momenta selected according to their energetic importance. Diffuse variants
+members add systematically more radial and angular flexibility. Diffuse variants
 are denoted aug-pc-$n$. Their HF convergence is described by the
 extrapolation form \citep{Jensen2005}
 \begin{equation}
   E_\text{HF}(L)=E_\text{HF}^\text{CBS}
   +A(L+1)\exp(-B\sqrt L)
 \end{equation}
+Here $L$ is the highest angular momentum present in the basis, while $A$ and
+$B$ are extrapolation coefficients. This HF extrapolation is distinct from
+the inverse-cubic correlation-energy extrapolation above.
 
-Gaussian bases are compact, atom centered, chemically transferable, supported
+These hierarchies illustrate why Gaussian bases are widely used: they are
+compact, atom centered, chemically transferable, supported
 by analytic integral technology, and available in systematic hierarchies.
 They make all-electron calculations practical for light and medium elements,
 and their locality supports integral screening and sparse algorithms. The
@@ -471,7 +487,9 @@ the electronic-structure method, and the desired accuracy.
 
 \subsubsection{Basis-set superposition error and counterpoise correction}
 
-Atom-centered basis functions belong formally to the complete calculation
+The locality that makes atom-centered bases compact also creates a possible
+imbalance when fragment energies are compared. Atom-centered basis functions
+belong formally to the complete calculation
 rather than to immutable fragments. When two fragments approach one another,
 each gains access to functions centered on the other, and the dimer and
 isolated-fragment energies no longer possess equivalent variational
@@ -494,7 +512,7 @@ the full dimer basis for every term,
   \Delta E_\text{int}^\text{CP}
   =E_{AB}^{AB}-E_A^{AB}-E_B^{AB}
 \end{equation}
-and the basis-set superposition error is
+and the basis-set superposition error (BSSE) is
 \begin{equation}
   \mathrm{BSSE}
   =\Delta E_\text{int}^\text{CP}-\Delta E_\text{int}
@@ -539,7 +557,8 @@ same one-electron space.
 \subsection{Effective core potentials and pseudopotentials}
 
 Core electrons are numerous and spatially compact, yet they often participate
-only indirectly in chemical bonding. Effective core potentials exploit this
+only indirectly in chemical bonding. Effective core potentials (ECPs)
+exploit this
 separation by replacing selected core electrons and their nuclear interaction
 with an operator acting on the remaining explicit electrons.
 
@@ -555,6 +574,9 @@ chemically inactive core electrons by an effective one-electron operator,
  +\sum_A\hat U_A^\text{ECP}(\br)
  \qquad \green{Q_A}=Z_A-N_A^\text{core}
 \end{equation}
+Here $N_A^\text{core}$ is the number of electrons removed by the ECP on atom
+$A$, and $Q_A$ is the charge of the remaining ionic core. It is not the
+population-analysis charge $q_A$ introduced earlier.
 This lowers the cost by reducing the number of explicit electrons and removing
 the basis functions needed for core orbitals. It can incorporate
 scalar-relativistic effects and, with a suitable operator, spin--orbit
@@ -563,7 +585,8 @@ Gaussian or plane-wave bases. The price is a new class of one-electron
 integrals that can be difficult to evaluate; core properties are not described
 explicitly, and the accuracy depends on the ECP quality.
 
-A common semilocal form is
+For one center, with $r$ measured from that center and $L$ labeling the local
+channel, a common semilocal form is
 \begin{equation}
   U^\text{ECP}=U_L(r)+
   \sum_{\ell=0}^{L-1}\sum_{m=-\ell}^{\ell}
@@ -622,7 +645,7 @@ algebraic fact behind Gaussian integral technology is the
 Gaussian product rule: the product of two Gaussians is another Gaussian.
 This closure property underlies the classical Gaussian integral formulation
 of Boys \citep{Boys1950}.
-If
+Writing the $s$-type Gaussian factors as
 \begin{equation}
  G_{\red{\alpha},\red{\bA}}(\br)
  =\exp[-\red{\alpha}\abs{\br-\red{\bA}}^2]
@@ -651,13 +674,11 @@ and
  =\exp[-\frac{\red{\alpha}\blue{\beta}}
  {\red{\alpha}+\blue{\beta}}\abs{\red{\bA}-\blue{\bB}}^2]
 \end{equation}
-The prefactor therefore decays exponentially with the distance between the
-two centers.
-
 The product center $\bP$ lies on the line joining $\bA$ and $\bB$ and is
 weighted toward the Gaussian with the larger exponent. The prefactor contains
-the dependence on the separation of the original centers and makes distant
-Gaussian pairs rapidly negligible.
+the dependence on the separation of the original centers: its Gaussian decay
+makes distant pairs rapidly negligible. The bold $\bP$ here denotes a
+coordinate, not the density matrix used in the HF equations.
 
 For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
 \begin{align}
@@ -713,7 +734,8 @@ centers.
 \paragraph{Nuclear-attraction integral.}
 
 For a nucleus of charge $Z_C$ located at $\bC$, the nuclear-attraction
-integral is
+integral introduces the function $F_0$, the zeroth-order Boys function defined
+in Eq.~\eqref{eq:boys-functions}:
 \begin{align}
  -Z_C\int G_{\red{\alpha},\red{\bA}}(\br)
  \frac{1}{\abs{\br-\bC}}
@@ -739,7 +761,8 @@ centers to two Gaussian product centers.
 
 \paragraph{Gaussian-pair reduction.}
 
-Applying the Gaussian product rule to both electron coordinates gives
+Applying the Gaussian product rule to the $s$-type factors on both electron
+coordinates gives
 \begin{align}
  \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
  &=\iint G_{\red{\alpha},\red{\bA}}(\br_1)
@@ -752,6 +775,9 @@ Applying the Gaussian product rule to both electron coordinates gives
  \frac{1}{r_{12}}G_{\purple{\eta},\purple{\bQ}}(\br_2)
  \dd\br_1\dd\br_2
 \end{align}
+The second pair has combined exponent $\eta=\gamma+\delta$ and product
+center $\bQ=(\gamma\bC+\delta\bD)/\eta$, with a prefactor
+$K_{\eta,\bQ}$ defined in the same way as for the first pair.
 There are formally $\order{K^4}$ ERIs, although only $\order{K^2}$ are
 significant in a sufficiently large, spatially extended system.
 
@@ -848,7 +874,8 @@ With the substitution $t^2=\vartheta u^2/(1-u^2)$,
  \abs{\violet{\bP}-\purple{\bQ}}^2u^2}\dd u}
  _{F_0(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2)}
 \end{align}
-The fundamental auxiliary notation is therefore
+The zero angular-momentum vector $\bO=(0,0,0)$ denotes an $s$ function in
+this integral notation. The fundamental auxiliary notation is therefore
 \begin{equation}
  \sbraket{\bO\bO}{\bO\bO}^{(0)}
  =\sqrt{\frac{4\vartheta}{\pi}}
@@ -865,7 +892,8 @@ is the foundation of the recurrence construction below.
 \label{sec:boys-functions}
 
 The remaining one-dimensional integral is collected into the generalized Boys
-function,
+function. Here $m$ is a nonnegative integer order and $x$ a nonnegative,
+dimensionless argument, not a Cartesian coordinate:
 \begin{equation}
  F_m(x)=\int_0^1t^{2m}\exp(-xt^2)\dd t
  \qquad
@@ -909,9 +937,8 @@ intermediates. Angular-momentum recurrences couple orders $m$ and $m+1$.
 For total angular momentum $L=a+b+c+d$, fundamental auxiliary integrals are
 needed through $m=L$.
 
-Although only $m=0$ is itself a physical $ssss$ integral, the higher orders
-are required intermediates: differentiating the fundamental integral to raise
-angular momentum couples neighboring Boys orders.
+The recurrence construction must therefore retain the necessary Boys orders
+alongside the angular-momentum labels.
 
 \subsubsection{Obara--Saika recurrence relations}
 \label{sec:os-recurrences}
@@ -923,7 +950,10 @@ integrals \citep{ObaraSaika1986}.
 
 \paragraph{Generating angular momentum vertically.}
 
-For an unnormalized primitive Cartesian Gaussian, the key identity is
+Here $i$ labels a Cartesian direction, $x$, $y$, or $z$, rather than an
+occupied orbital. The vector $\bI_i$ has unit component in direction $i$ and
+zero components in the other two directions. For an unnormalized primitive
+Cartesian Gaussian, the key identity is
 \begin{equation}
  \pdv{\sket{\red{\ba}}}{A_i}
  =2\alpha\sket{\red{\ba}+\bI_i}
@@ -980,10 +1010,10 @@ and dividing by $2\alpha$ yields
  \sbraket{\bO\bO}{\bO\bO}^{(m+1)}
 \end{equation}
 Here $\vartheta/\zeta=\eta/(\zeta+\eta)$. The ket-pair result follows
-by exchanging the two pairs. These negative signs correct the corresponding
-product-center terms in the lecture slides.
+by exchanging the two pairs. The derivative argument fixes both
+product-center terms to have negative signs.
 
-The intended construction is
+The required angular-momentum build and contraction are organized as
 \begin{equation}
  \sbraket{00}{00}^{(m)}
  \xrightarrow{\red{\mathrm{VRR}}}
@@ -1034,9 +1064,8 @@ those of Obara--Saika. Thus the expensive exponent-dependent recurrences are per
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
 
-This ordering defines the late-contraction strategy. VRRs must retain
-primitive exponent information, while HRRs depend only on the centers and can
-therefore act on the smaller set of contracted quantities.
+The resulting reduction in the number of quantities handled by the HRRs
+complements the screening savings considered next.
 
 \subsection{Integral bounds, screening, and direct SCF}
 \label{sec:integral-screening}
@@ -1050,7 +1079,9 @@ cheap upper bound before evaluating an integral or shell quartet.
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
-$N_\text{sig}=\order{N_\text{upper}}$. The Cauchy--Schwarz inequality gives
+$N_\text{sig}=\order{N_\text{upper}}$. Here $N_\text{sig}$ counts significant
+integrals and $N_\text{upper}$ counts those retained by the bound at the
+chosen threshold. The Cauchy--Schwarz inequality gives
 \begin{equation}
  \abs{\rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}}
  \leq
@@ -1087,7 +1118,7 @@ Then an entire shell class obeys
  \abs{\rbraket{\red a\blue b}{\orange c\green d}}
  \leq Q_{\red a\blue b}Q_{\orange c\green d}
 \end{equation}
-If
+For a positive screening threshold $\tau$, if
 \begin{equation}
  Q_{\red a\blue b}Q_{\orange c\green d}<\tau
 \end{equation}
@@ -1099,8 +1130,11 @@ The number of significant integrals may be represented by
  \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
  \equiv\rmel{\red{\ba}\blue{\bb}}{\chO_2}
  {\orange{\bc}\green{\bd}}
- \qquad N_\text{sig}=cN^\alpha
+ \qquad N_\text{sig}=cK^\alpha
 \end{equation}
+Here $K$ is the number of basis functions, $c$ is a proportionality factor,
+and $\alpha$ is the effective scaling exponent. The count $N_\text{sig}$
+is distinct from the electron number $N$ used in the HF derivations.
 The numerical data in Table~\ref{tab:screening-scaling} contrast the long-range Coulomb operator with a
 short-range Gaussian operator:
 \begin{table}[htbp]
@@ -1111,7 +1145,7 @@ short-range Gaussian operator:
 & &\multicolumn{2}{c}{\red{$\chO=r_{12}^{-1}$}}
 &\multicolumn{2}{c}{\orange{$\chO=e^{-r_{12}^2}$}}\\
 \cmidrule(lr){3-4}\cmidrule(lr){5-6}
-Molecule&$N$&$N_\text{sig}$&$\alpha$&$N_\text{sig}$&$\alpha$\\
+Molecule&$K$&$N_\text{sig}$&$\alpha$&$N_\text{sig}$&$\alpha$\\
 \midrule
 propene&12&1,625&---&1,650&---\\
 butadiene&16&5,020&3.9&5,020&3.9\\
@@ -1126,9 +1160,6 @@ for Coulomb and short-range Gaussian operators. Numerical data reproduced
 from the lecture slides.}
 \label{tab:screening-scaling}
 \end{table}
-The contrast shows the more rapid approach to low effective scaling for a
-short-range operator.
-
 The Coulomb interaction remains long ranged, so its effective exponent falls
 more slowly than that of the short-range Gaussian operator. Nevertheless, the
 data show that the number of numerically significant Coulomb integrals grows
@@ -1205,16 +1236,13 @@ chosen consistently with the target accuracy of the SCF energy and residual.
 \label{sec:ri}
 
 Screening avoids work associated with small individual integrals, but it does
-not alter the four-index structure of the ERI tensor. Low-rank
-representations address this complementary problem by replacing the
-four-center quantities with contractions over a smaller auxiliary index. The
-resulting factorization connects the integral technology developed above to
-more economical Fock-matrix construction.
-
-Screening reduces the number of ERIs that must be evaluated, whereas
-resolution of the identity changes their algebraic representation. Its
-starting point is that products of orbital basis functions occupy a much
-larger and highly redundant space compared with the orbital basis itself.
+not alter the four-index structure of the ERI tensor. Resolution of the
+identity (RI), also called density fitting (DF), addresses this complementary
+problem by replacing four-center quantities with contractions over a smaller
+auxiliary index. Its starting point is that products of orbital basis
+functions span a large, highly redundant space. Representing that space
+economically connects the integral technology developed above to less costly
+Fock-matrix construction.
 
 In this section, orbital and auxiliary functions are taken to be real, as in
 the Gaussian integral formulas above. An ERI is the Coulomb interaction
@@ -1228,7 +1256,7 @@ between two pair densities,
  _{\rho_{\lambda\sigma}(\br_2)}\dd\br_1\dd\br_2
 \end{equation}
 With $K$ orbital basis functions, there are formally $\order{K^2}$ different
-pair densities. Resolution of the identity, or density fitting, replaces this
+pair densities. RI/DF replaces this
 large product space by a compact auxiliary basis
 $\{\varphi_A^\text{aux}\}$ \citep{Whitten1973}:
 \begin{equation}
@@ -1237,7 +1265,11 @@ $\{\varphi_A^\text{aux}\}$ \citep{Whitten1973}:
  =\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br)
  \qquad K_\text{aux}=\order{K}
 \end{equation}
-The auxiliary basis is therefore not a second orbital basis. It is designed
+Here $\widetilde\rho_{\mu\nu}$ is the fitted pair density and
+$K_\text{aux}$ the number of auxiliary functions. The coefficients
+$C_{\mu\nu}^A$ are fitting coefficients, not the MO coefficients
+$C_{\mu p}$. The auxiliary basis is therefore not a second orbital basis.
+It is designed
 to represent products of orbital functions, and its index $A$ labels
 functions in this approximate product space. The reduction from
 $\order{K^2}$ pair densities to $\order{K}$ auxiliary functions is the source
@@ -1257,6 +1289,9 @@ The optimal fitting coefficients minimize the Coulomb norm of the error,
  \Delta_{\mu\nu}=\rbraket{\rho_{\mu\nu}-\widetilde\rho_{\mu\nu}}
  {\rho_{\mu\nu}-\widetilde\rho_{\mu\nu}}
 \end{equation}
+We abbreviate an auxiliary function by its index inside an integral:
+$\rbraket{A}{B}$ is the Coulomb interaction between two auxiliary functions,
+and $\rbraket{A}{\mu\nu}$ couples an auxiliary function to an AO pair density.
 Substituting the auxiliary expansion and using the symmetry of the Coulomb
 metric gives
 \begin{align}
@@ -1267,8 +1302,8 @@ metric gives
  \underbrace{\rbraket{A}{B}}_{V_{AB}}C_{\mu\nu}^B
 \end{align}
 The first term is independent of the fitting coefficients. Differentiating
-the remaining two terms with respect to one coefficient gives every
-intermediate step in the stationarity condition,
+the remaining two terms with respect to one coefficient gives the
+stationarity condition,
 \begin{equation}
  \pdv{\Delta_{\mu\nu}}{C_{\mu\nu}^A}
  =-2\rbraket{A}{\mu\nu}
@@ -1319,7 +1354,8 @@ Equivalently,
  \approx\sum_{AB}\rbraket{\mu\nu}{A}(\bV^{-1})_{AB}
  \rbraket{B}{\lambda\sigma}
 \end{equation}
-With the symmetrically orthonormalized quantities
+With the symmetrically orthonormalized quantities, where $P$ labels an
+orthonormalized auxiliary direction,
 \begin{equation}
  B_{\mu\nu}^P=\sum_A\rbraket{\mu\nu}{A}(\bV^{-1/2})_{AP}
 \end{equation}
@@ -1352,7 +1388,9 @@ In RI/DF, the AO products are expanded in a predefined auxiliary basis,
 The quality of the approximation therefore depends on the auxiliary basis.
 Alternatively, the ERI tensor
 $\bV_{(\mu\nu),(\lambda\sigma)}=\rbraket{\mu\nu}{\lambda\sigma}$ is a
-positive-semidefinite matrix in the compound indices. A pivoted Cholesky
+positive-semidefinite matrix in the compound indices. Here $\bV$ denotes the
+full AO-pair ERI matrix, rather than the auxiliary Coulomb metric
+$V_{AB}$ of the preceding derivation. A pivoted Cholesky
 decomposition constructs an auxiliary space adaptively
 \citep{BeebeLinderberg1977},
 \begin{equation}
@@ -1379,9 +1417,9 @@ The practical sequence is
 \end{equation}
 The full $\order{K^4}$ ERI tensor need not be stored; only two-center
 $\rbraket{A}{B}$ and three-center $\rbraket{\mu\nu}{A}$ integrals are needed;
-and optimized auxiliary bases make the fitting error very small \citep{Weigend2006}. RI is thus
-also commonly called density fitting (DF), and it greatly reduces the cost and
-memory requirements of Coulomb contractions.
+and optimized auxiliary bases make the fitting error very small
+\citep{Weigend2006}. RI/DF thus greatly reduces the cost and memory
+requirements of Coulomb contractions.
 
 The computational gain is that contractions can be ordered through the
 auxiliary index instead of four orbital indices. The approximation is

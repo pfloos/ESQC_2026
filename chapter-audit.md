@@ -119,3 +119,31 @@ coverage baseline. Commented-out frames are not additional required material.
 - Verification: all three source/reference/numerical checks and complete
   LaTeX/BibTeX compilation, with resolved citations and cross-references.
   Visual appearance and overflow were intentionally not audited, as requested.
+
+## Reader-oriented editorial pass
+
+- Read the narrative continuously across the HF, basis-set, and integral
+  sections, with the displayed derivations retained in their original order.
+- Tightened repeated introductory and concluding prose without removing
+  worked examples, scientific remarks, or intermediate derivation steps.
+- Clarified the exact/trial wavefunction and electronic-Hamiltonian
+  conventions, forward use of Slater–Condon rules and the Fock operator,
+  density conventions, and the relationship between stored-integral SCF
+  and direct SCF.
+- Defined method abbreviations, DIIS iteration/residual notation, H2 overlap
+  notation, Pauli/tensor-product notation, spinor matrices, and the local
+  meanings of the classification-table operators.
+- Clarified basis exponents and angular-momentum labels, primitive versus
+  contracted function labels, extrapolation parameters, ECP charges, Gaussian
+  product centers, Boys orders, Cartesian unit vectors, and RI fitting indices.
+- The author confirmed that the screening benchmark's size variable counts
+  basis functions. Changed that formula and the corresponding table heading
+  from N to K; all numerical values are unchanged.
+- Kept the section hierarchy, figures, custom notation commands, colors,
+  bibliography, and scientific scope unchanged. All other displayed
+  mathematical expressions are unchanged.
+- Verification: compared displays, figure/table/algorithm contents, heading
+  order, and the preamble against the preceding commit, allowing only the
+  approved screening-variable rename. All three existing verification scripts
+  pass, and full compilation resolves citations and cross-references.
+  Visual/overflow review remains excluded as requested.
