@@ -298,16 +298,3 @@ coverage baseline. Commented-out frames are not additional required material.
   displayed derivations match the preceding commit. The PDF skill was used
   to inspect only the changed figure/table pages. No full-chapter layout audit
   was performed. The active Gaussian cover remains unchanged.
-
-## RHF/UHF/GHF cover design review
-
-- Prepared a separate title-page preview based on Figure 9, keeping only RHF,
-  UHF, and GHF labels and their spin-direction motifs. Removed the rotated-UHF
-  case, spin/axis labels, descriptive sentences, and equations from the cover
-  motif, while leaving the actual chapter Figure 9 completely unchanged.
-- RHF and UHF retain collinear antiparallel directions; GHF uses noncollinear
-  directions. The motif illustrates spin constraints, not spatial orbital
-  shapes. The identical RHF/UHF directions do not imply identical orbitals.
-- The review compiles and its rendered page was inspected with the PDF skill.
-  Cover typography, title, author details, and footer match the active cover.
-  The Gaussian cover remains active pending author approval of the new design.
