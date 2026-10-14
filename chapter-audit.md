@@ -243,3 +243,16 @@ coverage baseline. Commented-out frames are not additional required material.
 - Kept this revision in the separate review document, leaving the current
   chapter cover unchanged. The preview compiles and its rendered page was
   inspected using the PDF skill.
+
+#### Separated Gaussians and their product
+
+- Replaced the combined-sum preview with three separate smooth surfaces:
+  a green Gaussian, a broader blue Gaussian, and their amber pointwise product.
+  Increased center separation to 2.8 display units; exponents are 0.6 and 0.3.
+- Removed the mesh and used transparent fills. Kept unit peaks for the original
+  Gaussians and the true unscaled product height (about 0.2085), centered at
+  x = -0.4667, consistent with the Gaussian product theorem. Tails below 0.008
+  are omitted for clean decorative outlines.
+- Verified the direct product against its completed-square form at 18 points.
+  Preview compilation and PDF-skill visual inspection pass. Cover wording and
+  typography are preserved; the active cover remains unchanged pending approval.

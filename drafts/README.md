@@ -51,12 +51,15 @@ remain available to the slide decks; they have not been overwritten or deleted.
 The author selected the overlapping-Gaussian concept as a replacement for
 the decorative cover contours. The new
 [single-page cover preview](../output/pdf/chapter-titlepage-gaussian-review.pdf)
-shows a three-dimensional surface formed by adding two two-dimensional
-Gaussians, with exponents 2.0 and 0.5 in arbitrary display units. The narrow
-contribution is green and the broader one blue; the surface color blends
-according to their relative contributions. There are no axes or labels.
-The centers and relative heights are illustrative, not a normalized basis-set
-specification. All cover typography and wording are unchanged.
+shows two spatially separated two-dimensional Gaussians and their exact
+pointwise product, viewed in perspective. The narrow Gaussian is green, the
+broader Gaussian blue, and the product amber, with smooth transparent surfaces
+and no mesh. Exponents are 0.6 and 0.3, centers are (-1.4,0) and (1.4,0), and
+both original peaks are unity, in arbitrary display units. The product is not
+rescaled: its peak is exp(-1.568), about 0.2085, at (-0.4667,0). Tails below
+0.008 are omitted for a clean outline. This is not a normalized basis-set
+specification. There are no axes or labels, and all cover typography and
+wording are unchanged.
 The current chapter cover remains unchanged pending approval of this design.
 
 The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its

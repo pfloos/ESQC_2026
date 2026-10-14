@@ -32,33 +32,45 @@
           Basis Sets and\\Molecular Integrals\par}
       \end{minipage}};
 
-    % Decorative sum of two 2D Gaussians, viewed as a 3D surface.
-    % Exponents 2.0 and 0.5 give visibly different widths in display units.
-    % Color encodes their relative contributions; scales are illustrative.
+    % Two separated 2D Gaussians and their exact pointwise product.
+    % Exponents 0.6 and 0.3, centers (-1.4,0) and (1.4,0), unit peaks.
+    % The product is not rescaled: its peak is exp(-1.568), about 0.2085.
     \node[anchor=center,inner sep=0pt]
       at ([xshift=105mm,yshift=-196mm]current page.north west)
       {\begin{tikzpicture}
         \begin{axis}[
-          width=153mm,height=78mm,
+          width=153mm,height=82mm,
           hide axis,view={-35}{28},
-          domain=-3.4:3.4,y domain=-2.3:2.3,
-          xmin=-3.4,xmax=3.4,ymin=-2.3,ymax=2.3,
-          zmin=0,zmax=1.25,
-          samples=49,samples y=39,
+          xmin=-4.8,xmax=5.5,ymin=-4.1,ymax=4.1,
+          zmin=0,zmax=1.1,
+          domain=0:360,samples=49,samples y=31,
           z buffer=sort,
-          colormap={coverGaussians}{
-            rgb255(0cm)=(23,105,170);
-            rgb255(1cm)=(0,87,77)},
           point meta min=0,point meta max=1,
           declare function={
-            coverGaussA(\x,\y)=exp(-2.0*((\x+1.1)^2+\y^2));
-            coverGaussB(\x,\y)=0.72*exp(-0.5*((\x-1.1)^2+\y^2));
+            coverLight(\dx,\dy)=max(0.12,
+              (1+0.5*\dx+0.7*\dy)/sqrt(1+\dx^2+\dy^2)/sqrt(1.74));
           }
         ]
-          \addplot3[surf,shader=faceted interp,
-            faceted color=hfGreenDark!18,line width=0.15pt,
-            point meta={coverGaussA(x,y)/(coverGaussA(x,y)+coverGaussB(x,y))}]
-            {coverGaussA(x,y)+coverGaussB(x,y)};
+          % Radial sampling gives smooth circular tail boundaries.
+          % Point meta adds lighting only; heights retain the exact functions.
+          \addplot3[surf,shader=interp,draw=none,opacity=0.52,
+            y domain=0:4.0117,
+            colormap={coverBlue}{color(0cm)=(hfBlue!85!black);color(1cm)=(hfBlue!35)},
+            point meta={coverLight(-0.6*y*cos(x)*exp(-0.3*y^2),
+                                  -0.6*y*sin(x)*exp(-0.3*y^2))}]
+            ({1.4+y*cos(x)},{y*sin(x)},{exp(-0.3*y^2)});
+          \addplot3[surf,shader=interp,draw=none,opacity=0.52,
+            y domain=0:2.8367,
+            colormap={coverGreen}{color(0cm)=(hfGreenDark);color(1cm)=(hfGreen!35)},
+            point meta={coverLight(-1.2*y*cos(x)*exp(-0.6*y^2),
+                                  -1.2*y*sin(x)*exp(-0.6*y^2))}]
+            ({-1.4+y*cos(x)},{y*sin(x)},{exp(-0.6*y^2)});
+          \addplot3[surf,shader=interp,draw=none,opacity=0.78,
+            y domain=0:1.9034,
+            colormap={coverProduct}{color(0cm)=(hfOrange!85!black);color(1cm)=(hfOrange!35)},
+            point meta={coverLight(-1.8*y*cos(x)*exp(-1.568-0.9*y^2),
+                                  -1.8*y*sin(x)*exp(-1.568-0.9*y^2))}]
+            ({-1.4/3+y*cos(x)},{y*sin(x)},{exp(-1.568-0.9*y^2)});
         \end{axis}
       \end{tikzpicture}};
 
