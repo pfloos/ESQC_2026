@@ -19,6 +19,12 @@ responds to the request for a nontrivial molecule with functions visible on
 each atom. It shows selected schematic s/p shapes, not a complete named basis
 set, and also remains review-only.
 
+The [reference-based macrocycle style study](05-macrocycle-local-basis-style.md)
+follows the author's supplied screenshot more closely: compact angular
+clusters at selected centers on a readable larger framework. It is an
+unvalidated visual mockup, not a computed scientific illustration; see its
+provenance and final-rendering requirements before any incorporation.
+
 ## 1. sculptural-orbitals
 
 ![sculptural-orbitals](01-sculptural-orbitals.png)
