@@ -3,12 +3,16 @@
 Review-only concepts generated with the built-in image-generation tool. None is
 included in the chapter. The active title page remains unchanged.
 
-All three are artistic schematics, not calculated molecular orbitals,
+The original three are artistic schematics, not calculated molecular orbitals,
 electron densities, or identified molecular species. Ribbon crossings are a
 visual metaphor for exchange, not a literal electron-trajectory diagram.
 The Gaussian-to-molecule transition is conceptual rather than a quantitative
 linear-combination demonstration. Any selected image needs author approval
 and a cover-layout preview before incorporation.
+
+The requested [option 3 variant with visible ethene](03b-basis-to-ethene.md)
+adds an identifiable molecular framework while retaining schematic colored
+lobes. It is also review-only; no computed ethene orbital is being claimed.
 
 ## 1. sculptural-orbitals
 
