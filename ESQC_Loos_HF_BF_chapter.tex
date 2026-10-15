@@ -323,7 +323,7 @@ The price of this simplification is equally fundamental. A single determinant
 cannot describe the full correlated motion of interacting electrons.
 Hartree--Fock theory accounts for exchange exactly within its
 single-determinant framework, but neglects electron correlation beyond
-exchange. Nevertheless, HF occupies a unique position in electronic structure
+exchange. Nevertheless, Hartree--Fock occupies a unique position in electronic structure
 theory. It provides a remarkably useful orbital picture of atoms and
 molecules, establishes the language of occupied and virtual molecular
 orbitals, and serves as the reference state for a large fraction of more
@@ -374,7 +374,7 @@ represented in a finite basis, and the quality of this representation becomes
 an additional approximation that will be examined in detail later in this
 chapter.
 
-Within this electronic problem, the HF approximation restricts the
+Within this electronic problem, the Hartree--Fock approximation restricts the
 wavefunction of $N$ electrons to a single Slater determinant and optimizes
 its orbitals variationally. It does not turn off the electron-electron
 interaction: Coulomb repulsion remains present, together with the exchange
@@ -434,11 +434,6 @@ nucleus-nucleus Coulomb repulsions.
 \begin{figure}[htbp]
   \centering
   \resizebox{\linewidth}{!}{\input{chapter-figures/coordinates}}
-  \[
-    \br_{iA}=\br_i-\bR_A\qquad
-    \br_{ij}=\br_i-\br_j\qquad
-    \bR_{AB}=\bR_A-\bR_B
-  \]
   \caption{Electronic and nuclear coordinates entering the molecular
   Hamiltonian. Green circles denote nuclei $A$ and $B$, and blue circles
   denote electrons $i$ and $j$. In the left panel, $O$ is the common origin:
@@ -447,10 +442,10 @@ nucleus-nucleus Coulomb repulsions.
   $\br_{iA}=\br_i-\bR_A$ points from nucleus $A$ to electron $i$,
   $\br_{ij}=\br_i-\br_j$ points from electron $j$ to electron $i$, and
   $\bR_{AB}=\bR_A-\bR_B$ points from nucleus $B$ to nucleus $A$.
-  Their lengths $r_{iA}=\norm{\br_{iA}}$, $r_{ij}=\norm{\br_{ij}}$, and
-  $R_{AB}=\norm{\bR_{AB}}$ are the corresponding electron--nucleus,
-  electron--electron, and internuclear distances. Both panels use the same
-  molecular geometry. Adapted from Szabo and Ostlund \citep{SzaboOstlund1996}.}
+  Their lengths $r_{iA}=\norm*{\br_{iA}}$, $r_{ij}=\norm*{\br_{ij}}$, and
+  $R_{AB}=\norm*{\bR_{AB}}$ are the corresponding electron-nucleus,
+  electron-electron, and internuclear distances. Both panels use the same
+  molecular geometry.}
   \label{fig:molecular-coordinates}
 \end{figure}
 
@@ -577,7 +572,7 @@ states. Their leading contributions involve the derivative couplings
 \begin{equation}
   \bd_{IJ}^{A}
   =
-  \mel{
+  \mel*{
     \Phi_\text{elec}^{(I)}
   }{
     \nabla_A
@@ -1014,7 +1009,7 @@ A normalized Slater determinant is thus completely specified by its $N$
 occupied one-electron spin orbitals.
 
 This is a dramatic reduction of the original many-electron problem. Instead
-of optimizing an arbitrary function of $N$ electronic coordinates, HF theory
+of optimizing an arbitrary function of $N$ electronic coordinates, Hartree--Fock theory
 optimizes a set of one-electron functions. The price of this simplification
 is that the allowed wavefunctions occupy only a very small subset of the
 full antisymmetric $N$-electron Hilbert space. The variational problem is
@@ -1071,7 +1066,7 @@ the unknown orbitals are represented in a finite one-electron basis.
 
 The finite expansion in Eq.~\eqref{eq:lcao-introduction} introduces a second,
 independent approximation on top of the single-determinant ansatz. Even
-within Hartree--Fock theory, the exact HF solution is recovered only in the
+within Hartree--Fock theory, the exact  solution is recovered only in the
 limit of a complete one-electron basis. The construction, properties, and
 convergence of such basis sets will be examined in detail later in this
 chapter.
@@ -8682,6 +8677,12 @@ Theory} \citep{Helgaker2000}.
   \includegraphics[height=0.12\textheight]{Cramer}\hspace{1em}
   \includegraphics[height=0.12\textheight]{Szabo}\hspace{1em}
   \includegraphics[height=0.12\textheight]{Helgaker}
+\end{center}
+
+\section{ESQC 2026}
+
+\begin{center}
+  \includegraphics[width=\linewidth]{chapter-figures/ESQC_2026.jpg}
 \end{center}
 
 \renewcommand{\bibsection}{\section{References}}
