@@ -989,15 +989,15 @@ The role of $\chA$ can be made explicit by writing
 \begin{equation}
   \chA
   =
-  \frac{1}{\sqrt{N!}}
-  \sum_{P}
-  (-1)^P \chP
+  \frac{1}{N!}
+  \sum_{\pi\in S_N}
+  (-1)^\pi \chP_\pi
 \end{equation}
-where the sum runs over the $N!$ permutations of the electron labels,
-$\chP$ denotes the corresponding permutation operator, and $(-1)^P$ is
-$+1$ for an even permutation and $-1$ for an odd one. Applying $\chA$ to a
-Hartree product therefore generates all possible assignments of the
-one-electron functions to the electrons with the signs required by
+where $S_N$ is the group of all $N!$ permutations of the electron labels,
+$\chP_\pi$ is the operator associated with the permutation $\pi$, and
+$(-1)^\pi$ is $+1$ for an even permutation and $-1$ for an odd one.
+Applying $\chA$ to a Hartree product generates all possible assignments of
+the one-electron functions to the electrons, with the signs required by
 fermionic antisymmetry.
 
 The determinant notation is simply a compact representation of this
@@ -1087,7 +1087,7 @@ The spin orbitals entering a Slater determinant are chosen to be
 orthonormal,
 \begin{equation}
 \begin{split}
-  \braket{\chi_p}{\chi_q}
+  \braket*{\chi_p}{\chi_q}
   &=
   \int
   \chi_p^*(\bx)
@@ -1110,7 +1110,7 @@ orthogonal. In fact, atom-centered basis functions on different atoms
 generally overlap. Their pairwise overlaps define the overlap matrix
 \begin{equation}
 \begin{split}
-  \braket{\phi_\mu}{\phi_\nu}
+  \braket*{\phi_\mu}{\phi_\nu}
   &=
   \int
   \phi_\mu^*(\br)
@@ -1124,7 +1124,7 @@ Consequently, the orthonormality of the molecular orbitals imposes a
 constraint on the expansion coefficients rather than on the basis functions
 themselves. For example, for a given spin sector,
 \begin{equation}
-  \braket{\psi_p^\sigma}{\psi_q^\sigma}
+  \braket*{\psi_p^\sigma}{\psi_q^\sigma}
   =
   \sum_{\mu\nu}
   C_{\mu p}^{\sigma *}
@@ -1181,7 +1181,7 @@ distributions, RHF cannot accommodate that relaxation.
 
 The closed-shell RHF ansatz does not describe general open-shell systems. In
 unrestricted Hartree--Fock (UHF) theory, the $\alpha$ and $\beta$
-spin components are allowed to use different spatial orbitals,
+spin components are allowed to use different spatial orbitals (see Fig.~\ref{fig:rhf-uhf-orbitals}),
 \begin{equation}
   \chi_p^\text{UHF}(\bx)
   =
@@ -1210,13 +1210,13 @@ but do not develop the ROHF formalism further here.
   spatial orbital, whereas UHF allows the two spin channels to relax
   independently. ROHF retains a common spatial-orbital set with singly
   occupied orbitals. The cards illustrate spatial-orbital sharing, not
-  orbital-energy ordering. Adapted from Jensen \citep{Jensen2017}.}
+  orbital-energy ordering.}
   \label{fig:rhf-uhf-orbitals}
 \end{figure}
 
 For RHF, the spatial molecular orbitals form an orthonormal set,
 \begin{equation}
-  \braket{\psi_p}{\psi_q}
+  \braket*{\psi_p}{\psi_q}
   =
   \int
   \psi_p^*(\br)
@@ -1227,7 +1227,7 @@ For RHF, the spatial molecular orbitals form an orthonormal set,
 \end{equation}
 For UHF, orthonormality holds separately within each spin sector,
 \begin{align}
-  \braket{\psi_p^\alpha}{\psi_q^\alpha}
+  \braket*{\psi_p^\alpha}{\psi_q^\alpha}
   &=
   \int
   \psi_p^{\alpha*}(\br)
@@ -1236,7 +1236,7 @@ For UHF, orthonormality holds separately within each spin sector,
   =
   \delta_{pq}
   \\
-  \braket{\psi_p^\beta}{\psi_q^\beta}
+  \braket*{\psi_p^\beta}{\psi_q^\beta}
   &=
   \int
   \psi_p^{\beta*}(\br)
@@ -1247,7 +1247,7 @@ For UHF, orthonormality holds separately within each spin sector,
 \end{align}
 whereas opposite-spin spatial orbitals need not be orthogonal,
 \begin{equation}
-  \braket{\psi_p^\alpha}{\psi_q^\beta}
+  \braket*{\psi_p^\alpha}{\psi_q^\beta}
   =
   \int
   \psi_p^{\alpha*}(\br)
@@ -1263,17 +1263,9 @@ because
 \end{equation}
 an $\alpha$ spin orbital and a $\beta$ spin orbital are orthogonal regardless
 of the overlap between their spatial parts.
-
 This distinction is useful to keep in mind. In UHF, one may have
-\begin{equation}
-  \braket{\psi_p^\alpha}{\psi_q^\beta}\neq0
-  \qquad\text{but}\qquad
-  \braket{
-    \alpha\psi_p^\alpha
-  }{
-    \beta\psi_q^\beta
-  }=0
-\end{equation}
+$\braket*{\psi_p^\alpha}{\psi_q^\beta}\neq0$ but
+$\braket*{\alpha\psi_p^\alpha}{\beta\psi_q^\beta}=0$.
 
 \paragraph{Orbital spaces and index conventions.}
 
@@ -1327,9 +1319,7 @@ Finally, a system with two electrons in each occupied spatial orbital
 is called closed shell. Otherwise, it is open shell. For the
 ground state of a closed-shell system containing an even number $N$ of
 electrons, the first $N/2$ spatial orbitals are doubly occupied,
-\begin{equation}
-  \psi_1^2\psi_2^2\cdots\psi_{N/2}^2
-\end{equation}
+$\psi_1^2\psi_2^2\cdots\psi_{N/2}^2$,
 while the remaining $K-N/2$ spatial orbitals are vacant.
 
 The single-determinant ansatz, together with these orthonormality constraints,
@@ -8674,7 +8664,7 @@ low-rank representations.
 
 \input{ESQC_Loos_BF_chapter_content}
 
-\section{Further reading}
+\section*{Further reading}
 
 Useful general references include Jensen's \emph{Introduction to
 Computational Chemistry} \citep{Jensen2017}, Cramer's \emph{Essentials of Computational
@@ -8689,13 +8679,19 @@ Theory} \citep{Helgaker2000}.
   \includegraphics[height=0.12\textheight]{Helgaker}
 \end{center}
 
-\section{ESQC 2026}
+\section*{ESQC 2026}
 
 \begin{center}
   \includegraphics[width=\linewidth]{chapter-figures/ESQC_2026.jpg}
 \end{center}
 
-\renewcommand{\bibsection}{\section{References}}
+\section*{Acknowledgements}
+I would like to thank all my supervisors, collaborators, and group members over the years, with whom I have had the opportunity to discuss many of the topics presented here.
+I am particularly grateful to Xavier Assfeld, Peter Gill, and Hugh Burton for the many stimulating discussions we have had about Hartree--Fock theory over the years.
+I would also like to thank Trond Saue for inviting me to teach at ESQC 2026 and for his constructive comments and suggestions during the lectures.
+A special thanks also goes to all the ESQC tutors, who do an incredible job behind the scenes and contribute greatly to the success of the summerschool.
+
+\renewcommand{\bibsection}{\section*{References}}
 \bibliographystyle{unsrtnat}
 \bibliography{ESQC_Loos_HF_BF_chapter}
 
