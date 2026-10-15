@@ -14,6 +14,11 @@ The requested [option 3 variant with visible ethene](03b-basis-to-ethene.md)
 adds an identifiable molecular framework while retaining schematic colored
 lobes. It is also review-only; no computed ethene orbital is being claimed.
 
+The subsequent [pyridine atom-centered basis study](04-pyridine-atom-centered-basis.md)
+responds to the request for a nontrivial molecule with functions visible on
+each atom. It shows selected schematic s/p shapes, not a complete named basis
+set, and also remains review-only.
+
 ## 1. sculptural-orbitals
 
 ![sculptural-orbitals](01-sculptural-orbitals.png)
