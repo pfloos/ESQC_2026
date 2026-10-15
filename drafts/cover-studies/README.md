@@ -25,6 +25,13 @@ clusters at selected centers on a readable larger framework. It is an
 unvalidated visual mockup, not a computed scientific illustration; see its
 provenance and final-rendering requirements before any incorporation.
 
+The [mathematically rendered porphine preview](06-porphine-exact-gaussians.md)
+now replaces invented lobe shapes with explicit normalized real s/p/d/f/g
+Gaussian functions. It uses archived PubChem coordinates and a new native
+3D scene, not an edited generated image. Formulae, exponents, isovalues,
+verification, and reproducible source are documented with the preview.
+The chapter cover remains unchanged pending approval.
+
 ## 1. sculptural-orbitals
 
 ![sculptural-orbitals](01-sculptural-orbitals.png)

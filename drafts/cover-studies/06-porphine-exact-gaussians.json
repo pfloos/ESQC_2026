@@ -1,0 +1,201 @@
+{
+  "source": "https://pubchem.ncbi.nlm.nih.gov/compound/66868",
+  "cid": 66868,
+  "formula": "C20H14N4",
+  "units": "angstrom for source coordinates; inverse-square angstrom for alpha",
+  "grid_n": 89,
+  "positive": "emerald",
+  "negative": "amber",
+  "functions": [
+    {
+      "name": "s",
+      "atom_id": 14,
+      "alpha": 2.0,
+      "polynomial": [
+        [
+          1,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "normalization": 1.1986229503064476,
+      "isovalue": 0.23972459006128954,
+      "center": [
+        -2.887773215693977,
+        1.9188438615271708,
+        0.03457378837931973
+      ],
+      "meshes": [
+        {
+          "sign": 1,
+          "lobes": 1,
+          "triangles": 43872,
+          "max_relative_isovalue_error": 4.631243813333083e-16
+        }
+      ]
+    },
+    {
+      "name": "p_z",
+      "atom_id": 8,
+      "alpha": 3.0,
+      "polynomial": [
+        [
+          1,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "normalization": 5.627838890539714,
+      "isovalue": 0.2787063970086156,
+      "center": [
+        3.079054406476565,
+        -0.6215959501104974,
+        -0.05432700323125419
+      ],
+      "meshes": [
+        {
+          "sign": 1,
+          "lobes": 1,
+          "triangles": 23028,
+          "max_relative_isovalue_error": 9.958714946457045e-16
+        },
+        {
+          "sign": -1,
+          "lobes": 1,
+          "triangles": 23028,
+          "max_relative_isovalue_error": 9.958714946457045e-16
+        }
+      ]
+    },
+    {
+      "name": "d_xy",
+      "atom_id": 19,
+      "alpha": 3.0,
+      "polynomial": [
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "normalization": 19.49540579045369,
+      "isovalue": 0.23906326414060142,
+      "center": [
+        -0.5050914779813204,
+        -2.9149116398331594,
+        0.026375017781005934
+      ],
+      "meshes": [
+        {
+          "sign": 1,
+          "lobes": 2,
+          "triangles": 35448,
+          "max_relative_isovalue_error": 2.0898248958379825e-15
+        },
+        {
+          "sign": -1,
+          "lobes": 2,
+          "triangles": 35128,
+          "max_relative_isovalue_error": 2.0898248958379825e-15
+        }
+      ]
+    },
+    {
+      "name": "f_z(x2-y2)",
+      "atom_id": 5,
+      "alpha": 4.2,
+      "polynomial": [
+        [
+          1,
+          [
+            2,
+            0,
+            1
+          ]
+        ],
+        [
+          -1,
+          [
+            0,
+            2,
+            1
+          ]
+        ]
+      ],
+      "normalization": 71.99146094911276,
+      "isovalue": 0.26285372716360283,
+      "center": [
+        0.567631297066114,
+        2.893173413963693,
+        0.11867234036472346
+      ],
+      "meshes": [
+        {
+          "sign": 1,
+          "lobes": 4,
+          "triangles": 38216,
+          "max_relative_isovalue_error": 2.111864717699328e-15
+        },
+        {
+          "sign": -1,
+          "lobes": 4,
+          "triangles": 38216,
+          "max_relative_isovalue_error": 2.111864717699328e-15
+        }
+      ]
+    },
+    {
+      "name": "g_xy(x2-y2)",
+      "atom_id": 21,
+      "alpha": 5.2,
+      "polynomial": [
+        [
+          1,
+          [
+            3,
+            1,
+            0
+          ]
+        ],
+        [
+          -1,
+          [
+            1,
+            3,
+            0
+          ]
+        ]
+      ],
+      "normalization": 306.5128221954034,
+      "isovalue": 0.30469466922189087,
+      "center": [
+        -4.322094331292428,
+        -0.14250248313286581,
+        -0.2624249400777508
+      ],
+      "meshes": [
+        {
+          "sign": 1,
+          "lobes": 4,
+          "triangles": 34320,
+          "max_relative_isovalue_error": 2.7327923740683686e-15
+        },
+        {
+          "sign": -1,
+          "lobes": 4,
+          "triangles": 34320,
+          "max_relative_isovalue_error": 2.7327923740683686e-15
+        }
+      ]
+    }
+  ]
+}
