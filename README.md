@@ -39,7 +39,8 @@ and uses [ESQC_Loos_HF_BF_chapter.bib](ESQC_Loos_HF_BF_chapter.bib) for the
 bibliography. These files should remain together in the repository root.
 The approved editable figure and table fragments are in
 [`chapter-figures/`](chapter-figures/); retain that directory when compiling.
-The dark-green cover layout is defined in
+The cover uses a uniform white background with dark-green text and side stripe.
+Its layout is defined in
 [`chapter-titlepage.tex`](chapter-titlepage.tex), which must also remain
 alongside the main source. Its approved porphine illustration is
 [`chapter-figures/cover-porphine-gaussians.png`](chapter-figures/cover-porphine-gaussians.png).

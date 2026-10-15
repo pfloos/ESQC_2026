@@ -375,3 +375,14 @@ coverage baseline. Commented-out frames are not additional required material.
   for a targeted inspection of the changed cover page, not a full-chapter
   layout/overflow audit. Chapter compilation requires only the saved PNG,
   not Blender or NumPy.
+
+## Uniform white cover background (15 October 2026)
+
+- At the author's request, removed the pale-green lower-page panel from
+  the active cover. The existing illustration already has a genuine alpha
+  channel; no image replacement, recoloring, or background removal was needed.
+- Retained the approved illustration, its placement, all cover typography,
+  the dark-green side stripe, rules, and wording. Chapter content is unchanged.
+- Full 110-page compilation and all three chapter checks pass. The PDF skill
+  was used to inspect only the updated cover; pixel samples confirm the same
+  white background above, beside, and through the transparent image regions.
