@@ -68,3 +68,26 @@ The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its
 review document from the repository root with:
 
     latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-gaussian-review.tex
+
+## Proposed orbital-atlas cover (awaiting approval)
+
+The [new single-page preview](../output/pdf/chapter-titlepage-orbital-atlas-review.pdf)
+offers a richer, original contour illustration while retaining the active
+cover's typography, wording, and dark-green framing. Teal and amber contours
+show opposite signs of an illustrative linear combination of six Gaussian
+functions; the pale-blue contours provide a broader Gaussian envelope.
+This is schematic artwork, not a calculated HF orbital, an electron density,
+or an identified molecule. It contains no scientific labels or quantitative
+claims. The saved artwork consists of editable native TikZ paths.
+
+The active chapter still uses the previously approved Gaussian cover. This
+new design will not be incorporated before author approval. Its editable
+layout is `chapter-titlepage-orbital-atlas.tex`, with contours in
+`cover-orbital-contours.tex`. Compile the standalone preview from the
+repository root with:
+
+    latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-orbital-atlas-review.tex
+
+Compiling the saved artwork does not require Python. Optional regeneration
+uses `scripts/generate_cover_orbital_art.py` with NumPy and contourpy installed;
+the script prints the TikZ paths to standard output without modifying files.

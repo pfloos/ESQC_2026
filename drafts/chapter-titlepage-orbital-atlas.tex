@@ -1,0 +1,60 @@
+% DESIGN PREVIEW: awaiting approval; the active cover is unchanged.
+% Native vector cover; no external artwork or additional package is required.
+% All positions are page-relative, independent of the chapter's text margins.
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[hfGreenDark]
+      (current page.north west) rectangle
+      ([xshift=9mm]current page.south west);
+    \fill[hfGreenLight]
+      ([xshift=9mm,yshift=-152mm]current page.north west) rectangle
+      (current page.south east);
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-27mm]current page.north west)
+      {\sffamily\small\bfseries QUANTUM CHEMISTRY};
+    \node[anchor=north east,inner sep=0pt,align=right,text=hfGreenDark]
+      at ([xshift=-30mm,yshift=-24mm]current page.north east)
+      {\sffamily\bfseries\fontsize{22}{24}\selectfont ESQC 2026};
+    \draw[hfGreenDark,line width=0.7pt]
+      ([xshift=30mm,yshift=-47mm]current page.north west) --
+      ([xshift=-30mm,yshift=-47mm]current page.north east);
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-64mm]current page.north west)
+      {\begin{minipage}{150mm}
+        \raggedright
+        {\fontsize{38}{43}\selectfont\bfseries
+          Hartree--Fock\\Theory\par}
+        \vspace{7mm}
+        {\fontsize{23}{29}\selectfont
+          Basis Sets and\\Molecular Integrals\par}
+      \end{minipage}};
+
+    % Original, editable orbital-atlas motif; review only.
+    % Illustrative Gaussian-basis phase contours, not a computed HF orbital.
+    \begin{scope}[shift={([xshift=105mm,yshift=-195mm]current page.north west)},
+                  x=21mm,y=10.5mm]
+      \input{drafts/cover-orbital-contours}
+    \end{scope}
+
+    \node[anchor=north west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=-243mm]current page.north west)
+      {\begin{minipage}{150mm}
+        \raggedright
+        {\large\bfseries Pierre-Fran\c{c}ois (Titou) Loos\par}
+        \vspace{3mm}
+        {\small\color{hfInk}
+          Laboratoire de Chimie et Physique Quantiques (UMR 5626)\\
+          Universit\'e de Toulouse, CNRS, UPS, Toulouse, France\par}
+      \end{minipage}};
+    \draw[hfGreen!35,line width=0.5pt]
+      ([xshift=30mm,yshift=22mm]current page.south west) --
+      ([xshift=-30mm,yshift=22mm]current page.south east);
+    \node[anchor=south west,inner sep=0pt,text=hfGreenDark]
+      at ([xshift=30mm,yshift=14mm]current page.south west)
+      {\sffamily\footnotesize European Summer School in Quantum Chemistry (ESQC)};
+  \end{tikzpicture}
+  \null
+\end{titlepage}
