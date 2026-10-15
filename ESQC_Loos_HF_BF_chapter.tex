@@ -330,6 +330,11 @@ associated exchange interaction therefore emerge naturally, rather than being
 introduced as additional corrections
 \citep{Hartree1928,Slater1929,Fock1930}.
 
+Historically, Hartree's self-consistent-field construction dates from 1928.
+The incorporation of exchange through antisymmetric wavefunctions was
+developed independently by Fock and Slater in 1930
+\citep{Fock1930,Slater1930}.
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{chapter-figures/meanfield}
@@ -803,10 +808,10 @@ whereas the minus sign defines \orange{fermions},
   }
 \end{equation}
 Electrons are fermions and must therefore be described by an antisymmetric
-wavefunction. The connection between half-integer spin and fermionic
+wavefunction \citep{Dirac1926}. The connection between half-integer spin and fermionic
 statistics is the content of the spin-statistics theorem; within
 non-relativistic quantum mechanics, fermionic antisymmetry is imposed as a
-fundamental property of the electronic wavefunction.
+fundamental property of the electronic wavefunction \citep{Pauli1940}.
 
 A notable exception occurs for identical particles confined to two spatial
 dimensions. In this case, particle exchanges are described by the braid
@@ -816,7 +821,8 @@ therefore not restricted to $\pm1$, allowing \emph{anyonic} statistics.
 For Abelian anyons, an exchange produces an arbitrary phase
 $e^{\ii\theta}$, with bosons and fermions corresponding to
 $\theta=0$ and $\theta=\pi$, respectively. In three spatial dimensions,
-only the bosonic and fermionic possibilities occur.
+only the bosonic and fermionic possibilities occur
+\citep{LeinaasMyrheim1977,Wilczek1982}.
 
 For an arbitrary pair of electrons $i$ and $j$, the antisymmetry requirement
 can be written compactly as
@@ -861,7 +867,7 @@ and hence
 \end{equation}
 The probability of finding two electrons with the same spin at exactly the
 same spatial position therefore vanishes. This is one manifestation of the
-Pauli exclusion principle.
+Pauli exclusion principle \citep{Pauli1925}.
 
 It is worth emphasizing that the fundamental statement is the
 \emph{antisymmetry of the many-electron wavefunction}, not merely the familiar
@@ -1010,7 +1016,7 @@ The role of $\chA$ can be made explicit by writing
 \begin{equation}
   \chA
   =
-  \frac{1}{N!}
+  \frac{1}{\sqrt{N!}}
   \sum_{\pi\in S_N}
   (-1)^\pi \chP_\pi
 \end{equation}
@@ -1020,6 +1026,10 @@ $(-1)^\pi$ is $+1$ for an even permutation and $-1$ for an odd one.
 Applying $\chA$ to a Hartree product generates all possible assignments of
 the one-electron functions to the electrons, with the signs required by
 fermionic antisymmetry.
+The factor $1/\sqrt{N!}$ normalizes the resulting determinant when the
+spin orbitals are orthonormal. With this convention, $\chA$ is a
+normalization-weighted antisymmetrizer, rather than an idempotent projector;
+the latter would instead contain the factor $1/N!$.
 
 The determinant notation is simply a compact representation of this
 antisymmetrized sum. Its usefulness follows directly from elementary
@@ -1220,7 +1230,7 @@ spin symmetry is the origin of spin contamination.
 
 Restricted open-shell Hartree--Fock (ROHF) provides an alternative treatment
 of open-shell systems in which the $\alpha$ and $\beta$ electrons retain a
-common set of spatial orbitals. We mention this possibility for completeness,
+common set of spatial orbitals \citep{Roothaan1960}. We mention this possibility for completeness,
 but do not develop the ROHF formalism further here.
 
 \begin{figure}[htbp]
@@ -4250,7 +4260,7 @@ Hence,
   0
   \label{eq:brillouin-theorem}
 \end{equation}
-This result is Brillouin's theorem. The derivation of the HF equations below
+This result is Brillouin's theorem \citep{Brillouin1932}. The derivation of the HF equations below
 will also establish the stationarity condition used here.
 
 Brillouin's theorem does not state that singly excited determinants are
@@ -6582,7 +6592,7 @@ Schematically,
   \bC
 \end{equation}
 where $\bP$ is the one-particle density matrix constructed from the occupied
-molecular orbitals.
+molecular orbitals \citep{McWeeny1960}.
 
 This circular dependence is the finite-basis manifestation of the
 self-consistency already encountered in the continuous HF equations:
@@ -8601,7 +8611,7 @@ The energy inequalities compare minima over nested variational spaces. They do
 not imply that every numerical GHF stationary point lies below every UHF or
 RHF stationary point. Establishing whether a converged solution is a local
 minimum requires a stability analysis with respect to the orbital rotations
-allowed in the larger space.
+allowed in the larger space \citep{Thouless1960,SeegerPople1977}.
 
 Lowering the variational energy may require breaking exact symmetries. UHF
 may break $\chS^2$; GHF may break both $\chS^2$ and $\chS_z$; and complex GHF

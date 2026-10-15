@@ -197,7 +197,8 @@ exact local behavior and forms that permit efficient multicenter integration.
 In the following Slater- and Gaussian-type orbitals, $n$ labels the radial
 form, $\ell$ and $m$ are the angular-momentum and magnetic quantum numbers,
 and $Y_{\ell m}(\hat{\br})$ is a spherical harmonic evaluated in the direction
-of $\br$. The general forms used in the comparison are
+of $\br$. The Slater radial form is associated historically with screened atomic
+orbitals \citep{Slater1930Orbitals}. The general forms used in the comparison are
 \begin{equation}
  \phi_{\zeta n\ell m}^\text{STO}(\br)
  \propto r^{n-1}e^{-\zeta r}Y_{\ell m}(\hat{\br})
@@ -237,7 +238,10 @@ functions are required to reproduce comparable radial flexibility.
 
 The practical success of Gaussian basis sets is therefore computational. A
 linear combination of several Gaussians is used to recover the radial
-flexibility that a single Slater function supplies more naturally.
+flexibility that a single Slater function supplies more naturally. The
+Gaussian strategy was established in Boys's early molecular calculations
+and developed further through systematic atomic expansions
+\citep{Boys1950,Huzinaga1965}.
 
 \subsubsection{Primitive and contracted Gaussian functions}
 
@@ -245,7 +249,7 @@ A Gaussian basis function has two layers of structure. A primitive specifies
 one exponent and one Cartesian polynomial. A contracted function combines
 several primitives of the same center and angular momentum with fixed
 coefficients, so that many primitive shapes share a single variational MO
-coefficient.
+coefficient \citep{Raffenetti1973}.
 
 A primitive Cartesian Gaussian centered at $\bA$ is labeled by
 $\ba=(a_x,a_y,a_z)$, a vector of nonnegative integer powers. Its total angular
@@ -1288,7 +1292,7 @@ between two pair densities,
 With $K$ orbital basis functions, there are formally $\order{K^2}$ different
 pair densities. RI/DF replaces this
 large product space by a compact auxiliary basis
-$\{\varphi_A^\text{aux}\}$ \citep{Whitten1973}:
+$\{\varphi_A^\text{aux}\}$ \citep{Whitten1973,Dunlap1979,Vahtras1993}:
 \begin{equation}
  \rho_{\mu\nu}(\br)\approx
  \widetilde\rho_{\mu\nu}(\br)

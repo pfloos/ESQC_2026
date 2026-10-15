@@ -316,3 +316,41 @@ coverage baseline. Commented-out frames are not additional required material.
 - Full compilation and existing source/reference checks pass. The PDF skill
   was used to inspect representative short, long, and continued solution
   boxes, not to perform a full-chapter layout audit.
+
+## Historical-reference expansion (15 October 2026)
+
+- Added 16 verified primary sources, bringing the bibliography to 70 cited
+  entries (66 articles/contributed chapters and four books). Added citations
+  beside their relevant discussions, with brief historical context for the
+  original HF construction and the development of Gaussian basis functions.
+- Covered Pauli's exclusion principle and spin-statistics theorem, Dirac's
+  fermionic wavefunctions, Slater's 1930 HF note and screened orbitals,
+  Brillouin's original article, open-shell SCF, density-matrix theory,
+  HF stability, Gaussian expansions/contraction, and density fitting/RI.
+  Added the original Leinaas--Myrheim and Wilczek sources for the author's
+  new anyon discussion.
+- Checked publication identity and complete author lists against publisher-
+  deposited DOI metadata; clarified DOI details and recorded all additions
+  in `chapter-reference-audit.md`. No unverified references were retained.
+- Full compilation resolves citations and cross-references. All three checks
+  pass. The PDF skill was used to inspect representative new bibliography
+  pages and confirm accent/math typography.
+- At the author's explicit direction, retained the normalized determinant
+  relation in Eq. `eq:hf-determinant` and changed the antisymmetrizer's
+  coefficient from 1/N! to 1/sqrt(N!). Clarified that this normalization-
+  weighted convention is not the idempotent projector convention. This is
+  the sole change to a displayed derivation relative to the author's pushed
+  version; all other displayed mathematics is preserved.
+
+## Original cover proposal (15 October 2026; awaiting approval)
+
+- Created a separate orbital-atlas cover preview with a six-center Gaussian
+  combination, contrasting teal/amber phase contours, and a pale-blue
+  envelope. This is original schematic art, not a computed HF orbital,
+  electron density, or identified molecule. The vector paths and generator
+  remain editable; the saved preview compiles without Python dependencies.
+- Preserved the active cover's wording, typography, and dark-green palette.
+  Compiled and visually inspected the standalone one-page PDF. The PDF skill
+  informed this targeted preview review, not a full-chapter layout audit.
+- The active `chapter-titlepage.tex` remains unchanged. The proposal is
+  explicitly marked as awaiting author approval before incorporation.

@@ -147,3 +147,32 @@ checked separately against publisher/catalogue records.
   distinguished from the original McGraw–Hill publication.
 - Helgaker, Jørgensen, and Olsen (2000): [Wiley book DOI](https://doi.org/10.1002/9781119019572).
 
+## Historical and foundational reference extension (15 October 2026)
+
+Added the following primary sources at the passages they support, rather than
+as uncited bibliography padding. Publisher-deposited DOI metadata confirms each
+identity, author list, year, volume, issue, and page range. Some Crossref REST
+requests were rate-limited; DOI content negotiation supplied the remaining
+records, with publisher pages and available abstracts used for relevance.
+Slater's Hartree-method note has DOI suffix `35.210.2`, not `35.210`;
+Brillouin's original article is issue 9 with DOI ending `0309037300`.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Pauli1925` | Über den Zusammenhang des Abschlusses der Elektronengruppen im Atom mit der Komplexstruktur der Spektren | [10.1007/bf02980631](https://doi.org/10.1007/bf02980631) |
+| `Dirac1926` | On the theory of quantum mechanics | [10.1098/rspa.1926.0133](https://doi.org/10.1098/rspa.1926.0133) |
+| `Pauli1940` | The Connection Between Spin and Statistics | [10.1103/physrev.58.716](https://doi.org/10.1103/physrev.58.716) |
+| `Slater1930` | Note on Hartree's Method | [10.1103/PhysRev.35.210.2](https://doi.org/10.1103/PhysRev.35.210.2) |
+| `Slater1930Orbitals` | Atomic Shielding Constants | [10.1103/PhysRev.36.57](https://doi.org/10.1103/PhysRev.36.57) |
+| `Brillouin1932` | Les problèmes de perturbations et les champs self-consistents | [10.1051/jphysrad:0193200309037300](https://doi.org/10.1051/jphysrad:0193200309037300) |
+| `Roothaan1960` | Self-Consistent Field Theory for Open Shells of Electronic Systems | [10.1103/revmodphys.32.179](https://doi.org/10.1103/revmodphys.32.179) |
+| `McWeeny1960` | Some Recent Advances in Density Matrix Theory | [10.1103/RevModPhys.32.335](https://doi.org/10.1103/RevModPhys.32.335) |
+| `Thouless1960` | Stability conditions and nuclear rotations in the Hartree-Fock theory | [10.1016/0029-5582(60)90048-1](https://doi.org/10.1016/0029-5582(60)90048-1) |
+| `SeegerPople1977` | Self-consistent molecular orbital methods. XVIII. Constraints and stability in Hartree–Fock theory | [10.1063/1.434318](https://doi.org/10.1063/1.434318) |
+| `Huzinaga1965` | Gaussian-Type Functions for Polyatomic Systems. I | [10.1063/1.1696113](https://doi.org/10.1063/1.1696113) |
+| `Raffenetti1973` | General contraction of Gaussian atomic orbitals: Core, valence, polarization, and diffuse basis sets; Molecular integral evaluation | [10.1063/1.1679007](https://doi.org/10.1063/1.1679007) |
+| `LeinaasMyrheim1977` | On the theory of identical particles | [10.1007/BF02727953](https://doi.org/10.1007/BF02727953) |
+| `Wilczek1982` | Quantum Mechanics of Fractional-Spin Particles | [10.1103/physrevlett.49.957](https://doi.org/10.1103/physrevlett.49.957) |
+| `Dunlap1979` | On some approximations in applications of Xα theory | [10.1063/1.438728](https://doi.org/10.1063/1.438728) |
+| `Vahtras1993` | Integral approximations for LCAO-SCF calculations | [10.1016/0009-2614(93)89151-7](https://doi.org/10.1016/0009-2614(93)89151-7) |
+
