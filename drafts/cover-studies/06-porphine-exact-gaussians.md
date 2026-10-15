@@ -1,8 +1,11 @@
 # Porphine with genuine s, p, d, f, and g Gaussian functions
 
-Review-only, reproducible scientific rendering (15 October 2026). This
+Author-approved, reproducible scientific rendering (15 October 2026). This
 supersedes the random angular motifs of the generated style study for
-scientific accuracy. The active chapter cover is unchanged.
+scientific accuracy. The author approved this design with "Excellent! Let's
+use this." It is incorporated in the active chapter cover as
+`chapter-figures/cover-porphine-gaussians.png`; the review images and editable
+scene below are retained as the design and verification record.
 
 ![Porphine with real Gaussian basis-function isosurfaces](06-porphine-exact-gaussians-review.png)
 
@@ -93,5 +96,5 @@ Function checks alone can also run with ordinary NumPy-enabled Python:
 
     python3 scripts/render_basis_cover.py -- --check
 
-No image-generation model is used in this rendering. Author approval is
-still needed before cover integration; chapter content is unchanged.
+No image-generation model is used in this rendering. Cover integration
+changes only the illustration; chapter text and derivations are unchanged.

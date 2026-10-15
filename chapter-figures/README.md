@@ -26,3 +26,16 @@ other chapter illustrations. Source credits remain in the chapter captions.
 Original borrowed images are not modified or deleted and remain available to
 the slides. The archived comparison PDF in `output/pdf/` records the design
 approval stage; it is not an input to the chapter build.
+
+## Approved cover illustration (15 October 2026)
+
+`cover-porphine-gaussians.png` is the approved transparent cover artwork,
+included by `chapter-titlepage.tex`. Keep this image with the chapter sources.
+It is an unmodified copy of the approved 2400-by-1650 scientific render:
+normalized real s/p/d/f/g Gaussian functions on a PubChem porphine framework.
+The signs are consistently green (positive) and amber (negative).
+
+[Function definitions, exponents, source coordinates, verification, and
+editable scene](../drafts/cover-studies/06-porphine-exact-gaussians.md)
+are archived with the approval record. Compiling the chapter uses only the
+saved PNG; Blender and NumPy are optional regeneration dependencies.

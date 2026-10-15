@@ -1,8 +1,9 @@
 # Approved figure and table design review
 
-The [three new cover illustration studies](cover-studies/README.md) are
-review-only alternatives (15 October 2026), awaiting author selection and
-approval. They are not included in the chapter.
+The [cover illustration studies](cover-studies/README.md) record the design
+iterations of 15 October 2026. The author approved the final mathematically
+rendered porphine design (study 6), now incorporated in the chapter cover.
+The earlier alternatives remain archived and are not active.
 
 All six design pages were approved by the author and incorporated on
 14 October 2026. The comparison PDF is retained as the archived approval
@@ -64,16 +65,17 @@ rescaled: its peak is exp(-1.568), about 0.2085, at -0.4667.
 Curves are drawn over the display interval [-6,6]. This is not a normalized basis-set
 specification. There are no axes or labels, and all cover typography and
 wording are unchanged.
-The author approved this 1D design on 14 October 2026. It is now incorporated
-in the active `chapter-titlepage.tex`. This separate PDF and draft source are
-retained as the archived design-review record.
+The author approved this 1D design on 14 October 2026. It was incorporated
+at that time, then superseded by the approved porphine design on 15 October
+2026. This separate PDF and draft source are retained as the archived
+design-review record.
 
 The editable cover variant is `chapter-titlepage-gaussians.tex`. Compile its
 review document from the repository root with:
 
     latexmk -pdf -outdir=output/pdf output/pdf/chapter-titlepage-gaussian-review.tex
 
-## Proposed orbital-atlas cover (awaiting approval)
+## Archived orbital-atlas cover proposal (not selected)
 
 The [new single-page preview](../output/pdf/chapter-titlepage-orbital-atlas-review.pdf)
 offers a richer, original contour illustration while retaining the active
@@ -84,8 +86,8 @@ This is schematic artwork, not a calculated HF orbital, an electron density,
 or an identified molecule. It contains no scientific labels or quantitative
 claims. The saved artwork consists of editable native TikZ paths.
 
-The active chapter still uses the previously approved Gaussian cover. This
-new design will not be incorporated before author approval. Its editable
+This proposal was not selected. The active chapter now uses the approved
+porphine rendering instead. The archived proposal's editable
 layout is `chapter-titlepage-orbital-atlas.tex`, with contours in
 `cover-orbital-contours.tex`. Compile the standalone preview from the
 repository root with:

@@ -354,3 +354,24 @@ coverage baseline. Commented-out frames are not additional required material.
   informed this targeted preview review, not a full-chapter layout audit.
 - The active `chapter-titlepage.tex` remains unchanged. The proposal is
   explicitly marked as awaiting author approval before incorporation.
+
+## Approved porphine cover integration (15 October 2026)
+
+- Incorporated the author's approved mathematical porphine rendering in
+  `chapter-titlepage.tex`, replacing only the previous Gaussian-product art.
+  The image is an unmodified copy of the approved transparent render in
+  `chapter-figures/cover-porphine-gaussians.png`. Earlier cover alternatives
+  remain archived; no original assets have been deleted.
+- Preserved all title-page wording, text positions, font sizes, author and
+  affiliation details, ESQC 2026 branding, footer, and dark-green framing.
+  The image's transparent margins allow it to sit above the author block
+  without overlap. Chapter text, equations, and bibliography are unchanged.
+- The illustration contains normalized real s/p/d/f/g Gaussian functions
+  on PubChem porphine coordinates. Formulae, exponents, source data,
+  signed-isosurface checks, and the native editable scene remain documented
+  in `drafts/cover-studies/06-porphine-exact-gaussians.md`.
+- Full compilation succeeds (110 pages) with resolved citations and
+  cross-references; all three chapter checks pass. The PDF skill was used
+  for a targeted inspection of the changed cover page, not a full-chapter
+  layout/overflow audit. Chapter compilation requires only the saved PNG,
+  not Blender or NumPy.

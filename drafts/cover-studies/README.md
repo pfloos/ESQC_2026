@@ -1,7 +1,9 @@
 # Cover illustration studies (15 October 2026)
 
-Review-only concepts generated with the built-in image-generation tool. None is
-included in the chapter. The active title page remains unchanged.
+Design and approval records. Studies 1-5 are review-only concepts generated
+with the image tool. Study 6 is a reproducible mathematical rendering,
+approved by the author and incorporated in the chapter cover on 15 October
+2026. The earlier unselected designs remain archived, not active.
 
 The original three are artistic schematics, not calculated molecular orbitals,
 electron densities, or identified molecular species. Ribbon crossings are a
@@ -30,7 +32,9 @@ now replaces invented lobe shapes with explicit normalized real s/p/d/f/g
 Gaussian functions. It uses archived PubChem coordinates and a new native
 3D scene, not an edited generated image. Formulae, exponents, isovalues,
 verification, and reproducible source are documented with the preview.
-The chapter cover remains unchanged pending approval.
+The author approved study 6 on 15 October 2026. Its transparent render is now
+the active cover illustration; the formulae, data, and editable native scene
+remain available here for inspection and reproduction.
 
 ## 1. sculptural-orbitals
 
