@@ -1,5 +1,9 @@
 # Approved figure and table design review
 
+The [three new cover illustration studies](cover-studies/README.md) are
+review-only alternatives (15 October 2026), awaiting author selection and
+approval. They are not included in the chapter.
+
 All six design pages were approved by the author and incorporated on
 14 October 2026. The comparison PDF is retained as the archived approval
 record; its pending-approval banners describe the earlier review stage.
