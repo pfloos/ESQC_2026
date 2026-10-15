@@ -25,6 +25,7 @@
 \usepackage{array}
 \usepackage{makecell}
 \usepackage{colortbl}
+\usepackage[most]{tcolorbox}
 \usepackage{pifont}
 \usepackage{tikz,pgfplots}
 \usetikzlibrary{arrows,arrows.meta,positioning,shapes.geometric}
@@ -55,6 +56,23 @@
 \definecolor{hfGreen}{HTML}{00685C}
 \definecolor{hfGreenDark}{HTML}{00574D}
 \definecolor{hfGreenLight}{HTML}{F2F8F6}
+
+% Exercise statements and complete solutions retain the chapter's text width.
+\tcbset{hfworked/.style={
+  enhanced,breakable,sharp corners,
+  boxrule=0.5pt,boxsep=0pt,left=2mm,right=2mm,top=2mm,bottom=2mm,
+  grow to left by=2.3mm,grow to right by=2.3mm,
+  before skip=12pt,after skip=12pt,
+  fonttitle=\small\bfseries,coltitle=white,
+  lefttitle=2mm,righttitle=2mm,toptitle=1.5mm,bottomtitle=1.5mm}}
+\newtcolorbox{hfexercise}[1]{hfworked,
+  colframe=hfViolet!80!black,colback=hfViolet!3,
+  colbacktitle=hfViolet!80!black,
+  title={Exercise: #1},title after break={Exercise (continued): #1}}
+\newtcolorbox{hfsolution}[1]{hfworked,
+  colframe=hfGreenDark,colback=hfGreenLight,colbacktitle=hfGreenDark,
+  title={Solution: #1},title after break={Solution (continued): #1},
+  before upper={\allowdisplaybreaks[1]}}
 
 \hypersetup{
   colorlinks=true,
@@ -864,12 +882,13 @@ many-electron electronic wavefunction must be antisymmetric under the
 exchange of two electrons. The next question is how to construct such a
 wavefunction from simpler one-electron objects.
 
-\paragraph{Worked example: two-electron antisymmetry.}
+\begin{hfexercise}{two-electron antisymmetry.}
 \violet{\textit{Given two orthonormal one-electron functions
 $\chi_1(\bx)$ and $\chi_2(\bx)$, construct a two-electron fermionic
 wavefunction $\Psi(\bx_1,\bx_2)$.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{two-electron antisymmetry.}
 Starting from the two possible assignments of the one-electron functions to
 the two electrons,
 \begin{equation}
@@ -897,6 +916,8 @@ Indeed, exchanging the two electron coordinates immediately yields
 \end{equation}
 For orthonormal $\chi_1$ and $\chi_2$, the prefactor $1/\sqrt{2}$ ensures
 normalization.
+
+\end{hfsolution}
 
 Slater popularized the determinant representation of this combination
 \citep{Slater1929},
@@ -2221,12 +2242,13 @@ electron $i$.
 % Normalization
 % ============================================================================
 
-\paragraph{Worked example: normalization of the HF wavefunction.}
+\begin{hfexercise}{normalization of the HF wavefunction.}
 
 \violet{\textit{Show that the HF wavefunction built with two normalized,
 orthogonal spin orbitals $\chi_1$ and $\chi_2$ is normalized.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{normalization of the HF wavefunction.}
 
 For two electrons, the normalized Slater determinant is
 \begin{equation}
@@ -2322,11 +2344,13 @@ for a two-electron determinant. More generally, a determinant built from
 $N$ orthonormal spin orbitals contains $N!$ mutually orthogonal Hartree
 products and is normalized by the factor $1/\sqrt{N!}$.
 
+\end{hfsolution}
+
 % ============================================================================
 % One-electron operator
 % ============================================================================
 
-\paragraph{Worked example: core Hamiltonian.}
+\begin{hfexercise}{core Hamiltonian.}
 
 \violet{\textit{Show for the same system that
 \[
@@ -2336,7 +2360,8 @@ products and is normalized by the factor $1/\sqrt{N!}$.
 \]
 }}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{core Hamiltonian.}
 
 For two electrons, the one-electron part of the Hamiltonian is
 \begin{equation}
@@ -2473,11 +2498,13 @@ This is the two-electron instance of the general Slater--Condon rule
 \end{equation}
 Only diagonal matrix elements over the occupied spin orbitals survive.
 
+\end{hfsolution}
+
 % ============================================================================
 % Two-electron operator
 % ============================================================================
 
-\paragraph{Worked example: two-electron Hamiltonian.}
+\begin{hfexercise}{two-electron Hamiltonian.}
 
 \violet{\textit{Show for the same system that}}
 \begin{equation}
@@ -2488,7 +2515,8 @@ Only diagonal matrix elements over the occupied spin orbitals survive.
 \end{equation}
 \violet{\textit{and write down the HF energy.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{two-electron Hamiltonian.}
 
 For a two-electron system there is only one distinct electron pair, so
 \begin{equation}
@@ -2622,16 +2650,19 @@ exchange couples only same-spin spin orbitals. The corresponding
 closed-shell spatial-orbital expression will be derived explicitly in the
 next subsection.
 
+\end{hfsolution}
+
 % ============================================================================
 % Three electrons
 % ============================================================================
 
-\paragraph{Worked example: three-electron system.}
+\begin{hfexercise}{three-electron system.}
 
 \violet{\textit{Find the HF energy of a three-electron system composed of
 the spin orbitals $\chi_1$, $\chi_2$, and $\chi_3$.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{three-electron system.}
 
 The one-electron operator contains one contribution for each electron,
 \begin{equation}
@@ -2699,6 +2730,8 @@ electrons gives
   \sum_{i<j}^{N}
   (\cJ_{ij}-\cK_{ij})
 \end{equation}
+
+\end{hfsolution}
 
 These few-electron examples provide an explicit derivation of the
 Slater--Condon expressions used above. They also reveal the structure that
@@ -3337,12 +3370,13 @@ spurious same-spin self-interactions cancel through exchange.
 % Open-shell examples
 % ============================================================================
 
-\paragraph{Worked example: HF energy of the \ce{Li} atom.}
+\begin{hfexercise}{HF energy of the \ce{Li} atom.}
 
 \violet{\textit{Find the HF energy of the \ce{Li} atom in terms of spatial
 orbitals.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{HF energy of the \ce{Li} atom.}
 
 For the determinant considered here, the three occupied spin orbitals are
 \begin{equation}
@@ -3396,12 +3430,15 @@ This example provides a useful way of reading spatial-orbital HF energies:
 Coulomb terms count interacting electron pairs, whereas exchange terms
 count same-spin pairs.
 
-\paragraph{Worked example: HF energy of the \ce{B} atom.}
+
+\end{hfsolution}
+\begin{hfexercise}{HF energy of the \ce{B} atom.}
 
 \violet{\textit{Find the HF energy of the \ce{B} atom in terms of spatial
 orbitals.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{HF energy of the \ce{B} atom.}
 
 For the occupation considered here, the first two spatial orbitals are
 doubly occupied and the third contains a single $\alpha$ electron,
@@ -3467,6 +3504,8 @@ Collecting all terms gives
     K_{23}
   \end{split}
 \end{equation}
+
+\end{hfsolution}
 
 The \ce{Li} and \ce{B} examples illustrate that the reduction from spin
 orbitals to spatial orbitals is not restricted to closed shells. The
@@ -5064,7 +5103,7 @@ Brillouin's theorem:
 % Fock matrix elements
 % ============================================================================
 
-\paragraph{Worked example: Fock matrix elements in the spin-orbital basis.}
+\begin{hfexercise}{Fock matrix elements in the spin-orbital basis.}
 
 \violet{\textit{Find the expression of the matrix elements
 \[
@@ -5074,7 +5113,8 @@ Brillouin's theorem:
 \]
 }}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{Fock matrix elements in the spin-orbital basis.}
 
 Expanding the Fock operator gives
 \begin{align}
@@ -5149,15 +5189,18 @@ For an occupied-virtual matrix element,
 \end{equation}
 which is precisely the quantity appearing in Brillouin's theorem.
 
+\end{hfsolution}
+
 % ============================================================================
 % Orbital energies
 % ============================================================================
 
-\paragraph{Worked example: orbital energies in the spin-orbital basis.}
+\begin{hfexercise}{orbital energies in the spin-orbital basis.}
 
 \violet{\textit{Deduce the expression of $\epsilon_i$.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{orbital energies in the spin-orbital basis.}
 
 For a canonical orbital,
 \begin{equation}
@@ -5212,6 +5255,8 @@ The term with $k=i$ vanishes,
 which again reflects the exact cancellation of one-electron
 self-interaction in Hartree--Fock theory.
 
+
+\end{hfsolution}
 \paragraph{Orbital energies and the total HF energy.}
 
 The orbital energies are Lagrange multipliers associated with the
@@ -5391,12 +5436,13 @@ hole in occupied spin orbital $i$.
 % Electron attachment
 % ============================================================================
 
-\paragraph{Worked example: Koopmans' theorem for electron affinity.}
+\begin{hfexercise}{Koopmans' theorem for electron affinity.}
 
 \violet{\textit{Show that an analogous frozen-orbital relation can be
 derived for electron attachment.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{Koopmans' theorem for electron affinity.}
 
 Consider the attachment of an electron to a vacant canonical spin orbital
 $c$. Keeping all orbitals frozen, the energy of the resulting
@@ -5451,6 +5497,8 @@ than the corresponding ionization potentials.
 In particular, a neutral molecule may have a positive HF LUMO energy,
 leading to a negative Koopmans electron affinity even when the exact anion
 is bound.
+
+\end{hfsolution}
 
 % ============================================================================
 % Frozen orbitals and relaxation
@@ -6628,12 +6676,13 @@ one-electron contribution and a density-dependent contribution,
 The following worked example makes the contraction hidden in
 $G_{\mu\nu}[\bP]$ explicit.
 
-\paragraph{Worked example: AO Fock matrix.}
+\begin{hfexercise}{AO Fock matrix.}
 
 \violet{\textit{Find the expression of the Fock matrix in terms of the
 one- and two-electron integrals.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{AO Fock matrix.}
 
 Expanding the occupied spin orbitals in the basis exposes how their
 coefficients enter the AO Fock matrix:
@@ -6713,6 +6762,8 @@ whenever the density changes. Thus, although each diagonalization is an
 ordinary linear-algebra operation, the complete Hartree--Fock problem remains
 self-consistent.
 
+
+\end{hfsolution}
 \paragraph{Interpretation of the AO contraction.}
 
 For every pair $(\mu,\nu)$, the two-electron part is obtained by contracting
@@ -6737,12 +6788,13 @@ evaluated directly from the density, core Hamiltonian, and the Fock matrix
 constructed from that density, without transforming all integrals to the
 molecular-orbital basis.
 
-\paragraph{Worked example: AO Hartree--Fock energy.}
+\begin{hfexercise}{AO Hartree--Fock energy.}
 
 \violet{\textit{Find the expression of the HF energy in terms of the one-
 and two-electron integrals.}}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{AO Hartree--Fock energy.}
 
 Starting from the spin-orbital energy and explicitly substituting each basis
 expansion gives
@@ -6796,6 +6848,8 @@ $\bG=\bF-\bH$. The preceding result may then be written as
 which is precisely Eq.~\eqref{eq:hf-energy-matrix}. The ordering of the
 indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
 
+
+\end{hfsolution}
 \paragraph{Closed-shell specialization.}
 
 For a closed-shell system, the density matrix is
@@ -7864,7 +7918,7 @@ The factors of one half in the same-spin contributions remove double counting
 of electron pairs. The opposite-spin Coulomb term is written only once as a
 double sum over the two populations and therefore requires no such factor.
 
-\paragraph{Worked example: UHF energy of the \ce{Li} atom.}
+\begin{hfexercise}{UHF energy of the \ce{Li} atom.}
 
 \violet{\textit{Write down the UHF energy of the doublet state of the
 lithium atom.}}
@@ -7889,7 +7943,8 @@ lithium atom.}}
 \end{tikzpicture}
 \end{center}
 
-\paragraph{Solution.}
+\end{hfexercise}
+\begin{hfsolution}{UHF energy of the \ce{Li} atom.}
 
 For the occupation shown above,
 \begin{equation}
@@ -7904,6 +7959,8 @@ contains both Coulomb and exchange contributions. The two interactions with
 the $1s^\beta$ electron are purely Coulombic, exactly as required by the spin
 selection rule above.
 
+
+\end{hfsolution}
 \subsubsection{The Pople--Nesbet matrix equations}
 
 The continuous UHF equations are reduced to matrix form in the same way as

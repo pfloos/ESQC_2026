@@ -298,3 +298,21 @@ coverage baseline. Commented-out frames are not additional required material.
   displayed derivations match the preceding commit. The PDF skill was used
   to inspect only the changed figure/table pages. No full-chapter layout audit
   was performed. The active Gaussian cover remains unchanged.
+
+## Author revision and exercise/solution boxes (15 October 2026)
+
+- Fast-forwarded to the author's five new commits through `59f942d` and read
+  the changes before editing. Preserved the new mean-field illustration,
+  anyon discussion, ESQC photograph, acknowledgements, revised notation,
+  and prose/section adjustments.
+- Framed all 13 existing worked-example statements and their full solutions
+  with distinct violet exercise and dark-green solution boxes. Long solutions
+  can break across pages, with repeated identifying continuation headings.
+  Ordinary explanatory prose remains outside the boxes. No exercises or
+  derivation steps have been removed or added.
+- Kept the text width effectively unchanged inside the frames to preserve
+  the mathematical layout. Every displayed derivation matches the user's
+  pushed version exactly; all 13 statement/solution pairs are balanced.
+- Full compilation and existing source/reference checks pass. The PDF skill
+  was used to inspect representative short, long, and continued solution
+  boxes, not to perform a full-chapter layout audit.

@@ -55,6 +55,8 @@ latexmk runs BibTeX and repeats LaTeX as needed to resolve citations and
 cross-references. The resulting PDF is generated locally and is not tracked
 in Git. The chapter uses the same scientific/font packages as the slides,
 with article-layout packages and natbib for citations; it does not need Beamer.
+Exercise statements and complete solutions use breakable `tcolorbox` frames,
+with identifying headings repeated when a solution continues on another page.
 If a local build still has auxiliary files from the former book class,
 remove those with the cleanup command below before rebuilding.
 
