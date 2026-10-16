@@ -3830,7 +3830,7 @@ Consider a general one-electron operator,
 \begin{equation}
   \chO_1
   =
-  \sum_{p=1}^{N}\hh(\bx_p)
+  \sum_{i=1}^{N}\hh(\bx_i)
   \label{eq:slater-condon-one-body}
 \end{equation}
 The Slater--Condon rule depends on how many spin orbitals differ between the
@@ -3931,8 +3931,10 @@ In particular,
 
 More generally,
 \begin{equation}
+  \boxed{
   \chO_1
   \quad\text{connects determinants differing by at most one spin orbital}
+  }
 \end{equation}
 
 % ============================================================================
@@ -3945,7 +3947,7 @@ Consider now the electron-electron interaction,
 \begin{equation}
   \chO_2
   =
-  \sum_{p<q}^{N}\frac{1}{r_{pq}}
+  \sum_{i<j}^{N}\frac{1}{r_{ij}}
   \label{eq:slater-condon-two-body}
 \end{equation}
 Because this operator acts simultaneously on two electrons, its connectivity
@@ -4065,8 +4067,10 @@ simultaneously. Therefore,
 
 Hence,
 \begin{equation}
+  \boxed{
   \chO_2
   \quad\text{connects determinants differing by at most two spin orbitals}
+  }
 \end{equation}
 
 % ============================================================================
@@ -4098,7 +4102,7 @@ For identical determinants,
 
 For determinants differing by a single substitution $i\rightarrow a$,
 \begin{equation}
-  \mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}
+  \mel*{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}
   =
   h_{ia}
   +
@@ -4109,7 +4113,7 @@ For determinants differing by a single substitution $i\rightarrow a$,
 
 For determinants differing by a double substitution $ij\rightarrow ab$,
 \begin{equation}
-  \mel{\Psi_0}{\chH_\text{elec}}{\Psi_{ij}^{ab}}
+  \mel*{\Psi_0}{\chH_\text{elec}}{\Psi_{ij}^{ab}}
   =
   \mel{ij}{}{ab}
   \label{eq:sc-h-double}
@@ -4117,7 +4121,7 @@ For determinants differing by a double substitution $ij\rightarrow ab$,
 
 Finally,
 \begin{equation}
-  \mel{\Psi_0}{\chH_\text{elec}}{\Psi_{ijk}^{abc}}
+  \mel*{\Psi_0}{\chH_\text{elec}}{\Psi_{ijk}^{abc}}
   =
   0
 \end{equation}
@@ -4146,9 +4150,11 @@ optimized HF state, a stationary point of the HF energy, or an eigenfunction
 of $\chS^2$.
 Thus,
 \begin{equation}
+  \boxed{
   \text{orbital excitation}
   \neq
   \text{state-specific orbital optimization}
+  }
 \end{equation}
 
 In the first procedure, the reference orbitals remain frozen and only their
@@ -4224,6 +4230,8 @@ occupied-virtual mixing produces no first-order lowering of the energy.
 % ============================================================================
 % Spin
 % ============================================================================
+
+\subsubsection{Spin}
 
 \paragraph{Spin quantum numbers.}
 
