@@ -695,21 +695,21 @@ interactions, but no explicit spin operator. Nevertheless, a complete
 description of an electron must contain both its spatial coordinate and its
 intrinsic spin degree of freedom. Electrons have spin $s=1/2$, and their spin
 functions satisfy
-\begin{equation}
-  \ket{\omega}=\ket{s,m_s}
-  \qquad
-  s^2\ket{s,m_s}=s(s+1)\ket{s,m_s}
-  \qquad
-  s_z\ket{s,m_s}=m_s\ket{s,m_s}
-\end{equation}
+\begin{align}
+  \ket{\omega}&=\ket{s,m_s}
+  &
+  s^2\ket{s,m_s}&=s(s+1)\ket{s,m_s}
+  &
+  s_z\ket{s,m_s}&=m_s\ket{s,m_s}
+\end{align}
 The two one-electron spin functions are
-\begin{equation}
+\begin{align}
   \ket{\blue{\alpha}}
-  = \ket{\tfrac{1}{2},+\tfrac{1}{2}}
-  \qquad
+  &= \ket{\tfrac{1}{2},+\tfrac{1}{2}}
+  &
   \ket{\red{\beta}}
-  = \ket{\tfrac{1}{2},-\tfrac{1}{2}}
-\end{equation}
+  &= \ket{\tfrac{1}{2},-\tfrac{1}{2}}
+\end{align}
 corresponding respectively to spin-up and spin-down electrons. They form an
 orthonormal basis for the one-electron spin space,
 \begin{align}
@@ -1069,7 +1069,7 @@ initially, a spin orbital separates into spin and spatial factors,
   =
   \red{\sigma(\omega)}
   \blue{\psi_p^\sigma(\br)}
-  \qquad
+  \qq{with}
   \sigma(\omega)\in\{\alpha(\omega),\beta(\omega)\}
   \label{eq:spin-orbital-factorization}
 \end{equation}
@@ -1117,22 +1117,19 @@ chapter.
 The spin orbitals entering a Slater determinant are chosen to be
 orthonormal,
 \begin{equation}
-\begin{split}
   \braket*{\chi_p}{\chi_q}
-  &=
+  =
   \int
   \chi_p^*(\bx)
   \chi_q(\bx)
   \dd{\bx}
-  \\
-  &=
+  =
   \delta_{pq}
   =
   \begin{cases}
     1,&\text{if $p=q$}\\
     0,&\text{otherwise}
   \end{cases}
-\end{split}
 \end{equation}
 where $\delta_{pq}$ is the Kronecker delta.
 
@@ -1140,16 +1137,13 @@ This does not imply that the underlying basis functions are themselves
 orthogonal. In fact, atom-centered basis functions on different atoms
 generally overlap. Their pairwise overlaps define the overlap matrix
 \begin{equation}
-\begin{split}
   \braket*{\phi_\mu}{\phi_\nu}
-  &=
+  =
   \int
   \phi_\mu^*(\br)
   \phi_\nu(\br)
   \dd{\br}
-  \\
-  &=S_{\mu\nu}
-\end{split}
+  =S_{\mu\nu}
 \end{equation}
 Consequently, the orthonormality of the molecular orbitals imposes a
 constraint on the expansion coefficients rather than on the basis functions
@@ -1376,20 +1370,20 @@ such determinants, which one provides the lowest possible energy?
 
 For fixed nuclear positions, the electronic energy associated with a given
 Slater determinant is the expectation value of the electronic Hamiltonian,
-\begin{equation}
+\begin{align}
   \EHF
-  =
+  &=
   \mel{\Psi_\text{HF}}{\chH_\text{elec}}{\Psi_\text{HF}}
-  \qquad
+  &
   \chH_\text{elec}
-  =
+  &=
   \blue{\chT_\text{e}}
   +
   \orange{\chV_\text{ne}}
   +
   \red{\chV_\text{ee}}
   \label{eq:hf-expectation-value}
-\end{equation}
+\end{align}
 Since $\Psi_\text{HF}$ depends on the occupied spin orbitals, this expression
 should be regarded as an energy functional,
 \begin{equation}
@@ -1626,11 +1620,9 @@ The factor $1/2$ avoids counting every distinct electron pair twice.
 
 At first sight, the terms with $i=j$ in this expression might appear to
 describe the Coulomb interaction of an electron with itself. However,
-\begin{equation}
-  \red{
+  $\red{
   \cJ_{ii}=\cK_{ii}
-  }
-\end{equation}
+  }$
 because
 \begin{equation}
   \cJ_{ii}
@@ -1810,9 +1802,9 @@ is generated solely by the antisymmetry of the Slater determinant.
 
 The HF energy can therefore be regarded as a functional of the occupied
 orbitals,
-\begin{equation}
+\begin{align}
   \EHF[\{\chi_i\}]
-  =
+  & =
   \sum_i
   \mel{\chi_i}{\hh}{\chi_i}
   +
@@ -1821,10 +1813,10 @@ orbitals,
   \qty(
     \cJ_{ij}-\cK_{ij}
   )
-  \qquad
-  \braket{\chi_i}{\chi_j}=\delta_{ij}
+  & 
+  \braket{\chi_i}{\chi_j}& =\delta_{ij}
   \label{eq:hf-energy-functional}
-\end{equation}
+\end{align}
 The remainder of Hartree--Fock theory consists essentially in minimizing this
 functional with respect to the occupied orbitals while preserving their
 orthonormality. Before carrying out that minimization, however, it is useful
@@ -1937,12 +1929,12 @@ electron coordinate $\bx_1$, while the second and fourth refer to $\bx_2$:
 
 With this notation, the Coulomb and exchange integrals introduced in the
 previous section are simply
-\begin{equation}
-  \cJ_{ij}=\braket{ij}{ij}
-  \qquad
-  \cK_{ij}=\braket{ij}{ji}
+\begin{align}
+  \cJ_{ij}&=\braket{ij}{ij}
+  &
+  \cK_{ij}&=\braket{ij}{ji}
   \label{eq:JK-physicists}
-\end{equation}
+\end{align}
 The only difference between the two is therefore the permutation of the two
 indices in the ket.
 
@@ -2101,21 +2093,16 @@ integration over the spin coordinates gives
 \end{equation}
 A spin-orbital ERI therefore vanishes unless the spin on each electron line
 is conserved,
-\begin{equation}
-  \sigma_i=\sigma_k
-  \qquad
-  \sigma_j=\sigma_l
-\end{equation}
+  $\sigma_i=\sigma_k$
+  and
+  $\sigma_j=\sigma_l$.
 For the exchange integral,
 \begin{equation}
   \cK_{ij}=\braket{ij}{ji}
 \end{equation}
 this requires $\sigma_i=\sigma_j$. Hence,
-\begin{equation}
-  \cK_{ij}=0
-  \qquad
-  \text{for opposite-spin orbitals}
-\end{equation}
+  $\cK_{ij}=0$
+  for opposite-spin orbitals.
 This is the integral form of the same-spin nature of Hartree--Fock exchange
 discussed in the previous section.
 
@@ -2215,10 +2202,7 @@ Thus, for real-valued orbitals, ERIs possess
 eightfold permutation symmetry.
 
 This symmetry has an important computational consequence. A naive set of
-$K$ one-electron basis functions generates $K^4$ four-index ERIs,
-\begin{equation}
-  \rbraket{\mu\nu}{\lambda\sigma}
-\end{equation}
+$K$ one-electron basis functions generates $K^4$ four-index ERIs, $\rbraket{\mu\nu}{\lambda\sigma}$.
 However, many of these entries are identical by permutation symmetry.
 For four distinct indices, up to eight nominally different integrals
 represent the same numerical quantity. Modern integral algorithms exploit
@@ -2633,11 +2617,11 @@ Hartree--Fock energy
 
 If the two occupied spin orbitals have opposite spin, as in a closed-shell
 two-electron system,
-\begin{equation}
-  \chi_1(\bx)=\psi(\br)\alpha(\omega)
-  \qquad
-  \chi_2(\bx)=\psi(\br)\beta(\omega)
-\end{equation}
+\begin{align}
+  \chi_1(\bx)&=\psi(\br)\alpha(\omega)
+  &
+  \chi_2(\bx)&=\psi(\br)\beta(\omega)
+\end{align}
 then their exchange integral vanishes because
 $\braket{\alpha}{\beta}=0$, i.e., $\cK_{12}=0$.
 This does not mean that exchange is absent from Hartree--Fock theory; rather,
@@ -2765,20 +2749,20 @@ representation to the other is obtained simply by carrying out the spin
 integrations explicitly.
 
 The essential ingredients are the orthonormality relations
-\begin{equation}
+\begin{align}
   \braket{\alpha}{\alpha}
   =
   \braket{\beta}{\beta}
-  =
+  &=
   1
-  \qquad
+  &
   \braket{\alpha}{\beta}
   =
   \braket{\beta}{\alpha}
-  =
+  &=
   0
   \label{eq:spin-orthogonality-spatial-reduction}
-\end{equation}
+\end{align}
 As we shall see, the first two relations preserve the Coulomb interaction
 between all electron pairs, whereas the last two eliminate exchange between
 opposite-spin electrons.
@@ -3103,11 +3087,9 @@ Consider now a system containing an even number $N$ of electrons described
 by a closed-shell RHF determinant. There are $N/2$ occupied spatial orbitals,
 and each spatial orbital $\psi_i$ generates an $\alpha$ and a $\beta$ spin
 orbital,
-\begin{equation}
-  \psi_i(\br)\alpha(\omega)
-  \qquad
-  \psi_i(\br)\beta(\omega)
-\end{equation}
+  $\psi_i(\br)\alpha(\omega)$
+  and
+  $\psi_i(\br)\beta(\omega)$.
 
 To avoid ambiguity, in the remainder of this derivation the indices
 $i,j=1,\ldots,N/2$ label \emph{occupied spatial orbitals}, while
@@ -3141,8 +3123,7 @@ components:
   \sum_{i=1}^{N/2}\mel{i}{\hh}{i}
   +
   \sum_{i=1}^{N/2}\mel{\Bar{i}}{\hh}{\Bar{i}}
-  \\
-  &=
+  =
   \sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
   +
   \sum_{i=1}^{N/2}\rmel{i}{\hh}{i}
@@ -3158,15 +3139,10 @@ occupied spatial orbital.
 
 For every pair of occupied spatial orbitals $i$ and $j$, four spin
 combinations are possible:
-\begin{equation}
-  \alpha\alpha
-  \qquad
-  \alpha\beta
-  \qquad
-  \beta\alpha
-  \qquad
-  \beta\beta
-\end{equation}
+  $\alpha\alpha$,
+  $\alpha\beta$,
+  $\beta\alpha$, and
+  $\beta\beta$.
 Separating these four possibilities gives
 \begin{align}
   \frac{1}{2}
@@ -3294,15 +3270,15 @@ closed-shell RHF energy,
 \end{equation}
 
 Introducing the spatial-orbital Coulomb and exchange integrals
-\begin{equation}
+\begin{align}
   J_{ij}
-  \equiv
+  &\equiv
   \rbraket{ii}{jj}
-  \qquad
+  &
   K_{ij}
-  \equiv
+  &\equiv
   \rbraket{ij}{ji}
-\end{equation}
+\end{align}
 the same expression takes the compact form
 \begin{equation}
   \EHF
@@ -3350,13 +3326,13 @@ orbitals.}}
 \begin{hfsolution}{HF energy of the \ce{Li} atom.}
 
 For the determinant considered here, the three occupied spin orbitals are
-\begin{equation}
-  \chi_1=\alpha\psi_1
-  \qquad
-  \chi_2=\beta\psi_1
-  \qquad
-  \chi_3=\alpha\psi_2
-\end{equation}
+\begin{align}
+  \chi_1&=\alpha\psi_1
+  &
+  \chi_2&=\beta\psi_1
+  &
+  \chi_3&=\alpha\psi_2
+\end{align}
 The first spatial orbital is therefore doubly occupied, whereas the second
 contains a single $\alpha$ electron.
 
@@ -3516,11 +3492,9 @@ determinant is
   \label{eq:hf-reference-determinant}
 \end{equation}
 Here and in the following,
-\begin{equation}
-  \green{i,j,k,l,\ldots}
-  \qquad\text{and}\qquad
-  \red{a,b,c,d,\ldots}
-\end{equation}
+  $\green{i,j,k,l,\ldots}$
+  and
+  $\red{a,b,c,d,\ldots}$
 denote occupied and virtual spin orbitals, respectively.
 
 The distinction is always made \emph{relative to the reference determinant}:
@@ -3650,15 +3624,15 @@ contains two holes, $i$ and $j$, together with two particles, $a$ and $b$.
 
 The ordering of the fermionic creation and annihilation operators matters:
 interchanging two such operators changes the sign because
-\begin{equation}
+\begin{align}
   \cre{p}\cre{q}
-  =
+  &=
   -\cre{q}\cre{p}
-  \qquad
+  &
   \ani{p}\ani{q}
-  =
+  &=
   -\ani{q}\ani{p}
-\end{equation}
+\end{align}
 A consistent ordering convention therefore fixes the overall phase of each
 excited determinant. This phase has no effect on diagonal expectation
 values, but it is essential when evaluating off-diagonal matrix elements
@@ -3781,9 +3755,11 @@ element between two determinants depends very strongly on this number.
 
 Schematically,
 \begin{equation*}
+  \boxed{
   \text{number of orbital substitutions}
   \quad\Longrightarrow\quad
   \text{structure of the Hamiltonian matrix element}
+  }
 \end{equation*}
 A one-electron operator can connect determinants differing by at most one
 spin orbital, whereas a two-electron operator can connect determinants
@@ -3866,15 +3842,15 @@ one-electron operator.
 \paragraph{Case 2: determinants differ by one spin orbital.}
 
 Consider
-\begin{equation}
+\begin{align}
   \ket{\red{K}}
-  =
+  &=
   \ket{\cdots i j\cdots}
-  \qquad
+  &
   \ket{\blue{L}}
-  =
+  &=
   \ket{\cdots k j\cdots}
-\end{equation}
+\end{align}
 All occupied spin orbitals are common to the two determinants except for the
 replacement
 \begin{equation}
@@ -3902,15 +3878,15 @@ orbital and place it in another.
 \paragraph{Case 3: determinants differ by two or more spin orbitals.}
 
 Let
-\begin{equation}
+\begin{align}
   \ket{\red{K}}
-  =
+  &=
   \ket{\cdots i j\cdots}
-  \qquad
+  &
   \ket{\blue{L}}
-  =
+  &=
   \ket{\cdots k l\cdots}
-\end{equation}
+\end{align}
 so that at least two occupied spin orbitals differ. Since $\chO_1$ can act
 on only one electron, it cannot simultaneously repair both substitutions.
 At least one overlap between different orthogonal spin orbitals therefore
@@ -3988,15 +3964,15 @@ For the HF reference,
 \paragraph{Case 2: determinants differ by one spin orbital.}
 
 Consider again
-\begin{equation}
+\begin{align}
   \ket{\red{K}}
-  =
+  &=
   \ket{\cdots i j\cdots}
-  \qquad
+  &
   \ket{\blue{L}}
-  =
+  &=
   \ket{\cdots k j\cdots}
-\end{equation}
+\end{align}
 One electron undergoes the substitution $i\rightarrow k$, while the second
 electron acted upon by $\chO_2$ may occupy any spin orbital common to the two
 determinants. Summing over these spectator occupied orbitals gives
@@ -4023,15 +3999,15 @@ interaction to each of the remaining occupied electrons.
 \paragraph{Case 3: determinants differ by two spin orbitals.}
 
 Let
-\begin{equation}
+\begin{align}
   \ket{\red{K}}
-  =
+  &=
   \ket{\cdots i j\cdots}
-  \qquad
+  &
   \ket{\blue{L}}
-  =
+  &=
   \ket{\cdots k l\cdots}
-\end{equation}
+\end{align}
 The two-electron operator can now act precisely on the two orbitals that
 differ, giving
 \begin{equation}
@@ -4055,15 +4031,8 @@ excited determinants.
 \paragraph{Case 4: determinants differ by three or more spin orbitals.}
 
 A two-electron operator cannot change three independent orbital occupations
-simultaneously. Therefore,
-\begin{equation}
-  \mel{\red{K}}{\chO_2}{\blue{L}}
-  =
-  0
-  \qquad
-  \text{if $K$ and $L$ differ by three or more spin orbitals}
-  \label{eq:sc-two-three}
-\end{equation}
+simultaneously. Therefore, $\mel{\red{K}}{\chO_2}{\blue{L}} = 0$
+if $K$ and $L$ differ by three or more spin orbitals.
 
 Hence,
 \begin{equation}
@@ -4241,11 +4210,11 @@ the spin projection $M_S$ from the total spin $S$.
 Within the nonrelativistic spin-free framework, the electronic Hamiltonian
 commutes with both the total-spin operator and its projection along the
 chosen quantization axis,
-\begin{equation}
-  \comm{\chH}{\purple{\chS^2}}=0
-  \qquad
-  \comm{\chH}{\violet{\chS_z}}=0
-\end{equation}
+\begin{align}
+  \comm{\chH}{\purple{\chS^2}} & =0
+  &
+  \comm{\chH}{\violet{\chS_z}}& =0
+\end{align}
 The exact eigenfunctions of $\chH$ may therefore be chosen as simultaneous
 eigenfunctions of $\chS^2$ and $\chS_z$:
 \begin{align}
@@ -4258,10 +4227,7 @@ eigenfunctions of $\chS^2$ and $\chS_z$:
   M_S\ket{S,M_S}
 \end{align}
 
-The quantum number $S$ determines the spin multiplicity,
-\begin{equation}
-  \text{multiplicity}=2S+1
-\end{equation}
+The quantum number $S$ determines the spin multiplicity $2S+1$.
 Thus,
 \begin{equation}
   S=0,\quad\frac{1}{2},\quad1,\quad\frac{3}{2},\ldots
@@ -4274,16 +4240,16 @@ given value of $S$, the spin projection takes the values
 
 For a collinear determinant containing $N^\alpha$ spin-up and $N^\beta$
 spin-down electrons,
-\begin{equation}
+\begin{align}
   \violet{\chS_z}\ket{\Psi}
-  =
+  & =
   M_S\ket{\Psi}
-  \qquad
+  &
   M_S
-  =
+  & =
   \frac{N^\alpha-N^\beta}{2}
   \label{eq:ms-determinant}
-\end{equation}
+\end{align}
 Here, \emph{collinear} means that all occupied spin orbitals are expressed
 with respect to the same spin quantization axis.
 
@@ -4294,11 +4260,11 @@ definite total spin $S$.
 \paragraph{Closed-shell RHF.}
 
 For a closed-shell RHF determinant,
-\begin{equation}
-  N^\alpha=N^\beta=\frac{N}{2}
-  \qquad
-  M_S=0
-\end{equation}
+\begin{align}
+  N^\alpha=N^\beta&=\frac{N}{2}
+  &
+  M_S&=0
+\end{align}
 Because every spatial orbital is occupied by one $\alpha$ and one $\beta$
 electron, the determinant is a pure singlet:
 \begin{equation}
@@ -4328,9 +4294,9 @@ Hence,
 
 For $N^\alpha\geq N^\beta$, the expectation value of $\chS^2$ for a UHF
 determinant is
-\begin{equation}
+\begin{align}
   \expval{\purple{\chS^2}}_\text{UHF}
-  =
+  &=
   M_S(M_S+1)
   +
   N^\beta
@@ -4338,14 +4304,14 @@ determinant is
   \sum_{i=1}^{N^\alpha}
   \sum_{j=1}^{N^\beta}
   \abs{S_{ij}^{\alpha\beta}}^2
-  \qquad
+  &
   \underbrace{
   S_{ij}^{\alpha\beta}
   }_{\text{overlap}}
-  =
+  &=
   \braket{\psi_i^\alpha}{\psi_j^\beta}
   \label{eq:uhf-spin-contamination}
-\end{equation}
+\end{align}
 
 If the $\alpha$ and $\beta$ spatial orbitals coincide pairwise, the overlap
 terms take their maximal values and the spin-pure restricted result is
@@ -4384,16 +4350,16 @@ determinants do not.
 Consider a closed-shell singlet reference and promote one electron from the
 doubly occupied spatial orbital $i$ to the virtual spatial orbital $a$.
 There are two distinct $M_S=0$ determinants,
-\begin{equation}
+\begin{align}
   \ket{D_\alpha}
-  =
+  & =
   \cre{a\alpha}\ani{i\alpha}\ket{\Psi_0}
-  \qquad
+  & 
   \ket{D_\beta}
-  =
+  & =
   \cre{a\beta}\ani{i\beta}\ket{\Psi_0}
   \label{eq:spin-adapted-determinants}
-\end{equation}
+\end{align}
 The first promotes the $\alpha$ electron and leaves the $\beta$ electron in
 orbital $i$, whereas the second promotes the $\beta$ electron.
 
