@@ -462,7 +462,9 @@ The correlation-consistent construction \citep{Dunning1989} organizes functions 
 balanced layers designed to recover angular correlation systematically. The
 main sequence is
 \begin{equation}
-  \text{cc-pVXZ},\qquad X=\mathrm{D,T,Q,5,6}
+\begin{aligned}
+  \text{cc-pVXZ},&& X&=\mathrm{D,T,Q,5,6}
+\end{aligned}
 \end{equation}
 In the basis names, D, T, and Q denote double-, triple-, and quadruple-$\zeta$
 quality. The numerical cardinal number $X$ takes the corresponding values
@@ -483,7 +485,8 @@ The cardinal number $X$ labels the level of this hierarchy. Increasing $X$
 adds both radial flexibility and a new layer of higher angular momentum, as
 the explicit shell patterns below demonstrate.
 
-For a second-row atom, the valence correlation-consistent sequence is
+For a second-row atom, Table~\ref{tab:cc-shell-content} lists the valence
+correlation-consistent sequence and its diffuse augmentations.
 \begin{center}
 \begin{tabular}{c@{\qquad}c}
 \toprule
@@ -500,6 +503,11 @@ d-aug-cc-pVTZ & $6s5p4d3f$\\
 d-aug-cc-pVQZ & $7s6p5d4f3g$\\
 \bottomrule
 \end{tabular}
+\captionof{table}{Shell contents of correlation-consistent basis sets for
+second-row atoms, with successive diffuse augmentations. The entries count
+contracted radial functions in each angular-momentum shell
+\citep{Dunning1989,Kendall1992}.}
+\label{tab:cc-shell-content}
 \end{center}
 The successive entries make the layered construction explicit. For the
 core--valence sequence, the corresponding decomposition is
@@ -520,10 +528,10 @@ Jensen's polarization-consistent sets \citep{Jensen2001} apply systematic improv
 Kohn--Sham calculations, with functions selected according to their energetic
 importance. The sequence has shell contents
 \begin{equation}
-  \text{pc-0}:3s2p\quad
-  \text{pc-1}:3s2p1d\quad
-  \text{pc-2}:4s3p2d1f\quad
-  \text{pc-3}:6s5p4d2f1g
+\begin{aligned}
+  \text{pc-0}&:3s2p &\text{pc-1}&:3s2p1d\\
+  \text{pc-2}&:4s3p2d1f &\text{pc-3}&:6s5p4d2f1g
+\end{aligned}
 \end{equation}
 Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
 members add systematically more radial and angular flexibility. Diffuse variants
@@ -639,13 +647,17 @@ The key idea of an effective core potential \citep{WadtHay1985} is to treat only
 relevant electrons explicitly. It replaces the nuclear attraction and the
 chemically inactive core electrons by an effective one-electron operator,
 \begin{equation}
- \hh(\br)=-\frac{\nabla^2}{2}
+\begin{split}
+ \hh(\br)&=-\frac{\nabla^2}{2}
  -\sum_A\frac{Z_A}{\abs{\br-\bR_A}}
- \longrightarrow
+ \\
+ &\longrightarrow
  \hh^\text{ECP}(\br)=-\frac{\nabla^2}{2}
  -\sum_A\frac{\green{Q_A}}{\abs{\br-\bR_A}}
  +\sum_A\hat U_A^\text{ECP}(\br)
- \qquad \green{Q_A}=Z_A-N_A^\text{core}
+ \\
+ \green{Q_A}&=Z_A-N_A^\text{core}
+\end{split}
 \end{equation}
 Here $N_A^\text{core}$ is the number of electrons removed by the ECP on atom
 $A$, and $Q_A$ is the charge of the remaining ionic core. It is not the

@@ -15,6 +15,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
 FLOAT = re.compile(r"\\begin\{(figure|table)\*?\}.*?\\end\{\1\*?\}", re.S)
+CENTER = re.compile(r"\\begin\{center\}.*?\\end\{center\}", re.S)
 DISPLAY = re.compile(
     r"\\begin\{(equation\*?|align\*?|gather\*?|multline\*?)\}(.*?)\\end\{\1\}", re.S
 )
@@ -40,14 +41,22 @@ def main():
     args = parser.parse_args()
     sources = {name: uncomment((ROOT / name).read_text()) for name in FILES}
     joined = "\n".join(sources.values())
+    floats = [m[0] for m in FLOAT.finditer(joined)]
+    inline = [m[0] for m in CENTER.finditer(joined) if r"\captionof{" in m[0]]
     prose = FLOAT.sub("", joined)
-    errors, floats = [], list(FLOAT.finditer(joined))
-    for match in floats:
-        labels = re.findall(r"\\label\{([^}]+)\}", match[0])
+    for block in inline:
+        prose = prose.replace(block, "")
+    errors = []
+    for block in floats + inline:
+        labels = re.findall(r"\\label\{([^}]+)\}", block)
         if len(labels) != 1:
-            errors.append(f"{match[1]} needs exactly one label: {labels}")
+            errors.append(f"Figure/table needs exactly one label: {labels}")
         elif not re.search(r"\\(?:ref|autoref|cref|Cref)\{" + re.escape(labels[0]) + r"\}", prose):
             errors.append(f"No text callout outside floats: {labels[0]}")
+    for match in CENTER.finditer(joined):
+        if (r"\begin{tikzpicture}" in match[0] or r"\HtwoOrbitalPlot" in match[0]
+                or r"\begin{tabular}" in match[0]) and r"\captionof{" not in match[0]:
+            errors.append("Scientific inline diagram/table has no caption")
     labels = Counter(re.findall(r"\\label\{([^}]+)\}", joined))
     errors += [f"Duplicate label: {key}" for key, n in labels.items() if n > 1]
     for key in re.findall(r"\\(?:eqref|ref|autoref)\{([^}]+)\}", joined):
@@ -80,7 +89,7 @@ def main():
                     errors.append("Further reading has changed")
     if errors:
         raise SystemExit("\n".join(errors))
-    print(f"Layout checks passed: {len(floats)} floats labeled and cited in prose")
+    print(f"Layout checks passed: {len(floats) + len(inline)} figures/tables labeled and cited in prose")
     if args.compare_math:
         print(f"Preserved all {preserved} original displays and Further reading from {args.compare_math}")
 

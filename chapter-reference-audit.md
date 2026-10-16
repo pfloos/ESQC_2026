@@ -1,5 +1,26 @@
 # Chapter reference verification
 
+## Correlated-method additions (16 October 2026)
+
+Added four references at the existing discussions of correlated wavefunction
+methods, without expanding the chapter into a treatment of those methods:
+
+- Shavitt (1998): CI and the historical development of determinant expansions.
+- Cizek (1966): the original molecular coupled-cluster formulation.
+- Bartlett and Musial (2007): the modern coupled-cluster review.
+- Cremer (2011): the MP perturbation-theory review, alongside the retained
+  original Moller--Plesset (1934) reference.
+
+All four author lists, titles, years, volumes, issues, and page ranges were
+checked against publisher-deposited DOI metadata by content negotiation.
+The APS article page and the Cremer review were also consulted. Shavitt's
+DOI record lists `10.1080/00268979809482290` as an alias of the retained
+`10.1080/002689798168303`, not a separate article. The bibliography now has
+84 cited entries: 80 audited articles/contributed chapters and four books.
+Further reading is unchanged.
+
+## Original full-bibliography audit
+
 Verification date: 13 October 2026. This is a bibliography audit, not a
 claim that every cited article has been reproduced or independently rederived.
 Publisher-deposited DOI metadata was retrieved through DOI content negotiation
@@ -45,6 +66,10 @@ publication, rather than a search-results page.
 
 | BibTeX key | Publication title | DOI record |
 | --- | --- | --- |
+| `Shavitt1998` | The history and evolution of configuration interaction | [10.1080/002689798168303](https://doi.org/10.1080/002689798168303) |
+| `Cizek1966` | On the Correlation Problem in Atomic and Molecular Systems. Calculation of Wavefunction Components in Ursell-Type Expansion Using Quantum-Field Theoretical Methods | [10.1063/1.1727484](https://doi.org/10.1063/1.1727484) |
+| `BartlettMusial2007` | Coupled-cluster theory in quantum chemistry | [10.1103/RevModPhys.79.291](https://doi.org/10.1103/RevModPhys.79.291) |
+| `Cremer2011` | Moller--Plesset perturbation theory: from small molecule methods to methods for thousands of atoms | [10.1002/wcms.58](https://doi.org/10.1002/wcms.58) |
 | `Almlof1982` | Principles for a direct SCF approach to LICAO–MOab‐initio calculations | [10.1002/jcc.540030314](https://doi.org/10.1002/jcc.540030314) |
 | `Barca2018` | Simple Models for Difficult Electronic Excitations | [10.1021/acs.jctc.7b00994](https://doi.org/10.1021/acs.jctc.7b00994) |
 | `BeebeLinderberg1977` | Simplifications in the generation and transformation of two‐electron integrals in molecular calculations | [10.1002/qua.560120408](https://doi.org/10.1002/qua.560120408) |

@@ -1,5 +1,46 @@
 # Chapter audit
 
+## Author-requested presentation revision (16 October 2026)
+
+- Pulled the author's updates through `0a74b5c` before editing. Retained the
+  new spin material, notation changes, and removal of the old closed-shell
+  hydrogen occupation figure. The approved cover remains unchanged.
+- Added a gold abstract box identifying ESQC 2026, the doctoral audience,
+  and the scope of the two lecture presentations.
+- Completed prose callouts for every existing figure/table. Added captions
+  and labels in place to nine previously unnumbered scientific diagrams and
+  the correlation-consistent shell-content table. The resulting 29 numbered
+  figures/tables all have prose references. The Further reading book images,
+  ESQC group photograph, cover, and inline theorem portraits are not numbered
+  scientific figures.
+- Replaced all 108 top-level align environments by equation/split or, for
+  genuinely parallel columns, equation/aligned. Removed all notag/nonumber
+  commands. Independent formulas formerly separated by manual quad spacing
+  use aligned rows/columns; logical arrows and mathematical enumerations
+  retain appropriate spacing. Equation numbers and cross-references update
+  automatically. Explicit matrix multiplication dots are preserved.
+- Added blue boxes for Pauli exclusion, Brillouin, Koopmans, variational
+  bounds, and the Gaussian product theorem, distinct from violet exercises
+  and green solutions. Authenticated historical portraits accompany the
+  three named results; printed credit/license links and asset provenance are
+  recorded in `chapter-figures/portraits.md`. Full derivations, including the
+  exact IP/EA decompositions, remain outside or inside their original context.
+- Systematized numbered headings, with separate subsections for Slater--Condon
+  rules and spin symmetry, and subsubsections for major SCF, orbital-analysis,
+  dissociation, and integral topics. Derivation cases remain paragraphs.
+  No existing prose or illustration was reordered.
+- Added four DOI-verified correlated-method references at the relevant CI,
+  coupled-cluster, and MP passages. Further reading is byte-for-byte unchanged.
+- `scripts/check_chapter_layout.py --compare-math 0a74b5c` verifies that all
+  593 original displays remain in order, modulo layout-only tokens, while
+  allowing the new Koopmans summary. It also checks labels, callouts,
+  unresolved references, and the absence of legacy equation environments.
+  The source-convention, reference, and numerical integral/RI/GHF checks pass.
+- Full compilation succeeds (114 pages), with no undefined citations or
+  cross-references and no BibTeX warnings. The PDF skill was used for targeted
+  checks of the abstract, five theorem-box designs, new inline captions/table,
+  and added bibliography entries, not a full-chapter overflow audit.
+
 This record concerns the chapter, not modifications to the lecture decks.
 The active frames of `ESQC_Loos_HF.tex` and `ESQC_Loos_BF.tex` are the
 coverage baseline. Commented-out frames are not additional required material.
