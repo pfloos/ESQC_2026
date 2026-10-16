@@ -1,7 +1,6 @@
-# Hartree-Fock
+# Chapter
 
-# Basis & Integrals
-
-- The chapter's RI projection and OS recurrences were checked and corrected;
-  see `chapter-audit.md`. The original slide decks still need the corresponding
-  OS sign corrections and RI clarifications when the slides are next revised.
+- Add abstract in a nice colored text box
+- Maybe add context for this chapter?
+- Maje sure each fig and table are cited in the text
+- use split instead of align and remove notag and nonumber

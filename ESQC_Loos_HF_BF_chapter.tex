@@ -2809,7 +2809,7 @@ occupied spin orbitals are constructed:
 The bar therefore denotes the $\beta$ spin partner of the corresponding
 $\alpha$ spin orbital; both contain the same spatial function.
 
-In the spin-orbital representation, the HF energy is
+In the spin-orbital representation, the Hartree--Fock energy is
 \begin{equation}
   \EHF
   =
@@ -3088,20 +3088,6 @@ minimal-basis \ce{H2},
   \label{eq:h2-rhf-energy}
 \end{equation}
 
-\begin{figure}[htbp]
-  \centering
-  \resizebox{\linewidth}{!}{$\displaystyle
-    \underbrace{\chi_1=\alpha\psi_1,\quad\chi_2=\beta\psi_1}_{\text{occupied}}
-    \qquad
-    \underbrace{\chi_3=\alpha\psi_2,\quad\chi_4=\beta\psi_2}_{\text{virtual}}
-    \qquad\Longleftrightarrow\qquad\psi_1^2
-  $}
-  \caption{Closed-shell occupation of the spatial orbital in the minimal-basis
-  description of \ce{H2}. Adapted from Szabo and Ostlund
-  \citep{SzaboOstlund1996}.}
-  \label{fig:h2-closed-shell}
-\end{figure}
-
 The simple \ce{H2} example contains the entire logic needed for the general
 closed-shell case: every occupied spatial orbital contributes twice to the
 one-electron energy, Coulomb interactions occur between all spin
@@ -3131,14 +3117,14 @@ Starting from the general spin-orbital expression,
 \begin{equation}
   \EHF
   =
-  \sum_{p=1}^{N}\mel{p}{\hh}{p}
+  \sum_{i=1}^{N}\mel{i}{\hh}{i}
   +
   \frac{1}{2}
-  \sum_{p=1}^{N}\sum_{q=1}^{N}
+  \sum_{i=1}^{N}\sum_{j=1}^{N}
   \qty[
-    \braket{pq}{pq}
+    \braket{ij}{ij}
     -
-    \braket{pq}{qp}
+    \braket{ij}{ji}
   ]
   \label{eq:rhf-start-spin}
 \end{equation}
@@ -3150,7 +3136,7 @@ occupied spatial orbital.
 The spin-orbital sum can be separated into its $\alpha$ and $\beta$
 components:
 \begin{align}
-  \sum_{p=1}^{N}\mel{p}{\hh}{p}
+  \sum_{i=1}^{N}\mel{i}{\hh}{i}
   &=
   \sum_{i=1}^{N/2}\mel{i}{\hh}{i}
   +
@@ -3183,46 +3169,43 @@ combinations are possible:
 \end{equation}
 Separating these four possibilities gives
 \begin{align}
-  &\frac{1}{2}
-  \sum_{p=1}^{N}\sum_{q=1}^{N}
+  \frac{1}{2}
+  \sum_{i=1}^{N}\sum_{j=1}^{N}
   \qty[
-    \braket{pq}{pq}
+    \braket*{ij}{ij}
     -
-    \braket{pq}{qp}
+    \braket*{ij}{ji}
   ]
-  \notag\\
-  &\quad=
+  & =
   \frac{1}{2}
   \Bigg\{
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
   \qty(
-    \braket{ij}{ij}
+    \braket*{ij}{ij}
     -
-    \braket{ij}{ji}
+    \braket*{ij}{ji}
   )
-  \notag\\
-  &\qquad\quad+
+  +
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
   \qty(
-    \braket{\Bar{i}j}{\Bar{i}j}
+    \braket*{\Bar{i}j}{\Bar{i}j}
     -
-    \braket{\Bar{i}j}{j\Bar{i}}
+    \braket*{\Bar{i}j}{j\Bar{i}}
   )
   \notag\\
-  &\qquad\quad+
+  &+
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
   \qty(
-    \braket{i\Bar{j}}{i\Bar{j}}
+    \braket*{i\Bar{j}}{i\Bar{j}}
     -
-    \braket{i\Bar{j}}{\Bar{j}i}
+    \braket*{i\Bar{j}}{\Bar{j}i}
   )
-  \notag\\
-  &\qquad\quad+
+  +
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
   \qty(
-    \braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
+    \braket*{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
     -
-    \braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
+    \braket*{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
   )
   \Bigg\}
   \label{eq:rhf-four-spin-combinations}
@@ -3231,13 +3214,13 @@ Separating these four possibilities gives
 The four Coulomb contributions all survive because they involve diagonal
 spin overlaps. After integration over spin,
 \begin{equation}
-  \braket{ij}{ij}
+  \braket*{ij}{ij}
   =
-  \braket{\Bar{i}j}{\Bar{i}j}
+  \braket*{\Bar{i}j}{\Bar{i}j}
   =
-  \braket{i\Bar{j}}{i\Bar{j}}
+  \braket*{i\Bar{j}}{i\Bar{j}}
   =
-  \braket{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
+  \braket*{\Bar{i}\Bar{j}}{\Bar{i}\Bar{j}}
   =
   \rbraket{ii}{jj}
 \end{equation}
@@ -3246,15 +3229,15 @@ Exchange behaves differently. The two same-spin combinations survive,
 \begin{equation}
   \braket{ij}{ji}
   =
-  \braket{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
+  \braket*{\Bar{i}\Bar{j}}{\Bar{j}\Bar{i}}
   =
   \rbraket{ij}{ji}
 \end{equation}
 whereas the two opposite-spin exchange integrals vanish,
 \begin{equation}
-  \braket{\Bar{i}j}{j\Bar{i}}
+  \braket*{\Bar{i}j}{j\Bar{i}}
   =
-  \braket{i\Bar{j}}{\Bar{j}i}
+  \braket*{i\Bar{j}}{\Bar{j}i}
   =
   0
 \end{equation}
@@ -3276,11 +3259,11 @@ produce
 Consequently,
 \begin{equation}
   \frac{1}{2}
-  \sum_{p=1}^{N}\sum_{q=1}^{N}
+  \sum_{i=1}^{N}\sum_{j=1}^{N}
   \qty[
-    \braket{pq}{pq}
+    \braket{ij}{ij}
     -
-    \braket{pq}{qp}
+    \braket{ij}{ji}
   ]
   =
   \sum_{i=1}^{N/2}\sum_{j=1}^{N/2}
@@ -3386,19 +3369,13 @@ The one-electron contribution is immediately
 
 There are three electron pairs. The two electrons in $\psi_1$ have opposite
 spin and contribute
-\begin{equation}
-  J_{11}
-\end{equation}
+  $J_{11}$.
 The $\alpha$ electron in $\psi_2$ interacts Coulombically with both
 electrons in $\psi_1$, giving
-\begin{equation}
-  2J_{12}
-\end{equation}
+  $2J_{12}$.
 Exchange occurs only with the $\alpha$ electron in $\psi_1$, and therefore
 contributes
-\begin{equation}
-  -K_{12}
-\end{equation}
+  $-K_{12}$.
 The total energy is consequently
 \begin{equation}
   E_\text{HF}
@@ -3454,20 +3431,15 @@ are four Coulomb pairs but only two same-spin exchange pairs, giving
 
 The singly occupied $\psi_3$ orbital interacts with both electrons in each
 doubly occupied orbital. Hence,
-\begin{equation}
-  2J_{13}-K_{13}
-\end{equation}
+  $2J_{13}-K_{13}$
 arises from the interaction between $\psi_1$ and $\psi_3$, and
-\begin{equation}
-  2J_{23}-K_{23}
-\end{equation}
+  $2J_{23}-K_{23}$
 from the interaction between $\psi_2$ and $\psi_3$.
 
 Collecting all terms gives
 \begin{equation}
-  \begin{split}
     E_\text{HF}
-    ={}&
+    =
     2h_{11}
     +
     2h_{22}
@@ -3481,8 +3453,7 @@ Collecting all terms gives
     J_{22}
     -
     2K_{12}
-    \\
-    &+
+    +
     2J_{13}
     +
     2J_{23}
@@ -3490,7 +3461,6 @@ Collecting all terms gives
     K_{13}
     -
     K_{23}
-  \end{split}
 \end{equation}
 
 \end{hfsolution}
