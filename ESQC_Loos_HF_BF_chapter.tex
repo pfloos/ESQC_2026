@@ -902,17 +902,6 @@ this antisymmetry is preserved by the electronic dynamics.
 
 \paragraph{The Pauli principle and the exchange hole.}
 
-\begin{hftheorem}{Pauli exclusion principle}
-\hftheoremportrait{chapter-figures/portrait-pauli.jpg}{Wolfgang Pauli}
-{An electronic wavefunction is antisymmetric under exchange of two complete
-space--spin coordinates. Consequently, no two electrons can occupy the same
-spin orbital. In particular, the wavefunction vanishes when two electrons
-have identical space--spin coordinates \citep{Pauli1925}.}
-{Portrait: Bettina Katzenstein / ETH-Bibliothek Z\"urich, Bildarchiv,
-\href{https://commons.wikimedia.org/wiki/File:Wolfgang_Pauli_ETH-Bib_Portr_01042_(cropped).jpg}{Portr 01042 (cropped by Xabier)},
-\href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}.}
-\end{hftheorem}
-
 A particularly important consequence follows immediately from
 Eq.~\eqref{eq:pauli-antisymmetry}. If two fermions are assigned the same
 composite coordinate, $\bx=\bx_1=\bx_2$, then
@@ -928,6 +917,17 @@ and hence
 The probability of finding two electrons with the same spin at exactly the
 same spatial position therefore vanishes. This is one manifestation of the
 Pauli exclusion principle \citep{Pauli1925}.
+
+\begin{hftheorem}{Pauli exclusion principle}
+\hftheoremportrait{chapter-figures/portrait-pauli.jpg}{Wolfgang Pauli}
+{An electronic wavefunction is antisymmetric under exchange of two complete
+space--spin coordinates. Consequently, no two electrons can occupy the same
+spin orbital. In particular, the wavefunction vanishes when two electrons
+have identical space--spin coordinates \citep{Pauli1925}.}
+{Portrait: Bettina Katzenstein / ETH-Bibliothek Z\"urich, Bildarchiv,
+\href{https://commons.wikimedia.org/wiki/File:Wolfgang_Pauli_ETH-Bib_Portr_01042_(cropped).jpg}{Portr 01042 (cropped by Xabier)},
+\href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}.}
+\end{hftheorem}
 
 It is worth emphasizing that the fundamental statement is the
 \emph{antisymmetry of the many-electron wavefunction}, not merely the familiar
@@ -4352,17 +4352,15 @@ chosen quantization axis,
 \end{align}
 The exact eigenfunctions of $\chH$ may therefore be chosen as simultaneous
 eigenfunctions of $\chS^2$ and $\chS_z$:
-\begin{equation}
-\begin{split}
+\begin{align}
   \purple{\chS^2}\ket{S,M_S}
   &=
   S(S+1)\ket{S,M_S}
-  \\
+  &
   \violet{\chS_z}\ket{S,M_S}
   &=
   M_S\ket{S,M_S}
-\end{split}
-\end{equation}
+\end{align}
 
 The quantum number $S$ determines the spin multiplicity $2S+1$.
 Thus,
@@ -4411,7 +4409,6 @@ electron, the determinant is a pure singlet:
   =
   0
 \end{equation}
-
 Thus, a closed-shell RHF determinant is simultaneously an eigenfunction of
 $\chS_z$ and $\chS^2$.
 
@@ -4425,11 +4422,8 @@ in general,
   \neq
   S(S+1)\ket{\Psi_\text{UHF}}
 \end{equation}
-Hence,
-\begin{equation}
-  \text{every collinear RHF or UHF determinant has definite $M_S$, but
-  only special determinants have definite $S$}
-\end{equation}
+Hence, every collinear RHF or UHF determinant has definite $M_S$, but
+only special determinants have definite $S$.
 
 For $N^\alpha\geq N^\beta$, the expectation value of $\chS^2$ for a UHF
 determinant is
@@ -4455,12 +4449,9 @@ determinant is
 If the $\alpha$ and $\beta$ spatial orbitals coincide pairwise, the overlap
 terms take their maximal values and the spin-pure restricted result is
 recovered. As the two spin manifolds relax independently, the value of
-$\expval{\chS^2}$ may depart from the desired eigenvalue.
+$\expval*{\chS^2}$ may depart from the desired eigenvalue.
 
-For a target high-spin state with
-\begin{equation}
-  S=M_S
-\end{equation}
+For a target high-spin state with $S=M_S$,
 the spin contamination may be quantified as
 \begin{equation}
   \Delta S^2
@@ -4475,7 +4466,6 @@ higher-spin states; a doublet may be contaminated by quartets, sextets, and
 higher-spin states; and a triplet may be contaminated by quintets, septets,
 and higher-spin states. Restoring spin symmetry generally requires
 spin projection or a linear combination of determinants.
-
 The last point is particularly important: a linear combination of
 determinants can possess a well-defined total spin even when the individual
 determinants do not.
@@ -4501,7 +4491,6 @@ There are two distinct $M_S=0$ determinants,
 \end{align}
 The first promotes the $\alpha$ electron and leaves the $\beta$ electron in
 orbital $i$, whereas the second promotes the $\beta$ electron.
-
 Both determinants contain one $\alpha$ and one $\beta$ electron in the two
 open-shell orbitals. Consequently,
 \begin{equation}
@@ -4562,20 +4551,13 @@ but are not individually eigenfunctions of $\chS^2$.}
 Each determinant has $M_S=0$, but contains equal singlet and triplet
 character. This provides a concrete demonstration that being an eigenfunction
 of $\violet{\chS_z}$ does not imply being an eigenfunction of
-$\purple{\chS^2}$. In particular,
-\begin{equation}
-  \boxed{
-  \text{an open-shell determinant need not be a pure spin function}
-  }
-\end{equation}
+$\purple{\chS^2}$. In particular, an open-shell determinant need not be a pure spin function.
 
 In the determinant basis
-\begin{equation}
-  \qty{
+$\qty{
   \ket{D_\alpha},
   \ket{D_\beta}
-  }
-\end{equation}
+  }$,
 the matrix representation of $\chS^2$ is
 \begin{equation}
   [\purple{\chS^2}]_{\{D_\alpha,D_\beta\}}
@@ -4587,10 +4569,8 @@ the matrix representation of $\chS^2$ is
 \end{equation}
 The determinant basis is therefore not spin adapted. Diagonalizing this
 $2\times2$ matrix produces eigenvectors with definite values of $S$.
-
 The symmetric combination has eigenvalue zero,
-\begin{equation}
-\begin{split}
+\begin{align}
   \ket{{}^1\Psi_i^a}
   &=
   \frac{
@@ -4598,18 +4578,13 @@ The symmetric combination has eigenvalue zero,
     \red{+}
     \ket{D_\beta}
   }{\sqrt{2}}
-  \\
+  &
   \purple{\chS^2}
   \ket{{}^1\Psi_i^a}
   &=
   0
-\end{split}
-\end{equation}
-and is therefore a pure singlet,
-\begin{equation}
-  S=0
-\end{equation}
-
+\end{align}
+and is therefore a pure singlet $S=0$.
 The antisymmetric combination has eigenvalue two,
 \begin{equation}
   \ket{{}^{3,0}\Psi_i^a}
@@ -4628,17 +4603,9 @@ with
   2
   \ket{{}^{3,0}\Psi_i^a}
 \end{equation}
-and therefore
-\begin{equation}
-  S=1
-\end{equation}
+and therefore $S=1$.
 It is the $M_S=0$ component of a triplet.
-
-Thus,
-\begin{equation}
-  \text{spin adaptation is the diagonalization of $\chS^2$
-  in a determinant space.}
-\end{equation}
+Thus, spin adaptation is the diagonalization of $\chS^2$ in a determinant space.
 
 \paragraph{Spatial and spin symmetry.}
 
@@ -4667,7 +4634,6 @@ as
 The spatial factor is \green{symmetric} under exchange of the two electrons,
 whereas the spin factor is \red{antisymmetric}. Their product is therefore
 antisymmetric, as required for fermions.
-
 For the $M_S=0$ triplet,
 \begin{equation}
   \ket{{}^{3,0}\Psi_i^a}
@@ -4691,16 +4657,13 @@ Here the spatial factor is \red{antisymmetric} and the spin factor is
 \begin{equation}
   \text{the total electronic wavefunction is antisymmetric}
 \end{equation}
-
 This complementary symmetry between spatial and spin parts is a direct
 consequence of the Pauli principle introduced earlier in the chapter.
 
 \paragraph{The three triplet components.}
 
 A state with $S=1$ contains three components corresponding to
-\begin{equation}
-  M_S=+1,\quad0,\quad-1
-\end{equation}
+$M_S=+1,0,-1$.
 For the two open-shell orbitals $i$ and $a$, these are
 \begin{align}
   \ket{{}^{3,+1}\Psi_i^a}
@@ -4716,18 +4679,15 @@ For the two open-shell orbitals $i$ and $a$, these are
   \ket{\cdots i^\beta a^\beta\cdots}
 \end{align}
 All three belong to the same spin multiplet and satisfy
-\begin{equation}
-\begin{split}
+\begin{align}
   \purple{\chS^2}\ket{1,M_S}
   &=
   2\ket{1,M_S}
-  \\
+  &
   \violet{\chS_z}\ket{1,M_S}
   &=
   M_S\ket{1,M_S}
-\end{split}
-\end{equation}
-
+\end{align}
 The components are connected by the spin ladder operators,
 \begin{equation}
   \underbrace{
@@ -4847,7 +4807,6 @@ of an interacting pair:
   ]
   \chi_i(\bx)
 \end{equation}
-
 Consequently,
 \begin{equation}
   \fdv{E_\text{HF}}{\chi_i^*(\bx)}
@@ -4862,7 +4821,6 @@ Consequently,
   }
   \chi_i(\bx)
 \end{equation}
-
 This motivates the definition of the Fock operator,
 \begin{equation}
   \boxed{
@@ -4888,7 +4846,6 @@ of the core Hamiltonian and the average interaction with all occupied spin
 orbitals. The Coulomb term represents the classical electrostatic
 interaction with the electronic distribution, whereas the exchange term is
 a purely fermionic contribution arising from antisymmetry.
-
 As discussed previously, the Coulomb operator is local while the exchange
 operator is nonlocal. The Fock operator is therefore, in general, a
 nonlocal one-electron operator.
@@ -4928,7 +4885,6 @@ The stationarity condition therefore becomes
   \epsilon_{ji}\chi_j(\bx)
   \label{eq:general-hf-equations}
 \end{equation}
-
 These are the general Hartree--Fock equations. An important feature is that
 the Fock operator acting on a given occupied spin orbital need not return
 that same orbital. It is only required to remain within the space spanned
@@ -4958,7 +4914,6 @@ The matrix of Lagrange multipliers is therefore Hermitian,
 \begin{equation}
   \bepsilon^\dag=\bepsilon
 \end{equation}
-
 This property is crucial because every Hermitian matrix can be diagonalized
 by a unitary transformation.
 
@@ -4975,7 +4930,6 @@ exchange operators:
 \end{equation}
 The orbitals are therefore required to satisfy an equation containing an
 operator constructed from those same orbitals.
-
 Schematically,
 \begin{equation}
   \{\chi_i\}
@@ -4991,8 +4945,7 @@ self-consistent field (SCF).
 In practice, one starts from a trial set of orbitals, constructs the
 corresponding Fock operator, obtains a new set of orbitals, and repeats the
 procedure until the orbitals, density, and energy are self-consistent.
-
-The variational equations establish a stationary point of the HF energy.
+The variational equations establish a stationary point of the Hartree--Fock energy.
 They do not, by themselves, guarantee that a particular SCF solution is the
 global minimum: multiple HF stationary solutions may exist.
 
@@ -5003,38 +4956,32 @@ global minimum: multiple HF stationary solutions may exist.
 The HF determinant is not associated with a unique set of occupied
 orbitals. Consider a unitary transformation among the occupied spin
 orbitals,
-\begin{equation}
-\begin{split}
+\begin{align}
   \widetilde{\chi}_i(\bx)
   &=
   \sum_j
   \chi_j(\bx)
   \purple{U}_{ji}
-  \\
+  &
   \purple{\bU}^\dag\cdot\purple{\bU}
   &=
   \bI
-\end{split}
   \label{eq:occupied-unitary-rotation}
-\end{equation}
+\end{align}
 The transformed orbitals remain orthonormal:
 \begin{equation}
-\begin{split}
   \braket{\widetilde{\chi}_i}{\widetilde{\chi}_j}
-  &=
+  =
   \sum_{kl}
   U_{ki}^*
   U_{lj}
   \braket{\chi_k}{\chi_l}
-  \\
-  &=
+  =
   \sum_k
   U_{ki}^*U_{kj}
   =
   \delta_{ij}
-\end{split}
 \end{equation}
-
 More importantly, the occupied one-particle projector is unchanged:
 \begin{equation}
 \begin{split}
@@ -5047,8 +4994,7 @@ More importantly, the occupied one-particle projector is unchanged:
   U_{ji}
   U_{ki}^*
   \chi_k^*(\bx')
-  \\
-  &=
+  =
   \sum_{jk}
   \chi_j(\bx)
   \delta_{jk}
@@ -5104,12 +5050,8 @@ Hence,
 \end{equation}
 The two determinants differ only by an irrelevant global phase and describe
 the same physical state.
-
-Thus,
-\begin{equation}
-  \text{unitary rotations within the occupied space leave
-  $E_\text{HF}$ and $\Psi_\text{HF}$ unchanged}
-\end{equation}
+Thus, unitary rotations within the occupied space leave
+$E_\text{HF}$ and $\Psi_\text{HF}$ unchanged.
 
 \paragraph{Canonical Hartree--Fock orbitals.}
 
@@ -5125,12 +5067,8 @@ there exists a unitary matrix $\purple{\bU}$ such that
   \cdot
   \purple{\bU}
 \end{equation}
-is diagonal:
-\begin{equation}
-  \widetilde{\epsilon}_{ij}
-  =
-  \epsilon_i\delta_{ij}
-\end{equation}
+is diagonal, i.e.,
+$\widetilde{\epsilon}_{ij} = \epsilon_i\delta_{ij}$.
 
 Applying the same unitary transformation to the occupied orbitals converts
 the general HF equations,
@@ -5160,10 +5098,8 @@ canonical Hartree--Fock equations,
 The eigenfunctions $\{\chi_i\}$ are called
 canonical spin orbitals, and the corresponding eigenvalues
 $\{\epsilon_i\}$ are called orbital energies.
-
 Canonicalization does not produce a new Hartree--Fock wavefunction. It is
 only a convenient choice of basis within the same occupied orbital space.
-
 At self-consistency, the Fock operator may also be diagonalized in the
 orthogonal complement of the occupied space. This defines the
 canonical virtual orbitals. The complete canonical orbital set then
@@ -5174,7 +5110,6 @@ satisfies
   \epsilon_p\delta_{pq}
   \label{eq:canonical-fock-diagonal}
 \end{equation}
-
 In particular, the occupied-virtual block vanishes,
 \begin{equation}
   f_{ia}
