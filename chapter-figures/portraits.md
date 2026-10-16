@@ -119,16 +119,23 @@ for display only, leaving the downloaded file intact.
 
 ### Portrait permission still unresolved
 
-The biography text is included for all three people below. Their institutional
-portrait pages are linked, but their images are not copied into this version:
-the Academy pages give no explicit reproduction license. Absence of a license
-is not treated as a public-domain statement or as permission.
+At the author's explicit request on 17 October 2026, the three portraits below
+are included as **credited draft reproductions, permission pending**. Each box
+prints that warning in bold. The Academy pages give no explicit reproduction
+license, photographer, or photograph date; source credit does not establish
+permission or ownership. No public-domain or Creative Commons status is claimed.
+Obtain permission from the relevant rights holder, or replace/remove the images,
+before releasing a permission-cleared publication. User approval to include them
+in this draft is not a grant of copyright permission.
 
 - [Vladimir Fock](https://www.iaqms.org/deceased/fock.php).
+  Asset: `portrait-fock.jpg`, 180 x 233 pixels; [original image](https://www.iaqms.org/images/deceased/fock.jpg).
   Biography also checked against [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Fock/).
 - [George Garfield Hall](https://www.iaqms.org/deceased/hall.php).
+  Asset: `portrait-hall.jpg`, 180 x 233 pixels; [original image](https://www.iaqms.org/images/deceased/hall.jpg).
   Biography: [IAQMS obituary](https://www.iaqms.org/obituary/GeorgeGarfieldHall.pdf).
 - [Samuel Francis Boys](https://www.iaqms.org/deceased/boys.php).
+  Asset: `portrait-boys.jpg`, 180 x 301 pixels; [original image](https://www.iaqms.org/images/deceased/boys.jpg).
   Biography also checked against the [Royal Society record](https://makingscience.royalsociety.org/people/na1119/samuel-francis-boys).
 
 ### Additional biographical sources for the existing portraits

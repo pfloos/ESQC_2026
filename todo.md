@@ -1,4 +1,4 @@
 # Chapter
 
-- [x] Add eleven historical biographies in distinct colored boxes, with eight archival portraits
-- [ ] Confirm reproduction permission for the Fock, Hall, and Boys portraits before adding those three images
+- [x] Add eleven historical biographies in distinct colored boxes, each with an archival portrait
+- [ ] Clear reproduction rights for the credited draft portraits of Fock, Hall, and Boys before final publication (author approved draft inclusion)

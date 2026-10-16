@@ -509,3 +509,18 @@ coverage baseline. Commented-out frames are not additional required material.
   references. All four source/reference/layout/integral checks pass. The PDF
   skill was used for a targeted inspection of the new biography boxes, not
   a full-chapter visual or overflow audit. The approved cover is untouched.
+
+## Author-approved draft portraits (17 October 2026)
+
+- Pulled before editing; the remote was up to date at `4d7a1db`.
+- At the author's explicit request, added the IAQMS portraits of Fock, Hall,
+  and Boys as credited draft reproductions. Each box prints a bold
+  "Draft reproduction: permission pending" warning. No reuse license,
+  photographer identity, or image date is invented. Provenance records the
+  original image URLs and the need for rights clearance before final publication.
+- All eleven biographies now have portraits. The three biography texts,
+  existing chapter text, 584 displayed equations, and Further reading are
+  unchanged. The cover and bibliography are untouched.
+- Full compilation succeeds at 117 pages. All four chapter checks pass,
+  with no undefined citations or references. The PDF skill was used only for
+  targeted review of the three updated biography boxes and their notices.
