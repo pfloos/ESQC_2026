@@ -77,6 +77,9 @@ def main():
         for name, source in sources.items():
             if re.search(r"\\begin\{aligned\}|\\(?:notag|nonumber)\b", source):
                 errors.append(f"Legacy equation layout in {name}")
+            for theorem in re.finditer(r"\\begin\{hftheorem\}.*?\\end\{hftheorem\}", source, re.S):
+                if r"\boxed" in theorem[0]:
+                    errors.append(f"Redundant boxed equation inside a theorem panel in {name}")
     preserved = 0
     if args.compare_math:
         for name in FILES:

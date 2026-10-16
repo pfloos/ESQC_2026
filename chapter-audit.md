@@ -1,5 +1,38 @@
 # Chapter audit
 
+## Systematic equation highlights and alignment convention (16 October 2026)
+
+- Retained the author's four existing boxed takeaway statements and added
+  43 targeted highlights across HF, basis functions, and molecular integrals.
+  The chapter now has 47 uses of `\boxed`: principal defining/working
+  equations and conceptual takeaways are highlighted; intermediate algebra
+  and repeated formulas are not. In multiline derivations, only the final
+  expression is boxed. No extra frame is added inside a colored theorem box,
+  and existing exercise/solution styling and semantic colors are unchanged.
+- Highlights cover the determinant ansatz, orbital expansion, HF energies,
+  integral notation, Fock operator, canonical and matrix equations,
+  orthogonalization, IP/EA corrections, density, SCF/DIIS/MOM working results,
+  Pople--Nesbet equations, GHF spinors and variational hierarchy, plane waves,
+  primitive/contracted Gaussians, CBS extrapolation, counterpoise correction,
+  fundamental ERIs, Boys functions, contracted HRRs, screening, and RI.
+- At the author's clarification, replaced all 41 equation/aligned groups:
+  40 parallel groups now use standalone align; the continued UHF energy
+  expression uses equation/split. The paired boxed Pople--Nesbet equations
+  use two native align rows. No notag or nonumber commands were introduced.
+  Equation numbers and existing references update automatically.
+- Updated the equation formatter and layout checks to enforce this convention
+  and prevent redundant boxed equations inside theorem panels. Content
+  comparison ignores only the balanced outer boxing delimiters, in addition
+  to the existing layout tokens: all 594 displays from `0682a1e` are preserved
+  in order. Mathematical expressions, derivation steps, explicit matrix dots,
+  notation commands, prose, bibliography, cover, and Further reading remain
+  unchanged.
+- Full compilation succeeds (115 pages). All four chapter checks pass, with
+  no undefined citations/references or BibTeX warnings. The PDF skill was used
+  for targeted checks of the new highlights, including determinant, density/
+  Fock, Pople--Nesbet, and integral/Boys-function results; no full-chapter
+  layout audit was undertaken.
+
 ## Author-requested presentation revision (16 October 2026)
 
 - Pulled the author's updates through `0a74b5c` before editing. Retained the

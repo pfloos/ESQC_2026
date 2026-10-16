@@ -45,6 +45,9 @@
 \graphicspath{{fig/}}
 
 % Color palette used throughout the chapter.
+% Equation emphasis: \boxed marks selected defining/working equations and
+% takeaways, or the final expression of a derivation. Intermediate algebra,
+% repeated formulas, and results already in colored theorem boxes stay plain.
 \definecolor{hfNavy}{HTML}{17324D}
 \definecolor{hfBlue}{HTML}{1769AA}
 \definecolor{hfTeal}{HTML}{007C83}
@@ -1039,13 +1042,14 @@ Thus,
 \begin{equation}
 \begin{split}
   \Psi_\text{HF}(\bx_1,\ldots,\bx_N)
-  &=
+  &=\boxed{
   \frac{1}{\sqrt{N!}}
   \mdet{
     \chi_1(\bx_1)&\chi_2(\bx_1)&\cdots&\chi_N(\bx_1)\\
     \chi_1(\bx_2)&\chi_2(\bx_2)&\cdots&\chi_N(\bx_2)\\
     \vdots&\vdots&\ddots&\vdots\\
     \chi_1(\bx_N)&\chi_2(\bx_N)&\cdots&\chi_N(\bx_N)
+  }
   }
   \\
   &\equiv
@@ -1148,11 +1152,13 @@ The spatial orbitals are not represented directly as arbitrary continuous
 functions. Instead, each is expanded in a finite set of $K$ prescribed basis
 functions,
 \begin{equation}
+  \boxed{
   \blue{\psi_p^\sigma(\br)}
   =
   \sum_{\mu=1}^{K}
   C_{\mu p}^{\sigma}
   \green{\phi_\mu(\br)}
+  }
   \label{eq:lcao-introduction}
 \end{equation}
 The coefficients $C_{\mu p}^{\sigma}$ then become the quantities to be
@@ -1723,6 +1729,7 @@ energy expression
 \end{equation}
 Equivalently,
 \begin{equation}
+  \boxed{
   \EHF
   =
   \sum_{i=1}^{N}h_{ii}
@@ -1733,6 +1740,7 @@ Equivalently,
   \qty(
     \cJ_{ij}-\cK_{ij}
   )
+  }
   \label{eq:hf-energy-spin-orbitals-double}
 \end{equation}
 
@@ -2010,11 +2018,13 @@ indices in the ket.
 This observation motivates the introduction of the
 antisymmetrized two-electron integral,
 \begin{equation}
+  \boxed{
   \mel{ij}{}{kl}
   =
   \braket{ij}{kl}
   -
   \braket{ij}{lk}
+  }
   \label{eq:antisymmetrized-eri}
 \end{equation}
 Explicitly,
@@ -2107,9 +2117,11 @@ the second pair belongs to electron coordinate $\bx_2$:
 The two notations therefore differ only by an index permutation. Comparing
 Eqs.~\eqref{eq:eri-physicists} and \eqref{eq:eri-chemists} gives
 \begin{equation}
+  \boxed{
   \braket{ij}{kl}
   =
   \rbraket{ik}{jl}
+  }
   \label{eq:phys-chem-map}
 \end{equation}
 This simple correspondence is worth remembering:
@@ -3383,6 +3395,7 @@ Introducing the spatial-orbital Coulomb and exchange integrals
 \end{align}
 the same expression takes the compact form
 \begin{equation}
+  \boxed{
   \EHF
   =
   2\sum_{i=1}^{N/2}h_{ii}
@@ -3392,6 +3405,7 @@ the same expression takes the compact form
   \qty(
     2J_{ij}-K_{ij}
   )
+  }
   \label{eq:rhf-energy-jk}
 \end{equation}
 
@@ -4550,7 +4564,9 @@ character. This provides a concrete demonstration that being an eigenfunction
 of $\violet{\chS_z}$ does not imply being an eigenfunction of
 $\purple{\chS^2}$. In particular,
 \begin{equation}
+  \boxed{
   \text{an open-shell determinant need not be a pure spin function}
+  }
 \end{equation}
 
 In the determinant basis
@@ -4849,6 +4865,7 @@ Consequently,
 
 This motivates the definition of the Fock operator,
 \begin{equation}
+  \boxed{
   \hf(\bx)
   =
   \hh(\bx)
@@ -4861,6 +4878,7 @@ This motivates the definition of the Fock operator,
   }_{
     \Hat{v}^{\text{HF}}(\bx)
     \text{ = Hartree--Fock potential}
+  }
   }
   \label{eq:fock-operator}
 \end{equation}
@@ -5047,10 +5065,12 @@ it is invariant under this transformation.
 
 The determinant itself transforms as
 \begin{equation}
+  \boxed{
   \ket*{\widetilde{\Psi}_\text{HF}}
   =
   \det(\purple{\bU})
   \ket*{\Psi_\text{HF}}
+  }
   \label{eq:det-unitary-transform}
 \end{equation}
 Because $\purple{\bU}$ is unitary,
@@ -5130,9 +5150,11 @@ into
 Dropping the tildes, one obtains the
 canonical Hartree--Fock equations,
 \begin{equation}
+  \boxed{
   \hf(\bx)\chi_i(\bx)
   =
   \epsilon_i\chi_i(\bx)
+  }
   \label{eq:canonical-hf}
 \end{equation}
 The eigenfunctions $\{\chi_i\}$ are called
@@ -5367,6 +5389,7 @@ By comparison, the Hartree--Fock energy is
 \end{equation}
 Thus,
 \begin{equation}
+  \boxed{
   E_\text{HF}
   =
   \sum_i\epsilon_i
@@ -5374,6 +5397,7 @@ Thus,
   \frac{1}{2}
   \sum_{ij}
   \mel{ij}{}{ij}
+  }
   \label{eq:hf-energy-orbital-energies}
 \end{equation}
 Equivalently,
@@ -5716,7 +5740,7 @@ the exact ionization potential may be decomposed as
   -
   E_\text{corr}^{N}
   \\
-  &=
+  &=\boxed{
   -\epsilon_k
   +
   \underbrace{
@@ -5727,6 +5751,7 @@ the exact ionization potential may be decomposed as
     \Delta_\text{corr}^\text{IP}
   }_{
     E_\text{corr}^{N-1}-E_\text{corr}^{N}
+  }
   }
   \label{eq:koopmans-ip-corrections}
 \end{split}
@@ -5773,7 +5798,7 @@ For electron attachment,
   -
   E_\text{corr}^{N+1}
   \\
-  &=
+  &=\boxed{
   -\epsilon_c
   +
   \underbrace{
@@ -5784,6 +5809,7 @@ For electron attachment,
     \Delta_\text{corr}^\text{EA}
   }_{
     E_\text{corr}^{N}-E_\text{corr}^{N+1}
+  }
   }
   \label{eq:koopmans-ea-corrections}
 \end{split}
@@ -5824,6 +5850,7 @@ potential.
 
 Define the $N$-electron Hartree--Fock Hamiltonian as
 \begin{equation}
+  \boxed{
   \underbrace{
     \chH^\text{HF}
   }_{\text{\red{$N$-electron auxiliary operator}}}
@@ -5839,6 +5866,7 @@ Define the $N$-electron Hartree--Fock Hamiltonian as
     +
     \Hat{v}^\text{HF}(\bx_i)
   ]
+  }
   \label{eq:hf-auxiliary-hamiltonian}
 \end{equation}
 Once the HF potential has been converged, $\chH^\text{HF}$ is a sum of
@@ -5996,6 +6024,7 @@ also provides the natural starting point for
 
 The electronic Hamiltonian can be partitioned as
 \begin{equation}
+  \boxed{
   \chH_\text{elec}
   =
   \underbrace{
@@ -6010,6 +6039,7 @@ The electronic Hamiltonian can be partitioned as
       \Hat{v}^\text{HF}(\bx_i)
     ]
   }_{\chV}
+  }
   \label{eq:mp-partition}
 \end{equation}
 The zeroth-order Hamiltonian is therefore the sum of the Fock operators,
@@ -6191,9 +6221,11 @@ Substituting the basis expansion into the MO orthonormality condition gives
 \end{equation}
 In matrix notation,
 \begin{equation}
+  \boxed{
   \bC^\dag\cdot\bS\cdot\bC
   =
   \bI
+  }
   \label{eq:mo-orthonormality-matrix}
 \end{equation}
 
@@ -6321,9 +6353,11 @@ The complete derivation can therefore be summarized as
 
 Collecting all molecular orbitals simultaneously gives
 \begin{equation}
+  \boxed{
   \bF\cdot\bC
   =
   \bS\cdot\bC\cdot\bE
+  }
   \label{eq:roothaan-hall}
 \end{equation}
 These are the Roothaan--Hall equations.
@@ -6417,9 +6451,11 @@ basis.
 
 We seek a nonsingular matrix $\bX$ satisfying
 \begin{equation}
+  \boxed{
   \bX^\dag\cdot\bS\cdot\bX
   =
   \bI
+  }
   \label{eq:orthogonalizer-condition}
 \end{equation}
 The transformed basis functions may be viewed as
@@ -6587,11 +6623,13 @@ where
 A particularly common choice is the
 \red{symmetric, or L\"owdin, orthogonalizer} \citep{Lowdin1950},
 \begin{equation}
+  \boxed{
   \bX
   =
   \bS^{-1/2}
   =
   \bU\cdot\bs^{-1/2}\cdot\bU^\dag
+  }
   \label{eq:lowdin-orthogonalizer}
 \end{equation}
 Indeed,
@@ -6966,7 +7004,8 @@ expansion gives
   &=\frac{1}{2}\sum_{\mu\nu}P_{\nu\mu}
     \qty(H_{\mu\nu}+F_{\mu\nu})
   \\
-  &=\frac{1}{2}\Tr\qty[\bP\cdot(\bH+\bF)]
+  &=\boxed{\frac{1}{2}\Tr\qty[\bP\cdot(\bH+\bF)]
+  }
   \label{eq:hf-energy-matrix}
 \end{split}
 \end{equation}
@@ -7003,12 +7042,13 @@ For a closed-shell system, the density matrix is
   P_{\red{\mu\nu}}
   &=2\sum_{i=1}^{N/2}C_{\red{\mu}i}C_{\red{\nu}i}^*
   \\
-  \bP&=2\bC_\text{o}\cdot\bC_\text{o}^\dag
+  \bP&=\boxed{2\bC_\text{o}\cdot\bC_\text{o}^\dag}
 \end{split}
 \end{equation}
 where $\bC_\text{o}$ contains the occupied MO coefficients. In chemists'
 notation, the closed-shell AO Fock matrix becomes
 \begin{equation}
+  \boxed{
   F_{\red{\mu\nu}}=H_{\red{\mu\nu}}
   +\underbrace{\sum_{\blue{\lambda\sigma}}
     P_{\blue{\sigma\lambda}}
@@ -7018,6 +7058,7 @@ notation, the closed-shell AO Fock matrix becomes
     P_{\blue{\sigma\lambda}}
     \rbraket{\red{\mu}\blue{\sigma}}{\blue{\lambda}\red{\nu}}}
     _{K_{\red{\mu\nu}}=\text{ exchange}}
+  }
   \label{eq:rhf-fock-ao}
 \end{equation}
 The factor of two in $\bP$ accounts for the two electrons occupying each
@@ -7201,9 +7242,11 @@ One may check the energy and/or the density matrix. A more direct test of
 stationarity uses the commutator residual $\be^{(n)}$, which vanishes at
 self-consistency:
 \begin{equation}
+  \boxed{
     \be^{(n)}
     =\bF^{(n)}\cdot\bP^{(n)}\cdot\bS
     -\bS\cdot\bP^{(n)}\cdot\bF^{(n)}
+  }
 \end{equation}
 Accordingly,
 \begin{equation}
@@ -7321,6 +7364,7 @@ together with the normalization constraint. These relations imply
 \end{equation}
 These equations form the augmented DIIS linear system
 \begin{equation}
+  \boxed{
   \pmqty{
     B_{11}&\cdots&B_{1m}&-1\\
     \vdots&\ddots&\vdots&\vdots\\
@@ -7334,6 +7378,7 @@ These equations form the augmented DIIS linear system
   =
   \pmqty{
     0\\ \vdots\\ 0\\ -1
+  }
   }
 \end{equation}
 After solving for the coefficients, the extrapolated Fock matrix is
@@ -7525,7 +7570,7 @@ orbital $\chi_p^\text{new}$, compute
   =\sum_{\mu\nu}C_{\mu i}^{\text{ref}*}
     S_{\mu\nu}C_{\nu p}^\text{new}
   \\
-  w_p&=\sum_{i\in\mathcal{O}_\text{ref}}\abs{O_{ip}}^2
+  w_p&=\boxed{\sum_{i\in\mathcal{O}_\text{ref}}\abs{O_{ip}}^2}
 \end{split}
 \end{equation}
 In matrix form, the overlap matrix between the reference occupied orbitals and
@@ -8079,10 +8124,12 @@ yet they remain coupled through their mutual Coulomb contributions.
 
 The UHF energy comprises three contributions:
 \begin{equation}
+  \boxed{
   E_\text{UHF}
   =\blue{E_\text{UHF}^{\alpha\alpha}}
   +\red{E_\text{UHF}^{\beta\beta}}
   +\violet{E_\text{UHF}^{\alpha\beta}}
+  }
 \end{equation}
 Explicitly,
 \begin{equation}
@@ -8184,11 +8231,12 @@ separate spin-dependent coefficients:
 \end{align}
 The resulting Pople--Nesbet equations \citep{PopleNesbet1954} are
 \begin{align}
-  \blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
-  &=\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha
-  &
+  &\boxed{\blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
+  =\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha}
+  \\
+  &\boxed{
   \red{\bF^\beta}\cdot\red{\bC^\beta}
-  &=\bS\cdot\red{\bC^\beta}\cdot\bE^\beta
+  =\bS\cdot\red{\bC^\beta}\cdot\bE^\beta}
 \end{align}
 Their spin-dependent Fock matrices are
 \begin{equation}
@@ -8648,9 +8696,11 @@ axis. Generalized Hartree--Fock removes this remaining restriction. The key
 idea is that GHF allows every orbital to choose its spin direction.
 A GHF orbital is a two-component spinor:
 \begin{equation}
+  \boxed{
     \chi_p^\text{GHF}(\bx)
     =\alpha(\omega)\blue{\psi_p^\alpha(\br)}
     +\beta(\omega)\red{\psi_p^\beta(\br)}
+  }
 \end{equation}
 Both components are expanded in the same spatial AO basis,
 \begin{equation}
@@ -8836,7 +8886,7 @@ For the corresponding global minima in the same one-electron basis,
     \{\Phi_\text{RHF}\}\subset\{\Phi_\text{UHF}\}
     \subset\{\Phi_\text{GHF}\}
   \qquad\Longrightarrow\qquad
-  \red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}
+  \boxed{\red{E_\text{GHF}\leq E_\text{UHF}\leq E_\text{RHF}}}
 \end{equation}
 A converged UHF determinant may remain unstable to occupied-virtual rotations
 that mix $\alpha$ and $\beta$ orbitals; following a negative-curvature
