@@ -1854,7 +1854,7 @@ orbitals $\chi_i$ and $\chi_j$ is
   =
   h_{ij}
   =
-  \mel{\chi_i}{\hh}{\chi_j}
+  \mel*{\chi_i}{\hh}{\chi_j}
   =
   \int
   \chi_i^*(\bx_1)
@@ -1902,10 +1902,10 @@ Thus, for one-electron quantities, the distinction between physicists' and
 chemists' notation is essentially cosmetic. The important difference appears
 for two-electron integrals.
 
-\paragraph{Electron-repulsion integrals: physicists' notation.}
+\paragraph{Electron-repulsion integrals: Dirac or physicists' notation.}
 
 The matrix element of the Coulomb interaction between two-electron product
-states defines an electron-repulsion integral (ERI). In physicists'
+states defines an electron-repulsion integral (ERI). In Dirac (or physicists')
 notation,
 \begin{equation}
   \braket{ij}{kl}
@@ -1926,7 +1926,7 @@ $i$ and $j$ label the two orbitals in the bra, whereas $k$ and $l$ label
 those in the ket. More importantly, the first and third indices refer to
 electron coordinate $\bx_1$, while the second and fourth refer to $\bx_2$:
 \begin{equation}
-  \braket{
+  \braket*{
     \underbrace{i}_{\bx_1}
     \underbrace{j}_{\bx_2}
   }{
@@ -2298,18 +2298,14 @@ Its norm is
   \Big[
     \braket{\chi_1(1)\chi_2(2)}
             {\chi_1(1)\chi_2(2)}
-  \nonumber\\
-  &\hspace{4em}
     -
     \braket{\chi_1(1)\chi_2(2)}
             {\chi_2(1)\chi_1(2)}
   \nonumber\\
-  &\hspace{4em}
+  &
     -
     \braket{\chi_2(1)\chi_1(2)}
             {\chi_1(1)\chi_2(2)}
-  \nonumber\\
-  &\hspace{4em}
     +
     \braket{\chi_2(1)\chi_1(2)}
             {\chi_2(1)\chi_1(2)}
@@ -2402,8 +2398,6 @@ Using Eq.~\eqref{eq:two-electron-determinant-example},
   \mel{\chi_1(1)\chi_2(2)}
       {\hh(1)+\hh(2)}
       {\chi_1(1)\chi_2(2)}
-  \nonumber\\
-  &\qquad
   -
   \mel{\chi_1(1)\chi_2(2)}
       {\hh(1)+\hh(2)}
@@ -2414,8 +2408,6 @@ Using Eq.~\eqref{eq:two-electron-determinant-example},
   \mel{\chi_2(1)\chi_1(2)}
       {\hh(1)+\hh(2)}
       {\chi_1(1)\chi_2(2)}
-  \nonumber\\
-  &\qquad
   +
   \mel{\chi_2(1)\chi_1(2)}
       {\hh(1)+\hh(2)}
@@ -2459,33 +2451,31 @@ and hence
 \end{equation}
 
 The off-diagonal terms vanish. For example,
-\begin{align}
-  &\mel{\chi_1(1)\chi_2(2)}
+\begin{equation}
+  \mel{\chi_1(1)\chi_2(2)}
       {\hh(1)}
       {\chi_2(1)\chi_1(2)}
-  \nonumber\\
-  &\qquad=
+  =
   \mel{\chi_1}{\hh}{\chi_2}
   \braket{\chi_2}{\chi_1}
   =
   h_{12}\times 0
   =
   0
-\end{align}
+\end{equation}
 and
-\begin{align}
-  &\mel{\chi_1(1)\chi_2(2)}
+\begin{equation}
+  \mel{\chi_1(1)\chi_2(2)}
       {\hh(2)}
       {\chi_2(1)\chi_1(2)}
-  \nonumber\\
-  &\qquad=
+  =
   \braket{\chi_1}{\chi_2}
   \mel{\chi_2}{\hh}{\chi_1}
   =
   0\times h_{21}
   =
   0
-\end{align}
+\end{equation}
 The cancellation therefore does \emph{not} require $h_{12}=0$; it follows
 from the orthogonality of the spectator orbital.
 
@@ -2553,8 +2543,6 @@ Direct expansion gives
     \mel{\chi_1\chi_2}
         {r_{12}^{-1}}
         {\chi_2\chi_1}
-  \nonumber\\
-  &\hspace{5em}
     -
     \mel{\chi_2\chi_1}
         {r_{12}^{-1}}
@@ -2651,10 +2639,7 @@ two-electron system,
   \chi_2(\bx)=\psi(\br)\beta(\omega)
 \end{equation}
 then their exchange integral vanishes because
-$\braket{\alpha}{\beta}=0$:
-\begin{equation}
-  \cK_{12}=0
-\end{equation}
+$\braket{\alpha}{\beta}=0$, i.e., $\cK_{12}=0$.
 This does not mean that exchange is absent from Hartree--Fock theory; rather,
 exchange couples only same-spin spin orbitals. The corresponding
 closed-shell spatial-orbital expression will be derived explicitly in the
@@ -2700,14 +2685,7 @@ There are therefore three one-electron contributions,
 \begin{equation}
   h_{11}+h_{22}+h_{33}
 \end{equation}
-and three distinct orbital pairs,
-\begin{equation}
-  (1,2)
-  \qquad
-  (1,3)
-  \qquad
-  (2,3)
-\end{equation}
+and three distinct orbital pairs: (1,2), (1,3), and (2,3).
 Each pair contributes one Coulomb term and one exchange term. Applying the
 preceding two-electron result to each pair gives
 \begin{equation}
