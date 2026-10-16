@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Offline checks for float callouts, equation layout, and content preservation.
+
+Use --compare-math REF to check that every display in a Git revision is still
+present, in order, modulo layout-only changes. New theorem statements may add
+displays, but may not replace or shorten existing derivations.
+"""
+
+import argparse
+from collections import Counter
+from pathlib import Path
+import re
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[1]
+FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
+FLOAT = re.compile(r"\\begin\{(figure|table)\*?\}.*?\\end\{\1\*?\}", re.S)
+DISPLAY = re.compile(
+    r"\\begin\{(equation\*?|align\*?|gather\*?|multline\*?)\}(.*?)\\end\{\1\}", re.S
+)
+
+
+def uncomment(text):
+    return re.sub(r"(?<!\\)%[^\n]*", "", text)
+
+
+def math_tokens(text):
+    text = uncomment(text)
+    text = re.sub(r"\\label\{[^}]*\}", "", text)
+    text = re.sub(r"\\(?:begin|end)\{(?:split|aligned|gathered)\}", "", text)
+    text = re.sub(r"\\(?:notag|nonumber|qquad|quad)\b", "", text)
+    text = re.sub(r"\\\\(?:\[[^]]*\])?", "", text)
+    return re.sub(r"[\s&]+", "", text)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--compare-math", metavar="REF")
+    parser.add_argument("--allow-old-equations", action="store_true")
+    args = parser.parse_args()
+    sources = {name: uncomment((ROOT / name).read_text()) for name in FILES}
+    joined = "\n".join(sources.values())
+    prose = FLOAT.sub("", joined)
+    errors, floats = [], list(FLOAT.finditer(joined))
+    for match in floats:
+        labels = re.findall(r"\\label\{([^}]+)\}", match[0])
+        if len(labels) != 1:
+            errors.append(f"{match[1]} needs exactly one label: {labels}")
+        elif not re.search(r"\\(?:ref|autoref|cref|Cref)\{" + re.escape(labels[0]) + r"\}", prose):
+            errors.append(f"No text callout outside floats: {labels[0]}")
+    labels = Counter(re.findall(r"\\label\{([^}]+)\}", joined))
+    errors += [f"Duplicate label: {key}" for key, n in labels.items() if n > 1]
+    for key in re.findall(r"\\(?:eqref|ref|autoref)\{([^}]+)\}", joined):
+        if key not in labels:
+            errors.append(f"Unresolved source label: {key}")
+    if not args.allow_old_equations:
+        for name, source in sources.items():
+            if re.search(r"\\begin\{align\*?\}|\\(?:notag|nonumber)\b", source):
+                errors.append(f"Legacy equation layout in {name}")
+    preserved = 0
+    if args.compare_math:
+        for name in FILES:
+            previous = subprocess.check_output(
+                ["git", "show", f"{args.compare_math}:{name}"], cwd=ROOT, text=True
+            )
+            old = [math_tokens(m[2]) for m in DISPLAY.finditer(uncomment(previous))]
+            new = [math_tokens(m[2]) for m in DISPLAY.finditer(sources[name])]
+            position = 0
+            for index, expression in enumerate(old, 1):
+                while position < len(new) and new[position] != expression:
+                    position += 1
+                if position == len(new):
+                    errors.append(f"Display {index} changed or missing in {name}: {expression[:90]}")
+                    break
+                position += 1
+                preserved += 1
+            if name == FILES[0]:
+                pattern = r"\\section\*\{Further reading\}.*?(?=\\section|\Z)"
+                if re.search(pattern, previous, re.S)[0] != re.search(pattern, (ROOT / name).read_text(), re.S)[0]:
+                    errors.append("Further reading has changed")
+    if errors:
+        raise SystemExit("\n".join(errors))
+    print(f"Layout checks passed: {len(floats)} floats labeled and cited in prose")
+    if args.compare_math:
+        print(f"Preserved all {preserved} original displays and Further reading from {args.compare_math}")
+
+
+if __name__ == "__main__":
+    main()

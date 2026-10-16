@@ -73,6 +73,9 @@
   colframe=hfGreenDark,colback=hfGreenLight,colbacktitle=hfGreenDark,
   title={Solution: #1},title after break={Solution (continued): #1},
   before upper={\allowdisplaybreaks[1]}}
+\newtcolorbox{hfabstract}{hfworked,
+  colframe=hfPurple,colback=hfPurple!4,colbacktitle=hfPurple,
+  title={Abstract \textbar\ ESQC 2026}}
 
 \hypersetup{
   colorlinks=true,
@@ -92,6 +95,9 @@
 \titleformat{\subsection}
   {\normalfont\large\bfseries\color{hfNavy}}
   {\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{hfNavy}}
+  {\thesubsubsection}{0.75em}{}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -288,6 +294,28 @@
 \maketitle
 \pagenumbering{roman}
 \hypersetup{pageanchor=true}
+\begin{hfabstract}
+This chapter accompanies the lectures on Hartree--Fock theory and on basis
+sets and molecular integrals at the European Summer School of Quantum
+Chemistry (ESQC) 2026. Intended for doctoral students, it develops the
+single-determinant description of electronic structure from antisymmetry and
+the variational principle through the practical solution of the
+self-consistent-field equations. Explicit derivations connect spin orbitals,
+spatial orbitals, and finite-basis matrix representations. Excited
+determinants, spin symmetry, orbital energies, and the restricted,
+unrestricted, and generalized formulations clarify both the usefulness and
+the limitations of the Hartree--Fock approximation.
+
+The second part examines the functions used to represent molecular orbitals
+and the integrals required to construct their effective Hamiltonian. It
+introduces the principal basis-set families, Gaussian contraction, integral
+recurrence relations, screening, and low-rank representations of
+electron-repulsion integrals. Worked examples, exercises with complete
+solutions, historical references, and computational remarks link the formal
+development to molecular calculations. Throughout, the notation and color
+conventions of the two accompanying lecture presentations are retained.
+\end{hfabstract}
+\clearpage
 \tableofcontents
 \clearpage
 \pagenumbering{arabic}
@@ -2771,7 +2799,7 @@ opposite-spin electrons.
 % H2 example
 % ============================================================================
 
-\paragraph{Closed-shell \ce{H2} in a minimal basis.}
+\subsubsection{Closed-shell \ce{H2} in a minimal basis}
 
 The simplest example is closed-shell \ce{H2} in a minimal basis. There is
 one doubly occupied spatial orbital, $\psi_1(\br)$, from which the two
@@ -3081,7 +3109,7 @@ combinations, and exchange occurs only between same-spin electrons.
 % General closed-shell determinant
 % ============================================================================
 
-\paragraph{General closed-shell determinant.}
+\subsubsection{General closed-shell determinants}
 
 Consider now a system containing an even number $N$ of electrons described
 by a closed-shell RHF determinant. There are $N/2$ occupied spatial orbitals,
@@ -3500,6 +3528,8 @@ denote occupied and virtual spin orbitals, respectively.
 The distinction is always made \emph{relative to the reference determinant}:
 an occupied orbital contains an electron in $\ket{\Psi_0}$, whereas a virtual
 orbital does not.
+Figure~\ref{fig:hf-reference-determinant} illustrates this partition of the
+spin-orbital space into occupied and virtual levels.
 
 \begin{figure}[htbp]
   \centering
@@ -3638,6 +3668,8 @@ excited determinant. This phase has no effect on diagonal expectation
 values, but it is essential when evaluating off-diagonal matrix elements
 between different determinants.
 
+Figure~\ref{fig:excited-determinants} compares the holes and particles created
+by single and double substitutions relative to the reference occupation.
 \begin{figure}[htbp]
   \centering
   \input{chapter-figures/excited-occupations}
@@ -3769,7 +3801,7 @@ more substitutions have a vanishing Hamiltonian matrix element.
 These selection rules are precisely the content of the
 Slater--Condon rules, to which we now turn.
 
-\subsubsection{Slater--Condon rules}
+\subsection{Slater--Condon rules and Brillouin's theorem}
 \label{sec:slater-condon}
 
 The determinants introduced in the previous subsection form an orthonormal
@@ -3800,7 +3832,7 @@ has already been fixed.
 % One-electron operator
 % ============================================================================
 
-\paragraph{One-electron operators.}
+\subsubsection{Matrix elements of one-electron operators}
 
 Consider a general one-electron operator,
 \begin{equation}
@@ -3917,7 +3949,7 @@ More generally,
 % Two-electron operator
 % ============================================================================
 
-\paragraph{Two-electron operators.}
+\subsubsection{Matrix elements of two-electron operators}
 
 Consider now the electron-electron interaction,
 \begin{equation}
@@ -4046,7 +4078,7 @@ Hence,
 % Full Hamiltonian
 % ============================================================================
 
-\paragraph{Slater--Condon rules for the electronic Hamiltonian.}
+\subsubsection{Matrix elements of the electronic Hamiltonian}
 
 Because
 \begin{equation}
@@ -4136,7 +4168,7 @@ a qualitatively different electronic distribution from the ground state.
 % Brillouin
 % ============================================================================
 
-\paragraph{Brillouin's theorem.}
+\subsubsection{Brillouin's theorem}
 
 For a reference and a singly excited determinant, the Slater--Condon rules
 give
@@ -4200,9 +4232,10 @@ occupied-virtual mixing produces no first-order lowering of the energy.
 % Spin
 % ============================================================================
 
-\subsubsection{Spin}
+\subsection{Spin symmetry and spin-adapted determinants}
+\label{sec:spin-symmetry}
 
-\paragraph{Spin quantum numbers.}
+\subsubsection{Spin quantum numbers and collinear determinants}
 
 Excited determinants also provide a useful setting in which to distinguish
 the spin projection $M_S$ from the total spin $S$.
@@ -4256,6 +4289,8 @@ with respect to the same spin quantization axis.
 Every RHF or collinear UHF determinant therefore has a definite value of
 $M_S$. Having a definite $M_S$, however, does \emph{not} imply having a
 definite total spin $S$.
+
+\subsubsection{Spin purity and spin contamination}
 
 \paragraph{Closed-shell RHF.}
 
@@ -4345,7 +4380,7 @@ determinants do not.
 % Spin adaptation
 % ============================================================================
 
-\paragraph{Spin adaptation of singly excited determinants.}
+\subsubsection{Spin adaptation of singly excited determinants}
 
 Consider a closed-shell singlet reference and promote one electron from the
 doubly occupied spatial orbital $i$ to the virtual spatial orbital $a$.
@@ -4843,6 +4878,8 @@ The variational equations establish a stationary point of the HF energy.
 They do not, by themselves, guarantee that a particular SCF solution is the
 global minimum: multiple HF stationary solutions may exist.
 
+\subsubsection{Unitary invariance and canonical orbitals}
+
 \paragraph{Unitary invariance of the occupied orbitals.}
 
 The HF determinant is not associated with a unique set of occupied
@@ -5187,7 +5224,7 @@ self-interaction in Hartree--Fock theory.
 
 
 \end{hfsolution}
-\paragraph{Orbital energies and the total HF energy.}
+\subsubsection{Orbital energies and the total Hartree--Fock energy}
 
 The orbital energies are Lagrange multipliers associated with the
 orthonormality constraints. They should therefore not be interpreted simply
@@ -5631,7 +5668,7 @@ compensation explains why
 % Meaning of the HF Hamiltonian
 % ============================================================================
 
-\paragraph{The auxiliary Hartree--Fock Hamiltonian.}
+\subsubsection{The auxiliary Hartree--Fock Hamiltonian}
 
 The interpretation of orbital energies becomes clearer if we distinguish
 carefully between the physical electronic Hamiltonian and the auxiliary
@@ -5804,7 +5841,7 @@ Equivalently,
 % MP partition
 % ============================================================================
 
-\paragraph{Connection with perturbation theory.}
+\subsubsection{Connection with many-body perturbation theory}
 
 This distinction between the sum of the orbital energies and the HF energy
 also provides the natural starting point for
@@ -6217,7 +6254,7 @@ one-electron functions form a nonorthogonal basis.
 % Orthogonalization
 % ============================================================================
 
-\paragraph{Transformation to an orthonormal basis.}
+\subsubsection{Orthogonalization and the generalized eigenvalue problem}
 
 A generalized Hermitian eigenvalue problem can be converted into an
 ordinary Hermitian eigenvalue problem by transforming to an orthonormal
@@ -6525,7 +6562,7 @@ The answer is the self-consistent-field procedure developed below.
 % Variational meaning of finite basis
 % ============================================================================
 
-\paragraph{Variational meaning of the basis-set approximation.}
+\subsubsection{The variational meaning of the finite basis}
 
 Restricting the orbitals to a finite basis reduces the variational freedom
 available to the Hartree--Fock determinant. Consequently, for a given
@@ -6846,7 +6883,7 @@ solves the associated generalized eigenvalue problem, and uses the occupied
 eigenvectors to construct a new density. The process is repeated until the
 input and output densities describe the same mean field.
 
-\paragraph{Fixed quantities and iterative quantities.}
+\subsubsection{Fixed quantities and the SCF iteration}
 
 The geometry, basis functions, overlap matrix, core Hamiltonian, and
 electron-repulsion integrals remain fixed throughout an SCF calculation. The
@@ -6925,6 +6962,8 @@ orthonormalized space. The symmetric choice changes the original basis as
 little as possible in the L\"owdin sense, whereas the canonical construction
 makes it particularly transparent how directions associated with very small
 overlap eigenvalues can be removed.
+Figure~\ref{fig:ao-orthogonalization} compares the resulting orthonormal bases
+with a Gram--Schmidt construction in a two-function example.
 
 \begin{figure}[htbp]
   \centering
@@ -6937,7 +6976,7 @@ overlap eigenvalues can be removed.
   \label{fig:ao-orthogonalization}
 \end{figure}
 
-\paragraph{Initial guesses for the molecular orbitals or density matrix.}
+\subsubsection{Initial guesses}
 
 Because the Fock matrix cannot be built before a density is available, every
 SCF calculation requires an initial approximation. The quality of this guess
@@ -6953,7 +6992,7 @@ superposition-of-atomic-densities (SAD) guess is obtained from
 tabulated atomic densities. Finally, it is very common and useful to
 read the molecular orbitals from a previous calculation \citep{Lehtola2019}.
 
-\paragraph{SCF convergence.}
+\subsubsection{Convergence criteria}
 
 Small changes in the energy alone do not necessarily imply that the orbitals
 are self-consistent. It is therefore common to monitor both energetic changes
@@ -7016,7 +7055,7 @@ decreasing. DIIS uses this information to form an extrapolated Fock matrix
 whose estimated residual is as small as possible within the affine space
 spanned by the stored iterations \citep{Pulay1980,Pulay1982}.
 
-\paragraph{Residual minimization.}
+\subsubsection{Residual minimization and extrapolation}
 
 Using the $m$ stored iterations, DIIS constructs an extrapolated Fock matrix
 and approximates its error vector as follows. Here $i$ labels a stored
@@ -7123,7 +7162,7 @@ rather than arbitrary. In particular, if all stored Fock matrices were equal,
 their extrapolated combination would reproduce that same matrix. The
 Lagrange multiplier is the algebraic device that enforces this constraint.
 
-\paragraph{DIIS algorithm.}
+\subsubsection{The DIIS algorithm and practical considerations}
 
 The complete algorithm starts from the current density $\bP^{(n)}$, from
 which the corresponding Fock matrix
@@ -7232,7 +7271,7 @@ iterations from replacing it by a lower-energy Aufbau occupation.
 The maximum-overlap method (MOM) provides a practical occupation rule for following
 such a state-specific solution \citep{Gilbert2008}.
 
-\paragraph{Variational collapse.}
+\subsubsection{Variational collapse}
 
 An excited determinant can be generated by promoting one or more electrons,
 but the usual Aufbau occupation does not preserve that configuration.
@@ -7276,7 +7315,7 @@ it is designed to do. To follow a chosen excited configuration, the occupation
 rule must retain the character of the targeted orbitals rather than simply
 selecting the lowest eigenvalues.
 
-\paragraph{Maximum overlap method.}
+\subsubsection{The maximum-overlap criterion}
 
 Let $\bC_\text{o}^\text{ref}$ contain the coefficients of the occupied
 reference spin orbitals defining the target configuration. For every new
@@ -7366,7 +7405,7 @@ that reference space, so the selection is based on the subspace representing
 the target configuration rather than on an arbitrary labeling of individual
 reference orbitals.
 
-\paragraph{MOM-based SCF.}
+\subsubsection{MOM-based SCF and interpretation}
 
 The MOM-SCF cycle is
 \begin{center}
@@ -7440,7 +7479,7 @@ representation: unitary rotations within the occupied or virtual subspaces
 preserve the state, although the rotated orbitals need not remain canonical. This
 freedom motivates localized-orbital representations.
 
-\paragraph{Dipole moments.}
+\subsubsection{Dipole moments}
 
 The dipole moment illustrates the general structure of a one-electron
 property: a quantum-mechanical electronic expectation value is combined with
@@ -7491,7 +7530,7 @@ For example, its $x$ component is
   =\int\phi_\nu^*(\br)\,x\,\phi_\mu(\br)\dd{\br}
 \end{equation}
 
-\paragraph{Charge analysis.}
+\subsubsection{Charge analysis}
 
 An atomic charge is not itself a direct observable of the molecular
 wavefunction. Population analyses define such charges by adopting a rule for
@@ -7536,7 +7575,7 @@ For \red{$\alpha=1/2$}, this becomes
   (\bS^{1/2}\cdot\bP\cdot\bS^{1/2})_{\mu\mu}
 \end{equation}
 
-\paragraph{Localized orbitals.}
+\subsubsection{Localized orbitals}
 
 Canonical orbitals diagonalize the occupied-occupied and virtual-virtual
 blocks of the Fock matrix, but they are often delocalized over an entire
@@ -8055,7 +8094,7 @@ single-parameter problem.
 \end{tikzpicture}
 \end{center}
 
-\paragraph{The RHF problem.}
+\subsubsection{The restricted dissociation limit}
 
 In the restricted description both electrons occupy the gerade bonding
 orbital. The RHF wavefunction and energy are
@@ -8083,7 +8122,7 @@ within RHF. It follows from the restricted ansatz itself: placing both
 electrons in the same spatial orbital inevitably retains the ionic
 configurations together with the covalent ones.
 
-\paragraph{The UHF problem.}
+\subsubsection{Unrestricted symmetry breaking and the Coulson--Fischer point}
 
 The two-dimensional orbital space spanned by $\psi_g$ and $\psi_u$ permits
 the $\alpha$ and $\beta$ orbitals to rotate in opposite directions. The UHF
@@ -8202,6 +8241,7 @@ emerge.
 This is a bifurcation of stationary solutions. The vanishing curvature marks
 the geometry at which an infinitesimal spin-polarizing orbital rotation ceases
 to raise the energy and begins to lower it.
+The three regimes are illustrated in Fig.~\ref{fig:coulson-fischer}.
 
 \begin{figure}[htbp]
 \centering
@@ -8269,6 +8309,8 @@ The restricted and unrestricted limits are
 \end{equation}
 The ionic terms therefore leave a finite RHF error, whereas
 $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$ give the correct UHF limit.
+Figure~\ref{fig:h2-dissociation} compares the resulting schematic dissociation
+curves with a near-exact reference.
 
 \begin{figure}[htbp]
 \centering
@@ -8359,6 +8401,8 @@ $\violet{\chS_z}$. GHF permits each orbital to mix $\alpha$ and $\beta$, so
 in general neither $\purple{\chS^2}$ nor $\violet{\chS_z}$ is preserved.
 GHF therefore does not require a common spin-quantization axis or fixed values
 of $N^\alpha$ and $N^\beta$.
+Figure~\ref{fig:ghf-spin-directions} distinguishes these possibilities from
+a mere global rotation of the common UHF spin axis.
 
 RHF and UHF are consequently contained as special cases of GHF. A GHF
 coefficient matrix has twice as many rows because every spatial basis function
@@ -8511,7 +8555,7 @@ problem as before, now expressed in a doubled spinor space. The off-diagonal
 exchange blocks are precisely the new terms that permit the spin direction to
 rotate away from the common UHF axis.
 
-\paragraph{Variational hierarchy and stability.}
+\subsubsection{Variational hierarchy and stability}
 
 For the corresponding global minima in the same one-electron basis,
 \begin{equation}
@@ -8616,6 +8660,8 @@ Here TICS denotes time-reversal-invariant closed-shell; CCW, charge current
 wave; ASCW, axial spin current wave; ASDW, axial spin density wave; ASW,
 axial spin wave; TSCW, torsional spin current wave; TSDW, torsional spin
 density wave; and TSW, torsional spin wave.
+Figure~\ref{fig:stuber-paldus} displays the connections between these classes
+as successive constraints are released.
 
 \begin{figure}[htbp]
   \centering

@@ -33,12 +33,13 @@ risk of linear dependence.
 
 Basis-set construction follows a LEGO-like philosophy: a small collection of
 well-designed building blocks is combined to describe chemically diverse
-systems.
+systems, as illustrated in Fig.~\ref{fig:basis-building-blocks}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.62\textwidth]{lego}
   \caption{The basis functions are the elementary building blocks from which
   molecular orbitals are assembled.}
+  \label{fig:basis-building-blocks}
 \end{figure}
 
 The analogy also captures transferability. Atom-centered functions designed
@@ -317,6 +318,8 @@ The complete contraction in this example is
  D_iD_jD_kD_l
  \sbraket{s_i^{\alpha_i}s_j^{\alpha_j}}{s_k^{\alpha_k}s_l^{\alpha_l}}
 \end{equation}
+The corresponding exponents and contraction coefficients are listed in
+Table~\ref{tab:carbon-contraction}.
 \begin{table}[htbp]
   \centering
   {\renewcommand{\arraystretch}{1.22}
@@ -356,12 +359,15 @@ functions may refine the radial description, introduce new angular shapes,
 extend the density into the asymptotic region, or resolve the core. The
 appropriate choice depends on which feature controls the target energy or
 property.
+Figure~\ref{fig:basis-set-exchange} shows the Basis Set Exchange interface
+through which the definitions of these basis families can be accessed.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.72\textwidth]{BSE}
   \caption{The Basis Set Exchange provides standardized definitions for a
   large number of orbital and auxiliary basis sets \citep{Pritchard2019}.}
+  \label{fig:basis-set-exchange}
 \end{figure}
 
 \subsubsection{STO-$n$G minimal basis sets}
@@ -557,6 +563,8 @@ The partner's basis functions are retained as ghost functions: they provide
 variational flexibility but carry neither electrons nor nuclear charge. The
 counterpoise expression thereby compares the dimer and both fragments in the
 same one-electron space.
+Figure~\ref{fig:ghost-basis} illustrates the difference between an isolated
+fragment basis and the full dimer basis retained in a counterpoise calculation.
 
 \begin{figure}[htbp]
  \centering
@@ -735,7 +743,7 @@ and nuclear-attraction integrals reduce to Gaussian moments about the product
 center. The $s$-type formulas expose the essential structure before angular
 momentum is introduced.
 
-\paragraph{Kinetic-energy integral.}
+\subsubsection{Kinetic-energy integrals}
 
 The Laplacian of an $s$ Gaussian is
 \begin{equation}
@@ -765,7 +773,7 @@ Gaussian centered at $\blue{\bB}$ twice. It contains both a local curvature
 term, $3\blue{\beta}$, and a term that depends on the separation of the two
 centers.
 
-\paragraph{Nuclear-attraction integral.}
+\subsubsection{Nuclear-attraction integrals}
 
 For a nucleus of charge $Z_C$ located at $\bC$, the nuclear-attraction
 integral introduces the function $F_0$, the zeroth-order Boys function defined
@@ -793,7 +801,7 @@ molecular Hartree--Fock theory. Four basis functions and the nonseparable
 Coulomb kernel appear, but the product theorem reduces the four original
 centers to two Gaussian product centers.
 
-\paragraph{Gaussian-pair reduction.}
+\subsubsection{Gaussian-pair reduction and shell structure}
 
 Applying the Gaussian product rule to the $s$-type factors on both electron
 coordinates gives
@@ -1109,7 +1117,7 @@ local systems because most products of distant basis functions are negligible.
 Screening converts this locality into a computational saving by testing a
 cheap upper bound before evaluating an integral or shell quartet.
 
-\paragraph{Cauchy--Schwarz bounds.}
+\subsubsection{Cauchy--Schwarz bounds}
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
@@ -1136,7 +1144,7 @@ shell pairs. Even so, a cheap upper bound avoids evaluating negligible ERIs.
 The practical use of integral bounds in direct-SCF screening is discussed by
 \citet{HaserAhlrichs1989}.
 
-\paragraph{Shell-quartet screening.}
+\subsubsection{Shell-quartet screening}
 
 At the individual-integral level, only $\order{K^2}$ diagonal factors
 $\rbraket{\red{\ba}\blue{\bb}}{\red{\ba}\blue{\bb}}$ are required to bound
@@ -1199,7 +1207,8 @@ more slowly than that of the short-range Gaussian operator. Nevertheless, the
 data show that the number of numerically significant Coulomb integrals grows
 much more slowly than the formal quartic count in sufficiently large systems.
 
-The complete integral-evaluation strategy has three components. The target
+The complete integral-evaluation strategy has three components, summarized in
+Fig.~\ref{fig:integral-recipe}. The target
 quantities are the two-electron integrals
 $\rbraket{\ba\bb}{\bc\bd}$. Their construction requires the fundamental
 integrals $\rbraket{\bO\bO}{\bO\bO}^{(m)}$, the recurrence relations,
