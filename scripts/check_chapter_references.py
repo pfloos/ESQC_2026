@@ -19,6 +19,7 @@ def main():
     sources = [
         ROOT / "ESQC_Loos_HF_BF_chapter.tex",
         ROOT / "ESQC_Loos_BF_chapter_content.tex",
+        ROOT / "chapter-biographies.tex",
     ]
     errors = []
     entries = {}

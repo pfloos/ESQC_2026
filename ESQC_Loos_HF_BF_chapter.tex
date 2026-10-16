@@ -83,6 +83,28 @@
 \newtcolorbox{hftheorem}[1]{hfworked,
   colframe=hfBlue,colback=hfBlue!3,colbacktitle=hfBlue,
   title={#1},title after break={#1 (continued)}}
+% Short historical biographies have their own warm color and stay together.
+\newtcolorbox{hfhistorical}[1]{hfworked,unbreakable,
+  colframe=hfOrange!75!black,colback=hfOrange!3,
+  colbacktitle=hfOrange!75!black,fontupper=\small,
+  title={Historical perspective: #1}}
+\newcommand{\hfbiography}[4]{%
+  \begin{hfhistorical}{#1}
+  \if\relax\detokenize{#2}\relax
+    #3\par
+  \else
+    \noindent\begin{minipage}[t]{0.17\linewidth}
+      \vspace{0pt}\centering #2
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.79\linewidth}
+      \vspace{0pt}#3
+    \end{minipage}\par
+  \fi
+  \smallskip{\scriptsize\color{hfInk!75}#4\par}
+  \end{hfhistorical}}
+\newcommand{\hfbiophoto}[1]{%
+  \includegraphics[width=\linewidth,height=27mm,keepaspectratio]{#1}}
+\input{chapter-biographies}
 % Portraits are inline illustrations, not numbered floats. Source and license
 % links are printed in each box; full provenance is in chapter-figures/portraits.md.
 \newcommand{\hftheoremportrait}[4]{%
@@ -381,6 +403,9 @@ Historically, Hartree's self-consistent-field construction dates from 1928.
 The incorporation of exchange through antisymmetric wavefunctions was
 developed independently by Fock and Slater in 1930
 \citep{Fock1930,Slater1930}.
+
+\hfBioHartree
+\hfBioFock
 
 \begin{figure}[htbp]
   \centering
@@ -929,6 +954,8 @@ have identical space--spin coordinates \citep{Pauli1925}.}
 \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}.}
 \end{hftheorem}
 
+\hfBioPauli
+
 It is worth emphasizing that the fundamental statement is the
 \emph{antisymmetry of the many-electron wavefunction}, not merely the familiar
 rule that ``two electrons cannot occupy the same state.'' The latter follows
@@ -1008,6 +1035,8 @@ which changes its sign automatically. Likewise, if two one-electron
 functions are identical, two columns become identical and the determinant
 vanishes. Antisymmetry and the Pauli exclusion principle are therefore built
 directly into the determinant structure.
+
+\hfBioSlater
 
 This construction is a Slater determinant. By contrast, the simple
 product
@@ -3905,6 +3934,8 @@ Slater--Condon rules \citep{Slater1929,Condon1930} avoid this combinatorial expa
 matrix elements of one- and two-electron operators directly in terms of
 one- and two-electron orbital integrals.
 
+\hfBioCondon
+
 The central principle is simple: the value of a matrix element depends only
 on the number of spin orbitals by which the two determinants differ. This
 number is often called their degree of substitution. Because a
@@ -4317,6 +4348,8 @@ Hence,
 This result is Brillouin's theorem \citep{Brillouin1932}. The derivation of the HF equations below
 will also establish the stationarity condition used here.
 \end{hftheorem}
+
+\hfBioBrillouin
 
 Brillouin's theorem does not state that singly excited determinants are
 unimportant. Rather, it states that a \emph{stationary HF determinant does
@@ -5397,6 +5430,8 @@ Orbital relaxation and correlation modify these estimates, as the complete
 decompositions below make explicit.
 \end{hftheorem}
 
+\hfBioKoopmans
+
 % ============================================================================
 % Ionization
 % ============================================================================
@@ -6050,6 +6085,9 @@ the basis expansion and overlap metric to orthogonalization, Fock-matrix
 assembly, and the finite-basis energy expression
 \citep{Roothaan1951,Hall1951}.
 
+\hfBioRoothaan
+\hfBioHall
+
 \subsubsection{The basis-set approximation}
 
 The Hartree--Fock equations derived in the previous section are formally
@@ -6590,6 +6628,8 @@ Another frequently used choice is the canonical orthogonalizer \citep{Lowdin1970
 Both choices span the same one-electron space and produce the same
 generalized eigenvalues. They simply correspond to different orthonormal
 representations of that space.
+
+\hfBioLowdin
 
 If some eigenvalues $s_p$ of the overlap matrix are extremely small, the
 factor $s_p^{-1/2}$ becomes very large. In practical implementations,

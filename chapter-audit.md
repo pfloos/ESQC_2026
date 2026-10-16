@@ -485,3 +485,27 @@ coverage baseline. Commented-out frames are not additional required material.
   BibTeX warnings. All three chapter checks pass. The PDF skill was used
   for a targeted check of the bibliography pages containing the additions,
   not a full-chapter layout/overflow audit. The cover is unchanged.
+
+## Historical biographies (17 October 2026)
+
+- Pulled the author's `ddf6742` changes before editing. Preserved the moved
+  Pauli theorem panel, revised spin discussion, equation layouts, and prose.
+- Added eleven short biographies near their relevant discussions: Hartree,
+  Fock, Pauli, Slater, Condon, Brillouin, Koopmans, Roothaan, Hall, Lowdin,
+  and Boys. Warm terracotta boxes distinguish historical context from blue
+  theorems, violet exercises, and green solutions. Box definitions and text
+  are kept separately in `chapter-biographies.tex` for easy author editing.
+- Included eight authentic archival portraits, with institutional biography
+  links, photo credits, and reuse statements. Roothaan and Slater use the
+  Chicago archive's educational/scholarly permission, not a CC license;
+  commercial publication will need separate permission. Fock, Hall, and Boys
+  currently have linked institutional portrait sources only, because their
+  reproduction permissions are not specified. Full provenance and this
+  remaining task are recorded in `chapter-figures/portraits.md` and `todo.md`.
+- Existing chapter text and all 584 displayed equations are preserved, as is
+  Further reading byte-for-byte. The citation checker now reads the new
+  biography file; all 84 bibliography entries remain cited and verified.
+- The complete chapter compiles to 117 pages without undefined citations or
+  references. All four source/reference/layout/integral checks pass. The PDF
+  skill was used for a targeted inspection of the new biography boxes, not
+  a full-chapter visual or overflow audit. The approved cover is untouched.
