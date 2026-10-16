@@ -176,3 +176,47 @@ Brillouin's original article is issue 9 with DOI ending `0309037300`.
 | `Dunlap1979` | On some approximations in applications of Xα theory | [10.1063/1.438728](https://doi.org/10.1063/1.438728) |
 | `Vahtras1993` | Integral approximations for LCAO-SCF calculations | [10.1016/0009-2614(93)89151-7](https://doi.org/10.1016/0009-2614(93)89151-7) |
 
+## Targeted additions approved by the author (16 October 2026)
+
+Added the ten sources proposed in the preceding recommendation, at the
+existing passages they support. The optional Lehtola--Blockhuys--Van Alsenoy
+(2020) review was not added: the author explicitly requested that Further
+reading remain unchanged. Existing figure/table provenance citations are
+retained, including Henderson's Table I credit.
+
+Publication identities and author lists were checked against publisher pages
+and publisher-deposited DOI metadata during the recommendation pass.
+Löwdin (1959) and Gill (1994) are contributed review chapters, not standalone
+journal articles. Gill's author-hosted full text confirms the interpolation
+and downward-recursion discussion (printed pages 167 and 182).
+
+Löwdin's digitized DOI record reports January 1958, but the
+[publisher's volume page](https://onlinelibrary.wiley.com/doi/book/10.1002/9780470143483)
+also gives copyright 1959, and the
+[author's published bibliography](https://onlinelibrary.wiley.com/doi/10.1002/qua.10096)
+lists this contribution as volume 2, pages 207--322 (1959). The entry therefore
+retains the conventional 1959 citation rather than silently adopting the
+inconsistent digitized date.
+
+Payne et al. support the plane-wave representation and computational context,
+not a derivation of molecular HF. Clark et al. support diffuse augmentation;
+Krishnan et al. support the 6-311G contraction; Frisch et al. support the
+supplementary-function discussion. Saunders--Hillier is attached specifically
+to level shifting, not DIIS. Fukutome is cited for the designations in the
+classification discussion without replacing the reproduced-table credit.
+Weigend (2002) is an implementation-level RI-HF reference, complementary to
+the existing Weigend (2006) Coulomb-fitting citation.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Lowdin1959` | Correlation Problem in Many-Electron Quantum Mechanics I. Review of Different Approaches and Discussion of Some Current Ideas | [10.1002/9780470143483.ch7](https://doi.org/10.1002/9780470143483.ch7) |
+| `Lehtola2019` | Assessment of Initial Guesses for Self-Consistent Field Calculations. Superposition of Atomic Potentials: Simple yet Efficient | [10.1021/acs.jctc.8b01089](https://doi.org/10.1021/acs.jctc.8b01089) |
+| `SaundersHillier1973` | A Level-Shifting Method for Converging Closed Shell Hartree-Fock Wave Functions | [10.1002/qua.560070407](https://doi.org/10.1002/qua.560070407) |
+| `Fukutome1981` | Unrestricted Hartree-Fock Theory and Its Applications to Molecules and Chemical Reactions | [10.1002/qua.560200502](https://doi.org/10.1002/qua.560200502) |
+| `Payne1992` | Iterative Minimization Techniques for Ab Initio Total-Energy Calculations: Molecular Dynamics and Conjugate Gradients | [10.1103/RevModPhys.64.1045](https://doi.org/10.1103/RevModPhys.64.1045) |
+| `Krishnan1980` | Self-Consistent Molecular Orbital Methods. XX. A Basis Set for Correlated Wave Functions | [10.1063/1.438955](https://doi.org/10.1063/1.438955) |
+| `Clark1983` | Efficient Diffuse Function-Augmented Basis Sets for Anion Calculations. III. The 3-21+G Basis Set for First-Row Elements, Li-F | [10.1002/jcc.540040303](https://doi.org/10.1002/jcc.540040303) |
+| `Frisch1984` | Self-Consistent Molecular Orbital Methods 25. Supplementary Functions for Gaussian Basis Sets | [10.1063/1.447079](https://doi.org/10.1063/1.447079) |
+| `Gill1994` | Molecular Integrals over Gaussian Basis Functions | [10.1016/S0065-3276(08)60019-2](https://doi.org/10.1016/S0065-3276(08)60019-2) |
+| `Weigend2002` | A Fully Direct RI-HF Algorithm: Implementation, Optimised Auxiliary Basis Sets, Demonstration of Accuracy and Efficiency | [10.1039/B204199P](https://doi.org/10.1039/B204199P) |
+

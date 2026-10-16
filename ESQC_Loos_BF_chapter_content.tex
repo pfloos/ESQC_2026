@@ -185,7 +185,7 @@ pseudopotentials; the cost increases with supercell size; delocalized functions
 provide little real-space sparsity; and the large virtual spaces make
 correlated methods expensive.
 Plane waves are therefore especially effective for periodic valence-electron
-calculations, usually in conjunction with pseudopotentials.
+calculations, usually in conjunction with pseudopotentials \citep{Payne1992}.
 
 \subsection{Slater-type and Gaussian-type orbitals}
 
@@ -413,13 +413,13 @@ and by adding optional diffuse and polarization shells. Their notation
 explicitly records the contractions and augmentations. In
 6-31+G*, the core function is contracted from six primitives; the valence
 space is double-$\zeta$, with contractions of three and one primitives; the
-``+'' adds diffuse functions to non-hydrogen atoms; and ``*'' adds polarization
+``+'' adds diffuse functions to non-hydrogen atoms \citep{Clark1983}; and ``*'' adds polarization
 functions to non-hydrogen atoms, conventionally a $d$ shell. In 6-311++G**,
-the valence space is triple-$\zeta$ with contractions $3,1,1$; the second
+the valence space is triple-$\zeta$ with contractions $3,1,1$ \citep{Krishnan1980}; the second
 ``+'' adds diffuse functions to hydrogen; and the second ``*'' adds
 polarization functions to hydrogen. Finally, 6-311G(2df,2pd) adds two $d$ and
 one $f$ polarization shells to non-hydrogen atoms, and two $p$ and one $d$
-shell to hydrogen.
+shell to hydrogen \citep{Frisch1984}.
 
 The notation describes how the basis is assembled: the contraction pattern is
 followed by symbols or parentheses identifying diffuse and polarization
@@ -668,7 +668,7 @@ products and derivatives can be reduced to a small set of fundamental
 integrals. The discussion below develops that reduction from overlap and
 one-electron terms to four-center electron-repulsion integrals, and then shows
 how recurrence relations and screening turn the resulting formulas into a
-practical algorithm.
+practical algorithm \citep{Gill1994}.
 
 \subsection{The Gaussian product theorem and overlap integrals}
 \label{sec:gaussian-product}
@@ -944,7 +944,7 @@ terms of the error function has an apparent singularity at $x=0$, although
 the Boys function itself is perfectly finite there.
 
 In implementations, $F_m(x)$ is evaluated from pretabulated grid values and
-a Taylor expansion, often with a Chebyshev interpolation table. Lower orders
+a Taylor expansion, often with a Chebyshev interpolation table \citep{Gill1994}. Lower orders
 are then obtained by the downward recurrence
 \begin{equation}
  F_m(x)=\frac{2xF_{m+1}(x)+\exp(-x)}{2m+1}
@@ -1456,7 +1456,7 @@ and optimized auxiliary bases make the fitting error very small
 requirements of Coulomb contractions.
 
 The computational gain is that contractions can be ordered through the
-auxiliary index instead of four orbital indices. The approximation is
+auxiliary index instead of four orbital indices \citep{Weigend2002}. The approximation is
 controlled by the auxiliary basis in RI/DF or by the decomposition threshold
 in Cholesky decomposition.
 

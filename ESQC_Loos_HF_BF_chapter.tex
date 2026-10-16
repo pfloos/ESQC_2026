@@ -5590,7 +5590,7 @@ correlation beyond Hartree--Fock theory.
 In the following decomposition, the superscript $M$ denotes the electron
 number, and $E_\text{corr}^{M}$ is the correlation energy of that system,
 defined as the difference between its exact and optimized HF electronic
-energies at the same nuclear geometry. Writing
+energies at the same nuclear geometry \citep{Lowdin1959}. Writing
 \begin{equation}
   E_\text{exact}^{M}
   =
@@ -7031,7 +7031,7 @@ easy to implement. An inexpensive, though now less common, alternative is to
 use extended H\"uckel theory or a semi-empirical method. A
 superposition-of-atomic-densities (SAD) guess is obtained from
 tabulated atomic densities. Finally, it is very common and useful to
-read the molecular orbitals from a previous calculation.
+read the molecular orbitals from a previous calculation \citep{Lehtola2019}.
 
 \paragraph{SCF convergence.}
 
@@ -7084,7 +7084,7 @@ $m$ previous iterations according to
 \end{equation}
 
 The ordinary SCF iteration should therefore be understood as the underlying
-fixed-point map. Damping, level shifting, and DIIS modify how successive
+fixed-point map. Damping, level shifting \citep{SaundersHillier1973}, and DIIS modify how successive
 approximations are generated, but convergence is always judged against the
 same self-consistency conditions.
 
@@ -8640,6 +8640,8 @@ contains further possibilities depending on whether the orbitals are real or
 complex and which spin and time-reversal symmetries are retained. The
 Stuber--Paldus notation \citep{StuberPaldus2003} organizes these stationary solutions by symmetry and
 by the block structure of their coefficient matrices.
+
+For the Fukutome designations used in the table, see \citet{Fukutome1981}.
 
 The Stuber--Paldus classification is summarized in
 Table~\ref{tab:stuber-paldus}. In this table, $\chK$ denotes complex

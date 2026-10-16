@@ -386,3 +386,28 @@ coverage baseline. Commented-out frames are not additional required material.
 - Full 110-page compilation and all three chapter checks pass. The PDF skill
   was used to inspect only the updated cover; pixel samples confirm the same
   white background above, beside, and through the transparent image regions.
+
+## Targeted reference additions (16 October 2026)
+
+- Added the ten author-approved references: Lowdin (1959), Lehtola (2019),
+  Saunders--Hillier (1973), Fukutome (1981), Payne et al. (1992), Krishnan
+  et al. (1980), Clark et al. (1983), Frisch et al. (1984), Gill (1994),
+  and Weigend (2002). Each is cited at the existing relevant passage;
+  the Fukutome designations receive a short explicit attribution.
+- The bibliography now contains 80 cited entries: 76 audited articles or
+  contributed chapters and four books. Recorded publication provenance,
+  placement rationale, and Lowdin's digitized-date discrepancy in
+  `chapter-reference-audit.md`. Existing figure/table credits are unchanged.
+- Preserved Further reading byte-for-byte, including all four book citations
+  and images. Did not add the optional Lehtola et al. (2020) review. All
+  522 main-text and 87 basis/integral displayed derivations are unchanged;
+  other existing prose differs only by the inserted citations.
+- Integrated the author's newer remote commit `bc323cc` before pushing,
+  retaining its starred `physics` overlap command. Rechecked preservation
+  against that latest remote version, including Further reading and all
+  displayed derivations.
+- Full compilation succeeds (110 pages); all ten additions appear in the
+  compiled bibliography, with no undefined citations or references and no
+  BibTeX warnings. All three chapter checks pass. The PDF skill was used
+  for a targeted check of the bibliography pages containing the additions,
+  not a full-chapter layout/overflow audit. The cover is unchanged.
