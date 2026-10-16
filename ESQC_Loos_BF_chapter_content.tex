@@ -98,15 +98,13 @@ The reciprocal-lattice vector is indexed by three integers:
   \bk=k_1\bb_1+k_2\bb_2+k_3\bb_3
 \end{equation}
 where, for direct-lattice vectors $\ba_1,\ba_2,\ba_3$,
-\begin{equation}
-\begin{aligned}
+\begin{align}
   \Omega&=\ba_1\cdot(\ba_2\times\ba_3)
   &\bA&=(\ba_1,\ba_2,\ba_3)\\
   \bb_1&=2\pi\frac{\ba_2\times\ba_3}{\Omega}
   &\bb_2&=2\pi\frac{\ba_3\times\ba_1}{\Omega}
   &\bb_3&=2\pi\frac{\ba_1\times\ba_2}{\Omega}
-\end{aligned}
-\end{equation}
+\end{align}
 
 The reciprocal vectors satisfy $\ba_i\cdot\bb_j=2\pi\delta_{ij}$. The energy
 cutoff selects reciprocal-lattice vectors inside a sphere of radius
@@ -461,11 +459,9 @@ functions. It is therefore more detailed than a simple label of basis size.
 The correlation-consistent construction \citep{Dunning1989} organizes functions into successive
 balanced layers designed to recover angular correlation systematically. The
 main sequence is
-\begin{equation}
-\begin{aligned}
+\begin{align}
   \text{cc-pVXZ},&& X&=\mathrm{D,T,Q,5,6}
-\end{aligned}
-\end{equation}
+\end{align}
 In the basis names, D, T, and Q denote double-, triple-, and quadruple-$\zeta$
 quality. The numerical cardinal number $X$ takes the corresponding values
 $2,3,4,5,6$. A standard correlation-energy extrapolation
@@ -527,12 +523,10 @@ core--valence sequence, the corresponding decomposition is
 Jensen's polarization-consistent sets \citep{Jensen2001} apply systematic improvement to HF and
 Kohn--Sham calculations, with functions selected according to their energetic
 importance. The sequence has shell contents
-\begin{equation}
-\begin{aligned}
+\begin{align}
   \text{pc-0}&:3s2p &\text{pc-1}&:3s2p1d\\
   \text{pc-2}&:4s3p2d1f &\text{pc-3}&:6s5p4d2f1g
-\end{aligned}
-\end{equation}
+\end{align}
 Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
 members add systematically more radial and angular flexibility. Diffuse variants
 are denoted aug-pc-$n$. Their HF convergence is described by the
@@ -1329,15 +1323,13 @@ integrals need not be stored. Direct SCF contracts each batch with the current
 density immediately after it is generated.
 
 The Coulomb and exchange matrices are
-\begin{equation}
-\begin{aligned}
+\begin{align}
  J_{\mu\nu}&=\sum_{\lambda\sigma}P_{\lambda\sigma}
  \rbraket{\mu\nu}{\lambda\sigma}
  &
  K_{\mu\nu}&=\sum_{\lambda\sigma}P_{\lambda\sigma}
  \rbraket{\mu\lambda}{\nu\sigma}
-\end{aligned}
-\end{equation}
+\end{align}
 Direct SCF \citep{Almlof1982} trades disk storage for repeated integral evaluation. Instead of
 storing all $\order{K^4}$ ERIs, it loops over the shell quartets
 $\rbraket{\mu\nu}{\lambda\sigma}$ and uses an upper bound to discard

@@ -27,6 +27,17 @@ def uncomment(text):
 
 def math_tokens(text):
     text = uncomment(text)
+    # A box changes emphasis, not the mathematical statement. Remove only
+    # its own balanced argument delimiters, never braces belonging to math.
+    while match := re.search(r"\\boxed\s*\{", text):
+        depth, end = 1, match.end()
+        while depth and end < len(text):
+            if text[end] in "{}" and text[end - 1] != "\\":
+                depth += 1 if text[end] == "{" else -1
+            end += 1
+        if depth:
+            raise ValueError("Unbalanced boxed expression")
+        text = text[:match.start()] + text[match.end():end - 1] + text[end:]
     text = re.sub(r"\\label\{[^}]*\}", "", text)
     text = re.sub(r"\\(?:begin|end)\{(?:split|aligned|gathered)\}", "", text)
     text = re.sub(r"\\(?:notag|nonumber|qquad|quad)\b", "", text)
@@ -64,7 +75,7 @@ def main():
             errors.append(f"Unresolved source label: {key}")
     if not args.allow_old_equations:
         for name, source in sources.items():
-            if re.search(r"\\begin\{align\*?\}|\\(?:notag|nonumber)\b", source):
+            if re.search(r"\\begin\{aligned\}|\\(?:notag|nonumber)\b", source):
                 errors.append(f"Legacy equation layout in {name}")
     preserved = 0
     if args.compare_math:

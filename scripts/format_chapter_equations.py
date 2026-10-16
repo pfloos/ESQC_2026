@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Print a layout-only apply_patch for the chapter's display equations.
 
-Derivations use equation/split; genuine multi-column comparisons use aligned.
-Independent formulae separated by manual spacing become aligned rows.
+Derivations use equation/split; parallel comparisons use standalone align.
+Independent formulae separated by manual spacing become split rows.
 Spacing around logical arrows, prose, and enumerations is intentional.
 """
 
@@ -48,17 +48,18 @@ def convert(match):
     # Alignment already supplies the indentation of continuation lines.
     body = re.sub(r"(&\s*)\\q(?:quad|uad)\b\s*", r"\1", body)
     if kind.startswith("align"):
-        tabs, maximum = 0, 0
-        for token in outer_tokens(body):
-            if token[0] == "&":
-                tabs += 1
-                maximum = max(maximum, tabs)
-            elif token[0].startswith(r"\\"):
-                tabs = 0
-        inner = "aligned" if maximum > 1 else "split"
-        outer = "equation*" if kind.endswith("*") else "equation"
-        return f"\\begin{{{outer}}}\n\\begin{{{inner}}}" + body + f"\\end{{{inner}}}\n\\end{{{outer}}}"
+        return f"\\begin{{{kind}}}" + body + f"\\end{{{kind}}}"
     if kind.startswith("equation"):
+        group = re.fullmatch(r"\s*\\begin\{aligned\}(.*?)\\end\{aligned\}\s*", body, re.S)
+        if group:
+            inner = group[1]
+            # A continued single energy expression remains one numbered
+            # derivation. Independent parallel equations get align's native
+            # row numbering; no number-suppression commands are introduced.
+            if re.search(r"\\\\\s*&\s*\+", inner):
+                return f"\\begin{{{kind}}}\n\\begin{{split}}" + inner + f"\\end{{split}}\n\\end{{{kind}}}"
+            outer = "align*" if kind.endswith("*") else "align"
+            return f"\\begin{{{outer}}}" + inner + f"\\end{{{outer}}}"
         tokens = outer_tokens(body)
         spacers = [m for m in tokens if m[0] in {r"\qquad", r"\quad"}]
         # No conversion of logical chains or inline explanatory connectors.
