@@ -76,6 +76,21 @@
 \newtcolorbox{hfabstract}{hfworked,
   colframe=hfPurple,colback=hfPurple!4,colbacktitle=hfPurple,
   title={Abstract \textbar\ ESQC 2026}}
+\newtcolorbox{hftheorem}[1]{hfworked,
+  colframe=hfBlue,colback=hfBlue!3,colbacktitle=hfBlue,
+  title={#1},title after break={#1 (continued)}}
+% Portraits are inline illustrations, not numbered floats. Source and license
+% links are printed in each box; full provenance is in chapter-figures/portraits.md.
+\newcommand{\hftheoremportrait}[4]{%
+  \noindent\begin{minipage}[t]{0.16\linewidth}
+    \vspace{0pt}\centering
+    \includegraphics[width=0.85\linewidth,height=24mm,keepaspectratio]{#1}\\[2pt]
+    {\scriptsize #2}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.80\linewidth}
+    \vspace{0pt}#3
+  \end{minipage}\par\smallskip
+  {\scriptsize\color{hfInk!75}#4\par}\smallskip}
 
 \hypersetup{
   colorlinks=true,
@@ -890,6 +905,17 @@ electron labels,
 this antisymmetry is preserved by the electronic dynamics.
 
 \paragraph{The Pauli principle and the exchange hole.}
+
+\begin{hftheorem}{Pauli exclusion principle}
+\hftheoremportrait{chapter-figures/portrait-pauli.jpg}{Wolfgang Pauli}
+{An electronic wavefunction is antisymmetric under exchange of two complete
+space--spin coordinates. Consequently, no two electrons can occupy the same
+spin orbital. In particular, the wavefunction vanishes when two electrons
+have identical space--spin coordinates \citep{Pauli1925}.}
+{Portrait: Bettina Katzenstein / ETH-Bibliothek Z\"urich, Bildarchiv,
+\href{https://commons.wikimedia.org/wiki/File:Wolfgang_Pauli_ETH-Bib_Portr_01042_(cropped).jpg}{Portr 01042 (cropped by Xabier)},
+\href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}.}
+\end{hftheorem}
 
 A particularly important consequence follows immediately from
 Eq.~\eqref{eq:pauli-antisymmetry}. If two fermions are assigned the same
@@ -4273,6 +4299,15 @@ in Section~\ref{sec:fock-operator}:
   \mel{ik}{}{ak}
 \end{equation}
 
+\begin{hftheorem}{Brillouin's theorem}
+\hftheoremportrait{chapter-figures/portrait-brillouin.jpg}{L\'eon Brillouin}
+{At a stationary Hartree--Fock determinant, the Hamiltonian matrix elements
+to singly substituted determinants vanish for the occupied--virtual
+rotations admitted by the chosen variational space. Stationarity, not the
+requirement of an energy minimum, is the essential assumption.}
+{Portrait: Benjamin Couprie, Institut International de Physique Solvay,
+\href{https://commons.wikimedia.org/wiki/File:L\%C3\%A9on_Brillouin_Solvay_conference_1927.jpg}{1927 Solvay photograph (crop: Setreset)}, public domain.}
+
 At a stationary Hartree--Fock solution, occupied-virtual orbital rotations
 cannot lower the energy to first order. The corresponding Fock matrix
 elements therefore vanish:
@@ -4296,6 +4331,7 @@ Hence,
 \end{equation}
 This result is Brillouin's theorem \citep{Brillouin1932}. The derivation of the HF equations below
 will also establish the stationarity condition used here.
+\end{hftheorem}
 
 Brillouin's theorem does not state that singly excited determinants are
 unimportant. Rather, it states that a \emph{stationary HF determinant does
@@ -5413,6 +5449,29 @@ not allowed to relax.
 For fixed nuclear coordinates, Koopmans' theorem therefore provides
 vertical removal and attachment energies directly from the canonical
 HF orbital energies.
+
+\begin{hftheorem}{Koopmans' theorem: frozen-orbital removal and attachment}
+\hftheoremportrait{chapter-figures/portrait-koopmans.jpg}{Tjalling Koopmans}
+{For fixed nuclei and canonical orbitals of the $N$-electron HF reference,
+removing an electron from occupied spin orbital $i$, or adding one to virtual
+spin orbital $a$, gives the frozen-orbital energy differences
+\citep{Koopmans1934}. These are not relaxed or correlated energy differences.}
+{Portrait: Eric Koch / Anefo, Nationaal Archief,
+\href{https://commons.wikimedia.org/wiki/File:TjallingKoopmans1967_(cropped).jpg}{Leuven, 1967 (crop: Wabbuh)},
+\href{https://creativecommons.org/publicdomain/zero/1.0/}{CC0 1.0}.}
+\begin{equation}
+\begin{split}
+  \mathrm{IP}_i^\text{frozen}
+  &=E_{N-1}^{\text{frozen},i}-E_N^\text{HF}=-\epsilon_i
+  \\
+  \mathrm{EA}_a^\text{frozen}
+  &=E_N^\text{HF}-E_{N+1}^{\text{frozen},a}=-\epsilon_a
+\end{split}
+\label{eq:koopmans-summary}
+\end{equation}
+Orbital relaxation and correlation modify these estimates, as the complete
+decompositions below make explicit.
+\end{hftheorem}
 
 % ============================================================================
 % Ionization
@@ -6710,6 +6769,7 @@ The answer is the self-consistent-field procedure developed below.
 Restricting the orbitals to a finite basis reduces the variational freedom
 available to the Hartree--Fock determinant. Consequently, for a given
 Hamiltonian,
+\begin{hftheorem}{Variational bounds and the Hartree--Fock limit}
 \begin{equation}
   E_\text{HF}^{(K)}
   \geq
@@ -6721,6 +6781,9 @@ Hamiltonian,
 Here, $E_\text{HF}^{(K)}$ is the minimum HF energy in a finite
 $K$-dimensional one-electron space, whereas
 $E_\text{HF}^{\text{CBS}}$ denotes the complete-basis-set (CBS) HF limit.
+The bounds concern the global minima within the same chosen determinant
+class, not arbitrary stationary SCF solutions.
+\end{hftheorem}
 
 The first inequality reflects basis-set incompleteness: a finite basis
 cannot describe all possible orbital shapes. The second reflects the
