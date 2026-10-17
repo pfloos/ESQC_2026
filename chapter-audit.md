@@ -1,5 +1,16 @@
 # Chapter audit
 
+## Approved equation corrections (17 October 2026)
+
+- Applied the author's explicit approval of M1--M3 in the scientific audit:
+  removed three redundant coefficient conjugations inside AO-energy bras,
+  replaced AO-style phi by spatial-MO psi in the singlet/triplet spatial
+  factors (and their introductory sentence), and restored both explicit
+  matrix-product dots in the transformed eigenvalue equation.
+- Final energy/density contractions, spin factors, relative signs, and all
+  intervening derivation steps are unchanged. The audit report records the
+  approval while retaining the original findings as a historical record.
+
 ## Scientific consistency and editorial continuity (17 October 2026)
 
 - Pulled the author's changes through `faf8986` ("up to 2") and used that

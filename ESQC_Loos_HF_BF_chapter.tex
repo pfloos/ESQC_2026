@@ -4722,7 +4722,7 @@ Thus, spin adaptation is the diagonalization of $\chS^2$ in a determinant space.
 The same result can be understood directly from the permutation symmetry of
 the two open-shell electrons. The following factors display only these two
 electrons; a common closed-shell core and antisymmetrization with that core
-are implicit for a larger system. Here $\phi_i$ and $\phi_a$ denote the
+are implicit for a larger system. Here $\psi_i$ and $\psi_a$ denote the
 two spatial molecular orbitals, not members of the AO basis.
 
 For two open-shell spatial orbitals $i$ and $a$, the singlet may be written
@@ -4733,9 +4733,9 @@ as
   \frac{1}{2}
   \underbrace{
   \qty[
-    \ket{\phi_i(1)\phi_a(2)}
+    \ket{\psi_i(1)\psi_a(2)}
     +
-    \ket{\phi_a(1)\phi_i(2)}
+    \ket{\psi_a(1)\psi_i(2)}
   ]}_{\text{spatially symmetric}}
   \underbrace{
   \qty[
@@ -4754,9 +4754,9 @@ For the $M_S=0$ triplet,
   \frac{1}{2}
   \underbrace{
   \qty[
-    \ket{\phi_i(1)\phi_a(2)}
+    \ket{\psi_i(1)\psi_a(2)}
     -
-    \ket{\phi_a(1)\phi_i(2)}
+    \ket{\psi_a(1)\psi_i(2)}
   ]}_{\text{spatially antisymmetric}}
   \underbrace{
   \qty[
@@ -6717,9 +6717,9 @@ dependencies.
 
 After diagonalizing the transformed Fock matrix,
 \begin{equation}
-  \bF'\bC'
+  \bF'\cdot\bC'
   =
-  \bC'\bE
+  \bC'\cdot\bE
 \end{equation}
 the coefficients in the original nonorthogonal basis are recovered through
 \begin{equation}
@@ -7036,13 +7036,13 @@ expansion gives
     +\frac{1}{2}\sum_{ij}^{N}\qty(\cJ_{ij}-\cK_{ij})
   \\
   &=\sum_{i=1}^{N}
-    \mel{\sum_\mu C_{\mu i}^*\phi_\mu}{\hh}
+    \mel{\sum_\mu C_{\mu i}\phi_\mu}{\hh}
         {\sum_\nu C_{\nu i}\phi_\nu}
     \\
   &+\frac{1}{2}\sum_{ij}^{N}
     \mel{
-      \qty(\sum_\mu C_{\mu i}^*\phi_\mu)
-      \qty(\sum_\lambda C_{\lambda j}^*\phi_\lambda)
+      \qty(\sum_\mu C_{\mu i}\phi_\mu)
+      \qty(\sum_\lambda C_{\lambda j}\phi_\lambda)
     }{}{
       \qty(\sum_\nu C_{\nu i}\phi_\nu)
       \qty(\sum_\sigma C_{\sigma j}\phi_\sigma)

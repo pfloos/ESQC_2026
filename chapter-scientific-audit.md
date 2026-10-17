@@ -2,6 +2,21 @@
 
 17 October 2026. Baseline: author's `faf8986` ("up to 2").
 
+## Approved follow-up
+
+The author approved M1--M3 on 17 October 2026. All three have now been
+applied: the intermediate AO-energy bras no longer double-conjugate their
+coefficients; both spin-adaptation displays use spatial-MO symbols
+`\psi_i`/`\psi_a`; and the intermediate transformed eigenvalue equation
+contains both matrix-product dots. No derivation steps were removed. The
+proposal descriptions and verification below record the preceding audit
+state, before those approved corrections.
+
+The author subsequently requested a detailed HF-stationarity exercise and
+an MP2/AO-to-MO/Laplace discussion based on the specified post-HF slides.
+Those are newly authorized additions, distinct from the original audit's
+scope restriction.
+
 ## Scope and preservation
 
 This pass covers the existing HF, basis-set, and integral material. It does
