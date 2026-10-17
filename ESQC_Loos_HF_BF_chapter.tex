@@ -5451,7 +5451,6 @@ orbital energies is that each $\epsilon_i$ contains the interaction of
 electron $i$ with every other occupied electron. Summing the orbital
 energies therefore counts each electron pair twice, whereas the total
 energy must count each pair only once.
-
 Although orbital energies are therefore not independent electron energies,
 they nevertheless acquire an important physical interpretation within the
 frozen-orbital approximation. This observation leads directly to
@@ -5463,12 +5462,10 @@ The canonical Hartree--Fock orbital energies are Lagrange multipliers
 associated with the orthonormality constraints, but they also acquire an
 important physical interpretation when electrons are removed from or added
 to the system while the orbitals are kept fixed.
-
 This is the content of Koopmans' theorem \citep{Koopmans1934}. Its central approximation is
 the frozen-orbital approximation: when the number of electrons is
 changed, the spin orbitals of the original $N$-electron HF calculation are
 not allowed to relax.
-
 For fixed nuclear coordinates, Koopmans' theorem therefore provides
 vertical removal and attachment energies directly from the canonical
 HF orbital energies.
@@ -5516,7 +5513,6 @@ Consider the $N$-electron HF ground state. Its electronic energy is
   \label{eq:koopmans-neutral-energy}
 \end{equation}
 All sums run over the occupied spin orbitals of the $N$-electron reference.
-
 Suppose now that the electron occupying spin orbital $k$ is removed while
 all remaining orbitals are kept frozen. The energy of this frozen
 $(N-1)$-electron determinant is
@@ -5533,7 +5529,6 @@ $(N-1)$-electron determinant is
 \end{equation}
 where the tilde emphasizes that the orbitals have \emph{not} been
 reoptimized for the cation.
-
 The corresponding frozen-orbital ionization potential is
 \begin{equation}
   \text{IP}_k^\text{K}
@@ -5566,7 +5561,6 @@ Subtracting Eqs.~\eqref{eq:koopmans-neutral-energy} and
 \end{split}
 \end{equation}
 where the symmetry of the two-electron integrals has been used.
-
 From the expression of the canonical orbital energy,
 \begin{equation}
   \epsilon_k
@@ -5583,7 +5577,6 @@ we immediately obtain
   -\epsilon_k
   \label{eq:koopmans-ip}
 \end{equation}
-
 Thus, within the frozen-orbital approximation, the energy required to remove
 an electron from an occupied canonical HF spin orbital is the negative of
 its orbital energy.
@@ -5680,7 +5673,6 @@ The crucial assumption behind Eqs.~\eqref{eq:koopmans-ip} and
 \eqref{eq:koopmans-ea} is not Hartree--Fock theory itself, but the decision
 to retain the orbitals of the neutral $N$-electron system after changing
 the electron number.
-
 In reality, removing or adding an electron changes the effective potential
 felt by all the remaining electrons. The orbitals therefore relax.
 
@@ -5811,7 +5803,6 @@ and partially compensate:
 This error compensation is one reason why Koopmans' theorem can yield
 surprisingly reasonable ionization potentials despite neglecting both
 effects.
-
 The sign of the correlation correction is, however, \emph{not} guaranteed
 by any general theorem. The statement above is a common chemical trend, not
 a mathematical requirement.
@@ -5868,10 +5859,8 @@ direction rather than compensating one another:
 Again, the sign of the correlation contribution is system dependent.
 Nevertheless, the combination of stronger orbital-relaxation effects,
 unoptimized virtual orbitals, and the frequent absence of favorable error
-compensation explains why
-\begin{equation}
-  \text{Koopmans' theorem is usually more reliable for IPs than for EAs}
-\end{equation}
+compensation explains why Koopmans' theorem is usually more reliable 
+for IPs than for EAs.
 
 % ============================================================================
 % Meaning of the HF Hamiltonian
