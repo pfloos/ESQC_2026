@@ -5856,7 +5856,7 @@ direction rather than compensating one another:
   \text{no analogous error compensation}
 \end{equation}
 
-Again, the sign of the correlation contribution is system dependent.
+Again, the sign of the correlation contribution is system-dependent.
 Nevertheless, the combination of stronger orbital-relaxation effects,
 unoptimized virtual orbitals, and the frequent absence of favorable error
 compensation explains why Koopmans' theorem is usually more reliable 
@@ -5870,7 +5870,7 @@ for IPs than for EAs.
 
 The interpretation of orbital energies becomes clearer if we distinguish
 carefully between the physical electronic Hamiltonian and the auxiliary
-independent-particle Hamiltonian associated with the converged HF
+independent-particle Hamiltonian associated with the converged Hartree--Fock
 potential.
 
 Define the $N$-electron Hartree--Fock Hamiltonian as
@@ -5894,7 +5894,7 @@ Define the $N$-electron Hartree--Fock Hamiltonian as
   }
   \label{eq:hf-auxiliary-hamiltonian}
 \end{equation}
-Once the HF potential has been converged, $\chH^\text{HF}$ is a sum of
+Once the Hartree--Fock potential has been converged, $\chH^\text{HF}$ is a sum of
 one-electron operators. The Slater determinant constructed from the
 canonical occupied orbitals is therefore an eigenfunction of this
 \emph{auxiliary} Hamiltonian:
@@ -5909,10 +5909,8 @@ canonical occupied orbitals is therefore an eigenfunction of this
 \end{equation}
 
 Three quantities must not be confused.
-
 First,
-\begin{equation}
-\begin{split}
+\begin{align}
   \chH^\text{HF}
   \ket{\Psi_\text{HF}}
   &\green{=}
@@ -5920,16 +5918,13 @@ First,
     \sum_{i=1}^{N}\epsilon_i
   )
   \ket{\Psi_\text{HF}}
-  \\
+  &
   \sum_i\epsilon_i
   &\red{\neq}
   E_\text{HF}
-\end{split}
-\end{equation}
-The HF determinant is an eigenfunction of the auxiliary HF Hamiltonian, but
-its eigenvalue is the sum of the occupied orbital energies, not the HF
-energy.
-
+\end{align}
+The Hartree--Fock determinant is an eigenfunction of the auxiliary Hartree--Fock Hamiltonian, but
+its eigenvalue is the sum of the occupied orbital energies, not the Hartree--Fock energy.
 Second,
 \begin{equation}
   \chH_\text{elec}
@@ -5938,9 +5933,8 @@ Second,
   E_\text{HF}
   \ket{\Psi_\text{HF}}
 \end{equation}
-The HF determinant is, in general, \red{not} an eigenfunction of the true
+The Hartree--Fock determinant is, in general, \red{not} an eigenfunction of the true
 interacting electronic Hamiltonian.
-
 Third,
 \begin{equation}
   \mel{\Psi_\text{HF}}
@@ -5951,23 +5945,22 @@ Third,
 \end{equation}
 The Hartree--Fock energy is the \emph{expectation value} of the physical
 electronic Hamiltonian over the optimized HF determinant.
-
 Thus,
 \begin{align}
     \chH^\text{HF}\Psi_\text{HF}
     &=
     \qty(\sum_i\epsilon_i)\Psi_\text{HF}
-    \\
+    &
     \mel{\Psi_\text{HF}}
         {\chH_\text{elec}}
         {\Psi_\text{HF}}
     &=
     E_\text{HF}
-    \\
+    &
     \chH_\text{elec}\Psi_\text{HF}
     &\neq
     E_\text{HF}\Psi_\text{HF}
-  \end{align}
+\end{align}
 
 % ============================================================================
 % Orbital-energy sum
@@ -6022,7 +6015,6 @@ contains the interaction of electron $i$ with every other occupied electron,
 so their sum counts each pair twice. Here the same correction distinguishes
 the eigenvalue of the auxiliary Hamiltonian from the expectation value of the
 physical Hamiltonian.
-
 Equivalently,
 \begin{equation}
   E_\text{HF}
@@ -6081,9 +6073,8 @@ and its ground-state eigenvalue is
   =
   \sum_{i=1}^{N}\epsilon_i
 \end{equation}
-
 The first-order correction is the expectation value of the perturbation over
-the HF determinant:
+the Hartree--Fock determinant:
 \begin{equation}
 \begin{split}
   E^{(1)}
