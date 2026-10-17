@@ -359,6 +359,62 @@ conventions of the two accompanying lecture presentations are retained.
 \clearpage
 \tableofcontents
 \clearpage
+\phantomsection
+\section*{Notation and conventions}
+\addcontentsline{toc}{section}{Notation and conventions}
+
+Table~\ref{tab:notation} collects the principal symbols used in the chapter.
+It is a quick reference rather than a replacement for the definitions and
+assumptions given in the text. Atomic units are used unless stated otherwise.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Principal notation. Orbital indices refer to spin orbitals or
+  spatial orbitals according to the formulation under discussion.}
+  \label{tab:notation}
+  \medskip
+  \small
+  \renewcommand{\arraystretch}{1.12}
+  \begin{tabularx}{\linewidth}{@{}p{0.28\linewidth}X@{}}
+    \toprule
+    \textcolor{hfGreenDark}{\textbf{Symbol}} &
+    \textcolor{hfGreenDark}{\textbf{Meaning}}\\
+    \midrule
+    $N$, $K$ & Number of electrons; number of spatial orbital basis functions\\
+    $N_\alpha$, $N_\beta$ & Numbers of occupied $\alpha$ and $\beta$ spin orbitals in a collinear determinant\\
+    $\br$, $\bx$ & Spatial coordinate; combined spatial and spin coordinate\\
+    $\green{\phi_\mu}$ & Spatial basis function, usually an atomic orbital (AO)\\
+    $\violet{\psi_p}$, $\orange{\chi_p}$ & Spatial molecular orbital (MO); spin orbital\\
+    $\mu,\nu,\lambda,\sigma$ & Basis-function or AO indices\\
+    $p,q,r,s$ & General orbital indices\\
+    $i,j,k,l$; $a,b,c,d$ & Occupied orbital indices; virtual orbital indices\\
+    $\alpha$, $\beta$ & Spin functions; the same letters also denote Gaussian exponents in the integral sections\\
+    $\epsilon_p$, $\bepsilon$ & Canonical orbital energy; diagonal matrix of orbital energies\\
+    $\chH_\text{elec}$, $\hh$, $\hf$ & Electronic Hamiltonian, one-electron core Hamiltonian, and Fock operator\\
+    $C_{\mu p}$, $\bC$ & Orbital expansion coefficient; matrix of those coefficients\\
+    $\bS$, $\bX$ & AO overlap matrix; transformation to an orthonormal basis\\
+    $\bH$, $\bF$, $\bG[\bP]$ & AO core-Hamiltonian, Fock, and density-dependent two-electron matrices\\
+    $\bP$ & One-particle density matrix; its occupation convention is specified for each HF formulation\\
+    $\chJ_i$, $\chK_i$; $\bJ$, $\bK$ & Coulomb and exchange operators; corresponding AO matrices, with the stated spin and occupation factors\\
+    $\braket{ij}{kl}$ & Two-electron Coulomb integral in physicists' notation; Eq.~\eqref{eq:eri-physicists}\\
+    $\mel{ij}{}{kl}$ & Antisymmetrized two-electron integral; Eq.~\eqref{eq:antisymmetrized-eri}\\
+    $\rbraket{ij}{kl}$ & Two-electron Coulomb integral in chemists' notation; Eq.~\eqref{eq:eri-chemists}\\
+    $A,B$; $P$; $K_\text{aux}$ & Auxiliary-function indices; orthonormalized auxiliary index; auxiliary-basis size in RI/DF\\
+    $F_n(T)$ & Boys function of order $n$ and argument $T$; Section~\ref{sec:boys-functions}\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The same symbol may have different meanings in separate contexts. In the
+Gaussian product theorem, $\bA$ and $\bB$ are centers and $\bP$ is the
+product center, not a density matrix. Likewise, $A$ can label a nucleus or
+an auxiliary function, and $K$ is a basis size whereas $\bK$ is an exchange
+matrix. These local definitions are stated where they are needed. Explicit
+matrix products retain the symbol $\cdot$; $\dag$ denotes the Hermitian
+adjoint. The closed-shell density $\bP$ is spin summed, while a single-spin
+density counts each occupied orbital once.
+
+\clearpage
 \pagenumbering{arabic}
 
 % ============================================================================
@@ -8997,6 +9053,47 @@ construction and continuing with Gaussian molecular integrals and their
 low-rank representations.
 
 \input{ESQC_Loos_BF_chapter_content}
+
+\section{Concluding perspective}
+\label{sec:conclusion}
+
+The developments in this chapter connect a variational approximation to a
+practical molecular calculation. Hartree--Fock theory restricts the
+electronic wavefunction to a single determinant while retaining
+antisymmetry and the Coulomb and exchange contributions to its energy.
+Orbital optimization gives a Fock operator that depends on the occupied
+orbitals themselves, and hence a self-consistent problem. Restricted,
+unrestricted, and generalized formulations impose different constraints on
+that optimization (Section~\ref{sec:open-shell-hf}). A converged solution is
+not, by convergence alone, guaranteed to be the lowest-energy determinant
+or to possess the desired spin and spatial symmetries.
+
+The basis-set approximation is a separate restriction. Expanding the
+orbitals in a finite one-electron space converts the orbital equations into
+the Roothaan--Hall matrix problem of Section~\ref{sec:finite-basis-hf}.
+The basis families discussed in Section~\ref{sec:basis-sets} offer different
+ways of approaching the required radial and angular flexibility. Improving
+that space reduces basis-set incompleteness, but does not remove the
+single-determinant restriction or recover the correlation missing from HF.
+
+Integral evaluation makes this finite-basis formulation operational. The
+Gaussian product theorem and recurrence relations provide the one- and
+two-electron matrix elements needed to build the Fock matrix
+(Section~\ref{sec:gaussian-integrals}). Screening avoids negligible
+contributions, while density fitting and Cholesky decomposition replace the
+four-index ERI representation by more economical contractions
+(Section~\ref{sec:ri}). Their thresholds or auxiliary spaces control
+numerical approximations distinct from the choice of orbital basis.
+
+Interpreting a calculation therefore requires keeping these levels
+separate: the chosen HF variational space, the orbital basis, the integral
+representation, and the convergence of the SCF solution. The resulting
+total energy, orbital energies, and molecular properties must then be read
+with their respective assumptions in mind. In particular, a stationary HF
+reference supplies a useful starting point for correlated methods, not a
+substitute for them. The link between these theoretical assumptions and
+their numerical realization is what makes Hartree--Fock theory both a
+foundational model and a practical framework for electronic structure.
 
 \section*{Further reading}
 

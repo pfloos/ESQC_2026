@@ -524,3 +524,24 @@ coverage baseline. Commented-out frames are not additional required material.
 - Full compilation succeeds at 117 pages. All four chapter checks pass,
   with no undefined citations or references. The PDF skill was used only for
   targeted review of the three updated biography boxes and their notices.
+
+## Notation reference and concluding synthesis (17 October 2026)
+
+- Pulled before editing; the remote was up to date at `04246c6`.
+- Added a one-page "Notation and conventions" reference after the contents,
+  retaining Roman front-matter numbering. Its numbered, labeled table is
+  explicitly cited and reuses the chapter's symbols, custom macros, physics
+  commands, and AO/MO/spin-orbital colors. It distinguishes occupation
+  conventions and contextual reuse of symbols, notably the density matrix
+  and Gaussian product center. Both new headings appear in the contents.
+- Added a short concluding perspective connecting the HF variational space,
+  orbital-basis incompleteness, integral evaluation and approximations, and
+  SCF convergence. Cross-references point back to the relevant derivations;
+  no new scientific topics or bibliography entries were introduced.
+- Preserved all existing chapter prose, examples, illustrations, and 584
+  displayed equations. Further reading is byte-for-byte unchanged, as are
+  the approved cover and biography boxes.
+- Full compilation succeeds at 119 pages, without undefined references or
+  citations. All four chapter checks pass; 30 figures/tables are labeled and
+  cited in prose. The PDF skill guided targeted inspection of the two new
+  additions only, not a full-chapter layout audit.
