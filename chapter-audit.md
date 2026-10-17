@@ -1,5 +1,38 @@
 # Chapter audit
 
+## Scientific consistency and editorial continuity (17 October 2026)
+
+- Pulled the author's changes through `faf8986` ("up to 2") and used that
+  revision as the preservation baseline. The new MP2/AO-to-MO backlog items
+  are outside this audit/editorial request and were not added.
+- Recorded a cross-chapter scientific review in `chapter-scientific-audit.md`.
+  Three displayed-equation changes are explicitly proposed for approval:
+  double conjugation in the intermediate AO-energy bra expansion, spatial-MO
+  symbols in two spin-adaptation displays, and two missing matrix-product
+  dots. No displayed mathematical expression was changed in this pass.
+- Clarified existing assumptions in prose: BO derivative terms, constant
+  exchange phase, real-orbital ERI symmetry, spin-including versus spatial
+  AO labels, Koopmans relaxation bounds, reference versus auxiliary-ground
+  eigenvalues, unitary phase invariance, real population/direct-SCF formulas,
+  H2 nuclear constants and finite-overlap localization, primitive
+  normalization, ECP local-channel corrections, and screening accuracy.
+- Smoothed transitions at changes of representation, reduced repeated
+  introductory summaries, distinguished the two existing CBS extrapolations,
+  and qualified what Aufbau/MOM procedures actually guarantee. Section
+  ordering, examples, exercises/solutions, illustrations, colors, cover,
+  biographies, bibliography, and Further reading are preserved.
+- Added `scripts/check_chapter_hf_algebra.py`: determinant norms, RHF spin
+  factors, Li/B pair counts, IP/EA signs and decompositions, orbital-energy
+  double counting, complex trace order, spin-adaptation phases, H2 curvature,
+  and counterexamples documenting the two complex-orbital issues.
+- All five checks pass; all 583 baseline displays and Further reading are
+  preserved, all 30 figures/tables are called out, and all 84 bibliography
+  entries remain cited. A separate exact comparison preserves all exercise,
+  solution, figure, table, and TikZ environments.
+- Full compilation succeeds (122 pages), with no undefined citations or
+  references and no BibTeX warnings. The PDF skill guided targeted checks of
+  the revised H2 and Gaussian-contraction passages, not a full visual audit.
+
 ## Systematic equation highlights and alignment convention (16 October 2026)
 
 - Retained the author's four existing boxed takeaway statements and added

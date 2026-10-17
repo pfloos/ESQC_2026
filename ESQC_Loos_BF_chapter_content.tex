@@ -19,10 +19,11 @@ from atomic electronic-structure calculations. Their presence does not by
 itself make the method empirical; they specify the finite representation of
 the otherwise ab initio problem.
 
-Thus orbital optimization combines fixed building blocks rather than
-redesigning them. Their shapes, centers, and nonlinear parameters are selected
-before the SCF calculation begins and determine the available one-electron
-space.
+Orbital optimization therefore changes the molecular combination of the
+building blocks, not their shapes or nonlinear parameters. At a fixed
+geometry these are selected before the SCF calculation begins; the centers
+move with the nuclei when atom-centered calculations are repeated at new
+geometries.
 
 A useful basis must be accurate, compact, numerically stable, and practical.
 These requirements compete: a larger and more flexible basis improves the
@@ -182,8 +183,9 @@ convolution become multiplication in reciprocal space. Overlap and kinetic
 energy are diagonal, while a two-electron integral survives only when the
 total incoming and outgoing wavevectors are equal.
 
-The key physical picture is that assemblies of atoms are treated as slight
-distortions of free electrons. Plane waves are orthonormal and independent of
+The free-electron solutions provide the building blocks; their use as a
+basis does not require the molecular or crystalline potential to be a weak
+perturbation. Plane waves are orthonormal and independent of
 the atomic positions; naturally compatible with periodic boundary conditions;
 systematically convergent through the single parameter $E_\text{cut}$; and
 diagonalize the kinetic and Coulomb operators in reciprocal space. They also
@@ -296,6 +298,9 @@ of primitives with coefficients $D_k$:
   =\sum_{k=1}^{K}D_k\sket{\ba_k}
   }
 \end{equation}
+The square-ket definition is unnormalized. Its normalization factor can be
+absorbed into $D_k$; coefficients tabulated for normalized primitives must
+be combined with those factors when this unnormalized convention is used.
 Here $\alpha$ is the primitive exponent. All primitives in a contraction have
 the same center and polynomial powers but may have different exponents.
 The upper limit $K$ in this local contraction sum counts primitives;
@@ -385,11 +390,11 @@ Core flexibility, in turn, is supplied by tight functions and is
 needed for core correlation, nuclear magnetic shielding, and spin--spin
 coupling constants.
 
-The phrase \emph{larger basis} should therefore be interpreted structurally. Additional
-functions may refine the radial description, introduce new angular shapes,
-extend the density into the asymptotic region, or resolve the core. The
-appropriate choice depends on which feature controls the target energy or
-property.
+The phrase \emph{larger basis} therefore needs a physical qualification:
+the added functions must address the radial, angular, diffuse, or core
+flexibility that controls the target energy or property. Increasing the
+function count alone does not identify which of these deficiencies is being
+reduced.
 Figure~\ref{fig:basis-set-exchange} shows the Basis Set Exchange interface
 through which the definitions of these basis families can be accessed.
 
@@ -489,11 +494,14 @@ Core correlation is described by cc-pCVXZ, optimized for core--core and
 core--valence correlation \citep{Woon1995}, or by cc-pwCVXZ, which weights the core--valence
 contribution \citep{Peterson2002}.
 
-The cardinal number $X$ labels the level of this hierarchy. Increasing $X$
-adds both radial flexibility and a new layer of higher angular momentum, as
-the explicit shell patterns below demonstrate.
+Increasing the cardinal number adds both radial flexibility and a new
+layer of higher angular momentum, as the explicit shell patterns below
+demonstrate. The inverse-cubic expression concerns correlation energy, not
+the HF contribution; the polarization-consistent discussion below uses a
+different HF extrapolation form.
 
-For a second-row atom, Table~\ref{tab:cc-shell-content} lists the valence
+For a second-row atom (the second period, Li--Ne),
+Table~\ref{tab:cc-shell-content} lists the valence
 correlation-consistent sequence and its diffuse augmentations.
 \begin{center}
 \begin{tabular}{c@{\qquad}c}
@@ -586,11 +594,14 @@ as ghost functions. The variational principle therefore gives
   E_B^{AB}&\leq E_B^B
 \end{split}
 \end{equation}
-which makes the uncorrected interaction energy
+The corresponding uncorrected interaction energy is
 \begin{equation}
   \Delta E_\text{int}=E_{AB}^{AB}-E_A^A-E_B^B
 \end{equation}
-artificially too attractive. The Boys--Bernardi counterpoise correction
+which is too attractive relative to a comparison in the common dimer basis.
+This basis imbalance is distinct from other basis-incompleteness or
+electronic-structure errors; counterpoise does not establish an exact
+interaction energy. The Boys--Bernardi counterpoise correction
 \citep{BoysBernardi1970} uses
 the full dimer basis for every term,
 \begin{equation}
@@ -686,7 +697,9 @@ channel, a common semilocal form is
   \ket{Y_{\ell m}}U_\ell(r)\bra{Y_{\ell m}}
 \end{equation}
 The first term is local, or unprojected; the remaining angular-momentum
-channels are nonlocal, or projected. Their radial parts are generally expanded
+channels are nonlocal, or projected. In this convention, each projected
+$U_\ell(r)$ is a correction relative to the local potential $U_L(r)$, not
+the full potential in channel $\ell$. Their radial parts are generally expanded
 as
 \begin{equation}
 \begin{split}
@@ -732,13 +745,19 @@ one-electron terms to four-center electron-repulsion integrals, and then shows
 how recurrence relations and screening turn the resulting formulas into a
 practical algorithm \citep{Gill1994}.
 
+The Cartesian Gaussian functions in this section are real. Primitive
+formulas use the unnormalized square-ket convention introduced above;
+normalization and contraction factors are applied separately. This scope is
+important when using the permutation symmetries and screening bounds below:
+the more general complex-orbital symmetries were stated earlier.
+
 \subsection{The Gaussian product theorem and overlap integrals}
 \label{sec:gaussian-product}
 
-The efficiency of Gaussian basis sets follows from a closure property that
-reduces multicenter products to single-center quantities. The central
-algebraic fact behind Gaussian integral technology is the
-Gaussian product rule: the product of two Gaussians is another Gaussian.
+The Gaussian product rule reduces multicenter products to single-center
+quantities: the product of two $s$-type Gaussian factors is another Gaussian
+times a constant. Polynomial factors in higher-angular-momentum functions
+are handled by the recurrence relations developed later.
 This closure property underlies the classical Gaussian integral formulation
 of Boys \citep{Boys1950}.
 Writing the $s$-type Gaussian factors as
@@ -891,8 +910,11 @@ coordinates gives
 The second pair has combined exponent $\eta=\gamma+\delta$ and product
 center $\bQ=(\gamma\bC+\delta\bD)/\eta$, with a prefactor
 $K_{\eta,\bQ}$ defined in the same way as for the first pair.
-There are formally $\order{K^4}$ ERIs, although only $\order{K^2}$ are
-significant in a sufficiently large, spatially extended system.
+There are formally $\order{K^4}$ ERIs. At a fixed numerical threshold and
+with a fixed local basis per atom, the significant subset can approach
+$\order{K^2}$ in sufficiently large, spatially extended systems. This is a
+locality-based screening estimate, not an exact reduction in the number of
+nonzero Coulomb integrals.
 
 \paragraph{Functions, shell pairs, and shell quartets.}
 
@@ -1344,7 +1366,8 @@ Once screening has identified the significant shell quartets, the resulting
 integrals need not be stored. Direct SCF contracts each batch with the current
 density immediately after it is generated.
 
-The Coulomb and exchange matrices are
+For the real AO functions and real symmetric density used in the following
+direct-SCF contractions, the Coulomb and exchange matrices are
 \begin{align}
  J_{\mu\nu}&=\sum_{\lambda\sigma}P_{\lambda\sigma}
  \rbraket{\mu\nu}{\lambda\sigma}
@@ -1367,11 +1390,14 @@ criterion. In compact form, the algorithm is
 
 Because the Fock build contains products of density-matrix elements and ERIs,
 screening can be tightened by bounding the contribution to the matrix rather
-than the integral alone. A shell quartet whose bound is small in isolation is
-certainly negligible, while a density-weighted criterion can also discard a
+than the integral alone. A shell quartet whose bound is below the integral
+threshold is a candidate for omission, while a density-weighted criterion can also discard a
 formally non-negligible quartet when the density elements multiplying it are
-small at the current SCF iteration. The screening threshold must therefore be
-chosen consistently with the target accuracy of the SCF energy and residual.
+small at the current SCF iteration. An integral threshold alone does not
+bound the accumulated error in the Fock matrix or energy: the density
+weights and the number of discarded contributions also matter. The threshold
+must therefore be chosen consistently with the target accuracy of the SCF
+energy and residual.
 
 \section{Resolution of the identity and low-rank ERI representations}
 \label{sec:ri}

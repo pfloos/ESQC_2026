@@ -68,8 +68,8 @@ Evidence: for the normalized complex vector used by
 `-0.29012215`, whereas the double-conjugated expression gives
 `-0.42292741 + 0.28391233 i`. The independent trace contraction agrees with
 the correct expectation. This is an actual error for complex coefficients,
-not merely a stylistic preference. The developers' [PySCF HF implementation]
-(https://pyscf.org/_modules/pyscf/scf/hf.html) supplies a separate primary
+not merely a stylistic preference. The developers'
+[PySCF HF implementation](https://pyscf.org/_modules/pyscf/scf/hf.html) supplies a separate primary
 implementation check of the density/energy contraction convention.
 
 ### M2. Spatial molecular-orbital symbols in the spin-adaptation illustration
@@ -100,8 +100,8 @@ or remove derivation steps. Specific safeguards include:
 
 - The exchange-phase argument states the pure-state-ray assumption before
   the unchanged implication; probability equality alone would permit a
-  coordinate-dependent phase. Pauli's own [Nobel lecture]
-  (https://www.nobelprize.org/prizes/physics/1945/pauli/lecture/) is primary
+  coordinate-dependent phase. Pauli's own
+  [Nobel lecture](https://www.nobelprize.org/prizes/physics/1945/pauli/lecture/) is primary
   historical context for the symmetry assumption, not a derivation from
   equal coordinate probabilities.
 - Real-*orbital* eightfold symmetry is distinguished from real integral
@@ -152,3 +152,18 @@ The layout comparison verifies preservation in order of all baseline
 equation/align displays and byte-for-byte preservation of Further reading.
 It does not certify the scientific correctness of a preserved formula, which
 is why M1--M3 remain explicitly listed above.
+
+### Completed verification
+
+All five source/reference/algebra/integral checks above pass. The display
+comparison preserves all 583 original displays, and all 30 numbered figures
+and tables have prose callouts. All 84 bibliography entries are cited, with
+80 audited article/contributed-chapter identities retained. A separate
+comparison also confirms that the exercise and solution environments and
+figure/table/TikZ environments are unchanged from the baseline.
+
+Full LaTeX/BibTeX compilation succeeds: 122 PDF pages, no undefined citations
+or cross-references, and no BibTeX warnings. Targeted rendered-page checks
+cover the H2 electronic-versus-total-energy clarification and the Gaussian
+normalization/contraction clarification. This was not a full-document
+overflow or visual audit. M1--M3 remain proposals, not applied corrections.

@@ -544,13 +544,11 @@ equations are nonlinear and must be solved self-consistently. The optimal
 determinant is therefore a variational independent-particle description,
 not an exact correlated solution.
 
-Our objective in the following sections is to make each element of this
-statement precise. We first construct the molecular electronic Hamiltonian,
-then examine the consequences of the Pauli principle and antisymmetry,
-introduce the Hartree--Fock wavefunction, and derive the corresponding energy
-and effective one-electron equations. This sequence will provide the
-theoretical foundation required for the finite-basis and numerical
-formulations developed later in the chapter.
+To make this variational construction precise, we first need a molecular
+Hamiltonian with the nuclei treated as fixed parameters. Antisymmetry then
+determines the allowed determinant form, from which the energy functional
+and orbital equations follow. The finite-basis and numerical formulations
+will retain these assumptions while changing how the orbitals are represented.
 
 \subsubsection{The Born--Oppenheimer approximation}
 
@@ -701,8 +699,8 @@ the energy surface
   \label{eq:potential-energy-surface}
 \end{equation}
 Repeating the electronic calculation for different nuclear geometries traces
-out a potential-energy surface (PES). Equilibrium structures correspond
-to stationary points of this surface, while chemical reactions, molecular
+out a potential-energy surface (PES). Stable equilibrium structures correspond
+to local minima of this surface, while chemical reactions, molecular
 vibrations, and other nuclear motions can be interpreted in terms of motion
 over it.
 
@@ -743,7 +741,10 @@ states. Their leading contributions involve the derivative couplings
 which measure how rapidly the electronic wavefunctions change as nucleus $A$
 moves. The Born--Oppenheimer approximation consists in neglecting these
 nonadiabatic couplings and assuming that nuclear motion takes place on a
-single electronic potential-energy surface.
+single electronic potential-energy surface. In the nuclear equation below,
+we also neglect the diagonal correction arising when nuclear derivatives
+act on that electronic state; the potential is therefore the clamped-nuclei
+energy plus nuclear repulsion, without a derivative correction.
 
 For electronic state $I$, the resulting nuclear Schr\"odinger equation is
 \begin{equation}
@@ -890,7 +891,12 @@ probability density satisfies
   =
   \abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2
 \end{equation}
-The two wavefunctions can thus differ at most by a phase,
+To obtain an exchange rule for the wavefunction, we additionally assume that
+exchange leaves the pure-state ray unchanged: the exchanged state differs
+from the original by a single, coordinate-independent phase. Equality of the
+coordinate probability densities alone would allow a coordinate-dependent
+phase and would not establish this stronger statement. With this state-ray
+assumption, the phase relation is
 \begin{equation}
   \abs{\Psi(\red{\bx_1},\blue{\bx_2})}^2
   =\abs{\Psi(\blue{\bx_2},\red{\bx_1})}^2
@@ -2306,7 +2312,7 @@ For reference, the physicists' ERI is
   \chi_l(\bx_2)
   \dd{\bx_1}\dd{\bx_2}
 \end{equation}
-For \red{complex-valued integrals}, physicists' ERIs obey
+For \red{complex-valued orbitals}, physicists' ERIs obey
 \begin{equation}
   \braket{ij}{kl}
   =
@@ -2320,7 +2326,8 @@ For \red{complex-valued integrals}, physicists' ERIs obey
 The first equality corresponds to exchanging the two electron coordinates,
 while the complex-conjugated relations follow from Hermiticity.
 
-For \green{real-valued integrals}, this becomes
+For \green{real-valued orbitals}, the additional within-coordinate
+interchanges give
 \begin{equation}
 \begin{split}
   \braket{ij}{kl}
@@ -2357,7 +2364,7 @@ In chemists' notation, the defining integral is
   \chi_l(\bx_2)
   \dd{\bx_1}\dd{\bx_2}
 \end{equation}
-For \green{real-valued integrals}, its symmetry relations take the familiar
+For \green{real-valued orbitals}, its symmetry relations take the familiar
 form
 \begin{equation}
 \begin{split}
@@ -2382,6 +2389,10 @@ form
 \end{equation}
 Thus, for real-valued orbitals, ERIs possess
 eightfold permutation symmetry.
+The condition concerns the orbital functions, not merely the numerical
+values of their integrals. Complex functions can yield real ERIs without
+possessing all eight permutation symmetries, as the plane-wave expressions
+in Section~\ref{sec:basis-sets} illustrate.
 
 This symmetry has an important computational consequence. A naive set of
 $K$ one-electron basis functions generates $K^4$ four-index ERIs, $\rbraket{\mu\nu}{\lambda\sigma}$.
@@ -3659,11 +3670,10 @@ particularly simple double-occupation pattern of RHF, but for a general
 determinant the same procedure can always be carried out by keeping track of
 which spatial orbitals are occupied by $\alpha$ and $\beta$ electrons.
 
-The spatial-orbital representation is more compact, but the underlying
-spin-orbital structure remains important. In particular, it determines
-which exchange terms survive. This distinction will become useful in the
-next section, where we consider determinants obtained by replacing occupied
-spin orbitals with virtual ones.
+We now return to spin orbitals so that individual substitutions can be
+specified without ambiguity. The spin selection rules just derived continue
+to determine which exchange matrix elements survive when occupied orbitals
+are replaced by virtual ones.
 
 \subsection{Excited determinants and Hamiltonian matrix elements}
 
@@ -4420,10 +4430,11 @@ will also establish the stationarity condition used here.
 Brillouin's theorem does not state that singly excited determinants are
 unimportant. Rather, it states that a \emph{stationary HF determinant does
 not couple directly to singles through the Hamiltonian}. This has several
-important consequences. For example, single excitations do not contribute
-directly to the ground-state correlation energy at first order around a
-canonical HF reference, although they can enter indirectly through coupling
-to other configurations.
+important consequences. In a nondegenerate perturbative expansion about a
+canonical HF reference, the direct first-order mixing of singles with the
+reference vanishes. Singles can nevertheless enter indirectly through
+coupling to other configurations; the theorem does not remove them from
+correlated wavefunctions.
 
 The theorem also provides a useful physical interpretation of HF
 stationarity: the orbitals have already been optimized so that infinitesimal
@@ -4709,7 +4720,10 @@ Thus, spin adaptation is the diagonalization of $\chS^2$ in a determinant space.
 \paragraph{Spatial and spin symmetry.}
 
 The same result can be understood directly from the permutation symmetry of
-the two open-shell electrons.
+the two open-shell electrons. The following factors display only these two
+electrons; a common closed-shell core and antisymmetrization with that core
+are implicit for a larger system. Here $\phi_i$ and $\phi_a$ denote the
+two spatial molecular orbitals, not members of the AO basis.
 
 For two open-shell spatial orbitals $i$ and $a$, the singlet may be written
 as
@@ -4810,8 +4824,9 @@ specific linear combinations of determinants.
 
 \subsection{The Fock operator and orbital energies}
 
-Minimizing the Hartree--Fock energy under the orbital orthonormality
-constraints produces an effective one-electron operator. Its eigenfunctions
+The preceding discussion used the occupied--virtual Fock matrix to express
+stationarity. We now derive that operator by varying the Hartree--Fock energy
+under the orbital orthonormality constraints. Its eigenfunctions
 define the canonical orbitals and their orbital energies, whose physical
 interpretation is developed here together with Koopmans' theorem.
 
@@ -5150,7 +5165,8 @@ Hence,
 The two determinants differ only by an irrelevant global phase and describe
 the same physical state.
 Thus, unitary rotations within the occupied space leave
-$E_\text{HF}$ and $\Psi_\text{HF}$ unchanged.
+the energy $E_\text{HF}$ and the physical state unchanged, with the
+wavefunction itself defined only up to that phase.
 
 \paragraph{Canonical Hartree--Fock orbitals.}
 
@@ -5685,7 +5701,10 @@ denote the frozen-orbital cation energy and
   {}^{N-1}E_k^\text{HF}
 \end{equation}
 the energy obtained after a separate HF optimization of the cation.
-Variational optimization can only lower the energy:
+All comparisons in this discussion use the same nuclear geometry and
+one-electron space. Provided that the variational space for the ion contains
+the frozen determinant and that its energy is minimized in that space,
+optimization can only lower the energy:
 \begin{equation}
   {}^{N-1}E_k^\text{HF}
   \leq
@@ -5703,7 +5722,8 @@ It is therefore useful to define the ionization relaxation correction as
 Orbital relaxation thus tends to \emph{lower} the ionization potential
 relative to the frozen-orbital Koopmans value.
 
-For electron attachment, the relaxed anion similarly satisfies
+For electron attachment, the relaxed anion satisfies the corresponding bound
+under the same variational assumption:
 \begin{equation}
   {}^{N+1}E_c^\text{HF}
   \leq
@@ -6067,12 +6087,16 @@ The zeroth-order Hamiltonian is therefore the sum of the Fock operators,
   =
   \chH^\text{HF}
 \end{equation}
-and its ground-state eigenvalue is
+and its eigenvalue for the HF reference determinant is
 \begin{equation}
   E^{(0)}
   =
   \sum_{i=1}^{N}\epsilon_i
 \end{equation}
+For an Aufbau reference occupying the lowest spin orbitals, this is also the
+ground-state eigenvalue of the auxiliary operator. For a non-Aufbau
+reference, such as those targeted by the maximum-overlap method below, it
+is the eigenvalue of the selected determinant instead.
 The first-order correction is the expectation value of the perturbation over
 the Hartree--Fock determinant:
 \begin{equation}
@@ -6871,6 +6895,11 @@ one-electron contribution and a density-dependent contribution,
 \end{equation}
 The following worked example makes the contraction hidden in
 $G_{\mu\nu}[\bP]$ explicit.
+It first uses the general spin-orbital formulation: within this example and
+the general AO-energy exercise below, a basis label includes spin, and the
+basis expansion of $\chi_i$ is in one-electron functions including that spin
+coordinate. The closed-shell specialization subsequently returns to the
+$K$ spatial AO functions $\phi_\mu(\br)$ and a spin-summed density.
 
 \begin{hfexercise}{AO Fock matrix.}
 
@@ -7059,7 +7088,8 @@ indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
 \end{hfsolution}
 \paragraph{Closed-shell specialization.}
 
-For a closed-shell system, the density matrix is
+We now carry out the spin sum and return to spatial AO indices. For a
+closed-shell system, the density matrix is
 \begin{equation}
 \begin{split}
   P_{\red{\mu\nu}}
@@ -7201,8 +7231,10 @@ this case,
   \qquad\green{\checkmark}
 \end{equation}
 
-The two constructions differ only by a unitary transformation within the
-orthonormalized space. The symmetric choice changes the original basis as
+When all overlap eigenvectors are retained, the two constructions differ
+only by a unitary transformation within the orthonormalized space. Discarding
+near-dependent directions instead reduces the represented orbital space.
+The symmetric choice changes the original basis as
 little as possible in the L\"owdin sense, whereas the canonical construction
 makes it particularly transparent how directions associated with very small
 overlap eigenvalues can be removed.
@@ -7332,7 +7364,10 @@ Define the DIIS overlap matrix by
   =\Tr\qty[\be^{(i)\dagger}\cdot\be^{(j)}]
 \end{equation}
 The elements of $\bB$ are therefore pairwise inner products between residual
-matrices. If two iterations have very similar errors, the corresponding rows
+matrices; the extrapolation weights $c_i$ are taken to be real. For the
+Hermitian Fock, density, and overlap matrices used here, the residual is
+anti-Hermitian and these inner products are real even when the orbitals are
+complex. If two iterations have very similar errors, the corresponding rows
 of $\bB$ become nearly linearly dependent; this observation explains the
 possible numerical singularity discussed below.
 The squared residual norm is then
@@ -7722,18 +7757,23 @@ Conventional SCF occupies the lowest orbital energies,
 \begin{equation}
   \epsilon_1\leq\epsilon_2\leq\cdots\leq\epsilon_N
 \end{equation}
-and therefore finds a low-energy solution. MOM-SCF instead occupies the
+and thereby applies the Aufbau occupation rule at each iteration. This rule
+alone does not guarantee convergence or selection of the global minimum.
+MOM-SCF instead occupies the
 largest overlap weights,
 \begin{equation}
   w_1\geq w_2\geq\cdots\geq w_N
 \end{equation}
-and therefore follows a chosen SCF solution. Thus, MOM changes the
+and thereby attempts to follow the chosen occupied space. For collinear
+calculations with fixed $N^\alpha$ and $N^\beta$, the selection is made
+separately in each spin sector. Thus, MOM changes the
 occupation to target non-Aufbau stationary solutions of the HF equations.
 
 \paragraph{What does a MOM calculation give?}
 
-MOM provides a higher-energy stationary solution of the HF equations, with
-full orbital relaxation for the targeted configuration and a corresponding
+When successful, MOM provides a targeted stationary solution of the HF
+equations, often higher in energy than the conventional Aufbau solution,
+with full orbital relaxation and a corresponding
 state-specific density and set of molecular properties. It can yield useful
 excitation energies for states dominated by a single electronic
 configuration. Its formal cost per SCF iteration is the same as that of a
@@ -7772,7 +7812,9 @@ For point charges $q_i$ at positions $\br_i$, the classical dipole vector is
     _{\text{classical definition}}
 \end{equation}
 
-The electronic term follows from the one-particle density:
+The electronic term follows from the one-particle density. In the spatial
+AO contraction, $\bP$ is the spin-summed density; integration over the spin
+coordinate is implicit in the reduction from the spin-orbital sum:
 \begin{equation}
 \begin{split}
   -\sum_i\mel{\chi_i}{\br}{\chi_i}
@@ -7821,7 +7863,9 @@ For example, its $x$ component is
 An atomic charge is not itself a direct observable of the molecular
 wavefunction. Population analyses define such charges by adopting a rule for
 partitioning the density among atom-centered basis functions. Mulliken and
-L\"owdin analyses differ precisely in this partitioning convention.
+L\"owdin analyses differ precisely in this partitioning convention. For the
+population formulas below, the AOs and orbital coefficients are taken to be
+real.
 
 \hfBioMulliken
 
@@ -7867,7 +7911,8 @@ For \red{$\alpha=1/2$}, this becomes
 
 \subsubsection{Localized orbitals}
 
-Canonical orbitals diagonalize the occupied-occupied and virtual-virtual
+We retain the real-orbital convention for the population-based localization
+criteria below. Canonical orbitals diagonalize the occupied-occupied and virtual-virtual
 blocks of the Fock matrix, but they are often delocalized over an entire
 molecule. Because unitary rotations within either subspace leave the Slater
 determinant invariant, the same Hartree--Fock state can be represented by
@@ -8020,7 +8065,7 @@ match the intended interpretation or computational use.
 
 \paragraph{Summary of orbital localization.}
 
-The occupied subspace and Slater determinant remain unchanged, as do the
+The occupied subspace and physical determinant state remain unchanged, as do the
 density matrix, electron density, HF energy, and molecular properties. The
 occupied-virtual Fock block also remains zero:
 \begin{equation}
@@ -8469,10 +8514,11 @@ The two choices $\pm\theta$ are degenerate and exchange the spin
 localization.
 
 The parameter $\theta$ therefore provides a continuous path from the
-restricted determinant at $\theta=0$ to a determinant with one spin orbital
-localized on each atom at $\theta=\pi/4$. The orbital overlap
-$\cos(2\theta)$ decreases along this path and vanishes at complete
-localization.
+restricted determinant at $\theta=0$ to orthogonal spatial orbitals at
+$\theta=\pi/4$. In the dissociation limit, these endpoint orbitals become
+localized on separate atoms. The orbital overlap $\cos(2\theta)$ decreases
+along this path and vanishes at its endpoint; at finite atomic overlap,
+orthogonality alone does not imply complete localization on individual atoms.
 
 Figure~\ref{fig:h2-orbital-rotation} illustrates the progressive
 localization of the two spin channels along this path.
@@ -8505,7 +8551,11 @@ and localization on separate atoms at dissociation.}
 \label{fig:h2-orbital-rotation}
 \end{center}
 
-With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the energy is
+With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the
+angle-dependent electronic energy is given below. Unlike the preceding RHF
+total-energy expression, this polynomial omits the nuclear constant $1/R$.
+That constant does not affect minimization with respect to $\theta$ at
+fixed $R$, but must be added when comparing total energies as $R$ varies.
 \begin{equation}
 \begin{split}
   E_\text{UHF}(\theta)={}&2\cos^2\theta\,h_{gg}
@@ -8644,7 +8694,8 @@ At dissociation,
   U&=(AA|AA)>0
 \end{split}
 \end{equation}
-The restricted and unrestricted limits are
+Writing $E_\text{H}$ for the isolated-atom energy represented in the same
+basis, the restricted and unrestricted total-energy limits are
 \begin{equation}
 \begin{split}
   E_\text{RHF}^\infty&=2E_\text{H}+\frac12U
