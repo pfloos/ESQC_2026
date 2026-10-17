@@ -1,5 +1,42 @@
 # Chapter audit
 
+## MP2, AO-to-MO transformation, and Laplace narrative (17 October 2026)
+
+- Expanded section 1.7.6 in place, following PDF slides 45--53 of the
+  author's specified post-HF lecture. `chapter-posthf-coverage.md` records
+  every slide's destination, source hashes, notation decisions, and image
+  provenance. The original direct/exchange illustration is retained and
+  called out in prose; no replacement illustration was designed.
+- Connected the second-order spin-orbital expression to the RHF spin sum,
+  explained direct/exchange contributions and the factor of one quarter,
+  and separated quartic energy accumulation from the conventional
+  fifth-order transformation cost. Included the naive eighth-order method,
+  all four one-index contractions, initialization/buffer reuse, work/storage
+  accounting, and the occupied--virtual integral block needed for MP2.
+- Made the Laplace slide's sign correction explicit: the excitation gap
+  D=-Delta is positive, the energy has a minus prefactor, occupied dressing
+  uses +epsilon*t/2 and virtual dressing uses -epsilon*t/2. Included the
+  quadrature and the original links to locality, RI, and stochastic sampling,
+  without claiming automatic lower scaling from a bare Laplace transform.
+- Retained chapter notation (N electrons, K spatial basis functions), physics
+  commands, semantic colors, standalone align/equation-split conventions,
+  and absence of sentence punctuation in displays. Further reading is unchanged.
+- Added the two original algorithm references identified in the slides,
+  verified against publisher-deposited DOI metadata. There are now 86 cited
+  references, including 82 audited articles/contributed chapters.
+- Added `scripts/check_chapter_mp2.py`. All 256 transformed integrals agree
+  between naive and four-stage evaluation; spin-orbital, ordered-pair, and
+  RHF MP2 energies agree; Laplace integration agrees within 9.66e-15.
+- All six checks pass. The 583 displays present after the approved equation
+  corrections remain in order; there are 30 added displays across the new
+  exercise and MP2 discussion. All 31 figures/tables have prose callouts.
+  Existing exercise/solution and scientific illustration environments are
+  also retained exactly relative to `d19d2af`.
+- Full compilation succeeds (128 pages) without undefined citations,
+  cross-references, or BibTeX warnings. Targeted rendered-page checks cover
+  the new exercise, energy/diagram, four transformations, Laplace formulas,
+  and corrected AO-energy bra. No full-document visual audit was performed.
+
 ## Detailed HF-stationarity exercise (17 October 2026)
 
 - Added an exercise/solution immediately after the existing Fock-operator

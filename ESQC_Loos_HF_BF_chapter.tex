@@ -6239,6 +6239,7 @@ Equivalently,
 % ============================================================================
 
 \subsubsection{Connection with many-body perturbation theory}
+\label{sec:mp2-connection}
 
 This distinction between the sum of the orbital energies and the HF energy
 also provides the natural starting point for
@@ -6322,6 +6323,306 @@ occupied HF orbital energies is the zeroth-order energy, while the
 first-order correction removes the double counting of the electron-electron
 interaction. Correlation beyond Hartree--Fock first appears at second order,
 leading to the MP2 correlation energy \citep{Cremer2011}.
+
+\paragraph{The MP2 correlation energy.}
+
+The HF determinant is stationary against single substitutions, but it still
+couples to doubly substituted determinants through the two-electron
+interaction. MP2 turns these couplings into the first correction beyond the
+mean-field energy. For a nondegenerate canonical HF reference, second-order
+perturbation theory gives
+\begin{equation}
+  E^{(2)}
+  =\sum_{n\ne0}
+    \frac{\abs{\mel{\Psi_n}{\chV}{\Psi_0}}^2}
+      {E^{(0)}-E_n^{(0)}}
+\end{equation}
+Here $\ket{\Psi_n}$ are the other determinants of the canonical orbital
+basis, eigenfunctions of $\chH^{(0)}$, and the reference is
+$\ket{\Psi_0}=\ket{\Psi_\text{HF}}$. Brillouin's theorem eliminates
+singles, and the two-electron character of $\chV$ eliminates couplings to
+triples and higher substitutions. For a double substitution, the
+one-electron HF potential cannot connect the two determinants, so the
+remaining matrix element is the antisymmetrized ERI. Consequently,
+\begin{equation}
+\begin{split}
+  \green{\Ec^{(2)}}
+  &=\sum_{i<j}^{\text{occ}}\sum_{a<b}^{\text{virt}}
+    \frac{\abs{\mel{ij}{}{ab}}^2}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
+  \\
+  &=\boxed{\frac14\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+    \frac{\abs{\mel{ij}{}{ab}}^2}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}}
+  \label{eq:mp2-spin-orbital}
+\end{split}
+\end{equation}
+These indices label spin orbitals. The unrestricted sums count each pair of
+occupied labels and each pair of virtual labels twice, explaining the factor
+$1/4$; coincident labels contribute zero by antisymmetry. The absolute square
+also makes this expression valid for complex canonical orbitals. The MP2
+electronic energy is
+\begin{equation}
+  E_\text{MP2}=E_\text{HF}+\Ec^{(2)}
+\end{equation}
+For an Aufbau reference with a positive occupied--virtual gap, every
+denominator in Eq.~\eqref{eq:mp2-spin-orbital} is negative, so the
+second-order correction is nonpositive. Small excitation gaps, however,
+make the correction sensitive to the denominators; the nondegenerate
+perturbative construction should not be interpreted as a remedy for a
+nearly degenerate HF reference.
+
+For implementation, it is useful to specialize to a closed-shell RHF
+reference with \emph{real} spatial orbitals.
+Let $O=N/2$ and $V=K-O$ be the numbers of occupied and virtual spatial
+orbitals. Until the Laplace discussion below, $i,j$ label the $O$ occupied
+spatial orbitals, and $a,b$ the $V$ virtual spatial orbitals. Carrying out the spin
+sum gives
+\begin{equation}
+\begin{split}
+  \green{\Ec^{(2)}}
+  &=\sum_{\green{ij}}^{O}\sum_{\red{ab}}^{V}
+    \frac{\braket{\green{ij}}{\red{ab}}
+      \qty(2\braket{\green{ij}}{\red{ab}}
+        -\braket{\green{ij}}{\red{ba}})}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
+  \\
+  &=\underbrace{2\sum_{ij}^{O}\sum_{ab}^{V}
+    \frac{\braket{ij}{ab}^2}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}}
+      _{\text{direct contribution}}
+    -\underbrace{\sum_{ij}^{O}\sum_{ab}^{V}
+    \frac{\braket{ij}{ab}\braket{ij}{ba}}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}}
+      _{\text{exchange contribution}}
+  \label{eq:mp2-rhf}
+\end{split}
+\end{equation}
+The factor of two in the direct term is the result of spin summation, not
+an additional empirical weight. More explicitly, if the spatial direct
+and exchanged integrals are denoted temporarily by $A=\braket{ij}{ab}$
+and $B=\braket{ij}{ba}$, summing the squared spin-orbital integral over
+its four spin labels gives $4A^2+4B^2-4AB$. Multiplication by $1/4$ and
+interchange of the dummy virtual labels in the $B^2$ sum yield
+$2A^2-AB$ after summation. Figure~\ref{fig:mp2-direct-exchange} retains the
+slide's diagrammatic distinction between the two contractions.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.68\textwidth]{chapter-figures/mp2-direct-exchange.png}
+  \caption{Direct (left) and exchange (right) contributions to the MP2
+  correlation energy. The labels $i,j$ identify occupied orbitals and $a,b$
+  virtual orbitals; wavy lines represent electron--electron interactions.
+  The crossed connections in the right diagram distinguish the exchanged
+  contraction. Illustration retained from the author's post-HF lecture,
+  slide ``MP2 correlation energy''.}
+  \label{fig:mp2-direct-exchange}
+\end{figure}
+
+\paragraph{Why a four-loop energy expression leads to a fifth-order method.}
+
+If the MO integrals are already available, evaluating
+Eq.~\eqref{eq:mp2-rhf} requires only a loop over each occupied pair and
+each virtual pair. One initializes the energy accumulator to zero, forms
+the denominator for each quartet, and adds its direct-minus-exchange
+contribution. With
+\begin{equation}
+  \purple{\Delta_{ij}^{ab}}
+  =\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b
+\end{equation}
+the accumulation step is
+\begin{equation}
+  \Ec^{(2)}\longleftarrow\Ec^{(2)}
+  +\frac{2\braket{ij}{ab}^2-\braket{ij}{ab}\braket{ij}{ba}}
+    {\purple{\Delta_{ij}^{ab}}}
+\end{equation}
+There are $O^2V^2$ such quartets. Thus the final energy summation costs
+$\order{O^2V^2}$, or $\order{K^4}$ when both orbital populations grow
+proportionally to $K$. The accumulator itself requires only scalar storage.
+This quartic summation does not explain the familiar fifth-order cost of
+conventional MP2 because it assumes that the transformed integrals have
+already been obtained. That preparation is the missing computational step.
+
+The distinction between integral conventions matters here. The spatial
+integrals required by the MP2 expression are
+\begin{align}
+  \braket{ij}{ab}&=\rbraket{ia}{jb}
+  &
+  \braket{ij}{ba}&=\rbraket{ib}{ja}
+\end{align}
+Thus MP2 needs the occupied--virtual pair block of the chemists' ERI tensor,
+not the block $\rbraket{ij}{ab}$. This follows from the physicists'-to-chemists'
+index conversion established earlier.
+
+\paragraph{The naive AO-to-MO transformation.}
+
+The integrals generated by a molecular program are initially expressed in
+the AO basis. Although the finite-basis equations are developed in the next
+section, the required change of representation can already be understood
+from $\psi_p=\sum_\mu C_{\mu p}\phi_\mu$. Retaining the real-orbital
+convention and using chemists' notation, substitution of the four orbital
+expansions gives
+\begin{equation}
+  \underbrace{\rbraket{pq}{rs}}_{\text{MO integral}}
+  =\sum_{\mu\nu\lambda\sigma}^{K}
+    C_{\mu p}C_{\nu q}C_{\lambda r}C_{\sigma s}
+    \underbrace{\rbraket{\mu\nu}{\lambda\sigma}}_{\text{AO integral}}
+  \label{eq:ao-mo-four-index}
+\end{equation}
+Here $p,q,r,s$ are free MO labels, whereas the four Greek AO labels are
+summed. For a full transformation there are $K^4$ output integrals, and
+computing each independently requires $K^4$ AO terms. A literal algorithm
+therefore loops over $p,q,r,s$, initializes that output entry to zero, and
+accumulates it through four further loops over $\mu,\nu,\lambda,\sigma$.
+The resulting eight nested loops cost $\order{K^8}$. This is the cost of
+a poor contraction order, not an intrinsic cost of changing orbital basis.
+
+\paragraph{Four successive one-index transformations.}
+
+A semi-direct construction avoids repeating the same partial
+sums by transforming one AO index at a time
+\citep{FrischHeadGordonPople1990}. The four stages are
+\begin{align}
+  \violet{I_{\mu\nu\lambda s}}
+    &=\sum_\sigma C_{\sigma s}\rbraket{\mu\nu}{\lambda\sigma}
+    \label{eq:ao-mo-quarter-one}
+  \\
+  \orange{J_{\mu\nu rs}}
+    &=\sum_\lambda C_{\lambda r}\violet{I_{\mu\nu\lambda s}}
+    \label{eq:ao-mo-quarter-two}
+  \\
+  \blue{I_{\mu qrs}}
+    &=\sum_\nu C_{\nu q}\orange{J_{\mu\nu rs}}
+    \label{eq:ao-mo-quarter-three}
+  \\
+  \red{\rbraket{pq}{rs}}
+    &=\sum_\mu C_{\mu p}\blue{I_{\mu qrs}}
+    \label{eq:ao-mo-quarter-four}
+\end{align}
+The labels $I$ and $J$ denote temporary four-index arrays, not Coulomb
+operators or identity matrices. An accumulation implementation allocates
+and zeros $I$ before the first stage and $J$ before the second.
+The first stage contracts $\sigma$ for
+each fixed $(\mu,\nu,\lambda,s)$ and stores the result in $I$. It has
+four output loops and one contraction loop, so costs $\order{K^5}$ and
+requires $\order{K^4}$ storage. The second stage contracts $\lambda$ and
+writes $J$; its cost and storage have the same orders.
+
+Once $J$ is complete, the original contents of $I$ are no longer needed.
+The third stage therefore reuses that buffer, now with index pattern
+$(\mu,q,r,s)$, to contract $\nu$. Its entries must be reset before
+accumulation; no new intermediate buffer is required. Finally, contraction
+of $\mu$ writes the MO integral array. Both final stages again have five
+loops and cost $\order{K^5}$. The output is also quartic in size, but it
+does not require another kind of intermediate. The AO data, output tensor,
+and temporary buffers together retain a quartic storage requirement.
+
+Substitution of each intermediate into the following stage recovers
+Eq.~\eqref{eq:ao-mo-four-index} exactly. The improvement is therefore
+purely algebraic: four fifth-order contractions replace an eighth-order
+one without approximating any integral. In this full-tensor construction,
+\begin{align}
+  \text{transformation work}&=\order{K^5}
+  &
+  \text{tensor storage}&=\order{K^4}
+\end{align}
+The transformed integrals can then be used in the quartic MP2 energy
+summation. This explains the conventional fifth-order scaling. In an
+actual MP2 calculation, only the $\rbraket{ia}{jb}$ block is required,
+so the output can be restricted to $O^2V^2$ entries rather than retaining
+every MO integral. The full transformation above isolates the contraction
+principle without depending on a particular batching or storage strategy.
+Here $K$ counts basis functions throughout, whereas $N$ remains the electron
+number; this distinction separates basis-size scaling from electron counts.
+
+\paragraph{Separating the energy denominator by a Laplace transform.}
+
+The four-step transformation separates the AO sums, but the denominator
+in the MP2 energy still ties together two occupied and two virtual orbital
+energies. Alml\"of's Laplace-transform approach removes that algebraic
+coupling by replacing the reciprocal denominator with an integral of
+factorized exponentials \citep{Almlof1991}.
+
+We now return to \emph{spin-orbital} indices and
+Eq.~\eqref{eq:mp2-spin-orbital}. The sign convention is essential. With
+the negative MP2 denominator $\Delta_{ij}^{ab}$ defined above, introduce
+the positive excitation gap
+\begin{equation}
+  D_{ij}^{ab}=-\Delta_{ij}^{ab}
+  =\epsilon_a+\epsilon_b-\epsilon_i-\epsilon_j>0
+\end{equation}
+For a positive real $D$,
+\begin{equation}
+\begin{split}
+  \int_0^\infty e^{-Dt}\dd t
+  &=\eval{-\frac{e^{-Dt}}{D}}_0^\infty=\frac1D
+  \\
+  \frac{1}{\Delta_{ij}^{ab}}
+  &=-\int_0^\infty e^{-D_{ij}^{ab}t}\dd t
+\end{split}
+\end{equation}
+Thus the minus sign must remain in the energy expression. Inserting the
+negative orbital-energy denominator directly into $e^{-\Delta t}$ would
+instead produce a divergent integral. The convergent representation is
+\begin{equation}
+\begin{split}
+  \Ec^{(2)}
+  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+    \abs{\mel{ij}{}{ab}}^2e^{-D_{ij}^{ab}t}\dd t
+  \\
+  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+    \abs{\mel{ij}{}{ab}}^2
+    e^{\epsilon_i t}e^{\epsilon_j t}
+    e^{-\epsilon_a t}e^{-\epsilon_b t}\dd t
+\end{split}
+\end{equation}
+The auxiliary parameter $t$ has units of inverse energy in atomic units;
+it is not a real-time propagation of the electronic state. Each exponential
+now depends on only one orbital energy.
+
+These factors can be absorbed into unnormalized,
+$t$-dependent orbitals. In the chapter's spin-orbital notation, define
+\begin{align}
+  \ket{i(t)}&=e^{\epsilon_i t/2}\ket{\chi_i}
+  &
+  \ket{a(t)}&=e^{-\epsilon_a t/2}\ket{\chi_a}
+\end{align}
+The opposite signs distinguish occupied and virtual orbitals. Because both
+the direct and exchange integrals contain the same four orbital factors,
+\begin{equation}
+\begin{split}
+  \mel{i(t)j(t)}{}{a(t)b(t)}
+  &=e^{-D_{ij}^{ab}t/2}\mel{ij}{}{ab}
+  \\
+  \Ec^{(2)}
+  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+    \abs{\mel{i(t)j(t)}{}{a(t)b(t)}}^2\dd t
+\end{split}
+\end{equation}
+The half factors in the orbital exponents are fixed by the square of the
+integral: squaring restores the complete damping factor $e^{-Dt}$. A
+quadrature with $N_\text{grid}$ nodes $t_k$ and weights $w_k$ then gives
+\begin{equation}
+  \boxed{\Ec^{(2)}\approx-\frac14\sum_{k=1}^{N_\text{grid}}w_k
+    \sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+    \abs{\mel{i(t_k)j(t_k)}{}{a(t_k)b(t_k)}}^2}
+  \label{eq:mp2-laplace}
+\end{equation}
+Here $k$ labels a quadrature point, not an occupied orbital. The Laplace
+identity is exact for positive gaps; the finite quadrature introduces a
+separately controllable numerical approximation.
+
+This last reformulation changes which computational operations are
+possible, rather than automatically changing their scaling. If every
+transformed integral is still formed and summed at every quadrature point,
+the occupied--virtual quartet count remains. The benefit is that the
+energy denominator no longer prevents separate orbital contractions.
+Localized orbitals, resolution of the identity, stochastic sampling, and
+quadrature can then be combined with this factorization. The integral-screening and RI discussions later in the
+chapter describe complementary ways to exploit locality and product-space
+redundancy. The route from HF to MP2 therefore also illustrates a broader
+computational lesson: the formal expression for an energy does not, by
+itself, determine the cost of evaluating it.
 
 \section{Finite-basis Hartree--Fock and self-consistent-field methods}
 \label{sec:finite-basis-hf}

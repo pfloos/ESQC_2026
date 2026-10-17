@@ -17,15 +17,16 @@ an MP2/AO-to-MO/Laplace discussion based on the specified post-HF slides.
 Those are newly authorized additions, distinct from the original audit's
 scope restriction.
 
-## Scope and preservation
+## Original audit scope and preservation
 
-This pass covers the existing HF, basis-set, and integral material. It does
-not add the MP2 or AO-to-MO sections mentioned in the author's backlog.
+The initial pass covered the existing HF, basis-set, and integral material.
+It did not add the MP2 or AO-to-MO sections mentioned in the author's backlog;
+those were subsequently requested and are mapped in `chapter-posthf-coverage.md`.
 All derivations, examples, exercise/solution pairs, illustrations, and
 numerical tables are retained. Further reading, biographies, bibliography,
 cover, and semantic color conventions are unchanged. Substantive displayed
-mathematics is not corrected silently: the proposed replacements below await
-the author's approval. Prose can clarify the assumptions of an unchanged
+mathematics was not corrected silently: M1--M3 below were deferred until
+the author's approval, and have now been applied. Prose can clarify the assumptions of an unchanged
 formula without introducing a new topic.
 
 The source-preservation check counts 583 equation/align displays in the two
@@ -51,7 +52,7 @@ or a new set of ab initio molecular calculations.
 | Basis sets, extrapolation, counterpoise, ECPs | Primitive/contraction counts, Cartesian/spherical shell counts, nested-space assumptions, HF versus correlation extrapolation, ghost-basis inequalities, and ECP charge/core counts checked. Angular ECP corrections must be understood relative to the local channel. Counterpoise removes a basis imbalance, not every interaction-energy error. |
 | Gaussian integrals, screening, RI/CD | Product centers/prefactors, one-electron formulas, Laplace reduction, Boys orders/limits, VRR signs, HRR/contraction sequence, real-AO scope, Coulomb metric and rank assumptions checked. Screening thresholds control discarded contributions; an integral threshold alone is not a bound on accumulated energy error. |
 
-## Proposed displayed-equation corrections — awaiting approval
+## Displayed-equation findings and approved corrections
 
 ### M1. AO-energy derivation: conjugation inside a bra
 
@@ -66,7 +67,7 @@ taken to form the bra. Therefore
     {\sum_\nu C_{\nu i}\phi_\nu}
 ```
 
-conjugates the first coefficient twice. Proposed replacement:
+conjugates the first coefficient twice. Approved replacement:
 
 ```latex
 \mel{\sum_\mu C_{\mu i}\phi_\mu}{\hh}
@@ -92,19 +93,19 @@ implementation check of the density/energy contraction convention.
 Location: paragraph **Spatial and spin symmetry** in the spin-adapted-singles
 subsection. The singlet and triplet two-electron factors use `\phi_i` and
 `\phi_a`, although the chapter reserves `\phi_\mu` for AOs and `\psi_p`
-for spatial MOs. Proposed replacement: use `\psi_i` and `\psi_a` in these
+for spatial MOs. Approved replacement: use `\psi_i` and `\psi_a` in these
 two displays, without changing normalization, signs, or the suppressed-core
 convention. This is notation regularization, not a change to spin adaptation.
-For now, the prose explicitly identifies these as spatial MOs.
+The introductory prose has been updated consistently.
 
 ### M3. Explicit matrix multiplication dots
 
 Location: **Reduction to an ordinary eigenvalue problem**, the intermediate
 equation containing `\bF'\bC' = \bC'\bE`.
-Proposed replacement: `\bF'\cdot\bC' = \bC'\cdot\bE`.
+Approved replacement: `\bF'\cdot\bC' = \bC'\cdot\bE`.
 This restores the author's requested explicit matrix-product notation and
-does not alter the algebra. It is listed rather than applied here so that
-the unchanged-display baseline remains exact during this audit.
+does not alter the algebra. It was originally deferred to retain the exact
+display baseline during the audit, and is now applied with author approval.
 
 ## Prose clarifications and continuity pass
 
@@ -147,8 +148,9 @@ Run from the repository root:
 
 ```text
 python3 scripts/check_chapter_hf_algebra.py
+python3 scripts/check_chapter_mp2.py
 python3 scripts/check_chapter_integrals.py
-python3 scripts/check_chapter_layout.py --compare-math faf8986
+python3 scripts/check_chapter_layout.py --compare-math d19d2af
 python3 scripts/check_chapter_source.py
 python3 scripts/check_chapter_references.py
 latexmk -pdf -interaction=nonstopmode -halt-on-error ESQC_Loos_HF_BF_chapter.tex
@@ -163,12 +165,13 @@ spin-adapted singles; and H2 curvature/spin contamination. The existing
 integral check independently covers 540 recurrence cases, RI projection and
 contraction, and complex-density GHF exchange/tensor ordering.
 
-The layout comparison verifies preservation in order of all baseline
+For the follow-up, `d19d2af` is the baseline containing the approved M1--M3
+corrections. The layout comparison verifies preservation in order of all baseline
 equation/align displays and byte-for-byte preservation of Further reading.
-It does not certify the scientific correctness of a preserved formula, which
-is why M1--M3 remain explicitly listed above.
+It does not certify the scientific correctness of a preserved formula;
+the record above explains the three approved changes explicitly.
 
-### Completed verification
+### Original audit verification (before the follow-up)
 
 All five source/reference/algebra/integral checks above pass. The display
 comparison preserves all 583 original displays, and all 30 numbered figures
@@ -181,4 +184,16 @@ Full LaTeX/BibTeX compilation succeeds: 122 PDF pages, no undefined citations
 or cross-references, and no BibTeX warnings. Targeted rendered-page checks
 cover the H2 electronic-versus-total-energy clarification and the Gaussian
 normalization/contraction clarification. This was not a full-document
-overflow or visual audit. M1--M3 remain proposals, not applied corrections.
+overflow or visual audit. These results predate the follow-up; M1--M3 have
+since been approved and applied, and the requested exercise and MP2 material
+have been added with their own verification records.
+
+### Follow-up verification
+
+The three approved corrections, detailed stationarity exercise, and requested
+MP2/AO-to-MO/Laplace narrative are complete. All six checks listed above pass;
+the corrected 583-display baseline is retained with 30 new displays. All 31
+figures/tables have text callouts, all 86 bibliography entries are cited, and
+Further reading remains unchanged. Compilation succeeds to 128 pages without
+unresolved citations or cross-references. See `chapter-posthf-coverage.md`
+for the nine-slide mapping and explicit Laplace-sign correction.

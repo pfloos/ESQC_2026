@@ -1,5 +1,24 @@
 # Chapter reference verification
 
+## MP2 algorithm additions (17 October 2026)
+
+Added the two original algorithm papers identified in the author's post-HF
+slides: Frisch, Head-Gordon, and Pople for the semi-direct AO-to-MO
+transformation, and Almlof for the Laplace representation. Author lists,
+titles, years, volumes, issues, and page ranges were verified against
+Elsevier-deposited metadata from the Crossref works API on this date.
+Publisher search records independently confirm both article identities;
+full publisher pages returned access errors, so no claim of full-text
+verification is made. The mathematical exposition follows the author's
+source slides and is independently checked numerically. The bibliography
+now contains 86 cited entries, including 82 audited articles/contributed
+chapters and the four retained books. Further reading is unchanged.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `FrischHeadGordonPople1990` | Semi-direct algorithms for the MP2 energy and gradient | [10.1016/0009-2614(90)80030-H](https://doi.org/10.1016/0009-2614(90)80030-H) |
+| `Almlof1991` | Elimination of energy denominators in Moller--Plesset perturbation theory by a Laplace transform approach | [10.1016/0009-2614(91)80078-C](https://doi.org/10.1016/0009-2614(91)80078-C) |
+
 ## Correlated-method additions (16 October 2026)
 
 Added four references at the existing discussions of correlated wavefunction
