@@ -1,5 +1,20 @@
 # Chapter audit
 
+## Detailed HF-stationarity exercise (17 October 2026)
+
+- Added an exercise/solution immediately after the existing Fock-operator
+  derivation, without shortening or moving that derivation. The solution
+  expands the energy in coordinates, differentiates each conjugate occurrence
+  in the Coulomb and exchange terms, derives the constraints and Hermitian
+  multiplier matrix, and obtains the occupied--virtual gradient and
+  Brillouin condition. It distinguishes stationarity from stability.
+- Extended the independent algebra check with 48 central finite-difference
+  checks of the separate one-electron, Coulomb, and exchange derivatives
+  along real and imaginary orbital variations.
+- The source-layout comparison against `d19d2af` preserves all 583 existing
+  displays and Further reading; the new equations are additions. Source
+  conventions and compilation pass.
+
 ## Approved equation corrections (17 October 2026)
 
 - Applied the author's explicit approval of M1--M3 in the scientific audit:

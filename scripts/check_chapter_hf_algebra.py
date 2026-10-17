@@ -164,10 +164,48 @@ def h2_curvature():
         close(1 - cos(2*theta)**2, sin(2*theta)**2, "two-electron UHF spin contamination")
 
 
+def orbital_derivative():
+    # Discrete spatial/spin coordinates: the polynomial energy is defined
+    # off the orthonormal manifold, as required for a functional derivative.
+    orbitals = [[0.7+0.1j, 0.2-0.3j, -0.1+0.4j, 0.3],
+                [0.1-0.2j, 0.6+0.1j, 0.2, -0.4+0.2j]]
+    h = ((-1.0, 0, 0.2, 0), (0, -1.0, 0, 0.2),
+         (0.2, 0, -0.3, 0), (0, 0.2, 0, -0.3))
+    kernel = ((1.2, 0.4), (0.4, 1.1))
+    def interaction(x, y):
+        return kernel[x // 2][y // 2]
+
+    def energy(c):
+        one = sum(v[x].conjugate()*h[x][y]*v[y]
+                  for v in c for x in range(4) for y in range(4))
+        coulomb = 0.5*sum(abs(v[x])**2*interaction(x, y)*abs(w[y])**2
+                          for v in c for w in c for x in range(4) for y in range(4))
+        exchange = -0.5*sum(v[x].conjugate()*w[x]*interaction(x, y)*w[y].conjugate()*v[y]
+                             for v in c for w in c for x in range(4) for y in range(4))
+        return one.real, coulomb, exchange.real
+
+    step = 1e-6
+    for i, v in enumerate(orbitals):
+        for x in range(4):
+            one = sum(h[x][y]*v[y] for y in range(4))
+            coulomb = sum(abs(w[y])**2*interaction(x, y)*v[x]
+                          for w in orbitals for y in range(4))
+            exchange = -sum(w[x]*w[y].conjugate()*interaction(x, y)*v[y]
+                             for w in orbitals for y in range(4))
+            for direction in (1, 1j):
+                plus, minus = [w[:] for w in orbitals], [w[:] for w in orbitals]
+                plus[i][x] += step*direction
+                minus[i][x] -= step*direction
+                for a, b, gradient in zip(energy(plus), energy(minus), (one, coulomb, exchange)):
+                    close((a-b)/(2*step), 2*(direction.conjugate()*gradient).real,
+                          "separate one-electron/Coulomb/exchange orbital derivatives", tolerance=2e-9)
+
+
 if __name__ == "__main__":
     determinant_normalization()
     energy_and_koopmans()
     complex_counterexamples()
     spin_adaptation()
     h2_curvature()
-    print("HF algebra checks passed: normalization, spin sums, pair counts, IP/EA, complex conventions, CSF phases, H2")
+    orbital_derivative()
+    print("HF algebra checks passed: normalization, spin sums, pair counts, IP/EA, complex conventions, CSF phases, H2, orbital derivatives")
