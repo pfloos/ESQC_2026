@@ -145,3 +145,164 @@ in this draft is not a grant of copyright permission.
 - Brillouin: [L. Hilleth Thomas, NAS memoir](https://www.nasonline.org/wp-content/uploads/2024/06/brillouin-lon-n.pdf).
 - Koopmans: [Yale Cowles Foundation](https://cowles.yale.edu/people/tjalling-c-koopmans)
   and [Yale papers finding aid](https://ead-pdfs.library.yale.edu/3892.pdf).
+
+## Expanded historical perspectives (17 October 2026)
+
+Eight further boxes cover twelve people, in the author-approved scope:
+Born/Oppenheimer, Mulliken, Coulson/Fischer-Hjalmars, Pople/Nesbet, Pulay,
+Moller/Plesset, Huzinaga, and Dunning. Pairs have separate portraits and
+individual biographical paragraphs, with the portrait directly beside the
+identified person's text. No generated likenesses are used. Existing picture
+files are unchanged; new portraits are scaled by LaTeX without pixel editing.
+
+The draft-use policy approved by the author is retained: where explicit reuse
+permission is unavailable, the box prints a **permission pending** notice.
+Credits identify the source, not an asserted copyright owner. Obtain permission
+from the actual rights holder or replace/remove these images before a
+permission-cleared publication; user approval is not a copyright license.
+
+### Max Born
+
+- Asset: `portrait-born.jpg`, 768 x 1024 pixels.
+- [Commons source](https://commons.wikimedia.org/wiki/File:Max_Born.jpg);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/f/f7/Max_Born.jpg).
+- Photographer and photograph date unspecified. Commons labels it public
+  domain; the chapter explicitly attributes that statement to Commons rather
+  than claiming independent verification of an unidentified photographer's rights.
+  The description also notes that its US public-domain tag needs documentation.
+- Existing Commons tonal adjustments are retained, with no further pixel edits.
+- Biography: [Nobel Foundation](https://www.nobelprize.org/prizes/physics/1954/born/facts/).
+
+### J. Robert Oppenheimer
+
+- Asset: `portrait-oppenheimer.jpg`, 1698 x 2471 pixels, 1944.
+- [Commons source](https://commons.wikimedia.org/wiki/File:Oppenheimer_(cropped).jpg);
+  [US National Archives record 558579](https://catalog.archives.gov/id/558579);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/8/85/Oppenheimer_%28cropped%29.jpg).
+- US federal-government photograph, public domain; photographer unidentified.
+  Existing crop by Artem.G and tonal restoration by MyCatIsAChonk, credited
+  in the box. The current file is the archival-photo crop, not the later
+  AI-enhanced revision that Commons reverted.
+- Biography: [Institute for Advanced Study](https://www.ias.edu/oppenheimer-legacy).
+
+### Robert Sanderson Mulliken
+
+- Asset: `portrait-mulliken.jpg`, 220 x 275 pixels, Chicago, 1929.
+- [Commons source](https://commons.wikimedia.org/wiki/File:Mulliken,Robert_1929_Chicago.jpg);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/6/6a/Mulliken%2CRobert_1929_Chicago.jpg).
+- Friedrich Hund estate, supplied and prepared for the internet by Gerhard
+  Hund (GFHund). Photographer is not independently identified. We select the
+  file's [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) option,
+  retaining attribution and a license link; no additional image changes.
+- Biography: [R. Stephen Berry, NAS memoir](https://www.nasonline.org/wp-content/uploads/2024/06/mulliken-robert.pdf)
+  and [Nobel Foundation](https://www.nobelprize.org/prizes/chemistry/1966/mulliken/facts/).
+
+### Charles Alfred Coulson
+
+- Asset: `portrait-coulson.jpg`, 180 x 232 pixels.
+- [IAQMS profile](https://www.iaqms.org/deceased/coulson.php);
+  [downloaded portrait](https://www.iaqms.org/images/deceased/coulson.jpg).
+- Photographer/date and reuse terms unspecified: **draft reproduction,
+  permission pending**. The separate National Portrait Gallery photograph
+  on Commons was not selected because its file page records a third-party
+  rights dispute.
+- Biography: the Academy profile and the joint
+  [1949 paper](https://doi.org/10.1080/14786444908521726).
+
+### Inga Fischer-Hjalmars
+
+- Asset: `portrait-fischer-hjalmars.jpg`, 302 x 471 pixels.
+- [Commons source](https://commons.wikimedia.org/wiki/File:Inga_Fischer_SPA_(cropped).jpg);
+  [Svenskt Portrattarkiv record](https://portrattarkiv.se/details/IQojCnw0WmAAAAAAAAAFbw);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/7/79/Inga_Fischer_SPA_%28cropped%29.jpg).
+- Unknown photographer/date; existing archive/Commons crop. Commons specifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); archive, source,
+  license, and use of the existing crop are credited. No further pixel edits.
+- Biography: [Bjorn Roos, IAQMS obituary](https://www.iaqms.org/obituary/IngaFish-Hjalmar.pdf).
+  That retrospective obituary gives 1947 for the Coulson collaboration;
+  the chapter instead follows the original paper's confirmed **1949**
+  publication date. The author is identified there as I. Fischer, her surname
+  before marriage, rather than as a different researcher.
+
+### John Anthony Pople
+
+- Asset: `portrait-pople.jpg`, 184 x 235 pixels.
+- [IAQMS profile](https://www.iaqms.org/deceased/pople.php);
+  [downloaded portrait](https://www.iaqms.org/images/deceased/pople.jpg).
+- Photographer/date and reuse terms unspecified: **draft reproduction,
+  permission pending**. Preferred to the much smaller Commons White House
+  crop for legibility at the chapter's portrait size.
+- Biography: Academy profile; the scientific contribution is linked to the
+  existing [Pople--Nesbet paper](https://doi.org/10.1063/1.1740120).
+
+### Robert K. Nesbet
+
+- Asset: `portrait-nesbet.jpg`, 992 x 1024 pixels.
+- [Labeled author profile, Science Featured](https://sciencefeatured.com/2024/11/27/conformal-theory-of-gravitation-and-cosmic-expansion-new-light-on-dark-matter/);
+  [downloaded image as served by that page](https://i0.wp.com/sciencefeatured.com/wp-content/uploads/2024/11/Dr.-Robert-K.-Nesbet.jpg?resize=992%2C1024&ssl=1).
+- The source explicitly labels the portrait as Robert K. Nesbet; identification
+  is not inferred from facial appearance. Photographer/date and reuse terms
+  unspecified: **draft reproduction, permission pending**.
+- Biographical training and career details are checked against his own
+  [IBM journal author biography](https://bitsavers.org/pdf/ibm/IBM_Journal_of_Research_and_Development/421/nesbet.pdf).
+  The Science Featured profile additionally supplies the birth year.
+  Its discussion of cosmology is not used as scientific evidence for this chapter.
+
+### Peter Pulay
+
+- Asset: `portrait-pulay.jpg`, 180 x 233 pixels.
+- [IAQMS profile](https://www.iaqms.org/members/pulay.php);
+  [downloaded portrait](https://www.iaqms.org/images/members/pulay.jpg).
+- Photographer/date and reuse terms unspecified: **draft reproduction,
+  permission pending**. Biography and birth year checked against the Academy
+  profile; DIIS papers are already in the chapter bibliography.
+
+### Christian Moller
+
+- Asset: `portrait-moller.jpg`, 824 x 1023 pixels, Rochester, 1957.
+- AIP Emilio Segre Visual Archives, Marshak Collection;
+  [institutional source](https://repository.aip.org/unidentifiedvolkoff-christian-moller-and-mrs-moller-seventh-international-conference-high-energy);
+  [Commons detail](https://commons.wikimedia.org/wiki/File:Christian_Moller.jpg);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/1/1a/Christian_Moller.jpg).
+- Commons machine-readable license field says only "Attribution", with no
+  standard license URL. We do not relabel that as CC or public domain:
+  the chapter conservatively marks **draft reproduction, permission pending**
+  and gives the archive/collection credit.
+- Biography: [Mogens Pihl, Danish Biographical Dictionary](https://biografiskleksikon.lex.dk/Christian_M%C3%B8ller/).
+
+### Milton S. Plesset
+
+- Asset: `portrait-plesset.jpg`, 240 x 300 pixels, Copenhagen, July 1963.
+- [Commons source](https://commons.wikimedia.org/wiki/File:Plesset,Milton_1963_Kopenhagen.jpg);
+  [downloaded original](https://upload.wikimedia.org/wikipedia/commons/e/ee/Plesset%2CMilton_1963_Kopenhagen.jpg).
+- Friedrich Hund estate / Gerhard Hund (GFHund),
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), with source and
+  attribution printed in the box. No additional pixel changes.
+- Biography: [Caltech oral history](https://oralhistories.library.caltech.edu/127/).
+
+### Sigeru Huzinaga
+
+- Asset: `portrait-huzinaga-source.pdf`, a single archival source page.
+- [Yamada Science Foundation report](https://yamadazaidan.jp/wordpress/wp-content/uploads/2021/09/S60_Vol.1_18.pdf),
+  source PDF page 19, printed page 16, project 84-2022, describing his 1984 visit.
+  The page explicitly labels Huzinaga and his University of Alberta affiliation.
+- Extracted that page without altering its embedded images (all three image
+  streams verified byte-for-byte). Removed only its malformed invisible OCR
+  text layer and unused font resources, which otherwise cause PDF-reader
+  warnings; no raster retouching or resynthesis. LaTeX displays the portrait
+  region with a clipping viewport. The report year is not asserted
+  to be the photograph date; photographer/date and reuse permission are
+  unspecified. **Draft reproduction, permission pending** is printed in the box.
+- Biography: [Alberta emeriti directory](https://www.registrar.ualberta.ca/calendar-archive/calendar-2015-2016/University-Staff/Emeriti/251.html)
+  and [his own 2007 account](https://www.molsci.jp/wp-content/uploads/A0002.pdf).
+  His birth year is not printed: retrospective birthday accounts and library
+  authority records do not agree sufficiently to justify adding it here.
+
+### Thom H. Dunning Jr.
+
+- Asset: `portrait-dunning.jpg`, 350 x 466 pixels.
+- [IAQMS profile](https://www.iaqms.org/members/dunning.php);
+  [downloaded portrait](https://www.iaqms.org/images/members/dunning.jpg).
+- Photographer/date and reuse terms unspecified: **draft reproduction,
+  permission pending**. Biography and birth year checked against the Academy
+  profile; the correlation-consistent basis paper is already cited in the chapter.

@@ -545,3 +545,38 @@ coverage baseline. Commented-out frames are not additional required material.
   citations. All four chapter checks pass; 30 figures/tables are labeled and
   cited in prose. The PDF skill guided targeted inspection of the two new
   additions only, not a full-chapter layout audit.
+
+## Additional historical perspectives (17 October 2026)
+
+- Pulled before editing; the remote was up to date at `ffb2f8d`.
+- Integrated the author's newer `be397cf` commit before pushing, preserving
+  its full-width Basis Set Exchange figure. Repeated the source-preservation,
+  equation, reference, and compilation checks against that newer baseline.
+- Added all eight proposed perspectives: Born/Oppenheimer, Mulliken,
+  Coulson/Fischer-Hjalmars, Pople/Nesbet, Pulay, Moller/Plesset, Huzinaga,
+  and Dunning. There are now 23 people in 19 historical boxes. Each member
+  of a pair has a separately identified portrait and biographical paragraph.
+- Placed the boxes beside the relevant existing topics: separation of nuclear
+  and electronic motion, population analysis, hydrogen dissociation, UHF matrix
+  equations, DIIS, the perturbation partition, Gaussian basis construction,
+  and correlation-consistent basis sets. The earlier eleven biographies and
+  all pre-existing chapter prose remain unchanged.
+- Verified institutional biographies and original papers; in particular, the
+  Coulson--Fischer publication date follows the 1949 original rather than the
+  inconsistent date in a retrospective obituary. Omitted Huzinaga's birth year
+  instead of resolving conflicting secondary birthday accounts by guesswork.
+- Located an explicitly labeled Huzinaga portrait in a Yamada Science
+  Foundation report and a labeled Nesbet portrait in an author profile.
+  The Huzinaga source page retains its original three image streams
+  byte-for-byte; only malformed invisible OCR and unused font resources were
+  removed to avoid PDF-reader warnings. No likenesses were generated.
+- Recorded all twelve portrait sources, credits, and reuse terms in
+  `chapter-figures/portraits.md`. Seven new portraits use the author-approved
+  draft policy with explicit permission-pending notices, in addition to the
+  previous three. Open-license portraits retain their license links and credits.
+- Preserved all 584 displayed equations, the notation reference, conclusion,
+  approved cover, and Further reading. No bibliography entries were added;
+  all 84 retained entries remain cited and the reference check passes.
+- Full compilation succeeds at 121 pages, without undefined citations or
+  references. All four chapter checks pass. The PDF skill guided targeted
+  inspection of the eight new boxes, not a full-chapter visual audit.
