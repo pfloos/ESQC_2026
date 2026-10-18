@@ -1,5 +1,15 @@
 # Post-HF slide additions
 
+## Current scope after the author's revision (18 October 2026)
+
+The author removed the MP2 Laplace subsection and the direct/exchange
+illustration, and revised the MP2 exposition in `fe1d3c7`. Those changes are
+preserved. Slide 53 and its positive-gap/quadrature notation are no longer
+part of the active chapter, and the now-uncited Almlof reference is removed.
+The mapping and numerical results below describe the original addition,
+not a request to restore the removed material. Slides 45--52 still supply
+the retained MP2-energy and AO-to-MO discussion without that illustration.
+
 17 October 2026. Added at the author's explicit request to section 1.7.6,
 "Connection with many-body perturbation theory". The nine selected slides
 are narrated in their original order, without extending into coupled cluster

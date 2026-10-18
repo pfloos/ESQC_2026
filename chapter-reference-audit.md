@@ -1,5 +1,15 @@
 # Chapter reference verification
 
+## Author's MP2 revision (18 October 2026)
+
+The author removed the MP2 Laplace subsection in `fe1d3c7`. Its now-uncited
+Almlof (1991) entry has therefore been removed from the retained bibliography
+and DOI table. The previous verification remains historical evidence, not
+an active chapter citation. Frisch--Head-Gordon--Pople (1990) remains cited
+for the retained AO-to-MO algorithm. The current bibliography contains
+85 cited entries: 81 audited articles/contributed chapters and four books.
+Further reading is unchanged.
+
 ## MP2 algorithm additions (17 October 2026)
 
 Added the two original algorithm papers identified in the author's post-HF
@@ -17,7 +27,6 @@ chapters and the four retained books. Further reading is unchanged.
 | BibTeX key | Publication title | DOI record |
 | --- | --- | --- |
 | `FrischHeadGordonPople1990` | Semi-direct algorithms for the MP2 energy and gradient | [10.1016/0009-2614(90)80030-H](https://doi.org/10.1016/0009-2614(90)80030-H) |
-| `Almlof1991` | Elimination of energy denominators in Moller--Plesset perturbation theory by a Laplace transform approach | [10.1016/0009-2614(91)80078-C](https://doi.org/10.1016/0009-2614(91)80078-C) |
 
 ## Correlated-method additions (16 October 2026)
 

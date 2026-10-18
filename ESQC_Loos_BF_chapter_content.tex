@@ -249,7 +249,7 @@ orbital. For the HOMO, its leading radial exponential factor in the
 frozen-orbital interpretation is
 \begin{equation}
 \begin{split}
-  \phi_\text{HOMO}^\text{STO}(r)
+  \psi_\text{HOMO}^\text{STO}(r)
  &\propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}
   \\
   \mathrm{IP}&=-\epsilon_\text{HOMO}
@@ -673,7 +673,7 @@ chemically inactive core electrons by an effective one-electron operator,
  &\longrightarrow
  \hh^\text{ECP}(\br)=-\frac{\nabla^2}{2}
  -\sum_A\frac{\green{Q_A}}{\abs{\br-\bR_A}}
- +\sum_A\hat U_A^\text{ECP}(\br)
+ +\sum_A\Hat{U}_A^\text{ECP}(\br)
  \\
  \green{Q_A}&=Z_A-N_A^\text{core}
 \end{split}
@@ -692,7 +692,7 @@ explicitly, and the accuracy depends on the ECP quality.
 For one center, with $r$ measured from that center and $L$ labeling the local
 channel, a common semilocal form is
 \begin{equation}
-  U^\text{ECP}=U_L(r)+
+  \Hat{U}^\text{ECP}=U_L(r)+
   \sum_{\ell=0}^{L-1}\sum_{m=-\ell}^{\ell}
   \ket{Y_{\ell m}}U_\ell(r)\bra{Y_{\ell m}}
 \end{equation}

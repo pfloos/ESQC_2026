@@ -1,5 +1,35 @@
 # Chapter audit
 
+## Chapter-wide notation pass and author synchronization (18 October 2026)
+
+- Integrated the author's commits through `fe1d3c7` while preserving the
+  separate superscript-spin-count change. The revised MP2 section and
+  revised stationarity exercise are byte-for-byte identical to that author
+  baseline; the removed MP2 Laplace section and illustration stay removed.
+- `chapter-notation-audit.md` records the review of all notation families.
+  Standardized spin-component C superscripts, AO core matrix bH, UHF operator
+  hats/commands, introductory spin-operator commands, the spatial HOMO name,
+  and ECP operator hats. The two general AO exercises now explicitly name
+  spin-AO functions chi_mu^AO rather than extending spatial phi to spin space.
+- Updated the glossary for barred spin partners, AO versus MO Fock matrices,
+  MOM's local overlap matrix, the author's E_H notation, and the retained
+  density conventions. GHF's half-charge block is not conflated with the
+  full spinor or RHF/UHF charge density.
+- Removed the orphan positive-gap glossary entry and now-uncited Almlof
+  reference after the author's Laplace removal. The retained bibliography
+  has 85 cited entries (81 audited articles/contributed chapters).
+- Added `scripts/check_chapter_notation.py`. Its comparison against
+  `fe1d3c7` retains all 607 displays in order and permits only the 11
+  explicitly documented notation-only display updates. All other factors,
+  signs, indices, contractions, and Further reading are unchanged. The
+  lexical guard keeps the classification table's two-spin block subscripts
+  distinct from single-spin coefficient-matrix labels.
+- All seven checks pass, including all 30 figure/table callouts. Compilation
+  succeeds to 128 PDF pages without undefined citations/references, BibTeX
+  warnings, or overfull boxes. The glossary remains three pages. The PDF
+  skill guided targeted checks of the glossary, explicit spin-AO expansion,
+  and UHF/GHF operator/matrix passages, not a full visual audit.
+
 ## Superscript spin-population convention (18 October 2026)
 
 - Pulled main through `10cd1aa`. Checked both chapter sources, biography

@@ -2,6 +2,14 @@
 
 17 October 2026. Baseline: author's `faf8986` ("up to 2").
 
+Current update, 18 October: the author's `fe1d3c7` removes the MP2 Laplace
+extension and revises MP2 and the stationarity exercise. Those revisions are
+preserved in the chapter-wide notation pass; see `chapter-notation-audit.md`.
+For the current source comparison use
+`python3 scripts/check_chapter_notation.py --compare-math fe1d3c7`.
+The older baselines and results below are historical; an unchanged-display
+comparison against them will correctly detect the author's later removals.
+
 ## Approved follow-up
 
 The author approved M1--M3 on 17 October 2026. All three have now been

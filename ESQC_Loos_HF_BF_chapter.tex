@@ -416,8 +416,10 @@ by topic.
   includes the spin degree of freedom.\\
   $A,B$, $Z_A$, $\bR_A$ & Nuclear labels, charges, and positions;
   $M$ counts nuclei.\\
-  $\phi_\mu$, $\psi_p$, $\chi_p$ & Spatial basis function (usually an AO),
-  spatial MO, and spin orbital. A GHF $\chi_p$ has two spatial spin components.\\
+  $\phi_\mu$, $\psi_p$, $\chi_p$ & Spatial AO, spatial MO, and spin orbital.
+  $\chi_\mu^\text{AO}$ is a spin-AO basis function in the general AO exercises.\\
+  $\Bar{\psi}_p$ & Shorthand for the $\beta$ spin partner, not conjugation
+  (denoted by a star).\\
   $\mu,\nu,\lambda,\sigma$ & AO indices, normally running over $K$ spatial
   functions. In the general spin-orbital AO Fock/energy exercises, the
   basis label temporarily includes spin.\\
@@ -447,9 +449,9 @@ by topic.
   multipliers; diagonalized by canonicalization.\\
   $\epsilon_p$, $\bE$ & Canonical orbital energy and finite-basis
   diagonal energy matrix. $\bepsilon$ also denotes diagonal canonical blocks.\\
-  $\EHF$, $U_I$ & Electronic HF energy unless explicitly stated otherwise;
-  potential-energy surface including nuclear repulsion. The H$_2$
-  discussion specifies when $1/R$ is included.\\
+  $\EHF$, $U_I$ & Electronic HF energy; PES including nuclear repulsion.
+  H$_2$ formulas specify $1/R$. $E_\text{H}$ means the Hartree contribution
+  in the stationarity exercise or atomic H energy in the dissociation example.\\
   $\mathrm{IP}$, $\mathrm{EA}$ & Removal energy $E^{N-1}-E^N$; attachment
   energy $E^N-E^{N+1}$. Koopmans comparisons fix geometry and basis.\\
   $\widetilde E$, $E_\text{corr}^M$ & A tilde on an ionic energy denotes
@@ -457,9 +459,9 @@ by topic.
   minus optimized HF energy for electron number $M$.\\
   $\chH^{(0)}$, $\chV$ & MP zeroth-order Hamiltonian $\sum_i\hf(i)$ and
   perturbation; Eq.~\eqref{eq:mp-partition}.\\
-  $\Ec^{(2)}$, $\Delta_{ij}^{ab}$, $D_{ij}^{ab}$ & MP2 correlation energy,
-  denominator $\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b$, and positive
-  gap $D_{ij}^{ab}=-\Delta_{ij}^{ab}$ for the gapped Aufbau reference.\\
+  $\Ec^{(2)}$, $\Delta_{ij}^{ab}$ & MP2 correlation energy and denominator
+  $\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b$, negative for the gapped
+  Aufbau reference.\\
 
   \rowcolor{hfGreenLight}
   \multicolumn{2}{@{}l@{}}{\strut\textcolor{hfGreenDark}{\textbf{Integral brackets and complex conjugation}}}\\*
@@ -488,7 +490,9 @@ by topic.
   $\bS$, $\bX$ & AO overlap metric and orthogonalizer, satisfying
   $\bX^\dag\cdot\bS\cdot\bX=\bI$ in the retained space.\\
   $\bH$, $\bF$, $\bG[\bP]$ & AO core-Hamiltonian, Fock, and two-electron
-  matrices, with $\bF=\bH+\bG[\bP]$. The GHF section also writes $\bh$ for $\bH$.\\
+  matrices, with $\bF=\bH+\bG[\bP]$, including in GHF.\\
+  $f_{pq}$, $\bff$ & Fock matrix elements and blocks in the MO basis;
+  distinct from the AO representation $F_{\mu\nu}$ and $\bF$.\\
   $\bJ$, $\bK$ & Coulomb and exchange matrices, with local density/spin
   prefactors; distinct from orbital operators $\chJ_i$ and $\chK_i$.\\
   $\bP$ (RHF) & Spin-summed spatial density,
@@ -525,7 +529,8 @@ by topic.
   ($\sum_i c_i=1$), and residual inner products. Here $i,j$ label stored
   iterations, not occupied orbitals.\\
   $w_p$ (MOM) & Overlap weight used to select the occupied space relative
-  to the chosen reference; not an orbital energy or a quadrature weight.\\
+  to the chosen reference. The MOM matrix $\bO$ contains reference-to-new
+  overlaps; here it is not a zero matrix.\\
   $I$, $J$ (AO-to-MO) & Temporary four-index arrays in the successive
   one-index transformations; not identity or Coulomb operators.\\
 
@@ -558,7 +563,8 @@ by topic.
   Section~\ref{sec:boys-functions}.\\
   $\bO$, $\bI_i$ (recurrences) & Zero angular-momentum vector (an $s$
   function) and Cartesian unit vector. Here $i$ labels $x,y,z$.
-  Elsewhere $\bO$ denotes a zero matrix and $\bI$ an identity matrix.\\
+  In block matrices $\bO$ denotes zero; MOM uses it for overlaps.
+  $\bI$ denotes an identity matrix.\\
   $Q_{ab}$, $\tau$, $N_\text{sig}$ & Shell-pair screening bound, integral
   threshold, and number of retained significant integrals;
   Section~\ref{sec:integral-screening}.\\
@@ -1494,7 +1500,7 @@ themselves. For example, for a given spin sector,
 \end{equation}
 or, in matrix notation,
 \begin{equation}
-  \bC_\sigma^\dagger\cdot\bS\cdot\bC_\sigma=\bI
+  \qty(\bC^\sigma)^\dagger\cdot\bS\cdot\bC^\sigma=\bI
 \end{equation}
 This distinction between an orthonormal set of molecular orbitals and a
 generally nonorthogonal atomic-orbital basis will become central when we
@@ -1553,7 +1559,7 @@ This additional variational freedom permits the treatment of open-shell
 systems and can also lower the energy of nominally closed-shell systems when
 the restricted solution becomes unstable. As we shall see later, however,
 this freedom comes at a price: a UHF determinant is generally an eigenfunction
-of $\hat S_z$, but not necessarily of $\hat S^2$. The resulting breaking of
+of $\chS_z$, but not necessarily of $\chS^2$. The resulting breaking of
 spin symmetry is the origin of spin contamination.
 
 Restricted open-shell Hartree--Fock (ROHF) provides an alternative treatment
@@ -7442,11 +7448,14 @@ one-electron contribution and a density-dependent contribution,
 \end{equation}
 The following worked example makes the contraction hidden in
 $G_{\mu\nu}[\bP]$ explicit.
-It first uses the general spin-orbital formulation: within this example and
-the general AO-energy exercise below, a basis label includes spin, and the
-basis expansion of $\chi_i$ is in one-electron functions including that spin
-coordinate. The closed-shell specialization subsequently returns to the
-$K$ spatial AO functions $\phi_\mu(\br)$ and a spin-summed density.
+It first uses the general spin-orbital formulation. In this example and the
+general AO-energy exercise below, $\chi_\mu^\text{AO}(\bx)$ denotes a
+basis function formed from a spatial AO and a spin function. The Greek
+basis label temporarily collects both labels and runs over $2K$ spin-AO
+functions; the coefficients $C_{\mu i}$ refer to this spin-AO expansion.
+The closed-shell specialization subsequently returns to the $K$ spatial
+AO functions $\phi_\mu(\br)$ and a spin-summed density. Thus $\phi$
+continues to denote a spatial basis function and $\chi$ a spin orbital.
 
 \begin{hfexercise}{AO Fock matrix.}
 
@@ -7497,11 +7506,11 @@ $\chi_i$,
 \begin{split}
   \chi_i
   &=
-  \sum_\lambda C_{\lambda i}\phi_\lambda
+  \sum_\lambda C_{\lambda i}\chi_\lambda^\text{AO}
   \\
   \chi_i^*
   &=
-  \sum_\sigma C_{\sigma i}^*\phi_\sigma^*
+  \sum_\sigma C_{\sigma i}^*\chi_\sigma^{\text{AO}*}
 \end{split}
 \end{equation}
 The sum over occupied orbitals can then be performed before the integral
@@ -7583,16 +7592,16 @@ expansion gives
     +\frac{1}{2}\sum_{ij}^{N}\qty(\cJ_{ij}-\cK_{ij})
   \\
   &=\sum_{i=1}^{N}
-    \mel{\sum_\mu C_{\mu i}\phi_\mu}{\hh}
-        {\sum_\nu C_{\nu i}\phi_\nu}
+    \mel{\sum_\mu C_{\mu i}\chi_\mu^\text{AO}}{\hh}
+        {\sum_\nu C_{\nu i}\chi_\nu^\text{AO}}
     \\
   &+\frac{1}{2}\sum_{ij}^{N}
     \mel{
-      \qty(\sum_\mu C_{\mu i}\phi_\mu)
-      \qty(\sum_\lambda C_{\lambda j}\phi_\lambda)
+      \qty(\sum_\mu C_{\mu i}\chi_\mu^\text{AO})
+      \qty(\sum_\lambda C_{\lambda j}\chi_\lambda^\text{AO})
     }{}{
-      \qty(\sum_\nu C_{\nu i}\phi_\nu)
-      \qty(\sum_\sigma C_{\sigma j}\phi_\sigma)
+      \qty(\sum_\nu C_{\nu i}\chi_\nu^\text{AO})
+      \qty(\sum_\sigma C_{\sigma j}\chi_\sigma^\text{AO})
     }
   \\
   &=\sum_{\mu\nu}P_{\nu\mu}
@@ -8696,37 +8705,37 @@ equations. To minimize the UHF energy, the unrestricted spatial orbitals must be
 eigenfunctions of the separate \red{$\alpha$ and $\beta$ Fock operators}:
 \begin{align}
   &
-    \blue{f^\alpha(\br_1)\psi_i^\alpha(\br_1)
+    \blue{\hf^\alpha(\br_1)\psi_i^\alpha(\br_1)
     =\epsilon_i^\alpha\psi_i^\alpha(\br_1)}
   &
   &
-    \red{f^\beta(\br_1)\psi_i^\beta(\br_1)
+    \red{\hf^\beta(\br_1)\psi_i^\beta(\br_1)
     =\epsilon_i^\beta\psi_i^\beta(\br_1)}
 \end{align}
 The two Fock operators are
 \begin{equation}
 \begin{split}
-  \blue{f^\alpha(\br_1)}
-  &=h(\br_1)
+  \blue{\hf^\alpha(\br_1)}
+  &=\hh(\br_1)
     +\sum_i^{N^\alpha}
-      \qty[\blue{J_i^\alpha(\br_1)-K_i^\alpha(\br_1)}]
-    +\sum_i^{N^\beta}\red{J_i^\beta(\br_1)}
+      \qty[\blue{\chJ_i^\alpha(\br_1)-\chK_i^\alpha(\br_1)}]
+    +\sum_i^{N^\beta}\red{\chJ_i^\beta(\br_1)}
   \\
-  \red{f^\beta(\br_1)}
-  &=h(\br_1)
+  \red{\hf^\beta(\br_1)}
+  &=\hh(\br_1)
     +\sum_i^{N^\beta}
-      \qty[\red{J_i^\beta(\br_1)-K_i^\beta(\br_1)}]
-    +\sum_i^{N^\alpha}\blue{J_i^\alpha(\br_1)}
+      \qty[\red{\chJ_i^\beta(\br_1)-\chK_i^\beta(\br_1)}]
+    +\sum_i^{N^\alpha}\blue{\chJ_i^\alpha(\br_1)}
 \end{split}
 \end{equation}
 The \green{Coulomb} and \red{exchange} operators are defined by
 \begin{equation}
 \begin{split}
-  \blue{J_i^\sigma(\br_1)}
+  \blue{\chJ_i^\sigma(\br_1)}
   &=\int\psi_i^{\sigma *}(\br_2)r_{12}^{-1}
     \psi_i^\sigma(\br_2)\dd{\br_2}
   \\
-  \violet{K_i^\sigma(\br_1)}\psi_j^\sigma(\br_1)
+  \violet{\chK_i^\sigma(\br_1)}\psi_j^\sigma(\br_1)
   &=\qty[\int\psi_i^{\sigma *}(\br_2)r_{12}^{-1}
     \psi_j^\sigma(\br_2)\dd{\br_2}]
     \psi_i^\sigma(\br_1)
@@ -8769,7 +8778,7 @@ Explicitly,
 The matrix elements are
 \begin{align}
   h_{ii}^\sigma
-  &=\mel{\psi_i^\sigma}{h}{\psi_i^\sigma}
+  &=\mel{\psi_i^\sigma}{\hh}{\psi_i^\sigma}
   &
   J_{ij}^{\sigma\sigma'}
   &=\braket*{\psi_i^\sigma\psi_j^{\sigma'}}
@@ -9470,15 +9479,15 @@ with normalization
   \boldsymbol{\mathcal C}^\dagger\cdot\boldsymbol{\mathcal S}
   \cdot\boldsymbol{\mathcal C}=\bI
 \end{equation}
-The GHF Fock matrix is given below. Here $\bh$ is the AO core-Hamiltonian
-matrix denoted $\bH$ in the finite-basis derivation.
+The GHF Fock matrix is given below, using the same AO core-Hamiltonian
+matrix $\bH$ as in the finite-basis derivation.
 \begin{equation}
 \boldsymbol{\mathcal F}=\mqty(
-  \bh+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
+  \bH+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
     -\bK[\bP^{\alpha\alpha}]
   &-\bK[\bP^{\alpha\beta}]\\
   -\bK[\bP^{\beta\alpha}]
-  &\bh+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
+  &\bH+\bJ[\bP^{\alpha\alpha}]+\bJ[\bP^{\beta\beta}]
     -\bK[\bP^{\beta\beta}])
 \end{equation}
 where
