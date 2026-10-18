@@ -14,7 +14,9 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
-FLOAT = re.compile(r"\\begin\{(figure|table)\*?\}.*?\\end\{\1\*?\}", re.S)
+# Longtable is a nonfloating multipage table, with the same caption/label
+# and external-callout requirements as a floating table.
+FLOAT = re.compile(r"\\begin\{(figure|table|longtable)\*?\}.*?\\end\{\1\*?\}", re.S)
 CENTER = re.compile(r"\\begin\{center\}.*?\\end\{center\}", re.S)
 DISPLAY = re.compile(
     r"\\begin\{(equation\*?|align\*?|gather\*?|multline\*?)\}(.*?)\\end\{\1\}", re.S

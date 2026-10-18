@@ -1,5 +1,29 @@
 # Chapter audit
 
+## Compact notation glossary (18 October 2026)
+
+- Pulled the current main branch (`d83c46b`) before editing. Expanded the
+  existing notation table, retaining its label and number, into a three-page
+  glossary with repeated column headings and the existing dark-green palette.
+  Topic groups cover particles/indices, operators/energies, integral brackets,
+  AO matrices/densities, numerical parameters, Gaussian basis/integral symbols,
+  and RI/local symbol reuses.
+- Made spin-orbital versus spatial sums, RHF/UHF/GHF density normalization,
+  the half-charge GHF block, physicists'/chemists'/antisymmetrized brackets,
+  real-orbital ERI symmetry, MP2 denominator/gap signs, and overloaded symbols
+  explicit. No chapter notation or derivation was changed.
+- Added longtable for one multipage table rather than adding numbered tables.
+  Extended the existing label/callout check to recognize longtable, preserving
+  its normal verification requirements.
+- All six checks pass. All 613 existing displays, all 31 figure/table prose
+  callouts, and Further reading are preserved. A separate exact source
+  comparison confirms that the chapter body after the glossary is unchanged;
+  the only preamble change is loading longtable.
+- Full compilation succeeds (130 PDF pages), without undefined citations,
+  cross-references, BibTeX warnings, or overfull boxes. The PDF skill guided
+  targeted verification of the three glossary pages only; the rest of the
+  document was not subjected to a new visual audit.
+
 ## MP2, AO-to-MO transformation, and Laplace narrative (17 October 2026)
 
 - Expanded section 1.7.6 in place, following PDF slides 45--53 of the
