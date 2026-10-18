@@ -5090,14 +5090,14 @@ Hamiltonian are fixed throughout the variation.
 Write the energy as the sum of one-electron, Coulomb, and exchange
 contributions,
 \begin{equation}
-  E_\text{HF}=E_1+E_\text{C}+E_\text{X}
+  E_\text{HF}=E_1+E_\text{H}+E_\text{X}
 \end{equation}
 with
 \begin{align}
   E_1&=\sum_j\int\chi_j^*(\bx_1)\hh(\bx_1)
     \chi_j(\bx_1)\dd{\bx_1}
   \\
-  E_\text{C}&=\frac12\sum_{jk}\iint
+  E_\text{H}&=\frac12\sum_{jk}\iint
     \chi_j^*(\bx_1)\chi_j(\bx_1)\frac{1}{r_{12}}
     \chi_k^*(\bx_2)\chi_k(\bx_2)\dd{\bx_1}\dd{\bx_2}
   \\
@@ -5132,7 +5132,7 @@ In the Coulomb term the varied conjugate can occur at either coordinate.
 Differentiating each occurrence gives
 \begin{equation}
 \begin{split}
-  \fdv{E_\text{C}}{\chi_i^*(\bx)}
+  \fdv{E_\text{H}}{\chi_i^*(\bx)}
   ={}&\frac12\sum_k\int
     \frac{\chi_i(\bx)\chi_k^*(\bx')\chi_k(\bx')}
       {\abs{\br-\br'}}\dd{\bx'}
@@ -6334,7 +6334,7 @@ perturbation theory gives
 \begin{equation}
   E^{(2)}
   =\sum_{n\ne0}
-    \frac{\abs{\mel{\Psi_n}{\chV}{\Psi_0}}^2}
+    \frac{\abs*{\mel{\Psi_n}{\chV}{\Psi_0}}^2}
       {E^{(0)}-E_n^{(0)}}
 \end{equation}
 Here $\ket{\Psi_n}$ are the other determinants of the canonical orbital
@@ -6345,17 +6345,14 @@ triples and higher substitutions. For a double substitution, the
 one-electron HF potential cannot connect the two determinants, so the
 remaining matrix element is the antisymmetrized ERI. Consequently,
 \begin{equation}
-\begin{split}
   \green{\Ec^{(2)}}
-  &=\sum_{i<j}^{\text{occ}}\sum_{a<b}^{\text{virt}}
+  =\sum_{i<j}^{\text{occ}}\sum_{a<b}^{\text{virt}}
     \frac{\abs{\mel{ij}{}{ab}}^2}
       {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
-  \\
-  &=\boxed{\frac14\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+  =\frac14\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
     \frac{\abs{\mel{ij}{}{ab}}^2}
-      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
   \label{eq:mp2-spin-orbital}
-\end{split}
 \end{equation}
 These indices label spin orbitals. The unrestricted sums count each pair of
 occupied labels and each pair of virtual labels twice, explaining the factor
