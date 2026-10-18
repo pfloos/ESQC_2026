@@ -11,6 +11,17 @@ from pathlib import Path
 
 FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
 DISPLAY = re.compile(r"\\(begin|end)\{(equation\*?|align\*?|gather\*?|multline\*?|displaymath)\}")
+SPIN_SUBSCRIPT = re.compile(
+    r"(?<![A-Za-z\\])N\s*_\s*(?:\{\s*)?"
+    r"(?:\\(?:mathrm|text)\s*\{\s*)?\\(?:alpha|beta|sigma)\b"
+)
+
+
+def spin_population_subscripts(source):
+    """Return lines with subscript spin counts; unrelated N subscripts stay valid."""
+    source = re.sub(r"(?<!\\)%[^\n]*", "", source)
+    return [source.count("\n", 0, match.start()) + 1
+            for match in SPIN_SUBSCRIPT.finditer(source)]
 
 
 def normalized(source):
@@ -64,7 +75,15 @@ def main():
     elif patches:
         raise SystemExit("Chapter source needs display-punctuation corrections")
     else:
-        print("Chapter display-punctuation conventions passed")
+        sources = [Path(name) for name in FILES]
+        sources += [Path("chapter-biographies.tex")]
+        sources += sorted(Path("chapter-figures").rglob("*.tex"))
+        errors = [f"{path}:{line}: use N^alpha/N^beta/N^sigma, not subscript spin counts"
+                  for path in sources if path.is_file()
+                  for line in spin_population_subscripts(path.read_text())]
+        if errors:
+            raise SystemExit("\n".join(errors))
+        print("Chapter display-punctuation and superscript spin-population conventions passed")
 
 
 def physics_notation(source):

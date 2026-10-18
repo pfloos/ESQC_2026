@@ -1,5 +1,18 @@
 # Chapter audit
 
+## Superscript spin-population convention (18 October 2026)
+
+- Pulled main through `10cd1aa`. Checked both chapter sources, biography
+  source, and chapter-figure LaTeX assets: the equations already use
+  N^alpha/N^beta and the generic N^sigma consistently. Removed the glossary's
+  contradictory allowance for subscript spin counts and explicitly fixed
+  the superscript convention, including its generic sigma form.
+- Extended the source-convention check to reject unbraced/braced subscript
+  alpha/beta/sigma population counts in those chapter sources. It ignores
+  comments and leaves unrelated subscripts (shell counts, significant
+  integrals, grid points, core-electron counts, etc.) untouched.
+- No equation, derivation step, reference, or lecture deck was changed.
+
 ## Compact notation glossary (18 October 2026)
 
 - Pulled the current main branch (`d83c46b`) before editing. Expanded the
