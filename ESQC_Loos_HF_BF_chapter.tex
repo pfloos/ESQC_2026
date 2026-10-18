@@ -528,9 +528,6 @@ by topic.
   to the chosen reference; not an orbital energy or a quadrature weight.\\
   $I$, $J$ (AO-to-MO) & Temporary four-index arrays in the successive
   one-index transformations; not identity or Coulomb operators.\\
-  $t_k$, $w_k$, $N_\text{grid}$ & Laplace-quadrature nodes, weights, and
-  number of nodes. The Laplace parameter $t$ has inverse-energy units;
-  $k$ here labels a quadrature point.\\
 
   \rowcolor{hfGreenLight}
   \multicolumn{2}{@{}l@{}}{\strut\textcolor{hfGreenDark}{\textbf{Basis functions and Gaussian integrals}}}\\*
@@ -5261,14 +5258,14 @@ Hamiltonian are fixed throughout the variation.
 Write the energy as the sum of one-electron, Coulomb, and exchange
 contributions,
 \begin{equation}
-  E_\text{HF}=E_1+E_\text{C}+E_\text{X}
+  E_\text{HF}=E_1+E_\text{H}+E_\text{X}
 \end{equation}
 with
 \begin{align}
   E_1&=\sum_j\int\chi_j^*(\bx_1)\hh(\bx_1)
     \chi_j(\bx_1)\dd{\bx_1}
   \\
-  E_\text{C}&=\frac12\sum_{jk}\iint
+  E_\text{H}&=\frac12\sum_{jk}\iint
     \chi_j^*(\bx_1)\chi_j(\bx_1)\frac{1}{r_{12}}
     \chi_k^*(\bx_2)\chi_k(\bx_2)\dd{\bx_1}\dd{\bx_2}
   \\
@@ -5303,8 +5300,8 @@ In the Coulomb term the varied conjugate can occur at either coordinate.
 Differentiating each occurrence gives
 \begin{equation}
 \begin{split}
-  \fdv{E_\text{C}}{\chi_i^*(\bx)}
-  ={}&\frac12\sum_k\int
+  \fdv{E_\text{H}}{\chi_i^*(\bx)}
+  &=\frac12\sum_k\int
     \frac{\chi_i(\bx)\chi_k^*(\bx')\chi_k(\bx')}
       {\abs{\br-\br'}}\dd{\bx'}
   \\
@@ -5312,11 +5309,11 @@ Differentiating each occurrence gives
     \frac{\chi_j^*(\bx')\chi_j(\bx')\chi_i(\bx)}
       {\abs{\br'-\br}}\dd{\bx'}
   \\
-  ={}&\sum_j\qty[\int
+  &=\sum_j\qty[\int
     \frac{\abs{\chi_j(\bx')}^2}{\abs{\br-\br'}}\dd{\bx'}]
     \chi_i(\bx)
   \\
-  ={}&\sum_j\chJ_j(\bx)\chi_i(\bx)
+  &=\sum_j\chJ_j(\bx)\chi_i(\bx)
 \end{split}
 \end{equation}
 The first contribution comes from $j=i$ at electron 1 and the second from
@@ -5329,7 +5326,7 @@ the unstarred orbitals are crossed between the coordinates:
 \begin{equation}
 \begin{split}
   \fdv{E_\text{X}}{\chi_i^*(\bx)}
-  ={}&-\frac12\sum_k\int
+  &=-\frac12\sum_k\int
     \frac{\chi_k(\bx)\chi_k^*(\bx')\chi_i(\bx')}
       {\abs{\br-\br'}}\dd{\bx'}
   \\
@@ -5337,14 +5334,14 @@ the unstarred orbitals are crossed between the coordinates:
     \frac{\chi_j^*(\bx')\chi_i(\bx')\chi_j(\bx)}
       {\abs{\br'-\br}}\dd{\bx'}
   \\
-  ={}&-\sum_j\chi_j(\bx)\int
+  &=-\sum_j\chi_j(\bx)\int
     \frac{\chi_j^*(\bx')\chi_i(\bx')}
       {\abs{\br-\br'}}\dd{\bx'}
   \\
-  ={}&-\sum_j\chK_j(\bx)\chi_i(\bx)
+  &=-\sum_j\chK_j(\bx)\chi_i(\bx)
 \end{split}
 \end{equation}
-Again the two halves are equal, but the overall exchange minus sign remains.
+Again, the two halves are equal, but the overall exchange minus sign remains.
 Unlike the Coulomb potential, the resulting operator samples the varied
 orbital at $\bx'$ and therefore acts nonlocally. Combining the three pieces
 recovers
@@ -6500,33 +6497,31 @@ leading to the MP2 correlation energy \citep{Cremer2011}.
 The HF determinant is stationary against single substitutions, but it still
 couples to doubly substituted determinants through the two-electron
 interaction. MP2 turns these couplings into the first correction beyond the
-mean-field energy. For a nondegenerate canonical HF reference, second-order
-perturbation theory gives
+mean-field energy. For a nondegenerate canonical Hartree--Fock reference, 
+second-order perturbation theory gives
 \begin{equation}
   E^{(2)}
   =\sum_{n\ne0}
-    \frac{\abs{\mel{\Psi_n}{\chV}{\Psi_0}}^2}
+    \frac{\abs*{\mel{\Psi_n}{\chV}{\Psi_0}}^2}
       {E^{(0)}-E_n^{(0)}}
 \end{equation}
-Here $\ket{\Psi_n}$ are the other determinants of the canonical orbital
+Here $\ket{\Psi_n}$ are excited determinants constructed from the canonical orbital
 basis, eigenfunctions of $\chH^{(0)}$, and the reference is
 $\ket{\Psi_0}=\ket{\Psi_\text{HF}}$. Brillouin's theorem eliminates
 singles, and the two-electron character of $\chV$ eliminates couplings to
-triples and higher substitutions. For a double substitution, the
-one-electron HF potential cannot connect the two determinants, so the
-remaining matrix element is the antisymmetrized ERI. Consequently,
+triples and higher substitutions. Therefore, only doubly-excited determinants 
+remain. For a double substitution, the one-electron Hartree--Fock potential cannot 
+connect the two determinants, so the remaining matrix element is the antisymmetrized 
+ERI. Consequently,
 \begin{equation}
-\begin{split}
   \green{\Ec^{(2)}}
-  &=\sum_{i<j}^{\text{occ}}\sum_{a<b}^{\text{virt}}
+  =\sum_{i<j}^{\text{occ}}\sum_{a<b}^{\text{virt}}
     \frac{\abs{\mel{ij}{}{ab}}^2}
       {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
-  \\
-  &=\boxed{\frac14\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
+  =\frac14\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
     \frac{\abs{\mel{ij}{}{ab}}^2}
-      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}}
+      {\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}
   \label{eq:mp2-spin-orbital}
-\end{split}
 \end{equation}
 These indices label spin orbitals. The unrestricted sums count each pair of
 occupied labels and each pair of virtual labels twice, explaining the factor
@@ -6546,7 +6541,7 @@ nearly degenerate HF reference.
 For implementation, it is useful to specialize to a closed-shell RHF
 reference with \emph{real} spatial orbitals.
 Let $O=N/2$ and $V=K-O$ be the numbers of occupied and virtual spatial
-orbitals. Until the Laplace discussion below, $i,j$ label the $O$ occupied
+orbitals. As usual, $i,j$ label the $O$ occupied
 spatial orbitals, and $a,b$ the $V$ virtual spatial orbitals. Carrying out the spin
 sum gives
 \begin{equation}
@@ -6575,20 +6570,7 @@ and exchanged integrals are denoted temporarily by $A=\braket{ij}{ab}$
 and $B=\braket{ij}{ba}$, summing the squared spin-orbital integral over
 its four spin labels gives $4A^2+4B^2-4AB$. Multiplication by $1/4$ and
 interchange of the dummy virtual labels in the $B^2$ sum yield
-$2A^2-AB$ after summation. Figure~\ref{fig:mp2-direct-exchange} retains the
-slide's diagrammatic distinction between the two contractions.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.68\textwidth]{chapter-figures/mp2-direct-exchange.png}
-  \caption{Direct (left) and exchange (right) contributions to the MP2
-  correlation energy. The labels $i,j$ identify occupied orbitals and $a,b$
-  virtual orbitals; wavy lines represent electron--electron interactions.
-  The crossed connections in the right diagram distinguish the exchanged
-  contraction. Illustration retained from the author's post-HF lecture,
-  slide ``MP2 correlation energy''.}
-  \label{fig:mp2-direct-exchange}
-\end{figure}
+$2A^2-AB$ after summation. 
 
 \paragraph{Why a four-loop energy expression leads to a fifth-order method.}
 
@@ -6701,99 +6683,7 @@ The transformed integrals can then be used in the quartic MP2 energy
 summation. This explains the conventional fifth-order scaling. In an
 actual MP2 calculation, only the $\rbraket{ia}{jb}$ block is required,
 so the output can be restricted to $O^2V^2$ entries rather than retaining
-every MO integral. The full transformation above isolates the contraction
-principle without depending on a particular batching or storage strategy.
-Here $K$ counts basis functions throughout, whereas $N$ remains the electron
-number; this distinction separates basis-size scaling from electron counts.
-
-\paragraph{Separating the energy denominator by a Laplace transform.}
-
-The four-step transformation separates the AO sums, but the denominator
-in the MP2 energy still ties together two occupied and two virtual orbital
-energies. Alml\"of's Laplace-transform approach removes that algebraic
-coupling by replacing the reciprocal denominator with an integral of
-factorized exponentials \citep{Almlof1991}.
-
-We now return to \emph{spin-orbital} indices and
-Eq.~\eqref{eq:mp2-spin-orbital}. The sign convention is essential. With
-the negative MP2 denominator $\Delta_{ij}^{ab}$ defined above, introduce
-the positive excitation gap
-\begin{equation}
-  D_{ij}^{ab}=-\Delta_{ij}^{ab}
-  =\epsilon_a+\epsilon_b-\epsilon_i-\epsilon_j>0
-\end{equation}
-For a positive real $D$,
-\begin{equation}
-\begin{split}
-  \int_0^\infty e^{-Dt}\dd t
-  &=\eval{-\frac{e^{-Dt}}{D}}_0^\infty=\frac1D
-  \\
-  \frac{1}{\Delta_{ij}^{ab}}
-  &=-\int_0^\infty e^{-D_{ij}^{ab}t}\dd t
-\end{split}
-\end{equation}
-Thus the minus sign must remain in the energy expression. Inserting the
-negative orbital-energy denominator directly into $e^{-\Delta t}$ would
-instead produce a divergent integral. The convergent representation is
-\begin{equation}
-\begin{split}
-  \Ec^{(2)}
-  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
-    \abs{\mel{ij}{}{ab}}^2e^{-D_{ij}^{ab}t}\dd t
-  \\
-  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
-    \abs{\mel{ij}{}{ab}}^2
-    e^{\epsilon_i t}e^{\epsilon_j t}
-    e^{-\epsilon_a t}e^{-\epsilon_b t}\dd t
-\end{split}
-\end{equation}
-The auxiliary parameter $t$ has units of inverse energy in atomic units;
-it is not a real-time propagation of the electronic state. Each exponential
-now depends on only one orbital energy.
-
-These factors can be absorbed into unnormalized,
-$t$-dependent orbitals. In the chapter's spin-orbital notation, define
-\begin{align}
-  \ket{i(t)}&=e^{\epsilon_i t/2}\ket{\chi_i}
-  &
-  \ket{a(t)}&=e^{-\epsilon_a t/2}\ket{\chi_a}
-\end{align}
-The opposite signs distinguish occupied and virtual orbitals. Because both
-the direct and exchange integrals contain the same four orbital factors,
-\begin{equation}
-\begin{split}
-  \mel{i(t)j(t)}{}{a(t)b(t)}
-  &=e^{-D_{ij}^{ab}t/2}\mel{ij}{}{ab}
-  \\
-  \Ec^{(2)}
-  &=-\frac14\int_0^\infty\sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
-    \abs{\mel{i(t)j(t)}{}{a(t)b(t)}}^2\dd t
-\end{split}
-\end{equation}
-The half factors in the orbital exponents are fixed by the square of the
-integral: squaring restores the complete damping factor $e^{-Dt}$. A
-quadrature with $N_\text{grid}$ nodes $t_k$ and weights $w_k$ then gives
-\begin{equation}
-  \boxed{\Ec^{(2)}\approx-\frac14\sum_{k=1}^{N_\text{grid}}w_k
-    \sum_{ij}^{\text{occ}}\sum_{ab}^{\text{virt}}
-    \abs{\mel{i(t_k)j(t_k)}{}{a(t_k)b(t_k)}}^2}
-  \label{eq:mp2-laplace}
-\end{equation}
-Here $k$ labels a quadrature point, not an occupied orbital. The Laplace
-identity is exact for positive gaps; the finite quadrature introduces a
-separately controllable numerical approximation.
-
-This last reformulation changes which computational operations are
-possible, rather than automatically changing their scaling. If every
-transformed integral is still formed and summed at every quadrature point,
-the occupied--virtual quartet count remains. The benefit is that the
-energy denominator no longer prevents separate orbital contractions.
-Localized orbitals, resolution of the identity, stochastic sampling, and
-quadrature can then be combined with this factorization. The integral-screening and RI discussions later in the
-chapter describe complementary ways to exploit locality and product-space
-redundancy. The route from HF to MP2 therefore also illustrates a broader
-computational lesson: the formal expression for an energy does not, by
-itself, determine the cost of evaluating it.
+every MO integral. 
 
 \section{Finite-basis Hartree--Fock and self-consistent-field methods}
 \label{sec:finite-basis-hf}
