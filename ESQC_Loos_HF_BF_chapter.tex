@@ -480,7 +480,7 @@ by topic.
   orbitals and spin-summation factors.\\
   $*$, $\dag$, $\cdot$ & Complex conjugation, Hermitian adjoint, and explicit
   matrix multiplication. Bra arguments are conjugated on forming the bra.
-  Eightfold ERI symmetry requires real orbitals, not merely real integral values.\\
+  Eightfold ERI symmetry requires real orbitals.\\
 
   \rowcolor{hfGreenLight}
   \multicolumn{2}{@{}l@{}}{\strut\textcolor{hfGreenDark}{\textbf{AO matrices and density normalizations}}}\\*
@@ -529,8 +529,8 @@ by topic.
   ($\sum_i c_i=1$), and residual inner products. Here $i,j$ label stored
   iterations, not occupied orbitals.\\
   $w_p$ (MOM) & Overlap weight used to select the occupied space relative
-  to the chosen reference. The MOM matrix $\bO$ contains reference-to-new
-  overlaps; here it is not a zero matrix.\\
+  to the chosen reference. The MOM matrix $\boldsymbol{O}$ contains reference-to-new
+  overlaps.\\
   $I$, $J$ (AO-to-MO) & Temporary four-index arrays in the successive
   one-index transformations; not identity or Coulomb operators.\\
 
@@ -563,7 +563,7 @@ by topic.
   Section~\ref{sec:boys-functions}.\\
   $\bO$, $\bI_i$ (recurrences) & Zero angular-momentum vector (an $s$
   function) and Cartesian unit vector. Here $i$ labels $x,y,z$.
-  In block matrices $\bO$ denotes zero; MOM uses it for overlaps.
+  In block matrices $\bO$ denotes zero; MOM uses $\boldsymbol{O}$ for overlaps.
   $\bI$ denotes an identity matrix.\\
   $Q_{ab}$, $\tau$, $N_\text{sig}$ & Shell-pair screening bound, integral
   threshold, and number of retained significant integrals;
@@ -8439,10 +8439,10 @@ orbital $\chi_p^\text{new}$, compute
 \end{split}
 \end{equation}
 In matrix form, the overlap matrix between the reference occupied orbitals and
-the new orbitals is denoted $\bO$. In this local context, $\bO$ is an overlap
+the new orbitals is denoted $\boldsymbol{O}$. In this local context, $\boldsymbol{O}$ is an overlap
 matrix, not the zero matrix appearing in the preceding block decompositions:
 \begin{equation}
-  \bO
+  \boldsymbol{O}
   =
   \bC_\text{o}^{\text{ref}\dagger}
   \cdot\bS\cdot
