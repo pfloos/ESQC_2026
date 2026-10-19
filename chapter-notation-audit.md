@@ -62,3 +62,17 @@ are cited. The author's MP2 section and stationarity exercise are retained
 byte for byte. Full compilation succeeds to 128 pages; the glossary occupies
 three pages. Targeted rendered checks cover the glossary and the changed
 spin-AO/UHF/GHF passages. No full-document layout audit was undertaken.
+
+## Subsequent exercise additions (19 October 2026)
+
+The author requested three additional exercises after this notation pass.
+They add displays without changing any existing chapter text or mathematics.
+The equal-display-count comparison against `fe1d3c7` above documents the
+18 October checkpoint; it is not the appropriate preservation check for
+this expanded chapter. Use `python3 scripts/check_chapter_notation.py` for
+the current canonical-notation guard and
+`python3 scripts/check_chapter_layout.py --compare-math 33b38c4` to verify
+that all 607 pre-exercise displays remain in order and Further reading is
+unchanged. A separate exact comparison confirms that removing only the
+three exercise addition blocks recovers both `33b38c4` chapter sources
+byte for byte, including the author's MP2 and stationarity revisions.

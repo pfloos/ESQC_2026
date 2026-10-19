@@ -1,5 +1,41 @@
 # Chapter audit
 
+## Three supplementary exercises (19 October 2026)
+
+- Pulled main before editing; the current baseline was `33b38c4`. Added
+  exactly the three exercises selected by the author, each with a complete
+  solution in the existing exercise/solution colors and no new subsection.
+- After the closed-shell AO energy: Hermiticity, electron counting from
+  real-space integration, single-spin metric idempotency, the RHF factor of
+  two, and the occupied-space projector acting on AO coefficient vectors.
+  Single-spin populations consistently use N^sigma; the general open-shell
+  charge density is explicitly distinguished from the RHF case.
+- After SCF convergence criteria: derive the residual from the occupied
+  Roothaan--Hall equations and their adjoint, transform it to the MO basis,
+  and identify its occupied--virtual factors and signs. Explain energy
+  plateaus, the mixed-iteration zero produced by one diagonalization, the
+  need for a density-consistent Fock matrix (including after DIIS), and the
+  distinction between stationarity, local stability, and global optimality.
+- After the Gaussian product theorem: normalize an s primitive, derive the
+  overlap of two normalized primitives, examine coincident centers, unequal
+  exponents, equal exponents, and infinite separation, and evaluate a
+  fully specified unequal-exponent example (overlap 0.4700). Calligraphic
+  N denotes the local primitive normalization factor, not a spin population.
+- Extended the independent HF-algebra checks to complex nonorthogonal AOs,
+  both density normalizations, unequal spin populations, coefficient-space
+  projection, MO residual blocks, mixed iterations, and stable/unstable
+  stationary examples. Added 27 independent Cartesian numerical overlap
+  quadratures and the Gaussian limiting cases to the integral checks.
+- All seven checks pass. The layout comparison preserves all 607 existing
+  displays in order and Further reading. Removing only the three addition
+  blocks recovers both baseline chapter sources byte for byte: no existing
+  prose, equation, figure, bibliography, or author MP2 edit was changed.
+  There are now 17 exercises; all 30 figure/table callouts and 85 cited
+  bibliography entries are retained. Compilation succeeds to 134 pages
+  without undefined references/citations, BibTeX warnings, or overfull boxes.
+  Following the PDF skill, checked one rendered solution page per added
+  exercise; no full-document visual review was undertaken.
+
 ## Chapter-wide notation pass and author synchronization (18 October 2026)
 
 - Integrated the author's commits through `fe1d3c7` while preserving the

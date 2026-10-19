@@ -201,6 +201,141 @@ def orbital_derivative():
                           "separate one-electron/Coulomb/exchange orbital derivatives", tolerance=2e-9)
 
 
+def density_and_residual_exercises():
+    """Check AO metric, RHF factors, and residual blocks in a complex basis.
+
+    B embeds nonorthogonal AOs in an independent orthonormal reference
+    space. Transforming operators and orbitals separately avoids assuming
+    the metric identities that are being tested.
+    """
+    def adjoint(a):
+        return [[complex(a[j][i]).conjugate() for j in range(len(a))]
+                for i in range(len(a[0]))]
+
+    def multiply(a, b):
+        return [[sum(a[i][k]*b[k][j] for k in range(len(b)))
+                 for j in range(len(b[0]))] for i in range(len(a))]
+
+    def scale(a, factor):
+        return [[factor*x for x in row] for row in a]
+
+    def subtract(a, b):
+        return [[x-y for x, y in zip(row_a, row_b)]
+                for row_a, row_b in zip(a, b)]
+
+    def norm(a):
+        return max(abs(x) for row in a for x in row)
+
+    def check_matrix(a, b, label):
+        close(norm(subtract(a, b)), 0.0, label)
+
+    def trace(a):
+        return sum(a[i][i] for i in range(len(a)))
+
+    def inverse(a):
+        n = len(a)
+        rows = [[complex(x) for x in row] + [complex(i == j) for j in range(n)]
+                for i, row in enumerate(a)]
+        for k in range(n):
+            pivot = max(range(k, n), key=lambda i: abs(rows[i][k]))
+            rows[k], rows[pivot] = rows[pivot], rows[k]
+            divisor = rows[k][k]
+            rows[k] = [x/divisor for x in rows[k]]
+            for i in range(n):
+                if i != k:
+                    factor = rows[i][k]
+                    rows[i] = [x-factor*y for x, y in zip(rows[i], rows[k])]
+        return [row[n:] for row in rows]
+
+    b = [[1.2, 0.2+0.1j, -0.1j], [0, 0.9, 0.25], [0, 0, 1.1]]
+    s = multiply(adjoint(b), b)
+    angle, phase = 0.37, cmath.exp(0.4j)
+    u = [[cos(angle), -sin(angle), 0],
+         [phase*sin(angle), phase*cos(angle), 0],
+         [0, 0, cmath.exp(-0.3j)]]
+    c = multiply(inverse(b), u)
+    identity = [[int(i == j) for j in range(3)] for i in range(3)]
+    check_matrix(multiply(multiply(adjoint(c), s), c), identity, "S-orthonormal MOs")
+
+    def density(occupied, weight=1):
+        co = [row[:occupied] for row in c]
+        return scale(multiply(co, adjoint(co)), weight)
+
+    for occupied in (1, 2):
+        p = density(occupied)
+        check_matrix(adjoint(p), p, "single-spin Hermiticity")
+        close(trace(multiply(p, s)), occupied, "single-spin electron count")
+        check_matrix(multiply(multiply(p, s), p), p, "single-spin metric idempotency")
+        ps = multiply(p, s)
+        check_matrix(multiply(ps, ps), ps, "coefficient-space projector")
+        # Integrate density in the independent orthonormal reference space.
+        close(trace(multiply(multiply(b, p), adjoint(b))), occupied,
+              "real-space density integral")
+        assert norm(subtract(multiply(p, p), p)) > 1e-3
+        assert abs(trace(p)-occupied) > 1e-3
+        rhf = scale(p, 2)
+        close(trace(multiply(rhf, s)), 2*occupied, "RHF electron count")
+        check_matrix(multiply(multiply(rhf, s), rhf), scale(rhf, 2),
+                     "RHF metric idempotency factor of two")
+
+    alpha, beta = density(2), density(1)
+    charge = [[a+z for a, z in zip(ra, rb)] for ra, rb in zip(alpha, beta)]
+    close(trace(multiply(charge, s)), 3, "unequal collinear spin populations")
+    assert norm(subtract(multiply(multiply(charge, s), charge), scale(charge, 2))) > 0.1
+
+    f_mo = [[-1.1, 0.2+0.15j, -0.1j],
+            [0.2-0.15j, -0.4, 0.3+0.1j], [0.1j, 0.3-0.1j, 0.6]]
+    f_ref = multiply(multiply(u, f_mo), adjoint(u))
+    f = multiply(multiply(adjoint(b), f_ref), b)
+
+    def residual(fock, p):
+        return subtract(multiply(multiply(fock, p), s),
+                        multiply(multiply(s, p), fock))
+
+    for occupied in (1, 2):
+        p = density(occupied, 2)
+        e = residual(f, p)
+        check_matrix(adjoint(e), scale(e, -1), "anti-Hermitian AO residual")
+        e_mo = multiply(multiply(adjoint(c), e), c)
+        occupations = [2 if i < occupied else 0 for i in range(3)]
+        expected = [[(occupations[j]-occupations[i])*f_mo[i][j]
+                     for j in range(3)] for i in range(3)]
+        check_matrix(e_mo, expected, "occupied-virtual residual factors/signs")
+        p_mo = multiply(multiply(multiply(multiply(adjoint(c), s), p), s), c)
+        check_matrix(p_mo, [[occupations[i] if i == j else 0 for j in range(3)]
+                            for i in range(3)], "MO density transformation")
+
+    # A stationary non-Aufbau occupied space still has zero residual.
+    diagonal = [[(0.7, -1.1, -0.4)[i] if i == j else 0 for j in range(3)]
+                for i in range(3)]
+    f_stationary = multiply(multiply(adjoint(b),
+                           multiply(multiply(u, diagonal), adjoint(u))), b)
+    close(norm(residual(f_stationary, density(1, 2))), 0.0,
+          "zero residual does not select Aufbau occupation")
+
+    # Exact diagonalization gives a mixed-iteration zero even when P changes.
+    f_old = multiply(multiply(adjoint(b), diagonal), b)
+    c_new = inverse(b)
+    co_new = [row[:1] for row in c_new]
+    p_new = scale(multiply(co_new, adjoint(co_new)), 2)
+    assert norm(residual(f_old, density(1, 2))) > 0.1
+    close(norm(residual(f_old, p_new)), 0.0, "mixed-iteration residual vanishes")
+    assert norm(subtract(p_new, density(1, 2))) > 0.1
+
+    # One-electron-level RHF model: energy plateaus and both curvature signs.
+    for occupied_energy, virtual_energy in ((-1.0, 0.5), (0.5, -1.0)):
+        energy = lambda q: 2*(occupied_energy*cos(q)**2 + virtual_energy*sin(q)**2)
+        step = 1e-3
+        curvature = (energy(step)-2*energy(0)+energy(-step))/step**2
+        close(curvature, 4*(virtual_energy-occupied_energy),
+              "stable versus unstable stationary curvature", tolerance=3e-6)
+        q, tiny_step = 0.2, 1e-10
+        gradient = 4*(virtual_energy-occupied_energy)*sin(q)*cos(q)
+        assert abs(energy(q+tiny_step)-energy(q)) < 1e-8
+        assert abs(gradient) > 0.1
+    print("Density/SCF exercises: complex AO metric, spin factors, projector, residual blocks, mixed iterations, and stability passed")
+
+
 if __name__ == "__main__":
     determinant_normalization()
     energy_and_koopmans()
@@ -208,4 +343,5 @@ if __name__ == "__main__":
     spin_adaptation()
     h2_curvature()
     orbital_derivative()
+    density_and_residual_exercises()
     print("HF algebra checks passed: normalization, spin sums, pair counts, IP/EA, complex conventions, CSF phases, H2, orbital derivatives")

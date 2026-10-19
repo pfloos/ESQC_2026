@@ -7699,6 +7699,132 @@ electron pair is summed from the one-electron Fock operators. Equivalently,
 the compact trace formula contains one full copy of the one-electron energy
 and one half of the mean-field electron-electron energy.
 
+The following exercise makes explicit how the overlap metric enters the
+normalization and projector properties of the density matrix. These
+identities also provide useful checks on an implementation.
+
+\begin{hfexercise}{Density matrices in a nonorthogonal basis.}
+Consider $K$ linearly independent spatial AOs with overlap matrix $\bS$.
+For a collinear determinant, let $\bC_\text{o}^\sigma$ contain the
+$N^\sigma$ occupied spatial-orbital coefficients of spin
+$\sigma=\alpha,\beta$, with
+\begin{equation}
+  \qty(\bC_\text{o}^\sigma)^\dag\cdot\bS\cdot\bC_\text{o}^\sigma=\bI
+\end{equation}
+Define the single-spin density by
+\begin{equation}
+  \bP^\sigma=\bC_\text{o}^\sigma\cdot
+  \qty(\bC_\text{o}^\sigma)^\dag
+\end{equation}
+Show that this matrix is Hermitian, derive the electron-counting formula,
+and establish its idempotency relation in the AO metric. Then specialize to
+RHF, where $N^\alpha=N^\beta=N/2$ and the two spin components share the
+same occupied spatial orbitals. Derive the corresponding identities for
+the spin-summed density $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$.
+Explain why imposing $\bP^2=\bP$ would generally be incorrect, and identify
+the coefficient-space matrix representing the occupied-space projector for
+one spin component.
+\end{hfexercise}
+\begin{hfsolution}{Density matrices in a nonorthogonal basis.}
+Taking the Hermitian adjoint reverses the order of the two coefficient
+matrices and conjugates each factor. Thus
+\begin{equation}
+  \qty(\bP^\sigma)^\dag
+  =\qty[\bC_\text{o}^\sigma\cdot
+    \qty(\bC_\text{o}^\sigma)^\dag]^\dag
+  =\bC_\text{o}^\sigma\cdot
+    \qty(\bC_\text{o}^\sigma)^\dag
+  =\bP^\sigma
+\end{equation}
+Hermiticity therefore does not require the AOs to be orthogonal or the
+coefficients to be real.
+
+The spin density in real space is
+\begin{equation}
+\begin{split}
+  \rho^\sigma(\br)
+  &=\sum_{i=1}^{N^\sigma}\abs{\psi_i^\sigma(\br)}^2\\
+  &=\sum_{\mu\nu}P_{\mu\nu}^\sigma
+    \phi_\mu(\br)\phi_\nu^*(\br)
+\end{split}
+\end{equation}
+Integrating the AO products gives $S_{\nu\mu}$, rather than a Kronecker
+delta. Consequently,
+\begin{equation}
+\begin{split}
+  \int\rho^\sigma(\br)\dd\br
+  &=\sum_{\mu\nu}P_{\mu\nu}^\sigma S_{\nu\mu}\\
+  &=\Tr(\bP^\sigma\cdot\bS)\\
+  &=\Tr\qty[\qty(\bC_\text{o}^\sigma)^\dag
+    \cdot\bS\cdot\bC_\text{o}^\sigma]\\
+  &=\boxed{N^\sigma}
+\end{split}
+\end{equation}
+The cyclic trace identity moves the rectangular coefficient matrices into
+the occupied space, where the identity matrix has dimension $N^\sigma$.
+The unweighted trace $\Tr\bP^\sigma$ is not generally an electron count.
+
+The same occupied-orbital orthonormality gives
+\begin{equation}
+\begin{split}
+  \bP^\sigma\cdot\bS\cdot\bP^\sigma
+  &=\bC_\text{o}^\sigma\cdot
+    \underbrace{\qty(\bC_\text{o}^\sigma)^\dag\cdot\bS
+      \cdot\bC_\text{o}^\sigma}_{\bI}
+    \cdot\qty(\bC_\text{o}^\sigma)^\dag\\
+  &=\boxed{\bP^\sigma}
+\end{split}
+\end{equation}
+This is metric idempotency: the overlap matrix is required between the two
+density factors.
+
+For RHF, the spin-summed matrix is Hermitian because it is twice the
+Hermitian single-spin density. Its electron count is
+\begin{equation}
+  \Tr(\bP\cdot\bS)
+  =2\Tr(\bC_\text{o}^\dag\cdot\bS\cdot\bC_\text{o})
+  =2\frac{N}{2}=N
+\end{equation}
+Its metric product instead contains two factors of two:
+\begin{equation}
+\begin{split}
+  \bP\cdot\bS\cdot\bP
+  &=4\bC_\text{o}\cdot
+    \underbrace{\bC_\text{o}^\dag\cdot\bS\cdot\bC_\text{o}}_{\bI}
+    \cdot\bC_\text{o}^\dag\\
+  &=4\bC_\text{o}\cdot\bC_\text{o}^\dag\\
+  &=\boxed{2\bP}
+\end{split}
+\end{equation}
+Even in an orthonormal AO basis, the spin-summed RHF matrix therefore
+satisfies $\bP^2=2\bP$, not $\bP^2=\bP$. It is the density divided by two
+that represents a projector in that orthonormal basis.
+
+To see the role of the metric directly, apply the one-spin occupied-space
+projector to an arbitrary spatial orbital
+$\psi_v=\sum_\nu v_\nu\phi_\nu$. Its projection is
+\begin{equation}
+\begin{split}
+  \sum_{i=1}^{N^\sigma}\psi_i^\sigma(\br)
+    \braket{\psi_i^\sigma}{\psi_v}
+  &=\sum_{\mu\nu\lambda}\phi_\mu(\br)
+    P_{\mu\lambda}^\sigma S_{\lambda\nu}v_\nu
+\end{split}
+\end{equation}
+Thus its action on AO coefficient vectors is represented by
+$\bP^\sigma\cdot\bS$, and
+\begin{equation}
+  \qty(\bP^\sigma\cdot\bS)^2
+  =\bP^\sigma\cdot\bS\cdot\bP^\sigma\cdot\bS
+  =\bP^\sigma\cdot\bS
+\end{equation}
+The coefficient-space projector is ordinarily idempotent even though
+$\bP^\sigma$ alone generally is not. For RHF, the corresponding projector
+is $\bP\cdot\bS/2$. For a general collinear open-shell determinant the
+two spin projectors need not coincide, so the RHF relation
+$\bP\cdot\bS\cdot\bP=2\bP$ must not be imposed on their sum.
+\end{hfsolution}
+
 At this stage the finite-basis Hartree--Fock problem is completely specified:
 $\bP$ determines $\bF$, the generalized eigenvectors of $\bF$ determine a new
 $\bP$, and the energy provides a scalar measure of the resulting state. The
@@ -7880,6 +8006,129 @@ The ordinary SCF iteration should therefore be understood as the underlying
 fixed-point map. Damping, level shifting \citep{SaundersHillier1973}, and DIIS modify how successive
 approximations are generated, but convergence is always judged against the
 same self-consistency conditions.
+
+\begin{hfexercise}{What does SCF convergence mean?}
+For an RHF density $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$, use the
+occupied Roothaan--Hall equations and their Hermitian adjoint to prove that
+the residual
+\begin{equation}
+  \be=\bF[\bP]\cdot\bP\cdot\bS
+  -\bS\cdot\bP\cdot\bF[\bP]
+\end{equation}
+vanishes at self-consistency. Assume linearly independent AOs and Hermitian
+overlap and Fock matrices. Transform the residual to a complete orthonormal
+MO basis and relate its occupied--virtual elements to those of the Fock
+matrix. Explain why a small change in total energy alone is insufficient,
+why diagonalizing one Fock matrix is not an SCF convergence test, and why a
+zero residual does not establish that the determinant is an energy minimum.
+\end{hfexercise}
+\begin{hfsolution}{What does SCF convergence mean?}
+At self-consistency the Fock matrix constructed from $\bP$ has occupied
+eigenvectors that generate this same density. Writing $\bE_\text{o}$ for
+the real diagonal matrix of occupied orbital energies, the occupied
+Roothaan--Hall equations and their adjoint are
+\begin{align}
+  \bF\cdot\bC_\text{o}
+  &=\bS\cdot\bC_\text{o}\cdot\bE_\text{o}\\
+  \bC_\text{o}^\dag\cdot\bF
+  &=\bE_\text{o}\cdot\bC_\text{o}^\dag\cdot\bS
+\end{align}
+Substitution of the first equation gives
+\begin{equation}
+\begin{split}
+  \bF\cdot\bP\cdot\bS
+  &=2\bF\cdot\bC_\text{o}\cdot\bC_\text{o}^\dag\cdot\bS\\
+  &=2\bS\cdot\bC_\text{o}\cdot\bE_\text{o}
+    \cdot\bC_\text{o}^\dag\cdot\bS
+\end{split}
+\end{equation}
+Using the adjoint equation for the other term gives precisely the same
+matrix:
+\begin{equation}
+\begin{split}
+  \bS\cdot\bP\cdot\bF
+  &=2\bS\cdot\bC_\text{o}\cdot\bC_\text{o}^\dag\cdot\bF\\
+  &=2\bS\cdot\bC_\text{o}\cdot\bE_\text{o}
+    \cdot\bC_\text{o}^\dag\cdot\bS
+\end{split}
+\end{equation}
+Their difference therefore yields $\be=\bO$. Hermiticity also gives
+$\be^\dag=-\be$, as expected for a commutator represented with the AO
+metric.
+
+For an arbitrary trial determinant, complete the occupied coefficient
+matrix with virtual columns to form
+$\bC=(\bC_\text{o},\bC_\text{v})$, with
+$\bC^\dag\cdot\bS\cdot\bC=\bI$. These orbitals need not diagonalize
+the current $\bF[\bP]$. In this orthonormal MO basis, define
+\begin{align}
+  \bff&=\bC^\dag\cdot\bF[\bP]\cdot\bC\\
+  \bP_\text{MO}
+  &=\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC
+  =\pmqty{2\bI_\text{o}&\bO\\\bO&\bO}
+\end{align}
+The occupied identity has dimension $N/2$ and the virtual block has
+dimension $K-N/2$. Because the AO basis is linearly independent and
+$\bC$ is complete, $\bC\cdot\bC^\dag=\bS^{-1}$. Inserting this identity
+between the factors gives
+\begin{equation}
+\begin{split}
+  \bC^\dag\cdot\be\cdot\bC
+  &=\qty(\bC^\dag\cdot\bF\cdot\bC)
+    \cdot\qty(\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC)\\
+  &\phantom{={}}-\qty(\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC)
+    \cdot\qty(\bC^\dag\cdot\bF\cdot\bC)\\
+  &=\bff\cdot\bP_\text{MO}-\bP_\text{MO}\cdot\bff\\
+  &=\pmqty{\bO&-2\bff_\text{ov}\\2\bff_\text{vo}&\bO}
+\end{split}
+\end{equation}
+In particular, for occupied $i$ and virtual $a$,
+\begin{align}
+  \qty(\bC^\dag\cdot\be\cdot\bC)_{ai}&=2f_{ai}\\
+  \qty(\bC^\dag\cdot\be\cdot\bC)_{ia}&=-2f_{ia}
+\end{align}
+The residual vanishes exactly when the occupied--virtual Fock blocks
+vanish. These are the matrix elements that drive first-order changes of
+the energy under occupied--virtual orbital rotations. The condition is
+therefore one of orbital stationarity, not merely a statement about a
+small difference between two scalar energies. The occupied--occupied and
+virtual--virtual blocks can then be diagonalized independently to obtain
+canonical orbitals without changing the determinant's occupied space.
+
+A small energy change does not impose this condition. For a real orbital
+rotation parameter $q$ and a small step $\delta q$, a Taylor expansion gives
+\begin{equation}
+  E(q+\delta q)-E(q)
+  =\dv{E}{q}\delta q
+  +\frac12\dv[2]{E}{q}(\delta q)^2+\cdots
+\end{equation}
+The energy change can be arbitrarily small because the step is small,
+even when the derivative is not. Near a stationary point the leading
+energy error is generally quadratic in the orbital error, whereas the
+orbital gradient is generally linear. An apparent energy plateau can
+therefore hide an appreciable residual. Energy changes, density changes,
+and a consistently constructed residual provide complementary information.
+
+There is a related distinction within a single iteration. Diagonalizing
+$\bF^{(n)}=\bF[\bP^{(n)}]$ constructs a new density that satisfies
+\begin{equation}
+  \bF^{(n)}\cdot\bP^{(n+1)}\cdot\bS
+  -\bS\cdot\bP^{(n+1)}\cdot\bF^{(n)}=\bO
+\end{equation}
+This mixed-iteration expression vanishes for an exact diagonalization,
+whether or not the SCF problem has converged. The new density must instead
+be tested against its own rebuilt Fock matrix, or the old density against
+its own Fock matrix as in the stated residual. The same caution applies
+when the matrix diagonalized is a DIIS extrapolation rather than the Fock
+matrix rebuilt from the density being tested.
+
+Finally, vanishing occupied--virtual blocks constrain the first variation
+of the energy, not the second. A stationary determinant may be a local
+minimum or an unstable stationary point; stability requires examining the
+curvature under the allowed orbital rotations. Even a stable local minimum
+need not be the global minimum, and stability within RHF does not establish
+stability against the additional variations allowed in UHF or GHF.
+\end{hfsolution}
 
 \subsection{Direct inversion in the iterative subspace (DIIS)}
 

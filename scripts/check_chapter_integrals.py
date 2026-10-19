@@ -152,7 +152,63 @@ def check_ghf():
     print("GHF: spin/AO tensor ordering and complex-density exchange contraction passed")
 
 
+def check_normalized_overlap():
+    """Compare closed-form overlaps with Cartesian numerical quadrature.
+
+    Integrate products of the original normalized factors directly, without
+    using the product center or completing the square in the quadrature.
+    """
+    def integral(fn, lower, upper, intervals=1200):
+        step = (upper-lower)/intervals
+        return step*sum((1 if i in (0, intervals) else 4 if i % 2 else 2)
+                        * fn(lower+i*step) for i in range(intervals+1))/3
+
+    def normalization(alpha):
+        return (2*alpha/math.pi)**0.75
+
+    def overlap(alpha, beta, a, b):
+        distance2 = sum((x-y)**2 for x, y in zip(a, b))
+        return (2*math.sqrt(alpha*beta)/(alpha+beta))**1.5 * math.exp(
+            -alpha*beta/(alpha+beta)*distance2)
+
+    a = (0.1, -0.2, 0.3)
+    centers = (a, (0.8, -0.5, 1.1), (-1.2, 0.4, -0.3))
+    checks, worst = 0, 0.0
+    for alpha in (0.35, 0.8, 2.2):
+        for beta in (0.35, 0.8, 2.2):
+            for b in centers:
+                numeric = normalization(alpha)*normalization(beta)
+                for x, y in zip(a, b):
+                    width = 8/math.sqrt(min(alpha, beta))
+                    numeric *= integral(
+                        lambda r: math.exp(-alpha*(r-x)**2-beta*(r-y)**2),
+                        min(x, y)-width, max(x, y)+width)
+                exact = overlap(alpha, beta, a, b)
+                worst = max(worst, check_close(numeric, exact, "normalized Gaussian quadrature"))
+                assert 0 < exact <= 1.0+1e-14
+                check_close(exact, overlap(beta, alpha, b, a), "overlap exchange symmetry")
+                zeta = alpha+beta
+                p = [(alpha*x+beta*y)/zeta for x, y in zip(a, b)]
+                r = (0.4, -0.1, 0.8)
+                original = sum(alpha*(v-x)**2+beta*(v-y)**2 for v, x, y in zip(r, a, b))
+                completed = zeta*sum((v-x)**2 for v, x in zip(r, p))
+                completed += alpha*beta/zeta*sum((x-y)**2 for x, y in zip(a, b))
+                check_close(original, completed, "Gaussian exponent completion")
+                checks += 1
+        check_close(overlap(alpha, alpha, a, a), 1.0, "identical Gaussian normalization")
+        b = (1.1, -0.2, 0.3)
+        check_close(overlap(alpha, alpha, a, b), math.exp(-alpha/2), "equal-exponent overlap")
+        check_close(overlap(alpha, alpha, a, (100.1, -0.2, 0.3)), 0,
+                    "large-separation limit")
+    assert overlap(0.8, 2.2, a, a) < 1
+    check_close(overlap(1, 2, (0, 0, 0), (1, 0, 0)), 0.47000876129012575,
+                "worked overlap example")
+    check_close(2/3, (1*0+2*1)/(1+2), "worked product center")
+    print(f"Gaussian-overlap exercise: {checks} independent quadratures and limits passed; largest scaled error {worst:.2e}")
+
+
 if __name__ == "__main__":
     check_os()
     check_ri()
     check_ghf()
+    check_normalized_overlap()
