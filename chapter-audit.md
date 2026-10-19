@@ -1,5 +1,19 @@
 # Chapter audit
 
+## Approved chapter title (19 October 2026)
+
+- Pulled main before editing; baseline `39405c2` was current. Applied the
+  author-approved main title, "Many Electrons, One Determinant", with
+  "Hartree--Fock Theory, Basis Sets, and Molecular Integrals" as the subtitle.
+  Updated the cover, LaTeX title declaration, and PDF title metadata.
+- Retained the cover illustration, dark-green palette, author information,
+  ESQC branding, and "Hartree--Fock Theory" running headers. The complete
+  chapter body after begin-document is byte-for-byte unchanged.
+- All seven checks pass; all 637 displays and Further reading are unchanged.
+  Compilation succeeds to 135 pages without undefined citations/references,
+  BibTeX warnings, or overfull boxes. The PDF skill guided a rendered cover
+  check and verification of the new PDF metadata; no body layout audit.
+
 ## Table styling and abstract refresh (19 October 2026)
 
 - Pulled main before editing; baseline `15aa52b` was current. Harmonized
