@@ -6797,7 +6797,6 @@ possible in special cases, most notably for atoms, but is inconvenient for
 general molecules. In practical molecular calculations, the spatial
 orbitals are therefore expanded in a finite set of known one-electron basis
 functions.
-
 This introduces a second approximation, distinct from the Hartree--Fock
 single-determinant approximation itself. Hartree--Fock restricts the
 many-electron wavefunction to a single determinant, whereas the
@@ -6829,21 +6828,14 @@ be a set of $K$ basis functions. Each molecular orbital is expanded as
 \end{equation}
 The unknown functions $\psi_i(\br)$ have therefore been replaced by the
 unknown expansion coefficients $C_{\mu i}$.
-
 This is the linear combination of atomic orbitals (LCAO)
 representation when the basis functions are centered on the nuclei, as is
 usually the case in molecular electronic-structure calculations. More
 generally, however, the derivation requires only that the functions span a
 suitable finite one-electron space.
-
 For a fixed basis, the Hartree--Fock problem is therefore no longer a
 variational problem over arbitrary functions, but over the coefficients
-contained in the matrix
-\begin{equation}
-  \bC
-  =
-  \qty(C_{\mu i})
-\end{equation}
+contained in the matrix $\bC$.
 
 \paragraph{Nonorthogonality of the basis functions.}
 
@@ -6866,25 +6858,21 @@ but the underlying basis functions generally are not:
   \label{eq:ao-overlap}
 \end{equation}
 The matrix $\bS$ is called the overlap matrix.
-
 Substituting the basis expansion into the MO orthonormality condition gives
 \begin{equation}
-\begin{split}
   \braket{\psi_i}{\psi_j}
-  &=
+  =
   \sum_{\mu\nu}
   C_{\mu i}^*
   C_{\nu j}
   \braket{\mu}{\nu}
-  \\
-  &=
+  =
   \sum_{\mu\nu}
   C_{\mu i}^*
   S_{\mu\nu}
   C_{\nu j}
   =
   \delta_{ij}
-\end{split}
 \end{equation}
 In matrix notation,
 \begin{equation}
@@ -6895,7 +6883,6 @@ In matrix notation,
   }
   \label{eq:mo-orthonormality-matrix}
 \end{equation}
-
 Thus, the coefficient matrix is generally \emph{not} unitary:
 \begin{equation}
   \bC^\dag\cdot\bC
@@ -6953,7 +6940,6 @@ Projecting from the left with $\bra{\mu}$ yields
   \braket{\mu}{\nu}
 \end{split}
 \end{equation}
-
 Defining the Fock matrix
 \begin{equation}
   F_{\mu\nu}
@@ -7028,7 +7014,6 @@ Collecting all molecular orbitals simultaneously gives
   \label{eq:roothaan-hall}
 \end{equation}
 These are the Roothaan--Hall equations.
-
 Here,
 \begin{equation}
   \bC
@@ -7063,20 +7048,14 @@ integro-differential orbital problem into a matrix problem.
 
 \paragraph{A generalized eigenvalue problem.}
 
-If the basis were orthonormal,
-\begin{equation}
-  \bS=\bI
-\end{equation}
+If the basis were orthonormal, i.e., $\bS=\bI$,
 the Roothaan--Hall equations would reduce to the ordinary eigenvalue problem
 \begin{equation}
   \bF\cdot\bC
   =
   \bC\cdot\beps
 \end{equation}
-For an atomic-orbital basis, however,
-\begin{equation}
-  \bS\neq\bI
-\end{equation}
+For an atomic-orbital basis, however, $\bS\neq\bI$,
 and the equations instead constitute a
 generalized eigenvalue problem,
 \begin{equation}
