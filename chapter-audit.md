@@ -1,5 +1,34 @@
 # Chapter audit
 
+## Epsilon-matrix notation and acronym glossary (19 October 2026)
+
+- Pulled through the author's `360be9d` before editing. Retained the
+  corrected MOM overlap matrix, bold capital O rather than the bold zero
+  command, and the author's other glossary edits.
+- Defined the canonical chapter command `\beps` as bold epsilon. Replaced
+  rendered `\bE` and `\bepsilon` uses, including the occupied blocks, UHF
+  spin sectors, and SCF/DIIS/MOM flowcharts. The GHF spinor energy matrix
+  also uses `\beps` rather than a separate calligraphic E. Original unused
+  slide-compatible command declarations are retained in the preamble.
+- Corrected the symbol-table entries to distinguish occupied-space
+  multipliers before canonicalization from the canonical diagonal orbital
+  energies, and to specify RHF/GHF dimensions and occupied/virtual/spin blocks.
+- Extended the same table with a separate alphabetized group of 48 acronyms
+  and abbreviations already used in the chapter. Retained its table number,
+  label, repeated headings, and dark-green color scheme; no new topic or
+  bibliography item was introduced.
+- Extended the notation guard and its documented alias comparison. All 637
+  displays are retained in order against `360be9d`; 17 have notation-only
+  spelling changes. An exact comparison of the entire scientific body,
+  including MOM, permits only these matrix-name replacements. No factor,
+  sign, index, contraction, prose passage, or Further reading was changed.
+- All seven checks pass, with all 30 figure/table callouts and 85 cited
+  bibliography entries retained. Compilation succeeds to 135 pages without
+  undefined citations/references, BibTeX warnings, or overfull boxes. The
+  expanded glossary occupies four pages; a small row-spacing adjustment
+  avoids a nearly empty fifth glossary page. Only affected glossary pages are
+  rendered for a focused PDF check, not a full-document visual review.
+
 ## Three supplementary exercises (19 October 2026)
 
 - Pulled main before editing; the current baseline was `33b38c4`. Added

@@ -204,6 +204,7 @@
 \newcommand{\bU}{\boldsymbol{U}}
 \newcommand{\bV}{\boldsymbol{V}}
 \newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\beps}{\boldsymbol{\epsilon}}
 \newcommand{\bepsilon}{\boldsymbol{\epsilon}}
 
 % hat symbols
@@ -372,28 +373,29 @@ conventions of the two accompanying lecture presentations are retained.
 \section*{Notation and conventions}
 \addcontentsline{toc}{section}{Notation and conventions}
 
-Table~\ref{tab:notation} summarizes the chapter's symbols.
+Table~\ref{tab:notation} summarizes the chapter's symbols and acronyms.
 Atomic units are used unless stated otherwise. Read each
 orbital sum with its spin-orbital or spatial-orbital convention, and each
 density matrix with its occupation normalization; local reuses are identified
-by topic.
+by topic. Acronyms and abbreviations are collected alphabetically at the end
+of the table.
 
 \begingroup
 \small
-\renewcommand{\arraystretch}{1.05}
+\renewcommand{\arraystretch}{1.00}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
 \begin{longtable}{@{}p{0.26\linewidth}p{\dimexpr0.74\linewidth-2\tabcolsep\relax}@{}}
-  \caption{Notation glossary, with formulation-specific local conventions.}
+  \caption{Symbols and acronyms, with formulation-specific local conventions.}
   \label{tab:notation}\\
   \toprule
-  \textcolor{hfGreenDark}{\textbf{Symbol}} &
+  \textcolor{hfGreenDark}{\textbf{Symbol or acronym}} &
   \textcolor{hfGreenDark}{\textbf{Meaning and convention}}\\
   \midrule
   \endfirsthead
-  \caption[]{Notation glossary and local conventions (continued).}\\
+  \caption[]{Symbols, acronyms, and local conventions (continued).}\\
   \toprule
-  \textcolor{hfGreenDark}{\textbf{Symbol}} &
+  \textcolor{hfGreenDark}{\textbf{Symbol or acronym}} &
   \textcolor{hfGreenDark}{\textbf{Meaning and convention}}\\
   \midrule
   \endhead
@@ -445,10 +447,13 @@ by topic.
   $\Psi_i^a$, $\Psi_{ij}^{ab}$ & Singly and doubly substituted determinants.
   Their phases follow the stated ordering of creation and annihilation
   operators, $\cre{p}$ and $\ani{p}$.\\
-  $\epsilon_{ji}$, $\bepsilon$ & Hermitian occupied-space orthonormality
-  multipliers; diagonalized by canonicalization.\\
-  $\epsilon_p$, $\bE$ & Canonical orbital energy and finite-basis
-  diagonal energy matrix. $\bepsilon$ also denotes diagonal canonical blocks.\\
+  $\epsilon_{ji}$, $\beps$ & Hermitian occupied-space orthonormality
+  multipliers before canonicalization; diagonalized by an occupied-space
+  unitary transformation.\\
+  $\epsilon_p$, $\beps$ & Canonical orbital energy and diagonal matrix of
+  orbital energies. The matrix spans $K$ spatial orbitals in RHF, or $2K$
+  spinors in GHF; $\beps^\sigma$ denotes one UHF spin sector.
+  $\beps_\text{o}$ and $\beps_\text{v}$ denote occupied and virtual blocks.\\
   $\EHF$, $U_I$ & Electronic HF energy; PES including nuclear repulsion.
   H$_2$ formulas specify $1/R$. $E_\text{H}$ means the Hartree contribution
   in the stationarity exercise or atomic H energy in the dissociation example.\\
@@ -593,6 +598,57 @@ by topic.
   $\Omega_\text{ER}$, $\Omega_\text{BF}$, $\Omega_\text{PM}$ & Localization
   criteria, distinct from the plane-wave volume $\Omega$; their minimization
   or maximization convention is given with each functional.\\
+
+  \rowcolor{hfGreenLight}
+  \multicolumn{2}{@{}l@{}}{\strut\textcolor{hfGreenDark}{\textbf{Acronyms and abbreviations}}}\\*
+  AO & Atomic orbital.\\
+  ASCW & Axial spin current wave.\\
+  ASDW & Axial spin density wave.\\
+  ASW & Axial spin wave.\\
+  BF & Foster--Boys localization, labeled BF in $\Omega_\text{BF}$.\\
+  BSSE & Basis-set superposition error.\\
+  CBS & Complete basis set.\\
+  CCW & Charge current wave.\\
+  CD & Cholesky decomposition.\\
+  CF & Coulson--Fischer.\\
+  CP & Counterpoise correction.\\
+  DF & Density fitting; also called RI.\\
+  DIIS & Direct inversion in the iterative subspace.\\
+  EA & Electron affinity.\\
+  ECP & Effective core potential.\\
+  ER & Edmiston--Ruedenberg localization.\\
+  ERI & Electron-repulsion integral.\\
+  ESQC & European Summer School of Quantum Chemistry.\\
+  GHF & Generalized Hartree--Fock.\\
+  GTO & Gaussian-type orbital.\\
+  HF & Hartree--Fock.\\
+  HFB & Hartree--Fock--Bogoliubov.\\
+  HOMO & Highest occupied molecular orbital.\\
+  HRR & Horizontal recurrence relation.\\
+  IMOM & Initial maximum-overlap method, with a fixed initial reference.\\
+  IP & Ionization potential.\\
+  LCAO & Linear combination of atomic orbitals.\\
+  LUMO & Lowest unoccupied molecular orbital.\\
+  MO & Molecular orbital.\\
+  MOM & Maximum-overlap method, with the previous iteration as reference.\\
+  MP & M{\o}ller--Plesset perturbation theory.\\
+  MP2 & Second-order M{\o}ller--Plesset perturbation theory.\\
+  NAO & Numerical atomic orbital.\\
+  PES & Potential-energy surface.\\
+  PM & Pipek--Mezey localization.\\
+  PW & Plane wave.\\
+  RHF & Restricted Hartree--Fock.\\
+  RI & Resolution of the identity; also called DF.\\
+  ROHF & Restricted open-shell Hartree--Fock.\\
+  SAD & Superposition of atomic densities.\\
+  SCF & Self-consistent field.\\
+  STO & Slater-type orbital.\\
+  TICS & Time-reversal-invariant closed-shell.\\
+  TSCW & Torsional spin current wave.\\
+  TSDW & Torsional spin density wave.\\
+  TSW & Torsional spin wave.\\
+  UHF & Unrestricted Hartree--Fock.\\
+  VRR & Vertical recurrence relation.\\
 \end{longtable}
 \endgroup
 
@@ -5030,7 +5086,7 @@ makes this energy stationary while preserving their orthonormality,
 This is a constrained variational problem. Since the orthonormality
 conditions couple every pair of occupied spin orbitals, a single Lagrange
 multiplier is not sufficient. Instead, one introduces a complete matrix of
-multipliers $\bepsilon$ and defines the Hartree--Fock Lagrangian
+multipliers $\beps$ and defines the Hartree--Fock Lagrangian
 \begin{equation}
   \mathcal{L}[\{\chi_i\}]
   =
@@ -5200,7 +5256,7 @@ and hence
 \end{equation}
 The matrix of Lagrange multipliers is therefore Hermitian,
 \begin{equation}
-  \bepsilon^\dag=\bepsilon
+  \beps^\dag=\beps
 \end{equation}
 This property is crucial because every Hermitian matrix can be diagonalized
 by a unitary transformation.
@@ -5533,11 +5589,11 @@ This unitary freedom can be exploited to choose a particularly convenient
 set of occupied orbitals. Since the Lagrange-multiplier matrix is Hermitian,
 there exists a unitary matrix $\purple{\bU}$ such that
 \begin{equation}
-  \widetilde{\bepsilon}
+  \widetilde{\beps}
   =
   \purple{\bU}^{\dag}
   \cdot
-  \bepsilon
+  \beps
   \cdot
   \purple{\bU}
 \end{equation}
@@ -6954,7 +7010,7 @@ Collecting all molecular orbitals simultaneously gives
   \boxed{
   \bF\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE
+  \bS\cdot\bC\cdot\beps
   }
   \label{eq:roothaan-hall}
 \end{equation}
@@ -6973,7 +7029,7 @@ Here,
 \end{equation}
 contains the MO coefficients, while
 \begin{equation}
-  \bE
+  \beps
   =
   \pmqty{
     \epsilon_1&0&\cdots&0\\
@@ -7002,7 +7058,7 @@ the Roothaan--Hall equations would reduce to the ordinary eigenvalue problem
 \begin{equation}
   \bF\cdot\bC
   =
-  \bC\cdot\bE
+  \bC\cdot\beps
 \end{equation}
 For an atomic-orbital basis, however,
 \begin{equation}
@@ -7013,7 +7069,7 @@ generalized eigenvalue problem,
 \begin{equation}
   \bF\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE
+  \bS\cdot\bC\cdot\beps
 \end{equation}
 
 For an individual orbital,
@@ -7090,25 +7146,25 @@ and substituting into the Roothaan--Hall equations gives
 \begin{split}
   \bF\cdot\bC
   &=
-  \bS\cdot\bC\cdot\bE
+  \bS\cdot\bC\cdot\beps
   \\
   \bF\cdot\bX\cdot\bC'
   &=
-  \bS\cdot\bX\cdot\bC'\cdot\bE
+  \bS\cdot\bX\cdot\bC'\cdot\beps
 \end{split}
 \end{equation}
 Multiplying from the left by $\bX^\dag$ gives
 \begin{equation}
   \bX^\dag\cdot\bF\cdot\bX\cdot\bC'
   =
-  \bX^\dag\cdot\bS\cdot\bX\cdot\bC'\cdot\bE
+  \bX^\dag\cdot\bS\cdot\bX\cdot\bC'\cdot\beps
 \end{equation}
 Using Eq.~\eqref{eq:orthogonalizer-condition},
 \begin{equation}
 \begin{split}
   \bF'\cdot\bC'
   &=
-  \bC'\cdot\bE
+  \bC'\cdot\beps
   \\
   \bF'
   &=
@@ -7122,11 +7178,11 @@ Thus,
   \bF\cdot\bC
   &=
   \underbrace{\bS}_{\text{metric}}
-  \cdot\bC\cdot\bE
+  \cdot\bC\cdot\beps
   &
   \bF'\cdot\bC'
   &=
-  \bC'\cdot\bE
+  \bC'\cdot\beps
   \\
   \bF'
   &=
@@ -7146,7 +7202,7 @@ Every step from the generalized problem to the standard problem is
   \bF\cdot\bC
   =
   \underbrace{\bS}_{\text{metric}}
-  \cdot\bC\cdot\bE
+  \cdot\bC\cdot\beps
   \qquad\Longleftrightarrow\qquad
   \text{generalized eigenvalue problem}
   \\
@@ -7156,7 +7212,7 @@ Every step from the generalized problem to the standard problem is
   \underbrace{\bC}_{\bX\cdot\bC'}
   =
   \bX^\dag\cdot\bS\cdot
-  \underbrace{\bC}_{\bX\cdot\bC'}\cdot\bE
+  \underbrace{\bC}_{\bX\cdot\bC'}\cdot\beps
   \\
   \Downarrow
   \\
@@ -7168,13 +7224,13 @@ Every step from the generalized problem to the standard problem is
   \underbrace{
     \bX^\dag\cdot\bS\cdot\bX
   }_{\bI}
-  \cdot\bC'\cdot\bE
+  \cdot\bC'\cdot\beps
   \\
   \Downarrow
   \\
   \bF'\cdot\bC'
   =
-  \bC'\cdot\bE
+  \bC'\cdot\beps
   \qquad\Longleftrightarrow\qquad
   \text{standard eigenvalue problem}
 \end{gather}
@@ -7272,7 +7328,7 @@ After diagonalizing the transformed Fock matrix,
 \begin{equation}
   \bF'\cdot\bC'
   =
-  \bC'\cdot\bE
+  \bC'\cdot\beps
 \end{equation}
 the coefficients in the original nonorthogonal basis are recovered through
 \begin{equation}
@@ -7320,7 +7376,7 @@ At first sight,
 \begin{equation}
   \bF\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE
+  \bS\cdot\bC\cdot\beps
 \end{equation}
 looks like an ordinary generalized eigenvalue problem. There is, however,
 one essential complication: the Fock matrix depends on the occupied
@@ -7334,7 +7390,7 @@ The actual Roothaan--Hall problem is therefore
 \begin{equation}
   \bF(\bC)\cdot\bC
   =
-  \bS\cdot\bC\cdot\bE
+  \bS\cdot\bC\cdot\beps
   \label{eq:nonlinear-roothaan-hall}
 \end{equation}
 It is a nonlinear generalized eigenvalue problem, not a single matrix
@@ -7863,7 +7919,7 @@ Once an initial density matrix $\bP$ has been chosen, the iterative
 cycle begins. The matrix $\bG$ is calculated and used to form
 $\bF=\bH+\bG$. The Fock matrix is transformed according to
 $\bF'=\bX^\dag\cdot\bF\cdot\bX$ and diagonalized to obtain $\bC'$ and
-$\bE$. The AO coefficients are recovered as
+$\beps$. The AO coefficients are recovered as
 $\bC=\bX\cdot\bC'$, and a new density matrix is formed from
 $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$. The calculation is then tested
 for convergence. If it has not converged, the cycle returns to the
@@ -8279,7 +8335,7 @@ define the extrapolated Fock matrix
 Finally, the generalized eigenvalue problem
 \begin{equation}
   \bF^\text{DIIS}\cdot\bC
-  =\bS\cdot\bC\cdot\bE
+  =\bS\cdot\bC\cdot\beps
 \end{equation}
 is solved and the next density $\bP^{(n+1)}$ is formed.
 
@@ -8318,7 +8374,7 @@ convergence acceleration can enter.
     {Build Fock matrix\\$\bF[\bP^{(n)}]$};
 
   \node[scfstep,below=1.15cm of fock] (solve)
-    {Solve\\$\bF\cdot\bC=\bS\cdot\bC\cdot\bE$};
+    {Solve\\$\bF\cdot\bC=\bS\cdot\bC\cdot\beps$};
   \node[scfstep,left=of solve] (density)
     {New density\\$\bP^{(n+1)}$};
   \node[decision,left=of density] (conv) {Converged?};
@@ -8541,7 +8597,7 @@ The MOM-SCF cycle is shown in Fig.~\ref{fig:mom-cycle}.
   \node[box] (guess) {Promoted guess\\$i\rightarrow a$};
   \node[box,right=of guess] (fock) {Build\\$\bF[\bP^{(n)}]$};
   \node[box,right=of fock] (solve)
-    {Solve\\$\bF\cdot\bC=\bS\cdot\bC\cdot\bE$};
+    {Solve\\$\bF\cdot\bC=\bS\cdot\bC\cdot\beps$};
   \node[box,right=of solve] (overlap) {Compute $w_p$};
   \node[box,right=of overlap] (occupy) {Occupy largest\\$w_p$ values};
 
@@ -9111,11 +9167,11 @@ separate spin-dependent coefficients:
 The resulting Pople--Nesbet equations \citep{PopleNesbet1954} are
 \begin{align}
   &\boxed{\blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
-  =\bS\cdot\blue{\bC^\alpha}\cdot\bE^\alpha}
+  =\bS\cdot\blue{\bC^\alpha}\cdot\beps^\alpha}
   \\
   &\boxed{
   \red{\bF^\beta}\cdot\red{\bC^\beta}
-  =\bS\cdot\red{\bC^\beta}\cdot\bE^\beta}
+  =\bS\cdot\red{\bC^\beta}\cdot\beps^\beta}
 \end{align}
 Their spin-dependent Fock matrices are
 \begin{equation}
@@ -9205,8 +9261,8 @@ $\bG^\alpha$ gives $\bF^\alpha=\bH+\bG^\alpha$, while $\bG^\beta$ gives
 $\bF^\beta=\bH+\bG^\beta$. The transformed matrices are
 $(\bF^\alpha)'=\bX^\dag\cdot\bF^\alpha\cdot\bX$ and
 $(\bF^\beta)'=\bX^\dag\cdot\bF^\beta\cdot\bX$. Diagonalizing them yields
-$(\bC^\alpha)'$ and $\bE^\alpha$, together with $(\bC^\beta)'$ and
-$\bE^\beta$. The AO coefficients are then recovered from
+$(\bC^\alpha)'$ and $\beps^\alpha$, together with $(\bC^\beta)'$ and
+$\beps^\beta$. The AO coefficients are then recovered from
 $\bC^\alpha=\bX\cdot(\bC^\alpha)'$ and
 $\bC^\beta=\bX\cdot(\bC^\beta)'$. These coefficients define the
 new density matrices $\bP^\alpha$ and $\bP^\beta$, from which
@@ -9711,14 +9767,14 @@ $\boldsymbol{\mathcal P}$ is the full spinor density matrix.
 
 In spinor space, $\boldsymbol{\mathcal C}$ stacks the two spin components
 of the orbital coefficient matrix, $\boldsymbol{\mathcal F}$ is the
-spinor Fock matrix, $\boldsymbol{\mathcal E}$ contains the orbital energies,
+spinor Fock matrix, $\beps$ contains the orbital energies,
 and $\boldsymbol{\mathcal S}$ is the block-diagonal overlap metric.
 The Roothaan--Hall equation is
 \begin{equation}
 \begin{split}
     \boldsymbol{\mathcal F}\cdot\boldsymbol{\mathcal C}
     &=\boldsymbol{\mathcal S}\cdot\boldsymbol{\mathcal C}
-     \cdot\boldsymbol{\mathcal E}
+     \cdot\beps
   \\
   \boldsymbol{\mathcal S}&=\mqty(\bS&\bO\\\bO&\bS)
 \end{split}

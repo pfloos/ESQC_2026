@@ -3,7 +3,7 @@
 
 This is a lexical safeguard, not a semantic proof of every equation. The
 equivalences below are limited to the explicit changes recorded in the
-18 October notation audit; they do not identify different density conventions
+18--19 October notation audit; they do not identify different density conventions
 or interchange physicists'/chemists' integral indices.
 """
 
@@ -16,7 +16,12 @@ from check_chapter_source import spin_population_subscripts
 
 
 def equivalent_tokens(expression):
+    # The author requested one epsilon-matrix command for multipliers,
+    # canonical energies, and the GHF spinor energy matrix. This renames
+    # those matrices only; their dimensions, blocks, and factors are retained.
+    expression = re.sub(r"\\(?:bE|bepsilon)\b", lambda _: r"\beps", expression)
     text = math_tokens(expression)
+    text = text.replace(r"\boldsymbol{\mathcalE}", r"\beps")
     # One AO core matrix throughout, including the GHF blocks.
     text = text.replace(r"\bh", r"\bH")
     # C_sigma and C^sigma name the same spin-dependent coefficient matrix.
@@ -57,6 +62,8 @@ def main():
         (r"\\hat\s+S(?:_z|\^2)", "use the chapter's chS spin-operator command"),
         (r"\\phi_\\text\{HOMO\}", "use psi for a molecular orbital"),
         (r"\\varepsilon\b", "use epsilon for orbital energies"),
+        (r"\\(?:bE|bepsilon)\b|\\boldsymbol\s*\{\s*\\mathcal\s*E\s*\}",
+         "use beps for multiplier and orbital-energy matrices"),
         (r"(?<![A-Za-z\\])f\^\\(?:alpha|beta)\b", "use hf for a Fock operator"),
         (r"(?<![A-Za-z\\])h\(\\br_1\)", "use hh for the core operator"),
         (r"(?<![A-Za-z\\])[JK]_i\^\\(?:alpha|beta|sigma)\b", "use chJ/chK for orbital operators"),

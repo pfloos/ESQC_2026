@@ -1,6 +1,7 @@
 # Chapter-wide notation consistency
 
-18 October 2026. Baseline for the mathematical comparison: the author's
+Initial pass: 18 October 2026, with updates below dated 19 October.
+Baseline for the initial mathematical comparison: the author's
 `fe1d3c7`, including the revised MP2 exposition, removal of the MP2 Laplace
 subsection/illustration, and E_H for the Hartree energy in the stationarity
 exercise. Those author changes were integrated before continuing this pass.
@@ -18,12 +19,12 @@ are reference material and are not edited.
 | Spin components | C^sigma now consistently denotes a spin-dependent coefficient matrix. Its adjoint is written with parentheses so that the dagger applies to the entire matrix. Superscript spin labels on spatial orbitals, densities, and orbital energies are retained. |
 | Operators versus matrix elements | The UHF equations now use the same hh/hf/chJ/chK hatted commands as the general derivation. Scalar h_ij, J_ij, K_ij remain matrix elements, not operators. The introductory spin operators use chS. Direction hats on unit vectors are not operator hats and are unchanged. |
 | AO versus MO matrices | The AO core-Hamiltonian matrix is bH in every formulation, including GHF. F_{mu nu}/bF are AO Fock representations; f_pq/bff are MO representations. The latter distinction is added to the glossary. |
-| Orbital energies and multipliers | epsilon_p is a canonical orbital energy. The Hermitian occupied-space multiplier matrix bepsilon becomes diagonal under canonicalization; bE is the full diagonal orbital-energy matrix in the finite-basis equations. These defined roles are retained rather than conflated. |
+| Orbital energies and multipliers | epsilon_p is a canonical orbital energy. Following the author's 19 October request, beps is the systematic command for bold epsilon: occupied-space multipliers before canonicalization, and diagonal orbital-energy matrices afterward. Matrix dimensions distinguish occupied blocks, the K-dimensional RHF space, each UHF spin sector, and the 2K-dimensional GHF spinor space. |
 | RHF/UHF/GHF densities | RHF P is spin summed; UHF P^alpha/P^beta count each occupied spin orbital once, and their sum/difference are P^T/P^S. GHF's full spinor density is mathcal P; its Pauli charge block P is half the spin-summed charge density. No density or factor of two is renamed or altered. |
 | Integral conventions | Physicists' <ij|kl> and chemists' (ik|jl) retain their exact index conversion. Antisymmetrized double bars retain the direct-minus-exchange definition. Primitive square and contracted round brackets retain their Gaussian-integral context. Real-orbital versus complex-orbital symmetries are unchanged. |
 | Conjugation and determinant phases | A star means conjugation; dagger means Hermitian adjoint. Barred psi is the beta-spin partner, not conjugation; the glossary now states this. Fermionic substitution phases and all signs are unchanged. |
 | Energies and particle labels | Electronic HF energies exclude the nuclear constant unless explicitly stated. IP/EA signs and electron-number superscripts are retained. The author's new E_H Hartree contribution is distinguished from the isolated-H energy E_H in the dissociation example by context in the glossary. |
-| SCF, DIIS, MOM | Iteration and history indices remain local. MOM's bO is explicitly an overlap matrix, not the zero block bO elsewhere; the glossary now includes that exception. Overlap weights are not orbital energies. |
+| SCF, DIIS, MOM | Iteration and history indices remain local. Retained the author's 19 October correction: MOM uses bold capital O for its overlap matrix, whereas the bO command renders a bold zero. The glossary distinguishes the two. Overlap weights are not orbital energies. |
 | Gaussian functions and recurrences | Exponents, product centers, Cartesian power vectors, shell labels, primitive counts, Boys orders, and recurrence-direction indices retain their stated meanings. K in a local contraction sum counts primitives; this is explicitly scoped. |
 | ECPs | The effective potential operator has a hat consistently, both in the one-electron Hamiltonian and its semilocal decomposition. Radial channel functions U_l remain scalar functions. Core charge Q_A remains distinct from atomic population charge q_A. |
 | RI and Cholesky | Auxiliary labels, coefficients, metric, and low-rank factors are distinct from orbital coefficients and densities. The full AO-pair ERI matrix and auxiliary metric share V only in their separately stated contexts. Their contractions and indices are unchanged. |
@@ -69,10 +70,37 @@ The author requested three additional exercises after this notation pass.
 They add displays without changing any existing chapter text or mathematics.
 The equal-display-count comparison against `fe1d3c7` above documents the
 18 October checkpoint; it is not the appropriate preservation check for
-this expanded chapter. Use `python3 scripts/check_chapter_notation.py` for
-the current canonical-notation guard and
-`python3 scripts/check_chapter_layout.py --compare-math 33b38c4` to verify
-that all 607 pre-exercise displays remain in order and Further reading is
-unchanged. A separate exact comparison confirms that removing only the
+expanded chapter at that checkpoint. The canonical-notation guard and
+`python3 scripts/check_chapter_layout.py --compare-math 33b38c4` verified
+that all 607 pre-exercise displays remained in order and Further reading was
+unchanged. A separate exact comparison confirmed that removing only the
 three exercise addition blocks recovers both `33b38c4` chapter sources
 byte for byte, including the author's MP2 and stationarity revisions.
+
+## Epsilon matrices and acronyms (19 October 2026)
+
+Pulled the author's MOM correction through `360be9d`. All rendered
+orbital-energy matrices now use `\beps`, including occupied blocks,
+spin-sector matrices, and GHF spinor energies; occupied-space multipliers
+use the same bold-epsilon command. The glossary explicitly distinguishes
+their pre-canonical and canonical roles. Original unused macro declarations
+remain available for compatibility with the slides.
+
+The glossary now includes 48 unique, alphabetized acronym entries in a
+separate group within the existing table. Its label and table number are
+unchanged. MOM continues to use bold capital O, not the bold zero command.
+
+For the current comparison, run
+`python3 scripts/check_chapter_notation.py --compare-math 360be9d`.
+This retains all 637 displays in order and permits the explicit replacements
+of bE, bepsilon, and the GHF calligraphic energy matrix by beps. Seventeen
+displays change spelling; their mathematical content and Further reading
+are otherwise unchanged. An exact body comparison also confirms that all
+scientific prose, including the MOM correction, is retained apart from the
+same approved matrix names. No equivalence between capital O and zero is
+introduced by the comparison.
+
+All seven checks pass. Compilation succeeds to 135 pages, with a four-page
+symbol/acronym glossary and no undefined citations/references, BibTeX
+warnings, or overfull boxes. The existing numerical checks, exercise
+solutions, MP2 revision, and bibliography are unchanged.
