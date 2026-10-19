@@ -66,6 +66,29 @@ def main():
             errors.append(f"Figure/table needs exactly one label: {labels}")
         elif not re.search(r"\\(?:ref|autoref|cref|Cref)\{" + re.escape(labels[0]) + r"\}", prose):
             errors.append(f"No text callout outside floats: {labels[0]}")
+    tables = [m[0] for m in FLOAT.finditer(joined) if m[1] in ("table", "longtable")]
+    tables += [block for block in inline if r"\captionof{table}" in block]
+    for block in tables:
+        label_match = re.search(r"\\label\{([^}]+)\}", block)
+        label = label_match[1] if label_match else "(unlabeled)"
+
+        def expand_input(match):
+            path = ROOT / match[1]
+            if not path.suffix:
+                path = path.with_suffix(".tex")
+            return path.read_text()
+
+        expanded = re.sub(r"\\input\{([^}]+)\}", expand_input, block)
+        for command in (r"\toprule", r"\midrule", r"\bottomrule", r"\hftablehead"):
+            if command not in expanded:
+                errors.append(f"Table {label} does not use the shared heading/rule style: {command}")
+        if r"\begin{longtable}" not in block:
+            if r"\hftablestyle" not in block:
+                errors.append(f"Table {label} does not use hftablestyle")
+            caption = re.search(r"\\caption(?:of\{table\})?\{", expanded)
+            tabular = re.search(r"\\begin\{tabular\*?\}", expanded)
+            if not caption or not tabular or caption.start() > tabular.start():
+                errors.append(f"Table {label} must place its caption above its entries")
     for match in CENTER.finditer(joined):
         if (r"\begin{tikzpicture}" in match[0] or r"\HtwoOrbitalPlot" in match[0]
                 or r"\begin{tabular}" in match[0]) and r"\captionof{" not in match[0]:
@@ -106,6 +129,7 @@ def main():
     if errors:
         raise SystemExit("\n".join(errors))
     print(f"Layout checks passed: {len(floats) + len(inline)} figures/tables labeled and cited in prose")
+    print(f"Table checks passed: {len(tables)} numbered tables use shared headings and booktabs rules")
     if args.compare_math:
         print(f"Preserved all {preserved} original displays and Further reading from {args.compare_math}")
 

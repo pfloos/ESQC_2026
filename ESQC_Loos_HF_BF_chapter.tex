@@ -62,6 +62,13 @@
 \definecolor{hfGreenDark}{HTML}{00574D}
 \definecolor{hfGreenLight}{HTML}{F2F8F6}
 
+% Shared table style, following the notation glossary (Table I).
+\newcommand{\hftablestyle}{\small\renewcommand{\arraystretch}{1.00}}
+\newcommand{\hftablehead}[1]{\textcolor{hfGreenDark}{\bfseries\boldmath #1}}
+\newcommand{\hftablesection}[2]{%
+  \rowcolor{hfGreenLight}%
+  \multicolumn{#1}{@{}l@{}}{\strut\hftablehead{#2}}\\*}
+
 % Exercise statements and complete solutions retain the chapter's text width.
 \tcbset{hfworked/.style={
   enhanced,breakable,sharp corners,
@@ -350,21 +357,28 @@ This chapter accompanies the lectures on Hartree--Fock theory and on basis
 sets and molecular integrals at the European Summer School of Quantum
 Chemistry (ESQC) 2026. Intended for doctoral students, it develops the
 single-determinant description of electronic structure from antisymmetry and
-the variational principle through the practical solution of the
-self-consistent-field equations. Explicit derivations connect spin orbitals,
-spatial orbitals, and finite-basis matrix representations. Excited
-determinants, spin symmetry, orbital energies, and the restricted,
-unrestricted, and generalized formulations clarify both the usefulness and
-the limitations of the Hartree--Fock approximation.
+the variational principle to the orbital equations and their finite-basis
+matrix representation. Detailed derivations connect the energy functional,
+the Fock operator, excited determinants, and the interpretation of orbital
+energies. Restricted, unrestricted, and generalized formulations show how
+the choice of variational space affects spin symmetry, symmetry breaking,
+and the limitations of the Hartree--Fock approximation.
 
-The second part examines the functions used to represent molecular orbitals
-and the integrals required to construct their effective Hamiltonian. It
-introduces the principal basis-set families, Gaussian contraction, integral
-recurrence relations, screening, and low-rank representations of
-electron-repulsion integrals. Worked examples, exercises with complete
-solutions, historical references, and computational remarks link the formal
-development to molecular calculations. Throughout, the notation and color
-conventions of the two accompanying lecture presentations are retained.
+The computational development covers orthogonalization, self-consistent-field
+iteration, convergence acceleration, overlap-based occupation selection,
+and orbital analysis, distinguishing orbital stationarity from stability.
+A connection to second-order M{\o}ller--Plesset perturbation theory explains
+the correlation-energy expression and the cost of transforming
+electron-repulsion integrals from atomic to molecular orbitals.
+
+The basis-set and integral development examines radial and angular
+flexibility, contraction, basis-set incompleteness, and superposition error.
+The Gaussian product theorem leads to one- and two-electron integrals,
+recurrence relations, integral screening, and low-rank representations.
+Worked examples and exercises with detailed solutions connect these
+derivations to practical calculations. Historical perspectives and explicit
+notation conventions provide context for the approximations and algorithms
+that underpin molecular electronic-structure theory.
 \end{hfabstract}
 \clearpage
 \tableofcontents
@@ -381,22 +395,21 @@ by topic. Acronyms and abbreviations are collected alphabetically at the end
 of the table.
 
 \begingroup
-\small
-\renewcommand{\arraystretch}{1.00}
+\hftablestyle
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
 \begin{longtable}{@{}p{0.26\linewidth}p{\dimexpr0.74\linewidth-2\tabcolsep\relax}@{}}
   \caption{Symbols and acronyms, with formulation-specific local conventions.}
   \label{tab:notation}\\
   \toprule
-  \textcolor{hfGreenDark}{\textbf{Symbol or acronym}} &
-  \textcolor{hfGreenDark}{\textbf{Meaning and convention}}\\
+  \hftablehead{Symbol or acronym} &
+  \hftablehead{Meaning and convention}\\
   \midrule
   \endfirsthead
   \caption[]{Symbols, acronyms, and local conventions (continued).}\\
   \toprule
-  \textcolor{hfGreenDark}{\textbf{Symbol or acronym}} &
-  \textcolor{hfGreenDark}{\textbf{Meaning and convention}}\\
+  \hftablehead{Symbol or acronym} &
+  \hftablehead{Meaning and convention}\\
   \midrule
   \endhead
   \midrule
@@ -9880,47 +9893,56 @@ conjugation, rather than the exchange operator used earlier, and
 $\hat\Theta$ denotes time reversal.
 \begin{table}[htbp]
 \centering
-\footnotesize
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{
-  >{\centering\arraybackslash}m{0.14\textwidth}
-  >{\centering\arraybackslash}m{0.19\textwidth}
-  >{\centering\arraybackslash}m{0.17\textwidth}
-  >{\centering\arraybackslash}m{0.39\textwidth}}
-\rowcolor{hfPale}
-\makecell{\textbf{Fukutome}\\\textbf{designation}}&
-\makecell{\textbf{Stuber--Paldus}\\\textbf{designation}}&
-\makecell{\textbf{Symmetries}\\\textbf{preserved}}&
-\makecell{\textbf{Structure of the orbital}\\
-          \textbf{coefficient matrix $\bC$}}\\
-$\text{TICS}^{a}$&real RHF&$\chS^2,\chS_z,\chK,\hat\Theta$&
-$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}),
-\ \bC\in\mathbb R$\\
-$\text{CCW}^{b}$&complex RHF&$\chS^2,\chS_z$&
-$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma})$\\
-$\text{ASCW}^{c}$&paired UHF&$\chS_z,\hat\Theta$&
-$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}^*)$\\
-$\text{ASDW}^{d}$&real UHF&$\chS_z,\chK$&
-$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'}),
-\ \bC\in\mathbb R$\\
-$\text{ASW}^{e}$&complex UHF&$\chS_z$&
-$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'})$\\
-$\text{TSCW}^{f}$&paired GHF&$\hat\Theta$&
-$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
--\bC_{\sigma\sigma'}^*&\bC_{\sigma\sigma}^*)$\\
-$\text{TSDW}^{g}$&real GHF&$\chK$&
-$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
-\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'}),\ \bC\in\mathbb R$\\
-$\text{TSW}^{h}$&complex GHF&---&
-$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
-\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'})$
-\end{tabular}
+\hftablestyle
 \caption{Stuber--Paldus classification of Hartree--Fock solutions.
 Reproduced in part from Table~I of Henderson, Jim\'enez-Hoyos, and Scuseria
 \citep{Henderson2018}, with the density-matrix columns omitted and notation
 adjusted to the present chapter.}
 \label{tab:stuber-paldus}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{
+  @{}>{\centering\arraybackslash}m{0.14\textwidth}
+  >{\centering\arraybackslash}m{0.19\textwidth}
+  >{\centering\arraybackslash}m{0.17\textwidth}
+  >{\centering\arraybackslash}m{0.39\textwidth}@{}}
+\toprule
+\hftablehead{\makecell{Fukutome\\designation}}&
+\hftablehead{\makecell{Stuber--Paldus\\designation}}&
+\hftablehead{\makecell{Symmetries\\preserved}}&
+\hftablehead{\makecell{Structure of the orbital\\
+          coefficient matrix $\bC$}}\\
+\midrule
+\hftablesection{4}{Restricted Hartree--Fock}
+$\text{TICS}^{a}$&real RHF&$\chS^2,\chS_z,\chK,\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}),
+\ \bC\in\mathbb R$\\
+\addlinespace[3pt]
+$\text{CCW}^{b}$&complex RHF&$\chS^2,\chS_z$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma})$\\
+\hftablesection{4}{Unrestricted Hartree--Fock}
+$\text{ASCW}^{c}$&paired UHF&$\chS_z,\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma\sigma}^*)$\\
+\addlinespace[3pt]
+$\text{ASDW}^{d}$&real UHF&$\chS_z,\chK$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'}),
+\ \bC\in\mathbb R$\\
+\addlinespace[3pt]
+$\text{ASW}^{e}$&complex UHF&$\chS_z$&
+$\mqty(\bC_{\sigma\sigma}&\bO\\\bO&\bC_{\sigma'\sigma'})$\\
+\hftablesection{4}{Generalized Hartree--Fock}
+$\text{TSCW}^{f}$&paired GHF&$\hat\Theta$&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+-\bC_{\sigma\sigma'}^*&\bC_{\sigma\sigma}^*)$\\
+\addlinespace[3pt]
+$\text{TSDW}^{g}$&real GHF&$\chK$&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'}),\ \bC\in\mathbb R$\\
+\addlinespace[3pt]
+$\text{TSW}^{h}$&complex GHF&---&
+$\mqty(\bC_{\sigma\sigma}&\bC_{\sigma\sigma'}\\
+\bC_{\sigma'\sigma}&\bC_{\sigma'\sigma'})$\\
+\bottomrule
+\end{tabular}
 \end{table}
 
 Here TICS denotes time-reversal-invariant closed-shell; CCW, charge current

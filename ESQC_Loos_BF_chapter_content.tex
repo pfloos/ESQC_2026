@@ -356,17 +356,19 @@ The complete contraction in this example is
 \end{equation}
 The corresponding exponents and contraction coefficients are listed in
 Table~\ref{tab:carbon-contraction}.
+
 \begin{table}[htbp]
   \centering
-  {\renewcommand{\arraystretch}{1.22}
-  \input{chapter-figures/carbon-contraction-tabular}}
+  \hftablestyle
   \caption{Primitive exponents and coefficients of one ten-primitive $s$
   contraction for carbon in cc-pVTZ. The shell scale is $1.00$. Values are
   transcribed from the lecture excerpt and checked against the Basis Set
   Exchange; the basis family is due to Dunning
   \citep{Dunning1989,Pritchard2019}.}
   \label{tab:carbon-contraction}
+  \input{chapter-figures/carbon-contraction-tabular}
 \end{table}
+
 Basis-set definitions can be inspected and downloaded from the
 \href{https://www.basissetexchange.org}{Basis Set Exchange}.
 
@@ -417,10 +419,10 @@ single-$\zeta$ basis sets; STO-3G is the most familiar member
 For hydrogen, Table~\ref{tab:hydrogen-sto3g} lists the three primitives in
 the contraction, and Fig.~\ref{fig:hydrogen-sto3g} shows how their sum
 approximates the Slater-type $1s$ orbital.
+
 \begin{table}[htbp]
   \centering
-  {\renewcommand{\arraystretch}{1.22}
-  \input{chapter-figures/hydrogen-sto3g-tabular}}
+  \hftablestyle
   \caption{Primitive exponents and contraction coefficients for the hydrogen
   $1s$ function in STO-3G, with shell scale $1.00$. The dimensionless
   coefficients $D_i$ multiply normalized primitive Gaussians; $a_0$ is the
@@ -428,6 +430,7 @@ approximates the Slater-type $1s$ orbital.
   Exchange excerpt in the lecture slides and checked against its STO-3G
   hydrogen definition \citep{Hehre1969,Pritchard2019}.}
   \label{tab:hydrogen-sto3g}
+  \input{chapter-figures/hydrogen-sto3g-tabular}
 \end{table}
 \begin{figure}[htbp]
   \centering
@@ -503,28 +506,35 @@ different HF extrapolation form.
 For a second-row atom (the second period, Li--Ne),
 Table~\ref{tab:cc-shell-content} lists the valence
 correlation-consistent sequence and its diffuse augmentations.
-\begin{center}
-\begin{tabular}{c@{\qquad}c}
+
+\begin{table}[htbp]
+\centering
+\hftablestyle
+\caption{Shell contents of correlation-consistent basis sets for
+second-row atoms, with successive diffuse augmentations. The entries count
+contracted radial functions in each angular-momentum shell
+\citep{Dunning1989,Kendall1992}.}
+\label{tab:cc-shell-content}
+\begin{tabular}{@{}ll@{}}
 \toprule
-Basis & shell content\\
+\hftablehead{Basis} & \hftablehead{Shell content}\\
 \midrule
+\hftablesection{2}{Unaugmented valence sets}
 cc-pVDZ & $3s2p1d$\\
 cc-pVTZ & $4s3p2d1f$\\
 cc-pVQZ & $5s4p3d2f1g$\\
+\hftablesection{2}{Single diffuse augmentation}
 aug-cc-pVDZ & $4s3p2d$\\
 aug-cc-pVTZ & $5s4p3d2f$\\
 aug-cc-pVQZ & $6s5p4d3f2g$\\
+\hftablesection{2}{Double diffuse augmentation}
 d-aug-cc-pVDZ & $5s4p3d$\\
 d-aug-cc-pVTZ & $6s5p4d3f$\\
 d-aug-cc-pVQZ & $7s6p5d4f3g$\\
 \bottomrule
 \end{tabular}
-\captionof{table}{Shell contents of correlation-consistent basis sets for
-second-row atoms, with successive diffuse augmentations. The entries count
-contracted radial functions in each angular-momentum shell
-\citep{Dunning1989,Kendall1992}.}
-\label{tab:cc-shell-content}
-\end{center}
+\end{table}
+
 The successive entries make the layered construction explicit. For the
 core--valence sequence, the corresponding decomposition is
 \begin{equation}
@@ -1422,15 +1432,22 @@ and $\alpha$ is the effective scaling exponent. The count $N_\text{sig}$
 is distinct from the electron number $N$ used in the HF derivations.
 The numerical data in Table~\ref{tab:screening-scaling} contrast the long-range Coulomb operator with a
 short-range Gaussian operator:
+
 \begin{table}[htbp]
 \centering
-\small
-\begin{tabular}{lrrrrr}
+\hftablestyle
+\caption{Numbers of significant integrals and effective scaling exponents
+for Coulomb and short-range Gaussian operators. Numerical data reproduced
+from the lecture slides.}
+\label{tab:screening-scaling}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
+\rowcolor{hfGreenLight}
 & &\multicolumn{2}{c}{\red{$\chO=r_{12}^{-1}$}}
 &\multicolumn{2}{c}{\orange{$\chO=e^{-r_{12}^2}$}}\\
 \cmidrule(lr){3-4}\cmidrule(lr){5-6}
-Molecule&$K$&$N_\text{sig}$&$\alpha$&$N_\text{sig}$&$\alpha$\\
+\hftablehead{Molecule}&\hftablehead{$K$}&\hftablehead{$N_\text{sig}$}&
+\hftablehead{$\alpha$}&\hftablehead{$N_\text{sig}$}&\hftablehead{$\alpha$}\\
 \midrule
 propene&12&1,625&---&1,650&---\\
 butadiene&16&5,020&3.9&5,020&3.9\\
@@ -1440,11 +1457,8 @@ decapentaene&40&119,948&2.8&81,404&1.9\\
 dodecahexaene&48&192,059&2.6&109,965&1.6\\
 \bottomrule
 \end{tabular}
-\caption{Numbers of significant integrals and effective scaling exponents
-for Coulomb and short-range Gaussian operators. Numerical data reproduced
-from the lecture slides.}
-\label{tab:screening-scaling}
 \end{table}
+
 The Coulomb interaction remains long ranged, so its effective exponent falls
 more slowly than that of the short-range Gaussian operator. Nevertheless, the
 data show that the number of numerically significant Coulomb integrals grows

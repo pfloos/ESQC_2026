@@ -1,5 +1,37 @@
 # Chapter audit
 
+## Table styling and abstract refresh (19 October 2026)
+
+- Pulled main before editing; baseline `15aa52b` was current. Harmonized
+  all six numbered tables using the notation glossary as the visual model:
+  dark-green bold headings, pale-green logical group bands, a shared small
+  body font, and booktabs horizontal rules without vertical borders.
+  Introduced shared table-style commands so future tables can reuse this
+  design. The glossary keeps its existing appearance and repeated headings.
+- Moved table captions above their entries, retaining their exact text,
+  citations, labels, and numbers. Added RHF/UHF/GHF group bands to the
+  classification table and augmentation bands to the shell-content table.
+  Retained the red/orange operator distinction in the screening table.
+  Made the shell-content table a normal float so its caption cannot be left
+  behind on a different page. Paragraph boundaries around two other floats
+  keep sentences from being interrupted by a table.
+- Refreshed the colored abstract to reflect the current ESQC doctoral-level
+  chapter, including SCF convergence/stability, overlap-based occupation
+  selection, the MP2/AO-to-MO connection, and the expanded worked exercises.
+  No removed MP2 Laplace material was restored. The cover and title are
+  unchanged; alternative titles are proposed to the author in conversation.
+- Extended the layout check to verify the shared headings/rules in all six
+  tables, expand the included coefficient tables, and require captions above
+  entries in each non-longtable table. Independent source comparisons retain
+  all table mathematics, numerical rows, shell counts, contraction data,
+  and caption/attribution text exactly.
+- All seven checks pass. All 637 displays are retained in order, with zero
+  notation or mathematical-token changes; all 30 figure/table callouts,
+  85 cited references, the author's MOM correction, and Further reading
+  are preserved. Compilation succeeds to 135 pages without undefined
+  citations/references, BibTeX warnings, or overfull boxes. The PDF skill
+  guided checks of the abstract and affected tables, not a full visual audit.
+
 ## Epsilon-matrix notation and acronym glossary (19 October 2026)
 
 - Pulled through the author's `360be9d` before editing. Retained the
