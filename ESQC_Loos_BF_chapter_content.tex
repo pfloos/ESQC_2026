@@ -820,6 +820,129 @@ For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
 \end{split}
 \end{equation}
 
+The product formula above uses unnormalized Gaussian factors. The next
+exercise shows how normalization changes the overlap and provides useful
+limiting cases for checking an integral routine.
+
+\begin{hfexercise}{Normalized Gaussian overlap.}
+For $\alpha>0$, define a normalized $s$-type primitive centered at $\bA$ by
+\begin{equation}
+  \phi_{\alpha,\bA}(\br)
+  =\mathcal{N}_\alpha\exp[-\alpha\abs{\br-\bA}^2]
+\end{equation}
+Determine the positive normalization factor $\mathcal{N}_\alpha$. Then use
+the Gaussian product theorem to derive the overlap of two normalized
+primitives with exponents $\alpha$ and $\beta$ on different centers
+$\bA$ and $\bB$. Check the identical-function limit, the coincident-center
+limit with unequal exponents, the equal-exponent case at finite separation,
+and the large-separation limit. As a numerical example, take
+$\alpha=1\,a_0^{-2}$, $\beta=2\,a_0^{-2}$,
+$\bA=(0,0,0)\,a_0$, and $\bB=(1,0,0)\,a_0$, where $a_0$ is the Bohr
+radius. Find the product center and the dimensionless overlap.
+\end{hfexercise}
+\begin{hfsolution}{Normalized Gaussian overlap.}
+Normalization requires the integral of the squared function to be one.
+Translating the integration variable to the center removes any dependence
+on $\bA$. The three Cartesian integrals then factorize:
+\begin{equation}
+\begin{split}
+  1
+  &=\mathcal{N}_\alpha^2
+    \int\exp[-2\alpha\abs{\br-\bA}^2]\dd\br\\
+  &=\mathcal{N}_\alpha^2
+    \qty(\int_{-\infty}^{+\infty}e^{-2\alpha x^2}\dd x)^3\\
+  &=\mathcal{N}_\alpha^2\qty(\frac{\pi}{2\alpha})^{3/2}
+\end{split}
+\end{equation}
+Choosing the positive root gives
+\begin{equation}
+  \boxed{\mathcal{N}_\alpha=\qty(\frac{2\alpha}{\pi})^{3/4}}
+\end{equation}
+The exponent has dimensions of inverse length squared, so the normalized
+three-dimensional function has dimensions of inverse length to the power
+$3/2$, as required by its normalization integral.
+
+For two such real functions, write
+\begin{equation}
+\begin{split}
+  S_{\alpha\bA,\beta\bB}
+  &\equiv\braket{\phi_{\alpha,\bA}}{\phi_{\beta,\bB}}\\
+  &=\mathcal{N}_\alpha\mathcal{N}_\beta
+    \int\exp[-\alpha\abs{\br-\bA}^2
+             -\beta\abs{\br-\bB}^2]\dd\br
+\end{split}
+\end{equation}
+Using $\zeta=\alpha+\beta$ and
+$\bP=(\alpha\bA+\beta\bB)/\zeta$, the exponent can be completed to a
+square:
+\begin{equation}
+  \alpha\abs{\br-\bA}^2+\beta\abs{\br-\bB}^2
+  =\zeta\abs{\br-\bP}^2
+   +\frac{\alpha\beta}{\zeta}\abs{\bA-\bB}^2
+\end{equation}
+Thus the separation-dependent factor leaves the integral:
+\begin{equation}
+\begin{split}
+  S_{\alpha\bA,\beta\bB}
+  &=\mathcal{N}_\alpha\mathcal{N}_\beta
+    \exp[-\frac{\alpha\beta}{\zeta}\abs{\bA-\bB}^2]
+    \int\exp[-\zeta\abs{\br-\bP}^2]\dd\br\\
+  &=\mathcal{N}_\alpha\mathcal{N}_\beta
+    \qty(\frac{\pi}{\zeta})^{3/2}
+    \exp[-\frac{\alpha\beta}{\zeta}\abs{\bA-\bB}^2]
+\end{split}
+\end{equation}
+Substituting the normalization factors yields
+\begin{equation}
+  \boxed{
+  S_{\alpha\bA,\beta\bB}
+  =\qty(\frac{2\sqrt{\alpha\beta}}{\alpha+\beta})^{3/2}
+    \exp[-\frac{\alpha\beta}{\alpha+\beta}\abs{\bA-\bB}^2]
+  }
+\end{equation}
+The result is dimensionless and symmetric under exchange of the two
+functions. Both factors are at most one: the first follows from
+$2\sqrt{\alpha\beta}\leq\alpha+\beta$, and the second from the
+nonpositive exponent. The positive $s$ primitives therefore have an
+overlap between zero and one.
+
+For coincident centers the exponential is one, but the overlap is
+\begin{equation}
+  \eval{S_{\alpha\bA,\beta\bB}}_{\bB=\bA}
+  =\qty(\frac{2\sqrt{\alpha\beta}}{\alpha+\beta})^{3/2}
+\end{equation}
+It is strictly less than one when $\alpha\ne\beta$: sharing a center does
+not make two different radial functions identical. If the exponents also
+coincide, the functions are identical and the overlap is exactly one,
+recovering the normalization condition.
+
+For equal exponents at arbitrary separation, the prefactor is one and
+\begin{equation}
+  \eval{S_{\alpha\bA,\beta\bB}}_{\beta=\alpha}
+  =\exp[-\frac{\alpha}{2}\abs{\bA-\bB}^2]
+\end{equation}
+For any fixed positive exponents the overlap tends to zero as the centers
+are separated without bound. This decay is Gaussian in the separation;
+more diffuse primitives retain appreciable overlap over longer distances.
+
+For the specified numerical example, the combined exponent and center are
+\begin{align}
+  \zeta&=3\,a_0^{-2}\\
+  \bP&=\qty(\frac23,0,0)\,a_0
+\end{align}
+The center lies closer to $\bB$, which carries the tighter primitive.
+The overlap is
+\begin{equation}
+  S_{\alpha\bA,\beta\bB}
+  =\qty(\frac{2\sqrt2}{3})^{3/2}e^{-2/3}
+  \simeq0.4700
+\end{equation}
+The product theorem determines the shape and center of the product, not
+its normalization. Even when both original functions are normalized, their
+product is not generally a normalized primitive; its prefactor must be
+retained when evaluating the overlap.
+\end{hfsolution}
+
 \subsection{One-electron Gaussian integrals}
 
 Once the product theorem has combined two basis functions, overlap, kinetic,
