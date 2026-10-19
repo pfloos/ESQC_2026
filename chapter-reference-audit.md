@@ -1,5 +1,30 @@
 # Chapter reference verification
 
+## Title hyperlinks (19 October 2026)
+
+The chapter's local `chapter-unsrtnat.bst` is a renamed, documented derivative
+of Patrick W. Daly's natbib `unsrtnat.bst` 1.93, retaining its original license
+and attribution. It preserves the citation-order reference format and links
+each title to its DOI resolver target, with a URL fallback. Standalone DOI
+and URL text is omitted; no existing DOI field or bibliographic metadata
+has been removed or changed.
+
+Added publisher URLs for the three books with no DOI in the existing file:
+
+- `Jensen2017`: [Wiley-VCH publisher record](https://www.wiley-vch.de/en/areas-interest/natural-sciences/introduction-to-computational-chemistry-978-1-118-82599-0), identifying Frank Jensen, third edition, February 2017, ISBN 978-1-118-82599-0.
+- `Cramer2004`: [Wiley-VCH publisher record](https://www.wiley-vch.de/en/areas-interest/natural-sciences/essentials-of-computational-chemistry-978-0-470-09182-1), identifying Christopher J. Cramer, second edition, September 2004, ISBN 978-0-470-09182-1.
+- `SzaboOstlund1996`: [Dover publisher record](https://store.doverpublications.com/products/9780486691862), whose current page identifies Modern Quantum Chemistry and ISBN/SKU 9780486691862. The original author/year metadata is retained, not inferred from the limited extracted product-page text.
+
+All 85 rendered reference titles have exactly one link to their stored
+target: 82 DOI links and three publisher URLs. All targets are present in
+the compiled PDF's link annotations. Removing only the hyperlink wrappers
+and the former standalone DOI blocks recovers every original reference's
+title, authors, publication details, and order. The source check can repeat
+the rendered-link verification with
+`python3 scripts/check_chapter_references.py --check-bbl` after compilation.
+The count of audited articles/contributed chapters remains 81; no source has
+been added or removed, and Further reading is unchanged.
+
 ## Author's MP2 revision (18 October 2026)
 
 The author removed the MP2 Laplace subsection in `fe1d3c7`. Its now-uncited
