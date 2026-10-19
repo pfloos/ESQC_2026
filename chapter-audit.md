@@ -1,5 +1,42 @@
 # Chapter audit
 
+## Hyperlinked reference titles (19 October 2026)
+
+- Pulled main before editing; baseline `ed884d7` was current. Added the
+  local, licensed `chapter-unsrtnat.bst` derivative of natbib's unsrtnat
+  style: titles link to DOI targets, falling back to stored publisher URLs,
+  rather than appending visible DOI/URL text to each entry. The style is
+  committed source, so the normal BibTeX/latexmk workflow reproduces it.
+- Kept all existing DOI fields and bibliographic metadata. Added verified
+  publisher URLs only for the three books without stored DOIs; provenance
+  and the limited Dover page extraction are recorded in the reference audit.
+- Extended the reference check with `--check-bbl`, verifying one correctly
+  targeted hyperlink per rendered reference title and no separate DOI/URL
+  blocks. All 85 references pass; their 82 DOI and three publisher targets
+  are also present as PDF link annotations. An exact normalized comparison
+  retains every title, author, publication detail, and citation order after
+  stripping only the link wrappers and previous standalone DOI blocks.
+- All seven checks pass, with all 637 displays, all 30 figure/table callouts,
+  all six table styles, the author's MOM correction, and Further reading
+  unchanged. Compilation succeeds to 135 pages without undefined references
+  or citations, BibTeX warnings, or overfull boxes. The PDF skill guided
+  targeted rendered bibliography checks and verification of link annotations;
+  no full-document visual review was undertaken.
+
+## Approved chapter title (19 October 2026)
+
+- Pulled main before editing; baseline `39405c2` was current. Applied the
+  author-approved main title, "Many Electrons, One Determinant", with
+  "Hartree--Fock Theory, Basis Sets, and Molecular Integrals" as the subtitle.
+  Updated the cover, LaTeX title declaration, and PDF title metadata.
+- Retained the cover illustration, dark-green palette, author information,
+  ESQC branding, and "Hartree--Fock Theory" running headers. The complete
+  chapter body after begin-document is byte-for-byte unchanged.
+- All seven checks pass; all 637 displays and Further reading are unchanged.
+  Compilation succeeds to 135 pages without undefined citations/references,
+  BibTeX warnings, or overfull boxes. The PDF skill guided a rendered cover
+  check and verification of the new PDF metadata; no body layout audit.
+
 ## Table styling and abstract refresh (19 October 2026)
 
 - Pulled main before editing; baseline `15aa52b` was current. Harmonized

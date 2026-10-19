@@ -3,8 +3,10 @@
 
 This is an offline consistency check, not a substitute for checking a DOI's
 publisher metadata or reading the source for relevance.
+Use --check-bbl after compilation to verify title links and hidden DOI/URL text.
 """
 
+import argparse
 from pathlib import Path
 import re
 import sys
@@ -14,6 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-bbl", action="store_true",
+                        help="after compilation, verify every rendered title link")
+    args = parser.parse_args()
     bib = (ROOT / "ESQC_Loos_HF_BF_chapter.bib").read_text()
     audit = (ROOT / "chapter-reference-audit.md").read_text()
     sources = [
@@ -28,7 +34,9 @@ def main():
         if key in entries:
             errors.append(f"Duplicate bibliography key: {key}")
         doi = re.search(r"\bdoi\s*=\s*\{([^}]+)\}", body)
-        entries[key] = (kind.lower(), doi.group(1) if doi else None)
+        url = re.search(r"\burl\s*=\s*\{([^}]+)\}", body)
+        entries[key] = (kind.lower(), doi.group(1) if doi else None,
+                        url.group(1) if url else None)
 
     cited = set()
     for source in sources:
@@ -51,7 +59,9 @@ def main():
     ):
         verified[key] = doi.lower()
     seen_dois = set()
-    for key, (kind, doi) in entries.items():
+    for key, (kind, doi, url) in entries.items():
+        if not doi and not url:
+            errors.append(f"Reference title has no DOI/URL link target: {key}")
         if kind not in {"article", "incollection"}:
             continue
         if not doi:
@@ -65,6 +75,31 @@ def main():
     for key in sorted(verified.keys() - entries.keys()):
         errors.append(f"Audit record has no retained bibliography entry: {key}")
 
+    if args.check_bbl:
+        path = ROOT / "ESQC_Loos_HF_BF_chapter.bbl"
+        if not path.exists():
+            errors.append("Compile the chapter before checking rendered title links")
+        else:
+            items = re.findall(
+                r"\\bibitem(?:\[[^]]*\])?\{([^}]+)\}(.*?)"
+                r"(?=\\bibitem|\\end\{thebibliography\})", path.read_text(), re.S)
+            rendered = dict(items)
+            if len(items) != len(rendered):
+                errors.append("Repeated key in the rendered bibliography")
+            if set(rendered) != cited:
+                errors.append("Rendered bibliography keys differ from the chapter citations")
+            for key, block in rendered.items():
+                if key not in entries:
+                    continue
+                _, doi, url = entries[key]
+                target = f"https://doi.org/{doi}" if doi else url
+                title = block.split(r"\newblock", 1)[-1].lstrip()
+                expected = r"\href{" + (target or "") + "}{"
+                if not title.startswith(expected) or block.count(r"\href{") != 1:
+                    errors.append(f"Expected exactly one title hyperlink to {target}: {key}")
+                if re.search(r"\\(?:doi|url)\{|\\newblock\s+(?:doi:|URL\b)", block):
+                    errors.append(f"Standalone DOI/URL remains in reference: {key}")
+
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
@@ -72,6 +107,8 @@ def main():
         f"Reference consistency passed: {len(cited)} cited entries, "
         f"{len(verified)} audited articles/contributed chapters"
     )
+    if args.check_bbl:
+        print(f"Rendered references passed: {len(rendered)} linked titles, no standalone DOI/URL")
     return 0
 
 
