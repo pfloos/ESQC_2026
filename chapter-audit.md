@@ -4,7 +4,9 @@
 
 - Pulled through the author's `360be9d` before editing. Retained the
   corrected MOM overlap matrix, bold capital O rather than the bold zero
-  command, and the author's other glossary edits.
+  command, and the author's other glossary edits. Integrated the concurrent
+  `2cd42bb` glossary simplifications after the first push was safely rejected;
+  both deleted caveats remain deleted.
 - Defined the canonical chapter command `\beps` as bold epsilon. Replaced
   rendered `\bE` and `\bepsilon` uses, including the occupied blocks, UHF
   spin sectors, and SCF/DIIS/MOM flowcharts. The GHF spinor energy matrix
@@ -18,7 +20,7 @@
   label, repeated headings, and dark-green color scheme; no new topic or
   bibliography item was introduced.
 - Extended the notation guard and its documented alias comparison. All 637
-  displays are retained in order against `360be9d`; 17 have notation-only
+  displays are retained in order against `2cd42bb`; 17 have notation-only
   spelling changes. An exact comparison of the entire scientific body,
   including MOM, permits only these matrix-name replacements. No factor,
   sign, index, contraction, prose passage, or Further reading was changed.

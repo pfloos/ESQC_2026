@@ -79,7 +79,9 @@ byte for byte, including the author's MP2 and stationarity revisions.
 
 ## Epsilon matrices and acronyms (19 October 2026)
 
-Pulled the author's MOM correction through `360be9d`. All rendered
+Pulled the author's MOM correction through `360be9d`, then integrated the
+concurrent glossary simplifications in `2cd42bb` without restoring the
+deleted caveats. All rendered
 orbital-energy matrices now use `\beps`, including occupied blocks,
 spin-sector matrices, and GHF spinor energies; occupied-space multipliers
 use the same bold-epsilon command. The glossary explicitly distinguishes
@@ -91,7 +93,7 @@ separate group within the existing table. Its label and table number are
 unchanged. MOM continues to use bold capital O, not the bold zero command.
 
 For the current comparison, run
-`python3 scripts/check_chapter_notation.py --compare-math 360be9d`.
+`python3 scripts/check_chapter_notation.py --compare-math 2cd42bb`.
 This retains all 637 displays in order and permits the explicit replacements
 of bE, bepsilon, and the GHF calligraphic energy matrix by beps. Seventeen
 displays change spelling; their mathematical content and Further reading
