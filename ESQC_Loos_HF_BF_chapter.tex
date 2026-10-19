@@ -7599,11 +7599,11 @@ the four-index integral tensor with the two-index density matrix. The density
 selects the occupied part of the one-electron space, while the integral tensor
 supplies the Coulomb interaction and its exchange counterpart. Schematically,
 \begin{equation}
-  \text{density}
+  \boxed{\text{density}
   \quad+\quad
   \text{two-electron integrals}
   \quad\longrightarrow\quad
-  \text{mean-field potential}
+  \text{mean-field potential}}
 \end{equation}
 This contraction is the central repeated operation in a conventional SCF
 calculation.
@@ -7719,11 +7719,9 @@ Eq.~\eqref{eq:rhf-fock-ao} carries a factor of one half when the
 spin-summed closed-shell density is used.
 The corresponding energy is
 \begin{equation}
-\begin{split}
-  E_\text{HF}={}&\sum_{\red{\mu\nu}}
+  E_\text{HF}=\sum_{\red{\mu\nu}}
     P_{\red{\nu\mu}}H_{\red{\mu\nu}}
-  \\
-  &+\frac{1}{2}\sum_{\red{\mu\nu}\blue{\lambda\sigma}}
+  +\frac{1}{2}\sum_{\red{\mu\nu}\blue{\lambda\sigma}}
     P_{\red{\nu\mu}}
     \qty[
       \rbraket{\red{\mu\nu}}{\blue{\lambda\sigma}}
@@ -7731,7 +7729,6 @@ The corresponding energy is
        \rbraket{\red{\mu}\blue{\sigma}}{\red{\lambda}\blue{\nu}}
     ]
     P_{\blue{\sigma\lambda}}
-\end{split}
 \end{equation}
 
 The factor of one half multiplying the two-electron contribution removes the
@@ -7782,12 +7779,10 @@ coefficients to be real.
 
 The spin density in real space is
 \begin{equation}
-\begin{split}
   \rho^\sigma(\br)
-  &=\sum_{i=1}^{N^\sigma}\abs{\psi_i^\sigma(\br)}^2\\
-  &=\sum_{\mu\nu}P_{\mu\nu}^\sigma
+  =\sum_{i=1}^{N^\sigma}\abs{\psi_i^\sigma(\br)}^2
+  =\sum_{\mu\nu}P_{\mu\nu}^\sigma
     \phi_\mu(\br)\phi_\nu^*(\br)
-\end{split}
 \end{equation}
 Integrating the AO products gives $S_{\nu\mu}$, rather than a Kronecker
 delta. Consequently,
