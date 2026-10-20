@@ -9294,6 +9294,8 @@ populations and is the matrix representation of the collinear spin density.
 
 The practical UHF SCF algorithm mirrors the restricted procedure, but both
 spin densities must be propagated until they are mutually self-consistent. It
+is summarized in Algorithm~\ref{alg:uhf-scf-summary}, using the same step
+organization as Algorithm~\ref{alg:rhf-scf-summary}. The calculation
 begins by specifying the molecule through $\{\bR_A\}$ and $\{Z_A\}$
 and choosing the basis set $\{\phi_\mu\}$, as in RHF. The integrals
 $S_{\mu\nu}$, $H_{\mu\nu}$, and
@@ -9301,7 +9303,8 @@ $\braket{\mu\nu}{\lambda\sigma}$ are calculated, and $\bS$ is diagonalized
 to obtain $\bX$.
 
 After initial density matrices $\bP^\alpha$ and $\bP^\beta$ have been
-chosen, the two spin-dependent matrix builds are performed:
+chosen (Step~\ref{algstep:uhf-guess}), the two spin-dependent matrix builds
+in Step~\ref{algstep:uhf-build} are performed:
 $\bG^\alpha$ gives $\bF^\alpha=\bH+\bG^\alpha$, while $\bG^\beta$ gives
 $\bF^\beta=\bH+\bG^\beta$. The transformed matrices are
 $(\bF^\alpha)'=\bX^\dag\cdot\bF^\alpha\cdot\bX$ and
@@ -9316,6 +9319,81 @@ not satisfied, the cycle returns to the construction of $\bG^\alpha$ and
 $\bG^\beta$; otherwise, the desired observables, including
 $E_\text{UHF}$, are evaluated.
 
+\begin{hfscfsummary}[title={Algorithm~\thetcbcounter\enspace\textbar\ The UHF self-consistent-field procedure},phantom={\label{alg:uhf-scf-summary}}]
+\textcolor{hfInk}{Collinear UHF with fixed $N^\alpha$ and $N^\beta$;
+$\sigma=\blue{\alpha},\red{\beta}$. Each $\bP^\sigma$ counts only its own
+spin population, with no factor of two.}
+\medskip
+\colorlet{hfSCFStep}{hfGreenDark}
+\algrenewcommand\alglinenumber[1]{%
+  \tikz[baseline=(scfnumber.base)]
+    \node[circle,fill=hfSCFStep,text=white,inner sep=0pt,
+      minimum size=4.4mm,font=\scriptsize\bfseries] (scfnumber) {#1};}
+\begin{algorithmic}[1]
+  \Statex \colorbox{hfGreenLight}{\strut\textcolor{hfGreenDark}{\bfseries
+    SETUP\enspace\textbar\ Prepare once at a fixed geometry}}
+  \State \textbf{Specify the calculation.}\phantomsection\label{algstep:uhf-input}
+    Choose the geometry, AO basis, spin populations
+    $N^\alpha+N^\beta=N$, and convergence thresholds.
+  \State \textbf{Prepare integrals and the common AO metric.}\phantomsection\label{algstep:uhf-metric}
+    Calculate $\bS$, $\bH$, and the ERIs; use the same $\bX$ for both spins,
+    with $\bX^\dag\cdot\bS\cdot\bX=\bI$.
+  \State \textbf{Choose two initial densities.}\phantomsection\label{algstep:uhf-guess}
+    Supply $\bP^{\alpha,(0)}$ and $\bP^{\beta,(0)}$; set $n=0$.
+  \Statex \smallskip
+    \colorbox{hfBlue!7}{\strut\textcolor{hfBlue}{\bfseries
+      ITERATION\enspace\textbar\ Repeat Steps 4--7 until self-consistency}}
+  \colorlet{hfSCFStep}{hfBlue}
+  \State \textbf{Build both physical Fock matrices.}\phantomsection\label{algstep:uhf-build}
+    Both densities contribute to Coulomb; exchange is same-spin only:
+  \Statex $\displaystyle
+    \bF^{\sigma,(n)}
+      =\bF^\sigma[\bP^{\alpha,(n)},\bP^{\beta,(n)}]$
+  \State \textbf{Evaluate the energy and test both spin channels.}\phantomsection\label{algstep:uhf-test}
+    Use the physical matrices from Step~\ref{algstep:uhf-build}:
+  \Statex $\displaystyle
+    E_\text{UHF}^{(n)}=\frac12\sum_{\sigma=\alpha,\beta}
+      \Tr\qty[\bP^{\sigma,(n)}\cdot(\bH+\bF^{\sigma,(n)})]$
+  \Statex $\displaystyle
+    \be^{\sigma,(n)}
+      =\bF^{\sigma,(n)}\cdot\bP^{\sigma,(n)}\cdot\bS
+      -\bS\cdot\bP^{\sigma,(n)}\cdot\bF^{\sigma,(n)}$
+  \Statex After at least one orbital update, require
+    $\max_{\sigma=\alpha,\beta}\max\abs*{\be^{\sigma,(n)}}<\tau_\text{SCF}$
+    and the chosen energy/density change criteria for both spins.
+    If satisfied, go to Step~\ref{algstep:uhf-output}.
+  \State \textbf{Solve for new orbitals in each spin channel.}\phantomsection\label{algstep:uhf-solve}
+    Use $\bF_\text{work}^{\sigma,(n)}=\bF^{\sigma,(n)}$, or DIIS working matrices:
+  \Statex $\displaystyle
+    (\bF_\text{work}^{\sigma,(n)})'
+      =\bX^\dag\cdot\bF_\text{work}^{\sigma,(n)}\cdot\bX$
+  \Statex $\displaystyle
+    (\bF_\text{work}^{\sigma,(n)})'\cdot(\bC^{\sigma,(n+1)})'
+      =(\bC^{\sigma,(n+1)})'\cdot\beps^{\sigma,(n+1)}$
+  \Statex $\displaystyle
+    \bC^{\sigma,(n+1)}=\bX\cdot(\bC^{\sigma,(n+1)})'$
+  \State \textbf{Occupy and update both densities.}\phantomsection\label{algstep:uhf-update}
+    Occupy the $N^\sigma$ lowest orbitals of each spin and form
+  \Statex $\displaystyle
+    \bP^{\sigma,(n+1)}=\bC_\text{o}^{\sigma,(n+1)}\cdot
+      (\bC_\text{o}^{\sigma,(n+1)})^\dag$
+  \Statex Set $n\leftarrow n+1$ and return to
+    Step~\ref{algstep:uhf-build}, rebuilding both physical Fock matrices.
+  \Statex \smallskip
+    \colorbox{hfGreenLight}{\strut\textcolor{hfGreenDark}{\bfseries
+      OUTPUT\enspace\textbar\ Only after convergence}}
+  \colorlet{hfSCFStep}{hfGreenDark}
+  \State \textbf{Evaluate the converged observables.}\phantomsection\label{algstep:uhf-output}
+    Report $E_\text{UHF}$, orbitals, charge/spin densities, and
+    $\expval{\chS^2}$. Add nuclear repulsion for the total molecular energy.
+\end{algorithmic}
+\medskip
+{\footnotesize\color{hfInk}\textbf{Two diagonalizations, one coupled problem.}
+Test each density with its own physical Fock matrix built from the same
+current pair of spin densities. Convergence guarantees neither spin purity
+nor stability.}
+\end{hfscfsummary}
+
 Convergence therefore requires a fixed point of the coupled map
 \begin{equation}
   (\bP^\alpha,\bP^\beta)
@@ -9326,6 +9404,10 @@ Convergence therefore requires a fixed point of the coupled map
 \end{equation}
 Different initial spin densities can lead to different stationary solutions,
 especially where restricted spin symmetry becomes unstable.
+The joint test in Step~\ref{algstep:uhf-test} is essential: convergence of
+only one spin channel does not solve the UHF equations. Updating either
+density in Step~\ref{algstep:uhf-update} requires rebuilding both physical
+Fock matrices before testing the pair again.
 
 \subsection{Symmetry breaking in the dissociation of \ce{H2}}
 
