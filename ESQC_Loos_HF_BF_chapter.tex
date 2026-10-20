@@ -9196,19 +9196,17 @@ The UHF energy comprises three contributions:
 \end{equation}
 Explicitly,
 \begin{equation}
-\begin{split}
   E_\text{UHF}
-  ={}&\blue{\sum_i^{N^\alpha}h_{ii}^\alpha
+  =\blue{\sum_i^{N^\alpha}h_{ii}^\alpha
     +\frac{1}{2}\sum_{ij}^{N^\alpha}
       \qty(J_{ij}^{\alpha\alpha}-K_{ij}^{\alpha\alpha})}
   \\
-  &+\red{\sum_i^{N^\beta}h_{ii}^\beta
+  +\red{\sum_i^{N^\beta}h_{ii}^\beta
     +\frac{1}{2}\sum_{ij}^{N^\beta}
       \qty(J_{ij}^{\beta\beta}-K_{ij}^{\beta\beta})}
   \\
-  &+\violet{\sum_i^{N^\alpha}\sum_j^{N^\beta}
+  +\violet{\sum_i^{N^\alpha}\sum_j^{N^\beta}
     J_{ij}^{\alpha\beta}}
-\end{split}
 \end{equation}
 The matrix elements are
 \begin{align}
@@ -9301,31 +9299,27 @@ The resulting Pople--Nesbet equations \citep{PopleNesbet1954} are
   =\bS\cdot\red{\bC^\beta}\cdot\beps^\beta}
 \end{align}
 Their spin-dependent Fock matrices are
-\begin{equation}
-\begin{split}
+\begin{align}
   \blue{F_{\mu\nu}^\alpha}
-  ={}&H_{\mu\nu}
+  &=H_{\mu\nu}
   +\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
     \qty[
       \rbraket{\mu\nu}{\sigma\lambda}
       -\rbraket{\mu\lambda}{\sigma\nu}
     ]
-  \\
-  &+\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
+  +\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
     \rbraket{\mu\nu}{\sigma\lambda}
   \\
   \red{F_{\mu\nu}^\beta}
-  ={}&H_{\mu\nu}
+  &=H_{\mu\nu}
   +\sum_{\lambda\sigma}\red{P_{\lambda\sigma}^\beta}
     \qty[
       \rbraket{\mu\nu}{\sigma\lambda}
       -\rbraket{\mu\lambda}{\sigma\nu}
     ]
-  \\
-  &+\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
+  +\sum_{\lambda\sigma}\blue{P_{\lambda\sigma}^\alpha}
     \rbraket{\mu\nu}{\sigma\lambda}
-\end{split}
-\end{equation}
+\end{align}
 Both $\blue{\bF^\alpha}$ and $\red{\bF^\beta}$ depend on
 $\blue{\bC^\alpha}$ and $\red{\bC^\beta}$. Therefore, the $\alpha$
 and $\beta$ orbitals are coupled.
@@ -9493,15 +9487,13 @@ longer a pure eigenfunction of $\chS^2$.
 Start from normalized $1s$ functions $\phi_A$ and $\phi_B$, one on each atom.
 Their symmetric and antisymmetric combinations define the gerade bonding
 orbital $\psi_g$ and ungerade antibonding orbital $\psi_u$:
-\begin{equation}
-\begin{split}
+\begin{align}
   \psi_g&=\frac{\phi_A+\phi_B}{\sqrt{2(1+S)}}
-  \\
+  &
   \psi_u&=\frac{\phi_A-\phi_B}{\sqrt{2(1-S)}}
-  \\
+  &
   S&=\braket{\phi_A}{\phi_B}
-\end{split}
-\end{equation}
+\end{align}
 Here $S$ is the overlap between the two atomic functions, not the total-spin
 quantum number; $R$ below is the internuclear distance. For two electrons in
 two spatial orbitals, the UHF parametrization used below reduces to a
@@ -9529,13 +9521,11 @@ by the internuclear distance $R$.}
 
 In the restricted description both electrons occupy the gerade bonding
 orbital. The RHF wavefunction and energy are
-\begin{equation}
-\begin{split}
+\begin{align}
   \ket{\Psi_\text{RHF}}&=\ket{\psi_g\Bar{\psi}_g}
-  \\
+  &
   E_\text{RHF}&=2h_{gg}+J_{gg}+\frac{1}{R}
-\end{split}
-\end{equation}
+\end{align}
 At large $R$, where $S\rightarrow0$,
 \begin{equation}
   \psi_g(1)\psi_g(2)\longrightarrow\frac{1}{2}\qty[
@@ -9561,14 +9551,12 @@ configurations together with the covalent ones.
 The two-dimensional orbital space spanned by $\psi_g$ and $\psi_u$ permits
 the $\alpha$ and $\beta$ orbitals to rotate in opposite directions. The UHF
 orbitals can be parametrized as
-\begin{equation}
-  \begin{split}
-    \psi^\alpha(\theta)&=\cos\theta\,\psi_g+\sin\theta\,\psi_u\\
+\begin{align}
+    \psi^\alpha(\theta)&=\cos\theta\,\psi_g+\sin\theta\,\psi_u
+    &
     \psi^\beta(\theta)&=\cos\theta\,\psi_g-\sin\theta\,\psi_u
-    \\
-    \braket{\psi^\alpha}{\psi^\beta}&=\cos(2\theta)
-  \end{split}
-\end{equation}
+\end{align}
+with $\braket{\psi^\alpha}{\psi^\beta}=\cos(2\theta)$.
 The two choices $\pm\theta$ are degenerate and exchange the spin
 localization.
 The parameter $\theta$ therefore provides a continuous path from the
