@@ -9358,12 +9358,11 @@ spin population, with no factor of two.}
     and the chosen energy/density change criteria for both spins.
     If satisfied, go to Step~\ref{algstep:uhf-output}.
   \State \textbf{Solve for new orbitals in each spin channel.}\phantomsection\label{algstep:uhf-solve}
-    Use $\bF_\text{work}^{\sigma,(n)}=\bF^{\sigma,(n)}$, or DIIS working matrices:
   \Statex $\displaystyle
-    (\bF_\text{work}^{\sigma,(n)})'
-      =\bX^\dag\cdot\bF_\text{work}^{\sigma,(n)}\cdot\bX$
+    (\bF^{\sigma,(n)})'
+      =\bX^\dag\cdot\bF^{\sigma,(n)}\cdot\bX$
   \Statex $\displaystyle
-    (\bF_\text{work}^{\sigma,(n)})'\cdot(\bC^{\sigma,(n+1)})'
+    (\bF^{\sigma,(n)})'\cdot(\bC^{\sigma,(n+1)})'
       =(\bC^{\sigma,(n+1)})'\cdot\beps^{\sigma,(n+1)}$
   \Statex $\displaystyle
     \bC^{\sigma,(n+1)}=\bX\cdot(\bC^{\sigma,(n+1)})'$
@@ -9380,13 +9379,8 @@ spin population, with no factor of two.}
   \colorlet{hfSCFStep}{hfGreenDark}
   \State \textbf{Evaluate the converged observables.}\phantomsection\label{algstep:uhf-output}
     Report $E_\text{UHF}$, orbitals, charge/spin densities, and
-    $\expval{\chS^2}$. Add nuclear repulsion for the total molecular energy.
+    $\expval*{\chS^2}$. Add nuclear repulsion for the total molecular energy.
 \end{algorithmic}
-\medskip
-{\footnotesize\color{hfInk}\textbf{Two diagonalizations, one coupled problem.}
-Test each density with its own physical Fock matrix built from the same
-current pair of spin densities. Convergence guarantees neither spin purity
-nor stability.}
 \end{hfscfsummary}
 
 Convergence therefore requires a fixed point of the coupled map
