@@ -298,3 +298,26 @@ the existing Weigend (2006) Coulomb-fitting citation.
 | `Gill1994` | Molecular Integrals over Gaussian Basis Functions | [10.1016/S0065-3276(08)60019-2](https://doi.org/10.1016/S0065-3276(08)60019-2) |
 | `Weigend2002` | A Fully Direct RI-HF Algorithm: Implementation, Optimised Auxiliary Basis Sets, Demonstration of Accuracy and Efficiency | [10.1039/B204199P](https://doi.org/10.1039/B204199P) |
 
+## Aufbau occupation and open-shell spatial-orbital ordering (20 October 2026)
+
+Verified the theorem in the [original Bach et al. manuscript](https://arxiv.org/abs/cond-mat/9307066)
+and its [APS record](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.72.2981).
+Its unconstrained spin-orbital minimization is not an assertion about a
+single common ordering of UHF spatial orbitals.
+
+For the author's TEMPO suggestion, verified the primary
+[Kusamoto--Kume--Nishihara study](https://pubs.acs.org/doi/10.1021/ja805751h),
+including its [PubMed metadata and abstract](https://pubmed.ncbi.nlm.nih.gov/18821762/).
+The documented example is a TEMPO-derived dithiolate Pt(II) complex, not
+bare TEMPO. Its spatial SOMO--HOMO inversion does not by itself demonstrate
+an inverted occupied/virtual gap within one self-consistent HF spin channel.
+No new HF calculation or unsupported claim for bare TEMPO is presented.
+The ACS landing page was access-restricted; the original author abstract and
+bibliographic metadata were checked through PubMed and the
+[author's institutional publication record](https://tus.elsevierpure.com/en/publications/realization-of-somo-homo-level-conversion-for-a-tempo-dithiolate-/).
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Bach1994` | There Are No Unfilled Shells in Unrestricted Hartree-Fock Theory | [10.1103/PhysRevLett.72.2981](https://doi.org/10.1103/PhysRevLett.72.2981) |
+| `Kusamoto2008` | Realization of SOMO-HOMO Level Conversion for a TEMPO-Dithiolate Ligand by Coordination to Platinum(II) | [10.1021/ja805751h](https://doi.org/10.1021/ja805751h) |
+

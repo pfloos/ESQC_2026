@@ -10,7 +10,10 @@ import re
 from pathlib import Path
 
 FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
-DISPLAY = re.compile(r"\\(begin|end)\{(equation\*?|align\*?|gather\*?|multline\*?|displaymath)\}")
+DISPLAY = re.compile(
+    r"\\(begin|end)\{(equation\*?|align\*?|gather\*?|multline\*?|displaymath)\}"
+    r"|(?<!\\)\\(\[|\])"
+)
 SPIN_SUBSCRIPT = re.compile(
     r"(?<![A-Za-z\\])N\s*_\s*(?:\{\s*)?"
     r"(?:\\(?:mathrm|text)\s*\{\s*)?\\(?:alpha|beta|sigma)\b"
@@ -27,9 +30,10 @@ def spin_population_subscripts(source):
 def normalized(source):
     lines, display, brace_depth = [], 0, 0
     for line in source.splitlines(keepends=True):
-        events = list(DISPLAY.finditer(line))
-        if any(m[1] == "begin" for m in events):
-            display += sum(m[1] == "begin" for m in events)
+        events = [m[1] or ("begin" if m[3] == "[" else "end")
+                  for m in DISPLAY.finditer(line)]
+        if "begin" in events:
+            display += events.count("begin")
         if display and not events:
             depth = brace_depth
             depths = []
@@ -50,10 +54,28 @@ def normalized(source):
                     invisible = re.search(r"\\(?:left|right|big|Big|bigg|Bigg)[lr]?$", line[:match.start()])
                     if depths[match.start()] == 0 and not invisible:
                         line = line[:match.start()] + line[match.end():]
-        if any(m[1] == "end" for m in events):
-            display -= sum(m[1] == "end" for m in events)
+        if "end" in events:
+            display -= events.count("end")
         lines.append(line)
     return "".join(lines)
+
+
+def exercise_pair_errors(source):
+    """Match every exercise to its following solution, including TeX titles."""
+    entries = re.findall(
+        r"\\begin\{(hfexercise|hfsolution)\}(?:\[[^\n]*\])?"
+        r"\{((?:[^{}]|\{[^{}]*\})*)\}",
+        source,
+    )
+    errors = []
+    if len(entries) % 2:
+        errors.append("Unpaired exercise or solution box")
+    for statement, solution in zip(entries[::2], entries[1::2]):
+        if statement[0] != "hfexercise" or solution[0] != "hfsolution":
+            errors.append("Exercise/solution boxes are not alternating")
+        if statement[1] != solution[1]:
+            errors.append(f"Mismatched exercise/solution titles: {statement[1]}")
+    return errors
 
 
 def main():
@@ -81,9 +103,11 @@ def main():
         errors = [f"{path}:{line}: use N^alpha/N^beta/N^sigma, not subscript spin counts"
                   for path in sources if path.is_file()
                   for line in spin_population_subscripts(path.read_text())]
+        errors += exercise_pair_errors("\n".join(Path(name).read_text() for name in FILES))
         if errors:
             raise SystemExit("\n".join(errors))
         print("Chapter display-punctuation and superscript spin-population conventions passed")
+        print("Exercise/solution title pairing passed")
 
 
 def physics_notation(source):

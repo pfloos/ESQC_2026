@@ -815,27 +815,20 @@ For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
 \end{split}
 \end{equation}
 
-The product formula above uses unnormalized Gaussian factors. The next
-exercise shows how normalization changes the overlap and provides useful
+The product formula above uses unnormalized Gaussian factors.
+Exercise~\ref{ex:normalized-gaussian-overlap} shows how normalization changes the overlap and provides useful
 limiting cases for checking an integral routine.
 
-\begin{hfexercise}{Normalized Gaussian overlap.}
+\begin{hfexercise}[phantom={\label{ex:normalized-gaussian-overlap}}]{Normalized Gaussian overlap}
+\violet{\textit{Normalize two $s$-type Gaussian primitives and derive their
+overlap for arbitrary exponents and centers.}}
+\end{hfexercise}
+\begin{hfsolution}{Normalized Gaussian overlap}
 For $\alpha>0$, define a normalized $s$-type primitive centered at $\bA$ by
 \begin{equation}
   \phi_{\alpha,\bA}(\br)
   =\mathcal{N}_\alpha\exp[-\alpha\abs{\br-\bA}^2]
 \end{equation}
-Determine the positive normalization factor $\mathcal{N}_\alpha$. Then use
-the Gaussian product theorem to derive the overlap of two normalized
-primitives with exponents $\alpha$ and $\beta$ on different centers
-$\bA$ and $\bB$. Check the identical-function limit, the coincident-center
-limit with unequal exponents, the equal-exponent case at finite separation,
-and the large-separation limit. As a numerical example, take
-$\alpha=1\,a_0^{-2}$, $\beta=2\,a_0^{-2}$,
-$\bA=(0,0,0)\,a_0$, and $\bB=(1,0,0)\,a_0$, where $a_0$ is the Bohr
-radius. Find the product center and the dimensionless overlap.
-\end{hfexercise}
-\begin{hfsolution}{Normalized Gaussian overlap.}
 Normalization requires the integral of the squared function to be one.
 Translating the integration variable to the center removes any dependence
 on $\bA$. The three Cartesian integrals then factorize:
@@ -919,7 +912,10 @@ For any fixed positive exponents the overlap tends to zero as the centers
 are separated without bound. This decay is Gaussian in the separation;
 more diffuse primitives retain appreciable overlap over longer distances.
 
-For the specified numerical example, the combined exponent and center are
+As a numerical illustration, take $\alpha=1\,a_0^{-2}$,
+$\beta=2\,a_0^{-2}$, $\bA=(0,0,0)\,a_0$, and
+$\bB=(1,0,0)\,a_0$, where $a_0$ is the Bohr radius.
+The combined exponent and center are
 \begin{align}
   \zeta&=3\,a_0^{-2}\\
   \bP&=\qty(\frac23,0,0)\,a_0
@@ -1007,11 +1003,14 @@ centers to two Gaussian product centers.
 
 \subsubsection{Gaussian-pair reduction and shell structure}
 
-Applying the Gaussian product rule to the $s$-type factors on both electron
-coordinates gives
+For four unnormalized primitive $s$ Gaussians, applying the Gaussian product
+rule on both electron coordinates gives the following reduction, with
+$\bO=(0,0,0)$ denoting zero angular momentum. Higher-angular-momentum
+primitives also contain polynomial factors, which are generated through the
+recurrences in Section~\ref{sec:os-recurrences}.
 \begin{equation}
 \begin{split}
- \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
+ \sbraket{\red{\bO}\blue{\bO}}{\orange{\bO}\green{\bO}}
  &=\iint G_{\red{\alpha},\red{\bA}}(\br_1)
  G_{\blue{\beta},\blue{\bB}}(\br_1)\frac{1}{r_{12}}
  G_{\orange{\gamma},\orange{\bC}}(\br_2)

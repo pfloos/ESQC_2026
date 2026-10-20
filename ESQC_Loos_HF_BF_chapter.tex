@@ -77,13 +77,16 @@
   before skip=12pt,after skip=12pt,
   fonttitle=\small\bfseries,coltitle=white,
   lefttitle=2mm,righttitle=2mm,toptitle=1.5mm,bottomtitle=1.5mm}}
-\newtcolorbox{hfexercise}[1]{hfworked,
+\newcounter{hfexercisenum}
+\newtcolorbox[use counter=hfexercisenum]{hfexercise}[2][]{hfworked,
   colframe=hfViolet!80!black,colback=hfViolet!3,
   colbacktitle=hfViolet!80!black,
-  title={Exercise: #1},title after break={Exercise (continued): #1}}
+  title={Exercise~\thetcbcounter: #2},
+  title after break={Exercise~\thetcbcounter\ (continued): #2},#1}
 \newtcolorbox{hfsolution}[1]{hfworked,
   colframe=hfGreenDark,colback=hfGreenLight,colbacktitle=hfGreenDark,
-  title={Solution: #1},title after break={Solution (continued): #1},
+  title={Solution~\thehfexercisenum: #1},
+  title after break={Solution~\thehfexercisenum\ (continued): #1},
   before upper={\allowdisplaybreaks[1]}}
 \newtcolorbox{hfabstract}{hfworked,
   colframe=hfPurple,colback=hfPurple!4,colbacktitle=hfPurple,
@@ -438,7 +441,7 @@ of the table.
   $O$, $V$ & Closed-shell MP2 spatial counts: $O=N/2$ occupied and
   $V=K-O$ virtual orbitals.\\
   $\br$, $\bx$, $\omega$ & Spatial coordinate, combined coordinate
-  $\bx=(\br,\omega)$, and spin coordinate. Integration over $\bx$
+  $\bx=(\omega,\br)$, and spin coordinate. Integration over $\bx$
   includes the spin degree of freedom.\\
   $A,B$, $Z_A$, $\bR_A$ & Nuclear labels, charges, and positions;
   $M$ counts nuclei.\\
@@ -666,7 +669,9 @@ of the table.
   ROHF & Restricted open-shell Hartree--Fock.\\
   SAD & Superposition of atomic densities.\\
   SCF & Self-consistent field.\\
+  SOMO & Singly occupied molecular orbital.\\
   STO & Slater-type orbital.\\
+  TEMPO & 2,2,6,6-Tetramethylpiperidin-1-oxyl radical.\\
   TICS & Time-reversal-invariant closed-shell.\\
   TSCW & Torsional spin current wave.\\
   TSDW & Torsional spin density wave.\\
@@ -1301,13 +1306,13 @@ many-electron electronic wavefunction must be antisymmetric under the
 exchange of two electrons. The next question is how to construct such a
 wavefunction from simpler one-electron objects.
 
-\begin{hfexercise}{two-electron antisymmetry.}
+\begin{hfexercise}{Two-electron antisymmetry}
 \violet{\textit{Given two orthonormal one-electron functions
 $\chi_1(\bx)$ and $\chi_2(\bx)$, construct a two-electron fermionic
 wavefunction $\Psi(\bx_1,\bx_2)$.}}
 
 \end{hfexercise}
-\begin{hfsolution}{two-electron antisymmetry.}
+\begin{hfsolution}{Two-electron antisymmetry}
 Starting from the two possible assignments of the one-electron functions to
 the two electrons,
 \begin{equation}
@@ -2683,13 +2688,13 @@ electron $i$.
 % Normalization
 % ============================================================================
 
-\begin{hfexercise}{normalization of the HF wavefunction.}
+\begin{hfexercise}{Normalization of the HF wavefunction}
 
 \violet{\textit{Show that the HF wavefunction built with two normalized,
 orthogonal spin orbitals $\chi_1$ and $\chi_2$ is normalized.}}
 
 \end{hfexercise}
-\begin{hfsolution}{normalization of the HF wavefunction.}
+\begin{hfsolution}{Normalization of the HF wavefunction}
 
 For two electrons, the normalized Slater determinant is
 \begin{equation}
@@ -2791,18 +2796,18 @@ products and is normalized by the factor $1/\sqrt{N!}$.
 % One-electron operator
 % ============================================================================
 
-\begin{hfexercise}{core Hamiltonian.}
+\begin{hfexercise}{Core Hamiltonian}
 
 \violet{\textit{Show for the same system that
 \[
   \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}
   =
-  \sum_{i=1}^{N}h_{ii}.
+  \sum_{i=1}^{N}h_{ii}
 \]
 }}
 
 \end{hfexercise}
-\begin{hfsolution}{core Hamiltonian.}
+\begin{hfsolution}{Core Hamiltonian}
 
 For two electrons, the one-electron part of the Hamiltonian is
 \begin{equation}
@@ -2944,7 +2949,7 @@ Only diagonal matrix elements over the occupied spin orbitals survive.
 % Two-electron operator
 % ============================================================================
 
-\begin{hfexercise}{two-electron Hamiltonian.}
+\begin{hfexercise}{Two-electron Hamiltonian}
 
 \violet{\textit{Show for the same system that}}
 \begin{equation}
@@ -2956,7 +2961,7 @@ Only diagonal matrix elements over the occupied spin orbitals survive.
 \violet{\textit{and write down the HF energy.}}
 
 \end{hfexercise}
-\begin{hfsolution}{two-electron Hamiltonian.}
+\begin{hfsolution}{Two-electron Hamiltonian}
 
 For a two-electron system there is only one distinct electron pair, so
 \begin{equation}
@@ -3095,13 +3100,13 @@ next subsection.
 % Three electrons
 % ============================================================================
 
-\begin{hfexercise}{three-electron system.}
+\begin{hfexercise}{Three-electron system}
 
 \violet{\textit{Find the HF energy of a three-electron system composed of
 the spin orbitals $\chi_1$, $\chi_2$, and $\chi_3$.}}
 
 \end{hfexercise}
-\begin{hfsolution}{three-electron system.}
+\begin{hfsolution}{Three-electron system}
 
 The one-electron operator contains one contribution for each electron,
 \begin{equation}
@@ -3793,13 +3798,13 @@ spurious same-spin self-interactions cancel through exchange.
 % Open-shell examples
 % ============================================================================
 
-\begin{hfexercise}{HF energy of the \ce{Li} atom.}
+\begin{hfexercise}{HF energy of the \ce{Li} atom}
 
 \violet{\textit{Find the HF energy of the \ce{Li} atom in terms of spatial
 orbitals.}}
 
 \end{hfexercise}
-\begin{hfsolution}{HF energy of the \ce{Li} atom.}
+\begin{hfsolution}{HF energy of the \ce{Li} atom}
 
 For the determinant considered here, the three occupied spin orbitals are
 \begin{align}
@@ -3849,13 +3854,13 @@ count same-spin pairs.
 
 
 \end{hfsolution}
-\begin{hfexercise}{HF energy of the \ce{B} atom.}
+\begin{hfexercise}{HF energy of the \ce{B} atom}
 
 \violet{\textit{Find the HF energy of the \ce{B} atom in terms of spatial
 orbitals.}}
 
 \end{hfexercise}
-\begin{hfsolution}{HF energy of the \ce{B} atom.}
+\begin{hfsolution}{HF energy of the \ce{B} atom}
 
 For the occupation considered here, the first two spatial orbitals are
 doubly occupied and the third contains a single $\alpha$ electron,
@@ -5317,23 +5322,17 @@ The variational equations establish a stationary point of the Hartree--Fock ener
 They do not, by themselves, guarantee that a particular SCF solution is the
 global minimum: multiple HF stationary solutions may exist.
 
-The following exercise supplies the functional-derivative steps behind this
+Exercise~\ref{ex:hf-orbital-stationarity} supplies the functional-derivative steps behind this
 stationarity condition, including the separate variations of the two
 electron coordinates in the Coulomb and exchange terms.
 
-\begin{hfexercise}{Stationarity of the Hartree--Fock energy.}
-\label{ex:hf-orbital-stationarity}
+\begin{hfexercise}[phantom={\label{ex:hf-orbital-stationarity}}]{Stationarity of the Hartree--Fock energy}
 
-\violet{\textit{Starting from the spin-orbital HF energy, derive its
-functional derivative with respect to an occupied orbital's complex
-conjugate. Treat the Coulomb and exchange terms separately, showing why
-their factors of one half disappear. Impose orbital orthonormality with a
-matrix of Lagrange multipliers, recover the general HF equations, and show
-that stationarity under occupied-virtual rotations is equivalent to
-Brillouin's theorem. Does stationarity establish an energy minimum?}}
+\violet{\textit{Derive the Hartree--Fock equations by making the spin-orbital
+energy stationary under the orbital orthonormality constraints.}}
 
 \end{hfexercise}
-\begin{hfsolution}{Stationarity of the Hartree--Fock energy.}
+\begin{hfsolution}{Stationarity of the Hartree--Fock energy}
 
 We vary the occupied spin orbitals without imposing restricted spatial
 pairing. Thus the derivation establishes the general spin-orbital
@@ -5494,7 +5493,7 @@ Slater--Condon rule then recovers
 \begin{equation}
   \mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}=f_{ia}=0
 \end{equation}
-This is Brillouin's theorem. occupied-occupied rotations merely change the
+This is Brillouin's theorem. Occupied-occupied rotations merely change the
 representation of the determinant, as shown in the next subsection.
 Finally, a vanishing first variation establishes only a stationary point.
 Its stability depends on the second variation, so an SCF solution may be a
@@ -5687,18 +5686,18 @@ Brillouin's theorem:
 % Fock matrix elements
 % ============================================================================
 
-\begin{hfexercise}{Fock matrix elements in the spin-orbital basis.}
+\begin{hfexercise}{Fock matrix elements in the spin-orbital basis}
 
 \violet{\textit{Find the expression of the matrix elements
 \[
   f_{ij}
   =
-  \mel{\chi_i}{\hf}{\chi_j}.
+  \mel{\chi_i}{\hf}{\chi_j}
 \]
 }}
 
 \end{hfexercise}
-\begin{hfsolution}{Fock matrix elements in the spin-orbital basis.}
+\begin{hfsolution}{Fock matrix elements in the spin-orbital basis}
 
 Expanding the Fock operator gives
 \begin{equation}
@@ -5783,12 +5782,12 @@ which is precisely the quantity appearing in Brillouin's theorem.
 % Orbital energies
 % ============================================================================
 
-\begin{hfexercise}{orbital energies in the spin-orbital basis.}
+\begin{hfexercise}{Orbital energies in the spin-orbital basis}
 
 \violet{\textit{Deduce the expression of $\epsilon_i$.}}
 
 \end{hfexercise}
-\begin{hfsolution}{orbital energies in the spin-orbital basis.}
+\begin{hfsolution}{Orbital energies in the spin-orbital basis}
 
 For a canonical orbital,
 \begin{equation}
@@ -6052,13 +6051,13 @@ hole in occupied spin orbital $i$.
 % Electron attachment
 % ============================================================================
 
-\begin{hfexercise}{Koopmans' theorem for electron affinity.}
+\begin{hfexercise}{Koopmans' theorem for electron affinity}
 
 \violet{\textit{Show that an analogous frozen-orbital relation can be
 derived for electron attachment.}}
 
 \end{hfexercise}
-\begin{hfsolution}{Koopmans' theorem for electron affinity.}
+\begin{hfsolution}{Koopmans' theorem for electron affinity}
 
 Consider the attachment of an electron to a vacant canonical spin orbital
 $c$. Keeping all orbitals frozen, the energy of the resulting
@@ -7101,6 +7100,7 @@ one-electron functions form a nonorthogonal basis.
 % ============================================================================
 
 \subsubsection{Orthogonalization and the generalized eigenvalue problem}
+\label{sec:ao-orthogonalization}
 
 A generalized Hermitian eigenvalue problem can be converted into an
 ordinary Hermitian eigenvalue problem by transforming to an orthonormal
@@ -7508,13 +7508,13 @@ The closed-shell specialization subsequently returns to the $K$ spatial
 AO functions $\phi_\mu(\br)$ and a spin-summed density. Thus $\phi$
 continues to denote a spatial basis function and $\chi$ a spin orbital.
 
-\begin{hfexercise}{AO Fock matrix.}
+\begin{hfexercise}{AO Fock matrix}
 
 \violet{\textit{Find the expression of the Fock matrix in terms of the
 one- and two-electron integrals.}}
 
 \end{hfexercise}
-\begin{hfsolution}{AO Fock matrix.}
+\begin{hfsolution}{AO Fock matrix}
 
 Expanding the occupied spin orbitals in the basis exposes how their
 coefficients enter the AO Fock matrix:
@@ -7626,13 +7626,13 @@ evaluated directly from the density, core Hamiltonian, and the Fock matrix
 constructed from that density, without transforming all integrals to the
 molecular-orbital basis.
 
-\begin{hfexercise}{AO Hartree--Fock energy.}
+\begin{hfexercise}{AO Hartree--Fock energy}
 
 \violet{\textit{Find the expression of the HF energy in terms of the one-
 and two-electron integrals.}}
 
 \end{hfexercise}
-\begin{hfsolution}{AO Hartree--Fock energy.}
+\begin{hfsolution}{AO Hartree--Fock energy}
 
 Starting from the spin-orbital energy and explicitly substituting each basis
 expansion gives
@@ -7747,11 +7747,15 @@ electron pair is summed from the one-electron Fock operators. Equivalently,
 the compact trace formula contains one full copy of the one-electron energy
 and one half of the mean-field electron-electron energy.
 
-The following exercise makes explicit how the overlap metric enters the
+Exercise~\ref{ex:ao-density-metric} makes explicit how the overlap metric enters the
 normalization and projector properties of the density matrix. These
 identities also provide useful checks on an implementation.
 
-\begin{hfexercise}{Density matrices in a nonorthogonal basis.}
+\begin{hfexercise}[phantom={\label{ex:ao-density-metric}}]{Density matrices in a nonorthogonal basis}
+\violet{\textit{Derive the electron-counting and idempotency relations for
+RHF and UHF density matrices in a nonorthogonal AO basis.}}
+\end{hfexercise}
+\begin{hfsolution}{Density matrices in a nonorthogonal basis}
 Consider $K$ linearly independent spatial AOs with overlap matrix $\bS$.
 For a collinear determinant, let $\bC_\text{o}^\sigma$ contain the
 $N^\sigma$ occupied spatial-orbital coefficients of spin
@@ -7764,16 +7768,6 @@ Define the single-spin density by
   \bP^\sigma=\bC_\text{o}^\sigma\cdot
   \qty(\bC_\text{o}^\sigma)^\dag
 \end{equation}
-Show that this matrix is Hermitian, derive the electron-counting formula,
-and establish its idempotency relation in the AO metric. Then specialize to
-RHF, where $N^\alpha=N^\beta=N/2$ and the two spin components share the
-same occupied spatial orbitals. Derive the corresponding identities for
-the spin-summed density $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$.
-Explain why imposing $\bP^2=\bP$ would generally be incorrect, and identify
-the coefficient-space matrix representing the occupied-space projector for
-one spin component.
-\end{hfexercise}
-\begin{hfsolution}{Density matrices in a nonorthogonal basis.}
 Taking the Hermitian adjoint reverses the order of the two coefficient
 matrices and conjugates each factor. Thus
 \begin{equation}
@@ -7990,13 +7984,10 @@ density from which that Fock matrix was constructed.
 
 \paragraph{The orthogonalization matrix.}
 
-The diagonalization step is most conveniently performed in an orthonormal
-representation. The orthogonalization matrix introduced above provides the
-map between the original nonorthogonal AO basis and this computationally
-convenient representation.
-This is the metric preparation in Step~\ref{algstep:scf-metric} of
-Algorithm~\ref{alg:rhf-scf-summary}.
-We seek a matrix that orthogonalizes the AO basis, that is,
+Step~\ref{algstep:scf-metric} of Algorithm~\ref{alg:rhf-scf-summary} uses
+the orthogonalizer derived in Section~\ref{sec:ao-orthogonalization}.
+For reference, the two constructions and their checks are collected here.
+The required condition is
 \begin{equation}
   \red{\bX^\dag\cdot\bS\cdot\bX=\bI}
 \end{equation}
@@ -8122,38 +8113,34 @@ fixed-point map. Damping, level shifting \citep{SaundersHillier1973}, and DIIS m
 approximations are generated, but convergence is always judged against the
 same self-consistency conditions.
 
-\begin{hfexercise}{What does SCF convergence mean?}
-For an RHF density $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$, use the
-occupied Roothaan--Hall equations and their Hermitian adjoint to prove that
+\begin{hfexercise}[phantom={\label{ex:scf-convergence}}]{What does SCF convergence mean?}
+\violet{\textit{Derive the SCF stationarity condition in a nonorthogonal AO
+basis. Is a small energy change sufficient to establish convergence?}}
+\end{hfexercise}
+\begin{hfsolution}{What does SCF convergence mean?}
+Assume linearly independent AOs and Hermitian overlap and Fock matrices.
+For the RHF density $\bP=2\bC_\text{o}\cdot\bC_\text{o}^\dag$, define
 the residual
 \begin{equation}
   \be=\bF[\bP]\cdot\bP\cdot\bS
   -\bS\cdot\bP\cdot\bF[\bP]
 \end{equation}
-vanishes at self-consistency. Assume linearly independent AOs and Hermitian
-overlap and Fock matrices. Transform the residual to a complete orthonormal
-MO basis and relate its occupied-virtual elements to those of the Fock
-matrix. Explain why a small change in total energy alone is insufficient,
-why diagonalizing one Fock matrix is not an SCF convergence test, and why a
-zero residual does not establish that the determinant is an energy minimum.
-\end{hfexercise}
-\begin{hfsolution}{What does SCF convergence mean?}
 At self-consistency the Fock matrix constructed from $\bP$ has occupied
-eigenvectors that generate this same density. Writing $\bE_\text{o}$ for
+eigenvectors that generate this same density. Writing $\beps_\text{o}$ for
 the real diagonal matrix of occupied orbital energies, the occupied
 Roothaan--Hall equations and their adjoint are
 \begin{align}
   \bF\cdot\bC_\text{o}
-  &=\bS\cdot\bC_\text{o}\cdot\bE_\text{o}\\
+  &=\bS\cdot\bC_\text{o}\cdot\beps_\text{o}\\
   \bC_\text{o}^\dag\cdot\bF
-  &=\bE_\text{o}\cdot\bC_\text{o}^\dag\cdot\bS
+  &=\beps_\text{o}\cdot\bC_\text{o}^\dag\cdot\bS
 \end{align}
 Substitution of the first equation gives
 \begin{equation}
 \begin{split}
   \bF\cdot\bP\cdot\bS
   &=2\bF\cdot\bC_\text{o}\cdot\bC_\text{o}^\dag\cdot\bS\\
-  &=2\bS\cdot\bC_\text{o}\cdot\bE_\text{o}
+  &=2\bS\cdot\bC_\text{o}\cdot\beps_\text{o}
     \cdot\bC_\text{o}^\dag\cdot\bS
 \end{split}
 \end{equation}
@@ -8163,7 +8150,7 @@ matrix:
 \begin{split}
   \bS\cdot\bP\cdot\bF
   &=2\bS\cdot\bC_\text{o}\cdot\bC_\text{o}^\dag\cdot\bF\\
-  &=2\bS\cdot\bC_\text{o}\cdot\bE_\text{o}
+  &=2\bS\cdot\bC_\text{o}\cdot\beps_\text{o}
     \cdot\bC_\text{o}^\dag\cdot\bS
 \end{split}
 \end{equation}
@@ -8470,9 +8457,8 @@ case a restart may be required.
 
 DIIS changes neither the Hartree--Fock energy functional nor the final
 self-consistency condition. It is an acceleration strategy for reaching a
-stationary solution of the same equations. This distinction matters because
-rapid convergence does not by itself establish that the stationary solution
-is the global Hartree--Fock minimum.
+stationary solution of the same equations; the convergence and stability
+distinctions in Exercise~\ref{ex:scf-convergence} still apply.
 
 \subsection{Excited-state SCF and the maximum-overlap method}
 
@@ -8488,6 +8474,18 @@ such a state-specific solution \citep{Gilbert2008}.
 
 An excited determinant can be generated by promoting one or more electrons,
 but the usual Aufbau occupation does not preserve that configuration.
+An Aufbau occupation is an ordering prescription, not a certificate that a
+self-consistent determinant has the lowest total HF energy. Conversely,
+open-shell ground-state descriptions can display apparently non-Aufbau
+\emph{spatial-orbital} patterns, such as SOMO--HOMO inversion: the singly
+occupied molecular orbital (SOMO) lies below the highest doubly occupied
+orbital. A TEMPO-derived dithiolate complex of Pt(II) provides a documented
+example \citep{Kusamoto2008}. This comparison of spatial orbitals must be
+distinguished from leaving a lower-energy spin orbital unoccupied in the
+same spin channel of the self-consistent Fock operator. The fully
+unconstrained Coulombic HF minimum occupies the lowest spin orbitals of its
+own Fock operator \citep{Bach1994}. Thus neither a spatial-orbital diagram
+nor an occupation label alone identifies the physical electronic state.
 Figure~\ref{fig:variational-collapse} illustrates the loss of the promoted
 occupation under an Aufbau SCF iteration.
 \begin{center}
@@ -8833,8 +8831,8 @@ matrix passes through the sequence
   \mqty(\bff_\text{oo}&\bO\\
         \bO&\bff_\text{vv})
   \xrightarrow{\text{canonicalization}}
-  \mqty(\bepsilon_\text{o}&\bO\\
-        \bO&\bepsilon_\text{v})
+  \mqty(\beps_\text{o}&\bO\\
+        \bO&\beps_\text{v})
   \xrightarrow{\text{localization}}
   \mqty(\widetilde{\bff}_\text{oo}&\bO\\
         \bO&\widetilde{\bff}_\text{vv})
@@ -8977,7 +8975,7 @@ What changes is that localized orbitals are generally not eigenfunctions of
 the Fock operator:
 \begin{equation}
   \widetilde{\bff}_\text{oo}
-  =\purple{\bU}^\dagger\cdot\bepsilon_\text{o}\cdot\purple{\bU}
+  =\purple{\bU}^\dagger\cdot\beps_\text{o}\cdot\purple{\bU}
 \end{equation}
 Canonical orbital energies therefore cannot be assigned to individual
 localized orbitals.
@@ -9136,7 +9134,7 @@ The factors of one half in the same-spin contributions remove double counting
 of electron pairs. The opposite-spin Coulomb term is written only once as a
 double sum over the two populations and therefore requires no such factor.
 
-\begin{hfexercise}{UHF energy of the \ce{Li} atom.}
+\begin{hfexercise}{UHF energy of the \ce{Li} atom}
 
 \violet{\textit{Write down the UHF energy of the doublet state of the
 lithium atom.}}
@@ -9167,7 +9165,7 @@ whereas $2s^\beta$ is empty.}
 \end{center}
 
 \end{hfexercise}
-\begin{hfsolution}{UHF energy of the \ce{Li} atom.}
+\begin{hfsolution}{UHF energy of the \ce{Li} atom}
 
 For the occupation shown above,
 \begin{equation}

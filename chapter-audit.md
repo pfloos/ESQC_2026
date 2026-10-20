@@ -941,3 +941,49 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill guided targeted review of the complete UHF card on printed
   page 89 (PDF page 96). It fits on one page; verified all eight step numbers
   and their distinct hyperlink targets.
+
+## Audit corrections and focused exercises (20 October 2026)
+
+- Started from the author's `e92a089` and integrated the newer `a469bf2`
+  ("up to 2.5") and `43f6d2e` ("up to 3.") before the final build,
+  retaining the MOM prose edits and charge-analysis alignment change.
+  The author's simplified RHF/UHF algorithm cards and Further reading are
+  byte-for-byte unchanged.
+- Shortened the four added prompts (stationarity, AO density identities, SCF
+  convergence, and normalized Gaussian overlap) to one main objective or a
+  short conceptual follow-up. Technical assumptions and definitions now open
+  the corresponding solutions. Retained all derivations, limiting cases,
+  and numerical Gaussian data; the latter are a worked illustration rather
+  than an additional assignment. The other thirteen prompts are unchanged.
+- Numbered all 17 exercise/solution pairs, harmonized title capitalization
+  and punctuation, and added links to the four revised exercises. The labels
+  resolve to Exercise 8, 14, 15, and 17, not their enclosing section numbers.
+- Replaced the remaining rendered `bE`/`bepsilon` commands by `beps`, including
+  subscripted occupied/virtual blocks. Retained unused slide-compatible macro
+  definitions. Matched the glossary's composite-coordinate ordering to the
+  main definition, removed two remaining unnumbered-display periods, and fixed
+  the lowercase sentence beginning. Reduced repeated orthogonalization/DIIS
+  prose through cross-references without removing displayed derivation steps.
+- Corrected the Gaussian-pair reduction to label four unnormalized primitive
+  s functions with square brackets and zero angular-momentum vectors; its
+  evaluated right-hand side is unchanged. Angular polynomials and the later
+  recurrence construction are explicitly distinguished.
+- Added the qualified Aufbau discussion in Section 2.4.1. The verified TEMPO
+  example is a TEMPO-derived dithiolate Pt(II) complex displaying SOMO--HOMO
+  inversion, not bare TEMPO or an asserted UHF occupied/virtual inversion.
+  Added and checked the primary Kusamoto (2008) and Bach et al. (1994)
+  references; their titles retain the chapter's hyperlink style. Added SOMO
+  and TEMPO to the acronym glossary. Portrait permission notices are unchanged;
+  external rights clearance remains pending.
+- Strengthened the notation guard to recognize macro names before underscores,
+  and the source guard to inspect unnumbered bracket displays without mistaking
+  row-spacing commands for mathematics. Added exercise/solution title pairing.
+  Regression probes check all three cases and mismatched exercise titles.
+- All 634 existing equation/align displays remain in order. A baseline token
+  comparison permits only the documented epsilon aliases and the one approved
+  primitive-ssss relabeling. All seven chapter checks pass, including the 87
+  cited/title-linked references. Compilation succeeds at 136 pages without
+  undefined references/citations, duplicate labels, or overfull-box warnings.
+- The PDF skill guided targeted inspection of the four revised exercises and
+  the Aufbau paragraph, not a full-chapter visual audit. Confirmed that the
+  rendered statements and solutions are numbered consistently from 1 to 17.

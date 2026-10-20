@@ -19,7 +19,7 @@ def equivalent_tokens(expression):
     # The author requested one epsilon-matrix command for multipliers,
     # canonical energies, and the GHF spinor energy matrix. This renames
     # those matrices only; their dimensions, blocks, and factors are retained.
-    expression = re.sub(r"\\(?:bE|bepsilon)\b", lambda _: r"\beps", expression)
+    expression = re.sub(r"\\(?:bE|bepsilon)(?![A-Za-z])", lambda _: r"\beps", expression)
     text = math_tokens(expression)
     text = text.replace(r"\boldsymbol{\mathcalE}", r"\beps")
     # One AO core matrix throughout, including the GHF blocks.
@@ -62,7 +62,7 @@ def main():
         (r"\\hat\s+S(?:_z|\^2)", "use the chapter's chS spin-operator command"),
         (r"\\phi_\\text\{HOMO\}", "use psi for a molecular orbital"),
         (r"\\varepsilon\b", "use epsilon for orbital energies"),
-        (r"\\(?:bE|bepsilon)\b|\\boldsymbol\s*\{\s*\\mathcal\s*E\s*\}",
+        (r"\\(?:bE|bepsilon)(?![A-Za-z])|\\boldsymbol\s*\{\s*\\mathcal\s*E\s*\}",
          "use beps for multiplier and orbital-energy matrices"),
         (r"(?<![A-Za-z\\])f\^\\(?:alpha|beta)\b", "use hf for a Fock operator"),
         (r"(?<![A-Za-z\\])h\(\\br_1\)", "use hh for the core operator"),
