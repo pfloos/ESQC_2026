@@ -549,7 +549,7 @@ of the table.
   \rowcolor{hfGreenLight}
   \multicolumn{2}{@{}l@{}}{\strut\textcolor{hfGreenDark}{\textbf{Iteration, orbital transformations, and numerical parameters}}}\\*
   $\bU$, $\kappa_{ai}$ & Unitary orbital transformation and infinitesimal
-  occupied--virtual rotation parameter. Occupied-only rotations preserve
+  occupied-virtual rotation parameter. Occupied-only rotations preserve
   the determinant's physical state, up to a phase.\\
   $\be^{(n)}$, $\tau_\text{SCF}$ & Commutator residual at SCF iteration $n$
   and its convergence threshold. A zero residual establishes stationarity,
@@ -4648,7 +4648,7 @@ in Section~\ref{sec:fock-operator}:
 \begin{hftheorem}{Brillouin's theorem}
 \hftheoremportrait{chapter-figures/portrait-brillouin.jpg}{L\'eon Brillouin}
 {At a stationary Hartree--Fock determinant, the Hamiltonian matrix elements
-to singly substituted determinants vanish for the occupied--virtual
+to singly substituted determinants vanish for the occupied-virtual
 rotations admitted by the chosen variational space. Stationarity, not the
 requirement of an energy minimum, is the essential assumption.}
 {Portrait: Benjamin Couprie, Institut International de Physique Solvay,
@@ -5078,7 +5078,7 @@ specific linear combinations of determinants.
 
 \subsection{The Fock operator and orbital energies}
 
-The preceding discussion used the occupied--virtual Fock matrix to express
+The preceding discussion used the occupied-virtual Fock matrix to express
 stationarity. We now derive that operator by varying the Hartree--Fock energy
 under the orbital orthonormality constraints. Its eigenfunctions
 define the canonical orbitals and their orbital energies, whose physical
@@ -5329,7 +5329,7 @@ functional derivative with respect to an occupied orbital's complex
 conjugate. Treat the Coulomb and exchange terms separately, showing why
 their factors of one half disappear. Impose orbital orthonormality with a
 matrix of Lagrange multipliers, recover the general HF equations, and show
-that stationarity under occupied--virtual rotations is equivalent to
+that stationarity under occupied-virtual rotations is equivalent to
 Brillouin's theorem. Does stationarity establish an energy minimum?}}
 
 \end{hfexercise}
@@ -5466,7 +5466,7 @@ Their Hermiticity allows the occupied-space unitary canonicalization
 developed next; it is not an extra assumption in the variational problem.
 
 To express the same condition directly as an orbital gradient, consider an
-infinitesimal occupied--virtual rotation,
+infinitesimal occupied-virtual rotation,
 \begin{equation}
   \delta\chi_i=\sum_a\chi_a\kappa_{ai}
 \end{equation}
@@ -5494,7 +5494,7 @@ Slater--Condon rule then recovers
 \begin{equation}
   \mel{\Psi_0}{\chH_\text{elec}}{\Psi_i^a}=f_{ia}=0
 \end{equation}
-This is Brillouin's theorem. Occupied--occupied rotations merely change the
+This is Brillouin's theorem. occupied-occupied rotations merely change the
 representation of the determinant, as shown in the next subsection.
 Finally, a vanishing first variation establishes only a stationary point.
 Its stability depends on the second variation, so an SCF solution may be a
@@ -6617,7 +6617,7 @@ electronic energy is
 \begin{equation}
   E_\text{MP2}=E_\text{HF}+\Ec^{(2)}
 \end{equation}
-For an Aufbau reference with a positive occupied--virtual gap, every
+For an Aufbau reference with a positive occupied-virtual gap, every
 denominator in Eq.~\eqref{eq:mp2-spin-orbital} is negative, so the
 second-order correction is nonpositive. Small excitation gaps, however,
 make the correction sensitive to the denominators; the nondegenerate
@@ -6689,7 +6689,7 @@ integrals required by the MP2 expression are
   &
   \braket{ij}{ba}&=\rbraket{ib}{ja}
 \end{align}
-Thus MP2 needs the occupied--virtual pair block of the chemists' ERI tensor,
+Thus MP2 needs the occupied-virtual pair block of the chemists' ERI tensor,
 not the block $\rbraket{ij}{ab}$. This follows from the physicists'-to-chemists'
 index conversion established earlier.
 
@@ -8132,7 +8132,7 @@ the residual
 \end{equation}
 vanishes at self-consistency. Assume linearly independent AOs and Hermitian
 overlap and Fock matrices. Transform the residual to a complete orthonormal
-MO basis and relate its occupied--virtual elements to those of the Fock
+MO basis and relate its occupied-virtual elements to those of the Fock
 matrix. Explain why a small change in total energy alone is insufficient,
 why diagonalizing one Fock matrix is not an SCF convergence test, and why a
 zero residual does not establish that the determinant is an energy minimum.
@@ -8191,7 +8191,7 @@ between the factors gives
   \bC^\dag\cdot\be\cdot\bC
   &=\qty(\bC^\dag\cdot\bF\cdot\bC)
     \cdot\qty(\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC)\\
-  &\phantom{={}}-\qty(\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC)
+  &-\qty(\bC^\dag\cdot\bS\cdot\bP\cdot\bS\cdot\bC)
     \cdot\qty(\bC^\dag\cdot\bF\cdot\bC)\\
   &=\bff\cdot\bP_\text{MO}-\bP_\text{MO}\cdot\bff\\
   &=\pmqty{\bO&-2\bff_\text{ov}\\2\bff_\text{vo}&\bO}
@@ -8199,15 +8199,16 @@ between the factors gives
 \end{equation}
 In particular, for occupied $i$ and virtual $a$,
 \begin{align}
-  \qty(\bC^\dag\cdot\be\cdot\bC)_{ai}&=2f_{ai}\\
+  \qty(\bC^\dag\cdot\be\cdot\bC)_{ai}&=+2f_{ai}
+  &
   \qty(\bC^\dag\cdot\be\cdot\bC)_{ia}&=-2f_{ia}
 \end{align}
-The residual vanishes exactly when the occupied--virtual Fock blocks
+The residual vanishes exactly when the occupied-virtual Fock blocks
 vanish. These are the matrix elements that drive first-order changes of
-the energy under occupied--virtual orbital rotations. The condition is
+the energy under occupied-virtual orbital rotations. The condition is
 therefore one of orbital stationarity, not merely a statement about a
-small difference between two scalar energies. The occupied--occupied and
-virtual--virtual blocks can then be diagonalized independently to obtain
+small difference between two scalar energies. The occupied-occupied and
+virtual-virtual blocks can then be diagonalized independently to obtain
 canonical orbitals without changing the determinant's occupied space.
 
 A small energy change does not impose this condition. For a real orbital
@@ -8237,7 +8238,7 @@ its own Fock matrix as in the stated residual. The same caution applies
 when the matrix diagonalized is a DIIS extrapolation rather than the Fock
 matrix rebuilt from the density being tested.
 
-Finally, vanishing occupied--virtual blocks constrain the first variation
+Finally, vanishing occupied-virtual blocks constrain the first variation
 of the energy, not the second. A stationary determinant may be a local
 minimum or an unstable stationary point; stability requires examining the
 curvature under the allowed orbital rotations. Even a stable local minimum
