@@ -879,3 +879,21 @@ coverage baseline. Commented-out frames are not additional required material.
 - Full compilation succeeds at 121 pages, without undefined citations or
   references. All four chapter checks pass. The PDF skill guided targeted
   inspection of the eight new boxes, not a full-chapter visual audit.
+## Paragraph-flow harmonization (20 October 2026)
+
+- Pulled the author's latest revisions through `40ab2e4` before editing.
+  Preserved the main source byte-for-byte up to the SCF-algorithm subsection,
+  including all newly revised equations and highlights.
+- Removed 38 unnecessary paragraph boundaries in the later HF discussion and
+  28 in the basis-set/integral material. Related explanations now continue
+  across displays and short figure/table introductions without artificial
+  paragraph breaks. Retained meaningful topic changes and exercise/solution
+  boundaries; did not rewrap source lines or alter mathematical alignment.
+- Every nonblank source line is byte-for-byte identical to the author baseline.
+  All 633 displays, derivation steps, figures, tables, headings, citations,
+  historical boxes, and Further reading are unchanged.
+- All seven chapter checks pass, including baseline mathematical preservation
+  and the 85 hyperlinked reference titles. Full compilation succeeds at 134
+  pages, with no undefined citations/references or overfull-box warnings.
+  The PDF skill guided a targeted check of the initial-guess/convergence and
+  plane-wave pages only, not a full visual audit.

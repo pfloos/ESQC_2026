@@ -4,7 +4,6 @@ The matrix equations in Section~\ref{sec:finite-basis-hf} assumed that the
 orbital basis had already been chosen. We now examine that choice: which
 functions can represent the radial and angular variations of molecular
 orbitals accurately with a manageable number of coefficients?
-
 In practical molecular calculations, each molecular orbital is expanded in a
 finite set of known one-electron functions,
 \begin{equation}
@@ -18,7 +17,6 @@ and contraction coefficients are fixed numerical parameters, often obtained
 from atomic electronic-structure calculations. Their presence does not by
 itself make the method empirical; they specify the finite representation of
 the otherwise ab initio problem.
-
 Orbital optimization therefore changes the molecular combination of the
 building blocks, not their shapes or nonlinear parameters. At a fixed
 geometry these are selected before the SCF calculation begins; the centers
@@ -83,7 +81,6 @@ plane-wave representation, then return to atom-centered functions.
 Plane waves are the natural one-electron functions of a translationally
 invariant system. Under periodic boundary conditions, only reciprocal-lattice
 wavevectors are compatible with the periodicity of the simulation cell.
-
 In a unit cell of volume $\Omega$, a normalized plane wave is
 \begin{equation}
 \begin{split}
@@ -106,12 +103,10 @@ where, for direct-lattice vectors $\ba_1,\ba_2,\ba_3$,
   &\bb_2&=2\pi\frac{\ba_3\times\ba_1}{\Omega}
   &\bb_3&=2\pi\frac{\ba_1\times\ba_2}{\Omega}
 \end{align}
-
 The reciprocal vectors satisfy $\ba_i\cdot\bb_j=2\pi\delta_{ij}$. The energy
 cutoff selects reciprocal-lattice vectors inside a sphere of radius
 $k_\text{cut}$ and therefore supplies a single systematic parameter for
 enlarging the basis.
-
 The overlap integrals are diagonal:
 \begin{equation}
 \begin{split}
@@ -177,7 +172,6 @@ The Kronecker delta expresses conservation of crystal momentum.
 The last expression applies when $\bk_1\ne\bk_3$. For zero momentum
 transfer, the omitted zero Fourier component gives zero under the convention
 used here; the fraction must not be evaluated with a zero denominator.
-
 The simplicity of these expressions follows because differentiation and
 convolution become multiplication in reciprocal space. Overlap and kinetic
 energy are diagonal, while a two-electron integral survives only when the
@@ -208,7 +202,6 @@ For isolated atoms and molecules, atom-centered functions provide a compact
 description by placing radial flexibility where the electronic density is
 concentrated. The central choice is between radial forms that reproduce the
 exact local behavior and forms that permit efficient multicenter integration.
-
 In the following Slater- and Gaussian-type orbitals, $n$ labels the radial
 form, $\ell$ and $m$ are the angular-momentum and magnetic quantum numbers,
 and $Y_{\ell m}(\hat{\br})$ is a spherical harmonic evaluated in the direction
@@ -259,7 +252,6 @@ A Gaussian instead decays too rapidly. Multicenter STO integrals are
 substantially more difficult to evaluate than their Gaussian counterparts.
 This computational advantage usually favors GTOs, although more Gaussian
 functions are required to reproduce comparable radial flexibility.
-
 The practical success of Gaussian basis sets is therefore computational. A
 linear combination of several Gaussians is used to recover the radial
 flexibility that a single Slater function supplies more naturally. The
@@ -278,7 +270,6 @@ one exponent and one Cartesian polynomial. A contracted function combines
 several primitives of the same center and angular momentum with fixed
 coefficients, so that many primitive shapes share a single variational MO
 coefficient \citep{Raffenetti1973}.
-
 A primitive Cartesian Gaussian centered at $\bA$ is labeled by
 $\ba=(a_x,a_y,a_z)$, a vector of nonnegative integer powers. Its total angular
 momentum is $a=a_x+a_y+a_z$. In the integral discussion, these angular-momentum
@@ -331,7 +322,6 @@ give $N_\ell^\text{sph}=2\ell+1$, namely $1,3,5,7$. Thus
 \end{equation}
 because, for example, $x^2+y^2+z^2=r^2$. Most molecular calculations use
 pure spherical functions.
-
 The distinction appears from $d$ functions onward. Cartesian shells are
 convenient for integral generation, whereas transformation to pure spherical
 functions removes the lower-angular-momentum combinations and restores the
@@ -502,7 +492,6 @@ layer of higher angular momentum, as the explicit shell patterns below
 demonstrate. The inverse-cubic expression concerns correlation energy, not
 the HF contribution; the polarization-consistent discussion below uses a
 different HF extrapolation form.
-
 For a second-row atom (the second period, Li--Ne),
 Table~\ref{tab:cc-shell-content} lists the valence
 correlation-consistent sequence and its diffuse augmentations.
@@ -593,7 +582,6 @@ rather than to immutable fragments. When two fragments approach one another,
 each gains access to functions centered on the other, and the dimer and
 isolated-fragment energies no longer possess equivalent variational
 flexibility.
-
 Let $E_X^Y$ denote the energy of system $X$ evaluated in basis $Y$. In a
 dimer $AB$, each fragment can borrow the basis functions of the other fragment
 as ghost functions. The variational principle therefore gives
@@ -626,7 +614,6 @@ and the basis-set superposition error (BSSE) is
   =\Delta E_\text{int}^\text{CP}-\Delta E_\text{int}
   =(E_A^A-E_A^{AB})+(E_B^B-E_B^{AB})\geq0
 \end{equation}
-
 The partner's basis functions are retained as ghost functions: they provide
 variational flexibility but carry neither electrons nor nuclear charge. The
 counterpoise expression thereby compares the dimer and both fragments in the
@@ -671,7 +658,6 @@ only indirectly in chemical bonding. Effective core potentials (ECPs)
 exploit this
 separation by replacing selected core electrons and their nuclear interaction
 with an operator acting on the remaining explicit electrons.
-
 The key idea of an effective core potential \citep{WadtHay1985} is to treat only the chemically
 relevant electrons explicitly. It replaces the nuclear attraction and the
 chemically inactive core electrons by an effective one-electron operator,
@@ -813,7 +799,6 @@ weighted toward the Gaussian with the larger exponent. The prefactor contains
 the dependence on the separation of the original centers: its Gaussian decay
 makes distant pairs rapidly negligible. The bold $\bP$ here denotes a
 coordinate, not the density matrix used in the HF equations.
-
 For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
 \begin{equation}
 \begin{split}
@@ -925,7 +910,6 @@ It is strictly less than one when $\alpha\ne\beta$: sharing a center does
 not make two different radial functions identical. If the exponents also
 coincide, the functions are identical and the overlap is exactly one,
 recovering the normalization condition.
-
 For equal exponents at arbitrary separation, the prefactor is one and
 \begin{equation}
   \eval{S_{\alpha\bA,\beta\bB}}_{\beta=\alpha}
@@ -985,7 +969,6 @@ Consequently, using the Gaussian product theorem
  \qty(\frac{\pi}{\violet{\zeta}})^{3/2}
 \end{split}
 \end{equation}
-
 The result has the same overlap prefactor as the preceding integral. The
 additional polynomial factor is the consequence of differentiating the
 Gaussian centered at $\blue{\bB}$ twice. It contains both a local curvature
@@ -1068,7 +1051,6 @@ Higher-angular-momentum ERIs can be generated from a hierarchy of fundamental
 $s$-type quantities. The derivation begins by replacing the Coulomb operator
 with its Laplace representation, after which every Cartesian coordinate enters
 through an ordinary Gaussian integral.
-
 For four primitive $s$ functions,
 \begin{equation}
 \begin{split}
@@ -1111,7 +1093,6 @@ turns the six-dimensional integral into three Cartesian factors:
  \dd z_1\dd z_2]
 \end{split}
 \end{equation}
-
 Defining
 \begin{equation}
  \vartheta=\frac{\violet{\zeta}\purple{\eta}}
@@ -1161,7 +1142,6 @@ this integral notation. The fundamental auxiliary notation is therefore
  F_0\qty(\vartheta\abs{\violet{\bP}-\purple{\bQ}}^2)
   }
 \end{equation}
-
 The original six-dimensional Coulomb integral has thus been reduced to
 elementary Gaussian prefactors and a one-dimensional function. This reduction
 is the foundation of the recurrence construction below.
@@ -1216,7 +1196,6 @@ The $m=0$ member is the physical $ssss$ ERI; the $m>0$ members are auxiliary
 intermediates. Angular-momentum recurrences couple orders $m$ and $m+1$.
 For total angular momentum $L=a+b+c+d$, fundamental auxiliary integrals are
 needed through $m=L$.
-
 The recurrence construction must therefore retain the necessary Boys orders
 alongside the angular-momentum labels.
 
@@ -1338,7 +1317,6 @@ exponents and applies directly to contracted integrals:
  {\orange{\bc}\green{\bd}}
   }
 \end{equation}
-
 The late-contraction algorithm begins by
 computing the required Boys functions $F_m(T)$ from
 Section~\ref{sec:boys-functions} and forming the fundamental
@@ -1351,7 +1329,6 @@ Head--Gordon--Pople late-contraction strategy \citep{HeadGordonPople1988}; the v
 those of Obara--Saika. Thus the expensive exponent-dependent recurrences are performed before
 contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
-
 The resulting reduction in the number of quantities handled by the HRRs
 complements the screening savings considered next.
 
@@ -1502,7 +1479,6 @@ integrals to be discarded before evaluation.
 Once screening has identified the significant shell quartets, the resulting
 integrals need not be stored. Direct SCF contracts each batch with the current
 density immediately after it is generated.
-
 For the real AO functions and real symmetric density used in the following
 direct-SCF contractions, the Coulomb and exchange matrices are
 \begin{align}
@@ -1547,7 +1523,6 @@ auxiliary index. Its starting point is that products of orbital basis
 functions span a large, highly redundant space. Representing that space
 economically connects the integral technology developed above to less costly
 Fock-matrix construction.
-
 In this section, orbital and auxiliary functions are taken to be real, as in
 the Gaussian integral formulas above. An ERI is the Coulomb interaction
 between two pair densities,
@@ -1636,7 +1611,6 @@ to every auxiliary function:
   }
  \label{eq:ri-projection-orthogonality}
 \end{equation}
-
 The inverse metric accounts for the nonorthogonality of the auxiliary
 functions. These expressions assume that the retained auxiliary functions
 are linearly independent in the Coulomb metric. If the metric has
@@ -1695,7 +1669,6 @@ metric rather than multiplied element by element.
 Both density fitting and Cholesky decomposition expose the low numerical rank
 of the ERI matrix in compound pair indices. They differ in how the
 three-index representation is constructed.
-
 In RI/DF, the AO products are expanded in a predefined auxiliary basis,
 \begin{equation}
  \phi_\mu(\br)\phi_\nu(\br)
@@ -1741,7 +1714,6 @@ $\rbraket{A}{B}$ and three-center $\rbraket{\mu\nu}{A}$ integrals are needed;
 and optimized auxiliary bases make the fitting error very small
 \citep{Weigend2006}. RI/DF thus greatly reduces the cost and memory
 requirements of Coulomb contractions.
-
 The computational gain is that contractions can be ordered through the
 auxiliary index instead of four orbital indices \citep{Weigend2002}. The approximation is
 controlled by the auxiliary basis in RI/DF or by the decomposition threshold
