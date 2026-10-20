@@ -8270,12 +8270,13 @@ and $c_i$ is its extrapolation weight.
   &\red{\approx}\sum_{i=1}^{m}c_i\be^{(i)}
 \end{align}
 The coefficients minimize the squared Frobenius norm of the residual, that
-is, the sum of the squared magnitudes of its matrix elements, subject
-to the affine constraint
+is, the sum of the squared magnitudes of its matrix elements
 \begin{equation}
     \min_{\bc}
     \norm{\sum_{i=1}^{m}c_i\be^{(i)}}_F^2
-    \qquad\text{subject to}\qquad
+\end{equation}
+subject to the affine constraint
+\begin{equation}
     \sum_{i=1}^{m}c_i=1
 \end{equation}
 Define the DIIS overlap matrix by
@@ -8308,41 +8309,35 @@ $\lambda$ is the multiplier enforcing the normalization of the weights:
   -2\lambda\qty(\sum_{i=1}^{m}c_i-1)
 \end{equation}
 Its stationarity conditions are
-\begin{equation}
-\begin{split}
+\begin{align}
   \pdv{\mathcal{L}(\bc,\lambda)}{\bc}&=\bO
-  \\
+  &
   \pdv{\mathcal{L}(\bc,\lambda)}{\lambda}&=0
-\end{split}
-\end{equation}
+\end{align}
 Writing the first condition component by component gives
-\begin{equation}
-\begin{split}
+\begin{align}
   \pdv{\mathcal L}{c_k}
   &=
   2\sum_{j=1}^{m}B_{kj}c_j-2\lambda
   =
   0
-  \\
+  &
   \pdv{\mathcal L}{\lambda}
   &=
   -2\qty(\sum_{i=1}^{m}c_i-1)
   =
   0
-\end{split}
-\end{equation}
+\end{align}
 Hence every row obeys
 \begin{equation}
   \sum_{j=1}^{m}B_{kj}c_j-\lambda=0
 \end{equation}
 together with the normalization constraint. These relations imply
-\begin{equation}
-\begin{split}
+\begin{align}
   \bB\cdot\bc-\lambda\boldsymbol{1}&=\bO
-  \\
+  &
   \sum_{i=1}^{m}c_i&=1
-\end{split}
-\end{equation}
+\end{align}
 These equations form the augmented DIIS linear system
 \begin{equation}
   \boxed{
