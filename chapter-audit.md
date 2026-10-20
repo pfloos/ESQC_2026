@@ -987,3 +987,30 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill guided targeted inspection of the four revised exercises and
   the Aufbau paragraph, not a full-chapter visual audit. Confirmed that the
   rendered statements and solutions are numbered consistently from 1 to 17.
+
+## Occupied-space operator invariance exercise (20 October 2026)
+
+- Pulled before editing and checked the remote again before committing;
+  the author's `main` remained at `5036b46`.
+- Added Exercise 9 at the end of the occupied-orbital unitary-invariance
+  discussion, immediately before canonicalization. The prompt has one direct
+  objective. Its detailed solution applies the total Coulomb and exchange
+  operators to an arbitrary test function and displays the complex-unitary
+  index contraction separately for each operator, then deduces Fock invariance.
+- Distinguished occupied sums from individual orbital contributions, and
+  invariance of an operator from the unitary similarity transformation of its
+  occupied-basis matrix. Explained why virtual-only rotations are harmless
+  whereas occupied-virtual mixing generally changes the operators. Retained
+  explicit matrix-multiplication dots and the chapter's equation conventions.
+- Added an independent finite-dimensional complex-orbital test of the occupied
+  projector, total Coulomb/exchange/Fock operators, their actions on an arbitrary
+  function, and the occupied Fock matrix transformation. It also checks that
+  individual orbital contributions and matrix entries generally change.
+- All seven chapter checks pass. All 634 pre-existing displays, existing
+  exercise/solution blocks, both SCF summary cards, and Further reading are
+  unchanged. The new exercise is linked from the surrounding discussion;
+  the PDF contains consecutively numbered exercise/solution pairs 1--18.
+- Compilation succeeds at 137 pages with no undefined references/citations,
+  duplicate labels, overfull-box warnings, or oversized floats. The PDF skill
+  guided a targeted preview of the new exercise and complete solution on
+  printed pages 48--49 (PDF pages 55--56), not a full-chapter visual audit.

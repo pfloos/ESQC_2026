@@ -5559,7 +5559,8 @@ More importantly, the occupied one-particle projector is unchanged:
 \end{split}
 \end{equation}
 Since the Fock operator depends only on the occupied one-particle density,
-it is invariant under this transformation.
+it is invariant under this transformation. Exercise~\ref{ex:operator-unitary-invariance}
+establishes this explicitly for its Coulomb and exchange contributions.
 
 The determinant itself transforms as
 \begin{equation}
@@ -5605,6 +5606,99 @@ the same physical state.
 Thus, unitary rotations within the occupied space leave
 the energy $E_\text{HF}$ and the physical state unchanged, with the
 wavefunction itself defined only up to that phase.
+
+\begin{hfexercise}[phantom={\label{ex:operator-unitary-invariance}}]{Unitary invariance of the HF operators}
+\violet{\textit{Show that the total Coulomb, exchange, and Fock operators
+are unchanged by a unitary transformation of the occupied spin orbitals.}}
+\end{hfexercise}
+\begin{hfsolution}{Unitary invariance of the HF operators}
+Use the occupied-space transformation in
+Eq.~\eqref{eq:occupied-unitary-rotation}, allowing complex coefficients.
+All orbital sums below run over the $N$ occupied spin orbitals. Since
+$\bU$ is a square unitary matrix, the contraction needed in both proofs is
+\begin{equation}
+  \sum_i U_{ji}U_{ki}^*
+  =(\bU\cdot\bU^\dag)_{jk}
+  =\delta_{jk}
+\end{equation}
+Define the total operators by $\chJ=\sum_i\chJ_i$ and
+$\chK=\sum_i\chK_i$; tildes denote operators constructed from the
+transformed occupied orbitals. To prove an operator identity, let these
+operators act on an arbitrary one-electron test function $g(\bx)$, not
+necessarily an occupied orbital.
+For the Coulomb operator, substitution into
+Eq.~\eqref{eq:coulomb-operator} gives
+\begin{equation}
+\begin{split}
+  (\widetilde{\chJ}g)(\bx_1)
+  &=\sum_i\qty[\int
+    \widetilde{\chi}_i^*(\bx_2)\frac{1}{r_{12}}
+    \widetilde{\chi}_i(\bx_2)\dd{\bx_2}]g(\bx_1)\\
+  &=\sum_{jk}\underbrace{\qty(\sum_iU_{ji}U_{ki}^*)}_{\delta_{jk}}
+    \qty[\int\chi_k^*(\bx_2)\frac{1}{r_{12}}
+      \chi_j(\bx_2)\dd{\bx_2}]g(\bx_1)\\
+  &=\sum_j\qty[\int\chi_j^*(\bx_2)\frac{1}{r_{12}}
+      \chi_j(\bx_2)\dd{\bx_2}]g(\bx_1)\\
+  &=(\chJ g)(\bx_1)
+\end{split}
+\end{equation}
+Unitarity therefore leaves the total density, and hence its Coulomb
+potential, unchanged. The exchange operator depends on the nonlocal
+one-particle density rather than only its diagonal. Using
+Eq.~\eqref{eq:exchange-operator}, its action becomes
+\begin{equation}
+\begin{split}
+  (\widetilde{\chK}g)(\bx_1)
+  &=\sum_i\widetilde{\chi}_i(\bx_1)
+    \int\widetilde{\chi}_i^*(\bx_2)\frac{1}{r_{12}}
+      g(\bx_2)\dd{\bx_2}\\
+  &=\sum_{jk}\underbrace{\qty(\sum_iU_{ji}U_{ki}^*)}_{\delta_{jk}}
+    \chi_j(\bx_1)\int\chi_k^*(\bx_2)\frac{1}{r_{12}}
+      g(\bx_2)\dd{\bx_2}\\
+  &=\sum_j\chi_j(\bx_1)\int\chi_j^*(\bx_2)\frac{1}{r_{12}}
+      g(\bx_2)\dd{\bx_2}\\
+  &=(\chK g)(\bx_1)
+\end{split}
+\end{equation}
+Since $g$ is arbitrary, these equalities establish the operator identities
+\begin{align}
+  \widetilde{\chJ}&=\chJ
+  &\widetilde{\chK}&=\chK
+\end{align}
+The core Hamiltonian is independent of the occupied orbitals, so
+\begin{equation}
+  \boxed{
+  \widetilde{\hf}
+  =\hh+\widetilde{\chJ}-\widetilde{\chK}
+  =\hh+\chJ-\chK
+  =\hf
+  }
+\end{equation}
+The invariance applies to the occupied sums: individual $\chJ_i$ and
+$\chK_i$ generally change when their generating orbitals are rotated.
+It does not require self-consistency. Rotations among virtual orbitals also
+leave these operators unchanged because the virtuals do not enter their
+construction, whereas occupied-virtual mixing generally changes the density
+and the operators.
+
+Operator invariance must not be confused with invariance of its matrix
+elements in a changing orbital basis. For occupied indices $i,j$,
+\begin{equation}
+\begin{split}
+  \widetilde f_{ij}
+  &=\mel{\widetilde\chi_i}{\hf}{\widetilde\chi_j}\\
+  &=\sum_{kl}U_{ki}^*\mel{\chi_k}{\hf}{\chi_l}U_{lj}\\
+  &=\sum_{kl}U_{ki}^*f_{kl}U_{lj}
+\end{split}
+\end{equation}
+Thus the occupied block obeys
+\begin{equation}
+  \widetilde{\bff}_\text{oo}
+  =\bU^\dag\cdot\bff_\text{oo}\cdot\bU
+\end{equation}
+Its entries need not remain unchanged, even though the underlying Fock
+operator does. This is precisely the freedom used in canonicalization.
+\end{hfsolution}
 
 \paragraph{Canonical Hartree--Fock orbitals.}
 

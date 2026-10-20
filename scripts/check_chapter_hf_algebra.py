@@ -9,7 +9,7 @@ coefficients. No chapter formulas are generated or edited by this script.
 
 import cmath
 from itertools import permutations
-from math import cos, factorial, isclose, sin, sqrt
+from math import cos, factorial, isclose, pi, sin, sqrt
 
 
 def close(actual, expected, description, tolerance=1e-10):
@@ -205,6 +205,72 @@ def orbital_derivative():
                           "separate one-electron/Coulomb/exchange orbital derivatives", tolerance=2e-9)
 
 
+def operator_unitary_invariance():
+    """Test total operators separately from their occupied-basis matrices."""
+    def adjoint(a):
+        return [[complex(a[j][i]).conjugate() for j in range(len(a))]
+                for i in range(len(a[0]))]
+
+    def multiply(a, b):
+        return [[sum(a[i][k]*b[k][j] for k in range(len(b)))
+                 for j in range(len(b[0]))] for i in range(len(a))]
+
+    def difference(a, b):
+        return max(abs(x-y) for ra, rb in zip(a, b) for x, y in zip(ra, rb))
+
+    def check(a, b, label):
+        close(difference(a, b), 0.0, label)
+
+    c = [[0.5*cmath.exp(0.5j*pi*mu*i) for i in range(2)] for mu in range(4)]
+    phase, theta = cmath.exp(0.7j), 0.41
+    u = [[cos(theta), -phase.conjugate()*sin(theta)],
+         [phase*sin(theta), cos(theta)]]
+    identity = [[1, 0], [0, 1]]
+    check(multiply(adjoint(c), c), identity, "occupied orthonormality")
+    check(multiply(adjoint(u), u), identity, "U dagger U")
+    check(multiply(u, adjoint(u)), identity, "U U dagger")
+    rotated = multiply(c, u)
+    check(multiply(rotated, adjoint(rotated)), multiply(c, adjoint(c)),
+          "complex occupied projector invariance")
+
+    # A finite quadrature model of the Coulomb and nonlocal exchange kernels.
+    interaction = [[1.3, .4, .2, .15], [.4, 1.5, .3, .1],
+                   [.2, .3, 1.7, .25], [.15, .1, .25, 1.9]]
+    h = [[-1.2, .1j, .2, 0], [-.1j, -.6, 0, .1],
+         [.2, 0, .3, -.15j], [0, .1, .15j, .8]]
+
+    def orbital_operators(v):
+        j = [[sum(abs(v[z])**2*interaction[x][z] for z in range(4))
+              if x == y else 0 for y in range(4)] for x in range(4)]
+        k = [[v[x]*v[y].conjugate()*interaction[x][y]
+              for y in range(4)] for x in range(4)]
+        return j, k
+
+    def totals(coefficients):
+        individual = [orbital_operators(v) for v in zip(*coefficients)]
+        j, k = [[[sum(pair[t][x][y] for pair in individual)
+                  for y in range(4)] for x in range(4)] for t in range(2)]
+        f = [[h[x][y]+j[x][y]-k[x][y] for y in range(4)] for x in range(4)]
+        return j, k, f
+
+    g = [[.3+.2j], [-.4j], [.7], [-.1+.5j]]
+    original, transformed = totals(c), totals(rotated)
+    for a, b, label in zip(original, transformed, ("Coulomb", "exchange", "Fock")):
+        check(a, b, f"total {label} operator invariance")
+        check(multiply(a, g), multiply(b, g), f"{label} action on arbitrary function")
+    first = orbital_operators([row[0] for row in c])
+    first_rotated = orbital_operators([row[0] for row in rotated])
+    for a, b in zip(first, first_rotated):
+        assert difference(a, b) > 0.01, "individual orbital contributions change"
+
+    f_oo = multiply(multiply(adjoint(c), original[2]), c)
+    rotated_f_oo = multiply(multiply(adjoint(rotated), transformed[2]), rotated)
+    check(rotated_f_oo, multiply(multiply(adjoint(u), f_oo), u),
+          "occupied Fock block transforms by unitary similarity")
+    assert difference(f_oo, rotated_f_oo) > 0.01, "matrix entries need not be invariant"
+    print("Operator invariance: complex occupied rotations preserve total J, K, F; individual contributions and MO entries change")
+
+
 def density_and_residual_exercises():
     """Check AO metric, RHF factors, and residual blocks in a complex basis.
 
@@ -358,5 +424,6 @@ if __name__ == "__main__":
     spin_adaptation()
     h2_curvature()
     orbital_derivative()
+    operator_unitary_invariance()
     density_and_residual_exercises()
     print("HF algebra checks passed: normalization, spin sums, pair counts, IP/EA, complex conventions, CSF phases, H2, orbital derivatives")
