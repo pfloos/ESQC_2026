@@ -1014,3 +1014,32 @@ coverage baseline. Commented-out frames are not additional required material.
   duplicate labels, overfull-box warnings, or oversized floats. The PDF skill
   guided a targeted preview of the new exercise and complete solution on
   printed pages 48--49 (PDF pages 55--56), not a full-chapter visual audit.
+
+## Gaston Berthier historical perspective (20 October 2026)
+
+- Pulled before editing and checked for concurrent author changes before
+  finalizing; `main` remained at `a3fb653`.
+- Added a separate warm-colored historical box for Gaston Berthier beside
+  the existing Pople/Nesbet perspective in the UHF matrix-equation subsection.
+  It acknowledges his independent 1954 UHF formulation, later work with
+  Bernard Levy on the generalized Brillouin theorem, and influence on the
+  French and wider theoretical-chemistry community, using Yves Ellinger's
+  first-hand scientific-society obituary.
+- Renamed the equation subsection and both prose occurrences consistently
+  to Pople--Nesbet--Berthier. Cited Berthier's original Journal de Chimie
+  Physique paper alongside Pople and Nesbet, with its bibliographic identity
+  checked against EDP Sciences-deposited DOI metadata. No exact priority
+  date or full-text inspection is claimed; access limits are recorded in
+  the reference audit. The original presentation sources are unchanged.
+- Included the unchanged Commons portrait credited to Fabriceparis under
+  CC BY-SA 3.0, with source and license links in the box and provenance notes.
+  Its posthumous file timestamp is not treated as the photograph date.
+  No new permission-pending image was introduced.
+- All seven chapter checks pass, including all 88 cited/title-linked
+  references. All 641 existing displays, existing exercise/solution blocks,
+  both SCF summaries, and Further reading are unchanged. Compilation succeeds
+  at 137 pages without undefined references/citations, duplicate labels,
+  oversized floats, or overfull-box warnings.
+- The PDF skill guided a targeted preview of the neighboring historical
+  boxes and the new reference on printed pages 88--89 and 127 (PDF pages
+  95--96 and 134), not a full-chapter visual audit.

@@ -1,5 +1,22 @@
 # Historical portraits in the chapter
 
+## Gaston Berthier (added 20 October 2026)
+
+- Asset: `portrait-berthier.jpg`, 150 x 202 pixels, downloaded unchanged.
+- [Commons description and license record](https://commons.wikimedia.org/wiki/File:Photo-GB-150px.jpg),
+  page revision 1191563404; identifies Gaston Berthier, credits Fabriceparis,
+  and records the source as the contributor's own work.
+- [Original image](https://upload.wikimedia.org/wikipedia/commons/2/25/Photo-GB-150px.jpg).
+- [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), with credit
+  and license link printed in the box. This license applies to the portrait,
+  not to the chapter's independent text. LaTeX only scales the supplied image;
+  no pixel edits or additional crop were made.
+- The file's 28 January 2010 timestamp postdates Berthier's death and is not
+  presented as a photograph date. The photograph date remains unspecified.
+- Biography and lifespan: [Yves Ellinger's obituary, Societe Francaise
+  d'Exobiologie, 11 January 2010](https://exobiologie.fr/deces-de-gaston-berthier/).
+  The obituary's separate photograph was not used; its download was inaccessible.
+
 Sources and reuse statements checked on 16 October 2026. These are historical
 photographs, not generated portraits. The downloaded Commons crops are used
 without further pixel changes; LaTeX only scales them. Each box prints the

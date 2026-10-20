@@ -1,5 +1,25 @@
 # Chapter reference verification
 
+## Berthier's independent UHF contribution (20 October 2026)
+
+Added Berthier's original 1954 paper beside Pople and Nesbet's existing
+reference and in his new historical box. Author, title and subtitle, year,
+journal, volume, pages, and DOI were verified against
+[EDP Sciences-deposited Crossref metadata](https://api.crossref.org/works/10.1051/jcp/1954510363).
+The publisher landing page and full text were access-restricted; no full-text
+inspection is claimed. The 1954 UHF contribution, later work with Bernard
+Levy, dates, and role in the French theoretical-chemistry community were
+checked against [Yves Ellinger's first-hand obituary for the Societe Francaise
+d'Exobiologie](https://exobiologie.fr/deces-de-gaston-berthier/).
+The independent 1954 contributions are credited through the chapter's
+Pople--Nesbet--Berthier terminology, without asserting an exact priority date.
+The bibliography now contains 88 cited entries: 84 audited articles/contributed
+chapters and the four retained books. Further reading is unchanged.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Berthier1954` | Configurations electroniques incompletes: Partie I. La Methode du Champ Moleculaire Self-Consistent et l'Etude des Etats a Couches Incompletes | [10.1051/jcp/1954510363](https://doi.org/10.1051/jcp/1954510363) |
+
 ## Title hyperlinks (19 October 2026)
 
 The chapter's local `chapter-unsrtnat.bst` is a renamed, documented derivative
