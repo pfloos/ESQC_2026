@@ -9097,7 +9097,7 @@ spin projection.
 
 Unrestricted Hartree--Fock introduces separate variational spaces for the
 $\alpha$ and $\beta$ electrons. The resulting energy, density matrices, and
-coupled Pople--Nesbet equations are developed before the unrestricted SCF
+coupled Pople--Nesbet--Berthier equations are developed before the unrestricted SCF
 procedure is applied to bond dissociation.
 
 \subsubsection{The unrestricted ansatz}
@@ -9273,9 +9273,10 @@ selection rule above.
 
 
 \end{hfsolution}
-\subsubsection{The Pople--Nesbet matrix equations}
+\subsubsection{The Pople--Nesbet--Berthier matrix equations}
 
 \hfBioPopleNesbet
+\hfBioBerthier
 
 The continuous UHF equations are reduced to matrix form in the same way as
 the restricted equations, except that a separate coefficient matrix and Fock
@@ -9289,7 +9290,8 @@ separate spin-dependent coefficients:
   \psi_i^\beta(\br)
   &=\sum_{\mu=1}^{K}\red{C_{\mu i}^\beta}\phi_\mu(\br)
 \end{align}
-The resulting Pople--Nesbet equations \citep{PopleNesbet1954} are
+The resulting Pople--Nesbet--Berthier equations, independently formulated
+in 1954 \citep{PopleNesbet1954,Berthier1954}, are
 \begin{align}
   &\boxed{\blue{\bF^\alpha}\cdot\blue{\bC^\alpha}
   =\bS\cdot\blue{\bC^\alpha}\cdot\beps^\alpha}
