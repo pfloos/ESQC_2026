@@ -7957,13 +7957,12 @@ $\bP$ is the spin-summed density. The electronic energy excludes nuclear repulsi
     $\max\abs*{\be^{(n)}}<\tau_\text{SCF}$ and the chosen energy/density
     change criteria. If satisfied, go to Step~\ref{algstep:scf-output}.
   \State \textbf{Solve for new orbitals.}\phantomsection\label{algstep:scf-solve}
-    Take $\bF_\text{work}^{(n)}=\bF^{(n)}$, or its DIIS extrapolation;
-    transform, diagonalize, and return to AO coefficients:
+    Transform, diagonalize, and return to AO coefficients:
   \Statex $\displaystyle
-    (\bF_\text{work}^{(n)})'
-      =\bX^\dag\cdot\bF_\text{work}^{(n)}\cdot\bX$
+    (\bF^{(n)})'
+      =\bX^\dag\cdot\bF^{(n)}\cdot\bX$
   \Statex $\displaystyle
-    (\bF_\text{work}^{(n)})'\cdot(\bC^{(n+1)})'
+    (\bF^{(n)})'\cdot(\bC^{(n+1)})'
       =(\bC^{(n+1)})'\cdot\beps^{(n+1)}$
   \Statex $\displaystyle
     \bC^{(n+1)}=\bX\cdot(\bC^{(n+1)})'$
@@ -7982,10 +7981,6 @@ $\bP$ is the spin-summed density. The electronic energy excludes nuclear repulsi
     Report $\EHF$, the density, orbitals, and required properties.
     Add the fixed nuclear repulsion for the total molecular energy.
 \end{algorithmic}
-\medskip
-{\footnotesize\color{hfInk}\textbf{Convergence is not just diagonalization.}
-The residual uses $\bF[\bP]$ and that same $\bP$, not a mixed-iteration
-or extrapolated pair. A stationary solution is not necessarily an energy minimum.}
 \end{hfscfsummary}
 
 At a given iteration the diagonalization solves exactly the linear
