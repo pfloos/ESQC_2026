@@ -897,3 +897,23 @@ coverage baseline. Commented-out frames are not additional required material.
   pages, with no undefined citations/references or overfull-box warnings.
   The PDF skill guided a targeted check of the initial-guess/convergence and
   plane-wave pages only, not a full visual audit.
+
+## Numbered SCF algorithm summary (20 October 2026)
+
+- Pulled before editing; the author's remote was unchanged at `d980bab`.
+- Added Algorithm 1 beside the RHF SCF discussion: an editable, one-page
+  dark-green card with colored numbered badges, separate setup/iteration/output
+  bands, and eight referenceable steps. The existing flow diagram is retained.
+  The orthogonalization, initial-guess, convergence, and DIIS explanations now
+  refer to the relevant step numbers through clickable cross-references.
+- The summary states the closed-shell spin-summed density convention, keeps
+  every matrix-product dot, distinguishes the physical Fock build from the
+  matrix used for DIIS orbital generation, and tests a matched density/Fock
+  pair only after an orbital update. It separates electronic energy from
+  nuclear repulsion and stationarity from stability.
+- All 633 existing displays and Further reading are unchanged. All seven
+  chapter checks pass; no undefined references/citations, duplicate labels,
+  oversized floats, or overfull-box warnings are reported. Compilation succeeds
+  at 135 pages. Verified all eight step numbers and distinct hyperlink targets.
+- The PDF skill guided targeted rendering of the complete algorithm card on
+  printed page 72 (PDF page 79); it fits on one page without clipping.
