@@ -63,6 +63,10 @@ def energy_and_koopmans():
     for occupied in (rhf, li, boron):
         eps = lambda orbital: h[orbital[0]] + sum(pair(orbital, j) for j in occupied)
         e = energy(occupied)
+        # Spin-resolved density traces: each occupied spin orbital counts once.
+        # The one-half spin sum recovers both one-body and pair contributions.
+        close(0.5 * sum(h[p] + eps((p, spin)) for p, spin in occupied), e,
+              "UHF summary: one-half spin-density/Fock energy trace")
         for k in occupied:
             remaining = [j for j in occupied if j != k]
             close(energy(remaining) - e, -eps(k), "frozen removal / IP sign")
@@ -291,6 +295,17 @@ def density_and_residual_exercises():
     def residual(fock, p):
         return subtract(multiply(multiply(fock, p), s),
                         multiply(multiply(s, p), fock))
+
+    # With N^alpha=2 and N^beta=1, mixing only the first two MOs leaves
+    # the alpha occupied space invariant but not the beta occupied space.
+    # Convergence of one spin channel is therefore insufficient.
+    f_partial_mo = [[-1.1, 0.2+0.15j, 0],
+                    [0.2-0.15j, -0.4, 0], [0, 0, 0.6]]
+    f_partial = multiply(multiply(adjoint(b),
+                         multiply(multiply(u, f_partial_mo), adjoint(u))), b)
+    close(norm(residual(f_partial, alpha)), 0.0,
+          "UHF summary: vanishing alpha residual")
+    assert norm(residual(f_partial, beta)) > 0.1
 
     for occupied in (1, 2):
         p = density(occupied, 2)

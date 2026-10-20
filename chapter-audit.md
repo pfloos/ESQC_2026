@@ -917,3 +917,27 @@ coverage baseline. Commented-out frames are not additional required material.
   at 135 pages. Verified all eight step numbers and distinct hyperlink targets.
 - The PDF skill guided targeted rendering of the complete algorithm card on
   printed page 72 (PDF page 79); it fits on one page without clipping.
+
+## Matching unrestricted SCF summary (20 October 2026)
+
+- Pulled the author's `fa5ce38` revision before editing, preserving its
+  orthogonalization-figure changes. The approved RHF panel is unchanged.
+- Reused the same algorithm-card environment for Algorithm 2, with the same
+  eight steps, green setup/output bands, blue iteration band, and numbered
+  badges. Added linked step references in the unrestricted SCF discussion.
+- The UHF card specifies fixed superscript spin populations, a common AO
+  metric, two coupled physical Fock builds, the spin-resolved energy trace,
+  both commutator residuals, separate orbital occupations, and spin densities
+  without an RHF factor of two. The physical density/Fock pairs remain distinct
+  from DIIS working matrices. Output distinguishes electronic and total
+  molecular energies and includes the spin expectation value.
+- Extended the independent algebra checks with the UHF half-trace energy
+  identity for three spin occupations and an AO-metric counterexample in
+  which the alpha residual vanishes while the beta residual does not.
+- All seven chapter checks pass. All 633 existing displays, the basis/integral
+  material, bibliography, and Further reading are unchanged. Compilation
+  succeeds at 136 pages, with no undefined citations/references, duplicate
+  labels, oversized floats, or overfull-box warnings.
+- The PDF skill guided targeted review of the complete UHF card on printed
+  page 89 (PDF page 96). It fits on one page; verified all eight step numbers
+  and their distinct hyperlink targets.
