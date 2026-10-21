@@ -386,3 +386,24 @@ The ACS landing page was access-restricted; the original author abstract and
 bibliographic metadata were checked through PubMed and the
 [author's institutional publication record](https://tus.elsevierpure.com/en/publications/realization-of-somo-homo-level-conversion-for-a-tempo-dithiolate-/).
 
+## Hartree--Fock--Bogoliubov references (21 October 2026)
+
+Added the two requested references at the HFB mention. Crossref's publisher-
+deposited metadata verifies Peter Ring and Peter Schuck's *The Nuclear
+Many-Body Problem* (Springer, 1980), DOI
+[10.1007/978-3-642-61852-9](https://doi.org/10.1007/978-3-642-61852-9).
+The 1980 publication year is retained rather than the date of the later
+softcover reprint. The book supplies the general nuclear many-body/HFB
+background.
+
+For the molecular application, verified the five authors, title, journal,
+volume, issue, year, and DOI against Crossref and the
+[authors' manuscript](https://arxiv.org/abs/1106.0956), which also confirms
+article number 124108. This paper develops symmetry-projected HFB rather
+than equating ordinary HFB with its symmetry-projected extension. No new
+technical claim or derivation is added, and Further reading is unchanged.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `Scuseria2011` | Projected Quasiparticle Theory for Molecular Electronic Structure | [10.1063/1.3643338](https://doi.org/10.1063/1.3643338) |
+

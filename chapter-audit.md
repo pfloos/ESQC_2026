@@ -1122,3 +1122,24 @@ coverage baseline. Commented-out frames are not additional required material.
   duplicate labels, oversized floats, or overfull-box warnings. The PDF skill
   guided a targeted before/after check of Figure 15 on printed page 94
   (PDF page 102), confirming aligned plots and a complete same-page caption.
+
+## HFB references (21 October 2026)
+
+- Pulled and checked the remote before editing, then incorporated the author's
+  concurrent changes through `341f5bc` before the final build/push. Added
+  Ring and Schuck's *The Nuclear Many-Body Problem* (1980) and
+  Scuseria et al.'s *Projected quasiparticle theory for molecular electronic
+  structure* (2011) at the HFB mention in Section 3.3.1.
+- Verified the publication metadata and DOI links against publisher-deposited
+  Crossref records and the Scuseria author manuscript; recorded the sources
+  in the reference audit. Bibliography titles use the existing hyperlink
+  style, with no standalone DOI strings.
+- All seven chapter checks pass: 92 cited/title-linked entries, 87 audited
+  articles/contributed chapters and five books. All 642 existing displays,
+  other prose, and Further reading are unchanged from `341f5bc`.
+- Compilation succeeds at 139 pages without undefined references/citations,
+  duplicate labels, oversized floats, or PDF-import errors. One unrelated
+  10.12 pt overfull-box warning occurs at the author's enlarged variational-
+  collapse illustration; that illustration is outside this citation task
+  and was left unchanged. The PDF skill guided inspection of the HFB paragraph
+  and the new references on PDF pages 107 and 136 (printed pages 99 and 128).
