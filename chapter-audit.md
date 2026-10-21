@@ -1228,3 +1228,49 @@ coverage baseline. Commented-out frames are not additional required material.
   illustration remains outside this task. The PDF skill guided targeted
   comparison of slide 38 with the finished scheme and same-page caption on
   printed page 119 (PDF page 127), without a global visual audit.
+
+## Exercise and solution harmonization (21 October 2026)
+
+- Pulled before editing and checked the remote again before committing;
+  `402b4b2` remained current. Reviewed all 18 exercise--solution pairs.
+  Revised the 13 earlier pairs (1--7, 10--14, and 17), retaining concise
+  questions and bringing their solutions closer to the established detailed
+  style: explicit assumptions, explained intermediate steps, and a result
+  with a physical interpretation or consistency check. The five newer,
+  already detailed pairs (8, 9, 15, 16, and 18) remain byte-for-byte intact.
+- Completed the antisymmetry normalization argument and the spectator-
+  overlap reasoning for the general one- and two-electron sums. Added the
+  normalized three-electron determinant, explicit lithium spin-to-spatial
+  pair terms, and the boron Coulomb/exchange pair-count check.
+- Explained the Coulomb/exchange integral index order through their actions
+  on orbitals, distinguished occupied from virtual canonical-energy sums,
+  and expanded the added-electron pair terms in the Koopmans EA derivation.
+  Preserved the existing relaxation/correlation discussion and all previous
+  derivation steps.
+- Clarified the spin-AO density convention and conjugation order. Added
+  the separate one-electron and four-coefficient/two-density contractions
+  leading to the AO energy trace. Expanded UHF lithium into one-electron,
+  same-spin, and opposite-spin pieces, then checked its common-spatial-
+  orbital limit against the earlier lithium result.
+- Extended the independent HF algebra checks with a complex, nonorthogonal
+  AO model: operator matrix elements, all four-coefficient factorizations,
+  separate one-/two-electron energies, and the trace formula agree. A
+  three-electron spin-resolved calculation checks unrestricted lithium with
+  distinct alpha/beta spatial functions and its common-spatial limit.
+- All seven chapter checks pass. The layout preservation check retains all
+  642 existing displays in order; 12 new displays bring the total to 654.
+  The canonical-notation check is run without its equal-display-count
+  comparison mode because new derivation displays are intentional; the
+  stricter existing-expression preservation is supplied by the layout check.
+  All 18 exercise/solution titles pair correctly. No chapter text outside
+  the revised pairs has changed, and all basis-set/integral content,
+  biographies, references, figures, algorithms, and Further reading remain
+  untouched. Existing physics-package macros, matrix dots, superscript spin
+  populations, equation conventions, and box colors are preserved.
+- Compilation succeeds at 145 pages, two more than before, without undefined
+  references/citations, duplicate labels, oversized floats, or PDF-import
+  errors. The unrelated existing 10.12 pt overfull warning at the previously
+  enlarged variational-collapse illustration remains outside this task.
+  The PDF skill guided targeted checks of the revised exercise panels and
+  their continuations on PDF pages 17--18, 31--34, 39--40, 60--61, 63--64,
+  78--81, and 98--99, not a global visual or overflow audit.

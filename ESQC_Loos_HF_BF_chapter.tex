@@ -1325,12 +1325,21 @@ wavefunction from simpler one-electron objects.
 \begin{hfexercise}{Two-electron antisymmetry}
 \violet{\textit{Given two orthonormal one-electron functions
 $\chi_1(\bx)$ and $\chi_2(\bx)$, construct a two-electron fermionic
-wavefunction $\Psi(\bx_1,\bx_2)$.}}
+wavefunction $\Psi(\bx_1,\bx_2)$ and normalize it.}}
 
 \end{hfexercise}
 \begin{hfsolution}{Two-electron antisymmetry}
 Starting from the two possible assignments of the one-electron functions to
-the two electrons,
+the two electrons, consider a linear combination with coefficients $A$ and
+$B$,
+\begin{equation}
+  \Psi(\bx_1,\bx_2)
+  =A\chi_1(\bx_1)\chi_2(\bx_2)
+   +B\chi_2(\bx_1)\chi_1(\bx_2)
+\end{equation}
+Exchanging the coordinates interchanges the two products. Requiring the
+result to be $-\Psi(\bx_1,\bx_2)$ therefore gives $B=-A$. The two
+products are
 \begin{equation}
   \chi_1(\bx_1)\chi_2(\bx_2)
   \qquad\text{and}\qquad
@@ -1355,7 +1364,12 @@ Indeed, exchanging the two electron coordinates immediately yields
   -\Psi(\bx_1,\bx_2)
 \end{equation}
 For orthonormal $\chi_1$ and $\chi_2$, the prefactor $1/\sqrt{2}$ ensures
-normalization.
+normalization. Indeed, each product has unit norm and their overlap is
+$\braket{\chi_1}{\chi_2}\braket{\chi_2}{\chi_1}=0$, so their difference
+has squared norm two. Choosing $A=1/\sqrt{2}$ fixes the normalization;
+any additional global phase describes the same physical state. The minus
+sign enforces antisymmetry, while the prefactor fixes the norm: these are
+separate requirements.
 
 \end{hfsolution}
 
@@ -2712,7 +2726,8 @@ orthogonal spin orbitals $\chi_1$ and $\chi_2$ is normalized.}}
 \end{hfexercise}
 \begin{hfsolution}{Normalization of the HF wavefunction}
 
-For two electrons, the normalized Slater determinant is
+Take two orthonormal spin orbitals, allowing them to be complex. The
+two-electron Slater determinant with the proposed normalization factor is
 \begin{equation}
   \Psi_\text{HF}
   =
@@ -2798,7 +2813,7 @@ other two terms, and therefore
   =
   \frac{1}{2}[1-0-0+1]
   =
-  1
+  \boxed{1}
 \end{equation}
 
 This example explains the origin of the normalization factor $1/\sqrt{2}$
@@ -2814,7 +2829,8 @@ products and is normalized by the factor $1/\sqrt{N!}$.
 
 \begin{hfexercise}{Core Hamiltonian}
 
-\violet{\textit{Show for the same system that
+\violet{\textit{Evaluate the one-electron energy of the normalized
+two-electron determinant and explain the general occupied-orbital sum
 \[
   \mel{\Psi_\text{HF}}{\chO_1}{\Psi_\text{HF}}
   =
@@ -2958,6 +2974,15 @@ This is the two-electron instance of the general Slater--Condon rule
   \sum_{i=1}^{N}h_{ii}
 \end{equation}
 Only diagonal matrix elements over the occupied spin orbitals survive.
+To see why the same argument holds for $N$ electrons, expand the bra and
+ket determinants into their $N!$ Hartree products. A one-electron operator
+leaves $N-1$ spectator overlaps. These force the corresponding orbital
+assignments to agree; because each product contains the same occupied set,
+the remaining assignment must then agree as well. Thus only identical
+permutations survive. Each gives the sum of the $N$ occupied diagonal
+matrix elements, and the $N!$ equal contributions cancel the normalization
+factor $1/N!$. No assumption that the occupied orbitals diagonalize
+$\hh$ is needed.
 
 \end{hfsolution}
 
@@ -2967,7 +2992,8 @@ Only diagonal matrix elements over the occupied spin orbitals survive.
 
 \begin{hfexercise}{Two-electron Hamiltonian}
 
-\violet{\textit{Show for the same system that}}
+\violet{\textit{Evaluate the two-electron interaction for the same
+normalized determinant, explain the general pair sum}}
 \begin{equation}
   \mel{\Psi_\text{HF}}{\chO_2}{\Psi_\text{HF}}
   =
@@ -3080,6 +3106,13 @@ This simple calculation contains the essential physics of Hartree--Fock
 theory. The Coulomb term would already be present for a product
 wavefunction. The exchange term appears solely because the wavefunction has
 been antisymmetrized.
+For $N$ electrons, the same reasoning applies to each pair of occupied
+spin orbitals. The $N-2$ spectator overlaps fix all other assignments.
+The two active orbitals can then be matched directly, giving
+$\cJ_{ij}$, or exchanged, giving $-\cK_{ij}$. Summing over $i<j$
+counts each distinct pair once; a double sum over all $i,j$ instead
+requires a factor of one half. The terms with $i=j$ vanish because
+$\cJ_{ii}=\cK_{ii}$.
 
 Combining the one- and two-electron contributions gives the electronic
 Hartree--Fock energy
@@ -3119,11 +3152,26 @@ next subsection.
 \begin{hfexercise}{Three-electron system}
 
 \violet{\textit{Find the HF energy of a three-electron system composed of
-the spin orbitals $\chi_1$, $\chi_2$, and $\chi_3$.}}
+the orthonormal spin orbitals $\chi_1$, $\chi_2$, and $\chi_3$.}}
 
 \end{hfexercise}
 \begin{hfsolution}{Three-electron system}
 
+Assume that $\chi_1$, $\chi_2$, and $\chi_3$ are orthonormal and that
+the electronic energy is sought at a fixed nuclear geometry. The
+normalized determinant is
+\begin{equation}
+  \Psi_\text{HF}
+  =\frac{1}{\sqrt{3!}}
+  \mdet{
+    \chi_1(1)&\chi_2(1)&\chi_3(1)\\
+    \chi_1(2)&\chi_2(2)&\chi_3(2)\\
+    \chi_1(3)&\chi_2(3)&\chi_3(3)
+  }
+\end{equation}
+Its six Hartree products are mutually orthogonal, so their squared
+coefficients sum to $6/3!=1$. We may therefore use the one- and
+two-electron expectation values established in the preceding exercises.
 The one-electron operator contains one contribution for each electron,
 \begin{equation}
   \chO_1
@@ -3183,6 +3231,11 @@ electrons gives
   \sum_{i<j}^{N}
   (\cJ_{ij}-\cK_{ij})
 \end{equation}
+For three electrons, the interaction contains exactly
+$\binom{3}{2}=3$ distinct pairs. This count is a useful check: there is
+neither a self-interaction term nor an additional factor of one half in
+the explicit pair expression. The spin dependence remains inside the
+spin-orbital exchange integrals; no particular spin occupation was assumed.
 
 \end{hfsolution}
 
@@ -3816,8 +3869,8 @@ spurious same-spin self-interactions cancel through exchange.
 
 \begin{hfexercise}{HF energy of the \ce{Li} atom}
 
-\violet{\textit{Find the HF energy of the \ce{Li} atom in terms of spatial
-orbitals.}}
+\violet{\textit{Find the HF energy of the \ce{Li} atom with occupation
+$\psi_1^2\psi_2^1$ in terms of spatial orbitals.}}
 
 \end{hfexercise}
 \begin{hfsolution}{HF energy of the \ce{Li} atom}
@@ -3831,7 +3884,9 @@ For the determinant considered here, the three occupied spin orbitals are
   \chi_3&=\alpha\psi_2
 \end{align}
 The first spatial orbital is therefore doubly occupied, whereas the second
-contains a single $\alpha$ electron.
+contains a single $\alpha$ electron. Thus $N^\alpha=2$ and
+$N^\beta=1$, with orthonormal spatial orbitals $\psi_1$ and $\psi_2$.
+The closed-shell core uses the same spatial function for its two spins.
 
 The one-electron contribution is immediately
 \begin{equation}
@@ -3849,6 +3904,16 @@ electrons in $\psi_1$, giving
 Exchange occurs only with the $\alpha$ electron in $\psi_1$, and therefore
 contributes
   $-K_{12}$.
+Explicitly, the three spin-orbital pair contributions reduce to
+\begin{align}
+  \cJ_{12}-\cK_{12}&=J_{11}\\
+  \cJ_{13}-\cK_{13}&=J_{12}-K_{12}\\
+  \cJ_{23}-\cK_{23}&=J_{12}
+\end{align}
+The indices on $\cJ$ and $\cK$ label the three spin orbitals, whereas
+those on $J$ and $K$ label spatial orbitals. In particular, the surviving
+$J_{11}$ is the repulsion between two different, opposite-spin electrons,
+not a one-electron self-interaction.
 The total energy is consequently
 \begin{equation}
   E_\text{HF}
@@ -3872,8 +3937,8 @@ count same-spin pairs.
 \end{hfsolution}
 \begin{hfexercise}{HF energy of the \ce{B} atom}
 
-\violet{\textit{Find the HF energy of the \ce{B} atom in terms of spatial
-orbitals.}}
+\violet{\textit{Find the HF energy of the \ce{B} atom with occupation
+$\psi_1^2\psi_2^2\psi_3^1$ in terms of spatial orbitals.}}
 
 \end{hfexercise}
 \begin{hfsolution}{HF energy of the \ce{B} atom}
@@ -3884,6 +3949,10 @@ corresponding schematically to
 \begin{equation}
   \psi_1^2\psi_2^2\psi_3^1
 \end{equation}
+The five occupied spin orbitals are $\alpha\psi_1$, $\beta\psi_1$,
+$\alpha\psi_2$, $\beta\psi_2$, and $\alpha\psi_3$, so
+$N^\alpha=3$ and $N^\beta=2$. As in the lithium exercise, the doubly
+occupied orbitals share their spatial parts between the two spins.
 The one-electron contribution is therefore
 \begin{equation}
   E_1
@@ -3935,6 +4004,12 @@ Collecting all terms gives
     -
     K_{23}
 \end{equation}
+There are $\binom{5}{2}=10$ Coulomb pairs: one within each doubly
+occupied orbital, four between these two orbitals, and two between each
+of them and $\psi_3$. Exchange survives for
+$\binom{N^\alpha}{2}+\binom{N^\beta}{2}=3+1=4$ pairs, explaining
+the coefficients $2$, $1$, and $1$ of $K_{12}$, $K_{13}$, and $K_{23}$.
+The pair counts provide an independent check on the spatial-orbital result.
 
 \end{hfsolution}
 
@@ -5800,7 +5875,8 @@ Brillouin's theorem:
 
 \begin{hfexercise}{Fock matrix elements in the spin-orbital basis}
 
-\violet{\textit{Find the expression of the matrix elements
+\violet{\textit{Express the Fock matrix elements in terms of one- and
+two-electron integrals,
 \[
   f_{ij}
   =
@@ -5811,6 +5887,9 @@ Brillouin's theorem:
 \end{hfexercise}
 \begin{hfsolution}{Fock matrix elements in the spin-orbital basis}
 
+Use orthonormal spin orbitals and keep the occupied-orbital sum explicit;
+the indices $i,j$ specify the matrix element, while $k$ runs over occupied
+spin orbitals. Canonical orbitals are not required for this expansion.
 Expanding the Fock operator gives
 \begin{equation}
 \begin{split}
@@ -5851,6 +5930,20 @@ whereas the exchange contribution is
   =
   \braket{ik}{kj}
 \end{equation}
+These index arrangements follow directly from the actions of the two
+operators. Writing $\chi_p(n)=\chi_p(\bx_n)$, their matrix elements are
+\begin{align}
+  \mel{\chi_i}{\chJ_k}{\chi_j}
+  &=\iint\chi_i^*(1)\chi_k^*(2)\frac{1}{r_{12}}
+    \chi_j(1)\chi_k(2)\dd{\bx_1}\dd{\bx_2}\\
+  \mel{\chi_i}{\chK_k}{\chi_j}
+  &=\iint\chi_i^*(1)\chi_k^*(2)\frac{1}{r_{12}}
+    \chi_k(1)\chi_j(2)\dd{\bx_1}\dd{\bx_2}
+\end{align}
+The Coulomb operator leaves $\chi_j$ at coordinate 1, whereas exchange
+places it at coordinate 2 and returns $\chi_k$ at coordinate 1. Reading
+the bra and ket indices in physicists' notation gives the two integrals
+above; their difference is the antisymmetrized integral.
 Therefore,
 \begin{equation}
 \begin{split}
@@ -5887,6 +5980,9 @@ For an occupied-virtual matrix element,
   \mel{ik}{}{ak}
 \end{equation}
 which is precisely the quantity appearing in Brillouin's theorem.
+For a self-consistent stationary determinant this occupied-virtual element
+vanishes, but the formula itself holds for any chosen orthonormal
+spin-orbital basis with the stated occupied set.
 
 \end{hfsolution}
 
@@ -5896,7 +5992,8 @@ which is precisely the quantity appearing in Brillouin's theorem.
 
 \begin{hfexercise}{Orbital energies in the spin-orbital basis}
 
-\violet{\textit{Deduce the expression of $\epsilon_i$.}}
+\violet{\textit{Deduce the energy $\epsilon_i$ of a canonical spin
+orbital from the diagonal Fock matrix element.}}
 
 \end{hfexercise}
 \begin{hfsolution}{Orbital energies in the spin-orbital basis}
@@ -5957,6 +6054,14 @@ The term with $k=i$ vanishes,
 \end{equation}
 which again reflects the exact cancellation of one-electron
 self-interaction in Hartree--Fock theory.
+Here $i$ labels an occupied canonical spin orbital, so its own term in the
+occupied sum over $k$ cancels as shown. The analogous expression for a
+virtual canonical orbital $a$ follows by replacing $i$ with $a$, while
+$k$ still runs only over occupied orbitals; there is then no $k=a$ term.
+Canonicalization is
+essential to interpreting $f_{ii}$ as an orbital eigenvalue: a diagonal
+expectation value in a noncanonical orbital is not, in general, one of the
+canonical orbital energies.
 
 
 \end{hfsolution}
@@ -6165,14 +6270,29 @@ hole in occupied spin orbital $i$.
 
 \begin{hfexercise}{Koopmans' theorem for electron affinity}
 
-\violet{\textit{Show that an analogous frozen-orbital relation can be
-derived for electron attachment.}}
+\violet{\textit{Derive the frozen-orbital electron affinity for attachment
+to a vacant canonical spin orbital and relate it to that orbital's energy.}}
 
 \end{hfexercise}
 \begin{hfsolution}{Koopmans' theorem for electron affinity}
 
 Consider the attachment of an electron to a vacant canonical spin orbital
-$c$. Keeping all orbitals frozen, the energy of the resulting
+$c$. All energies refer to the same nuclear geometry and the occupied
+orbitals of the $N$-electron reference remain frozen. The original
+one-electron and occupied-pair contributions are therefore unchanged.
+The new orbital contributes $h_{cc}$ and interacts with every occupied
+spin orbital. In the double-sum energy expression this gives
+\begin{equation}
+\begin{split}
+  {}^{N+1}\widetilde E^c
+  &={}^N E_0+h_{cc}
+    +\frac12\sum_i\qty[\mel{ci}{}{ci}+\mel{ic}{}{ic}]
+    +\frac12\mel{cc}{}{cc}
+\end{split}
+\end{equation}
+The two terms for each old--new pair are equal by electron interchange,
+and the self-pair term is zero by antisymmetry. Thus the factor of one
+half disappears when each added pair is counted once. The energy of the resulting
 $(N+1)$-electron determinant is
 \begin{equation}
   {}^{N+1}\widetilde{E}^{c}
@@ -6203,7 +6323,7 @@ Consequently,
   \mel{ci}{}{ci}
   \\
   &=
-  -\epsilon_c
+  \boxed{-\epsilon_c}
   \label{eq:koopmans-ea}
 \end{split}
 \end{equation}
@@ -6214,6 +6334,11 @@ For attachment into the lowest unoccupied molecular orbital (LUMO),
   \approx
   -\epsilon_\text{LUMO}
 \end{equation}
+With this sign convention, a positive electron affinity means that the
+attached determinant lies below the reference in energy. The orbital
+energy $\epsilon_c$ is evaluated using the reference Fock operator, not a
+Fock operator reoptimized for the anion. Nuclear repulsion cancels from
+the energy difference because the geometry is fixed.
 
 The algebra is therefore completely analogous to that for electron
 removal. There is, however, an important practical asymmetry between the
@@ -7624,12 +7749,15 @@ continues to denote a spatial basis function and $\chi$ a spin orbital.
 
 \begin{hfexercise}{AO Fock matrix}
 
-\violet{\textit{Find the expression of the Fock matrix in terms of the
-one- and two-electron integrals.}}
+\violet{\textit{Express the Fock matrix in the spin-AO basis in terms of
+the one- and two-electron integrals and the occupied-orbital density matrix.}}
 
 \end{hfexercise}
 \begin{hfsolution}{AO Fock matrix}
 
+Use the spin-AO expansion defined above, with one occupied spin orbital per
+electron and no closed-shell factor of two. Allow complex coefficients,
+so the coefficient from the bra orbital must be conjugated.
 Expanding the occupied spin orbitals in the basis exposes how their
 coefficients enter the AO Fock matrix:
 \begin{equation}
@@ -7687,6 +7815,12 @@ contraction:
 \end{equation}
 Thus the occupied orbitals enter the Fock matrix only through their
 one-particle density matrix.
+In particular, $P_{\lambda\sigma}$ contains the ket coefficient
+$C_{\lambda i}$ and the conjugated bra coefficient $C_{\sigma i}^*$.
+This ordering fixes the integral indices even when the coefficients are
+complex. No overlap matrix is inserted in this contraction: the AO
+integrals already contain the basis functions, while their overlap metric
+enters orbital normalization and the generalized eigenvalue problem.
 
 The three quantities introduced in this derivation are the core Hamiltonian,
 the density matrix, and the two-electron part:
@@ -7742,12 +7876,16 @@ molecular-orbital basis.
 
 \begin{hfexercise}{AO Hartree--Fock energy}
 
-\violet{\textit{Find the expression of the HF energy in terms of the one-
-and two-electron integrals.}}
+\violet{\textit{Express the electronic HF energy in the spin-AO basis
+using the density matrix, and derive its trace form in terms of $\bH$ and
+$\bF$.}}
 
 \end{hfexercise}
 \begin{hfsolution}{AO Hartree--Fock energy}
 
+Retain the spin-AO convention of the preceding exercise: $\bP$ counts
+each occupied spin orbital once, and the coefficients need not be real.
+The energy below excludes nuclear repulsion.
 Starting from the spin-orbital energy and explicitly substituting each basis
 expansion gives
 \begin{equation}
@@ -7783,6 +7921,37 @@ expansion gives
 \end{split}
 \end{equation}
 
+The reduction from orbital coefficients to density matrices can be seen
+separately for the one- and two-electron terms. For the first,
+\begin{equation}
+\begin{split}
+  \sum_i h_{ii}
+  &=\sum_{\mu\nu}\qty(\sum_i C_{\mu i}^*C_{\nu i})H_{\mu\nu}\\
+  &=\sum_{\mu\nu}P_{\nu\mu}H_{\mu\nu}
+\end{split}
+\end{equation}
+For the second, the two occupied-orbital sums are independent:
+\begin{equation}
+\begin{split}
+  \sum_{ij}C_{\mu i}^*C_{\lambda j}^*C_{\nu i}C_{\sigma j}
+  &=\qty(\sum_i C_{\nu i}C_{\mu i}^*)
+    \qty(\sum_j C_{\sigma j}C_{\lambda j}^*)\\
+  &=P_{\nu\mu}P_{\sigma\lambda}
+\end{split}
+\end{equation}
+Consequently, the two-electron energy is
+\begin{equation}
+\begin{split}
+  \frac12\sum_{ij}\qty(\cJ_{ij}-\cK_{ij})
+  &=\frac12\sum_{\mu\nu\lambda\sigma}
+    P_{\nu\mu}P_{\sigma\lambda}\mel{\mu\lambda}{}{\nu\sigma}\\
+  &=\frac12\sum_{\mu\nu}P_{\nu\mu}G_{\mu\nu}
+\end{split}
+\end{equation}
+The prefactor removes the double counting of electron pairs; it does not
+halve the one-electron energy. These contractions also explain why the
+index order must be retained rather than silently replacing a Hermitian
+density by a real symmetric one.
 To see the origin of the trace expression, define the two-electron matrix
 $\bG=\bF-\bH$. The preceding result may then be written as
 \begin{equation}
@@ -7804,6 +7973,12 @@ $\bG=\bF-\bH$. The preceding result may then be written as
 \end{equation}
 which is precisely Eq.~\eqref{eq:hf-energy-matrix}. The ordering of the
 indices $P_{\nu\mu}$ ensures that the component sum is the matrix trace.
+This identity applies in a nonorthogonal basis as well: the overlap metric
+is already accounted for in the occupied-orbital normalization, and the
+energy is a contraction of the AO density coefficients with the AO
+Hamiltonian matrix elements. In an SCF implementation, $\bF$ must be built
+from the same $\bP$ used in the energy trace. The spin-summed closed-shell
+specialization follows below.
 
 
 \end{hfsolution}
@@ -9267,7 +9442,39 @@ whereas $2s^\beta$ is empty.}
 \end{hfexercise}
 \begin{hfsolution}{UHF energy of the \ce{Li} atom}
 
-For the occupation shown above,
+The occupied spatial indices are $i=1,2$ for $\alpha$ spin and $i=1$
+for $\beta$ spin, so $N^\alpha=2$ and $N^\beta=1$. The functions
+$\psi_1^\alpha$ and $\psi_1^\beta$ need not coincide. Each spatial
+function is normalized, and the two occupied $\alpha$ functions are
+mutually orthogonal. No spatial orthogonality between opposite-spin
+orbitals is required because their spin functions are orthogonal. The
+one-electron contribution is
+\begin{equation}
+  E_1=h_{11}^\alpha+h_{11}^\beta+h_{22}^\alpha
+\end{equation}
+For the $\alpha$--$\alpha$ interaction, the diagonal terms cancel through
+$J_{ii}^{\alpha\alpha}=K_{ii}^{\alpha\alpha}$, while the two ordered
+off-diagonal pairs give the same contribution:
+\begin{equation}
+\begin{split}
+  E_2^{\alpha\alpha}
+  &=\frac12\sum_{i,j=1}^{2}
+    \qty(J_{ij}^{\alpha\alpha}-K_{ij}^{\alpha\alpha})\\
+  &=\frac12\qty[
+    J_{12}^{\alpha\alpha}-K_{12}^{\alpha\alpha}
+    +J_{21}^{\alpha\alpha}-K_{21}^{\alpha\alpha}]\\
+  &=J_{12}^{\alpha\alpha}-K_{12}^{\alpha\alpha}
+\end{split}
+\end{equation}
+There is only one $\beta$ electron, so its same-spin two-electron
+contribution is zero. The opposite-spin interaction contains two distinct
+pairs and no exchange:
+\begin{equation}
+  E_2^{\alpha\beta}
+  =\sum_{i=1}^{2}J_{i1}^{\alpha\beta}
+  =J_{11}^{\alpha\beta}+J_{21}^{\alpha\beta}
+\end{equation}
+Adding these contributions gives, for the occupation shown above,
 \begin{equation}
   E_\text{UHF}
   =h_{11}^\alpha+h_{11}^\beta+h_{22}^\alpha
@@ -9278,6 +9485,17 @@ The same-spin interaction between the $1s^\alpha$ and $2s^\alpha$ electrons
 contains both Coulomb and exchange contributions. The two interactions with
 the $1s^\beta$ electron are purely Coulombic, exactly as required by the spin
 selection rule above.
+As a check, impose the common-spatial-orbital limit
+$\psi_1^\alpha=\psi_1^\beta=\psi_1$ and $\psi_2^\alpha=\psi_2$.
+Then $J_{11}^{\alpha\beta}=J_{11}$ and
+$J_{21}^{\alpha\beta}=J_{12}$, and the energy reduces to
+\begin{equation}
+  E_\text{UHF}
+  =2h_{11}+h_{22}+J_{11}+2J_{12}-K_{12}
+\end{equation}
+This recovers the earlier lithium exercise. The unrestricted expression
+differs by allowing the two spin populations to optimize their spatial
+functions independently, not by changing which electron pairs interact.
 
 
 \end{hfsolution}

@@ -89,6 +89,100 @@ def energy_and_koopmans():
           "exact EA relaxation/correlation decomposition")
 
 
+def completed_exercise_contractions():
+    """Check added AO-energy steps and unrestricted lithium independently."""
+    n = 3
+    basis = [[1.1, .2+.1j, -.1j], [0, .9, .15], [0, 0, 1.2]]
+    h = [[-1.3, .1j, .2], [-.1j, -.5, .1], [.2, .1, .4]]
+    interaction = [[1.2, .3, .2], [.3, 1.4, .4], [.2, .4, 1.1]]
+
+    def inner(u, v):
+        return sum(a.conjugate()*b for a, b in zip(u, v))
+
+    def to_grid(c):
+        return [sum(basis[x][mu]*c[mu] for mu in range(n)) for x in range(n)]
+
+    def one(u, v):
+        return sum(u[x].conjugate()*h[x][y]*v[y]
+                   for x in range(n) for y in range(n))
+
+    def eri(u, v, w, z):
+        return sum(u[x].conjugate()*v[y].conjugate()*interaction[x][y]*w[x]*z[y]
+                   for x in range(n) for y in range(n))
+
+    # Gram--Schmidt in the physical grid, while retaining nonorthogonal AO
+    # coefficients. This avoids assuming the density/trace identity tested.
+    coefficients, orbitals = [], []
+    for seed in ([.7+.1j, .2-.3j, .4], [.1-.2j, .6, -.3+.2j]):
+        c = seed[:]
+        for old_c, old_orbital in zip(coefficients, orbitals):
+            overlap = inner(old_orbital, to_grid(c))
+            c = [a-overlap*b for a, b in zip(c, old_c)]
+        length = sqrt(inner(to_grid(c), to_grid(c)).real)
+        c = [a/length for a in c]
+        coefficients.append(c)
+        orbitals.append(to_grid(c))
+    for i in range(2):
+        for j in range(2):
+            close(inner(orbitals[i], orbitals[j]), int(i == j), "exercise orbital normalization")
+
+    p = [[sum(c[mu]*c[nu].conjugate() for c in coefficients)
+          for nu in range(n)] for mu in range(n)]
+    assert max(abs(x.imag) for row in p for x in row) > .01
+    aos = [[basis[x][mu] for x in range(n)] for mu in range(n)]
+    h_ao = [[one(u, v) for v in aos] for u in aos]
+    g_ao = [[sum(p[sigma][lam]*(eri(aos[mu], aos[lam], aos[nu], aos[sigma])
+                               -eri(aos[mu], aos[lam], aos[sigma], aos[nu]))
+                 for lam in range(n) for sigma in range(n))
+             for nu in range(n)] for mu in range(n)]
+    for mu in range(n):
+        for nu in range(n):
+            direct = sum(eri(aos[mu], w, aos[nu], w)-eri(aos[mu], w, w, aos[nu])
+                         for w in orbitals)
+            close(g_ao[mu][nu], direct, "Fock exercise: Coulomb/exchange index order")
+    e1 = sum(one(v, v) for v in orbitals)
+    e2 = .5*sum(eri(v, w, v, w)-eri(v, w, w, v)
+                 for v in orbitals for w in orbitals)
+    close(sum(p[nu][mu]*h_ao[mu][nu] for mu in range(n) for nu in range(n)),
+          e1, "AO exercise: one-electron density contraction")
+    close(.5*sum(p[nu][mu]*g_ao[mu][nu] for mu in range(n) for nu in range(n)),
+          e2, "AO exercise: two-electron density contraction")
+    close(.5*sum(p[nu][mu]*(2*h_ao[mu][nu]+g_ao[mu][nu])
+                 for mu in range(n) for nu in range(n)),
+          e1+e2, "AO exercise: complex nonorthogonal trace energy")
+    for mu in range(n):
+        for lam in range(n):
+            for nu in range(n):
+                for sigma in range(n):
+                    direct = sum(ci[mu].conjugate()*cj[lam].conjugate()*ci[nu]*cj[sigma]
+                                 for ci in coefficients for cj in coefficients)
+                    close(direct, p[nu][mu]*p[sigma][lam],
+                          "AO exercise: four coefficients become two densities")
+
+    alpha1, alpha2 = orbitals
+    beta = [1/sqrt(3), cmath.exp(.3j)/sqrt(3), cmath.exp(-.4j)/sqrt(3)]
+    assert abs(inner(alpha1, beta)) > .1
+    for beta1 in (beta, alpha1):
+        occupied = [(alpha1, 0), (alpha2, 0), (beta1, 1)]
+        direct = sum(one(v, v) for v, _ in occupied)
+        for i, (v, spin_v) in enumerate(occupied):
+            for w, spin_w in occupied[i+1:]:
+                direct += eri(v, w, v, w)
+                if spin_v == spin_w:
+                    direct -= eri(v, w, w, v)
+        same_spin = eri(alpha1, alpha2, alpha1, alpha2)-eri(alpha1, alpha2, alpha2, alpha1)
+        mixed_spin = eri(alpha1, beta1, alpha1, beta1)+eri(alpha2, beta1, alpha2, beta1)
+        expanded = one(alpha1, alpha1)+one(alpha2, alpha2)+one(beta1, beta1)+same_spin+mixed_spin
+        close(direct, expanded, "UHF lithium: three distinct pairs")
+        if beta1 is alpha1:
+            restricted = (2*one(alpha1, alpha1)+one(alpha2, alpha2)
+                          +eri(alpha1, alpha1, alpha1, alpha1)
+                          +2*eri(alpha1, alpha2, alpha1, alpha2)
+                          -eri(alpha1, alpha2, alpha2, alpha1))
+            close(expanded, restricted, "UHF lithium: common-spatial-orbital limit")
+    print("Completed exercises: complex AO coefficient/density contractions and unrestricted lithium limits passed")
+
+
 def complex_counterexamples():
     # Physicists' periodic plane-wave ERIs, with the zero mode removed.
     # All values below are real, although the functions exp(i k x) are complex.
@@ -420,6 +514,7 @@ def density_and_residual_exercises():
 if __name__ == "__main__":
     determinant_normalization()
     energy_and_koopmans()
+    completed_exercise_contractions()
     complex_counterexamples()
     spin_adaptation()
     h2_curvature()
