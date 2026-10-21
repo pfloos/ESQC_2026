@@ -1,5 +1,15 @@
 # Chapter reference verification
 
+## Earlier variational-collapse text restored (21 October 2026)
+
+At the author's request, restored Section 2.4.1 to its shorter wording from
+before `5036b46`. Removed the now-uncited Bach (1994) and Kusamoto (2008)
+entries and their active DOI-table rows, as well as the SOMO/TEMPO glossary
+entries used only by that discussion. The historical verification below
+remains a record of the previous revision, not an active chapter citation.
+The retained bibliography has 90 cited entries: 86 audited articles/contributed
+chapters and four books. Further reading is unchanged.
+
 ## Five further historical perspectives (21 October 2026)
 
 Added the four primary articles below for William Hartree, Bertha Swirles,
@@ -357,6 +367,9 @@ the existing Weigend (2006) Coulomb-fitting citation.
 
 ## Aufbau occupation and open-shell spatial-orbital ordering (20 October 2026)
 
+Superseded on 21 October: these sources were removed from the chapter when
+the author requested the earlier, less technical variational-collapse text.
+
 Verified the theorem in the [original Bach et al. manuscript](https://arxiv.org/abs/cond-mat/9307066)
 and its [APS record](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.72.2981).
 Its unconstrained spin-orbital minimization is not an assertion about a
@@ -372,9 +385,4 @@ No new HF calculation or unsupported claim for bare TEMPO is presented.
 The ACS landing page was access-restricted; the original author abstract and
 bibliographic metadata were checked through PubMed and the
 [author's institutional publication record](https://tus.elsevierpure.com/en/publications/realization-of-somo-homo-level-conversion-for-a-tempo-dithiolate-/).
-
-| BibTeX key | Publication title | DOI record |
-| --- | --- | --- |
-| `Bach1994` | There Are No Unfilled Shells in Unrestricted Hartree-Fock Theory | [10.1103/PhysRevLett.72.2981](https://doi.org/10.1103/PhysRevLett.72.2981) |
-| `Kusamoto2008` | Realization of SOMO-HOMO Level Conversion for a TEMPO-Dithiolate Ligand by Coordination to Platinum(II) | [10.1021/ja805751h](https://doi.org/10.1021/ja805751h) |
 

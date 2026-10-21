@@ -1083,3 +1083,24 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill guided targeted inspection of the historical contents and
   the five new panels: PDF pages 4, 9, 11, 56, 75, and 118 (printed pages
   iii, 1, 3, 48, 67, and 110). This was not a full-chapter visual audit.
+
+## Earlier Section 2.4.1 restored (21 October 2026)
+
+- Pulled the author's new changes through `3b39f02` before editing. Restored
+  the complete Variational collapse subsection byte-for-byte to its version
+  immediately before `5036b46`, as requested. The figure, its caption and
+  citation, and the following maximum-overlap material are retained.
+- Removed the technical SOMO--HOMO/TEMPO and unconstrained-HF-minimum
+  discussion, its two now-uncited bibliography entries (Bach 1994 and
+  Kusamoto 2008), and the two glossary entries used only there. The reference
+  audit retains the prior verification as historical evidence but no longer
+  treats those two DOI-table rows as active chapter references.
+- Outside that subsection, the only chapter-source changes are removal of
+  those two unused glossary rows. The author's latest scientific/layout
+  revisions, historical panels and contents, all 642 existing displays,
+  exercises, SCF summaries, and Further reading are unchanged.
+- All seven chapter checks pass, including the 90 cited/title-linked
+  references. Compilation succeeds at 139 pages without undefined
+  references/citations, duplicate labels, oversized floats, or overfull-box
+  warnings. The PDF skill guided a targeted preview of the restored
+  subsection on PDF page 90, not a full-chapter visual audit.
