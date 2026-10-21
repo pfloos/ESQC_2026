@@ -1333,7 +1333,7 @@ cheap upper bound before evaluating an integral or shell quartet.
 
 A useful ERI upper bound must be simple and inexpensive, strong enough to be a
 good estimate, and scaling consistent, meaning
-$N_\text{sig}=\order{N_\text{upper}}$. Here $N_\text{sig}$ counts significant
+$K_\text{sig}=\order{N_\text{upper}}$. Here $K_\text{sig}$ counts significant
 integrals and $N_\text{upper}$ counts those retained by the bound at the
 chosen threshold. The Cauchy--Schwarz inequality gives
 \begin{equation}
@@ -1389,7 +1389,7 @@ The number of significant integrals may be represented by
  \equiv\rmel{\red{\ba}\blue{\bb}}{\chO_2}
  {\orange{\bc}\green{\bd}}
 \end{equation}
-and $N_\text{sig}=cK^\alpha$.
+and $K_\text{sig}=cK^\alpha$.
 Here $K$ is the number of basis functions, $c$ is a proportionality factor,
 and $\alpha$ is the effective scaling exponent. 
 The numerical data in Table~\ref{tab:screening-scaling} contrast the long-range Coulomb operator with a
@@ -1408,8 +1408,8 @@ from the lecture slides.}
 & &\multicolumn{2}{c}{\red{$\chO=r_{12}^{-1}$}}
 &\multicolumn{2}{c}{\orange{$\chO=e^{-r_{12}^2}$}}\\
 \cmidrule(lr){3-4}\cmidrule(lr){5-6}
-\hftablehead{Molecule}&\hftablehead{$K$}&\hftablehead{$N_\text{sig}$}&
-\hftablehead{$\alpha$}&\hftablehead{$N_\text{sig}$}&\hftablehead{$\alpha$}\\
+\hftablehead{Molecule}&\hftablehead{$K$}&\hftablehead{$K_\text{sig}$}&
+\hftablehead{$\alpha$}&\hftablehead{$K_\text{sig}$}&\hftablehead{$\alpha$}\\
 \midrule
 propene&12&1,625&---&1,650&---\\
 butadiene&16&5,020&3.9&5,020&3.9\\
@@ -1575,14 +1575,12 @@ stationarity condition,
  +2\sum_BV_{AB}C_{\mu\nu}^B=0
 \end{equation}
 Hence the least-squares equations are
-\begin{equation}
-\begin{split}
+\begin{align}
   \sum_B\underbrace{\rbraket{A}{B}}_{V_{AB}}C_{\mu\nu}^B
  &=\underbrace{\rbraket{A}{\mu\nu}}_{\text{three-center integral}}
-  \\
+  &
   C_{\mu\nu}^A&=\sum_B(\bV^{-1})_{AB}\rbraket{B}{\mu\nu}
-\end{split}
-\end{equation}
+\end{align}
 Thus the Coulomb metric determines the optimal auxiliary expansion. The
 stationarity condition also states that the residual is Coulomb-orthogonal
 to every auxiliary function:
