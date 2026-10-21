@@ -1104,3 +1104,21 @@ coverage baseline. Commented-out frames are not additional required material.
   references/citations, duplicate labels, oversized floats, or overfull-box
   warnings. The PDF skill guided a targeted preview of the restored
   subsection on PDF page 90, not a full-chapter visual audit.
+
+## Figure 15 panel alignment (21 October 2026)
+
+- Pulled the author's changes through `f652f29` and incorporated the newer
+  `5c66961` before the final build/push, preserving the abstract hyperlink
+  and the author's UHF/dissociation revisions.
+- Gave the three orbital plots a common invisible envelope, so their
+  bounding heights no longer depend on the angle-dependent peak amplitudes.
+  Added identical heading/footer struts to align their baselines. Slightly
+  reduced the shared plot height and kept all panels and their caption in
+  one enclosing minipage to prevent a split caption.
+- Orbital expressions, relative amplitudes, axis ranges, colors, labels,
+  and caption wording are unchanged. All 642 existing displays and Further
+  reading are preserved; all seven chapter checks pass.
+- Compilation succeeds at 139 pages without undefined references/citations,
+  duplicate labels, oversized floats, or overfull-box warnings. The PDF skill
+  guided a targeted before/after check of Figure 15 on printed page 94
+  (PDF page 102), confirming aligned plots and a complete same-page caption.
