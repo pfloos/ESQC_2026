@@ -19,7 +19,8 @@ except ImportError:
     bpy = None
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "archive/drafts/cover-studies"
+DATA = ROOT / "chapter/records"
+OUT = ROOT / "chapter/build/cover"
 STEM = "06-porphine-exact-gaussians"
 # Entries are coefficient, Cartesian powers. Coordinates are local to each atom.
 FUNCTIONS = [
@@ -231,6 +232,7 @@ def main():
         return
     if bpy is None:
         raise RuntimeError("Rendering requires Blender; numerical checks need only NumPy")
+    OUT.mkdir(parents=True, exist_ok=True)
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
     scene = bpy.context.scene
@@ -271,7 +273,7 @@ def main():
     bond_mat = material("bonds", (0.19,0.23,0.24), metallic=0.3)
     positive = material("positive function: emerald", (0.008,0.36,0.22), alpha=0.84)
     negative = material("negative function: amber", (0.9,0.34,0.025), alpha=0.84)
-    raw = json.loads((OUT/"porphine-pubchem-3d.json").read_text())["PC_Compounds"][0]
+    raw = json.loads((DATA/"porphine-pubchem-3d.json").read_text())["PC_Compounds"][0]
     assert raw["id"]["id"]["cid"] == 66868
     atoms, bonds = raw["atoms"], raw["bonds"]
     conformer = raw["coords"][0]["conformers"][0]

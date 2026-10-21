@@ -1,105 +1,88 @@
-# Electronic Structure Quantum Chemistry — [ESQC 2026](https://www.esqc.org)
+# Hartree–Fock Theory, Basis Sets, and Molecular Integrals — ESQC 2026
 
 <p align="center">
   <img src="fig/front.png" alt="Electronic-structure illustration used on the title slide" width="760">
 </p>
 
-<p align="center">
-  Lecture material on <strong>Hartree–Fock theory, basis sets, and molecular integrals</strong><br>
-  for the 20th European Summer School in Quantum Chemistry (ESQC).<br>
-  <sub>6–19 September 2026 · Hotel Torre Normanna, near Palermo, Sicily, Italy</sub>
-</p>
+Lecture slides and a companion textbook chapter by **Pierre-François Loos** for the [20th European Summer School in Quantum Chemistry (ESQC)](https://www.esqc.org), held on 6–19 September 2026 near Palermo, Sicily, Italy.
 
-## About these lectures
+## Companion chapter
 
-This repository contains the material for Pierre-François Loos's four lectures on Hartree–Fock theory at ESQC 2026. The course develops the theoretical foundations of Hartree–Fock theory and connects them to the finite-basis and self-consistent-field algorithms used in practical electronic-structure calculations.
+**Many Electrons, One Determinant: Hartree–Fock Theory, Basis Sets, and Molecular Integrals**
 
-The material is divided into two complementary slide decks. Most students will only need the PDF files; the LaTeX sources are included for reference.
+The chapter has been submitted to arXiv. Its public link will be added once available.
 
-| Lecture material | Slides | Source | Topics covered |
-| --- | --- | --- | --- |
-| **Hartree–Fock Theory** | [PDF](ESQC_Loos_HF.pdf) | [LaTeX](ESQC_Loos_HF.tex) | Electronic Hamiltonian and Born–Oppenheimer approximation; antisymmetry and Slater determinants; Hartree–Fock energy; Slater–Condon rules; Fock operator; Roothaan–Hall equations; SCF and DIIS; excited-state SCF and MOM; Koopmans' and Brillouin's theorems; molecular properties; unrestricted Hartree–Fock |
-| **Basis Sets & Integrals** | [PDF](ESQC_Loos_BF.pdf) | [LaTeX](ESQC_Loos_BF.tex) | Molecular-orbital expansions; plane-wave, Slater-type, and Gaussian basis functions; common Gaussian basis-set families; basis-set superposition error; effective core potentials; one- and two-electron integrals; Boys functions and recurrence relations; integral screening; direct SCF; resolution of the identity |
+This PhD-level introduction develops Hartree–Fock theory, finite-basis formulations, self-consistent-field algorithms, basis sets, and molecular integrals. It includes detailed derivations, historical perspectives, computational remarks, and exercises with worked solutions.
 
-Shared illustrations and diagrams are stored in [`fig/`](fig/).
+- [Complete LaTeX source](chapter/ESQC_Loos_HF_BF_chapter.tex)
+- [Bibliography](chapter/ESQC_Loos_HF_BF_chapter.bib)
+- [Chapter build and verification instructions](chapter/README.md)
+- [Illustration credits and provenance](chapter/records/)
 
-## The textbook chapter
+The chapter uses one editable `.tex` file. Its bibliography, reference style and required graphics are contained in [`chapter/`](chapter/); the slide sources are not needed to compile it.
 
-The material from both presentations is also developed as a standalone,
-PhD-level textbook chapter, with full sentences, intermediate derivation
-steps, worked examples, computational remarks, and the scientific figure
-content from the slides, including author-approved native redraws. It uses
-the article class, dark green headings, and the
-slides' notation and custom commands. Equation punctuation is omitted;
-mathematical separators and explicit matrix-multiplication dots are retained.
+## Lecture slides
 
-The complete chapter is now in [`chapter/`](chapter/), separate from the
-slides. Its **single editable LaTeX source** is
-[`chapter/ESQC_Loos_HF_BF_chapter.tex`](chapter/ESQC_Loos_HF_BF_chapter.tex):
-the title page, historical panels, native figures/tables, and basis/integral
-material have all been incorporated. The bibliography and required graphics
-live alongside it. No original slide source or slide asset has been changed.
+| Presentation | Slides | LaTeX source |
+| --- | --- | --- |
+| Hartree–Fock Theory | [PDF](ESQC_Loos_HF.pdf) | [Source](ESQC_Loos_HF.tex) |
+| Basis Sets & Integrals | [PDF](ESQC_Loos_BF.pdf) | [Source](ESQC_Loos_BF.tex) |
 
-From the repository root, build and prepare the source package with:
+The first presentation covers the electronic Hamiltonian, determinants, Hartree–Fock energy and equations, SCF algorithms, excited-state SCF, molecular properties, and unrestricted formulations. The second covers orbital basis families, basis-set superposition error, effective core potentials, molecular integrals, recurrence relations, screening, direct SCF, and resolution of the identity.
 
-    sh scripts/build_chapter.sh
-    python3 scripts/package_chapter.py
+Original slide illustrations and editable figure sources remain in [`fig/`](fig/).
 
-The PDF is generated in `chapter/build/`; `chapter/submission.zip` contains
-exactly one `.tex` source and only its required supporting files. See the
-[chapter instructions](chapter/README.md) for compilation and verification.
-The [audit records](chapter/records/) retain the scientific/editorial history.
-Earlier designs and photographic provenance are preserved in
-[`archive/`](archive/), outside the chapter and submission package.
+## Build locally
 
-## Building the slides
+A reasonably complete [TeX Live](https://tug.org/texlive/) installation with `latexmk` is required. Run these commands from the repository root.
 
-You need a reasonably complete [TeX Live](https://tug.org/texlive/) installation with `latexmk`. From the repository root, run:
+For the chapter:
 
-```bash
+```sh
+sh scripts/build_chapter.sh
+```
+
+The compiled chapter and auxiliary files are generated in `chapter/build/` and are not tracked in Git. To prepare a source package for a future revision, build first and then run:
+
+```sh
+python3 scripts/package_chapter.py
+```
+
+For the slides:
+
+```sh
 latexmk -pdf ESQC_Loos_HF.tex
 latexmk -pdf ESQC_Loos_BF.tex
 ```
 
-The resulting files, `ESQC_Loos_HF.pdf` and `ESQC_Loos_BF.pdf`, are created in the repository root.
+The slide PDFs are stored at the repository root. Remove their auxiliary files, while retaining the PDFs, with:
 
-To remove the auxiliary files generated during compilation:
-
-```bash
+```sh
 latexmk -c ESQC_Loos_HF.tex
 latexmk -c ESQC_Loos_BF.tex
 ```
 
-The sources use Beamer and several common scientific LaTeX packages, including `amsmath`, `physics`, `mhchem`, `tikz`, `pgfplots`, `libertine`, `newtxmath`, and `algorithmicx`.
-
-## Repository contents
+## Repository layout
 
 ```text
 ESQC_2026/
-├── ESQC_Loos_HF.tex/.pdf    # Original Hartree–Fock slides
-├── ESQC_Loos_BF.tex/.pdf    # Original basis/integral slides
-├── chapter/
-│   ├── ESQC_Loos_HF_BF_chapter.tex  # The only chapter TeX source
-│   ├── ESQC_Loos_HF_BF_chapter.bib
-│   ├── chapter-unsrtnat.bst
-│   ├── figures/           # Required chapter graphics and portrait sketches
-│   ├── records/           # Audits and illustration provenance
-│   ├── build/             # Generated PDF/auxiliaries (not tracked)
-│   └── submission.zip     # Generated minimal source bundle (not tracked)
-├── scripts/               # Chapter build, packaging and verification
-├── fig/                   # Original slide assets
-├── archive/               # Superseded designs and portrait photographs
-└── README.md
+├── ESQC_Loos_HF.tex / .pdf   # Hartree–Fock slides
+├── ESQC_Loos_BF.tex / .pdf   # Basis-set and integral slides
+├── chapter/                 # Single-source chapter, bibliography and style
+│   ├── figures/             # Required illustrations and portrait sketches
+│   └── records/             # Reference verification and illustration provenance
+├── fig/                     # Original slide assets
+└── scripts/                 # Build, packaging, checks and cover regeneration
 ```
 
-## Feedback
+Development drafts, superseded photographs and earlier review files have been removed from the working tree; they remain recoverable through Git history. Current credits, portrait-generation records and scientific cover data are retained.
 
-Questions, corrections, and suggestions are welcome. Please [open an issue](https://github.com/pfloos/ESQC_2026/issues) so that they can be tracked and discussed.
+## Credits and feedback
 
-## Author
+See [LICENSE](LICENSE) and the individual third-party credits recorded in the chapter and its [provenance records](chapter/records/). This cleanup does not change those credits or permission statuses.
+
+Corrections and suggestions are welcome through [GitHub issues](https://github.com/pfloos/ESQC_2026/issues).
 
 [**Pierre-François Loos**](https://pfloos.github.io/WEB_LOOS)<br>
 Laboratoire de Chimie et Physique Quantiques (UMR 5626)<br>
 Université de Toulouse, CNRS, UPS — Toulouse, France
-
-The slides and chapter are teaching material and remain under active development.

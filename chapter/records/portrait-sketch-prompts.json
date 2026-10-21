@@ -8,7 +8,8 @@
       463,
       600
     ],
-    "sha256": "d611ee86107e4f92ea00f23ce6e3629b6ac1939516f202bab6ac9f21c9ea94bc"
+    "sha256": "d611ee86107e4f92ea00f23ce6e3629b6ac1939516f202bab6ac9f21c9ea94bc",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-boys.png",
@@ -19,7 +20,8 @@
       515,
       600
     ],
-    "sha256": "33aaa12e4d26a7f14dda6dace183a18605cfd81e61e1e863096ce87ee243b607"
+    "sha256": "33aaa12e4d26a7f14dda6dace183a18605cfd81e61e1e863096ce87ee243b607",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-hartree.png",
@@ -30,7 +32,8 @@
       497,
       600
     ],
-    "sha256": "3e6dab2d52e6da677cf48112fab75c1303282a968efc586a5a0156f3648138bf"
+    "sha256": "3e6dab2d52e6da677cf48112fab75c1303282a968efc586a5a0156f3648138bf",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-swirles.png",
@@ -41,7 +44,8 @@
       414,
       600
     ],
-    "sha256": "a7dbc165cab099080276e2f82aff386dfe78d3d84bd7bc42df943e3c3aec1b1b"
+    "sha256": "a7dbc165cab099080276e2f82aff386dfe78d3d84bd7bc42df943e3c3aec1b1b",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-paldus.png",
@@ -52,7 +56,8 @@
       400,
       600
     ],
-    "sha256": "21384fa97dfa41d2f01b09dbac14b89a32a87eba1a4bc24c5f7c0001f38cab34"
+    "sha256": "21384fa97dfa41d2f01b09dbac14b89a32a87eba1a4bc24c5f7c0001f38cab34",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-william-hartree.png",
@@ -63,7 +68,8 @@
       600,
       548
     ],
-    "sha256": "b74949080e0350dbd82b7f05c8bde2e30f8a6389c2a13eb86be15c65acb5bc24"
+    "sha256": "b74949080e0350dbd82b7f05c8bde2e30f8a6389c2a13eb86be15c65acb5bc24",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-dirac.png",
@@ -74,7 +80,8 @@
       406,
       600
     ],
-    "sha256": "1f109d12944d0622e05abe3449f1be072d016fde98cdeedbedeae23cf900ec3f"
+    "sha256": "1f109d12944d0622e05abe3449f1be072d016fde98cdeedbedeae23cf900ec3f",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-dunning.png",
@@ -85,7 +92,8 @@
       450,
       600
     ],
-    "sha256": "65fb5790d684964d211158d5d4e634bebdd03f499249adfc8774c44bf2c0f59e"
+    "sha256": "65fb5790d684964d211158d5d4e634bebdd03f499249adfc8774c44bf2c0f59e",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-born.png",
@@ -96,7 +104,8 @@
       450,
       600
     ],
-    "sha256": "89b810b1d365c51e621d81d666be0b96f84a23f4de762b79ecdb04605c5cb8b6"
+    "sha256": "89b810b1d365c51e621d81d666be0b96f84a23f4de762b79ecdb04605c5cb8b6",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-pople.png",
@@ -107,7 +116,8 @@
       600,
       548
     ],
-    "sha256": "111ac9c91a69c200b5b1a452741a890bddd6b36253d54c194bd3969228f93bcb"
+    "sha256": "111ac9c91a69c200b5b1a452741a890bddd6b36253d54c194bd3969228f93bcb",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-oppenheimer.png",
@@ -118,7 +128,8 @@
       412,
       600
     ],
-    "sha256": "45e64f23120491a3503ae7aaaaaf557e2618fa52adde54bec8c380ed8c58825f"
+    "sha256": "45e64f23120491a3503ae7aaaaaf557e2618fa52adde54bec8c380ed8c58825f",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-coulson.png",
@@ -129,7 +140,8 @@
       465,
       600
     ],
-    "sha256": "0c6ee1a791b6d36530af4e9e5f225d5bc2a80789d39d33a953adf04b072c6731"
+    "sha256": "0c6ee1a791b6d36530af4e9e5f225d5bc2a80789d39d33a953adf04b072c6731",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-mulliken.png",
@@ -140,7 +152,8 @@
       480,
       600
     ],
-    "sha256": "cc545b1aebb6b6c2f661f0051492ede24d12c8c00cf7a67a2b010663aff19088"
+    "sha256": "cc545b1aebb6b6c2f661f0051492ede24d12c8c00cf7a67a2b010663aff19088",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-fischer-hjalmars.png",
@@ -151,7 +164,8 @@
       475,
       600
     ],
-    "sha256": "31f7938e0203a592d8bf4040a025d63eff2ed54b1f5e5a32f8393788fb46c99f"
+    "sha256": "31f7938e0203a592d8bf4040a025d63eff2ed54b1f5e5a32f8393788fb46c99f",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-mcweeny.png",
@@ -162,7 +176,8 @@
       445,
       600
     ],
-    "sha256": "8d27e7773d71950f6e6d7d8aec52ff6ffc582f7824b92edfb2b08491644a9c3a"
+    "sha256": "8d27e7773d71950f6e6d7d8aec52ff6ffc582f7824b92edfb2b08491644a9c3a",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-moller.png",
@@ -173,7 +188,8 @@
       483,
       600
     ],
-    "sha256": "7190d49f6541fdb91e42847f7fa3f4dc3eb4b791d7e2d7e496002c948427613c"
+    "sha256": "7190d49f6541fdb91e42847f7fa3f4dc3eb4b791d7e2d7e496002c948427613c",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-nesbet.png",
@@ -184,7 +200,8 @@
       580,
       600
     ],
-    "sha256": "b666729433b5a858014f5d30341fc16b5e7a70599b14642e9fa2b77265eda77b"
+    "sha256": "b666729433b5a858014f5d30341fc16b5e7a70599b14642e9fa2b77265eda77b",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-berthier.png",
@@ -195,7 +212,8 @@
       600,
       528
     ],
-    "sha256": "c11e22c4d93333fedf6af2501decdac187a18f0ddc6c34270daeb2d0e72c4b41"
+    "sha256": "c11e22c4d93333fedf6af2501decdac187a18f0ddc6c34270daeb2d0e72c4b41",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-plesset.png",
@@ -206,7 +224,8 @@
       480,
       600
     ],
-    "sha256": "091decc407a562bc63c5222e2b8f46359dfe2475f980fdaa672c5ac1a0f33151"
+    "sha256": "091decc407a562bc63c5222e2b8f46359dfe2475f980fdaa672c5ac1a0f33151",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-pulay.png",
@@ -217,7 +236,8 @@
       463,
       600
     ],
-    "sha256": "8424bf7974f787ff16c34f88de4889117e923f0fc8c686fdec868e2c01b8bec1"
+    "sha256": "8424bf7974f787ff16c34f88de4889117e923f0fc8c686fdec868e2c01b8bec1",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-pauli.png",
@@ -228,7 +248,8 @@
       415,
       600
     ],
-    "sha256": "af81c199a0585c57781bafce963c180c2627c12db4043de2c1f19da2e414af9a"
+    "sha256": "af81c199a0585c57781bafce963c180c2627c12db4043de2c1f19da2e414af9a",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-huzinaga.png",
@@ -239,7 +260,8 @@
       511,
       600
     ],
-    "sha256": "ad2989005a1484025e5cff44d7229818919ab040fcc2b8eb92a3690d0b4b605d"
+    "sha256": "ad2989005a1484025e5cff44d7229818919ab040fcc2b8eb92a3690d0b4b605d",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-slater.png",
@@ -250,7 +272,8 @@
       600,
       570
     ],
-    "sha256": "cfa78d9be978d6fbe97a4bfd4669b762a48aed78d738e9ce065be74c46598e63"
+    "sha256": "cfa78d9be978d6fbe97a4bfd4669b762a48aed78d738e9ce065be74c46598e63",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-condon.png",
@@ -261,7 +284,8 @@
       474,
       600
     ],
-    "sha256": "5f7a623e72d8e58a446e68253cc4a22d119891b5895d656c37a14035105c4d0f"
+    "sha256": "5f7a623e72d8e58a446e68253cc4a22d119891b5895d656c37a14035105c4d0f",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-hall.png",
@@ -272,7 +296,8 @@
       463,
       600
     ],
-    "sha256": "d7b0cb7e3625b8012ef192774d4185e44db43e3c7e0216d446a52585bce6eb54"
+    "sha256": "d7b0cb7e3625b8012ef192774d4185e44db43e3c7e0216d446a52585bce6eb54",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-brillouin.png",
@@ -283,7 +308,8 @@
       428,
       600
     ],
-    "sha256": "b20b07a3315e98e06c470080cf7dd8c36ff4e0fa73939f14cd4e57f10781cc0e"
+    "sha256": "b20b07a3315e98e06c470080cf7dd8c36ff4e0fa73939f14cd4e57f10781cc0e",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-lowdin.png",
@@ -294,7 +320,8 @@
       500,
       600
     ],
-    "sha256": "a70891fcc52d796e96ce17de77593ba78702560a692646dae42d5483f1dd4cc8"
+    "sha256": "a70891fcc52d796e96ce17de77593ba78702560a692646dae42d5483f1dd4cc8",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-roothaan.png",
@@ -305,7 +332,8 @@
       435,
       600
     ],
-    "sha256": "6ae35203c009da41b86461dc68d03db443289b6ccc2fb32a7e9b369be8ed5f15"
+    "sha256": "6ae35203c009da41b86461dc68d03db443289b6ccc2fb32a7e9b369be8ed5f15",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   },
   {
     "file": "figures/sketch-koopmans.png",
@@ -316,6 +344,7 @@
       449,
       600
     ],
-    "sha256": "1c6f2c942c5a815d37fe3ff55d827a6ff00185fe5b35e76cffd8e34a469c4eb7"
+    "sha256": "1c6f2c942c5a815d37fe3ff55d827a6ff00185fe5b35e76cffd8e34a469c4eb7",
+    "reference_revision": "b6c7763c15e4ffeb00e2aa7951902aa33209245d"
   }
 ]

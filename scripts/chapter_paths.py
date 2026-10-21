@@ -13,6 +13,9 @@ FILES = (f"chapter/{STEM}.tex",)
 def required_assets():
     """Resolve literal graphics and portrait-macro arguments in the one source."""
     text = (CHAPTER / f"{STEM}.tex").read_text()
+    # Commented-out illustrations are not compilation or submission inputs.
+    # Keep escaped percent signs, which are ordinary TeX text.
+    text = re.sub(r"(?<!\\)%[^\n]*", "", text)
     names = set()
     for name in re.findall(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}", text):
         if "#" not in name:

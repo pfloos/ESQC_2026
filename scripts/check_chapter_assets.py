@@ -5,7 +5,7 @@ import json
 import re
 import struct
 
-from chapter_paths import ROOT, CHAPTER, STEM, required_assets
+from chapter_paths import CHAPTER, STEM, required_assets
 
 
 def main():
@@ -27,8 +27,13 @@ def main():
         assert data[:8] == b"\x89PNG\r\n\x1a\n" and data[25] == 6, f"Not RGBA PNG: {path}"
         assert list(struct.unpack(">II", data[16:24])) == item["dimensions"], path
         assert max(item["dimensions"]) == 600, path
+        # Superseded photographs live in Git history, not in the active source
+        # tree. Keep an explicit immutable provenance pointer; a source checkout
+        # need not contain photographic originals or the full Git history.
         reference = item["reference_source"].split(" (", 1)[0]
-        assert (ROOT / reference).is_file(), reference
+        assert reference.startswith("archive/photographic-portraits/"), reference
+        assert ".." not in reference.split("/"), reference
+        assert re.fullmatch(r"[0-9a-f]{40}", item["reference_revision"]), reference
     print(f"Assets passed: one merged TeX source, {len(used)} required graphics, 29 RGBA sketches with provenance/checksums")
 
 

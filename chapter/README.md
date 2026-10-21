@@ -1,61 +1,57 @@
 # Many Electrons, One Determinant
 
-The standalone ESQC chapter lives entirely in this directory. Edit
-`ESQC_Loos_HF_BF_chapter.tex`: it contains the complete chapter, title page,
-historical panels, and native diagram/table definitions. There are no local
-TeX inputs or included chapter fragments. The original scientific notation,
-derivation steps, exercises, and Further reading are retained.
+**Hartree–Fock Theory, Basis Sets, and Molecular Integrals**
 
-The bibliography remains editable in `ESQC_Loos_HF_BF_chapter.bib`; the local
-`chapter-unsrtnat.bst` makes reference titles hyperlinks. Raster/PDF figures
-remain separate files in `figures/`, as required by LaTeX. A single TeX source
-does not mean that these graphics can be omitted from a source submission.
+The chapter has been submitted to arXiv; its public identifier is not yet available. This directory contains the complete editable source and all compilation inputs. Repository cleanup does not alter the submitted chapter text or scientific illustrations.
 
-## Build
+## Source and build
+
+Edit `ESQC_Loos_HF_BF_chapter.tex`: it contains the complete chapter, title page, historical panels, and native diagram/table definitions. There are no local TeX inputs. The bibliography is in `ESQC_Loos_HF_BF_chapter.bib`; `chapter-unsrtnat.bst` makes reference titles hyperlinks. Required graphics are in `figures/`.
 
 With TeX Live and latexmk, run from the repository root:
 
-    sh scripts/build_chapter.sh
+```sh
+sh scripts/build_chapter.sh
+```
 
-Or from this directory:
+Or, from this directory:
 
-    latexmk -pdf -outdir=build -interaction=nonstopmode -halt-on-error ESQC_Loos_HF_BF_chapter.tex
+```sh
+latexmk -pdf -outdir=build -interaction=nonstopmode -halt-on-error ESQC_Loos_HF_BF_chapter.tex
+```
 
-The PDF and all auxiliary files are placed in `build/`, which is not tracked.
-The historical-panel contents list may require several LaTeX passes; latexmk
-handles these automatically. No image-generation service is needed to build.
+The PDF and auxiliary files are placed in `build/`, which is not tracked. Latexmk runs BibTeX and repeats LaTeX to resolve references and the historical-panel contents list. No image-generation service or Blender installation is needed to compile.
 
-## Prepare source submission
+## Source package for future revisions
 
 After a successful build, run from the repository root:
 
-    python3 scripts/package_chapter.py
+```sh
+python3 scripts/package_chapter.py
+```
 
-This produces `submission.zip` and a matching `submission/` directory, each
-with exactly one `.tex` file, the bibliography and style, a generated `.bbl`,
-and only the graphics actually used. Drafts, original photographs, build
-artifacts, audit records, and the compiled PDF are excluded. Both outputs are
-generated locally and ignored by Git. The script does not upload anything or
-choose a distribution licence. Review third-party artwork and the chosen
-submission licence before posting.
+This generates `submission.zip` and a matching `submission/` directory, with exactly one `.tex`, the bibliography and style, the generated `.bbl`, and only the graphics actually used. Commented-out illustrations are excluded. Both outputs are ignored by Git; the script does not upload anything.
 
-## Checks and records
+## Verification
 
 From the repository root:
 
-    python3 scripts/check_chapter_source.py
-    python3 scripts/check_chapter_layout.py
-    python3 scripts/check_chapter_notation.py
-    python3 scripts/check_chapter_references.py --check-bbl
-    python3 scripts/check_chapter_assets.py
-    python3 scripts/check_chapter_hf_algebra.py
-    python3 scripts/check_chapter_integrals.py
-    python3 scripts/check_chapter_mp2.py
+```sh
+python3 scripts/test_chapter_paths.py
+python3 scripts/check_chapter_source.py
+python3 scripts/check_chapter_layout.py
+python3 scripts/check_chapter_notation.py
+python3 scripts/check_chapter_references.py --check-bbl
+python3 scripts/check_chapter_assets.py
+python3 scripts/check_chapter_hf_algebra.py
+python3 scripts/check_chapter_integrals.py
+python3 scripts/check_chapter_mp2.py
+```
 
-`records/` retains the scientific, notation, coverage and reference audits.
-Historical paths in earlier records describe the repository at the time of
-the audit. Their former `.tex` inputs now appear inline in the single source,
-between incorporation markers. [Portrait illustration documentation](records/portrait-sketches.md)
-records the modern AI-assisted sketches; these are not archival photographs.
-Superseded photographs and their original provenance are preserved outside
-this directory in `../archive/photographic-portraits/`.
+The rendered-reference check requires a successful build. These are source-consistency and targeted numerical checks, not a substitute for scientific review.
+
+## Credits and reproducibility
+
+[`records/`](records/) retains reference-verification data, [portrait source credits](records/portrait-sources.md), [sketch prompts and provenance](records/portrait-sketches.md), and [cover definitions and molecular data](records/cover-illustration.md). Original photographs and development drafts are recoverable at Git revision `b6c7763`; they are not compilation inputs.
+
+The approved cover can be regenerated with `scripts/render_basis_cover.py` and Blender. Regenerated scenes, metadata and previews are written to `build/cover/`, not to the source tree. See the [cover record](records/cover-illustration.md) for commands and numerical checks.

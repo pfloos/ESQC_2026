@@ -11,7 +11,7 @@ The final illustrations were made on 21 October 2026 using the built-in
 Each uses the corresponding existing photograph as a likeness reference;
 the two PDF portraits were rendered to PNG first. They are modern sketch
 adaptations, **not archival drawings**, and are labelled as adaptations in
-the chapter. The author should review the sketches before public submission.
+the chapter.
 
 The common brief requested a faithful head-and-shoulders graphite/fine-pen
 sketch retaining the actual face, age, hair, spectacles, facial hair, clothing
@@ -33,8 +33,11 @@ theorem boxes. Applicable attribution/share-alike requirements are not
 superseded by the repository's general licence. Several source portraits
 remain subject to permission checks: these adaptations are **not a rights
 clearance or a workaround for unresolved photographic reuse permissions**.
-Superseded photographs and their complete original credit/permission record
-are preserved in `../../archive/photographic-portraits/`, outside the chapter
-and submission bundle. Replacing the old photographs does not remove the need
+The complete original credit/permission record is preserved in
+[`portrait-sources.md`](portrait-sources.md). Superseded photographs remain
+recoverable at Git revision `b6c7763c15e4ffeb00e2aa7951902aa33209245d` under
+`archive/photographic-portraits/`; each prompt record includes that immutable
+reference revision. They are not needed in the active working tree or a
+submission bundle. Replacing the old photographs does not remove the need
 to resolve the rights of adapted source portraits before public distribution
 under a licence that requires those rights.

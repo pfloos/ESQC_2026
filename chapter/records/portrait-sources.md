@@ -1,3 +1,13 @@
+# Historical source-photograph credits
+
+This is the preserved provenance record for the photographs used as sketch
+references. It describes the earlier photographic stage, not the current
+sketch assets. Superseded photographs are no longer working-tree inputs;
+they remain recoverable at Git revision `b6c7763c15e4ffeb00e2aa7951902aa33209245d` under
+`archive/photographic-portraits/`. File paths and reproduction descriptions
+below refer to that historical revision. This cleanup does not change any
+attribution, licence or permission status. See [the current sketch record](portrait-sketches.md).
+
 # Historical portraits in the chapter
 
 ## Josef Paldus (21 October 2026)
