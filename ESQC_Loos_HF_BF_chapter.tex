@@ -8591,7 +8591,7 @@ but the usual Aufbau occupation does not preserve that configuration.
 Figure~\ref{fig:variational-collapse} illustrates the loss of the promoted
 occupation under an Aufbau SCF iteration.
 \begin{center}
-\begin{tikzpicture}[x=1cm,y=0.78cm]
+\begin{tikzpicture}[x=1cm,y=0.78cm,scale=1.3]
   \node[font=\bfseries] at (-4.6,2.75) {Ground-state orbitals};
   \draw[thick] (-5.25,0)--(-3.95,0) node[right] {$\psi_i$};
   \draw[thick] (-5.25,1.45)--(-3.95,1.45) node[right] {$\psi_a$};
@@ -8969,7 +8969,7 @@ unchanged.
 Figure~\ref{fig:orbital-localization} contrasts schematic canonical and
 localized representations of the same occupied space.
 \begin{center}
-\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{tikzpicture}[x=1cm,y=1cm,scale=1.3]
   \node[font=\bfseries] at (-4.1,1.15) {canonical orbitals};
   \node[font=\bfseries] at (4.1,1.15) {localized orbitals};
   \foreach \x in {-5.0,-4.1,-3.2}{\fill[hfInk] (\x,0) circle (0.07);}
@@ -9615,15 +9615,13 @@ total-energy expression, this polynomial omits the nuclear constant $1/R$.
 That constant does not affect minimization with respect to $\theta$ at
 fixed $R$, but must be added when comparing total energies as $R$ varies.
 \begin{equation}
-\begin{split}
   E_\text{UHF}(\theta)
-  &=2\cos^2\theta\,h_{gg}
+  =2\cos^2\theta\,h_{gg}
   +2\sin^2\theta\,h_{uu}
   +\cos^4\theta\,J_{gg}
   +\sin^4\theta\,J_{uu}
   \\
-  &+2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu})
-\end{split}
+  +2\sin^2\theta\cos^2\theta\qty(J_{gu}-2K_{gu})
 \end{equation}
 Introducing
 \begin{align}
@@ -9858,7 +9856,7 @@ can appear in both spin components of each occupied spinor.
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[>=stealth,scale=0.8]
+\begin{tikzpicture}[>=stealth,scale=1]
 \foreach \x/\name/\desc in {
  -5.7/RHF/{same spatial orbital},
  -1.9/UHF/{different spatial orbitals},
@@ -9943,10 +9941,8 @@ with
   &=\mqty(\boldsymbol{\sigma}_x\\\boldsymbol{\sigma}_y\\
     \boldsymbol{\sigma}_z)
 \end{align}
-Here $\bI_\text{spin}$ is the $2\times2$ spin identity. Spin is the outer
-block index, so the order of the tensor factors is spin followed by AO.
-This tensor ordering agrees with the displayed block matrix. In this
-decomposition,
+Here $\bI_\text{spin}$ is the $2\times2$ identity matrix in the spin basis. 
+In this decomposition,
 $\bP$ is half of the total charge-density matrix, whereas
 $\boldsymbol{\mathcal P}$ is the full spinor density matrix.
 
@@ -9981,17 +9977,15 @@ matrix $\bH$ as in the finite-basis derivation.
     -\bK[\bP^{\beta\beta}])
 \end{equation}
 where
-\begin{equation}
-\begin{split}
+\begin{align}
   J_{\mu\nu}[\bP]
   &=\sum_{\lambda\sigma}P_{\lambda\sigma}
     \rbraket{\mu\nu}{\lambda\sigma}
-  \\
+  &
   K_{\mu\nu}[\bP]
   &=\sum_{\lambda\sigma}P_{\lambda\sigma}
     \rbraket{\mu\lambda}{\sigma\nu}
-\end{split}
-\end{equation}
+\end{align}
 The AO functions in these contractions are real, but the spinor coefficients
 and density blocks may be complex. The exchange indices follow the definition
 $P_{\lambda\sigma}=\sum_i C_{\lambda i}C_{\sigma i}^*$; exchanging
