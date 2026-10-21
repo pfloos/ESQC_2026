@@ -217,37 +217,31 @@ orbitals \citep{Slater1930Orbitals}. The general forms used in the comparison ar
 \end{split}
 \end{equation}
 For their $1s$ representatives, the STO has a nonzero radial slope at the nucleus,
-\begin{equation}
-\begin{split}
+\begin{align}
   \phi_\text{1s}^\text{STO}(r)&\propto e^{-\zeta r}
-  \\
+  &
   \eval{\dv{\phi_\text{1s}^\text{STO}(r)}{r}}_{r=0}
  &=-\zeta\phi_\text{1s}^\text{STO}(0)
-\end{split}
-\end{equation}
+\end{align}
 The logarithmic slope is $-\zeta$; the electron--nucleus cusp condition
 requires $-Z$ for a point nucleus of charge $Z$ \citep{Kato1957}, and is satisfied by this
 representative when $\zeta=Z$. The factor $\phi(0)$ accounts for the
 normalization dependence of the radial derivative.
 By contrast, the GTO is flat at the nucleus,
-\begin{equation}
-\begin{split}
+\begin{align}
   \phi_\text{1s}^\text{GTO}(r)&\propto e^{-\alpha r^2}
-  \\
+  &
   \eval{\dv{\phi_\text{1s}^\text{GTO}(r)}{r}}_{r=0}&=0
-\end{split}
-\end{equation}
+\end{align}
 The STO also has the correct exponential long-range behavior of a molecular
 orbital. For the HOMO, its leading radial exponential factor in the
 frozen-orbital interpretation is
-\begin{equation}
-\begin{split}
+\begin{align}
   \psi_\text{HOMO}^\text{STO}(r)
  &\propto e^{-\sqrt{-2\epsilon_\text{HOMO}}r}
-  \\
+  &
   \mathrm{IP}&=-\epsilon_\text{HOMO}
-\end{split}
-\end{equation}
+\end{align}
 A Gaussian instead decays too rapidly. Multicenter STO integrals are
 substantially more difficult to evaluate than their Gaussian counterparts.
 This computational advantage usually favors GTOs, although more Gaussian
