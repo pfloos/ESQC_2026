@@ -644,20 +644,19 @@ separation by replacing selected core electrons and their nuclear interaction
 with an operator acting on the remaining explicit electrons.
 The key idea of an effective core potential \citep{WadtHay1985} is to treat only the chemically
 relevant electrons explicitly. It replaces the nuclear attraction and the
-chemically inactive core electrons by an effective one-electron operator,
+chemically inactive core electrons
 \begin{equation}
-\begin{split}
- \hh(\br)&=-\frac{\nabla^2}{2}
+ \hh(\br)=-\frac{\nabla^2}{2}
  -\sum_A\frac{Z_A}{\abs{\br-\bR_A}}
- \\
- &\longrightarrow
- \hh^\text{ECP}(\br)=-\frac{\nabla^2}{2}
+\end{equation}
+by an effective one-electron operator
+\begin{align}
+ \hh^\text{ECP}(\br)&=-\frac{\nabla^2}{2}
  -\sum_A\frac{\green{Q_A}}{\abs{\br-\bR_A}}
  +\sum_A\Hat{U}_A^\text{ECP}(\br)
- \\
+ &
  \green{Q_A}&=Z_A-N_A^\text{core}
-\end{split}
-\end{equation}
+\end{align}
 Here $N_A^\text{core}$ is the number of electrons removed by the ECP on atom
 $A$, and $Q_A$ is the charge of the remaining ionic core. It is not the
 population-analysis charge $q_A$ introduced earlier.
