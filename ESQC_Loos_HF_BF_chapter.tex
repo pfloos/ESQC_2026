@@ -9610,7 +9610,8 @@ That constant does not affect minimization with respect to $\theta$ at
 fixed $R$, but must be added when comparing total energies as $R$ varies.
 \begin{equation}
 \begin{split}
-  E_\text{UHF}(\theta)={}&2\cos^2\theta\,h_{gg}
+  E_\text{UHF}(\theta)
+  &=2\cos^2\theta\,h_{gg}
   +2\sin^2\theta\,h_{uu}
   +\cos^4\theta\,J_{gg}
   +\sin^4\theta\,J_{uu}
@@ -9641,8 +9642,8 @@ Its derivative is
   +x\qty(J_{gg}+J_{uu}-2A)
   ]
 \end{equation}
-Because $\dv{x}{\theta}=-\sin(2\theta)$, stationarity requires either
-$\sin(2\theta)=0$ or $\dv{E_\text{UHF}}{x}=0$. The first condition contains
+Because $\dv*{x}{\theta}=-\sin(2\theta)$, stationarity requires either
+$\sin(2\theta)=0$ or $\dv*{E_\text{UHF}}{x}=0$. The first condition contains
 the restricted solution $\theta=0$; the second gives the broken-symmetry
 solution.
 Besides the restricted stationary point $\theta=0$, a
@@ -9673,7 +9674,7 @@ and the Coulson--Fischer point \citep{CoulsonFischer1949} is defined by
     \eval{\dv[2]{E}{\theta}}_{\theta=0}=0
 \end{equation}
 For $R<R_\text{CF}$, the RHF curvature is positive and there is one minimum
-at $\theta=0$. At $R=R_\text{CF}$ it vanishes and the minimum becomes flat.
+at $\theta=0$. At $R=R_\text{CF}$, it vanishes and the minimum becomes flat.
 For $R>R_\text{CF}$ it is negative and two UHF minima occur at
 $\pm\theta^\star$. The RHF determinant does not disappear: it changes from a
 minimum to an unstable stationary point while two degenerate UHF minima
