@@ -111,6 +111,8 @@
   title={Historical perspective: #1}}
 \newcommand{\hfbiography}[4]{%
   \begin{hfhistorical}{#1}
+  \phantomsection
+  \addcontentsline{loh}{subsection}{#1}
   \if\relax\detokenize{#2}\relax
     #3\par
   \else
@@ -123,6 +125,14 @@
   \fi
   \smallskip{\scriptsize\color{hfInk!75}#4\par}
   \end{hfhistorical}}
+% Historical-panel navigation is generated from the boxes themselves.
+\makeatletter
+\newcommand{\listofhistoricalperspectives}{%
+  \phantomsection
+  \section*{Historical perspectives}
+  \addcontentsline{toc}{section}{Historical perspectives}
+  \@starttoc{loh}}
+\makeatother
 \newcommand{\hfbiophoto}[1]{%
   \includegraphics[width=\linewidth,height=27mm,keepaspectratio]{#1}}
 % Each member of a historical pair has a separately identified portrait and text.
@@ -396,6 +406,8 @@ that underpin molecular electronic-structure theory.
 \end{hfabstract}
 \clearpage
 \tableofcontents
+\clearpage
+\listofhistoricalperspectives
 \clearpage
 \phantomsection
 \section*{Notation and conventions}
@@ -728,6 +740,7 @@ developed independently by Fock and Slater in 1930
 \citep{Fock1930,Slater1930}.
 
 \hfBioHartree
+\hfBioWilliamHartree
 \hfBioFock
 
 \begin{figure}[htbp]
@@ -774,6 +787,8 @@ representations used in practice (Section~\ref{sec:basis-sets}). Finally,
 Sections~\ref{sec:gaussian-integrals} and~\ref{sec:ri} develop the molecular
 integrals and low-rank representations required to construct the
 Hartree--Fock matrices.
+
+\hfBioSwirles
 
 \subsection{The electronic many-body problem}
 
@@ -5503,6 +5518,8 @@ minimum or an unstable stationary solution rather than the global HF minimum.
 
 \subsubsection{Unitary invariance and canonical orbitals}
 
+\hfBioDirac
+
 \paragraph{Unitary invariance of the occupied orbitals.}
 
 The HF determinant is not associated with a unique set of occupied
@@ -7499,6 +7516,8 @@ Schematically,
 \end{equation}
 where $\bP$ is the one-particle density matrix constructed from the occupied
 molecular orbitals \citep{McWeeny1960}.
+
+\hfBioMcWeeny
 
 This circular dependence is the finite-basis manifestation of the
 self-consistency already encountered in the continuous HF equations:

@@ -1,5 +1,78 @@
 # Historical portraits in the chapter
 
+## Five further historical perspectives (21 October 2026)
+
+Four authentic photographs accompany the five new biographies; Bernardi's
+box is text-only pending an accessible authenticated portrait. The author
+confirmed that he has no portrait to supply. No generated likenesses or
+namesake photographs have been used. The established author-approved draft
+policy is retained: images without explicit reuse terms print **permission
+pending** in their panels. Credit does not grant rights; obtain permission
+from the actual rights holder before a permission-cleared publication.
+
+### William Hartree
+
+- Asset: `portrait-william-hartree.jpg`, 800 x 569 pixels, downloaded unchanged.
+- [International Slide Rule Museum, Yearbooks, row 008](https://sliderulemuseum.org/Yearbooks.shtml)
+  explicitly identifies William Hartree, Douglas's father, in the late 1930s.
+- [Source image](https://sliderulemuseum.org/Ephemera/william_hartree_father_of_douglas_Hartree_Late1930s.jpg).
+  Photographer and reuse terms are unspecified: **draft reproduction,
+  permission pending**. The museum is the download source, not an assertion
+  about copyright ownership. The identically named nineteenth-century
+  Science Museum sitter was excluded because its photograph predates this
+  William Hartree's birth.
+- Biography: [A. V. Hill's Nature obituary](https://doi.org/10.1038/152154a0),
+  [MacTutor Hartree biography](https://mathshistory.st-andrews.ac.uk/Biographies/Hartree/),
+  and the [scientific archive catalogue](https://centreforscientificarchives.co.uk/catalogues/hartree-douglas-rayner-v2/).
+
+### Bertha Swirles, Lady Jeffreys
+
+- Asset: `portrait-swirles-source.pdf`, one portrait-only PDF page.
+- [Girton College source booklet](https://www.girton.cam.ac.uk/sites/default/files/2020-10/CoB10YearBooklet.pdf),
+  PDF page 8, 2017 entry: its caption identifies Lady Jeffreys and credits
+  Dr John Davies. The entry year is not a photograph date.
+- The original embedded JPEG stream (`Image78`) is retained byte-for-byte.
+  A minimal PDF reproduces precisely the source page's existing portrait
+  viewport, without the surrounding text, other pictures, or fonts. No
+  raster retouching or image resynthesis; the chapter scales the PDF.
+- No explicit reuse license is supplied: **draft reproduction, permission
+  pending**, credited to Dr John Davies / Girton College.
+- Biography also checked against [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Jeffreys_Bertha/).
+  The non-free Wikipedia portrait was not used or treated as freely licensed.
+
+### Paul Adrien Maurice Dirac
+
+- Asset: `portrait-dirac.jpg`, 750 x 1107 pixels, downloaded unchanged.
+- [Commons record](https://commons.wikimedia.org/wiki/File:Paul_Dirac,_1933.jpg),
+  revision 904143872, credits the Nobel Foundation and dates the portrait
+  to 1933; photographer unspecified.
+- [Source image](https://upload.wikimedia.org/wikipedia/commons/5/50/Paul_Dirac%2C_1933.jpg).
+  Commons lists it as public domain under its anonymous-work 70-year rule;
+  the panel attributes that statement to Commons, not to an independent
+  worldwide rights clearance. Its metadata flags documentation of US
+  public-domain status as unresolved.
+- Biography: [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Dirac/);
+  scientific connection checked against the original 1930 paper.
+
+### Roy McWeeny
+
+- Asset: `portrait-mcweeny.jpg`, 104 x 140 pixels, downloaded unchanged.
+- [IAQMS profile](https://www.iaqms.org/deceased/mcweeny.php);
+  [source image](https://www.iaqms.org/images/members/mcweeny.jpg).
+- Photographer, photograph date, and reuse terms unspecified: **draft
+  reproduction, permission pending**. The small supplied portrait is not
+  artificially upscaled or regenerated.
+- Biography/lifespan: [Brian Sutcliffe and Michael Robb, IAQMS obituary](https://www.iaqms.org/obituary/McWeenyObituary.pdf).
+
+### Fernando Bernardi
+
+- No portrait asset added. His named author biography/portrait occurs on
+  p. 321 of [Bernardi, Olivucci, and Robb (1996)](https://doi.org/10.1039/CS9962500321).
+  Publisher and archived-copy image downloads were inaccessible. An automated
+  author-profile image could not be inspected and was not substituted.
+- The chapter explicitly notes the missing source image. Lifespan dates
+  are omitted rather than inferred from unrelated people with similar names.
+
 ## Gaston Berthier (added 20 October 2026)
 
 - Asset: `portrait-berthier.jpg`, 150 x 202 pixels, downloaded unchanged.

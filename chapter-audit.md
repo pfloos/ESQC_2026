@@ -1043,3 +1043,43 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill guided a targeted preview of the neighboring historical
   boxes and the new reference on printed pages 88--89 and 127 (PDF pages
   95--96 and 134), not a full-chapter visual audit.
+
+## Five historical additions and panel contents (21 October 2026)
+
+- Pulled the author's changes through `184cd0e` before editing and checked
+  again on resuming. Preserved the author's UHF/dissociation equation-layout
+  revisions; no existing mathematical display was changed.
+- Added the five approved historical perspectives: William Hartree beside
+  Douglas Hartree, Bertha Swirles in the introductory historical context,
+  Dirac at occupied-space unitary invariance, McWeeny at the density-matrix
+  introduction, and Bernardi at BSSE/counterpoise. The existing biographies
+  remain byte-for-byte unchanged. No existing text or figure was relocated.
+- Added four verified primary references: the Hartrees' 1935 beryllium
+  calculation, Swirles's 1935 relativistic SCF paper, the three-author 1939
+  configuration-superposition study, and Dirac's 1930 density-matrix paper.
+  Distinguish the numerical contribution of William from the theoretical
+  construction of Douglas, and the extensions studied by Swirles from the
+  ordinary non-relativistic single-determinant theory. Existing McWeeny and
+  Boys--Bernardi references are reused, not duplicated.
+- Included authenticated photographs for four people, with individual
+  provenance/reuse statements. William Hartree, Swirles, and McWeeny retain
+  the author's approved credited-draft/permission-pending policy. Dirac's
+  portrait is described as listed public domain by Commons, with its
+  documentation limits recorded. Swirles's PDF preserves the original
+  embedded JPEG stream and source viewport without unrelated source text.
+  Bernardi's source-image download was inaccessible and the author has no
+  portrait to supply; his complete text-only panel explicitly notes that gap.
+- Added an automatically generated Historical perspectives contents page
+  after the main contents (printed page iii, PDF page 4). Each biography
+  writes its exact panel title and page to a separate generated `.loh` file,
+  with a unique hyperlink anchor. All 25 entries were checked against their
+  actual PDF destinations and printed page numbers. The list itself is
+  linked from the main contents. Added the generated file to `.gitignore`.
+- All seven chapter checks pass, including the 92 cited/title-linked
+  references. All 641 existing displays, all exercise/solution blocks, both
+  SCF cards, and Further reading are unchanged from `184cd0e`. Compilation
+  succeeds at 140 pages without undefined references/citations, duplicate
+  labels, oversized floats, overfull-box warnings, or PDF-import errors.
+- The PDF skill guided targeted inspection of the historical contents and
+  the five new panels: PDF pages 4, 9, 11, 56, 75, and 118 (printed pages
+  iii, 1, 3, 48, 67, and 110). This was not a full-chapter visual audit.
