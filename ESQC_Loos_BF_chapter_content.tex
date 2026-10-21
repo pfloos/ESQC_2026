@@ -1128,14 +1128,12 @@ is the foundation of the recurrence construction below.
 The remaining one-dimensional integral is collected into the generalized Boys
 function. Here $m$ is a nonnegative integer order and $x$ a nonnegative,
 dimensionless argument, not a Cartesian coordinate:
-\begin{equation}
-\begin{split}
+\begin{align}
   F_m(x)&=\boxed{\int_0^1t^{2m}\exp(-xt^2)\dd t}
-  \\
+  &
   F_0(x)&=\sqrt{\frac{\pi}{4x}}\erf(\sqrt x)
-\end{split}
   \label{eq:boys-functions}
-\end{equation}
+\end{align}
 At the origin, the exponential becomes unity and the limiting value follows
 directly:
 \begin{equation}
@@ -1189,18 +1187,16 @@ Here $i$ labels a Cartesian direction, $x$, $y$, or $z$, rather than an
 occupied orbital. The vector $\bI_i$ has unit component in direction $i$ and
 zero components in the other two directions. For an unnormalized primitive
 Cartesian Gaussian, the key identity is
-\begin{equation}
-\begin{split}
+\begin{align}
   \pdv{\sket{\red{\ba}}}{A_i}
  &=2\alpha\sket{\red{\ba}+\bI_i}
  -a_i\sket{\red{\ba}-\bI_i}
-  \\
+  &
   \sket{\red{\ba}+\bI_i}
  &=\frac{1}{2\alpha}\qty[
  \pdv{\sket{\red{\ba}}}{A_i}
  +a_i\sket{\red{\ba}-\bI_i}]
-\end{split}
-\end{equation}
+\end{align}
 Applying this identity to auxiliary ERIs creates the Obara--Saika vertical
 recurrence relations (VRRs), so that integrals are built recursively rather
 than independently:
@@ -1214,7 +1210,7 @@ On the bra pair, angular momentum is built on $\bA$ according to
 \begin{equation}
 \begin{split}
  \sbraket{(\red{\ba}+\bI_i)\bO}{\bO\bO}^{(m)}
- ={}&(P_i-A_i)\sbraket{\red{\ba}\bO}{\bO\bO}^{(m)}
+ &=(P_i-A_i)\sbraket{\red{\ba}\bO}{\bO\bO}^{(m)}
  -\frac{\eta}{\zeta+\eta}(P_i-Q_i)
  \sbraket{\red{\ba}\bO}{\bO\bO}^{(m+1)}\\
  &+\frac{a_i}{2\zeta}\qty[
@@ -1227,7 +1223,7 @@ On the ket pair, angular momentum is built on $\bC$ according to
 \begin{equation}
 \begin{split}
  \sbraket{\red{\ba}\bO}{(\orange{\bc}+\bI_i)\bO}^{(m)}
- ={}&(Q_i-C_i)\sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)}
+ &=(Q_i-C_i)\sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m)}
  -\frac{\zeta}{\zeta+\eta}(Q_i-P_i)
  \sbraket{\red{\ba}\bO}{\orange{\bc}\bO}^{(m+1)}\\
  &+\frac{c_i}{2\eta}\qty[
@@ -1241,8 +1237,8 @@ On the ket pair, angular momentum is built on $\bC$ according to
 
 The signs of the product-center terms can be checked directly from the
 fundamental integral. With $T=\vartheta\abs{\bP-\bQ}^2$, the definition of
-the Boys function gives $\dv{F_m(T)}{T}=-F_{m+1}(T)$. Since
-$\pdv{P_i}{A_i}=\alpha/\zeta$, differentiating the fundamental integral
+the Boys function gives $\dv*{F_m(T)}{T}=-F_{m+1}(T)$. Since
+$\pdv*{P_i}{A_i}=\alpha/\zeta$, differentiating the fundamental integral
 and dividing by $2\alpha$ yields
 \begin{equation}
  \sbraket{\bI_i\bO}{\bO\bO}^{(m)}
