@@ -19,7 +19,7 @@ except ImportError:
     bpy = None
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "drafts/cover-studies"
+OUT = ROOT / "archive/drafts/cover-studies"
 STEM = "06-porphine-exact-gaussians"
 # Entries are coefficient, Cartesian powers. Coordinates are local to each atom.
 FUNCTIONS = [

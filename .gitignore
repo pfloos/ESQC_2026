@@ -20,3 +20,15 @@
 /output/pdf/*.fdb_latexmk
 /output/pdf/*.synctex.gz
 /tmp/pdfs/
+
+# Isolated chapter build and reproducible submission package.
+/chapter/build/
+/chapter/submission/
+/chapter/submission.zip
+/archive/pre-consolidation/
+/archive/local-build-intermediates/
+/archive/output/pdf/*.aux
+/archive/output/pdf/*.log
+/archive/output/pdf/*.out
+/archive/output/pdf/*.fls
+/archive/output/pdf/*.fdb_latexmk

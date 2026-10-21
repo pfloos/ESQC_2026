@@ -12,7 +12,7 @@ import re
 import sys
 
 
-ROOT = Path(__file__).resolve().parents[1]
+from chapter_paths import ROOT, CHAPTER, STEM, FILES
 
 
 def main():
@@ -20,13 +20,9 @@ def main():
     parser.add_argument("--check-bbl", action="store_true",
                         help="after compilation, verify every rendered title link")
     args = parser.parse_args()
-    bib = (ROOT / "ESQC_Loos_HF_BF_chapter.bib").read_text()
-    audit = (ROOT / "chapter-reference-audit.md").read_text()
-    sources = [
-        ROOT / "ESQC_Loos_HF_BF_chapter.tex",
-        ROOT / "ESQC_Loos_BF_chapter_content.tex",
-        ROOT / "chapter-biographies.tex",
-    ]
+    bib = (CHAPTER / f"{STEM}.bib").read_text()
+    audit = (CHAPTER / "records/chapter-reference-audit.md").read_text()
+    sources = [ROOT / name for name in FILES]
     errors = []
     entries = {}
     for match in re.finditer(r"@(\w+)\s*\{([^,]+),(.*?)(?=\n@|\Z)", bib, re.S):
@@ -76,7 +72,7 @@ def main():
         errors.append(f"Audit record has no retained bibliography entry: {key}")
 
     if args.check_bbl:
-        path = ROOT / "ESQC_Loos_HF_BF_chapter.bbl"
+        path = CHAPTER / "build" / f"{STEM}.bbl"
         if not path.exists():
             errors.append("Compile the chapter before checking rendered title links")
         else:

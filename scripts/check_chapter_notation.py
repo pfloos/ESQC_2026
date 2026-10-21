@@ -13,6 +13,7 @@ import subprocess
 
 from check_chapter_layout import DISPLAY, FILES, ROOT, math_tokens, uncomment
 from check_chapter_source import spin_population_subscripts
+from chapter_paths import revision_source
 
 
 def equivalent_tokens(expression):
@@ -53,8 +54,6 @@ def main():
     parser.add_argument("--compare-math", metavar="REF")
     args = parser.parse_args()
     paths = [ROOT / name for name in FILES]
-    paths += [ROOT / "chapter-biographies.tex"]
-    paths += sorted((ROOT / "chapter-figures").rglob("*.tex"))
     rules = (
         (r"\\bC_\s*(?:\\(?:alpha|beta|sigma)\b|\{\s*\\(?:alpha|beta|sigma)\s*\})",
          "use superscript spin labels on C"),
@@ -83,8 +82,7 @@ def main():
     checked = changed = 0
     if args.compare_math:
         for name in FILES:
-            before = subprocess.check_output(["git", "show", f"{args.compare_math}:{name}"],
-                                             cwd=ROOT, text=True)
+            before = revision_source(args.compare_math)
             after = (ROOT / name).read_text()
             old = [m[2] for m in DISPLAY.finditer(uncomment(before))]
             new = [m[2] for m in DISPLAY.finditer(uncomment(after))]

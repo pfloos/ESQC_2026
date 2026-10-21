@@ -33,63 +33,24 @@ the article class, dark green headings, and the
 slides' notation and custom commands. Equation punctuation is omitted;
 mathematical separators and explicit matrix-multiplication dots are retained.
 
-The main source is [ESQC_Loos_HF_BF_chapter.tex](ESQC_Loos_HF_BF_chapter.tex).
-It includes [ESQC_Loos_BF_chapter_content.tex](ESQC_Loos_BF_chapter_content.tex)
-and uses [ESQC_Loos_HF_BF_chapter.bib](ESQC_Loos_HF_BF_chapter.bib) for the
-bibliography. These files should remain together in the repository root.
-The approved editable figure and table fragments are in
-[`chapter-figures/`](chapter-figures/); retain that directory when compiling.
-The cover uses a uniform white background with dark-green text and side stripe.
-Its layout is defined in
-[`chapter-titlepage.tex`](chapter-titlepage.tex), which must also remain
-alongside the main source. Its approved porphine illustration is
-[`chapter-figures/cover-porphine-gaussians.png`](chapter-figures/cover-porphine-gaussians.png).
-Retain that image when compiling; no 3D renderer or new LaTeX packages are
-needed. The illustration plots genuine normalized real s/p/d/f/g Gaussian
-functions on a PubChem molecular framework. [Definitions, source data, and
-reproduction instructions](drafts/cover-studies/06-porphine-exact-gaussians.md)
-are retained with the design record.
-The bibliography has direct DOI links; article identities and verification
-exceptions are recorded in [the reference audit](chapter-reference-audit.md).
+The complete chapter is now in [`chapter/`](chapter/), separate from the
+slides. Its **single editable LaTeX source** is
+[`chapter/ESQC_Loos_HF_BF_chapter.tex`](chapter/ESQC_Loos_HF_BF_chapter.tex):
+the title page, historical panels, native figures/tables, and basis/integral
+material have all been incorporated. The bibliography and required graphics
+live alongside it. No original slide source or slide asset has been changed.
 
-### Building the chapter
+From the repository root, build and prepare the source package with:
 
-With TeX Live and latexmk installed, run this from the repository root:
+    sh scripts/build_chapter.sh
+    python3 scripts/package_chapter.py
 
-    latexmk -pdf -interaction=nonstopmode -halt-on-error ESQC_Loos_HF_BF_chapter.tex
-
-latexmk runs BibTeX and repeats LaTeX as needed to resolve citations and
-cross-references. The resulting PDF is generated locally and is not tracked
-in Git. The chapter uses the same scientific/font packages as the slides,
-with article-layout packages and natbib for citations; it does not need Beamer.
-Exercise statements and complete solutions use breakable `tcolorbox` frames,
-with identifying headings repeated when a solution continues on another page.
-If a local build still has auxiliary files from the former book class,
-remove those with the cleanup command below before rebuilding.
-
-To remove auxiliary build files while retaining the PDF:
-
-    latexmk -c ESQC_Loos_HF_BF_chapter.tex
-
-### Chapter verification records
-
-[The five-pass audit](chapter-audit.md) describes scientific corrections and
-editorial decisions. [The slide coverage index](chapter-slide-coverage.md)
-maps every active frame of both presentations to the chapter.
-Corrections in the chapter do not silently modify the original slides.
-
-The following checks run with Python's standard library from the repository root:
-
-    python3 scripts/check_chapter_source.py
-    python3 scripts/check_chapter_references.py
-    python3 scripts/check_chapter_integrals.py
-
-They check displayed-equation punctuation, citation/DOI-audit consistency,
-and independent numerical tests of OS recurrences, RI projection, and GHF
-matrix conventions. The reference script is an offline consistency check,
-not an automated test that a publication exists or supports a claim.
-Compilation checks supplement these tests; visual/overflow review remains
-a separate editorial task.
+The PDF is generated in `chapter/build/`; `chapter/submission.zip` contains
+exactly one `.tex` source and only its required supporting files. See the
+[chapter instructions](chapter/README.md) for compilation and verification.
+The [audit records](chapter/records/) retain the scientific/editorial history.
+Earlier designs and photographic provenance are preserved in
+[`archive/`](archive/), outside the chapter and submission package.
 
 ## Building the slides
 
@@ -115,19 +76,20 @@ The sources use Beamer and several common scientific LaTeX packages, including `
 
 ```text
 ESQC_2026/
-├── ESQC_Loos_HF.pdf   # Hartree–Fock theory slides
-├── ESQC_Loos_HF.tex   # Corresponding LaTeX source
-├── ESQC_Loos_BF.pdf   # Basis sets and molecular integrals slides
-├── ESQC_Loos_BF.tex   # Corresponding LaTeX source
-├── ESQC_Loos_HF_BF_chapter.tex       # Standalone chapter main source
-├── ESQC_Loos_BF_chapter_content.tex  # Included basis/integral material
-├── ESQC_Loos_HF_BF_chapter.bib       # Chapter bibliography
-├── chapter-audit.md                  # Five-pass audit record
-├── chapter-slide-coverage.md         # Active-slide coverage index
-├── chapter-reference-audit.md        # Verified article identities
-├── scripts/           # Chapter consistency and numerical checks
-├── fig/               # Figures shared by the presentations and chapter
-└── README.md           # Course and build information
+├── ESQC_Loos_HF.tex/.pdf    # Original Hartree–Fock slides
+├── ESQC_Loos_BF.tex/.pdf    # Original basis/integral slides
+├── chapter/
+│   ├── ESQC_Loos_HF_BF_chapter.tex  # The only chapter TeX source
+│   ├── ESQC_Loos_HF_BF_chapter.bib
+│   ├── chapter-unsrtnat.bst
+│   ├── figures/           # Required chapter graphics and portrait sketches
+│   ├── records/           # Audits and illustration provenance
+│   ├── build/             # Generated PDF/auxiliaries (not tracked)
+│   └── submission.zip     # Generated minimal source bundle (not tracked)
+├── scripts/               # Chapter build, packaging and verification
+├── fig/                   # Original slide assets
+├── archive/               # Superseded designs and portrait photographs
+└── README.md
 ```
 
 ## Feedback

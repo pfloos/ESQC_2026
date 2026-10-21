@@ -12,8 +12,7 @@ from pathlib import Path
 import re
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[1]
-FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
+from chapter_paths import ROOT, FILES, revision_source
 # Longtable is a nonfloating multipage table, with the same caption/label
 # and external-callout requirements as a floating table.
 FLOAT = re.compile(r"\\begin\{(figure|table|longtable)\*?\}.*?\\end\{\1\*?\}", re.S)
@@ -108,9 +107,7 @@ def main():
     preserved = 0
     if args.compare_math:
         for name in FILES:
-            previous = subprocess.check_output(
-                ["git", "show", f"{args.compare_math}:{name}"], cwd=ROOT, text=True
-            )
+            previous = revision_source(args.compare_math)
             old = [math_tokens(m[2]) for m in DISPLAY.finditer(uncomment(previous))]
             new = [math_tokens(m[2]) for m in DISPLAY.finditer(sources[name])]
             position = 0

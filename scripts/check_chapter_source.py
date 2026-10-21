@@ -9,7 +9,7 @@ import difflib
 import re
 from pathlib import Path
 
-FILES = ("ESQC_Loos_HF_BF_chapter.tex", "ESQC_Loos_BF_chapter_content.tex")
+from chapter_paths import ROOT, FILES
 DISPLAY = re.compile(
     r"\\(begin|end)\{(equation\*?|align\*?|gather\*?|multline\*?|displaymath)\}"
     r"|(?<!\\)\\(\[|\])"
@@ -85,25 +85,23 @@ def main():
     args = parser.parse_args()
     patches = []
     for filename in FILES:
-        original = Path(filename).read_text()
+        original = (ROOT / filename).read_text()
         revised = physics_notation(original) if args.physics_patch else normalized(original)
         if original != revised:
             diff = list(difflib.unified_diff(original.splitlines(), revised.splitlines(), n=3, lineterm=""))
             hunks = ["@@" if line.startswith("@@") else line for line in diff[2:]]
-            patches.extend([f"*** Update File: {Path(filename).resolve()}", *hunks])
+            patches.extend([f"*** Update File: {ROOT / filename}", *hunks])
     if args.patch or args.physics_patch:
         if patches:
             print("\n".join(["*** Begin Patch", *patches, "*** End Patch"]))
     elif patches:
         raise SystemExit("Chapter source needs display-punctuation corrections")
     else:
-        sources = [Path(name) for name in FILES]
-        sources += [Path("chapter-biographies.tex")]
-        sources += sorted(Path("chapter-figures").rglob("*.tex"))
+        sources = [ROOT / name for name in FILES]
         errors = [f"{path}:{line}: use N^alpha/N^beta/N^sigma, not subscript spin counts"
                   for path in sources if path.is_file()
                   for line in spin_population_subscripts(path.read_text())]
-        errors += exercise_pair_errors("\n".join(Path(name).read_text() for name in FILES))
+        errors += exercise_pair_errors("\n".join((ROOT / name).read_text() for name in FILES))
         if errors:
             raise SystemExit("\n".join(errors))
         print("Chapter display-punctuation and superscript spin-population conventions passed")

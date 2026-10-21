@@ -1,0 +1,321 @@
+[
+  {
+    "file": "figures/sketch-fock.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-fock.jpg",
+    "dimensions": [
+      463,
+      600
+    ],
+    "sha256": "d611ee86107e4f92ea00f23ce6e3629b6ac1939516f202bab6ac9f21c9ea94bc"
+  },
+  {
+    "file": "figures/sketch-boys.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-boys.jpg",
+    "dimensions": [
+      515,
+      600
+    ],
+    "sha256": "33aaa12e4d26a7f14dda6dace183a18605cfd81e61e1e863096ce87ee243b607"
+  },
+  {
+    "file": "figures/sketch-hartree.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-hartree.jpg",
+    "dimensions": [
+      497,
+      600
+    ],
+    "sha256": "3e6dab2d52e6da677cf48112fab75c1303282a968efc586a5a0156f3648138bf"
+  },
+  {
+    "file": "figures/sketch-swirles.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-swirles-source.pdf (portrait rendered to PNG)",
+    "dimensions": [
+      414,
+      600
+    ],
+    "sha256": "a7dbc165cab099080276e2f82aff386dfe78d3d84bd7bc42df943e3c3aec1b1b"
+  },
+  {
+    "file": "figures/sketch-paldus.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-paldus.jpg",
+    "dimensions": [
+      400,
+      600
+    ],
+    "sha256": "21384fa97dfa41d2f01b09dbac14b89a32a87eba1a4bc24c5f7c0001f38cab34"
+  },
+  {
+    "file": "figures/sketch-william-hartree.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph. Depict the seated man on the RIGHT at the desk; omit the desk and setting.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-william-hartree.jpg",
+    "dimensions": [
+      600,
+      548
+    ],
+    "sha256": "b74949080e0350dbd82b7f05c8bde2e30f8a6389c2a13eb86be15c65acb5bc24"
+  },
+  {
+    "file": "figures/sketch-dirac.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-dirac.jpg",
+    "dimensions": [
+      406,
+      600
+    ],
+    "sha256": "1f109d12944d0622e05abe3449f1be072d016fde98cdeedbedeae23cf900ec3f"
+  },
+  {
+    "file": "figures/sketch-dunning.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-dunning.jpg",
+    "dimensions": [
+      450,
+      600
+    ],
+    "sha256": "65fb5790d684964d211158d5d4e634bebdd03f499249adfc8774c44bf2c0f59e"
+  },
+  {
+    "file": "figures/sketch-born.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-born.jpg",
+    "dimensions": [
+      450,
+      600
+    ],
+    "sha256": "89b810b1d365c51e621d81d666be0b96f84a23f4de762b79ecdb04605c5cb8b6"
+  },
+  {
+    "file": "figures/sketch-pople.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-pople.jpg",
+    "dimensions": [
+      600,
+      548
+    ],
+    "sha256": "111ac9c91a69c200b5b1a452741a890bddd6b36253d54c194bd3969228f93bcb"
+  },
+  {
+    "file": "figures/sketch-oppenheimer.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-oppenheimer.jpg",
+    "dimensions": [
+      412,
+      600
+    ],
+    "sha256": "45e64f23120491a3503ae7aaaaaf557e2618fa52adde54bec8c380ed8c58825f"
+  },
+  {
+    "file": "figures/sketch-coulson.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-coulson.jpg",
+    "dimensions": [
+      465,
+      600
+    ],
+    "sha256": "0c6ee1a791b6d36530af4e9e5f225d5bc2a80789d39d33a953adf04b072c6731"
+  },
+  {
+    "file": "figures/sketch-mulliken.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-mulliken.jpg",
+    "dimensions": [
+      480,
+      600
+    ],
+    "sha256": "cc545b1aebb6b6c2f661f0051492ede24d12c8c00cf7a67a2b010663aff19088"
+  },
+  {
+    "file": "figures/sketch-fischer-hjalmars.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-fischer-hjalmars.jpg",
+    "dimensions": [
+      475,
+      600
+    ],
+    "sha256": "31f7938e0203a592d8bf4040a025d63eff2ed54b1f5e5a32f8393788fb46c99f"
+  },
+  {
+    "file": "figures/sketch-mcweeny.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-mcweeny.jpg",
+    "dimensions": [
+      445,
+      600
+    ],
+    "sha256": "8d27e7773d71950f6e6d7d8aec52ff6ffc582f7824b92edfb2b08491644a9c3a"
+  },
+  {
+    "file": "figures/sketch-moller.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-moller.jpg",
+    "dimensions": [
+      483,
+      600
+    ],
+    "sha256": "7190d49f6541fdb91e42847f7fa3f4dc3eb4b791d7e2d7e496002c948427613c"
+  },
+  {
+    "file": "figures/sketch-nesbet.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-nesbet.jpg",
+    "dimensions": [
+      580,
+      600
+    ],
+    "sha256": "b666729433b5a858014f5d30341fc16b5e7a70599b14642e9fa2b77265eda77b"
+  },
+  {
+    "file": "figures/sketch-berthier.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-berthier.jpg",
+    "dimensions": [
+      600,
+      528
+    ],
+    "sha256": "c11e22c4d93333fedf6af2501decdac187a18f0ddc6c34270daeb2d0e72c4b41"
+  },
+  {
+    "file": "figures/sketch-plesset.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-plesset.jpg",
+    "dimensions": [
+      480,
+      600
+    ],
+    "sha256": "091decc407a562bc63c5222e2b8f46359dfe2475f980fdaa672c5ac1a0f33151"
+  },
+  {
+    "file": "figures/sketch-pulay.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-pulay.jpg",
+    "dimensions": [
+      463,
+      600
+    ],
+    "sha256": "8424bf7974f787ff16c34f88de4889117e923f0fc8c686fdec868e2c01b8bec1"
+  },
+  {
+    "file": "figures/sketch-pauli.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-pauli.jpg",
+    "dimensions": [
+      415,
+      600
+    ],
+    "sha256": "af81c199a0585c57781bafce963c180c2627c12db4043de2c1f19da2e414af9a"
+  },
+  {
+    "file": "figures/sketch-huzinaga.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-huzinaga-source.pdf (portrait rendered to PNG)",
+    "dimensions": [
+      511,
+      600
+    ],
+    "sha256": "ad2989005a1484025e5cff44d7229818919ab040fcc2b8eb92a3690d0b4b605d"
+  },
+  {
+    "file": "figures/sketch-slater.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph. Depict only John Clarke Slater, the man on the RIGHT of the group photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/slater-mulliken-1967.jpg",
+    "dimensions": [
+      600,
+      570
+    ],
+    "sha256": "cfa78d9be978d6fbe97a4bfd4669b762a48aed78d738e9ce065be74c46598e63"
+  },
+  {
+    "file": "figures/sketch-condon.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph. Depict the standing man on the RIGHT of the laboratory photograph, without the laboratory.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-condon.jpg",
+    "dimensions": [
+      474,
+      600
+    ],
+    "sha256": "5f7a623e72d8e58a446e68253cc4a22d119891b5895d656c37a14035105c4d0f"
+  },
+  {
+    "file": "figures/sketch-hall.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-hall.jpg",
+    "dimensions": [
+      463,
+      600
+    ],
+    "sha256": "d7b0cb7e3625b8012ef192774d4185e44db43e3c7e0216d446a52585bce6eb54"
+  },
+  {
+    "file": "figures/sketch-brillouin.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-brillouin.jpg",
+    "dimensions": [
+      428,
+      600
+    ],
+    "sha256": "b20b07a3315e98e06c470080cf7dd8c36ff4e0fa73939f14cd4e57f10781cc0e"
+  },
+  {
+    "file": "figures/sketch-lowdin.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-lowdin.jpg",
+    "dimensions": [
+      500,
+      600
+    ],
+    "sha256": "a70891fcc52d796e96ce17de77593ba78702560a692646dae42d5483f1dd4cc8"
+  },
+  {
+    "file": "figures/sketch-roothaan.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-roothaan.jpg",
+    "dimensions": [
+      435,
+      600
+    ],
+    "sha256": "6ae35203c009da41b86461dc68d03db443289b6ccc2fb32a7e9b369be8ed5f15"
+  },
+  {
+    "file": "figures/sketch-koopmans.png",
+    "prompt": "Use case: historical portrait, reference-based sketch adaptation for a graduate quantum-chemistry textbook. Convert the supplied portrait into a faithful hand-drawn graphite and fine-pen sketch of the SAME PERSON. Preserve the actual distinctive face, facial proportions, age, hairstyle, hairline, spectacles, moustache or beard, expression and recognizable likeness from the reference. Do not substitute a generic scientist or invent different facial features. Keep the depicted person's clothing and head orientation. Head and upper shoulders only, one person only. Consistent refined editorial pencil style: controlled dark-gray lines, delicate cross-hatching, readable features at 27 mm printed height, light restrained shading, no dense black background. Remove the photographic setting entirely and use a genuinely transparent background with a softly finished shoulder outline. No frame, paper texture, name, label, signature or watermark. This is an explicitly credited modern sketch adaptation of the reference, not an archival photograph.",
+    "mode": "built-in image_gen; reference-image edit; transparent background",
+    "reference_source": "archive/photographic-portraits/portrait-koopmans.jpg",
+    "dimensions": [
+      449,
+      600
+    ],
+    "sha256": "1c6f2c942c5a815d37fe3ff55d827a6ff00185fe5b35e76cffd8e34a469c4eb7"
+  }
+]
