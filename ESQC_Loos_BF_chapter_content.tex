@@ -12,7 +12,7 @@ finite set of known one-electron functions,
 The basis functions $\phi_\mu$ are fixed, whereas the coefficients $C_{\mu p}$
 are determined variationally. Enlarging a nested sequence of basis spaces
 increases the variational freedom and lowers, or leaves unchanged, the minimum
-HF energy as the complete-basis-set (CBS) limit is approached. Basis exponents
+Hartree--Fock energy as the complete-basis-set (CBS) limit is approached. Basis exponents
 and contraction coefficients are fixed numerical parameters, often obtained
 from atomic electronic-structure calculations. Their presence does not by
 itself make the method empirical; they specify the finite representation of
@@ -474,8 +474,8 @@ contribution \citep{Peterson2002}.
 Increasing the cardinal number adds both radial flexibility and a new
 layer of higher angular momentum, as the explicit shell patterns below
 demonstrate. The inverse-cubic expression concerns correlation energy, not
-the HF contribution; the polarization-consistent discussion below uses a
-different HF extrapolation form.
+the Hartree--Fock contribution; the polarization-consistent discussion below uses a
+different Hartree--Fock extrapolation form.
 For a second-row atom (the second period, Li--Ne),
 Table~\ref{tab:cc-shell-content} lists the valence
 correlation-consistent sequence and its diffuse augmentations.
@@ -523,7 +523,7 @@ core-valence sequence, the corresponding decomposition is
 
 \subsubsection{Jensen polarization-consistent basis sets}
 
-Jensen's polarization-consistent sets \citep{Jensen2001} apply systematic improvement to HF and
+Jensen's polarization-consistent sets \citep{Jensen2001} apply systematic improvement to Hartree--Fock and
 Kohn--Sham calculations, with functions selected according to their energetic
 importance. The sequence has shell contents
 \begin{align}
@@ -532,14 +532,14 @@ importance. The sequence has shell contents
 \end{align}
 Thus pc-0 is unpolarized, pc-1 adds one polarization layer, and the later
 members add systematically more radial and angular flexibility. Diffuse variants
-are denoted aug-pc-$n$. Their HF convergence is described by the
+are denoted aug-pc-$n$. Their Hartree--Fock convergence is described by the
 extrapolation form \citep{Jensen2005}
 \begin{equation}
   E_\text{HF}(L)=E_\text{HF}^\text{CBS}
   +A(L+1)\exp(-B\sqrt L)
 \end{equation}
 Here $L$ is the highest angular momentum present in the basis, while $A$ and
-$B$ are extrapolation coefficients. This HF extrapolation is distinct from
+$B$ are extrapolation coefficients. This Hartree--Fock extrapolation is distinct from
 the inverse-cubic correlation-energy extrapolation above.
 
 These hierarchies illustrate why Gaussian bases are widely used: they are
@@ -758,14 +758,12 @@ multiplied by a separation-dependent prefactor:
  \label{eq:gaussian-product}
 \end{equation}
 with
-\begin{equation}
-\begin{split}
+\begin{align}
   \violet{\zeta}&=\red{\alpha}+\blue{\beta}
-  \\
+  &
   \violet{\bP}&=\frac{\red{\alpha\bA}+\blue{\beta\bB}}
  {\red{\alpha}+\blue{\beta}}
-\end{split}
-\end{equation}
+\end{align}
 and
 \begin{equation}
  K_{\violet{\zeta},\violet{\bP}}
@@ -777,7 +775,7 @@ The product center $\bP$ lies on the line joining $\bA$ and $\bB$ and is
 weighted toward the Gaussian with the larger exponent. The prefactor contains
 the dependence on the separation of the original centers: its Gaussian decay
 makes distant pairs rapidly negligible. The bold $\bP$ here denotes a
-coordinate, not the density matrix used in the HF equations.
+coordinate, not the density matrix used in the Hartree--Fock equations.
 For two $s$ Gaussians, the overlap illustrates Cartesian factorization:
 \begin{equation}
 \begin{split}
@@ -880,14 +878,14 @@ For coincident centers the exponential is one, but the overlap is
 \end{equation}
 It is strictly less than one when $\alpha\ne\beta$: sharing a center does
 not make two different radial functions identical. If the exponents also
-coincide, the functions are identical and the overlap is exactly one,
+coincide, the functions are identical, and the overlap is exactly one,
 recovering the normalization condition.
 For equal exponents at arbitrary separation, the prefactor is one and
 \begin{equation}
   \eval{S_{\alpha\bA,\beta\bB}}_{\beta=\alpha}
   =\exp[-\frac{\alpha}{2}\abs{\bA-\bB}^2]
 \end{equation}
-For any fixed positive exponents the overlap tends to zero as the centers
+For any fixed positive exponents, the overlap tends to zero as the centers
 are separated without bound. This decay is Gaussian in the separation;
 more diffuse primitives retain appreciable overlap over longer distances.
 
@@ -1381,7 +1379,7 @@ The number of significant integrals may be represented by
 and $N_\text{sig}=cK^\alpha$.
 Here $K$ is the number of basis functions, $c$ is a proportionality factor,
 and $\alpha$ is the effective scaling exponent. The count $N_\text{sig}$
-is distinct from the electron number $N$ used in the HF derivations.
+is distinct from the electron number $N$ used in the Hartree--Fock derivations.
 The numerical data in Table~\ref{tab:screening-scaling} contrast the long-range Coulomb operator with a
 short-range Gaussian operator:
 
