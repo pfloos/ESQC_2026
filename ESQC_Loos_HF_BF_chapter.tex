@@ -325,7 +325,7 @@
   \begin{tikzpicture}
     \begin{axis}[
       width=\linewidth,
-      height=0.48\textheight,
+      height=0.44\textheight,
       xmin=-3,xmax=3,
       ymin=-0.05,ymax=1.48,
       axis x line=middle,
@@ -346,6 +346,9 @@
         coordinates {(-1.15,0) (1.15,0)};
       \node[below,font=\scriptsize] at (axis cs:-1.15,0) {$A$};
       \node[below,font=\scriptsize] at (axis cs: 1.15,0) {$B$};
+      % A common invisible envelope keeps panel heights independent of the
+      % angle-dependent peak amplitudes, without rescaling the orbitals.
+      \path (axis cs:-3,-0.05) rectangle (axis cs:3,1.05);
     \end{axis}
   \end{tikzpicture}%
 }
@@ -9575,32 +9578,35 @@ orthogonality alone does not imply complete localization on individual atoms.
 Figure~\ref{fig:h2-orbital-rotation} illustrates the progressive
 localization of the two spin channels along this path.
 \begin{center}
+\begin{minipage}{\textwidth}
+\centering
 \begin{minipage}[t]{0.31\textwidth}
-  \centering\textbf{$\theta=0^\circ$: RHF limit}
+  \centering\strut\textbf{$\theta=0^\circ$: RHF limit}
 
   \HtwoOrbitalPlot{0}
 
-  $\psi^\alpha=\psi^\beta=\psi_g$
+  \strut$\psi^\alpha=\psi^\beta=\psi_g$
 \end{minipage}\hfill
 \begin{minipage}[t]{0.31\textwidth}
-  \centering\textbf{$0<\theta<45^\circ$: polarization}
+  \centering\strut\textbf{$0<\theta<45^\circ$: polarization}
 
   \HtwoOrbitalPlot{22.5}
 
-  $\alpha$ shifts to $A$; $\beta$ shifts to $B$
+  \strut$\alpha$ shifts to $A$; $\beta$ shifts to $B$
 \end{minipage}\hfill
 \begin{minipage}[t]{0.31\textwidth}
-  \centering\textbf{$\theta=45^\circ$: dissociation}
+  \centering\strut\textbf{$\theta=45^\circ$: dissociation}
 
   \HtwoOrbitalPlot{45}
 
-  $\psi^\alpha\to\phi_A$; $\psi^\beta\to\phi_B$
+  \strut$\psi^\alpha\to\phi_A$; $\psi^\beta\to\phi_B$
 \end{minipage}
 \captionof{figure}{Schematic spatial profiles of the $\alpha$ (solid blue) and
 $\beta$ (dashed red) UHF orbitals under opposite rotations by $\theta$.
 The three panels show the restricted limit, partial spin polarization,
 and localization on separate atoms at dissociation.}
 \label{fig:h2-orbital-rotation}
+\end{minipage}
 \end{center}
 
 With $J_{pq}=\rbraket{pp}{qq}$ and $K_{pq}=\rbraket{pq}{pq}$, the
