@@ -9614,13 +9614,11 @@ fixed $R$, but must be added when comparing total energies as $R$ varies.
 \end{split}
 \end{equation}
 Introducing
-\begin{equation}
-\begin{split}
+\begin{align}
   x&=\cos^2\theta
-  \\
+  &
   A&=J_{gu}-2K_{gu}
-\end{split}
-\end{equation}
+\end{align}
 allows the same energy to be written as
 \begin{equation}
   E_\text{UHF}(x)
@@ -9731,24 +9729,20 @@ coordinates {(-30,0) (30,0)};
 \end{figure}
 
 At dissociation,
-\begin{equation}
-\begin{split}
+\begin{align}
   S&\rightarrow0
-  \\
+  &
   \psi_g&\rightarrow\frac{\phi_A+\phi_B}{\sqrt2}
-  \\
+  &
   U&=(AA|AA)>0
-\end{split}
-\end{equation}
+\end{align}
 Writing $E_\text{H}$ for the isolated-atom energy represented in the same
 basis, the restricted and unrestricted total-energy limits are
-\begin{equation}
-\begin{split}
+\begin{align}
   E_\text{RHF}^\infty&=2E_\text{H}+\frac12U
-  \\
+  &
   E_\text{UHF}^\infty&=2E_\text{H}
-\end{split}
-\end{equation}
+\end{align}
 The ionic terms therefore leave a finite RHF error, whereas
 $\psi^\alpha\to\phi_A$ and $\psi^\beta\to\phi_B$ give the correct UHF limit.
 Figure~\ref{fig:h2-dissociation} compares the resulting schematic dissociation
@@ -9830,15 +9824,13 @@ A GHF orbital is a two-component spinor:
   }
 \end{equation}
 Both components are expanded in the same spatial AO basis,
-\begin{equation}
-\begin{split}
+\begin{align}
   \psi_i^\sigma(\br)&=\sum_{\mu=1}^{K}C_{\mu i}^\sigma\phi_\mu(\br)
-  \\
+  &
   \boldsymbol{\mathcal C}&=\mqty(\bC^\alpha\\\bC^\beta)
-  \\
+  &
   \boldsymbol{\mathcal C}&\in\mathbb C^{2K\times N}
-\end{split}
-\end{equation}
+\end{align}
 RHF pairs electrons in one spatial orbital and preserves both
 $\purple{\chS^2}$ and $\violet{\chS_z}$. UHF uses orbitals that are purely
 $\alpha$ or $\beta$, has a collinear spin density, and preserves
@@ -9900,16 +9892,14 @@ GHF solution.}
 \end{figure}
 
 The GHF density matrix is
-\begin{equation}
-\begin{split}
+\begin{align}
     \boldsymbol{\mathcal P}&=\mqty(
       \bP^{\alpha\alpha}&\bP^{\alpha\beta}\\
       \bP^{\beta\alpha}&\bP^{\beta\beta})
-  \\
+  &
   P_{\mu\nu}^{\sigma\sigma'}
   &=\sum_{i=1}^{N}C_{\mu i}^\sigma C_{\nu i}^{\sigma' *}
-\end{split}
-\end{equation}
+\end{align}
 The diagonal blocks describe the two collinear spin populations, whereas the
 off-diagonal blocks encode coherence between the $\alpha$ and $\beta$
 components. These off-diagonal blocks vanish for an ordinary UHF determinant.
@@ -9954,15 +9944,15 @@ spinor Fock matrix, $\beps$ contains the orbital energies,
 and $\boldsymbol{\mathcal S}$ is the block-diagonal overlap metric.
 The Roothaan--Hall equation is
 \begin{equation}
-\begin{split}
     \boldsymbol{\mathcal F}\cdot\boldsymbol{\mathcal C}
-    &=\boldsymbol{\mathcal S}\cdot\boldsymbol{\mathcal C}
+    =\boldsymbol{\mathcal S}\cdot\boldsymbol{\mathcal C}
      \cdot\beps
-  \\
-  \boldsymbol{\mathcal S}&=\mqty(\bS&\bO\\\bO&\bS)
-\end{split}
 \end{equation}
-with normalization
+with
+\begin{equation}
+  \boldsymbol{\mathcal S}=\mqty(\bS&\bO\\\bO&\bS)
+\end{equation}
+and normalization
 \begin{equation}
   \boldsymbol{\mathcal C}^\dagger\cdot\boldsymbol{\mathcal S}
   \cdot\boldsymbol{\mathcal C}=\bI

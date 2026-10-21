@@ -82,15 +82,13 @@ Plane waves are the natural one-electron functions of a translationally
 invariant system. Under periodic boundary conditions, only reciprocal-lattice
 wavevectors are compatible with the periodicity of the simulation cell.
 In a unit cell of volume $\Omega$, a normalized plane wave is
-\begin{equation}
-\begin{split}
+\begin{align}
   \phi_{\bk}(\br)&=\boxed{\frac{1}{\sqrt{\Omega}}\exp(\ii\bk\cdot\br)}
-  \\
+  &
   \abs{\bk}&\leq k_\text{cut}
-  \\
+  &
   E_\text{cut}&=\frac{k_\text{cut}^2}{2}
-\end{split}
-\end{equation}
+\end{align}
 The reciprocal-lattice vector is indexed by three integers:
 \begin{equation}
   \bk=k_1\bb_1+k_2\bb_2+k_3\bb_3
@@ -313,13 +311,11 @@ In general, a Cartesian shell of total angular momentum $\ell$ contains
 \end{equation}
 which gives $1,3,6,10$ functions for $s,p,d,f$. Spherical harmonics instead
 give $N_\ell^\text{sph}=2\ell+1$, namely $1,3,5,7$. Thus
-\begin{equation}
-\begin{split}
+\begin{align}
   6d&=5d+1s
-  \\
+  &
   10f&=7f+3p
-\end{split}
-\end{equation}
+\end{align}
 because, for example, $x^2+y^2+z^2=r^2$. Most molecular calculations use
 pure spherical functions.
 The distinction appears from $d$ functions onward. Cartesian shells are
@@ -585,13 +581,11 @@ flexibility.
 Let $E_X^Y$ denote the energy of system $X$ evaluated in basis $Y$. In a
 dimer $AB$, each fragment can borrow the basis functions of the other fragment
 as ghost functions. The variational principle therefore gives
-\begin{equation}
-\begin{split}
+\begin{align}
   E_A^{AB}&\leq E_A^A
-  \\
+  &
   E_B^{AB}&\leq E_B^B
-\end{split}
-\end{equation}
+\end{align}
 The corresponding uncorrected interaction energy is
 \begin{equation}
   \Delta E_\text{int}=E_{AB}^{AB}-E_A^A-E_B^B
@@ -697,14 +691,12 @@ channels are nonlocal, or projected. In this convention, each projected
 $U_\ell(r)$ is a correction relative to the local potential $U_L(r)$, not
 the full potential in channel $\ell$. Their radial parts are generally expanded
 as
-\begin{equation}
-\begin{split}
+\begin{align}
   U_\ell(r)&=\sum_kD_{\ell k}r^{n_{\ell k}}
   \exp(-\eta_{\ell k}r^2)
-  \\
+  &
   n_{\ell k}&\in\{-2,-1,0\}
-\end{split}
-\end{equation}
+\end{align}
 The $D_{\ell k}$ and $\eta_{\ell k}$ are fitted parameters. Although these are
 one-electron operators, their angular projectors make the integrals nontrivial.
 
@@ -757,15 +749,13 @@ are handled by the recurrence relations developed later.
 This closure property underlies the classical Gaussian integral formulation
 of Boys \citep{Boys1950}.
 Writing the $s$-type Gaussian factors as
-\begin{equation}
-\begin{split}
+\begin{align}
   G_{\red{\alpha},\red{\bA}}(\br)
  &=\exp[-\red{\alpha}\abs{\br-\red{\bA}}^2]
-  \\
+  &
   G_{\blue{\beta},\blue{\bB}}(\br)
  &=\exp[-\blue{\beta}\abs{\br-\blue{\bB}}^2]
-\end{split}
-\end{equation}
+\end{align}
 then
 \begin{hftheorem}{Gaussian product theorem}
 For positive exponents $\alpha$ and $\beta$, the product of the two $s$-type
@@ -1395,14 +1385,11 @@ simple $\rbraket{dd}{dd}$ class contains 1296 Cartesian integrals.
 
 The number of significant integrals may be represented by
 \begin{equation}
-\begin{split}
   \rbraket{\red{\ba}\blue{\bb}}{\orange{\bc}\green{\bd}}
- &\equiv\rmel{\red{\ba}\blue{\bb}}{\chO_2}
+ \equiv\rmel{\red{\ba}\blue{\bb}}{\chO_2}
  {\orange{\bc}\green{\bd}}
-  \\
-  N_\text{sig}&=cK^\alpha
-\end{split}
 \end{equation}
+and $N_\text{sig}=cK^\alpha$.
 Here $K$ is the number of basis functions, $c$ is a proportionality factor,
 and $\alpha$ is the effective scaling exponent. The count $N_\text{sig}$
 is distinct from the electron number $N$ used in the HF derivations.
@@ -1538,14 +1525,11 @@ pair densities. RI/DF replaces this
 large product space by a compact auxiliary basis
 $\{\varphi_A^\text{aux}\}$ \citep{Whitten1973,Dunlap1979,Vahtras1993}:
 \begin{equation}
-\begin{split}
-  \rho_{\mu\nu}(\br)&\approx
+  \rho_{\mu\nu}(\br)\approx
  \widetilde\rho_{\mu\nu}(\br)
  =\sum_AC_{\mu\nu}^A\varphi_A^\text{aux}(\br)
-  \\
-  K_\text{aux}&=\order{K}
-\end{split}
 \end{equation}
+with $K_\text{aux}=\order{K}$.
 Here $\widetilde\rho_{\mu\nu}$ is the fitted pair density and
 $K_\text{aux}$ the number of auxiliary functions. The coefficients
 $C_{\mu\nu}^A$ are fitting coefficients, not the MO coefficients
