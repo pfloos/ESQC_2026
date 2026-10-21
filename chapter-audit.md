@@ -1170,3 +1170,33 @@ coverage baseline. Commented-out frames are not additional required material.
   duplicate labels, oversized floats, or PDF-import errors. The unrelated
   10.12 pt overfull-box warning at the previously enlarged variational-
   collapse illustration remains unchanged and outside this task.
+
+## Electronic-structure software citations (21 October 2026)
+
+- Pulled before editing and checked again for concurrent updates; `fb12e06`
+  remained current. Inventoried Section 4.1.2 and all following basis-set
+  and integral sections. Added adjacent program-paper citations to all 16
+  named electronic-structure packages: ORCA, Q-Chem, Molcas, Molpro, PySCF,
+  Psi4, CFOUR, MRCC, GAMESS, ADF, Quantum ESPRESSO, VASP, ABINIT, CASTEP,
+  FHI-aims, and SIESTA. No further electronic-structure programs were named
+  later; the Basis Set Exchange already has its resource citation.
+- Verified publication metadata and complete author lists against Crossref
+  and primary software/developer or author sources. Recorded all 16 DOI
+  rows and metadata decisions in the reference audit, including the genuine
+  CFOUR DOI, Molcas print year, and ORCA issue number. Existing bibliography
+  style and title hyperlinks are retained, as are all 516 authors across
+  these papers.
+- All seven chapter checks pass: 110 cited/title-linked entries, 105 audited
+  articles/contributed chapters and five books. Additional checks confirm
+  that each software name has its own matching citation, every new DOI link
+  is embedded in the PDF, and removing the added citations recovers the
+  original prose and mathematics exactly apart from source whitespace.
+  All 642 existing displays and Further reading are unchanged.
+- Compilation succeeds at 142 pages; the full-author bibliography adds
+  three pages. No undefined references/citations, duplicate labels,
+  oversized floats, or PDF-import errors. The unrelated existing 10.12 pt
+  overfull-box warning at the enlarged variational-collapse illustration
+  remains outside this citation task.
+- The PDF skill guided targeted inspection of Section 4.1.2 on PDF page 110
+  and the new bibliography entries on PDF pages 137--140 (printed pages
+  102 and 129--132), without a global visual or overflow audit.

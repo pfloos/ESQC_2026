@@ -424,3 +424,57 @@ reading is unchanged.
 | `CizekPaldus1967` | Stability Conditions for the Solutions of the Hartree--Fock Equations for Atomic and Molecular Systems. Application to the Pi-Electron Model of Cyclic Polyenes | [10.1063/1.1701562](https://doi.org/10.1063/1.1701562) |
 | `Paldus1974` | Group Theoretical Approach to the Configuration Interaction and Perturbation Theory Calculations for Atomic and Molecular Systems | [10.1063/1.1681883](https://doi.org/10.1063/1.1681883) |
 
+## Electronic-structure software references (21 October 2026)
+
+Added an individual program-paper citation at each of the 16 software names
+in Section 4.1.2 (Principal families of basis functions). Searched the
+following basis-set and integral sections as well: no further named
+electronic-structure packages were present. The Basis Set Exchange resource
+already has its Pritchard et al. (2019) reference in the basis-data discussion.
+
+Verified every title, full author list, journal, volume, issue where given,
+page range or article number, year, and DOI against publisher-deposited
+Crossref metadata. Software names and scientific prose are unchanged; the
+papers document the example programs, not a claim that a particular release
+was used for a new calculation. Complete author lists are retained, with
+LaTeX accent commands and protected program-name capitalization. Reference
+titles use the existing DOI hyperlinks; Further reading is unchanged.
+
+Additional primary checks used the [ORCA citation guidance](https://www.faccts.de/docs/orca/6.0/tutorials/first_steps/howtocite.html),
+[Molpro overview](https://www.molpro.net/),
+[Psi4 citation guidance](https://psicode.org/psi4manual/master/introduction),
+[MRCC release note](https://www.mrcc.bme.hu/index.php?catid=9&id=25%3Anew-mrcc-version-4&view=article),
+[GAMESS references](https://www.msg.chem.iastate.edu/gamess/references.html),
+[ADF manual](https://www.scm.com/doc/ADF/General/Introduction.html),
+[Quantum ESPRESSO reference](https://pseudopotentials.quantum-espresso.org/full-ref),
+[VASP papers](https://vasp.at/learn/papers/),
+[CASTEP author record](https://pure.york.ac.uk/portal/en/publications/first-principles-methods-using-castep/),
+[FHI-aims introduction](https://fhi-aims.org/uploads/documents/intro-tour.html),
+and [SIESTA publications](https://siesta-project.org/SIESTA_MATERIAL/Docs/Publications/basic_pubs.html).
+Author manuscripts and publisher records corroborate the Q-Chem, Molcas,
+PySCF, CFOUR, and ABINIT papers. In particular, CFOUR's verified DOI is
+10.1063/5.0004837; the similarly numbered 10.1063/5.0004834 is an unrelated
+plasma-physics paper and was excluded. Molcas uses the 2016 print-volume
+year, rather than its 2015 early-online date. ORCA's publisher record gives
+volume 12, issue 5 (2022); an issue-1 typo in a software citation example
+was not copied. CASTEP is the 2005 Clark et al. paper.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `ORCA2022` | Software Update: The ORCA Program System--Version 5.0 | [10.1002/wcms.1606](https://doi.org/10.1002/wcms.1606) |
+| `QChem2021` | Software for the Frontiers of Quantum Chemistry: An Overview of Developments in the Q-Chem 5 Package | [10.1063/5.0055522](https://doi.org/10.1063/5.0055522) |
+| `Molcas2016` | Molcas 8: New Capabilities for Multiconfigurational Quantum Chemical Calculations across the Periodic Table | [10.1002/jcc.24221](https://doi.org/10.1002/jcc.24221) |
+| `Molpro2020` | The Molpro Quantum Chemistry Package | [10.1063/5.0005081](https://doi.org/10.1063/5.0005081) |
+| `PySCF2020` | Recent Developments in the PySCF Program Package | [10.1063/5.0006074](https://doi.org/10.1063/5.0006074) |
+| `Psi42020` | Psi4 1.4: Open-Source Software for High-Throughput Quantum Chemistry | [10.1063/5.0006002](https://doi.org/10.1063/5.0006002) |
+| `CFOUR2020` | Coupled-Cluster Techniques for Computational Chemistry: The CFOUR Program Package | [10.1063/5.0004837](https://doi.org/10.1063/5.0004837) |
+| `MRCC2020` | The MRCC Program System: Accurate Quantum Chemistry from Water to Proteins | [10.1063/1.5142048](https://doi.org/10.1063/1.5142048) |
+| `GAMESS1993` | General Atomic and Molecular Electronic Structure System | [10.1002/jcc.540141112](https://doi.org/10.1002/jcc.540141112) |
+| `ADF2001` | Chemistry with ADF | [10.1002/jcc.1056](https://doi.org/10.1002/jcc.1056) |
+| `QuantumEspresso2009` | QUANTUM ESPRESSO: A Modular and Open-Source Software Project for Quantum Simulations of Materials | [10.1088/0953-8984/21/39/395502](https://doi.org/10.1088/0953-8984/21/39/395502) |
+| `VASP1996` | Efficient Iterative Schemes for ab initio Total-Energy Calculations Using a Plane-Wave Basis Set | [10.1103/physrevb.54.11169](https://doi.org/10.1103/physrevb.54.11169) |
+| `ABINIT2020` | The ABINIT Project: Impact, Environment and Recent Developments | [10.1016/j.cpc.2019.107042](https://doi.org/10.1016/j.cpc.2019.107042) |
+| `CASTEP2005` | First Principles Methods Using CASTEP | [10.1524/zkri.220.5.567.65075](https://doi.org/10.1524/zkri.220.5.567.65075) |
+| `FHIAims2009` | Ab initio Molecular Simulations with Numeric Atom-Centered Orbitals | [10.1016/j.cpc.2009.06.022](https://doi.org/10.1016/j.cpc.2009.06.022) |
+| `SIESTA2002` | The SIESTA Method for ab initio Order-N Materials Simulation | [10.1088/0953-8984/14/11/302](https://doi.org/10.1088/0953-8984/14/11/302) |
+
