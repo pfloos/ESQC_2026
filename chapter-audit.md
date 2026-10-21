@@ -1200,3 +1200,31 @@ coverage baseline. Commented-out frames are not additional required material.
 - The PDF skill guided targeted inspection of Section 4.1.2 on PDF page 110
   and the new bibliography entries on PDF pages 137--140 (printed pages
   102 and 129--132), without a global visual or overflow audit.
+
+## Late-contraction ERI scheme (21 October 2026)
+
+- Pulled the author's changes through `8cc3f2b` before editing and preserved
+  those revisions. Checked both the source and rendered slide 38 of
+  `ESQC_Loos_BF`: the requested scheme has four stages, from fundamental
+  auxiliary integrals through primitive and contracted intermediates to
+  the target ERIs.
+- Added `chapter-figures/late-contraction.tex` as native vector artwork,
+  retaining the slide's underbraces, shell labels, square/round brackets,
+  and colored VRR/contract/HRR arrows. The enclosing frame uses the chapter's
+  dark-green palette; no raster screenshot or generated image is used.
+- Included the scheme as Figure 24 after the horizontal-recurrence and
+  late-contraction explanation, with an explicit prose callout. The caption
+  credits slide 38, explains the shell labels, auxiliary order, and bracket
+  conventions, and cites the existing Head--Gordon--Pople reference. It also
+  specifies that the required zero-order primitive integrals are contracted
+  and that the intermediate sets contain the angular momenta needed by HRRs.
+- All seven chapter checks pass: 31 figures/tables labeled and cited, six
+  numbered tables, and 110 cited/title-linked references. All 642 existing
+  displays, prior prose, and Further reading are retained from `8cc3f2b`;
+  only the new figure and its callout/caption are added.
+- Compilation succeeds at 143 pages without undefined references/citations,
+  duplicate labels, oversized floats, or PDF-import errors. The unrelated
+  existing 10.12 pt overfull warning at the enlarged variational-collapse
+  illustration remains outside this task. The PDF skill guided targeted
+  comparison of slide 38 with the finished scheme and same-page caption on
+  printed page 119 (PDF page 127), without a global visual audit.

@@ -1303,6 +1303,23 @@ contraction, whereas the cheap exponent-independent HRRs are performed after
 contraction.
 The resulting reduction in the number of quantities handled by the HRRs
 complements the screening savings considered next.
+Figure~\ref{fig:late-contraction} summarizes this path, distinguishing the
+primitive and contracted stages.
+
+\begin{figure}[htbp]
+  \centering
+  \input{chapter-figures/late-contraction}
+  \caption{Late-contraction path for ERI evaluation, adapted from slide~38
+  of the basis-set lecture. Square brackets denote primitive integrals and
+  round brackets contracted integrals; $0$ denotes an $s$-type shell and
+  $m$ the auxiliary Boys-function order. The labels $a,b,c,d$ specify shell
+  angular momenta. The intermediate sets include all angular momenta
+  required to reach the target shell quartet $\rbraket{ab}{cd}$.
+  The exponent-dependent VRRs precede contraction of the required $m=0$
+  primitive integrals, while the exponent-independent HRRs act afterwards
+  \citep{HeadGordonPople1988}.}
+  \label{fig:late-contraction}
+\end{figure}
 
 \subsection{Integral bounds, screening, and direct SCF}
 \label{sec:integral-screening}
