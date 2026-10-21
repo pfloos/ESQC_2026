@@ -130,9 +130,7 @@ The kinetic-energy integrals are diagonal as well:
 \end{equation}
 For the plane-wave ERI, we use the physicists' index grouping:
 the first and third indices belong to electron 1, and the second
-and fourth to electron 2. Its round-bracket counterpart would therefore be
-$\rbraket{\bk_1\bk_3}{\bk_2\bk_4}$, rather than
-$\rbraket{\bk_1\bk_2}{\bk_3\bk_4}$. The integral begins as
+and fourth to electron 2. The integral begins as
 \begin{equation}
 \begin{split}
   \braket{\bk_1\bk_2}{\bk_3\bk_4}
@@ -152,16 +150,16 @@ reciprocal-space resolution is
 The $\bk=\bO$ term requires a specified electrostatic convention, for
 example a neutralizing background. The symbol $r_{12}^{-1}$ in the preceding
 integral represents this periodic kernel in the following calculation.
-Relabeling the reciprocal summation vector $\bk\to-\bk$ gives
+Thus, we have
 \begin{equation}
 \begin{split}
   \braket{\bk_1\bk_2}{\bk_3\bk_4}
   &=\frac{1}{\Omega^3}\sum_{\bk\ne\bO}\frac{4\pi}{k^2}
-  \iint_\Omega\exp[\ii(\bk_3-\bk_1-\bk)\cdot\br_1]
-  \exp[\ii(\bk_4-\bk_2+\bk)\cdot\br_2]\dd\br_1\dd\br_2\\
+  \iint_\Omega\exp[\ii(\bk_3-\bk_1+\bk)\cdot\br_1]
+  \exp[\ii(\bk_4-\bk_2-\bk)\cdot\br_2]\dd\br_1\dd\br_2\\
   &=\frac{1}{\Omega}\sum_{\bk\ne\bO}\frac{4\pi}{k^2}
-  \delta_{\bk_3-\bk_1-\bk,\bO}
-  \delta_{\bk_4-\bk_2+\bk,\bO}\\
+  \delta_{\bk_3-\bk_1+\bk,\bO}
+  \delta_{\bk_4-\bk_2-\bk,\bO}\\
   &=\frac{4\pi}{\Omega\abs{\bk_1-\bk_3}^2}
   \delta_{\bk_1+\bk_2,\bk_3+\bk_4}
 \end{split}
