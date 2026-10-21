@@ -1,5 +1,42 @@
 # Chapter reference verification
 
+## Five further historical perspectives (21 October 2026)
+
+Added the four primary articles below for William Hartree, Bertha Swirles,
+and Dirac. Author lists, titles, years, volumes, issues, page ranges, and DOIs
+were checked against publisher-deposited Crossref records on 20 October.
+The archive records and MacTutor biography confirm that the published
+W. Hartree is William, Douglas's father, not another Hartree namesake.
+The journal name for Dirac's paper retains its historical Proceedings title,
+rather than the publisher database's modern Mathematical Proceedings name.
+
+Dirac's original 1930 text was consulted through the Cambridge-hosted PDF,
+including its discussion of the density matrix and orbital-transformation
+invariance. The two Royal Society source records for Swirles's work were
+also checked; no claim of unrestricted full-text access to those papers is
+made. Relativistic SCF and configuration superposition are identified as
+extensions beyond the ordinary non-relativistic single-determinant model.
+McWeeny (1960) and Boys--Bernardi (1970) are retained existing citations,
+not newly attributed discoveries or duplicate bibliography entries.
+
+Biographical sources are linked in each historical panel: Hill's first-hand
+William Hartree obituary, the St Andrews biographies, Girton's John Davies
+tribute, the IAQMS obituary by Sutcliffe and Robb, and Bernardi's author
+profile in the 1996 Chemical Society Reviews article. The indexed author
+profile identifies his Cambridge period as 1969--1971; unverified lifespan
+dates have not been supplied. Access to the Bernardi source image was
+unsuccessful and no substitute/generated likeness is used.
+
+The bibliography now contains 92 cited entries: 88 audited articles/contributed
+chapters and four books. Further reading is unchanged.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `HartreeHartree1935` | Self-consistent field, with exchange, for beryllium | [10.1098/rspa.1935.0085](https://doi.org/10.1098/rspa.1935.0085) |
+| `Swirles1935` | The relativistic self-consistent field | [10.1098/rspa.1935.0211](https://doi.org/10.1098/rspa.1935.0211) |
+| `HartreeHartreeSwirles1939` | Self-consistent field, including exchange and superposition of configurations, with some results for oxygen | [10.1098/rsta.1939.0008](https://doi.org/10.1098/rsta.1939.0008) |
+| `Dirac1930` | Note on Exchange Phenomena in the Thomas Atom | [10.1017/S0305004100016108](https://doi.org/10.1017/S0305004100016108) |
+
 ## Berthier's independent UHF contribution (20 October 2026)
 
 Added Berthier's original 1954 paper beside Pople and Nesbet's existing
