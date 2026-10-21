@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: >-
+  If you reuse these materials for research or teaching, please cite the
+  accompanying chapter using the preferred citation below.
+title: "ESQC 2026: Hartree-Fock Theory, Basis Sets, and Molecular Integrals"
+authors:
+  - family-names: Loos
+    given-names: Pierre-François
+    affiliation: "Laboratoire de Chimie et Physique Quantiques, Université de Toulouse, CNRS, UPS, France"
+version: "1.0.0"
+date-released: "2026-10-21"
+url: "https://github.com/pfloos/ESQC_2026"
+repository-code: "https://github.com/pfloos/ESQC_2026"
+abstract: >-
+  Lecture slides and a PhD-level textbook chapter on Hartree-Fock theory,
+  basis sets, self-consistent-field algorithms, and molecular integrals,
+  prepared for the European Summer School in Quantum Chemistry (ESQC 2026).
+  Includes derivations, historical perspectives, and exercises with worked
+  solutions. Research and teaching reuse is governed by the repository
+  licence and the credited terms for third-party material.
+keywords:
+  - Hartree-Fock theory
+  - quantum chemistry
+  - computational chemistry
+  - electronic structure
+  - basis sets
+  - molecular integrals
+  - self-consistent field
+  - quantum mechanics
+  - graduate education
+  - teaching materials
+  - lecture slides
+  - research and teaching
+  - ESQC 2026
+preferred-citation:
+  type: unpublished
+  authors:
+    - family-names: Loos
+      given-names: Pierre-François
+  title: "Many Electrons, One Determinant: Hartree-Fock Theory, Basis Sets, and Molecular Integrals"
+  year: 2026
+  url: "https://github.com/pfloos/ESQC_2026/releases/tag/v1.0.0"

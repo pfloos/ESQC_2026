@@ -3,13 +3,14 @@
 
 No upload is performed. Existing unrelated files are never deleted.
 The generated .bbl is included so that the submitted bibliography is stable.
+The repository licence and citation metadata accompany redistributed sources.
 """
 from pathlib import Path
 import re
 import shutil
 import zipfile
 
-from chapter_paths import CHAPTER, STEM, required_assets
+from chapter_paths import ROOT, CHAPTER, STEM, required_assets
 
 
 def main():
@@ -22,12 +23,16 @@ def main():
         raise SystemExit("Build the chapter before packaging it")
     files = [source, CHAPTER / f"{STEM}.bib", CHAPTER / "chapter-unsrtnat.bst", bbl]
     files.extend(required_assets())
+    files.append(ROOT / "LICENSE")
+    if (ROOT / "CITATION.cff").is_file():
+        files.append(ROOT / "CITATION.cff")
     target = CHAPTER / "submission"
     target.mkdir(exist_ok=True)
     expected = set()
     with zipfile.ZipFile(CHAPTER / "submission.zip", "w", zipfile.ZIP_DEFLATED, compresslevel=9) as bundle:
         for path in files:
-            relative = Path(path.name) if path == bbl else path.relative_to(CHAPTER)
+            relative = (Path(path.name) if path == bbl or path.parent == ROOT
+                        else path.relative_to(CHAPTER))
             expected.add(relative.as_posix())
             output = target / relative
             output.parent.mkdir(parents=True, exist_ok=True)

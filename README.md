@@ -6,6 +6,17 @@
 
 Lecture slides and a companion textbook chapter by **Pierre-François Loos** for the [20th European Summer School in Quantum Chemistry (ESQC)](https://www.esqc.org), held on 6–19 September 2026 near Palermo, Sicily, Italy.
 
+## Downloads
+
+The [latest release](https://github.com/pfloos/ESQC_2026/releases/latest) provides the compiled chapter, a self-contained chapter source bundle, both slide decks and checksums.
+
+| Material | Download |
+| --- | --- |
+| Complete chapter | [PDF](https://github.com/pfloos/ESQC_2026/releases/latest/download/Many_Electrons_One_Determinant.pdf) |
+| Standalone chapter sources | [ZIP](https://github.com/pfloos/ESQC_2026/releases/latest/download/ESQC_2026_chapter_source.zip) |
+| Hartree–Fock slides | [PDF](https://github.com/pfloos/ESQC_2026/releases/latest/download/ESQC_Loos_HF.pdf) |
+| Basis sets and integrals slides | [PDF](https://github.com/pfloos/ESQC_2026/releases/latest/download/ESQC_Loos_BF.pdf) |
+
 ## Companion chapter
 
 **Many Electrons, One Determinant: Hartree–Fock Theory, Basis Sets, and Molecular Integrals**
@@ -79,7 +90,17 @@ Development drafts, superseded photographs and earlier review files have been re
 
 ## Credits and feedback
 
-See [LICENSE](LICENSE) and the individual third-party credits recorded in the chapter and its [provenance records](chapter/records/). This cleanup does not change those credits or permission statuses.
+### Reuse for research and teaching
+
+These materials are shared to support **research and teaching**. You are welcome to reuse and adapt the original text, diagrams and lecture materials under the repository's [GNU GPL v3 licence](LICENSE). Please credit Pierre-François Loos and cite the chapter when using the materials.
+
+Third-party images, reproduced material and portrait adaptations remain subject to the individual licences and permissions recorded in the chapter and its [provenance records](chapter/records/). Permission-pending notices are not grants of permission. This reuse invitation does not override third-party terms.
+
+### Citation
+
+Use GitHub's **Cite this repository** button or [CITATION.cff](CITATION.cff) for the preferred chapter citation. The arXiv identifier will be added once available.
+
+> Loos, P.-F. (2026). *Many Electrons, One Determinant: Hartree–Fock Theory, Basis Sets, and Molecular Integrals*. ESQC 2026. [Version 1.0.0](https://github.com/pfloos/ESQC_2026/releases/tag/v1.0.0).
 
 Corrections and suggestions are welcome through [GitHub issues](https://github.com/pfloos/ESQC_2026/issues).
 

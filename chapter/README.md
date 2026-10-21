@@ -30,7 +30,7 @@ After a successful build, run from the repository root:
 python3 scripts/package_chapter.py
 ```
 
-This generates `submission.zip` and a matching `submission/` directory, with exactly one `.tex`, the bibliography and style, the generated `.bbl`, and only the graphics actually used. Commented-out illustrations are excluded. Both outputs are ignored by Git; the script does not upload anything.
+This generates `submission.zip` and a matching `submission/` directory, with exactly one `.tex`, the bibliography and style, the generated `.bbl`, and only the graphics actually used. The repository licence and citation metadata accompany the sources. Commented-out illustrations are excluded. Both outputs are ignored by Git; the script does not upload anything.
 
 ## Verification
 
