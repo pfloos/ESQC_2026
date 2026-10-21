@@ -344,8 +344,7 @@ primitive sums efficiently.
   \hftablestyle
   \caption{Primitive exponents and coefficients of one ten-primitive $s$
   contraction for carbon in cc-pVTZ. The shell scale is $1.00$. Values are
-  transcribed from the lecture excerpt and checked against the Basis Set
-  Exchange; the basis family is due to Dunning
+  extracted from the Basis Set Exchange; the basis family is due to Dunning
   \citep{Dunning1989,Pritchard2019}.}
   \label{tab:carbon-contraction}
   \input{chapter-figures/carbon-contraction-tabular}
@@ -365,7 +364,7 @@ Long-range flexibility is supplied by diffuse functions with small
 exponents. Such functions are important for anions, Rydberg states,
 noncovalent interactions, multipoles, and (hyper)polarizabilities.
 Core flexibility, in turn, is supplied by tight functions and is
-needed for core correlation, nuclear magnetic shielding, and spin--spin
+needed for core correlation, nuclear magnetic shielding, and spin-spin
 coupling constants.
 
 The phrase \emph{larger basis} therefore needs a physical qualification:
@@ -402,9 +401,8 @@ approximates the Slater-type $1s$ orbital.
   \caption{Primitive exponents and contraction coefficients for the hydrogen
   $1s$ function in STO-3G, with shell scale $1.00$. The dimensionless
   coefficients $D_i$ multiply normalized primitive Gaussians; $a_0$ is the
-  Bohr radius. Values are transcribed without rounding from the Basis Set
-  Exchange excerpt in the lecture slides and checked against its STO-3G
-  hydrogen definition \citep{Hehre1969,Pritchard2019}.}
+  Bohr radius. Values are extracted from the Basis Set
+  Exchange \citep{Hehre1969,Pritchard2019}.}
   \label{tab:hydrogen-sto3g}
   \input{chapter-figures/hydrogen-sto3g-tabular}
 \end{table}
@@ -466,11 +464,11 @@ $2,3,4,5,6$. A standard correlation-energy extrapolation
   }
 \end{equation}
 Here $\Ec^\text{CBS}$ is the complete-basis-set correlation energy and $A$
-is an extrapolation coefficient, not an atomic-center label.
+is an extrapolation coefficient.
 Diffuse augmentation gives aug-cc-pVXZ, d-aug-cc-pVXZ, and t-aug-cc-pVXZ
 \citep{Kendall1992}.
-Core correlation is described by cc-pCVXZ, optimized for core--core and
-core--valence correlation \citep{Woon1995}, or by cc-pwCVXZ, which weights the core--valence
+Core correlation is described by cc-pCVXZ, optimized for core-core and
+core-valence correlation \citep{Woon1995}, or by cc-pwCVXZ, which weights the core-valence
 contribution \citep{Peterson2002}.
 
 Increasing the cardinal number adds both radial flexibility and a new
@@ -511,7 +509,7 @@ d-aug-cc-pVQZ & $7s6p5d4f3g$\\
 \end{table}
 
 The successive entries make the layered construction explicit. For the
-core--valence sequence, the corresponding decomposition is
+core-valence sequence, the corresponding decomposition is
 \begin{equation}
 \begin{split}
  \text{cc-pVDZ: }&3s2p1d=1s+2s2p1d\\
@@ -665,7 +663,7 @@ $A$, and $Q_A$ is the charge of the remaining ionic core. It is not the
 population-analysis charge $q_A$ introduced earlier.
 This lowers the cost by reducing the number of explicit electrons and removing
 the basis functions needed for core orbitals. It can incorporate
-scalar-relativistic effects and, with a suitable operator, spin--orbit
+scalar-relativistic effects and, with a suitable operator, spin-orbit
 coupling, and it can be used in both molecular and periodic calculations with
 Gaussian or plane-wave bases. The price is a new class of one-electron
 integrals that can be difficult to evaluate; core properties are not described
