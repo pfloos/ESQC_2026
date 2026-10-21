@@ -294,13 +294,8 @@ elsewhere $K$ denotes the number of orbital basis functions.
 An $s$ shell contains $(0,0,0)$; a $p$ shell contains $(1,0,0)$,
 $(0,1,0)$, and $(0,0,1)$; a Cartesian $d$ shell contains
 $(2,0,0)$, $(0,2,0)$, $(0,0,2)$, $(1,1,0)$, $(1,0,1)$, and $(0,1,1)$;
-and a Cartesian $f$ shell contains
-\begin{equation}
- \begin{gathered}
- (3,0,0),(0,3,0),(0,0,3),(2,1,0),(2,0,1),\\
- (1,2,0),(0,2,1),(0,1,2),(1,0,2),(1,1,1)
- \end{gathered}
-\end{equation}
+and a Cartesian $f$ shell contains $(3,0,0)$, $(0,3,0)$, $(0,0,3)$, $(2,1,0)$, $(2,0,1)$,
+$(1,2,0)$, $(0,2,1)$, $(0,1,2)$, $(1,0,2)$, and $(1,1,1)$.
 In general, a Cartesian shell of total angular momentum $\ell$ contains
 \begin{equation}
   N_\ell^\text{cart}=\frac{(\ell+1)(\ell+2)}{2}
@@ -338,6 +333,11 @@ The complete contraction in this example is
 \end{equation}
 The corresponding exponents and contraction coefficients are listed in
 Table~\ref{tab:carbon-contraction}.
+Basis-set definitions can be inspected and downloaded from the
+\href{https://www.basissetexchange.org}{Basis Set Exchange}.
+The contraction thus reduces the dimensions of the Fock and density
+matrices, while integral algorithms must still reorganize the underlying
+primitive sums efficiently.
 
 \begin{table}[htbp]
   \centering
@@ -351,12 +351,6 @@ Table~\ref{tab:carbon-contraction}.
   \input{chapter-figures/carbon-contraction-tabular}
 \end{table}
 
-Basis-set definitions can be inspected and downloaded from the
-\href{https://www.basissetexchange.org}{Basis Set Exchange}.
-
-The contraction thus reduces the dimensions of the Fock and density
-matrices, while integral algorithms must still reorganize the underlying
-primitive sums efficiently.
 
 \subsection{Gaussian basis-set design and selection}
 
