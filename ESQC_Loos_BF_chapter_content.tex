@@ -54,23 +54,27 @@ $\exp(-\alpha r^2)$, are atom centered and are the standard choice for
 molecules because their multicenter integrals can be evaluated efficiently.
 Here $r$ is the distance from the function's center, and $\alpha$ is a
 positive Gaussian exponent.
-They are used, for example, in \textsc{Orca}, \textsc{Q-Chem},
-\textsc{Molcas}, \textsc{Molpro}, \textsc{PySCF}, \textsc{Psi4},
-\textsc{CFOUR}, \textsc{MRCC}, and \textsc{GAMESS}.
+They are used, for example, in \textsc{Orca} \citep{ORCA2022},
+\textsc{Q-Chem} \citep{QChem2021}, \textsc{Molcas} \citep{Molcas2016},
+\textsc{Molpro} \citep{Molpro2020}, \textsc{PySCF} \citep{PySCF2020},
+\textsc{Psi4} \citep{Psi42020}, \textsc{CFOUR} \citep{CFOUR2020},
+\textsc{MRCC} \citep{MRCC2020}, and \textsc{GAMESS} \citep{GAMESS1993}.
 
 Slater-type orbitals (STOs) are also atom centered, but are
 proportional to $\exp(-\zeta r)$. Their radial form can reproduce a nuclear
 cusp and an exponential long-range tail, and they are used, for example, in
-\textsc{ADF}. The positive exponent $\zeta$ controls their radial extent.
+\textsc{ADF} \citep{ADF2001}. The positive exponent $\zeta$ controls their radial extent.
 By contrast,
 plane waves (PWs), proportional to $\exp(\ii\bk\cdot\br)$, are
 delocalized, mutually orthonormal, and naturally adapted to periodic boundary
 conditions. Here $\bk$ is the wavevector and $\ii$ the imaginary unit.
 Their basis size is controlled by an energy cutoff, and they are
-used in \textsc{Quantum Espresso}, \textsc{VASP}, \textsc{ABINIT}, and
-\textsc{CASTEP}. Finally, numerical atomic orbitals (NAOs) have
+used in \textsc{Quantum Espresso} \citep{QuantumEspresso2009},
+\textsc{VASP} \citep{VASP1996}, \textsc{ABINIT} \citep{ABINIT2020}, and
+\textsc{CASTEP} \citep{CASTEP2005}. Finally, numerical atomic orbitals (NAOs) have
 tabulated radial parts. Their compactness and flexibility make them useful in
-programs such as \textsc{FHI-aims} and \textsc{SIESTA}.
+programs such as \textsc{FHI-aims} \citep{FHIAims2009} and
+\textsc{SIESTA} \citep{SIESTA2002}.
 
 \subsection{Plane-wave basis sets}
 
