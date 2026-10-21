@@ -1143,3 +1143,30 @@ coverage baseline. Commented-out frames are not additional required material.
   collapse illustration; that illustration is outside this citation task
   and was left unchanged. The PDF skill guided inspection of the HFB paragraph
   and the new references on PDF pages 107 and 136 (printed pages 99 and 128).
+
+## Josef Paldus historical perspective (21 October 2026)
+
+- Pulled before editing and checked again for remote updates; `1a8aec0`
+  remained current. Added a warm-colored historical panel in Section 3.4,
+  alongside the Stuber--Paldus classification, using the existing biography
+  design without moving or rewriting the surrounding material.
+- The original summary connects Paldus's Prague training and Waterloo career
+  with HF stability, coupled-cluster development, unitary-group methods,
+  and the Stuber--Paldus account. The Academy profile and Waterloo obituary
+  support the biographical details. Two verified original papers (1967 and
+  1974) were added; the existing 2003 chapter is also cited.
+- Added an authentic IAQMS portrait, downloaded unchanged, with source
+  credit and an explicit permission-pending notice under the established
+  draft policy. Provenance is recorded in `chapter-figures/portraits.md`;
+  credit is not permission for a rights-cleared publication.
+- The historical-panel contents now has 26 entries, including Paldus on
+  printed page 99. The PDF skill guided targeted checks of the contents,
+  panel, and new references on PDF pages 4, 107, and 137. The panel and
+  portrait remain together, and all reference titles are linked.
+- All seven chapter checks pass: 94 cited/title-linked entries, 89 audited
+  articles/contributed chapters and five books. All 642 existing displays,
+  the chapter's existing prose, and Further reading are preserved.
+- Compilation succeeds at 139 pages without undefined references/citations,
+  duplicate labels, oversized floats, or PDF-import errors. The unrelated
+  10.12 pt overfull-box warning at the previously enlarged variational-
+  collapse illustration remains unchanged and outside this task.

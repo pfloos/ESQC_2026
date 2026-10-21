@@ -1,5 +1,24 @@
 # Historical portraits in the chapter
 
+## Josef Paldus (21 October 2026)
+
+- Asset: `portrait-paldus.jpg`, 337 x 505 pixels, downloaded unchanged from the
+  [IAQMS source image](https://www.iaqms.org/images/members/paldus.jpg).
+  The [Academy profile](https://www.iaqms.org/deceased/paldus.php)
+  explicitly identifies the sitter. No generated likeness or retouching;
+  LaTeX only scales the supplied photograph.
+- Photographer, photograph date, and reuse terms are unspecified. Following
+  the author's established draft policy, the panel prints **draft
+  reproduction: permission pending**. Attribution is not rights clearance;
+  permission from the rights holder remains necessary before a
+  permission-cleared publication.
+- Biography and lifespan checked against the IAQMS profile and the
+  [University of Waterloo obituary](https://uwaterloo.ca/applied-mathematics/news/memoriam-josef-paldus).
+  Scientific connections are supported by the original 1967 stability
+  paper, the 1974 unitary-group paper, and the existing Stuber--Paldus
+  chapter; metadata verified against Crossref and the
+  [author's publication list](https://www.math.uwaterloo.ca/~paldus/publications.html).
+
 ## Five further historical perspectives (21 October 2026)
 
 Four authentic photographs accompany the five new biographies; Bernardi's

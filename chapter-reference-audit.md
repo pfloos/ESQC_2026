@@ -407,3 +407,20 @@ technical claim or derivation is added, and Further reading is unchanged.
 | --- | --- | --- |
 | `Scuseria2011` | Projected Quasiparticle Theory for Molecular Electronic Structure | [10.1063/1.3643338](https://doi.org/10.1063/1.3643338) |
 
+## Josef Paldus historical panel (21 October 2026)
+
+Verified the original stability and unitary-group papers against publisher-
+deposited Crossref metadata and Paldus's
+[Waterloo publication list](https://www.math.uwaterloo.ca/~paldus/publications.html).
+The 1967 paper supports the closed-shell stability classification; the
+1974 paper supports the algebraic treatment of spin-adapted many-electron
+states. The panel also cites the existing Stuber--Paldus (2003) chapter.
+Biographical details are linked separately to the IAQMS profile and
+Waterloo obituary in the panel and portrait provenance record. Further
+reading is unchanged.
+
+| BibTeX key | Publication title | DOI record |
+| --- | --- | --- |
+| `CizekPaldus1967` | Stability Conditions for the Solutions of the Hartree--Fock Equations for Atomic and Molecular Systems. Application to the Pi-Electron Model of Cyclic Polyenes | [10.1063/1.1701562](https://doi.org/10.1063/1.1701562) |
+| `Paldus1974` | Group Theoretical Approach to the Configuration Interaction and Perturbation Theory Calculations for Atomic and Molecular Systems | [10.1063/1.1681883](https://doi.org/10.1063/1.1681883) |
+
